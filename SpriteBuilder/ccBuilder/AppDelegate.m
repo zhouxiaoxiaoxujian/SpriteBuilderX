@@ -1617,15 +1617,18 @@ static BOOL hideAllToNextSeparator;
     NSMutableArray* serializedResolutions = [doc objectForKey:@"resolutions"];
     if (serializedResolutions)
     {
-        // Load resolutions
         NSMutableArray* resolutions = [NSMutableArray array];
-        for (id serRes in serializedResolutions)
+        if((docDimType == kCCBDocDimensionsTypeNode) || (docDimType == kCCBDocDimensionsTypeLayer))
+             resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
+        else
         {
-            ResolutionSetting* resolution = [[ResolutionSetting alloc] initWithSerialization:serRes];
-            [resolutions addObject:resolution];
+            // Load resolutions
+            for (id serRes in serializedResolutions)
+            {
+                ResolutionSetting* resolution = [[ResolutionSetting alloc] initWithSerialization:serRes];
+                [resolutions addObject:resolution];
+            }
         }
-        
-        //resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
         
         currentDocument.docDimensionsType = docDimType;
         int currentResolution = [[doc objectForKey:@"currentResolution"] intValue];
@@ -3643,6 +3646,9 @@ static BOOL hideAllToNextSeparator;
         FNTConfigRemoveCache();
     }
     
+    [CCDirector sharedDirector].contentScaleFactor = 1.0;
+    [[CCFileUtils sharedFileUtils] setMacContentScaleFactor:1.0];
+    
     [CCDirector sharedDirector].UIScaleFactor = res.resourceScale * res.mainScale;
 				
     // Setup the rulers with the new contentScale
@@ -3831,7 +3837,10 @@ static BOOL hideAllToNextSeparator;
     
     float maxZoom = 8;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    maxZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    if(res.width!=0&&res.height!=0)
+        maxZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    else
+        maxZoom *= res.resourceScale;
     
     float zoom = [cs stageZoom];
     zoom *= 1.2;
@@ -3845,7 +3854,10 @@ static BOOL hideAllToNextSeparator;
     
     float minZoom = 0.05f;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    minZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    if(res.width!=0&&res.height!=0)
+        minZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    else
+        minZoom *= res.resourceScale;
     
     float zoom = [cs stageZoom];
     zoom *= 1/1.2f;
