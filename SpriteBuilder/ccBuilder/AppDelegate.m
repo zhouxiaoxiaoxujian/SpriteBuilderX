@@ -3667,7 +3667,8 @@ static BOOL hideAllToNextSeparator;
     
     res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     float curWidth = self.projectSettings.defaultOrientation?res.height:res.width * [CCDirector sharedDirector].contentScaleFactor;
-    [CocosScene cocosScene].stageZoom *= oldWidth/curWidth;
+    if(oldWidth != 0 && curWidth != 0)
+        [CocosScene cocosScene].stageZoom *= oldWidth/curWidth;
     
     //
     // No need to call setStageSize here, since it gets called from reloadResources
