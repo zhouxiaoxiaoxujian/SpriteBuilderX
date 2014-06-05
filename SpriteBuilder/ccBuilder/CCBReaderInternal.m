@@ -396,6 +396,12 @@ __strong NSDictionary* renamedProperties = nil;
         [NodeGraphPropertySetter setNodeGraphForNode:node andProperty:name withFile:ccbFile parentSize:parentSize];
         [extraProps setObject:ccbFile forKey:name];
     }
+    else if ([type isEqualToString:@"CCBFileName"])
+    {
+        NSString* ccbFile = serializedValue;
+        if (!ccbFile) ccbFile = @"";
+        [node setValue:ccbFile forKey:name];
+    }
     else if ([type isEqualToString:@"NodeReference"])
     {
         NSUInteger uuid = [serializedValue unsignedIntegerValue];

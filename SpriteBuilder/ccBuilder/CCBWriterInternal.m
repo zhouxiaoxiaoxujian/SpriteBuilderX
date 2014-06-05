@@ -400,6 +400,12 @@
         if (!spriteFile) spriteFile = @"";
         serializedValue = spriteFile;
     }
+    else if ([type isEqualToString:@"CCBFileName"])
+    {
+        NSString* spriteFile = [node valueForKey:name];
+        if (!spriteFile) spriteFile = @"";
+        serializedValue = spriteFile;    
+    }
     else if([type isEqualToString:@"NodeReference"])
     {
          CCNode* nodeRef = [node valueForKey:name];

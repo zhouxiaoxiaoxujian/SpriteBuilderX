@@ -36,6 +36,7 @@ NSString * kAnimationOfPhysicsWarning;
 @property (nonatomic,assign) BOOL seqExpanded;
 @property (nonatomic,assign) BOOL locked;
 @property (nonatomic,assign) BOOL hidden;
+@property (nonatomic,assign) NSInteger tag;
 @property (nonatomic,readonly) BOOL parentHidden;
 
 @property (nonatomic,readonly) PlugInNode* plugIn;

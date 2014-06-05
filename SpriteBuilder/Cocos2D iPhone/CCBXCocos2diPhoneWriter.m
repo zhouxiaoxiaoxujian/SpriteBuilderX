@@ -66,6 +66,7 @@
     [propTypes addObject:@"FloatScale"];
     [propTypes addObject:@"FloatXY"];
     [propTypes addObject:@"Color4"];
+    [propTypes addObject:@"CCBFileName"];
     [propTypes addObject:@"NodeReference"];
     [propTypes addObject:@"FloatCheck"];
 }
@@ -463,7 +464,8 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         [self writeInt:[c intValue] withSign:NO];
     }
     else if ([type isEqualToString:@"Texture"]
-             || [type isEqualToString:@"CCBFile"])
+             || [type isEqualToString:@"CCBFile"]
+             || [type isEqualToString:@"CCBFileName"])
     {
         [self writeCachedString:prop isPath: YES];
     }

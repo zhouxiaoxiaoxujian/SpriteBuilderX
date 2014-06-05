@@ -91,6 +91,16 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     return [[self extraPropForKey:@"locked"] boolValue];
 }
 
+- (void) setTag:(NSInteger)tag
+{
+    [self setExtraProp:[NSNumber numberWithInteger:tag] forKey:@"tag"];
+}
+
+- (NSInteger) tag
+{
+    return [[self extraPropForKey:@"tag"] integerValue];
+}
+
 - (void) setHidden:(BOOL)hidden
 {
     [self setExtraProp:[NSNumber numberWithBool:hidden] forKey:@"hidden"];
