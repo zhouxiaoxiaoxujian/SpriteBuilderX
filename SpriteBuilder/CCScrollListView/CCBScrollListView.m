@@ -179,10 +179,10 @@
     }
 }
 
--(void)draw
+-(void) visit
 {
     [self RecalcPositions];
-    [super draw];
+    [super visit];
 }
 
 -(CCNode *)AddElement:(NSString *)name
