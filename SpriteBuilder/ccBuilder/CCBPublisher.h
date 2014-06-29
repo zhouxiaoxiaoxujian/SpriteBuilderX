@@ -36,6 +36,7 @@ enum {
 };
 
 enum {
+    kCCBPublishFormatSound_android_wav,
     kCCBPublishFormatSound_android_ogg,
 };
 

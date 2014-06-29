@@ -25,7 +25,6 @@
 #import "NodePhysicsBody.h"
 #import "AppDelegate.h"
 #import "PolyDecomposition.h"
-#import "NSArray+Query.h"
 
 #define kCCBPhysicsMinimumDefaultCircleRadius 16
 
@@ -46,9 +45,12 @@
     _friction = 0.3f;
     _elasticity = 0.3f;
     
-    _collisionType = @"";
-    _collisionMask = [NSMutableArray array];
-    _collisionCategories = [NSMutableArray array];
+    _categoryBitmask = 0xFFFFFFFF;
+    _contactTestBitmask = 0;
+    _collisionBitmask = 0xFFFFFFFF;
+    
+    _massSet = NO;
+    _momentSet = NO;
     
     return self;
 }
@@ -84,47 +86,24 @@
     _friction = [[ser objectForKey:@"friction"] floatValue];
     _elasticity = [[ser objectForKey:@"elasticity"] floatValue];
     
-    _collisionType = [ser objectForKey:@"collisionType"];
-    _collisionCategories = nil;
-    _collisionMask = nil;
-	
-
+    _mass = [[ser objectForKey:@"mass"] floatValue];
+    _moment = [[ser objectForKey:@"moment"] floatValue];
+    _massSet = [[ser objectForKey:@"massSet"] boolValue];
+    _momentSet = [[ser objectForKey:@"momentSet"] boolValue];
     
-    if(_collisionType == nil)
-    {
-        _collisionType = @"";
-    }
+    _scaleByResourceScale = [[ser objectForKey:@"scaleByResourceScale"] boolValue];
     
-	id collisionCategoriesObject = [ser objectForKey:@"collisionCategories"];
-    if(collisionCategoriesObject == nil)
-    {
-        _collisionCategories = [NSArray array];
-    }
-	//Fixup old data.
-	else if([collisionCategoriesObject isKindOfClass:[NSString class]])
-	{
-		_collisionCategories = [collisionCategoriesObject componentsSeparatedByString:@";"];
-	}
-    else
-    {
-        _collisionCategories = collisionCategoriesObject;
-    }
+    _categoryBitmask  = (unsigned int)[[ser objectForKey:@"categoryBitmask"] integerValue];
+    _contactTestBitmask = (unsigned int)[[ser objectForKey:@"contactTestBitmask"] integerValue];
+    _collisionBitmask = (unsigned int)[[ser objectForKey:@"collisionBitmask"] integerValue];
     
-	
-	id collisionMaskObject = [ser objectForKey:@"collisionMask"];
-    if(collisionMaskObject == nil)
-    {
-        _collisionMask = [NSArray array];
-    }
-	//Fixup old data.
-	else if([collisionMaskObject isKindOfClass:[NSString class]])
-	{
-		_collisionMask = [collisionMaskObject componentsSeparatedByString:@";"];
-	}
-    else
-    {
-        _collisionMask = collisionMaskObject;
-    }
+    _velocityX = [[ser objectForKey:@"velocityX"] floatValue];
+    _velocityY = [[ser objectForKey:@"velocityY"] floatValue];
+    _velocityLimit = [[ser objectForKey:@"velocityLimit"] floatValue];
+    _angleVelocity = [[ser objectForKey:@"angleVelocity"] floatValue];
+    _angleVelocityLimit = [[ser objectForKey:@"angleVelocityLimit"] floatValue];
+    _linearDamping = [[ser objectForKey:@"linearDamping"] floatValue];
+    _angularDamping = [[ser objectForKey:@"angularDamping"] floatValue];
     
     return self;
 }
@@ -177,26 +156,24 @@
     [ser setObject:[NSNumber numberWithFloat:_friction] forKey:@"friction"];
     [ser setObject:[NSNumber numberWithFloat:_elasticity] forKey:@"elasticity"];
     
-    if(_collisionType == nil)
-    {
-        _collisionType = @"";
-    }
+    [ser setObject:[NSNumber numberWithFloat:_mass] forKey:@"mass"];
+    [ser setObject:[NSNumber numberWithFloat:_moment] forKey:@"moment"];
+    [ser setObject:[NSNumber numberWithBool:_massSet] forKey:@"_massSet"];
+    [ser setObject:[NSNumber numberWithBool:_momentSet] forKey:@"_momentSet"];
     
-    if(_collisionCategories == nil)
-    {
-        _collisionCategories = [NSArray array];
-    }
+    [ser setObject:[NSNumber numberWithBool:_scaleByResourceScale] forKey:@"scaleByResourceScale"];
     
-    if(_collisionMask == nil)
-    {
-        _collisionMask = [NSArray array];
-    }
-
+    [ser setObject:[NSNumber numberWithUnsignedInt:_categoryBitmask] forKey:@"categoryBitmask"];
+    [ser setObject:[NSNumber numberWithUnsignedInt:_contactTestBitmask] forKey:@"contactTestBitmask"];
+    [ser setObject:[NSNumber numberWithUnsignedInt:_collisionBitmask] forKey:@"collisionBitmask"];
     
-    [ser setObject:_collisionType forKey:@"collisionType"];
-    [ser setObject:_collisionCategories forKey:@"collisionCategories"];
-    [ser setObject:_collisionMask forKey:@"collisionMask"];
-
+    [ser setObject:[NSNumber numberWithBool:_velocityX] forKey:@"velocityX"];
+    [ser setObject:[NSNumber numberWithBool:_velocityY] forKey:@"velocityY"];
+    [ser setObject:[NSNumber numberWithBool:_velocityLimit] forKey:@"velocityLimit"];
+    [ser setObject:[NSNumber numberWithBool:_angleVelocity] forKey:@"angleVelocity"];
+    [ser setObject:[NSNumber numberWithBool:_angleVelocityLimit] forKey:@"angleVelocityLimit"];
+    [ser setObject:[NSNumber numberWithBool:_linearDamping] forKey:@"linearDamping"];
+    [ser setObject:[NSNumber numberWithBool:_angularDamping] forKey:@"angularDamping"];
     
     return ser;
 }

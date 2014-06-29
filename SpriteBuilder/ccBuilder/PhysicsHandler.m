@@ -53,9 +53,55 @@
 
 @end
 
+@interface HexFormatter : NSFormatter
+
++ (NSString*)format:(long)number;
+
+@end
+
+@implementation HexFormatter
+
++ (NSString*)format:(long)number;
+{
+    return [NSString stringWithFormat: @"0x%lX", number];
+}
+
+
+- (NSString *)stringForObjectValue:(id)anObject {
+    return [HexFormatter format:[anObject longValue]];
+}
+
+- (BOOL)getObjectValue:(id *)obj forString:(NSString *)string errorDescription:(NSString **)error {
+
+    unsigned int hexResult;
+    NSScanner *scanner;
+    BOOL returnValue = NO;
+    
+    scanner = [NSScanner scannerWithString: string];
+    [scanner scanString: @"$" intoString: NULL];    //ignore  return value
+    if ([scanner scanHexInt:&hexResult] && ([scanner isAtEnd])) {
+        returnValue = YES;
+        if (obj)
+            *obj = [NSNumber numberWithLong:hexResult];
+    } else {
+        if (error)
+            *error = NSLocalizedString(@"Couldn’t convert to hex", @"Error converting");
+    }
+    return returnValue;
+}
+
+
+@end
 
 @implementation PhysicsHandler
 
+- (IBAction)massInf:(id)sender {
+    self.selectedNodePhysicsBody.mass = INFINITY;
+}
+
+- (IBAction)momentInf:(id)sender {
+    self.selectedNodePhysicsBody.moment = INFINITY;
+}
 
 - (void) awakeFromNib
 {

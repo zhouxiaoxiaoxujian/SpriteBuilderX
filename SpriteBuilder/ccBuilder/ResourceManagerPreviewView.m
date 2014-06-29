@@ -122,6 +122,27 @@
             self.imgTablet = [selection previewForResolution:@"tablet"];
             self.imgTablethd = [selection previewForResolution:@"tablethd"];
             
+            if(!self.imgMain)
+            {
+                self.imgMain = [selection previewForResolution:@"universal"];
+                if(!self.imgMain)
+                {
+                    self.imgMain = self.imgTablethd;
+                    if(!self.imgMain)
+                    {
+                        self.imgMain = self.imgPhonehd;
+                        if(!self.imgMain)
+                        {
+                            self.imgMain = self.imgTablet;
+                            if(!self.imgMain)
+                            {
+                                self.imgMain = self.imgPhone;
+                            }
+                        }
+                    }
+                }
+            }
+            
             [previewMain setImage: self.imgMain];
             [previewPhone setImage:self.imgPhone];
             [previewPhonehd setImage:self.imgPhonehd];

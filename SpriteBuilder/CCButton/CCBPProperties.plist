@@ -73,7 +73,7 @@
 			<key>displayName</key>
 			<string>Title</string>
 			<key>type</key>
-			<string>String</string>
+			<string>Text</string>
 			<key>name</key>
 			<string>title</string>
 		</dict>
@@ -704,6 +704,56 @@
 			<string>Position</string>
 			<key>name</key>
 			<string>shadowOffset</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>CCSprite9Slice</string>
+			<key>name</key>
+			<string>CCSprite</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<real>0.33</real>
+			<key>displayName</key>
+			<string>Margin left</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>marginLeft</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<real>0.33</real>
+			<key>displayName</key>
+			<string>Margin right</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>marginRight</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<real>0.33</real>
+			<key>displayName</key>
+			<string>Margin top</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>marginTop</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<real>0.33</real>
+			<key>displayName</key>
+			<string>Margin bottom</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>marginBottom</string>
 		</dict>
 	</array>
 </dict>

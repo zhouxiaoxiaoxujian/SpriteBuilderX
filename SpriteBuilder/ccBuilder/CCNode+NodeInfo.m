@@ -872,11 +872,17 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     if (self == [CocosScene cocosScene].rootNode)
     {
         if ([prop isEqualToString:@"position"]) return YES;
-        else if ([prop isEqualToString:@"scale"]) return YES;
-        else if ([prop isEqualToString:@"rotation"]) return YES;
-        else if ([prop isEqualToString:@"tag"]) return YES;
         else if ([prop isEqualToString:@"visible"]) return YES;
-        else if ([prop isEqualToString:@"skew"]) return YES;
+        else if([AppDelegate appDelegate].currentDocument.docDimensionsType == kCCBDocDimensionsTypeFullScreen)
+        {
+            if ([prop isEqualToString:@"scale"]) return YES;
+            else if ([prop isEqualToString:@"rotation"]) return YES;
+            else if ([prop isEqualToString:@"tag"]) return YES;
+            else if ([prop isEqualToString:@"skew"]) return YES;
+            else if ([prop isEqualToString:@"contentSize"]) return YES;
+            else if ([prop isEqualToString:@"anchorPoint"]) return YES;
+        }
+
     }
     
     //If I'm locked.

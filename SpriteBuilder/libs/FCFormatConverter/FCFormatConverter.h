@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 enum {
+    kFCImageFormatOriginal,
     kFCImageFormatPNG,
     kFCImageFormatPNG_8BIT,
     kFCImageFormatPVR_RGBA8888,
@@ -23,6 +24,7 @@ enum {
 };
 
 enum {
+    kFCSoundFormatWAV,
     kFCSoundFormatCAF,
     kFCSoundFormatMP4,
     kFCSoundFormatOGG,

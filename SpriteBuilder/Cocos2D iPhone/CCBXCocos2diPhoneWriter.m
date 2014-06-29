@@ -899,7 +899,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 - (void) writeHeader
 {
     // Magic number
-    int magic = 'ccbi';
+    int magic = 'ccbx';
     [data appendBytes:&magic length:4];
     
     // Version
@@ -1256,7 +1256,24 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         float friction = [[physicsBody objectForKey:@"friction"] floatValue];
         float elasticity = [[physicsBody objectForKey:@"elasticity"] floatValue];
         
+        float mass = [[physicsBody objectForKey:@"mass"] floatValue];
+        float moment = [[physicsBody objectForKey:@"moment"] floatValue];
+        BOOL setMass = [[physicsBody objectForKey:@"setMass"] boolValue];
+        BOOL setMoment = [[physicsBody objectForKey:@"setMoment"] boolValue];
         
+        BOOL scaleByResourceScale = [[physicsBody objectForKey:@"scaleByResourceScale"] boolValue];
+        
+        unsigned int categoryBitmask = (unsigned int)[[physicsBody objectForKey:@"categoryBitmask"] integerValue];
+        unsigned int contactTestBitmask= (unsigned int)[[physicsBody objectForKey:@"contactTestBitmask"] integerValue];
+        unsigned int collisionBitmask= (unsigned int)[[physicsBody objectForKey:@"collisionBitmask"] integerValue];
+        
+        float velocityX = [[physicsBody objectForKey:@"velocityX"] floatValue];
+        float velocityY = [[physicsBody objectForKey:@"velocityY"] floatValue];
+        float velocityLimit = [[physicsBody objectForKey:@"velocityLimit"] floatValue];
+        float angleVelocity = [[physicsBody objectForKey:@"angleVelocity"] floatValue];
+        float angleVelocityLimit = [[physicsBody objectForKey:@"angleVelocityLimit"] floatValue];
+        float linearDamping = [[physicsBody objectForKey:@"linearDamping"] floatValue];
+        float angularDamping = [[physicsBody objectForKey:@"angularDamping"] floatValue];
         
         // Write physics body
         [self writeInt:bodyShape withSign:NO];
@@ -1296,23 +1313,24 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         [self writeFloat:friction];
         [self writeFloat:elasticity];
         
-		NSString * collisionType = [physicsBody objectForKey:@"collisionType"];
-        NSArray * collisionCategories = [physicsBody objectForKey:@"collisionCategories"];
-        NSArray * collisionMasks = [physicsBody objectForKey:@"collisionMask"];
-		
-		
-        if(collisionType == nil)
-        {
-            collisionType = @"";
-        }
-
-		NSString *	collisionCategoriesText = [self concatenateWithSeperator:collisionCategories seperator:@";"];
-		NSString * collisionMaskText = [self concatenateWithSeperator:collisionMasks seperator:@";"];
-		
-		[self writeCachedString:collisionType isPath:NO];
-		[self writeCachedString:collisionCategoriesText isPath:NO];
-		[self writeCachedString:collisionMaskText isPath:NO];
-		 
+        [self writeBool:setMass];
+        if(setMass)
+            [self writeFloat:mass];
+        [self writeBool:setMoment];
+        if(setMoment)
+            [self writeFloat:moment];
+        
+        [self writeInt:categoryBitmask withSign:NO];
+        [self writeInt:contactTestBitmask withSign:NO];
+        [self writeInt:collisionBitmask withSign:NO];
+        
+        [self writeFloat:velocityX];
+        [self writeFloat:velocityY];
+        [self writeFloat:velocityLimit];
+        [self writeFloat:angleVelocity];
+        [self writeFloat:angleVelocityLimit];
+        [self writeFloat:linearDamping];
+        [self writeFloat:angularDamping];
     }
     else
     {
