@@ -504,10 +504,14 @@
         scaleXCoef *= resolution.mainScale;
         scaleYCoef *= resolution.mainScale;
     }
-    if (type & kCCBScaleFlagMultiplyByAdditionalScale)
+    if (type & kCCBScaleFlagMultiplyByAdditionalScaleX)
     {
-        scaleXCoef *= resolution.scaleX;
-        scaleYCoef *= resolution.scaleY;
+        scaleXCoef *= resolution.additionalScale;
+    }
+    
+    if (type & kCCBScaleFlagMultiplyByAdditionalScaleY)
+    {
+        scaleYCoef *= resolution.additionalScale;
     }
     
     if (type & kCCBScaleFlagInvertScale)

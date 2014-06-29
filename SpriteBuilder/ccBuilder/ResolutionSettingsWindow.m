@@ -99,29 +99,41 @@ typedef NS_ENUM(int8_t, CCBRecalScaleType)
     {
         float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
         float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
-        resolution.mainScale = MIN(scale1,scale2);
-        resolution.scaleX =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
-        resolution.scaleY =   (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+        if(scale1<scale2)
+        {
+            resolution.mainScale = scale1;
+            resolution.additionalScale = (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
+        }
+        else
+        {
+            resolution.mainScale = scale2;
+            resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+        }
     }
     else if(scaleType == kCCBRecalScaleTypeMaxScale)
     {
         float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
         float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
-        resolution.mainScale = MAX(scale1,scale2);
-        resolution.scaleX =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
-        resolution.scaleY =   (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+        if(scale1>scale2)
+        {
+            resolution.mainScale = scale1;
+            resolution.additionalScale = (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
+        }
+        else
+        {
+            resolution.mainScale = scale2;
+            resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+        }
     }
     else if((designResolution.width>designResolution.height) == (scaleType == kCCBRecalScaleTypeMinSize))
     {
         resolution.mainScale = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
-        resolution.scaleX =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
-        resolution.scaleY = 1.0f;
+        resolution.additionalScale =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
     }
     else
     {
         resolution.mainScale = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
-        resolution.scaleY =   (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
-        resolution.scaleX = 1.0f;
+        resolution.additionalScale =   (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
     }
 }
 

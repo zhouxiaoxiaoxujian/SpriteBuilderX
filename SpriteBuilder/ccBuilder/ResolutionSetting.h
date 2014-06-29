@@ -42,8 +42,7 @@
 @property (nonatomic,copy) NSString* ext;
 @property (nonatomic,assign) float resourceScale;
 @property (nonatomic,assign) float mainScale;
-@property (nonatomic,assign) float scaleX;
-@property (nonatomic,assign) float scaleY;
+@property (nonatomic,assign) float additionalScale;
 @property (nonatomic,assign) BOOL centeredOrigin;
 @property (nonatomic,readonly) NSArray* exts;
 

@@ -274,6 +274,8 @@
 		A536B21C19404255006B0A52 /* InspectorCCBFileName.m in Sources */ = {isa = PBXBuildFile; fileRef = A536B21A19404255006B0A52 /* InspectorCCBFileName.m */; };
 		A536B21D19404255006B0A52 /* InspectorCCBFileName.xib in Resources */ = {isa = PBXBuildFile; fileRef = A536B21B19404255006B0A52 /* InspectorCCBFileName.xib */; };
 		A572CCCC196090EE00FC9E71 /* CCScrollListView.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5D57AEF1960905600ED1B38 /* CCScrollListView.ccbPlugNode */; };
+		A57F906C19602D3900140C8E /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57F906A19602D3900140C8E /* scale-6.png */; };
+		A57F906D19602D3900140C8E /* scale-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A57F906B19602D3900140C8E /* scale-7.png */; };
 		A5CF339E1906630600343922 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF339D1906630600343922 /* scale-5.png */; };
 		A5CF33CE1906643100343922 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33C51906643100343922 /* CCBPProperties.plist */; };
 		A5CF33D01906643100343922 /* CCBProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF33C71906643100343922 /* CCBProgressNode.m */; };
@@ -1464,6 +1466,8 @@
 		A536B235194046A1006B0A52 /* CCScrollListView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCScrollListView-Prefix.pch"; sourceTree = "<group>"; };
 		A536B237194046A1006B0A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A536B238194046A1006B0A52 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A57F906A19602D3900140C8E /* scale-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-6.png"; sourceTree = "<group>"; };
+		A57F906B19602D3900140C8E /* scale-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-7.png"; sourceTree = "<group>"; };
 		A5CF339D1906630600343922 /* scale-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-5.png"; sourceTree = "<group>"; };
 		A5CF33C51906643100343922 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A5CF33C61906643100343922 /* CCBProgressNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProgressNode.h; sourceTree = "<group>"; };
@@ -3001,6 +3005,8 @@
 				B78AE45017E3B1600028BE0B /* scale-3.png */,
 				B78AE45117E3B1600028BE0B /* scale-4.png */,
 				A5CF339D1906630600343922 /* scale-5.png */,
+				A57F906A19602D3900140C8E /* scale-6.png */,
+				A57F906B19602D3900140C8E /* scale-7.png */,
 				E35A2D871540111A00F78B72 /* position-0.png */,
 				E35A2D881540111A00F78B72 /* position-1.png */,
 				E35A2D891540111A00F78B72 /* position-2.png */,
@@ -5499,6 +5505,7 @@
 				921EEB2918ADE43700D864C2 /* InspectorNodeReference.xib in Resources */,
 				E3FEA8B614E4929300119FBE /* InspectorScaleLock.xib in Resources */,
 				E3FEA8BB14E4989A00119FBE /* InspectorDegrees.xib in Resources */,
+				A57F906C19602D3900140C8E /* scale-6.png in Resources */,
 				E3FEA8C014E49D8300119FBE /* InspectorInteger.xib in Resources */,
 				B71706D2184ECD660081720A /* select-skew@2x.png in Resources */,
 				E3B4221314E4A350004547D6 /* InspectorCheck.xib in Resources */,
@@ -5563,6 +5570,7 @@
 				E3F3F84B153DBA43005443EE /* notes-close-down.png in Resources */,
 				92F0961918F8855A00D47A94 /* inspector-body-goto@2x.png in Resources */,
 				E35A2D8D1540111A00F78B72 /* position-0.png in Resources */,
+				A57F906D19602D3900140C8E /* scale-7.png in Resources */,
 				E35A2D8E1540111A00F78B72 /* position-1.png in Resources */,
 				92F0960818F8851300D47A94 /* inspector-body-remove-hi.png in Resources */,
 				E35A2D8F1540111A00F78B72 /* position-2.png in Resources */,

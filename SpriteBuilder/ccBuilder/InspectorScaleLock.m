@@ -41,7 +41,7 @@
 
 - (void) willBeAdded
 {
-    for(int i=0;i<4;++i)
+    for(int i=0;i<5;++i)
         [_scaleType setSelected:(self.type&(1<<i)) forSegment:i];
 }
 
@@ -76,7 +76,7 @@
 - (IBAction)touch:(id)sender {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
     int type = 0;
-    for(int i=0;i<4;++i)
+    for(int i=0;i<5;++i)
         if([_scaleType isSelectedForSegment:i])
             type|=1<<i;
     [self setType:type];

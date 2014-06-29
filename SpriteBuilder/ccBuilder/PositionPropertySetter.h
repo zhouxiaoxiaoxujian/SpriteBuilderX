@@ -30,8 +30,9 @@ enum
     kCCBScaleFlagRealScale = 0,
     kCCBScaleFlagMultiplyByResourceScale = 1,
     kCCBScaleFlagMultiplyByMainScale = 2,
-    kCCBScaleFlagMultiplyByAdditionalScale = 4,
-    kCCBScaleFlagInvertScale = 8,
+    kCCBScaleFlagMultiplyByAdditionalScaleX = 4,
+    kCCBScaleFlagMultiplyByAdditionalScaleY = 8,
+    kCCBScaleFlagInvertScale = 16,
 };
 
 @interface PositionPropertySetter : NSObject
