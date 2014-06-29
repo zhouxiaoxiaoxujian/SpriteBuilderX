@@ -114,6 +114,10 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 @property (nonatomic, assign) int deviceScaling;
 @property (nonatomic, assign) float tabletPositionScaleFactor;
 
+@property (nonatomic,assign) int designSizeWidth;
+@property (nonatomic,assign) int designSizeHeight;
+@property (nonatomic,assign) float designResourceScale;
+
 @property (nonatomic, strong) CCBWarnings* lastWarnings;
 
 @property (nonatomic, readonly) CCBTargetEngine engine;

@@ -40,7 +40,11 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 		    // The name of a sprite in a spritesheet never changes.
 		    return [srcPath copy];
 		}
-    if (format == kFCImageFormatPNG ||
+    if ( format == kFCImageFormatOriginal)
+    {
+        return [srcPath copy];
+    }
+    else if (format == kFCImageFormatPNG ||
         format == kFCImageFormatPNG_8BIT)
     {
         // File might be loaded from a .psd file.
@@ -98,11 +102,39 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         srcPath = out_path;
     }
 		
-    if (format == kFCImageFormatPNG)
+    if ( format == kFCImageFormatOriginal)
     {
-        // PNG image - no conversion required
         *outputFilename = [srcPath copy];
         return YES;
+    }
+    else if (format == kFCImageFormatPNG)
+    {
+        // PNG image - no conversion required
+        //*outputFilename = [srcPath copy];
+        if([[srcPath pathExtension] isEqualToString:@"png"])
+        {
+            *outputFilename = [srcPath copy];
+            return YES;
+        }
+        else
+        {
+            CGImageSourceRef image_source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:srcPath], NULL);
+            CGImageRef image = CGImageSourceCreateImageAtIndex(image_source, 0, NULL);
+            
+            NSString *out_path = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
+            CFURLRef out_url = (__bridge CFURLRef)[NSURL fileURLWithPath:out_path];
+            CGImageDestinationRef image_destination = CGImageDestinationCreateWithURL(out_url, kUTTypePNG, 1, NULL);
+            CGImageDestinationAddImage(image_destination, image, NULL);
+            CGImageDestinationFinalize(image_destination);
+            
+            CFRelease(image_source);
+            CGImageRelease(image);
+            CFRelease(image_destination);
+            
+            [fm removeItemAtPath:srcPath error:nil];
+            *outputFilename = out_path;
+            return YES;
+        }
     }
     if (format == kFCImageFormatPNG_8BIT)
     {
@@ -299,7 +331,8 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 - (NSString*) proposedNameForConvertedSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality
 {
     NSString* ext = NULL;
-    if (format == kFCSoundFormatCAF) ext = @"caf";
+    if (format == kFCSoundFormatWAV) ext = @"wav";
+    else if (format == kFCSoundFormatCAF) ext = @"caf";
     else if (format == kFCSoundFormatMP4) ext = @"m4a";
     else if (format == kFCSoundFormatOGG) ext = @"ogg";
     
@@ -315,7 +348,31 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
     NSString* dstPath = [self proposedNameForConvertedSoundAtPath:srcPath format:format quality:quality];
     NSFileManager* fm = [NSFileManager defaultManager];
     
-    if (format == kFCSoundFormatCAF)
+    if (format == kFCSoundFormatWAV)
+    {
+        // Convert to WAV
+        NSTask* sndTask = [[NSTask alloc] init];
+        
+        [sndTask setLaunchPath:@"/usr/bin/afconvert"];
+        NSMutableArray* args = [NSMutableArray arrayWithObjects:
+                                @"-f", @"WAVE",
+                                @"-d", @"I16@22050",
+                                @"-c", @"1",
+                                srcPath, dstPath, nil];
+        [sndTask setArguments:args];
+        [sndTask launch];
+        [sndTask waitUntilExit];
+        
+        
+        // Remove old file
+        if (![srcPath isEqualToString:dstPath])
+        {
+            [fm removeItemAtPath:srcPath error:NULL];
+        }
+        
+        return dstPath;
+    }
+    else if (format == kFCSoundFormatCAF)
     {
         // Convert to CAF
         self.sndTask = [[NSTask alloc] init];

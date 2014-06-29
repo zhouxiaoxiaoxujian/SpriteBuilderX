@@ -23,5 +23,6 @@ enum {
 } typedef CCBPublishFormatSound_ios;
 
 enum {
-    kCCBPublishFormatSound_android_ogg = 0,
+    kCCBPublishFormatSound_android_wav = 0,
+    kCCBPublishFormatSound_android_ogg = 1,
 } typedef CCBPublishFormatSound_android;

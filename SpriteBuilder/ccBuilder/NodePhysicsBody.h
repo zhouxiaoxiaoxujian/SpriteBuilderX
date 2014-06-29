@@ -44,13 +44,27 @@ typedef enum
 @property (nonatomic,assign) BOOL affectedByGravity;
 @property (nonatomic,assign) BOOL allowsRotation;
 
+@property (nonatomic,assign) BOOL massSet;
+@property (nonatomic,assign) BOOL momentSet;
+
+@property (nonatomic,assign) float mass;
+@property (nonatomic,assign) float moment;
+
 @property (nonatomic,assign) float density;
 @property (nonatomic,assign) float friction;
 @property (nonatomic,assign) float elasticity;
 
-@property (nonatomic) NSString * collisionType;
-@property (nonatomic) NSArray * collisionCategories;
-@property (nonatomic) NSArray * collisionMask;
+@property (nonatomic,assign) unsigned int categoryBitmask;
+@property (nonatomic,assign) unsigned int contactTestBitmask;
+@property (nonatomic,assign) unsigned int collisionBitmask;
+
+@property (nonatomic,assign) float velocityX;
+@property (nonatomic,assign) float velocityY;
+@property (nonatomic,assign) float velocityLimit;
+@property (nonatomic,assign) float angleVelocity;
+@property (nonatomic,assign) float angleVelocityLimit;
+@property (nonatomic,assign) float linearDamping;
+@property (nonatomic,assign) float angularDamping;
 
 // Init and serialization
 - (id) initWithNode:(CCNode*) node;

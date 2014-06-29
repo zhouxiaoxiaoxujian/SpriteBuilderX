@@ -25,7 +25,6 @@
 #import "NodePhysicsBody.h"
 #import "AppDelegate.h"
 #import "PolyDecomposition.h"
-#import "NSArray+Query.h"
 
 #define kCCBPhysicsMinimumDefaultCircleRadius 16
 
@@ -49,9 +48,12 @@
     _friction = 0.3f;
     _elasticity = 0.3f;
     
-    _collisionType = @"";
-    _collisionMask = [NSMutableArray array];
-    _collisionCategories = [NSMutableArray array];
+    _categoryBitmask = 0xFFFFFFFF;
+    _contactTestBitmask = 0;
+    _collisionBitmask = 0xFFFFFFFF;
+    
+    _massSet = NO;
+    _momentSet = NO;
     
     return self;
 }
@@ -89,46 +91,22 @@
     _density = [[ser objectForKey:@"density"] floatValue];
     _friction = [[ser objectForKey:@"friction"] floatValue];
     _elasticity = [[ser objectForKey:@"elasticity"] floatValue];
+    _mass = [[ser objectForKey:@"mass"] floatValue];
+    _moment = [[ser objectForKey:@"moment"] floatValue];
+    _massSet = [[ser objectForKey:@"massSet"] boolValue];
+    _momentSet = [[ser objectForKey:@"momentSet"] boolValue];
+        
+    _categoryBitmask  = (unsigned int)[[ser objectForKey:@"categoryBitmask"] integerValue];
+    _contactTestBitmask = (unsigned int)[[ser objectForKey:@"contactTestBitmask"] integerValue];
+    _collisionBitmask = (unsigned int)[[ser objectForKey:@"collisionBitmask"] integerValue];
     
-    _collisionType = [ser objectForKey:@"collisionType"];
-    _collisionCategories = nil;
-    _collisionMask = nil;
-	
-    if(_collisionType == nil)
-    {
-        _collisionType = @"";
-    }
-    
-	id collisionCategoriesObject = [ser objectForKey:@"collisionCategories"];
-    if(collisionCategoriesObject == nil)
-    {
-        _collisionCategories = [NSArray array];
-    }
-	//Fixup old data.
-	else if([collisionCategoriesObject isKindOfClass:[NSString class]])
-	{
-		_collisionCategories = [collisionCategoriesObject componentsSeparatedByString:@";"];
-	}
-    else
-    {
-        _collisionCategories = collisionCategoriesObject;
-    }
-    
-	
-	id collisionMaskObject = [ser objectForKey:@"collisionMask"];
-    if(collisionMaskObject == nil)
-    {
-        _collisionMask = [NSArray array];
-    }
-	//Fixup old data.
-	else if([collisionMaskObject isKindOfClass:[NSString class]])
-	{
-		_collisionMask = [collisionMaskObject componentsSeparatedByString:@";"];
-	}
-    else
-    {
-        _collisionMask = collisionMaskObject;
-    }
+    _velocityX = [[ser objectForKey:@"velocityX"] floatValue];
+    _velocityY = [[ser objectForKey:@"velocityY"] floatValue];
+    _velocityLimit = [[ser objectForKey:@"velocityLimit"] floatValue];
+    _angleVelocity = [[ser objectForKey:@"angleVelocity"] floatValue];
+    _angleVelocityLimit = [[ser objectForKey:@"angleVelocityLimit"] floatValue];
+    _linearDamping = [[ser objectForKey:@"linearDamping"] floatValue];
+    _angularDamping = [[ser objectForKey:@"angularDamping"] floatValue];
     
     return self;
 }
@@ -179,25 +157,23 @@
     ser[@"friction"] = @(_friction);
     ser[@"elasticity"] = @(_elasticity);
     
-    if(_collisionType == nil)
-    {
-        _collisionType = @"";
-    }
+    [ser setObject:[NSNumber numberWithFloat:_mass] forKey:@"mass"];
+    [ser setObject:[NSNumber numberWithFloat:_moment] forKey:@"moment"];
+    [ser setObject:[NSNumber numberWithBool:_massSet] forKey:@"_massSet"];
+    [ser setObject:[NSNumber numberWithBool:_momentSet] forKey:@"_momentSet"];
     
-    if(_collisionCategories == nil)
-    {
-        _collisionCategories = [NSArray array];
-    }
+    [ser setObject:[NSNumber numberWithUnsignedInt:_categoryBitmask] forKey:@"categoryBitmask"];
+    [ser setObject:[NSNumber numberWithUnsignedInt:_contactTestBitmask] forKey:@"contactTestBitmask"];
+    [ser setObject:[NSNumber numberWithUnsignedInt:_collisionBitmask] forKey:@"collisionBitmask"];
     
-    if(_collisionMask == nil)
-    {
-        _collisionMask = [NSArray array];
-    }
-
-    ser[@"collisionType"] = _collisionType;
-    ser[@"collisionCategories"] = _collisionCategories;
-    ser[@"collisionMask"] = _collisionMask;
-
+    [ser setObject:[NSNumber numberWithBool:_velocityX] forKey:@"velocityX"];
+    [ser setObject:[NSNumber numberWithBool:_velocityY] forKey:@"velocityY"];
+    [ser setObject:[NSNumber numberWithBool:_velocityLimit] forKey:@"velocityLimit"];
+    [ser setObject:[NSNumber numberWithBool:_angleVelocity] forKey:@"angleVelocity"];
+    [ser setObject:[NSNumber numberWithBool:_angleVelocityLimit] forKey:@"angleVelocityLimit"];
+    [ser setObject:[NSNumber numberWithBool:_linearDamping] forKey:@"linearDamping"];
+    [ser setObject:[NSNumber numberWithBool:_angularDamping] forKey:@"angularDamping"];
+    
     return ser;
 }
 
@@ -327,22 +303,88 @@
     _elasticity = elasticity;
 }
 
-- (void)setCollisionMask:(NSArray *)collisionMask
+- (void)setMassSet:(BOOL)massSet
 {
-    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*collisionMask"];
-    _collisionMask = collisionMask;
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*massSet"];
+    _massSet = massSet;
 }
 
-- (void)setCollisionCategories:(NSArray *)collisionCategories
+- (void)setMomentSet:(BOOL)momentSet
 {
-    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*collisioncollisionCategories"];
-    _collisionCategories = collisionCategories;
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*momentSet"];
+    _momentSet = momentSet;
 }
 
-- (void)setCollisionType:(NSString *)collisionType
+- (void)setMass:(float)mass
 {
-    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*collisionType"];
-    _collisionType = collisionType;
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*mass"];
+    _mass = mass;
+}
+
+- (void)setMoment:(float)moment
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*moment"];
+    _moment = moment;
+}
+
+- (void)setCollisionMask:(unsigned int)categoryBitmask
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*categoryBitmask"];
+    _categoryBitmask = categoryBitmask;
+}
+
+- (void)setCollisionCategories:(unsigned int)contactTestBitmask
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*contactTestBitmask"];
+    _contactTestBitmask = contactTestBitmask;
+}
+
+- (void)setCollisionType:(unsigned int)collisionBitmask
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*collisionBitmask"];
+    _collisionBitmask = collisionBitmask;
+}
+
+- (void)setvelocityX:(float)velocityX
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*velocityX"];
+    velocityX = velocityX;
+}
+
+- (void)setVelocityY:(float)velocityY
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*velocityY"];
+    _velocityY = velocityY;
+}
+
+- (void)setVelocityLimit:(float)velocityLimit
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*velocityLimit"];
+    _velocityLimit = velocityLimit;
+}
+
+- (void)setAngleVelocity:(float)angleVelocity
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*angleVelocity"];
+    _angleVelocity = angleVelocity;
+}
+
+- (void)setAngleVelocityLimit:(float)angleVelocityLimit
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*angleVelocityLimit"];
+    _angleVelocityLimit = angleVelocityLimit;
+}
+
+- (void)setLinearDamping:(float)linearDamping
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*linearDamping"];
+    _linearDamping = linearDamping;
+}
+
+- (void)setAngularDamping:(float)angularDamping
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"*P*angularDamping"];
+    _angularDamping = angularDamping;
 }
 
 @end

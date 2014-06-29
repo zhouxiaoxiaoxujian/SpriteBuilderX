@@ -89,6 +89,15 @@ enum {
     kCCBDocDimensionsTypeDialog,
 };
 
+@interface DeviceBorder : NSObject
+
++ (DeviceBorder*) createWithFrameName:(NSString*)frameName andRotated:(BOOL)rotated andScale:(float)scale;
+
+@property (nonatomic,readonly,strong) NSString* frameName;
+@property (nonatomic,readonly,assign) BOOL rotated;
+@property (nonatomic,readonly,assign) float scale;
+@end
+
 
 @class CCBDocument;
 @class ProjectSettings;
@@ -212,7 +221,7 @@ typedef void (^CompletionCallback) (BOOL success);
     
     IBOutlet NSMenuItem* _menuItemExperimentalSpriteKitProject;
 
-    CGSize defaultCanvasSizes[kCCBNumCanvasDevices+1];
+    NSMutableDictionary* defaultCanvasSizes;
     // IBOutlet NSMenuItem* menuItemStageCentered;
     BOOL defaultCanvasSize;
     
@@ -322,6 +331,7 @@ typedef void (^CompletionCallback) (BOOL success);
 @property (nonatomic,assign) BOOL defaultCanvasSize;
 @property (nonatomic,assign) BOOL canEditCustomClass;
 @property (nonatomic,assign) BOOL canEditStageSize;
+@property (nonatomic,assign) BOOL canEditResolutions;
 
 @property (weak, nonatomic,readonly) CCNode* selectedNode;
 
@@ -411,7 +421,7 @@ typedef void (^CompletionCallback) (BOOL success);
 - (IBAction) pasteAsChild:(id)sender;
 - (IBAction) menuQuit:(id)sender;
 
-- (int) orientedDeviceTypeForSize:(CGSize)size;
+- (DeviceBorder*) orientedDeviceTypeForSize:(CGSize)size;
 - (IBAction)menuEditCustomPropSettings:(id)sender;
 //- (void) updateStateOriginCenteredMenu;
 - (IBAction) menuSetStateOriginCentered:(id)sender;

@@ -127,6 +127,7 @@ enum {
     CCNodeColor* borderLeft;
     CCNodeColor* borderRight;
     CCSprite* borderDevice;
+    float borderDeviceScale;
     
     int stageBorderType;
     float stageZoom;

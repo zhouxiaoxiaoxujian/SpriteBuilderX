@@ -29,6 +29,12 @@
 
 @implementation InspectorFloatScale
 
+- (void) willBeAdded
+{
+    for(int i=0;i<2;++i)
+        [_scaleType setSelected:(self.type&(1<<i)) forSegment:i];
+}
+
 - (void) setF:(float)f
 {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
@@ -46,6 +52,16 @@
 - (int) type
 {
     return [PositionPropertySetter floatScaleTypeForNode:selection prop:propertyName];
+}
+
+
+- (IBAction)touch:(id)sender {
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
+    int type = 0;
+    for(int i=0;i<2;++i)
+        if([_scaleType isSelectedForSegment:i])
+            type|=1<<i;
+    [self setType:type];
 }
 
 - (void) setType:(int)type

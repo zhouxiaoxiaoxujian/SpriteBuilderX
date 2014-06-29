@@ -207,9 +207,12 @@ typedef struct _PVRTexHeader
     {
         errorMessage = NULL;
     }
-
+    
     NSMutableArray *result = [NSMutableArray array];
-
+    
+    if(self.filenames.count == 0)
+        return result;
+    
     // Create output directory if it doesn't exist
     NSFileManager* fm = [NSFileManager defaultManager];
     NSString* outputDir = [outputName_ stringByDeletingLastPathComponent];
@@ -545,7 +548,7 @@ typedef struct _PVRTexHeader
         [metadata setObject:textureFileName                                     forKey:@"textureFileName"];
         [metadata setObject:[NSNumber numberWithInt:2]                      forKey:@"format"];
         [metadata setObject:NSStringFromSize(NSMakeSize(outW, outH))        forKey:@"size"];
-
+        
         NSString *plistFilename = [self.outputName stringByAppendingPathExtension:@"plist"];
         [outDict writeToFile:plistFilename atomically:YES];
         [result addObject:plistFilename];

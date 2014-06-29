@@ -10,6 +10,6 @@
 #import "EffectsManager.h"
 
 @interface CCBPSprite : CCSprite <CCEffectNodeProtocol>
-@property (nonatomic) NSArray * effects;
+@property (nonatomic, assign) NSArray * effects;
 
 @end

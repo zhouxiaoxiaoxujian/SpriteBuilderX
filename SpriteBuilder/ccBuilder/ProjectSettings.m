@@ -135,7 +135,11 @@
 
     self.publishEnabledIOS = [[dict objectForKey:@"publishEnablediPhone"] boolValue];
     self.publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
-
+    
+    self.designSizeWidth = [[dict objectForKey:@"designSizeWidth"] integerValue];
+    self.designSizeHeight = [[dict objectForKey:@"designSizeHeight"] integerValue];
+    self.designResourceScale = [[dict objectForKey:@"designResourceScale"] floatValue];
+    
     self.publishResolution_ios_phone = [[dict objectForKey:@"publishResolution_ios_phone"] boolValue];
     self.publishResolution_ios_phonehd = [[dict objectForKey:@"publishResolution_ios_phonehd"] boolValue];
     self.publishResolution_ios_tablet = [[dict objectForKey:@"publishResolution_ios_tablet"] boolValue];

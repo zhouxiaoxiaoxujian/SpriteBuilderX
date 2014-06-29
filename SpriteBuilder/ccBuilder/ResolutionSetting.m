@@ -31,7 +31,10 @@
 @synthesize width;
 @synthesize height;
 @synthesize ext;
-@synthesize scale;
+@synthesize resourceScale;
+@synthesize mainScale;
+@synthesize scaleX;
+@synthesize scaleY;
 @synthesize centeredOrigin;
 @synthesize exts;
 
@@ -45,7 +48,10 @@
     self.width = 1000;
     self.height = 1000;
     self.ext = @" ";
-    self.scale = 1;
+    self.resourceScale = 1;
+    self.mainScale = 1;
+    self.scaleX = 1;
+    self.scaleY = 1;
     
     return self;
 }
@@ -61,13 +67,25 @@
     self.height = [[serialization objectForKey:@"height"] intValue];
     self.ext = [serialization objectForKey:@"ext"];
 		// TODO should store separate values for these.
-    self.scale = [[serialization objectForKey:@"scale"] floatValue];
+    //float scale = [[serialization objectForKey:@"scale"] floatValue];
+    self.resourceScale = [[serialization objectForKey:@"resourceScale"] floatValue];
+    self.mainScale = [[serialization objectForKey:@"mainScale"] floatValue];
+    self.scaleX = [[serialization objectForKey:@"scaleX"] floatValue];
+    self.scaleY = [[serialization objectForKey:@"scaleY"] floatValue];
     self.centeredOrigin = [[serialization objectForKey:@"centeredOrigin"] boolValue];
+    if(self.resourceScale == 0)
+    {
+        float scale = [[serialization objectForKey:@"scale"] floatValue];
+        self.resourceScale = scale;
+        self.mainScale = scale;
+        self.scaleX = scale;
+        self.scaleY = scale;
+    }
     
     return self;
 }
 
--(void)setScale:(float)_scale
+-(void)setresourceScale:(float)_scale
 {
 	NSAssert(_scale > 0.0, @"scale must be positive.");
 	
@@ -76,7 +94,7 @@
 //		_scale = 1.0;
 //	}
 	
-	scale = _scale;
+	resourceScale = _scale;
 }
 
 - (id) serialize
@@ -87,7 +105,10 @@
     [dict setObject:[NSNumber numberWithInt:width] forKey:@"width"];
     [dict setObject:[NSNumber numberWithInt:height] forKey:@"height"];
     [dict setObject:ext forKey:@"ext"];
-    [dict setObject:[NSNumber numberWithFloat:scale] forKey:@"scale"];
+    [dict setObject:[NSNumber numberWithFloat:resourceScale] forKey:@"resourceScale"];
+    [dict setObject:[NSNumber numberWithFloat:mainScale] forKey:@"mainScale"];
+    [dict setObject:[NSNumber numberWithFloat:scaleX] forKey:@"scaleX"];
+    [dict setObject:[NSNumber numberWithFloat:scaleY] forKey:@"scaleY"];
     [dict setObject:[NSNumber numberWithBool:centeredOrigin] forKey:@"centeredOrigin"];
     
     return dict;
@@ -114,43 +135,7 @@
     
 }
 
-+ (ResolutionSetting*) settingFixed
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Fixed";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"tablet phonehd";
-    setting.scale = 2;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingFixedLandscape
-{
-    ResolutionSetting* setting = [self settingFixed];
-    
-    setting.name = @"Fixed Landscape";
-    setting.width = 568;
-    setting.height = 384;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingFixedPortrait
-{
-    ResolutionSetting* setting = [self settingFixed];
-    
-    setting.name = @"Fixed Portrait";
-    setting.width = 384;
-    setting.height = 568;
-    
-    return setting;
-}
-
-
-+ (ResolutionSetting*) settingIPhone
++ (ResolutionSetting*) settingPhone
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -158,7 +143,56 @@
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"phone";
-    setting.scale = 1;
+    setting.resourceScale = 1;
+    
+    return setting;
+}
++ (ResolutionSetting*) settingPhoneHd
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"PhoneHd";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
++ (ResolutionSetting*) settingTablet
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Tablet";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablet phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
++ (ResolutionSetting*) settingTabletHd
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"TabletHd";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd tablet phonehd phone";
+    setting.resourceScale = 4;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPhone
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"iPhone";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phone";
+    setting.resourceScale = 1;
     
     return setting;
 }
@@ -167,7 +201,7 @@
 {
     ResolutionSetting* setting = [self settingIPhone];
     
-    setting.name = @"Phone Landscape (short)";
+    setting.name = @"iPhone Landscape (short)";
     setting.width = 480;
     setting.height = 320;
     
@@ -185,24 +219,57 @@
     return setting;
 }
 
++ (ResolutionSetting*) settingIPhoneRetina
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"iPhone";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
++ (ResolutionSetting*) settingIPhoneRetinaLandscape
+{
+    ResolutionSetting* setting = [self settingIPhoneRetina];
+    
+    setting.name = @"iPhone Retina Landscape";
+    setting.width = 960;
+    setting.height = 640;
+    
+    return setting;
+}
++ (ResolutionSetting*) settingIPhoneRetinaPortrait
+{
+    ResolutionSetting* setting = [self settingIPhoneRetina];
+    
+    setting.name = @"iPhone Retina Portrait";
+    setting.width = 640;
+    setting.height = 960;
+    
+    return setting;
+}
+
 + (ResolutionSetting*) settingIPhone5Landscape
 {
-    ResolutionSetting* setting = [self settingIPhone];
+    ResolutionSetting* setting = [self settingIPhoneRetina];
     
-    setting.name = @"Phone Landscape";
-    setting.width = 568;
-    setting.height = 320;
+    setting.name = @"iPhone5 Landscape";
+    setting.width = 1136;
+    setting.height = 640;
     
     return setting;
 }
 
 + (ResolutionSetting*) settingIPhone5Portrait
 {
-    ResolutionSetting* setting = [self settingIPhone];
+    ResolutionSetting* setting = [self settingIPhoneRetina];
     
-    setting.name = @"Phone Portrait";
-    setting.width = 320;
-    setting.height = 568;
+    setting.name = @"iPhone5 Portrait";
+    setting.width = 640;
+    setting.height = 1136;
     
     return setting;
 }
@@ -211,11 +278,11 @@
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
-    setting.name = @"Tablet";
+    setting.name = @"iPad";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"tablet phonehd";
-    setting.scale = 2;
+    setting.ext = @"tablet phonehd phone";
+    setting.resourceScale = 2;
     
     return setting;
 }
@@ -224,9 +291,9 @@
 {
     ResolutionSetting* setting = [self settingIPad];
     
-    setting.name = @"Tablet Landscape";
-    setting.width = 512;
-    setting.height = 384;
+    setting.name = @"iPad Landscape";
+    setting.width = 1024;
+    setting.height = 768;
     
     return setting;
 }
@@ -235,9 +302,44 @@
 {
     ResolutionSetting* setting = [self settingIPad];
     
-    setting.name = @"Tablet Portrait";
-    setting.width = 384;
-    setting.height = 512;
+    setting.name = @"iPad Portrait";
+    setting.width = 768;
+    setting.height = 1024;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadRetina
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"iPad Retina";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd tablet phonehd phone";
+    setting.resourceScale = 4;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadRetinaLandscape
+{
+    ResolutionSetting* setting = [self settingIPadRetina];
+    
+    setting.name = @"iPad Retina Landscape";
+    setting.width = 2048;
+    setting.height = 1536;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadRetinaPortrait
+{
+    ResolutionSetting* setting = [self settingIPadRetina];
+    
+    setting.name = @"iPad Retina Portrait";
+    setting.width = 1536;
+    setting.height = 2048;
     
     return setting;
 }
@@ -250,7 +352,7 @@
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"phone";
-    setting.scale = 0.5;
+    setting.resourceScale = 0.5;
     
     return setting;
 }
@@ -285,7 +387,7 @@
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"phone";
-    setting.scale = 1;
+    setting.resourceScale = 1;
     
     return setting;
 }
@@ -320,7 +422,7 @@
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"phone";
-    setting.scale = 1.5;
+    setting.resourceScale = 1.5;
     
     return setting;
 }
@@ -354,8 +456,8 @@
     setting.name = @"Android Large";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"phonehd";
-    setting.scale = 2;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
     
     return setting;
 }
@@ -389,8 +491,8 @@
     setting.name = @"Android X-Large";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"tablethd";
-    setting.scale = 4;
+    setting.ext = @"tablethd tablet phonehd phone";
+    setting.resourceScale = 4;
     
     return setting;
 }
@@ -425,7 +527,7 @@
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"html5";
-    setting.scale = 2;
+    setting.resourceScale = 2;
     
     return setting;
 }
@@ -452,7 +554,6 @@
     return setting;
 }
 
-
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"%@ <0x%x> (%d x %d)", NSStringFromClass([self class]), (unsigned int)self, width, height];
@@ -467,7 +568,10 @@
     copy.width = width;
     copy.height = height;
     copy.ext = ext;
-    copy.scale = scale;
+    copy.resourceScale = resourceScale;
+    copy.mainScale = mainScale;
+    copy.scaleX = scaleX;
+    copy.scaleY = scaleY;
     copy.centeredOrigin = centeredOrigin;
     
     return copy;

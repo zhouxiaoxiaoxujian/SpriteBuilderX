@@ -155,7 +155,7 @@
 
 + (NSArray*) resIndependentDirs
 {
-    return @[@"resources-phone", @"resources-phonehd", @"resources-tablet", @"resources-tablethd", @"resources-html5", @"resources-auto"];
+    return @[@"resources-phone", @"resources-phonehd", @"resources-tablet", @"resources-tablethd", @"resources-html5", @"resources-auto", @"resources-universal"];
 }
 
 + (BOOL) isResolutionDependentFile: (NSString*) file
@@ -837,6 +837,10 @@
                 if ([fm fileExistsAtPath:pathForRes]) return pathForRes;
             }
             
+            NSString* pathForRes = [[defaultDirName stringByAppendingPathComponent:@"resources-universal"] stringByAppendingPathComponent:defaultFileName];
+            
+            if ([fm fileExistsAtPath:pathForRes]) return pathForRes;
+            
             // Auto convert!
             NSString* autoFile = [[defaultDirName stringByAppendingPathComponent:@"resources-auto"] stringByAppendingPathComponent:defaultFileName];
             if ([fm fileExistsAtPath:autoFile])
@@ -981,10 +985,11 @@
             
             if (duration > 15)
             {
-                // Set iOS format to mp4 for long sounds
+                // Set iOS format to mp4 Android to ogg for long sounds
                 ProjectSettings* settings = [AppDelegate appDelegate].projectSettings;
                 NSString* relPath = [ResourceManagerUtil relativePathFromAbsolutePath:dstPath];
                 [settings setProperty:@(kCCBPublishFormatSound_ios_mp4) forRelPath:relPath andKey:@"format_ios_sound"];
+                [settings setProperty:@(kCCBPublishFormatSound_android_ogg) forRelPath:relPath andKey:@"format_android_sound"];
             }
             importedFile = YES;
         

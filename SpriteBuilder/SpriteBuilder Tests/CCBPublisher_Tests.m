@@ -397,7 +397,8 @@
     XCTAssertEqual(kCCBPublishFormatSound_ios_caf, 0, @"Enum value kCCBPublishFormatSound_ios_caf  must not change");
     XCTAssertEqual(kCCBPublishFormatSound_ios_mp4, 1, @"Enum value kCCBPublishFormatSound_ios_mp4  must not change");
 
-    XCTAssertEqual(kCCBPublishFormatSound_android_ogg, 0, @"Enum value kCCBPublishFormatSound_android_ogg  must not change");
+    XCTAssertEqual(kCCBPublishFormatSound_android_wav, 0, @"Enum value kCCBPublishFormatSound_android_wav  must not change");
+    XCTAssertEqual(kCCBPublishFormatSound_android_ogg, 1, @"Enum value kCCBPublishFormatSound_android_ogg  must not change");
 }
 
 #pragma mark - assert helpers
