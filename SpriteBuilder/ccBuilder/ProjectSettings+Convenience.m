@@ -42,7 +42,8 @@
     else if (targetType == kCCBPublisherTargetTypeAndroid)
     {
         key = @"format_android_sound";
-        map = @{@(0):@(kFCSoundFormatOGG)};
+        map = @{@(0):@(kFCSoundFormatWAV),
+                @(1):@(kFCSoundFormatOGG)};
     }
     else
     {
