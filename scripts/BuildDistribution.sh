@@ -26,17 +26,17 @@ cd SpriteBuilder/
 xcodebuild -alltargets clean | egrep -A 5 "(error):|(SUCCEEDED \*\*)|(FAILED \*\*)"
 
 echo "=== BUILDING SPRITEBUILDER === (please be patient)"
-xcodebuild -target SpriteBuilder -configuration Release build | egrep -A 5 "(error):|(SUCCEEDED \*\*)|(FAILED \*\*)"
+xcodebuild -target SpriteBuilderX -configuration Release build | egrep -A 5 "(error):|(SUCCEEDED \*\*)|(FAILED \*\*)"
 
 # Create archives
 echo "=== ZIPPING UP FILES ==="
 cd ..
 mkdir build
-cp -R SpriteBuilder/build/Release/SpriteBuilder.app build/SpriteBuilder.app
-cp -R SpriteBuilder/build/Release/SpriteBuilder.app.dSYM build/SpriteBuilder.app.dSYM
+cp -R SpriteBuilder/build/Release/SpriteBuilderX.app build/SpriteBuilderX.app
+cp -R SpriteBuilder/build/Release/SpriteBuilderX.app.dSYM build/SpriteBuilderX.app.dSYM
 
 cd build/
-zip -q -r "SpriteBuilder.app.dSYM.zip" SpriteBuilder.app.dSYM
+zip -q -r "SpriteBuilderX.app.dSYM.zip" SpriteBuilder.app.dSYM
 
 echo ""
 echo "SpriteBuilder Distribution Build complete!"
