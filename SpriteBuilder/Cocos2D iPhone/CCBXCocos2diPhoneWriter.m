@@ -1280,6 +1280,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         // Write physics body
         [self writeInt:bodyShape withSign:NO];
         [self writeFloat:cornerRadius];
+        [self writeBool:scaleByResourceScale];
         
         
         if(bodyShape == 1)

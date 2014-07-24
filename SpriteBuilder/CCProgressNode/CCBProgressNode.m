@@ -25,7 +25,6 @@
         [self setSprite:[CCSprite emptySprite]];
     else
         [self setSprite:[CCSprite spriteWithSpriteFrame:newSpriteFrame]];
-    [super performSelector:@selector(updateProgress)];
 }
 
 -(void)setBlendFunc:(ccBlendFunc)blendFunc
@@ -41,24 +40,6 @@
 -(void)setFlipY:(BOOL)flipY
 {
     [self.sprite setFlipY:flipY];
-}
-
--(void)setPercentage:(float)percentage
-{
-    [super setPercentage:percentage];
-    [super performSelector:@selector(updateProgress)];
-}
-
--(void)setReverseDirection:(BOOL)reverseDirection
-{
-    [super setReverseDirection:reverseDirection];
-    [super performSelector:@selector(updateProgress)];
-}
-
--(void)setType:(CCProgressNodeType)newType
-{
-    [super setType:newType];
-    [super performSelector:@selector(updateProgress)];
 }
 
 -(void)setMidpoint:(CGPoint)midpoint

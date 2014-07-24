@@ -128,8 +128,6 @@
 		9203805B19465679000A8816 /* CCAnimation_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203805A19465679000A8816 /* CCAnimation_Tests.m */; };
 		92154AC718A5531800BD215C /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92154ABF18A5531800BD215C /* CCBPProperties.plist */; };
 		92154AC918A5531800BD215C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92154AC218A5531800BD215C /* InfoPlist.strings */; };
-		92154ACA18A5531800BD215C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92154AC418A5531800BD215C /* Icon.png */; };
-		92154ACB18A5531800BD215C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92154AC518A5531800BD215C /* Icon@2x.png */; };
 		92154AD318A5560B00BD215C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		92154ADE18A5565C00BD215C /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92154ABF18A5531800BD215C /* CCBPProperties.plist */; };
 		92154ADF18A5565C00BD215C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92154AC218A5531800BD215C /* InfoPlist.strings */; };
@@ -265,6 +263,10 @@
 		92F12E4E18847BC800AB8F32 /* seq-keyframe-x4-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BC183D4D280085935B /* seq-keyframe-x4-sel.png */; };
 		92F12E4F18847BC800AB8F32 /* seq-keyframe-x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BD183D4D280085935B /* seq-keyframe-x4.png */; };
 		A09AB6F714E993AA009C8B91 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = A09AB6F614E993AA009C8B91 /* fps_images.png */; };
+		A51A5F1A1981363A00E76293 /* CCBScrollListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A536B233194046A1006B0A52 /* CCBScrollListView.m */; };
+		A51A5F1B1981364400E76293 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A536B238194046A1006B0A52 /* Icon.png */; };
+		A51A5F1C1981364700E76293 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A536B236194046A1006B0A52 /* InfoPlist.strings */; };
+		A51A5F1D1981364A00E76293 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A536B231194046A1006B0A52 /* CCBPProperties.plist */; };
 		A527E8C91960894D00D54F05 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A527E8D41960897300D54F05 /* CCBProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF33C71906643100343922 /* CCBProgressNode.m */; };
 		A527E8D51960898400D54F05 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33CC1906643100343922 /* Icon.png */; };
@@ -278,15 +280,9 @@
 		A57F906D19602D3900140C8E /* scale-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A57F906B19602D3900140C8E /* scale-7.png */; };
 		A5CF339E1906630600343922 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF339D1906630600343922 /* scale-5.png */; };
 		A5CF33CE1906643100343922 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33C51906643100343922 /* CCBPProperties.plist */; };
-		A5CF33D01906643100343922 /* CCBProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF33C71906643100343922 /* CCBProgressNode.m */; };
 		A5CF33D21906643100343922 /* CCProgressNode-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33C81906643100343922 /* CCProgressNode-Info.plist */; };
 		A5CF33D41906643100343922 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33CA1906643100343922 /* InfoPlist.strings */; };
-		A5CF33D61906643100343922 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33CC1906643100343922 /* Icon.png */; };
-		A5D57AE51960905600ED1B38 /* CCBProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CF33C71906643100343922 /* CCBProgressNode.m */; };
 		A5D57AE71960905600ED1B38 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
-		A5D57AE91960905600ED1B38 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33CC1906643100343922 /* Icon.png */; };
-		A5D57AEA1960905600ED1B38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33CA1906643100343922 /* InfoPlist.strings */; };
-		A5D57AEB1960905600ED1B38 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33C51906643100343922 /* CCBPProperties.plist */; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
 		B7083DF917B1CBC8006628C7 /* LocalizationEditorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF817B1CBC8006628C7 /* LocalizationEditorHandler.m */; };
@@ -1068,7 +1064,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DCFB065118E32C3900DF02A0 /* SKFile.ccbPlugNode in Copy PlugIns */,
 				A572CCCC196090EE00FC9E71 /* CCScrollListView.ccbPlugNode in Copy PlugIns */,
 				A527E8DB19608A5B00D54F05 /* CCProgressNode.ccbPlugNode in Copy PlugIns */,
 				DC05E79B18D0ADF800592A1E /* SBControlNode.ccbPlugNode in Copy PlugIns */,
@@ -3455,16 +3450,36 @@
 			path = CCPhysicsSpringJoint;
 			sourceTree = "<group>";
 		};
-		A536B230194046A1006B0A52 /* CCScrollListView */ = {
+		A51A5F181981362100E76293 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5CF33C51906643100343922 /* CCBPProperties.plist */,
+				A5CF33C81906643100343922 /* CCProgressNode-Info.plist */,
+				A5CF33C91906643100343922 /* CCProgressNode-Prefix.pch */,
+				A5CF33CA1906643100343922 /* InfoPlist.strings */,
+				A5CF33CC1906643100343922 /* Icon.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A51A5F191981362900E76293 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				A536B231194046A1006B0A52 /* CCBPProperties.plist */,
-				A536B232194046A1006B0A52 /* CCBScrollListView.h */,
-				A536B233194046A1006B0A52 /* CCBScrollListView.m */,
 				A536B234194046A1006B0A52 /* CCScrollListView-Info.plist */,
 				A536B235194046A1006B0A52 /* CCScrollListView-Prefix.pch */,
 				A536B236194046A1006B0A52 /* InfoPlist.strings */,
 				A536B238194046A1006B0A52 /* Icon.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A536B230194046A1006B0A52 /* CCScrollListView */ = {
+			isa = PBXGroup;
+			children = (
+				A51A5F191981362900E76293 /* Supporting Files */,
+				A536B232194046A1006B0A52 /* CCBScrollListView.h */,
+				A536B233194046A1006B0A52 /* CCBScrollListView.m */,
 			);
 			path = CCScrollListView;
 			sourceTree = "<group>";
@@ -3472,13 +3487,9 @@
 		A5CF33C41906643100343922 /* CCProgressNode */ = {
 			isa = PBXGroup;
 			children = (
-				A5CF33C51906643100343922 /* CCBPProperties.plist */,
+				A51A5F181981362100E76293 /* Supporting Files */,
 				A5CF33C61906643100343922 /* CCBProgressNode.h */,
 				A5CF33C71906643100343922 /* CCBProgressNode.m */,
-				A5CF33C81906643100343922 /* CCProgressNode-Info.plist */,
-				A5CF33C91906643100343922 /* CCProgressNode-Prefix.pch */,
-				A5CF33CA1906643100343922 /* InfoPlist.strings */,
-				A5CF33CC1906643100343922 /* Icon.png */,
 			);
 			path = CCProgressNode;
 			sourceTree = "<group>";
@@ -4744,7 +4755,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DCFB065018E32C2D00DF02A0 /* PBXTargetDependency */,
 				A572CCCB196090D700FC9E71 /* PBXTargetDependency */,
 				A527E8DA19608A4D00D54F05 /* PBXTargetDependency */,
 				DC05E79818D0ADDC00592A1E /* PBXTargetDependency */,
@@ -5418,11 +5428,9 @@
 				92BF5E5D187B658D0072C3A1 /* InspectorStringSimple.xib in Resources */,
 				92F0960918F8851300D47A94 /* inspector-body-bg.png in Resources */,
 				92BF5E5B187B43F00072C3A1 /* ResourceManagerPreviewAudio.xib in Resources */,
-				92154ACB18A5531800BD215C /* Icon@2x.png in Resources */,
 				80F90905183C188400A714FC /* seq-visible-faint.png in Resources */,
 				8045F136183ADA900082BD94 /* seq-visible.png in Resources */,
 				B71706D0184ECD660081720A /* select-rotation@2x.png in Resources */,
-				A5CF33D61906643100343922 /* Icon.png in Resources */,
 				8045F137183ADA900082BD94 /* seq-notset.png in Resources */,
 				8045F138183ADA900082BD94 /* seq-locked.png in Resources */,
 				80FBACCD183423F800C4BB69 /* inspector-warning@2x.png in Resources */,
@@ -5458,7 +5466,6 @@
 				77E1995213858DE0006C361B /* overflowImage.png in Resources */,
 				77E1995313858DE0006C361B /* overflowImagePressed.png in Resources */,
 				77E1995413858DE0006C361B /* pi.png in Resources */,
-				92154ACA18A5531800BD215C /* Icon.png in Resources */,
 				77E1995513858DE0006C361B /* TabClose_Dirty_Pressed.png in Resources */,
 				77E1995613858DE0006C361B /* TabClose_Dirty_Rollover.png in Resources */,
 				77E1995713858DE0006C361B /* TabClose_Dirty.png in Resources */,
@@ -5833,9 +5840,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5D57AE91960905600ED1B38 /* Icon.png in Resources */,
-				A5D57AEA1960905600ED1B38 /* InfoPlist.strings in Resources */,
-				A5D57AEB1960905600ED1B38 /* CCBPProperties.plist in Resources */,
+				A51A5F1B1981364400E76293 /* Icon.png in Resources */,
+				A51A5F1C1981364700E76293 /* InfoPlist.strings in Resources */,
+				A51A5F1D1981364A00E76293 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6155,7 +6162,6 @@
 				92BF8AB2192BCDF300C1BC28 /* InspectorButton.m in Sources */,
 				776C68421385C4F100153214 /* CCBTextFieldCell.m in Sources */,
 				922E8EFE18C13666008E1764 /* OutletDrawWindow.m in Sources */,
-				A5CF33D01906643100343922 /* CCBProgressNode.m in Sources */,
 				776C68451385D37E00153214 /* CCBTableView.m in Sources */,
 				77D33EAB138EA4F900012A88 /* CCBUtil.m in Sources */,
 				77E7D04B138F777A00E8EE67 /* CCBModalSheetController.m in Sources */,
@@ -6400,7 +6406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5D57AE51960905600ED1B38 /* CCBProgressNode.m in Sources */,
+				A51A5F1A1981363A00E76293 /* CCBScrollListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
