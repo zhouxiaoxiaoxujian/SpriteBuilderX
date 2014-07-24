@@ -36,7 +36,7 @@ cp -R SpriteBuilder/build/Release/SpriteBuilderX.app build/SpriteBuilderX.app
 cp -R SpriteBuilder/build/Release/SpriteBuilderX.app.dSYM build/SpriteBuilderX.app.dSYM
 
 cd build/
-zip -q -r "SpriteBuilderX.app.dSYM.zip" SpriteBuilder.app.dSYM
+zip -q -r "SpriteBuilderX.app.dSYM.zip" SpriteBuilderX.app.dSYM
 
 echo ""
 echo "SpriteBuilder Distribution Build complete!"
