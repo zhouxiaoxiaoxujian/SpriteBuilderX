@@ -126,7 +126,6 @@
 		83DC65EA18D898D50028EF72 /* SBUserDefaultsKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC65E918D898D50028EF72 /* SBUserDefaultsKeys.m */; };
 		83F8673418D1DCEA007441E4 /* SBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8673318D1DCEA007441E4 /* SBErrors.m */; };
 		9203805B19465679000A8816 /* CCAnimation_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203805A19465679000A8816 /* CCAnimation_Tests.m */; };
-		92154AC718A5531800BD215C /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92154ABF18A5531800BD215C /* CCBPProperties.plist */; };
 		92154AD318A5560B00BD215C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		92154ADE18A5565C00BD215C /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92154ABF18A5531800BD215C /* CCBPProperties.plist */; };
 		92154ADF18A5565C00BD215C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92154AC218A5531800BD215C /* InfoPlist.strings */; };
@@ -279,7 +278,6 @@
 		A57F906C19602D3900140C8E /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57F906A19602D3900140C8E /* scale-6.png */; };
 		A57F906D19602D3900140C8E /* scale-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A57F906B19602D3900140C8E /* scale-7.png */; };
 		A5CF339E1906630600343922 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CF339D1906630600343922 /* scale-5.png */; };
-		A5CF33CE1906643100343922 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5CF33C51906643100343922 /* CCBPProperties.plist */; };
 		A5D57AE71960905600ED1B38 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
@@ -5456,7 +5454,6 @@
 				774E4ECE136DFFB70025D0A8 /* btn-move-hi.png in Resources */,
 				774E4ECF136DFFB70025D0A8 /* btn-move.png in Resources */,
 				774E4ED0136DFFB70025D0A8 /* btn-rotate-hi.png in Resources */,
-				A5CF33CE1906643100343922 /* CCBPProperties.plist in Resources */,
 				774E4ED1136DFFB70025D0A8 /* btn-rotate.png in Resources */,
 				774E4ED2136DFFB70025D0A8 /* btn-scale-hi.png in Resources */,
 				774E4ED3136DFFB70025D0A8 /* btn-scale.png in Resources */,
@@ -5504,7 +5501,6 @@
 				E3B7AEE914E33F4C00DFD402 /* InspectorPosition.xib in Resources */,
 				E3FEA8A714E45EEF00119FBE /* InspectorSize.xib in Resources */,
 				E3FEA8AC14E47C5700119FBE /* InspectorPoint.xib in Resources */,
-				92154AC718A5531800BD215C /* CCBPProperties.plist in Resources */,
 				E3FEA8B114E4872D00119FBE /* InspectorPointLock.xib in Resources */,
 				921EEB2918ADE43700D864C2 /* InspectorNodeReference.xib in Resources */,
 				E3FEA8B614E4929300119FBE /* InspectorScaleLock.xib in Resources */,

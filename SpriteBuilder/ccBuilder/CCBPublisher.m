@@ -726,7 +726,7 @@
 - (bool)start
 {
     NSLog(@"[PUBLISH] Start...");
-    printf("[PUBLISH] Start...");
+    printf("[PUBLISH] Start...\n");
 
     [_publishingQueue setSuspended:YES];
 
@@ -753,7 +753,7 @@
     [_projectSettings flagFilesDirtyWithWarnings:_warnings];
 
     NSLog(@"[PUBLISH] Done in %.2f seconds.", [[NSDate date] timeIntervalSince1970] - startTime);
-    printf("[PUBLISH] Done in %.2f seconds.", [[NSDate date] timeIntervalSince1970] - startTime);
+    printf("[PUBLISH] Done in %.2f seconds.\n", [[NSDate date] timeIntervalSince1970] - startTime);
 
     if ([[NSThread currentThread] isMainThread])
     {

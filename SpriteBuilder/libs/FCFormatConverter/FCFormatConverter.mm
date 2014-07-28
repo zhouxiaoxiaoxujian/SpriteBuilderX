@@ -432,7 +432,6 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         // Convert to OGG
         self.sndTask = [[NSTask alloc] init];
         NSString *temp = [NSString stringWithFormat:@"%@.temp",dstPath];
-        [_sndTask setCurrentDirectoryPath:[srcPath stringByDeletingLastPathComponent]];
         [_sndTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"oggenc"]];
         NSMutableArray* args = [NSMutableArray arrayWithObjects:
                                 [NSString stringWithFormat:@"-q%d", quality],
