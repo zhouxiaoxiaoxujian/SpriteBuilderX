@@ -2007,6 +2007,7 @@ static BOOL hideAllToNextSeparator;
 
     // Remove resource paths
     self.projectSettings = NULL;
+    [ResourceManager sharedManager].projectSettings = NULL;
     [[ResourceManager sharedManager] removeAllDirectories];
     
     // Remove language file
@@ -2047,6 +2048,7 @@ static BOOL hideAllToNextSeparator;
     project.projectPath = fileName;
     [project store];
     self.projectSettings = project;
+    [ResourceManager sharedManager].projectSettings = project;
     
     // Update resource paths
     [self updateResourcePathsFromProjectSettings];
