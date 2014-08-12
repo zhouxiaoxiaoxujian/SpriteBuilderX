@@ -10,6 +10,9 @@
 // Returns the resources-auto filepath of the file
 - (NSString *)resourceAutoFilePath;
 
+// Returns the resources-universal filepath of the file
+- (NSString *)resourceUniversalFilePath;
+
 - (BOOL)isWaveSoundFile;
 
 // Tests if the file has a spritesheet compatible extension (e.g. psd and png)
@@ -17,6 +20,9 @@
 
 // Returns all files in a resources-auto directory which is implicitely added and tested for the filename
 - (NSArray *)filesInAutoDirectory;
+
+// Returns all files in a resources-universal directory which is implicitely added and tested for the filename
+- (NSArray *)filesInUniversalDirectory;
 
 
 // *** Directoy/Paths methods

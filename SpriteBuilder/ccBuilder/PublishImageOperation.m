@@ -73,6 +73,7 @@
     NSString *srcDir = [_srcFilePath stringByDeletingLastPathComponent];
     NSString *dstDir = [_dstFilePath stringByDeletingLastPathComponent];
     NSString *srcAutoPath = [_srcFilePath resourceAutoFilePath];
+    NSString *srcUniversalPath = [_srcFilePath resourceUniversalFilePath];
 
     // Update path to reflect resolution
     srcDir = [srcDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
@@ -86,9 +87,6 @@
     {
         self.dstFilePath = [self pathWithCocoaImageResolutionSuffix:_dstFilePath resolution:_resolution];
     }
-
-    // Create destination directory if it doesn't exist
-    [fileManager createDirectoryAtPath:dstDir withIntermediateDirectories:YES attributes:NULL error:NULL];
 
     // Fetch new name
     NSString *dstPathProposal = [[FCFormatConverter defaultConverter] proposedNameForConvertedImageAtPath:_dstFilePath
@@ -114,6 +112,9 @@
             LocalLog(@"[%@] SKIPPING file exists, same dates (src: %@, dst: %@) and not dirty - %@", [self class], srcDate, dstDate, [self description]);
             return;
         }
+        
+        // Create destination directory if it doesn't exist
+        [fileManager createDirectoryAtPath:dstDir withIntermediateDirectories:YES attributes:NULL error:NULL];
 
         // Copy file
         [fileManager copyItemAtPath:_srcFilePath toPath:_dstFilePath error:NULL];
@@ -148,7 +149,7 @@
             [_publishedPNGFiles addObject:dstPathConverted];
         }
     }
-    else if ([fileManager fileExistsAtPath:srcAutoPath])
+    else if (![_resolution isEqualToString:@"universal"] && [fileManager fileExistsAtPath:srcAutoPath])
     {
         // Use resources-auto file for conversion
 
@@ -163,6 +164,9 @@
             LocalLog(@"[%@] SKIPPING file exists, same dates (src: %@, dst: %@) and not dirty - %@", [self class], srcDate, dstDate, [self description]);
             return;
         }
+        
+        // Create destination directory if it doesn't exist
+        [fileManager createDirectoryAtPath:dstDir withIntermediateDirectories:YES attributes:NULL error:NULL];
 
         // Copy file and resize
         [[ResourceManager sharedManager] createCachedImageFromAuto:srcAutoPath saveAs:_dstFilePath forResolution:_resolution];
@@ -197,7 +201,10 @@
     }
     else
     {
-        [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to publish file %@, make sure it is in the resources-auto folder.", srcFileName] isFatal:NO];
+        if (![fileManager fileExistsAtPath:srcUniversalPath] && ![_resolution isEqualToString:@"universal"])
+        {
+            [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to publish file %@, make sure it is in the resources-auto folder or device dependent folders.", srcFileName] isFatal:NO];
+        }
     }
 }
 

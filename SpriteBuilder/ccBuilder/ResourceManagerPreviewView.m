@@ -125,22 +125,14 @@
             if(!self.imgMain)
             {
                 self.imgMain = [selection previewForResolution:@"universal"];
-                if(!self.imgMain)
-                {
-                    self.imgMain = self.imgTablethd;
-                    if(!self.imgMain)
-                    {
-                        self.imgMain = self.imgPhonehd;
-                        if(!self.imgMain)
-                        {
-                            self.imgMain = self.imgTablet;
-                            if(!self.imgMain)
-                            {
-                                self.imgMain = self.imgPhone;
-                            }
-                        }
-                    }
-                }
+                if(!self.imgTablethd)
+                    self.imgTablethd = [selection previewForResolution:@"universal"];
+                if(!self.imgPhonehd)
+                    self.imgPhonehd = [selection previewForResolution:@"universal"];
+                if(!self.imgTablet)
+                    self.imgTablet = [selection previewForResolution:@"universal"];
+                if(!self.imgPhone)
+                    self.imgPhone = [selection previewForResolution:@"universal"];
             }
             
             [previewMain setImage: self.imgMain];

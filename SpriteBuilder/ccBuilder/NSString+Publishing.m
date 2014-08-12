@@ -13,6 +13,14 @@
     return [autoDir stringByAppendingPathComponent:filename];
 }
 
+- (NSString *)resourceUniversalFilePath
+{
+    NSString *filename = [self lastPathComponent];
+    NSString *directory = [self stringByDeletingLastPathComponent];
+    NSString *autoDir = [directory stringByAppendingPathComponent:@"resources-universal"];
+    return [autoDir stringByAppendingPathComponent:filename];
+}
+
 - (BOOL)isResourceAutoFile
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -115,6 +123,19 @@
 	return result;
 }
 
+- (NSArray *)filesInUniversalDirectory
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];;
+	NSMutableArray *result = [NSMutableArray array];
+	NSString* autoDir = [self stringByAppendingPathComponent:@"resources-universal"];
+	BOOL isDirAuto;
+	if ([fileManager fileExistsAtPath:autoDir isDirectory:&isDirAuto] && isDirAuto)
+    {
+        [result addObjectsFromArray:[fileManager contentsOfDirectoryAtPath:autoDir error:NULL]];
+    }
+	return result;
+}
+
 - (NSArray *)resolutionDependantFilesInDirWithResolutions:(NSArray *)resolutions
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];;
@@ -122,7 +143,7 @@
 
 	for (NSString *publishExt in resolutions)
 	{
-		NSString *resolutionDir = [self stringByAppendingPathComponent:publishExt];
+		NSString *resolutionDir = [self stringByAppendingPathComponent:[NSString stringWithFormat:@"resources-%@", publishExt]];
 		BOOL isDirectory;
 		if ([fileManager fileExistsAtPath:resolutionDir isDirectory:&isDirectory] && isDirectory)
 		{

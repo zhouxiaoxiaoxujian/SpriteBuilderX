@@ -383,8 +383,8 @@ typedef struct _PVRTexHeader
             dy = trimRect.origin.x;
             trimWidth = trimRect.size.height;
             trimHeight = trimRect.size.width;
-            //x -= (w - trimRect.origin.y - trimRect.size.height);
-            //y -= trimRect.origin.x;
+            x -= (w - trimRect.origin.y - trimRect.size.height);
+            y -= trimRect.origin.x;
         }
         else
         {
@@ -395,12 +395,9 @@ typedef struct _PVRTexHeader
             dy = trimRect.origin.y;
             trimWidth = trimRect.size.width;
             trimHeight = trimRect.size.height;
-            //x -= trimRect.origin.x;
-            //y -= trimRect.origin.y;
+            x -= trimRect.origin.x;
+            y -= trimRect.origin.y;
         }
-        
-        x -= dx;
-        y -= dy;
         
         if (rot)
         {
@@ -428,10 +425,10 @@ typedef struct _PVRTexHeader
             CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-h, self.extrude, h-dy), right);
             CFRelease(right);
             CGImageRef bottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy - 1,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx, outH-y-h+dy+trimHeight, w-dx, self.extrude), bottom);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
             CFRelease(bottom);
             CGImageRef top = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx, outH-y-h-self.extrude+dy, w-dx, self.extrude), top);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-dy, w-dx, self.extrude), top);
             CFRelease(top);
         }
         
