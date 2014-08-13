@@ -882,7 +882,7 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     if (self == [CocosScene cocosScene].rootNode)
     {
         if ([prop isEqualToString:@"position"]) return YES;
-        else if ([prop isEqualToString:@"visible"]) return YES;
+        //else if ([prop isEqualToString:@"visible"]) return YES;
         else if([AppDelegate appDelegate].currentDocument.docDimensionsType == kCCBDocDimensionsTypeFullScreen)
         {
             if ([prop isEqualToString:@"scale"]) return YES;
