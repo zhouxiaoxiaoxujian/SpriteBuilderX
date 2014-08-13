@@ -506,6 +506,99 @@
 		</dict>
 		<dict>
 			<key>displayName</key>
+			<string>Highlited Selected State</string>
+			<key>name</key>
+			<string>Highlited Selected State</string>
+			<key>type</key>
+			<string>SeparatorSub</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<string>ccbResources/ccbButtonNormal.png</string>
+			</array>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Sprite frame</string>
+			<key>type</key>
+			<string>SpriteFrame</string>
+			<key>name</key>
+			<string>backgroundSpriteFrame|HighlightedSelected</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<real>0.5</real>
+			<key>default</key>
+			<real>0.5</real>
+			<key>displayName</key>
+			<string>Background opacity</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>backgroundOpacity|HighlightedSelected</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Background color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>backgroundColor|HighlightedSelected</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Label opacity</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>labelOpacity|HighlightedSelected</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Label color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>labelColor|HighlightedSelected</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
 			<string>CCLabelTTF</string>
 			<key>name</key>
 			<string>CCLabelTTF</string>
