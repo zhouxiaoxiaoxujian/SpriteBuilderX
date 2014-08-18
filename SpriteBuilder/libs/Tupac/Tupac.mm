@@ -432,16 +432,16 @@ typedef struct _PVRTexHeader
             CFRelease(top);
             
             CGImageRef leftTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-h+trimHeight, self.extrude, self.extrude), leftTop);
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-dy, self.extrude, self.extrude), leftTop);
             CFRelease(leftTop);
             CGImageRef rightTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-h+trimHeight, self.extrude, self.extrude), rightTop);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-dy, self.extrude, self.extrude), rightTop);
             CFRelease(rightTop);
             CGImageRef leftBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-h-self.extrude, self.extrude, self.extrude), leftBottom);
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
             CFRelease(leftBottom);
             CGImageRef rightBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-h-self.extrude, self.extrude, self.extrude), rightBottom);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
             CFRelease(rightBottom);
         }
         
