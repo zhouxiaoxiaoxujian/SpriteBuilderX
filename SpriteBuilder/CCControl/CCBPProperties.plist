@@ -28,7 +28,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<integer>2</integer>
+				<integer>0</integer>
 				<integer>1</integer>
 			</array>
 			<key>codeConnection</key>
