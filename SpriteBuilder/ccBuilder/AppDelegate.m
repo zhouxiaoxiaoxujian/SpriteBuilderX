@@ -637,7 +637,7 @@ typedef enum
     //[self updateDefaultBrowser];
     
     // Load plug-ins
-    [[PlugInManager sharedManager] loadPlugIns];
+    //[[PlugInManager sharedManager] loadPlugIns];
     
     // Update toolbar with plug-ins
     [self setupToolbar];

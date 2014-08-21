@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -1854,18 +1854,18 @@ CA
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="8V7-YG-C9X">
-                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="656"/>
+                                                    <rect key="frame" x="-20" y="66" width="348" height="605"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="U4Z-Vf-EOq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="283" height="641"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="590"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view id="VWM-rZ-YR4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="641"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="590"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <button id="Gr1-tp-6dc">
-                                                                        <rect key="frame" x="7" y="619" width="149" height="20"/>
+                                                                        <rect key="frame" x="27" y="553" width="149" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <buttonCell key="cell" type="check" title="Enable physics" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="5IT-k9-mIz">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1881,7 +1881,7 @@ CA
                                                                         </connections>
                                                                     </button>
                                                                     <popUpButton verticalHuggingPriority="750" id="0Ex-EX-gU6">
-                                                                        <rect key="frame" x="87" y="589" width="190" height="22"/>
+                                                                        <rect key="frame" x="107" y="523" width="190" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="YcA-X2-jqd">
                                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1899,7 +1899,7 @@ CA
                                                                         </connections>
                                                                     </popUpButton>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ro7-0f-xIv" customClass="CCBTextFieldLabel">
-                                                                        <rect key="frame" x="7" y="594" width="78" height="14"/>
+                                                                        <rect key="frame" x="27" y="528" width="78" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Physics shape" id="Jde-yE-DxV">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -1911,7 +1911,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ext-Gr-AoA" customClass="CCBTextFieldLabel">
-                                                                        <rect key="frame" x="7" y="495" width="44" height="14"/>
+                                                                        <rect key="frame" x="27" y="374" width="44" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Density" id="hO5-Og-Qfj">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -1923,28 +1923,35 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="a1T-Tl-JdY">
-                                                                        <rect key="frame" x="0.0" y="614" width="283" height="5"/>
+                                                                        <rect key="frame" x="20" y="548" width="283" height="5"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <font key="titleFont" metaFont="system"/>
                                                                     </box>
                                                                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="42d-Np-OMJ">
-                                                                        <rect key="frame" x="0.0" y="515" width="283" height="5"/>
+                                                                        <rect key="frame" x="20" y="397" width="283" height="5"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <font key="titleFont" metaFont="system"/>
                                                                     </box>
                                                                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="03a-2k-gEk">
-                                                                        <rect key="frame" x="0.0" y="438" width="283" height="5"/>
+                                                                        <rect key="frame" x="20" y="316" width="283" height="5"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <font key="titleFont" metaFont="system"/>
+                                                                    </box>
+                                                                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="fgd-yC-LWi">
+                                                                        <rect key="frame" x="25" y="223" width="283" height="5"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <font key="titleFont" metaFont="system"/>
                                                                     </box>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="PQS-eD-oNf" customClass="CCBTextFieldLabel">
-                                                                        <rect key="frame" x="7" y="572" width="77" height="14"/>
+                                                                        <rect key="frame" x="27" y="506" width="77" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Corner radius" id="6vB-Jc-BlL">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -1956,7 +1963,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField verticalHuggingPriority="750" id="LAn-QT-8u4">
-                                                                        <rect key="frame" x="90" y="570" width="64" height="19"/>
+                                                                        <rect key="frame" x="110" y="504" width="64" height="19"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="yYP-03-s7p">
                                                                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="frf-Ux-3PH">
@@ -1973,7 +1980,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField verticalHuggingPriority="750" id="WSz-ut-Vav">
-                                                                        <rect key="frame" x="90" y="493" width="64" height="19"/>
+                                                                        <rect key="frame" x="110" y="372" width="64" height="19"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="AIF-qZ-QWA">
                                                                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="s8k-Fr-05d">
@@ -1990,7 +1997,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="j37-bv-oYR" customClass="CCBTextFieldLabel">
-                                                                        <rect key="frame" x="7" y="473" width="45" height="14"/>
+                                                                        <rect key="frame" x="27" y="352" width="45" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Friction" id="gnw-IR-keb">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -2002,7 +2009,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField verticalHuggingPriority="750" id="lwb-8F-FwC">
-                                                                        <rect key="frame" x="90" y="471" width="64" height="19"/>
+                                                                        <rect key="frame" x="110" y="350" width="64" height="19"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Ngd-b1-YHU">
                                                                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="urP-Pl-E0K">
@@ -2019,7 +2026,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Bg2-8I-Ea8" customClass="CCBTextFieldLabel">
-                                                                        <rect key="frame" x="7" y="451" width="51" height="14"/>
+                                                                        <rect key="frame" x="27" y="330" width="51" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Elasticity" id="JHk-Kz-cSM">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -2031,7 +2038,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <textField verticalHuggingPriority="750" id="tmU-k8-xth">
-                                                                        <rect key="frame" x="90" y="449" width="64" height="19"/>
+                                                                        <rect key="frame" x="110" y="328" width="64" height="19"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="kIE-o5-om9">
                                                                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="W6b-Ic-ph1">
@@ -2048,7 +2055,7 @@ CA
                                                                         </connections>
                                                                     </textField>
                                                                     <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="OQY-uM-tEf">
-                                                                        <rect key="frame" x="8" y="526" width="79" height="38"/>
+                                                                        <rect key="frame" x="28" y="460" width="79" height="38"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                         <size key="cellSize" width="68" height="18"/>
@@ -2084,7 +2091,7 @@ CA
                                                                         </connections>
                                                                     </matrix>
                                                                     <button id="EXb-j5-Wp1">
-                                                                        <rect key="frame" x="108" y="545" width="122" height="20"/>
+                                                                        <rect key="frame" x="128" y="479" width="122" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <buttonCell key="cell" type="check" title="Affected by gravity" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="QBb-KL-BpL">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2104,7 +2111,7 @@ CA
                                                                         </connections>
                                                                     </button>
                                                                     <button id="c6C-i7-Duv">
-                                                                        <rect key="frame" x="108" y="525" width="103" height="20"/>
+                                                                        <rect key="frame" x="128" y="459" width="103" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <buttonCell key="cell" type="check" title="Allows rotation" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Jer-o1-oe7">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2123,72 +2130,540 @@ CA
                                                                             <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="9hf-40-9Yz"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Owy-hj-QDL">
-                                                                        <rect key="frame" x="7" y="417" width="78" height="14"/>
+                                                                    <button id="koq-rd-S2B">
+                                                                        <rect key="frame" x="179" y="504" width="117" height="16"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Collision type" id="98R-vX-sVo">
+                                                                        <buttonCell key="cell" type="check" title="Scale by res. Scale" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Ppm-BP-X2S">
+                                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="smallSystem"/>
-                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                        </textFieldCell>
-                                                                    </textField>
-                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zE7-N8-hbv">
-                                                                        <rect key="frame" x="7" y="395" width="67" height="14"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.scaleByResourceScale" id="azN-Od-dRu"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="KKw-N5-dNa"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button id="usI-pq-Ne5">
+                                                                        <rect key="frame" x="112" y="431" width="22" height="20"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Categories" id="QAP-qK-gTM">
+                                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="QDz-rh-XUs">
+                                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="smallSystem"/>
-                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                        </textFieldCell>
-                                                                    </textField>
-                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TnL-rD-5wN">
-                                                                        <rect key="frame" x="7" y="352" width="76" height="14"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="f6G-59-TZT" id="C5T-7f-d5H">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.massSet" id="Vgb-pv-473"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="f6G-59-TZT"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <textField verticalHuggingPriority="750" id="iCV-UY-3Q1">
+                                                                        <rect key="frame" x="131" y="433" width="84" height="19"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Masks" id="ieq-gx-zOs">
-                                                                            <font key="font" metaFont="smallSystem"/>
-                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                        </textFieldCell>
-                                                                    </textField>
-                                                                    <textField verticalHuggingPriority="750" id="RUv-bT-CiV">
-                                                                        <rect key="frame" x="90" y="415" width="184" height="19"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GTD-VF-88E">
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5MS-0W-yU5">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="F8R-wu-6c3">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                            </numberFormatter>
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
                                                                         <connections>
-                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.collisionType" id="Jyy-TA-raT"/>
-                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="Yl5-Ed-Dj3"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="cdI-Fz-6cX" id="A96-0q-qpV">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.mass" id="VlV-GI-pKi"/>
+                                                                            <binding destination="494" name="enabled3" keyPath="physicsHandler.selectedNodePhysicsBody.massSet" previousBinding="A96-0q-qpV" id="pWA-b1-Mrf">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="cdI-Fz-6cX"/>
                                                                         </connections>
                                                                     </textField>
-                                                                    <tokenField verticalHuggingPriority="750" id="5t2-K0-tU5">
-                                                                        <rect key="frame" x="90" y="371" width="184" height="40"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                        <tokenFieldCell key="cell" controlSize="small" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="qWc-wP-RU0">
+                                                                    <button verticalHuggingPriority="750" id="ymo-sI-3PO">
+                                                                        <rect key="frame" x="209" y="426" width="40" height="32"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="push" title="∞" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="29a-dM-5Hx">
+                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="massInf:" target="fa4-D5-pFD" id="RkD-NS-Unh"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="f3o-5t-mTa" id="czH-W9-Iyf">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled3" keyPath="physicsHandler.selectedNodePhysicsBody.massSet" previousBinding="czH-W9-Iyf" id="K03-UC-KNc">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="f3o-5t-mTa"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qNg-w1-tEJ">
+                                                                        <rect key="frame" x="27" y="434" width="65" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mass" id="hGd-K0-UTf">
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="L2E-v0-HJ5">
+                                                                        <rect key="frame" x="131" y="413" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="qf2-G1-OtN">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="dH5-dd-Cz2">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                            </numberFormatter>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        </tokenFieldCell>
+                                                                        </textFieldCell>
                                                                         <connections>
-                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.collisionCategories" id="0py-Zh-29g"/>
-                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="fHX-cK-0MO"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="N2g-1E-glC" id="u2r-UD-GCD">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.moment" id="rU8-ek-RJW"/>
+                                                                            <binding destination="494" name="enabled3" keyPath="physicsHandler.selectedNodePhysicsBody.momentSet" previousBinding="u2r-UD-GCD" id="ntP-hM-aUa">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="N2g-1E-glC"/>
                                                                         </connections>
-                                                                    </tokenField>
-                                                                    <tokenField verticalHuggingPriority="750" id="g3N-vg-r5j">
-                                                                        <rect key="frame" x="90" y="327" width="184" height="40"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                        <tokenFieldCell key="cell" controlSize="small" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="XZ4-1q-W3j">
+                                                                    </textField>
+                                                                    <button verticalHuggingPriority="750" id="VV3-TI-rqS">
+                                                                        <rect key="frame" x="209" y="404" width="40" height="32"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="push" title="∞" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QQq-d7-37X">
+                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="momentInf:" target="fa4-D5-pFD" id="NiY-ZY-N5m"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="WFW-ac-nl0" id="xL8-uR-6jp">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled3" keyPath="physicsHandler.selectedNodePhysicsBody.momentSet" previousBinding="xL8-uR-6jp" id="7xg-Fw-Pod">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="WFW-ac-nl0"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BKx-CX-JeZ">
+                                                                        <rect key="frame" x="27" y="415" width="71" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Moment" id="8zY-xX-J3L">
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        </tokenFieldCell>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <button id="1JP-aa-h11">
+                                                                        <rect key="frame" x="112" y="412" width="22" height="20"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="SpK-NE-LBU">
+                                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                        </buttonCell>
                                                                         <connections>
-                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.collisionMask" id="aTJ-a2-2LU"/>
-                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="KYK-p4-qrI"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="QUu-Rg-SfF" id="abT-UD-oxe">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.momentSet" id="yp2-F1-DQC"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="QUu-Rg-SfF"/>
                                                                         </connections>
-                                                                    </tokenField>
+                                                                    </button>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6h3-i2-9lw">
+                                                                        <rect key="frame" x="26" y="286" width="125" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Category Bitmask" id="rxQ-11-jch">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cFu-Bo-0YY">
+                                                                        <rect key="frame" x="26" y="262" width="125" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Contact Test Bitmask" id="KYf-p2-6Mh">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ywh-ed-tPb">
+                                                                        <rect key="frame" x="27" y="240" width="124" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Collision Bitmask" id="z1b-do-3L4">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="bfS-2R-Esl">
+                                                                        <rect key="frame" x="157" y="284" width="111" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="pLv-N9-GOb">
+                                                                            <customFormatter key="formatter" id="bYX-LR-SWS" customClass="HexFormatter"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.categoryBitmask" id="c1g-co-66v"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="EnV-iT-q8N">
+                                                                        <rect key="frame" x="157" y="262" width="111" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="whg-bE-Xzx">
+                                                                            <customFormatter key="formatter" id="WkJ-nh-dQg" customClass="HexFormatter"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.contactTestBitmask" id="YBU-tU-s4s"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="JZk-Ke-Czu">
+                                                                        <rect key="frame" x="157" y="240" width="111" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="78u-D3-1gr">
+                                                                            <customFormatter key="formatter" id="NGi-70-b6M" customClass="HexFormatter"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.collisionBitmask" id="gOF-W2-vHN"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="tIn-mf-MPs">
+                                                                        <rect key="frame" x="155" y="171" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Rfa-eB-BJ6">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="V8h-Wm-hco"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="KzV-4L-9av" id="hMe-Bt-tol">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.velocityY" id="ABQ-XZ-qCL"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="KzV-4L-9av"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wKK-fb-R3X">
+                                                                        <rect key="frame" x="28" y="194" width="115" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Velocity X" id="49S-fn-CjO">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="RTC-8a-BVS">
+                                                                        <rect key="frame" x="28" y="173" width="115" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Velocity Y" id="bYv-Cp-6vy">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="0T4-BE-0p3">
+                                                                        <rect key="frame" x="155" y="192" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="MEl-Wn-8O0">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="YQP-ky-eFf"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="ejo-av-JeR" id="eDS-VJ-mhJ">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.velocityX" id="AMw-Wc-yVg"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="ejo-av-JeR"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="QWX-UO-gSl">
+                                                                        <rect key="frame" x="155" y="151" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bUa-QW-6vq">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="Jdl-kz-AwT">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                            </numberFormatter>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="7qY-S1-90z" id="wmr-yc-VnC">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.velocityLimit" id="QHb-8c-DHw"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="7qY-S1-90z"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vkx-Lf-3mT">
+                                                                        <rect key="frame" x="28" y="153" width="115" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Velocity Limit" id="NVL-nO-8jX">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="41o-AM-UeP">
+                                                                        <rect key="frame" x="155" y="110" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ExQ-rT-Iun">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="lx6-9e-fsG"/>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="eTT-Lc-Qlt" id="FGs-wu-j7S">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.angleVelocity" id="Ua9-UW-Jvh"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="eTT-Lc-Qlt"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="X3h-XK-W8r">
+                                                                        <rect key="frame" x="28" y="111" width="115" height="16"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Angle Velocity" id="4ed-5S-olc">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="nWH-1D-Kf9">
+                                                                        <rect key="frame" x="155" y="88" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="wZQ-Oe-lMr">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="wcv-ek-Rsa">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                            </numberFormatter>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="dsv-K6-FHM" id="drt-Bw-ErZ">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.angleVelocityLimit" id="8I8-1Z-QOD"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="dsv-K6-FHM"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="SmS-vi-4xr">
+                                                                        <rect key="frame" x="155" y="67" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="f33-io-Rl7">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="hnu-ii-Cfe">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                                <real key="maximum" value="1"/>
+                                                                            </numberFormatter>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="rf9-In-s1s" id="vpx-QL-NtH">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.angularDamping" id="nSK-MB-cq6"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="rf9-In-s1s"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="n6D-ak-mIt">
+                                                                        <rect key="frame" x="27" y="69" width="115" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Angular Damping" id="mxv-Dq-lmq">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="m3y-JC-zk1">
+                                                                        <rect key="frame" x="28" y="89" width="115" height="16"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Angle Velocity Limit" id="w4I-Za-3u3">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <textField verticalHuggingPriority="750" id="Azs-Im-ua0">
+                                                                        <rect key="frame" x="155" y="131" width="84" height="19"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="qaA-1N-UP5">
+                                                                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="           " notANumberSymbol="NaN" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="1CQ-CH-oUd">
+                                                                                <real key="minimum" value="0.0"/>
+                                                                                <real key="maximum" value="1"/>
+                                                                            </numberFormatter>
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <connections>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="ird-4z-Pv4" id="c1p-pO-DcX">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="value" keyPath="physicsHandler.selectedNodePhysicsBody.linearDamping" id="i1l-Qm-nvt"/>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="ird-4z-Pv4"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zlw-tX-a4G">
+                                                                        <rect key="frame" x="28" y="135" width="115" height="14"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Linear Dumping" id="31N-GJ-FbZ">
+                                                                            <font key="font" metaFont="smallSystem"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                    <button verticalHuggingPriority="750" id="Tyg-YW-wNK">
+                                                                        <rect key="frame" x="112" y="13" width="82" height="32"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cnU-sY-LGu">
+                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="applyPhysics:" target="fa4-D5-pFD" id="dBo-sC-EdQ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button verticalHuggingPriority="750" id="xyx-ih-I1R">
+                                                                        <rect key="frame" x="234" y="143" width="40" height="32"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="push" title="∞" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ixT-yQ-kJb">
+                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="velocityInf:" target="fa4-D5-pFD" id="3dT-1R-zju"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="WXp-oI-MFx" id="3nf-kQ-ATX">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="WXp-oI-MFx"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button verticalHuggingPriority="750" id="DCt-QC-L6i">
+                                                                        <rect key="frame" x="234" y="82" width="40" height="32"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <buttonCell key="cell" type="push" title="∞" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XUF-OX-nMN">
+                                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="angularVelocityInf:" target="fa4-D5-pFD" id="v0z-IS-YUG"/>
+                                                                            <binding destination="494" name="enabled2" keyPath="physicsHandler.selectedNodePhysicsBody.dynamic" previousBinding="lHv-Fu-Bn9" id="7F7-UK-8Ox">
+                                                                                <dictionary key="options">
+                                                                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                            <binding destination="494" name="enabled" keyPath="physicsHandler.selectedNodePhysicsEnabled" id="lHv-Fu-Bn9"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <connections>
                                                                     <binding destination="494" name="hidden" keyPath="selectedNode" id="SbN-x8-4tb">
@@ -2210,11 +2685,11 @@ CA
                                                         </subviews>
                                                     </clipView>
                                                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="H4Q-Vu-Ysx">
-                                                        <rect key="frame" x="0.0" y="640" width="298" height="16"/>
+                                                        <rect key="frame" x="0.0" y="590" width="333" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cW2-Jx-hii">
-                                                        <rect key="frame" x="282" y="0.0" width="16" height="656"/>
+                                                        <rect key="frame" x="333" y="0.0" width="15" height="590"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
