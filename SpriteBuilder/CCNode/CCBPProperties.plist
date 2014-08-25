@@ -176,6 +176,8 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<integer>1</integer>
+			<key>default</key>
+			<integer>1</integer>
 			<key>animatable</key>
 			<true/>
 			<key>displayName</key>
@@ -188,6 +190,8 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<false/>
+			<key>default</key>
+			<false/>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>
@@ -198,9 +202,17 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<array>
-				<integer>255</integer>
-				<integer>255</integer>
-				<integer>255</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>animatable</key>
 			<true/>
@@ -213,6 +225,8 @@
 		</dict>
 		<dict>
 			<key>defaultSerialization</key>
+			<false/>
+			<key>default</key>
 			<false/>
 			<key>type</key>
 			<string>Check</string>
