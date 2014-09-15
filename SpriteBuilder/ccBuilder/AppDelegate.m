@@ -3650,8 +3650,8 @@ static BOOL hideAllToNextSeparator;
     
     [CCDirector sharedDirector].contentScaleFactor = 1.0;
     [[CCFileUtils sharedFileUtils] setMacContentScaleFactor:1.0];
-    
-    [CCDirector sharedDirector].UIScaleFactor = res.resourceScale * res.mainScale;
+
+    [CCDirector sharedDirector].UIScaleFactor = res.resourceScale;
 				
     // Setup the rulers with the new contentScale
     [[CocosScene cocosScene].rulerLayer setup];

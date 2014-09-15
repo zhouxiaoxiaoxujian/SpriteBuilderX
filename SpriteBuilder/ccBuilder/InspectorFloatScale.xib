@@ -48,8 +48,8 @@
                     <segmentedCell key="cell" controlSize="small" alignment="left" style="smallSquare" trackingMode="selectAny" id="32">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment toolTip="Multiply by resolution scale" image="scale-0" width="22"/>
-                            <segment toolTip="Multiply by main scale" image="scale-1" width="22" tag="1"/>
+                            <segment toolTip="Multiply by resolution scale" image="scale-1" width="22"/>
+                            <segment toolTip="Multiply by main scale" image="scale-8" width="22" tag="1"/>
                         </segments>
                         <connections>
                             <action selector="touch:" target="-2" id="TzA-wb-jPx"/>
@@ -61,7 +61,7 @@
         <userDefaultsController representsSharedInstance="YES" id="17"/>
     </objects>
     <resources>
-        <image name="scale-0" width="16" height="16"/>
         <image name="scale-1" width="16" height="16"/>
+        <image name="scale-8" width="16" height="16"/>
     </resources>
 </document>

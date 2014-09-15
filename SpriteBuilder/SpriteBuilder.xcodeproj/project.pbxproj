@@ -261,6 +261,7 @@
 		92F12E4E18847BC800AB8F32 /* seq-keyframe-x4-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BC183D4D280085935B /* seq-keyframe-x4-sel.png */; };
 		92F12E4F18847BC800AB8F32 /* seq-keyframe-x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BD183D4D280085935B /* seq-keyframe-x4.png */; };
 		A09AB6F714E993AA009C8B91 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = A09AB6F614E993AA009C8B91 /* fps_images.png */; };
+		A50190D619C733AC00E150DD /* scale-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A50190D519C733AC00E150DD /* scale-8.png */; };
 		A51A5F1A1981363A00E76293 /* CCBScrollListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A536B233194046A1006B0A52 /* CCBScrollListView.m */; };
 		A51A5F1B1981364400E76293 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A536B238194046A1006B0A52 /* Icon.png */; };
 		A51A5F1C1981364700E76293 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A536B236194046A1006B0A52 /* InfoPlist.strings */; };
@@ -1445,6 +1446,7 @@
 		92F0961B18F891A900D47A94 /* InspectorEnabledFloat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorEnabledFloat.m; sourceTree = "<group>"; };
 		92F0961C18F891A900D47A94 /* InspectorEnabledFloat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorEnabledFloat.xib; sourceTree = "<group>"; };
 		A09AB6F614E993AA009C8B91 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = "libs/cocos2d-iphone/Resources/Fonts/fps_images.png"; sourceTree = SOURCE_ROOT; };
+		A50190D519C733AC00E150DD /* scale-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-8.png"; sourceTree = "<group>"; };
 		A51A5F2019813CAF00E76293 /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
 		A527E8D21960894D00D54F05 /* CCProgressNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCProgressNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536B21919404255006B0A52 /* InspectorCCBFileName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorCCBFileName.h; sourceTree = "<group>"; };
@@ -2997,6 +2999,7 @@
 				A5CF339D1906630600343922 /* scale-5.png */,
 				A57F906A19602D3900140C8E /* scale-6.png */,
 				A57F906B19602D3900140C8E /* scale-7.png */,
+				A50190D519C733AC00E150DD /* scale-8.png */,
 				E35A2D871540111A00F78B72 /* position-0.png */,
 				E35A2D881540111A00F78B72 /* position-1.png */,
 				E35A2D891540111A00F78B72 /* position-2.png */,
@@ -5499,6 +5502,7 @@
 				77055FB613D0E5CA009DD63A /* logo.png in Resources */,
 				92F0960F18F8851300D47A94 /* inspector-body-disconnected@2x.png in Resources */,
 				E3B7AEE914E33F4C00DFD402 /* InspectorPosition.xib in Resources */,
+				A50190D619C733AC00E150DD /* scale-8.png in Resources */,
 				E3FEA8A714E45EEF00119FBE /* InspectorSize.xib in Resources */,
 				E3FEA8AC14E47C5700119FBE /* InspectorPoint.xib in Resources */,
 				E3FEA8B114E4872D00119FBE /* InspectorPointLock.xib in Resources */,
