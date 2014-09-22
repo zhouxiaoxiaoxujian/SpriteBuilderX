@@ -144,6 +144,9 @@
             // Load settings
             self.scaleFrom = [[settings valueForResource:res andKey:@"scaleFrom"] intValue];
             
+            self.format_padding = [[settings valueForResource:res andKey:@"format_padding"] intValue];
+            self.format_extrude = [[settings valueForResource:res andKey:@"format_extrude"] intValue];
+            
             self.format_ios = [[settings valueForResource:res andKey:@"format_ios"] intValue];
             self.format_ios_dither = [[settings valueForResource:res andKey:@"format_ios_dither"] boolValue];
             self.format_ios_compress = [[settings valueForResource:res andKey:@"format_ios_compress"] boolValue];
@@ -163,6 +166,9 @@
         else if (res.type == kCCBResTypeDirectory && [res.data isDynamicSpriteSheet])
         {
             // Setup preview for smart sprite sheet
+            self.format_padding = [[settings valueForResource:res andKey:@"format_padding"] intValue];
+            self.format_extrude = [[settings valueForResource:res andKey:@"format_extrude"] intValue];
+            
             self.format_ios = [[settings valueForResource:res andKey:@"format_ios"] intValue];
             self.format_ios_dither = [[settings valueForResource:res andKey:@"format_ios_dither"] boolValue];
             self.format_ios_compress = [[settings valueForResource:res andKey:@"format_ios_compress"] boolValue];
@@ -409,6 +415,44 @@
     if (format == kFCImageFormatPVR_RGBA4444) return YES;
     if (format == kFCImageFormatPVR_RGB565) return YES;
     return NO;
+}
+
+- (void) setFormat_padding:(int)padding
+{
+    _format_padding = padding;
+    
+    ProjectSettings* settings = [self appDelegate].projectSettings;
+    
+    if (_previewedResource)
+    {
+        if (padding>0)
+        {
+            [settings setValue:[NSNumber numberWithInt:padding] forResource:_previewedResource andKey:@"format_padding"];
+        }
+        else
+        {
+            [settings removeObjectForResource:_previewedResource andKey:@"format_padding"];
+        }
+    }
+}
+
+- (void) setFormat_extrude:(int)extrude
+{
+    _format_extrude = extrude;
+    
+    ProjectSettings* settings = [self appDelegate].projectSettings;
+    
+    if (_previewedResource)
+    {
+        if (extrude>0)
+        {
+            [settings setValue:[NSNumber numberWithInt:extrude] forResource:_previewedResource andKey:@"format_extrude"];
+        }
+        else
+        {
+            [settings removeObjectForResource:_previewedResource andKey:@"format_extrude"];
+        }
+    }
 }
 
 - (void) setFormat_ios:(int)format_ios
