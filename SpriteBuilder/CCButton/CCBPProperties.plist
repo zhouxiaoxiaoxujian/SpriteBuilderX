@@ -136,6 +136,54 @@
 			<string>onSetSizeFromTexture</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Offset left</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>offsetLeft</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Offset right</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>offsetRight</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Offset top</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>offsetTop</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Offset bottom</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>offsetBottom</string>
+		</dict>
+		<dict>
 			<key>displayName</key>
 			<string>Normal State</string>
 			<key>name</key>

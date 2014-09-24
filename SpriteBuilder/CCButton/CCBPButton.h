@@ -23,4 +23,16 @@
 /** Sets the bottom margin exclusively. */
 @property (nonatomic, assign) float marginBottom;
 
+/** Sets the left offset exclusively. */
+@property (nonatomic, assign) float offsetLeft;
+
+/** Sets the right offset exclusively. */
+@property (nonatomic, assign) float offsetRight;
+
+/** Sets the top offset exclusively. */
+@property (nonatomic, assign) float offsetTop;
+
+/** Sets the bottom offset exclusively. */
+@property (nonatomic, assign) float offsetBottom;
+
 @end
