@@ -3143,7 +3143,7 @@ static BOOL hideAllToNextSeparator;
     }
 }
 
-- (IBAction) saveAllDocuments:(id)sender
+- (void) internalSaveAllDocuments:(id)sender force:(BOOL)force
 {
     // Save all JS files
     //[[NSDocumentController sharedDocumentController] saveAllDocuments:sender]; //This API have no effects
@@ -3163,13 +3163,23 @@ static BOOL hideAllToNextSeparator;
     for (int i = 0; i < [docs count]; i++)
     {
         CCBDocument* doc = [(NSTabViewItem*)[docs objectAtIndex:i] identifier];
-         if (doc.isDirty)
-         {
-             [self switchToDocument:doc forceReload:NO];
-             [self saveDocument:sender];
-         }
+        if (force || doc.isDirty)
+        {
+            [self switchToDocument:doc forceReload:NO];
+            [self saveDocument:sender];
+        }
     }
     [self switchToDocument:oldCurDoc forceReload:NO];
+}
+
+- (IBAction) forceSaveAllDocuments:(id)sender
+{
+    [self internalSaveAllDocuments:sender force:YES];
+}
+
+- (IBAction) saveAllDocuments:(id)sender
+{
+    [self internalSaveAllDocuments:sender force:NO];
 }
 
 - (void)checkForDirtyDocumentAndPublishAsync:(BOOL)async
@@ -3847,7 +3857,7 @@ static BOOL hideAllToNextSeparator;
     
     float zoom = [cs stageZoom];
     zoom *= 1.2;
-    if (zoom > 8) zoom = 8;
+    if (zoom > maxZoom) zoom = maxZoom;
     [cs setStageZoom:zoom];
 }
 
@@ -4694,6 +4704,7 @@ static BOOL hideAllToNextSeparator;
     if (menuItem.action == @selector(saveDocument:)) return hasOpenedDocument;
     else if (menuItem.action == @selector(saveDocumentAs:)) return hasOpenedDocument;
     else if (menuItem.action == @selector(saveAllDocuments:)) return hasOpenedDocument;
+    else if (menuItem.action == @selector(forceSaveAllDocuments:)) return hasOpenedDocument;
     else if (menuItem.action == @selector(performClose:)) return hasOpenedDocument;
     else if (menuItem.action == @selector(menuCreateKeyframesFromSelection:))
     {
@@ -4839,7 +4850,7 @@ static BOOL hideAllToNextSeparator;
 
         if (result == NSAlertOtherReturn)
         {
-            [self saveAllDocuments:nil];
+            [self forceSaveAllDocuments:nil];
             return YES;
         }
 
