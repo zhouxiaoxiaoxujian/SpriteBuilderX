@@ -94,8 +94,6 @@
     _massSet = [[ser objectForKey:@"massSet"] boolValue];
     _momentSet = [[ser objectForKey:@"momentSet"] boolValue];
     
-    _scaleByResourceScale = [[ser objectForKey:@"scaleByResourceScale"] boolValue];
-    
     _categoryBitmask  = (unsigned int)[[ser objectForKey:@"categoryBitmask"] integerValue];
     _contactTestBitmask = (unsigned int)[[ser objectForKey:@"contactTestBitmask"] integerValue];
     _collisionBitmask = (unsigned int)[[ser objectForKey:@"collisionBitmask"] integerValue];
@@ -163,8 +161,6 @@
     [ser setObject:[NSNumber numberWithFloat:_moment] forKey:@"moment"];
     [ser setObject:[NSNumber numberWithBool:_massSet] forKey:@"_massSet"];
     [ser setObject:[NSNumber numberWithBool:_momentSet] forKey:@"_momentSet"];
-    
-    [ser setObject:[NSNumber numberWithBool:_scaleByResourceScale] forKey:@"scaleByResourceScale"];
     
     [ser setObject:[NSNumber numberWithUnsignedInt:_categoryBitmask] forKey:@"categoryBitmask"];
     [ser setObject:[NSNumber numberWithUnsignedInt:_contactTestBitmask] forKey:@"contactTestBitmask"];

@@ -1642,7 +1642,7 @@ static BOOL hideAllToNextSeparator;
         [self updatePositionScaleFactor];
         
         // Update CocosScene
-        [[CocosScene cocosScene] setStageSize:CGSizeMake(resolution.width, resolution.height) centeredOrigin: centered];
+        [[CocosScene cocosScene] setStageSize:CGSizeMake(resolution.width / resolution.resourceScale, resolution.height / resolution.resourceScale) centeredOrigin: centered];
         
     }
     else
@@ -1738,7 +1738,7 @@ static BOOL hideAllToNextSeparator;
     {
         for (NSDictionary * jointDict in doc[@"joints"])
         {
-            CCNode * joint = [CCBReaderInternal nodeGraphFromDictionary:jointDict parentSize:CGSizeMake(resolution.width, resolution.height) withParentGraph:loadedRoot];
+            CCNode * joint = [CCBReaderInternal nodeGraphFromDictionary:jointDict parentSize:CGSizeMake(resolution.width, resolution.height) withParentGraph:loadedRoot fileVersion:kCCBFileFormatVersion];
             
             if(joint)
             {
@@ -2634,7 +2634,7 @@ static BOOL hideAllToNextSeparator;
         // Set its position
         [PositionPropertySetter setPosition:NSPointFromCGPoint(pt) forNode:node prop:@"position"];
         
-        [CCBReaderInternal setProp:prop ofType:@"SpriteFrame" toValue:[NSArray arrayWithObjects:spriteSheetFile, spriteFile, nil] forNode:node parentSize:CGSizeZero withParentGraph:nil];
+        [CCBReaderInternal setProp:prop ofType:@"SpriteFrame" toValue:[NSArray arrayWithObjects:spriteSheetFile, spriteFile, nil] forNode:node parentSize:CGSizeZero withParentGraph:nil fileVersion:kCCBFileFormatVersion];
         // Set it's displayName to the name of the spriteFile
         node.displayName = [[spriteFile lastPathComponent] stringByDeletingPathExtension];
         [self addCCObject:node toParent:parent];
@@ -2890,7 +2890,7 @@ static BOOL hideAllToNextSeparator;
         if (asChild) parentSize = self.selectedNode.contentSize;
         else parentSize = self.selectedNode.parent.contentSize;
         
-        CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict parentSize:parentSize];
+        CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict parentSize:parentSize fileVersion:kCCBFileFormatVersion];
         [self updateUUIDs:clipNode];
         
         
@@ -3657,11 +3657,10 @@ static BOOL hideAllToNextSeparator;
         [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];
         FNTConfigRemoveCache();
     }
-    
-    [CCDirector sharedDirector].contentScaleFactor = 1.0;
-    [[CCFileUtils sharedFileUtils] setMacContentScaleFactor:1.0];
 
-    [CCDirector sharedDirector].UIScaleFactor = res.resourceScale;
+    [CCDirector sharedDirector].contentScaleFactor = res.resourceScale;
+    [CCDirector sharedDirector].UIScaleFactor = res.mainScale;
+    [[CCFileUtils sharedFileUtils] setMacContentScaleFactor:res.resourceScale];
 				
     // Setup the rulers with the new contentScale
     [[CocosScene cocosScene].rulerLayer setup];

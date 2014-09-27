@@ -1264,8 +1264,6 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         BOOL setMass = [[physicsBody objectForKey:@"setMass"] boolValue];
         BOOL setMoment = [[physicsBody objectForKey:@"setMoment"] boolValue];
         
-        BOOL scaleByResourceScale = [[physicsBody objectForKey:@"scaleByResourceScale"] boolValue];
-        
         int categoryBitmask = (int)[[physicsBody objectForKey:@"categoryBitmask"] integerValue];
         int contactTestBitmask= (int)[[physicsBody objectForKey:@"contactTestBitmask"] integerValue];
         int collisionBitmask= (int)[[physicsBody objectForKey:@"collisionBitmask"] integerValue];
@@ -1281,8 +1279,6 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         // Write physics body
         [self writeInt:bodyShape withSign:NO];
         [self writeFloat:cornerRadius];
-        [self writeBool:scaleByResourceScale];
-        
         
         if(bodyShape == 1)
         {

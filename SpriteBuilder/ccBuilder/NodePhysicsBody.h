@@ -50,8 +50,6 @@ typedef enum
 @property (nonatomic,assign) float mass;
 @property (nonatomic,assign) float moment;
 
-@property (nonatomic,assign) BOOL scaleByResourceScale;
-
 @property (nonatomic,assign) float density;
 @property (nonatomic,assign) float friction;
 @property (nonatomic,assign) float elasticity;
