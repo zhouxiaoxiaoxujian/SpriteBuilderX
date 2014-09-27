@@ -215,12 +215,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         
         CCTexture* deviceTexture = NULL;
         
-        DeviceBorder *deviceBorder = [appDelegate orientedDeviceTypeForSize:stageBgLayer.contentSize];
+        CGSize realStageBgLayer = CGSizeMake(stageBgLayer.contentSize.width * [CCDirector sharedDirector].contentScaleFactor,stageBgLayer.contentSize.height * [CCDirector sharedDirector].contentScaleFactor);
+        
+        DeviceBorder *deviceBorder = [appDelegate orientedDeviceTypeForSize:realStageBgLayer];
         
         if(deviceBorder)
         {
             deviceTexture = [[CCTextureCache sharedTextureCache] addImage:deviceBorder.frameName];
-            borderDeviceScale = [CCDirector sharedDirector].contentScaleFactor * deviceBorder.scale;
+            borderDeviceScale = deviceBorder.scale;
             if (deviceTexture)
             {
                 if (deviceBorder.rotated) borderDevice.rotation = 90;

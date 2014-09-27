@@ -118,7 +118,7 @@ __strong NSDictionary* renamedProperties = nil;
     return bf;
 }
 
-+ (void) setProp:(NSString*)name ofType:(NSString*)type toValue:(id)serializedValue forNode:(CCNode*)node parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph
++ (void) setProp:(NSString*)name ofType:(NSString*)type toValue:(id)serializedValue forNode:(CCNode*)node parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph fileVersion:(int)fileVersion
 {
     // Handle removed ignoreAnchorPointForPosition property
     if ([name isEqualToString:@"ignoreAnchorPointForPosition"]) return;
@@ -157,6 +157,13 @@ __strong NSDictionary* renamedProperties = nil;
             posType.corner = [[serializedValue objectAtIndex:2] intValue];
             posType.xUnit = [[serializedValue objectAtIndex:3] intValue];
             posType.yUnit = [[serializedValue objectAtIndex:4] intValue];
+            if(fileVersion<5)
+            {
+                if(posType.xUnit == CCPositionUnitUIPoints)
+                    posType.xUnit = CCPositionUnitPoints;
+                if(posType.yUnit == CCPositionUnitUIPoints)
+                    posType.yUnit = CCPositionUnitPoints;
+            }
         }
         [PositionPropertySetter setPosition:NSMakePoint(x, y) type:posType forNode:node prop:name];
     }
@@ -208,6 +215,17 @@ __strong NSDictionary* renamedProperties = nil;
             // Uses new content size type
             sizeType.widthUnit = [[serializedValue objectAtIndex:2] intValue];
             sizeType.heightUnit = [[serializedValue objectAtIndex:3] intValue];
+            if(fileVersion<5)
+            {
+                if(sizeType.widthUnit == CCSizeUnitInsetUIPoints)
+                    sizeType.widthUnit = CCSizeUnitInsetPoints;
+                else if(sizeType.widthUnit == CCSizeUnitUIPoints)
+                    sizeType.widthUnit = CCSizeUnitPoints;
+                if(sizeType.heightUnit == CCSizeUnitInsetUIPoints)
+                    sizeType.heightUnit = CCSizeUnitInsetPoints;
+                else if(sizeType.heightUnit == CCSizeUnitUIPoints)
+                    sizeType.heightUnit = CCSizeUnitPoints;
+            }
         }
         
         NSSize size =  NSMakeSize(w, h);
@@ -456,12 +474,12 @@ __strong NSDictionary* renamedProperties = nil;
     }
 }
 
-+ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize
++ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize fileVersion:(int)fileVersion
 {
-    return [CCBReaderInternal nodeGraphFromDictionary:dict parentSize:parentSize withParentGraph:nil];
+    return [CCBReaderInternal nodeGraphFromDictionary:dict parentSize:parentSize withParentGraph:nil fileVersion:fileVersion];
 }
 
-+ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph
++ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph fileVersion:(int)fileVersion
 {
     if (!renamedProperties)
     {
@@ -529,7 +547,7 @@ __strong NSDictionary* renamedProperties = nil;
         }
         else
         {
-            [CCBReaderInternal setProp:name ofType:type toValue:serializedValue forNode:node parentSize:parentSize withParentGraph:parentGraph];
+            [CCBReaderInternal setProp:name ofType:type toValue:serializedValue forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
         }
         id baseValue = [propInfo objectForKey:@"baseValue"];
         if (baseValue) [node setBaseValue:baseValue forProperty:name];
@@ -573,7 +591,7 @@ __strong NSDictionary* renamedProperties = nil;
     CGSize contentSize = node.contentSize;
     for (int i = 0; i < [children count]; i++)
     {
-        CCNode* child = [CCBReaderInternal nodeGraphFromDictionary:[children objectAtIndex:i] parentSize:contentSize];
+        CCNode* child = [CCBReaderInternal nodeGraphFromDictionary:[children objectAtIndex:i] parentSize:contentSize fileVersion:fileVersion];
 		
 		if (child)
 		{
@@ -651,7 +669,7 @@ __strong NSDictionary* renamedProperties = nil;
         return NULL;
     }
     
-    return [CCBReaderInternal nodeGraphFromDictionary:nodeGraph parentSize:parentSize];
+    return [CCBReaderInternal nodeGraphFromDictionary:nodeGraph parentSize:parentSize fileVersion:fileVersion];
 }
 
 

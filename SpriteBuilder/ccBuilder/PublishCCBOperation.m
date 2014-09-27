@@ -65,6 +65,58 @@
     }
 }
 
+-(void)fixupDict:(NSMutableDictionary*)dict
+{
+    NSMutableArray *properties = dict[@"properties"];
+    for (NSMutableDictionary *property in properties)
+    {
+        NSString* type = [property objectForKey:@"type"];
+        if([type isEqualToString:@"Position"])
+        {
+            NSMutableArray* value = [property objectForKey:@"value"];
+            if(value)
+            {
+                CCPositionUnit xUnit = [[value objectAtIndex:3] intValue];
+                CCPositionUnit yUnit = [[value objectAtIndex:4] intValue];
+                if(xUnit == CCPositionUnitUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCPositionUnitPoints] atIndexedSubscript:3];
+                if(yUnit == CCPositionUnitUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCPositionUnitPoints] atIndexedSubscript:4];
+            }
+
+        }
+        if([type isEqualToString:@"Size"])
+        {
+            NSMutableArray* value = [property objectForKey:@"value"];
+            if(value)
+            {
+                CCSizeUnit widthUnit = [[value objectAtIndex:2] intValue];
+                CCSizeUnit heightUnit = [[value objectAtIndex:3] intValue];
+                
+                if(widthUnit == CCSizeUnitInsetUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCSizeUnitInsetPoints] atIndexedSubscript:2];
+                else if(widthUnit == CCSizeUnitUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCSizeUnitPoints] atIndexedSubscript:2];
+                if(heightUnit == CCSizeUnitInsetUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCSizeUnitInsetPoints] atIndexedSubscript:3];
+                else if(heightUnit == CCSizeUnitUIPoints)
+                    [value setObject:[NSNumber numberWithInt:CCSizeUnitPoints] atIndexedSubscript:3];
+            }
+            
+        }
+
+    }
+    
+    if(dict[@"children"])
+    {
+        for (NSMutableDictionary * child in dict[@"children"])
+        {
+            [self fixupDict:child];
+        }
+        
+    }
+}
+
 - (BOOL)publishCCBFile:(NSString *)srcFile to:(NSString *)dstFile
 {
     self.currentWorkingFile = [dstFile lastPathComponent];
@@ -84,6 +136,9 @@
         [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to publish ccb-file. File is in invalid format: %@", srcFile] isFatal:NO];
         return YES;
     }
+    
+    if([doc[@"fileVersion"] intValue]<5)
+        [self fixupDict:doc[@"nodeGraph"]];
 
     [self validateJointsInDocument:doc];
 

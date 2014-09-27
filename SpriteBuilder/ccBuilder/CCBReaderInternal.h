@@ -25,20 +25,20 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-#define kCCBFileFormatVersion 4
+#define kCCBFileFormatVersion 5
 
 @interface CCBReaderInternal : NSObject
 
 + (CCColor*) deserializeColor4:(id) val;
 
 //+ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict;
-+ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize;
++ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize fileVersion:(int)version;
 //+ (CCNode*) nodeGraphFromDocumentDictionary:(NSDictionary*) dict;
 + (CCNode*) nodeGraphFromDocumentDictionary:(NSDictionary *)dict parentSize:(CGSize) parentSize;
 //+ (void) setProp:(NSString*)name ofType:(NSString*)type toValue:(id)serializedValue forNode:(CCNode*)node;
 
-+ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph;
++ (CCNode*) nodeGraphFromDictionary:(NSDictionary*) dict parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph fileVersion:(int)version;
 
-+ (void) setProp:(NSString*)name ofType:(NSString*)type toValue:(id)serializedValue forNode:(CCNode*)node parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph;
++ (void) setProp:(NSString*)name ofType:(NSString*)type toValue:(id)serializedValue forNode:(CCNode*)node parentSize:(CGSize)parentSize withParentGraph:(CCNode*)parentGraph fileVersion:(int)version;
 + (void)postDeserializationFixup:(CCNode*)node;
 @end

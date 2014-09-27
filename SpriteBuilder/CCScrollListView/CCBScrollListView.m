@@ -269,7 +269,7 @@
                 && [[doc objectForKey:@"fileVersion"] intValue] <= kCCBFileFormatVersion)
             {
                 // Parse the node graph
-                ccbFile = [CCBReaderInternal nodeGraphFromDictionary:[doc objectForKey:@"nodeGraph"] parentSize:parentSize];
+                ccbFile = [CCBReaderInternal nodeGraphFromDictionary:[doc objectForKey:@"nodeGraph"] parentSize:parentSize fileVersion:[[doc objectForKey:@"fileVersion"] intValue]];
             }
             
             // Get first timeline
