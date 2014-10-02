@@ -42,18 +42,6 @@
     [self.sprite setFlipY:flipY];
 }
 
--(void)setMidpoint:(CGPoint)midpoint
-{
-    [super setMidpoint:midpoint];
-    [super performSelector:@selector(updateProgress)];
-}
-
--(void)setBarChangeRate:(CGPoint)barChangeRate
-{
-    [super setBarChangeRate:barChangeRate];
-    [super performSelector:@selector(updateProgress)];
-}
-
 -(CCSpriteFrame *)spriteFrame
 {
     return self.sprite.spriteFrame;
