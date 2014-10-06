@@ -243,6 +243,8 @@ __strong NSDictionary* renamedProperties = nil;
             if ([(NSArray*)serializedValue count] == 4)
             {
                 scaleType = [[serializedValue objectAtIndex:3] intValue];
+                if(fileVersion<5)
+                    scaleType = scaleType & ~kCCBScaleFlagMultiplyByResourceScale;
             }
         }
         [PositionPropertySetter setScaledX:x Y:y type:scaleType forNode:node prop:name];
@@ -282,6 +284,8 @@ __strong NSDictionary* renamedProperties = nil;
         {
             f = [[serializedValue objectAtIndex:0] floatValue];
             type = [[serializedValue objectAtIndex:1] intValue];
+            if(fileVersion<5)
+                type = type & ~kCCBScaleFlagMultiplyByResourceScale;
         }
         [PositionPropertySetter setFloatScale:f type:type forNode:node prop:name];
     }

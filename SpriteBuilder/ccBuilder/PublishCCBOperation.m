@@ -85,7 +85,7 @@
             }
 
         }
-        if([type isEqualToString:@"Size"])
+        else if([type isEqualToString:@"Size"])
         {
             NSMutableArray* value = [property objectForKey:@"value"];
             if(value)
@@ -103,6 +103,32 @@
                     [value setObject:[NSNumber numberWithInt:CCSizeUnitPoints] atIndexedSubscript:3];
             }
             
+        }
+        else if ([type isEqualToString:@"FloatScale"])
+        {
+            NSMutableArray* value = [property objectForKey:@"value"];
+            if(value)
+            {
+                int type = [[value objectAtIndex:1] intValue];
+                if(type & 1)
+                {
+                    type = type & ~1;
+                    [value setObject:[NSNumber numberWithInt:type] atIndexedSubscript:1];
+                }
+            }
+        }
+        else if ([type isEqualToString:@"Scale"] || [type isEqualToString:@"ScaleLock"])
+        {
+            NSMutableArray* value = [property objectForKey:@"value"];
+            if(value)
+            {
+                int scaleType = [[value objectAtIndex:3] intValue];
+                if(scaleType & 1)
+                {
+                    scaleType = scaleType & ~(int)1;
+                    [value setObject:[NSNumber numberWithInt:scaleType] atIndexedSubscript:3];
+                }
+            }
         }
 
     }
