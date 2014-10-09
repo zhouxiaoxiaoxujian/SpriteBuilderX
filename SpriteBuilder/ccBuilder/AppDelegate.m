@@ -3216,7 +3216,7 @@ typedef enum
 - (void) setResolution:(int)r
 {
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    float oldWidth = self.projectSettings.defaultOrientation?res.height:res.width * [CCDirector sharedDirector].contentScaleFactor;
+    float oldSize = self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width;
     
     
     currentDocument.currentResolution = r;
@@ -3224,9 +3224,9 @@ typedef enum
     [self updatePositionScaleFactor];
     
     res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    float curWidth = self.projectSettings.defaultOrientation?res.height:res.width * [CCDirector sharedDirector].contentScaleFactor;
-    if(oldWidth != 0 && curWidth != 0)
-        [CocosScene cocosScene].stageZoom *= oldWidth/curWidth;
+    float curSize = self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width;
+    if(oldSize != 0 && curSize != 0)
+        [CocosScene cocosScene].stageZoom *= oldSize/curSize;
     
     //
     // No need to call setStageSize here, since it gets called from reloadResources
@@ -3397,9 +3397,7 @@ typedef enum
     float maxZoom = 8;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     if(res.width!=0&&res.height!=0)
-        maxZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
-    else
-        maxZoom *= res.resourceScale;
+        maxZoom /= (self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width) / 768.0;
     
     float zoom = [cs stageZoom];
     zoom *= 1.2;
@@ -3411,12 +3409,10 @@ typedef enum
 {
     CocosScene* cs = [CocosScene cocosScene];
     
-    float minZoom = 0.05f;
+    float minZoom = 0.1f;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     if(res.width!=0&&res.height!=0)
-        minZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
-    else
-        minZoom *= res.resourceScale;
+        minZoom /= (self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width) / 768.0;
     
     float zoom = [cs stageZoom];
     zoom *= 1/1.2f;
