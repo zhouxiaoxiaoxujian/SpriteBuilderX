@@ -726,6 +726,7 @@
         NSLog(@"ERROR: optipng was not found in bundle.");
         return;
     }
+    NSMutableDictionary *optyPngCache = [NSMutableDictionary dictionary];
 
     for (NSString *pngFile in _publishedPNGFiles)
     {
@@ -734,6 +735,7 @@
                                                                                                      statusProgress:_publishingTaskStatusProgress];
         operation.filePath = pngFile;
         operation.optiPngPath = pathToOptiPNG;
+        operation.optiPngCache = optyPngCache;
 
         [_publishingQueue addOperation:operation];
     }
