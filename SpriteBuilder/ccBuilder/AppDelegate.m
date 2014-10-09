@@ -3133,6 +3133,8 @@ static BOOL hideAllToNextSeparator;
         return;
     }
     
+    [self.projectSettings store];
+    
     if (currentDocument && currentDocument.fileName)
     {
         [self saveFile:currentDocument.fileName];
@@ -3156,6 +3158,8 @@ static BOOL hideAllToNextSeparator;
             [doc saveDocument:sender];
         }
     }
+    
+    [self.projectSettings store];
     
     // Save all CCB files
     CCBDocument* oldCurDoc = currentDocument;
@@ -3192,6 +3196,8 @@ static BOOL hideAllToNextSeparator;
         
         return;
     }
+    
+    [self.projectSettings store];
     
     // Check if there are unsaved documents
     if ([self hasDirtyDocument])
@@ -4836,27 +4842,26 @@ static BOOL hideAllToNextSeparator;
 
 - (BOOL) windowShouldClose:(id)sender
 {
-    if ([self hasDirtyDocument])
+    [self.projectSettings store];
+    
+    NSAlert* alert = [NSAlert alertWithMessageText:@"Quit SpriteBuilder"
+                                     defaultButton:@"Cancel"
+                                   alternateButton:@"Quit"
+                                       otherButton:@"Save All & Quit"
+                         informativeTextWithFormat:@"There are unsaved documents. If you quit now you will lose any changes you have made."];
+    
+    [alert setAlertStyle:NSWarningAlertStyle];
+    NSInteger result = [alert runModal];
+    
+    if (result == NSAlertOtherReturn)
     {
-        NSAlert* alert = [NSAlert alertWithMessageText:@"Quit SpriteBuilder"
-                                         defaultButton:@"Cancel"
-                                       alternateButton:@"Quit"
-                                           otherButton:@"Save All & Quit"
-                             informativeTextWithFormat:@"There are unsaved documents. If you quit now you will lose any changes you have made."];
-
-        [alert setAlertStyle:NSWarningAlertStyle];
-        NSInteger result = [alert runModal];
-
-        if (result == NSAlertOtherReturn)
-        {
-            [self forceSaveAllDocuments:nil];
-            return YES;
-        }
-
-        if (result == NSAlertDefaultReturn)
-        {
-            return NO;
-        }
+        [self forceSaveAllDocuments:nil];
+        return YES;
+    }
+    
+    if (result == NSAlertDefaultReturn)
+    {
+        return NO;
     }
     return YES;
 }

@@ -166,6 +166,9 @@
         else if (res.type == kCCBResTypeDirectory && [res.data isDynamicSpriteSheet])
         {
             // Setup preview for smart sprite sheet
+            _format_padding = [[settings valueForResource:res andKey:@"format_padding"] intValue];
+            _format_extrude = [[settings valueForResource:res andKey:@"format_extrude"] intValue];
+            
             self.format_padding = [[settings valueForResource:res andKey:@"format_padding"] intValue];
             self.format_extrude = [[settings valueForResource:res andKey:@"format_extrude"] intValue];
             
@@ -419,39 +422,47 @@
 
 - (void) setFormat_padding:(int)padding
 {
-    _format_padding = padding;
-    
-    ProjectSettings* settings = [self appDelegate].projectSettings;
-    
-    if (_previewedResource)
+    if(_format_padding != padding)
     {
-        if (padding>0)
+        _format_padding = padding;
+        
+        ProjectSettings* settings = [self appDelegate].projectSettings;
+        
+        if (_previewedResource)
         {
-            [settings setValue:[NSNumber numberWithInt:padding] forResource:_previewedResource andKey:@"format_padding"];
+            if (padding>0)
+            {
+                [settings setValue:[NSNumber numberWithInt:padding] forResource:_previewedResource andKey:@"format_padding"];
+            }
+            else
+            {
+                [settings removeObjectForResource:_previewedResource andKey:@"format_padding"];
+            }
         }
-        else
-        {
-            [settings removeObjectForResource:_previewedResource andKey:@"format_padding"];
-        }
+        [settings markAsDirtyResource:_previewedResource];
     }
 }
 
 - (void) setFormat_extrude:(int)extrude
 {
-    _format_extrude = extrude;
-    
-    ProjectSettings* settings = [self appDelegate].projectSettings;
-    
-    if (_previewedResource)
+    if(_format_extrude != extrude)
     {
-        if (extrude>0)
+        _format_extrude = extrude;
+        
+        ProjectSettings* settings = [self appDelegate].projectSettings;
+        
+        if (_previewedResource)
         {
-            [settings setValue:[NSNumber numberWithInt:extrude] forResource:_previewedResource andKey:@"format_extrude"];
+            if (extrude>0)
+            {
+                [settings setValue:[NSNumber numberWithInt:extrude] forResource:_previewedResource andKey:@"format_extrude"];
+            }
+            else
+            {
+                [settings removeObjectForResource:_previewedResource andKey:@"format_extrude"];
+            }
         }
-        else
-        {
-            [settings removeObjectForResource:_previewedResource andKey:@"format_extrude"];
-        }
+        [settings markAsDirtyResource:_previewedResource];
     }
 }
 
