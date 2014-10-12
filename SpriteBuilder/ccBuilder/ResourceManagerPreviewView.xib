@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
@@ -18,6 +17,7 @@
                 <outlet property="previewTablet" destination="107" id="128"/>
                 <outlet property="previewTablethd" destination="109" id="127"/>
                 <outlet property="viewCCB" destination="1105" id="1111"/>
+                <outlet property="viewDirectory" destination="JXh-1B-oNm" id="Mml-bI-ePv"/>
                 <outlet property="viewGeneric" destination="551" id="725"/>
                 <outlet property="viewImage" destination="1" id="726"/>
                 <outlet property="viewSound" destination="978" id="1049"/>
@@ -964,12 +964,12 @@
                 <popUpButton verticalHuggingPriority="750" id="741">
                     <rect key="frame" x="41" y="29" width="94" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="799" id="793">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="793">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                         <menu key="menu" title="OtherViews" id="794">
                             <items>
-                                <menuItem title="PNG" state="on" tag="1" id="799"/>
+                                <menuItem title="PNG" tag="1" id="799"/>
                                 <menuItem title="PNG 8-bit" tag="2" hidden="YES" id="800"/>
                                 <menuItem isSeparatorItem="YES" id="802"/>
                                 <menuItem title="PVR RGBA8888" tag="3" id="801"/>
@@ -1092,6 +1092,44 @@
                         </binding>
                     </connections>
                 </imageView>
+            </subviews>
+        </customView>
+        <customView id="JXh-1B-oNm">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="238"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView id="MF5-qp-o5l" customClass="CCBImageView">
+                    <rect key="frame" x="2" y="22" width="246" height="214"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="ui-nopreview" id="38a-PC-S55"/>
+                    <connections>
+                        <action selector="droppedFile:" target="-2" id="kDk-rd-haI"/>
+                        <binding destination="-2" name="enabled2" keyPath="enabled" previousBinding="poU-Ra-7Ye" id="215-fc-Aoq">
+                            <dictionary key="options">
+                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                <integer key="NSNullPlaceholder" value="-1"/>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="enabled" keyPath="appDelegate.projectSettings" id="poU-Ra-7Ye">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSIsNotNil</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </imageView>
+                <button id="2Zi-dl-3ya">
+                    <rect key="frame" x="1" y="4" width="246" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="check" title="Skip on publish" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="yGo-G8-UoS">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="skip" id="Y1e-aO-Q3B"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <customView id="1105">

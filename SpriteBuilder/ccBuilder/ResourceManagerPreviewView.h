@@ -39,6 +39,7 @@
     IBOutlet NSView* viewSpriteSheet;
     IBOutlet NSView* viewSound;
     IBOutlet NSView* viewCCB;
+    IBOutlet NSView* viewDirectory;
     
     // Image previews
     IBOutlet CCBImageView* __weak previewMain;
@@ -87,6 +88,8 @@
 
 @property (nonatomic,readwrite) int format_padding;
 @property (nonatomic,readwrite) int format_extrude;
+
+@property (nonatomic,readwrite) BOOL skip;
 
 @property (nonatomic,readwrite) int  format_ios;
 @property (nonatomic,readwrite) BOOL format_ios_dither;
