@@ -177,6 +177,9 @@
 {
 	NSString *outDir = [self outputDirectory:subPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if([[_projectSettings valueForRelPath:subPath andKey:@"isSkipDirectory"] boolValue])
+        return YES;
 
     BOOL isGeneratedSpriteSheet = [[_projectSettings valueForRelPath:subPath andKey:@"isSmartSpriteSheet"] boolValue];
     if (!isGeneratedSpriteSheet)

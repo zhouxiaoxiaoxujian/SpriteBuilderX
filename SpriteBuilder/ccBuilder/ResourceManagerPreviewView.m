@@ -103,6 +103,7 @@
     [viewSpriteSheet setHidden:YES];
     [viewSound setHidden:YES];
     [viewCCB setHidden:YES];
+    [viewDirectory setHidden:YES];
     
     ProjectSettings* settings = [self appDelegate].projectSettings;
     
@@ -234,6 +235,11 @@
             [previewCCB setImage:img];
             
             [viewCCB setHidden:NO];
+        }
+        else if (res.type == kCCBResTypeDirectory)
+        {
+            self.skip = [[settings valueForResource:res andKey:@"isSkipDirectory"] boolValue];
+            [viewDirectory setHidden:NO];
         }
         else
         {
@@ -438,8 +444,8 @@
             {
                 [settings removeObjectForResource:_previewedResource andKey:@"format_padding"];
             }
+            [settings markAsDirtyResource:_previewedResource];
         }
-        [settings markAsDirtyResource:_previewedResource];
     }
 }
 
@@ -461,8 +467,8 @@
             {
                 [settings removeObjectForResource:_previewedResource andKey:@"format_extrude"];
             }
+            [settings markAsDirtyResource:_previewedResource];
         }
-        [settings markAsDirtyResource:_previewedResource];
     }
 }
 
@@ -614,6 +620,29 @@
     
     [ResourceManager touchResource:_previewedResource];
     [[AppDelegate appDelegate] reloadResources];
+}
+
+- (void) setSkip:(BOOL)skip
+{
+    if(_skip != skip)
+    {
+        _skip = skip;
+        
+        ProjectSettings* settings = [self appDelegate].projectSettings;
+        
+        if (_previewedResource)
+        {
+            if (skip)
+            {
+                [settings setValue:[NSNumber numberWithBool:skip] forResource:_previewedResource andKey:@"isSkipDirectory"];
+            }
+            else
+            {
+                [settings removeObjectForResource:_previewedResource andKey:@"isSkipDirectory"];
+            }
+            [settings markAsDirtyResource:_previewedResource];
+        }
+    }
 }
 
 - (void) setFormat_ios_sound:(int)format_ios_sound
