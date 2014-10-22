@@ -45,21 +45,27 @@
 {
     [super windowDidLoad];
     
-    // Load version file into version text field
-    NSString* versionPath = [[NSBundle mainBundle] pathForResource:@"Version" ofType:@"txt" inDirectory:@"Generated"];
+    //@"CFBundleShortVersionString"
+    //kCFBundleVersionKey
     
-    NSString* version = [NSString stringWithContentsOfFile:versionPath encoding:NSUTF8StringEncoding error:NULL];
+    NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)@"CFBundleShortVersionString"];
+    NSString* buildCode = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
     
     if (version)
     {
-        [txtVersion setStringValue:version];
+        [txtVersion setStringValue:[NSString stringWithFormat:@"%@(%@)", version, buildCode]];
     }
     else
     {
         [btnVersion setEnabled:NO];
     }
     
-    self.version = [version substringWithRange:NSMakeRange(version.length-11, 10)];
+    NSArray *array = [version componentsSeparatedByString:@"."];
+    
+    if(array.count >= 2)
+        self.version = [NSString stringWithFormat:@"v%@.%@",array[0],array[1]];
+    else
+        self.version = [NSString stringWithFormat:@"v%@",version];
     
     // Add close button
     NSButton* closeButton = [NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:NSTitledWindowMask];
@@ -72,7 +78,7 @@
 {
     if (self.version)
     {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/apportable/SpriteBuilder/tree/%@",self.version]]];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/newnon/SpriteBuilder/tree/%@",self.version]]];
     }
     [self.window orderOut:sender];
 }
