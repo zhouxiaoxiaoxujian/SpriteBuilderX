@@ -283,8 +283,7 @@ static SequencerHandler* sharedSequencerHandler;
 - (void)expandParentsOfSelectedNodes:(SceneGraph *)sceneGraph node:(CCNode *)node
 {
 	NSMutableArray *nodesToExpand = [NSMutableArray array];
-	while ((node != sceneGraph.rootNode
-			|| node != sceneGraph.joints.node)
+	while ((node != sceneGraph.joints.node)
 		   && node != NULL)
 	{
 		[nodesToExpand insertObject:node atIndex:0];
@@ -1158,7 +1157,7 @@ static SequencerHandler* sharedSequencerHandler;
 {
 	SequencerExpandBtnCell* expCell = cell;
 	expCell.isExpanded = node.seqExpanded;
-    expCell.canExpand = (node.keyframesCanBeEdited && !node.plugIn.isJoint);
+	expCell.canExpand = !node.plugIn.isJoint;
 	expCell.node = node;
 }
 
@@ -1328,8 +1327,7 @@ static SequencerHandler* sharedSequencerHandler;
     {
         CCNode* node = item;
 
-		if ((!node.keyframesCanBeEdited && !node.seqExpanded)
-			|| node.plugIn.isJoint)
+		if (!node.seqExpanded || node.plugIn.isJoint)
 		{
 			return;
 		}

@@ -206,7 +206,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         stageBgLayer.visible = YES;
     }
     
-        if (type == kCCBBorderDevice)
+    if (type == kCCBBorderDevice)
     {
         [borderBottom setOpacity:1.0f];
         [borderTop setOpacity:1.0f];

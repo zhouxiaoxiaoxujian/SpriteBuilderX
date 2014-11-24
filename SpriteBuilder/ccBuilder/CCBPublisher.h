@@ -15,7 +15,7 @@
                      warnings:(CCBWarnings *)someWarnings
                 finishedBlock:(PublisherFinishBlock)finishBlock;
 
-- (void)start;
+- (bool)start;
 - (void)startAsync;
 
 - (void)cancel;

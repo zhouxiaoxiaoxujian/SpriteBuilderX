@@ -33,8 +33,7 @@
 @synthesize ext;
 @synthesize resourceScale;
 @synthesize mainScale;
-@synthesize scaleX;
-@synthesize scaleY;
+@synthesize additionalScale;
 @synthesize centeredOrigin;
 @synthesize exts;
 
@@ -50,8 +49,7 @@
     self.ext = @" ";
     self.resourceScale = 1;
     self.mainScale = 1;
-    self.scaleX = 1;
-    self.scaleY = 1;
+    self.additionalScale = 1;
     
     return self;
 }
@@ -70,16 +68,14 @@
     //float scale = [[serialization objectForKey:@"scale"] floatValue];
     self.resourceScale = [[serialization objectForKey:@"resourceScale"] floatValue];
     self.mainScale = [[serialization objectForKey:@"mainScale"] floatValue];
-    self.scaleX = [[serialization objectForKey:@"scaleX"] floatValue];
-    self.scaleY = [[serialization objectForKey:@"scaleY"] floatValue];
+    self.additionalScale = [[serialization objectForKey:@"additionalScale"] floatValue];
     self.centeredOrigin = [[serialization objectForKey:@"centeredOrigin"] boolValue];
     if(self.resourceScale == 0)
     {
         float scale = [[serialization objectForKey:@"scale"] floatValue];
         self.resourceScale = scale;
         self.mainScale = scale;
-        self.scaleX = scale;
-        self.scaleY = scale;
+        self.additionalScale = scale;
     }
     
     return self;
@@ -107,8 +103,7 @@
     [dict setObject:ext forKey:@"ext"];
     [dict setObject:[NSNumber numberWithFloat:resourceScale] forKey:@"resourceScale"];
     [dict setObject:[NSNumber numberWithFloat:mainScale] forKey:@"mainScale"];
-    [dict setObject:[NSNumber numberWithFloat:scaleX] forKey:@"scaleX"];
-    [dict setObject:[NSNumber numberWithFloat:scaleY] forKey:@"scaleY"];
+    [dict setObject:[NSNumber numberWithFloat:additionalScale] forKey:@"additionalScale"];
     [dict setObject:[NSNumber numberWithBool:centeredOrigin] forKey:@"centeredOrigin"];
     
     return dict;
@@ -570,8 +565,7 @@
     copy.ext = ext;
     copy.resourceScale = resourceScale;
     copy.mainScale = mainScale;
-    copy.scaleX = scaleX;
-    copy.scaleY = scaleY;
+    copy.additionalScale = additionalScale;
     copy.centeredOrigin = centeredOrigin;
     
     return copy;

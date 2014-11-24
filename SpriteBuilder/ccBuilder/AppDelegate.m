@@ -202,7 +202,7 @@ static const int CCNODE_INDEX_LAST = -1;
 @synthesize playingBack;
 @dynamic	showJoints;
 
-static AppDelegate* sharedAppDelegate;
+static AppDelegate* sharedAppDelegate = nil;
 
 #pragma mark Setup functions
 
@@ -486,7 +486,7 @@ typedef enum
     NSLog(@"R:%f G:%f B:%f A:%f",calibratedColor.redComponent, calibratedColor.greenComponent, calibratedColor.blueComponent, calibratedColor.alphaComponent);
     
     // Load resource manager
-	[ResourceManager sharedManager];
+	[ResourceManager sharedManager].projectSettings = projectSettings;
     
 
     // Setup project display
@@ -608,7 +608,7 @@ typedef enum
     //[self updateJSControlledMenu];
     //[self updateDefaultBrowser];
     // Load plug-ins
-    [[PlugInManager sharedManager] loadPlugIns];
+    //[[PlugInManager sharedManager] loadPlugIns];
     
     [self setupPlugInNodeView];
     [self setupProjectViewTabBar];
@@ -1274,15 +1274,18 @@ typedef enum
     NSMutableArray* serializedResolutions = [doc objectForKey:@"resolutions"];
     if (serializedResolutions)
     {
-        // Load resolutions
         NSMutableArray* resolutions = [NSMutableArray array];
-        for (id serRes in serializedResolutions)
+        if((docDimType == kCCBDocDimensionsTypeNode) || (docDimType == kCCBDocDimensionsTypeLayer))
+             resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
+        else
         {
-            ResolutionSetting* resolution = [[ResolutionSetting alloc] initWithSerialization:serRes];
-            [resolutions addObject:resolution];
+            // Load resolutions
+            for (id serRes in serializedResolutions)
+            {
+                ResolutionSetting* resolution = [[ResolutionSetting alloc] initWithSerialization:serRes];
+                [resolutions addObject:resolution];
+            }
         }
-        
-        //resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
         
         currentDocument.docDimensionsType = docDimType;
         int currentResolution = [[doc objectForKey:@"currentResolution"] intValue];
@@ -1650,7 +1653,7 @@ typedef enum
 
     // Remove resource paths
     self.projectSettings = NULL;
-
+    [ResourceManager sharedManager].projectSettings = NULL;
     [[ResourceManager sharedManager] removeAllDirectories];
     
     // Remove language file
@@ -3222,7 +3225,8 @@ typedef enum
     
     res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     float curWidth = self.projectSettings.defaultOrientation?res.height:res.width * [CCDirector sharedDirector].contentScaleFactor;
-    [CocosScene cocosScene].stageZoom *= oldWidth/curWidth;
+    if(oldWidth != 0 && curWidth != 0)
+        [CocosScene cocosScene].stageZoom *= oldWidth/curWidth;
     
     //
     // No need to call setStageSize here, since it gets called from reloadResources
@@ -3392,7 +3396,10 @@ typedef enum
     
     float maxZoom = 8;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    maxZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    if(res.width!=0&&res.height!=0)
+        maxZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    else
+        maxZoom *= res.resourceScale;
     
     float zoom = [cs stageZoom];
     zoom *= 1.2;
@@ -3406,7 +3413,10 @@ typedef enum
     
     float minZoom = 0.05f;
     ResolutionSetting* res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    minZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    if(res.width!=0&&res.height!=0)
+        minZoom /= (self.projectSettings.defaultOrientation?res.width:res.height * [CCDirector sharedDirector].contentScaleFactor) / 768.0;
+    else
+        minZoom *= res.resourceScale;
     
     float zoom = [cs stageZoom];
     zoom *= 1/1.2f;

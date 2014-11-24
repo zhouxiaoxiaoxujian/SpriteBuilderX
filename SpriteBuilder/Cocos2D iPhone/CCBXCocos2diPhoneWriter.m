@@ -1342,9 +1342,9 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         
         BOOL scaleByResourceScale = [[physicsBody objectForKey:@"scaleByResourceScale"] boolValue];
         
-        unsigned int categoryBitmask = (unsigned int)[[physicsBody objectForKey:@"categoryBitmask"] integerValue];
-        unsigned int contactTestBitmask= (unsigned int)[[physicsBody objectForKey:@"contactTestBitmask"] integerValue];
-        unsigned int collisionBitmask= (unsigned int)[[physicsBody objectForKey:@"collisionBitmask"] integerValue];
+        int categoryBitmask = (int)[[physicsBody objectForKey:@"categoryBitmask"] integerValue];
+        int contactTestBitmask= (int)[[physicsBody objectForKey:@"contactTestBitmask"] integerValue];
+        int collisionBitmask= (int)[[physicsBody objectForKey:@"collisionBitmask"] integerValue];
         
         float velocityX = [[physicsBody objectForKey:@"velocityX"] floatValue];
         float velocityY = [[physicsBody objectForKey:@"velocityY"] floatValue];
@@ -1399,9 +1399,9 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         if(setMoment)
             [self writeFloat:moment];
         
-        [self writeInt:categoryBitmask withSign:NO];
-        [self writeInt:contactTestBitmask withSign:NO];
-        [self writeInt:collisionBitmask withSign:NO];
+        [self writeInt:categoryBitmask withSign:YES];
+        [self writeInt:contactTestBitmask withSign:YES];
+        [self writeInt:collisionBitmask withSign:YES];
         
         [self writeFloat:velocityX];
         [self writeFloat:velocityY];

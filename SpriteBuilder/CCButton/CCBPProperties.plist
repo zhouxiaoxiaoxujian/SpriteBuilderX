@@ -54,6 +54,28 @@
 	<key>properties</key>
 	<array>
 		<dict>
+			<key>codeConnection</key>
+			<true/>
+			<key>displayName</key>
+			<string>CCButton</string>
+			<key>name</key>
+			<string>CCButton</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>codeConnection</key>
+			<true/>
+			<key>displayName</key>
+			<string>Selector</string>
+			<key>type</key>
+			<string>Block</string>
+			<key>name</key>
+			<string>block</string>
+		</dict>
+		<dict>
 			<key>displayName</key>
 			<string>CCButton</string>
 			<key>name</key>

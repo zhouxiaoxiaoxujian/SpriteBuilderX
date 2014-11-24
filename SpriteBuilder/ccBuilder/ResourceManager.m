@@ -101,9 +101,16 @@
     
     directories = [[NSMutableDictionary alloc] init];
     activeDirectories = [[NSMutableArray alloc] init];
-    pathWatcher = [[SCEvents alloc] init];
-    pathWatcher.ignoreEventsFromSubDirs = YES;
-    pathWatcher.delegate = self;
+    if([AppDelegate appDelegate])
+    {
+        pathWatcher = [[SCEvents alloc] init];
+        pathWatcher.ignoreEventsFromSubDirs = YES;
+        pathWatcher.delegate = self;
+    }
+    else
+    {
+        pathWatcher = nil;
+    }
     resourceObserver = [[NSMutableArray alloc] init];
     
     [self loadFontListTTF];
@@ -130,11 +137,14 @@
 
 - (void) updatedWatchedPaths
 {
-    if (pathWatcher.isWatchingPaths)
+    if(pathWatcher)
     {
-        [pathWatcher stopWatchingPaths];
+        if (pathWatcher.isWatchingPaths)
+        {
+            [pathWatcher stopWatchingPaths];
+        }
+        [pathWatcher startWatchingPaths:[self getAddedDirs]];
     }
-    [pathWatcher startWatchingPaths:[self getAddedDirs]];
 }
 
 - (void) notifyResourceObserversResourceListUpdated
@@ -331,7 +341,7 @@
                 res.touched = YES;
                 continue;
             }
-            else if ([[AppDelegate appDelegate].currentDocument.filePath isEqualToString:file])
+            else if ([AppDelegate appDelegate] && [[AppDelegate appDelegate].currentDocument.filePath isEqualToString: file])
             {
                 // Skip the current document
                 res.touched = YES;
@@ -479,7 +489,7 @@
     }
     
     if (resourcesChanged) [self notifyResourceObserversResourceListUpdated];
-    if (needsUpdate)
+    if (needsUpdate && [AppDelegate appDelegate])
     {
         [[AppDelegate appDelegate] reloadResources];
     }

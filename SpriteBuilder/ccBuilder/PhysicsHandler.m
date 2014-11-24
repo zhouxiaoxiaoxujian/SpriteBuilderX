@@ -105,6 +105,18 @@
     self.selectedNodePhysicsBody.moment = INFINITY;
 }
 
+- (IBAction)velocityInf:(id)sender {
+       self.selectedNodePhysicsBody.velocityLimit = INFINITY;
+}
+
+- (IBAction)angularVelocityInf:(id)sender {
+       self.selectedNodePhysicsBody.angleVelocityLimit = INFINITY;
+}
+
+- (IBAction)applyPhysics:(id)sender {
+    [[AppDelegate appDelegate] saveUndoState];
+}
+
 - (void) awakeFromNib
 {
     _mouseDownInHandle = -1;

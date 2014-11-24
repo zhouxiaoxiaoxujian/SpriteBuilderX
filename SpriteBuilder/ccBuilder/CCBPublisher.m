@@ -55,7 +55,7 @@
     return self;
 }
 
-- (void)start
+- (bool)start
 {
     if (_publishingTargets.count == 0)
     {
@@ -63,11 +63,12 @@
         [_warnings setCurrentOSType:kCCBPublisherOSTypeNone];
         [_warnings addWarningWithDescription:@"Nothing to publish. Check Project Settings. Common cause: No package is set to publish \"in Main Project\" or \"as Zip file\"" isFatal:YES];
         [self callFinishedBlock];
-        return;
+        return false;
     }
 
     #ifndef TESTING
     NSLog(@"[PUBLISH] Start...");
+    printf("[PUBLISH] Start...\n");
     #endif
 
     [_publishingQueue setSuspended:YES];
@@ -79,25 +80,28 @@
         [CCBPublisherCacheCleaner cleanWithProjectSettings:_projectSettings];
     }
 
-    [self doPublish];
+    if(![self doPublish])
+        return NO;
 
     _publishingTaskStatusProgress.totalTasks = [_publishingQueue operationCount];
 
     [_publishingQueue setSuspended:NO];
     [_publishingQueue waitUntilAllOperationsAreFinished];
-
+	
     [self enqueuePostPublishingOperationsForAllTargets];
 
 	[_publishingQueue setSuspended:NO];
     [_publishingQueue waitUntilAllOperationsAreFinished];
-
+	
     [_projectSettings flagFilesDirtyWithWarnings:_warnings];
 
     #ifndef TESTING
     NSLog(@"[PUBLISH] Done in %.2f seconds.", [[NSDate date] timeIntervalSince1970] - startTime);
+    printf("[PUBLISH] Done in %.2f seconds.\n", [[NSDate date] timeIntervalSince1970] - startTime);
     #endif
 
     [self callFinishedBlock];
+    return YES;
 }
 
 - (void)callFinishedBlock

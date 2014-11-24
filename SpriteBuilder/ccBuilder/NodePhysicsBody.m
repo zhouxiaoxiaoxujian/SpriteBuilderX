@@ -52,6 +52,9 @@
     _contactTestBitmask = 0;
     _collisionBitmask = 0xFFFFFFFF;
     
+    _velocityLimit = INFINITY;
+    _angleVelocityLimit = INFINITY;
+    
     _massSet = NO;
     _momentSet = NO;
     
@@ -166,13 +169,13 @@
     [ser setObject:[NSNumber numberWithUnsignedInt:_contactTestBitmask] forKey:@"contactTestBitmask"];
     [ser setObject:[NSNumber numberWithUnsignedInt:_collisionBitmask] forKey:@"collisionBitmask"];
     
-    [ser setObject:[NSNumber numberWithBool:_velocityX] forKey:@"velocityX"];
-    [ser setObject:[NSNumber numberWithBool:_velocityY] forKey:@"velocityY"];
-    [ser setObject:[NSNumber numberWithBool:_velocityLimit] forKey:@"velocityLimit"];
-    [ser setObject:[NSNumber numberWithBool:_angleVelocity] forKey:@"angleVelocity"];
-    [ser setObject:[NSNumber numberWithBool:_angleVelocityLimit] forKey:@"angleVelocityLimit"];
-    [ser setObject:[NSNumber numberWithBool:_linearDamping] forKey:@"linearDamping"];
-    [ser setObject:[NSNumber numberWithBool:_angularDamping] forKey:@"angularDamping"];
+    [ser setObject:[NSNumber numberWithFloat:_velocityX] forKey:@"velocityX"];
+    [ser setObject:[NSNumber numberWithFloat:_velocityY] forKey:@"velocityY"];
+    [ser setObject:[NSNumber numberWithFloat:_velocityLimit] forKey:@"velocityLimit"];
+    [ser setObject:[NSNumber numberWithFloat:_angleVelocity] forKey:@"angleVelocity"];
+    [ser setObject:[NSNumber numberWithFloat:_angleVelocityLimit] forKey:@"angleVelocityLimit"];
+    [ser setObject:[NSNumber numberWithFloat:_linearDamping] forKey:@"linearDamping"];
+    [ser setObject:[NSNumber numberWithFloat:_angularDamping] forKey:@"angularDamping"];
     
     return ser;
 }

@@ -73,7 +73,7 @@ typedef struct _PVRTexHeader
     BOOL cancelled_;
 }
 
-@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, outputFormat=outputFormat_, imageFormat=imageFormat_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, dither=dither_, compress=compress_;
+@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, outputFormat=outputFormat_, imageFormat=imageFormat_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, extrude=extrude_, dither=dither_, compress=compress_;
 @synthesize errorMessage;
 
 + (Tupac*) tupac
@@ -93,6 +93,7 @@ typedef struct _PVRTexHeader
         self.maxTextureSize = 2048;
         self.padding = 1;
         self.trim = YES;
+        self.extrude = 1;
     }
     return self;
 }
@@ -291,10 +292,10 @@ typedef struct _PVRTexHeader
         NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
         
         int w = trimRect.size.width;
-        if (w > maxSideLen) maxSideLen = w + self.padding * 2;
+        if (w > maxSideLen) maxSideLen = w + (self.padding + self.extrude) * 2;
         
         int h = trimRect.size.height;
-        if (h > maxSideLen) maxSideLen = h + self.padding * 2;
+        if (h > maxSideLen) maxSideLen = h + (self.padding + self.extrude) * 2;
     }
     maxSideLen = upper_power_of_two(maxSideLen);
     
@@ -325,8 +326,8 @@ typedef struct _PVRTexHeader
             NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
             
             inRects.push_back(TPRectSize());
-            inRects[numImages].width = trimRect.size.width + self.padding * 2;
-            inRects[numImages].height = trimRect.size.height + self.padding * 2;
+            inRects[numImages].width = trimRect.size.width + (self.padding + self.extrude) * 2;
+            inRects[numImages].height = trimRect.size.height + (self.padding + self.extrude) * 2;
             inRects[numImages].idx = numImages;
             
             numImages++;
@@ -388,8 +389,13 @@ typedef struct _PVRTexHeader
        
         rot = outRects[index].rotated;
         
-        x += self.padding;
-        y += self.padding;
+        x += self.padding + self.extrude;
+        y += self.padding + self.extrude;
+        
+        int dx = 0;
+        int dy = 0;
+        int trimWidth = 0;
+        int trimHeight = 0;
         
         NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
         if (rot)
@@ -397,6 +403,10 @@ typedef struct _PVRTexHeader
             h = [[imageInfo objectForKey:@"width"] intValue];
             w = [[imageInfo objectForKey:@"height"] intValue];
             
+            dx = (w - trimRect.origin.y - trimRect.size.height);
+            dy = trimRect.origin.x;
+            trimWidth = trimRect.size.height;
+            trimHeight = trimRect.size.width;
             x -= (w - trimRect.origin.y - trimRect.size.height);
             y -= trimRect.origin.x;
         }
@@ -405,6 +415,10 @@ typedef struct _PVRTexHeader
             w = [[imageInfo objectForKey:@"width"] intValue];
             h = [[imageInfo objectForKey:@"height"] intValue];
             
+            dx = trimRect.origin.x;
+            dy = trimRect.origin.y;
+            trimWidth = trimRect.size.width;
+            trimHeight = trimRect.size.height;
             x -= trimRect.origin.x;
             y -= trimRect.origin.y;
         }
@@ -425,6 +439,35 @@ typedef struct _PVRTexHeader
         
         // Draw the image
         CGContextDrawImage(dstContext, CGRectMake(x, outH-y-h, w, h), srcImage);
+        
+        if(self.extrude>0)
+        {
+            CGImageRef left = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,h-dy));
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-h, self.extrude, h-dy), left);
+            CFRelease(left);
+            CGImageRef right = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,h-dy));
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-h, self.extrude, h-dy), right);
+            CFRelease(right);
+            CGImageRef bottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy - 1,w-dx,1));
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
+            CFRelease(bottom);
+            CGImageRef top = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,w-dx,1));
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-dy, w-dx, self.extrude), top);
+            CFRelease(top);
+            
+            CGImageRef leftTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,1));
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-dy, self.extrude, self.extrude), leftTop);
+            CFRelease(leftTop);
+            CGImageRef rightTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,1));
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-dy, self.extrude, self.extrude), rightTop);
+            CFRelease(rightTop);
+            CGImageRef leftBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy -1,1,1));
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
+            CFRelease(leftBottom);
+            CGImageRef rightBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,trimHeight + dy -1,1,1));
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
+            CFRelease(rightBottom);
+        }
         
         // Release the image
         CGImageRelease(srcImage);
@@ -512,10 +555,10 @@ typedef struct _PVRTexHeader
             
             bool rot = false;
             int x, y, w, h, wSrc, hSrc, xOffset, yOffset;
-            x = outRects[index].x + self.padding;
-            y = outRects[index].y + self.padding;
-            w = outRects[index].width - self.padding*2;
-            h = outRects[index].height - self.padding*2;
+            x = outRects[index].x + (self.padding + self.extrude);
+            y = outRects[index].y + (self.padding + self.extrude);
+            w = outRects[index].width - (self.padding + self.extrude)*2;
+            h = outRects[index].height - (self.padding + self.extrude)*2;
             wSrc = [[imageInfo objectForKey:@"width"] intValue];
             hSrc = [[imageInfo objectForKey:@"height"] intValue];
             NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];

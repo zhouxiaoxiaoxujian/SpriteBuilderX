@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -31,7 +31,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="15" id="17" customClass="CCBTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="585" height="117"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="579" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,8 +127,8 @@
                                                 <binding destination="4" name="selectedValue" keyPath="arrangedObjects.ext" id="56"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="60" minWidth="50" maxWidth="1000" id="20">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Res. scale">
+                                        <tableColumn width="86" minWidth="50" maxWidth="1000" id="20">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Resource scale">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,8 +167,8 @@
                                                 <binding destination="4" name="value" keyPath="arrangedObjects.mainScale" id="HDd-9M-7CZ"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="51" minWidth="50" maxWidth="1000" id="bzS-Me-oHe">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="X scale">
+                                        <tableColumn width="71" minWidth="50" maxWidth="1000" id="bzS-Me-oHe">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Add. scale">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,27 +184,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="4" name="value" keyPath="arrangedObjects.scaleX" id="Eg4-Fw-tIl"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="50" minWidth="50" maxWidth="1000" id="jfZ-Rn-2iy">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Y scale">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="480x320" id="zFv-Rp-3Es" customClass="CCBTextFieldCell">
-                                                <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.00" negativeFormat="#0.00" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="BuGGaLo" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="Uvr-jl-alH">
-                                                    <real key="minimum" value="0.0"/>
-                                                    <real key="maximum" value="10"/>
-                                                </numberFormatter>
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="4" name="value" keyPath="arrangedObjects.scaleY" id="cqH-tu-CSo"/>
+                                                <binding destination="4" name="value" keyPath="arrangedObjects.additionalScale" id="1U9-U1-ikP"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -221,7 +201,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="15">
-                            <rect key="frame" x="0.0" y="0.0" width="585" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="579" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -288,44 +268,44 @@ Gw
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
-                    <button id="ob4-7F-JeQ">
-                        <rect key="frame" x="280" y="36" width="19" height="19"/>
+                    <button verticalHuggingPriority="750" id="ob4-7F-JeQ">
+                        <rect key="frame" x="274" y="28" width="88" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockUnlockedTemplate" imagePosition="left" alignment="left" alternateImage="NSLockLockedTemplate" state="on" borderStyle="border" inset="2" id="69w-uV-TWC">
-                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <buttonCell key="cell" type="push" title="Min size" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="69w-uV-TWC">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="recallcScalesMinSize:" target="-2" id="Gf3-0s-Dwo"/>
                         </connections>
                     </button>
-                    <button id="Pxw-ck-DNV">
-                        <rect key="frame" x="338" y="36" width="19" height="19"/>
+                    <button verticalHuggingPriority="750" id="Pxw-ck-DNV">
+                        <rect key="frame" x="356" y="27" width="87" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockUnlockedTemplate" imagePosition="left" alignment="left" alternateImage="NSLockLockedTemplate" state="on" borderStyle="border" inset="2" id="EyS-oh-KDd">
-                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <buttonCell key="cell" type="push" title="Min scale" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" inset="2" id="EyS-oh-KDd">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="recallcScalesMinScale:" target="-2" id="0n0-d6-Nrp"/>
                         </connections>
                     </button>
-                    <button id="dEx-Ic-vkJ">
-                        <rect key="frame" x="367" y="36" width="19" height="19"/>
+                    <button verticalHuggingPriority="750" id="dEx-Ic-vkJ">
+                        <rect key="frame" x="356" y="2" width="87" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockUnlockedTemplate" imagePosition="left" alignment="left" alternateImage="NSLockLockedTemplate" state="on" borderStyle="border" inset="2" id="DZS-fr-PBO">
-                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <buttonCell key="cell" type="push" title="Max scale" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" inset="2" id="DZS-fr-PBO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="recallcScalesMaxScale:" target="-2" id="iT4-oZ-QQy"/>
                         </connections>
                     </button>
-                    <button id="xj4-FP-bcU">
-                        <rect key="frame" x="309" y="36" width="19" height="19"/>
+                    <button verticalHuggingPriority="750" id="xj4-FP-bcU">
+                        <rect key="frame" x="275" y="2" width="87" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockUnlockedTemplate" imagePosition="left" alignment="left" alternateImage="NSLockLockedTemplate" state="on" borderStyle="border" inset="2" id="MyW-Vc-aIb">
-                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <buttonCell key="cell" type="push" title="Max size" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" inset="2" id="MyW-Vc-aIb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
@@ -351,8 +331,6 @@ Gw
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
-        <image name="NSLockLockedTemplate" width="9" height="12"/>
-        <image name="NSLockUnlockedTemplate" width="9" height="12"/>
         <image name="NSRemoveTemplate" width="8" height="8"/>
     </resources>
 </document>

@@ -28,6 +28,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
+				<integer>0</integer>
 				<integer>1</integer>
 			</array>
 			<key>codeConnection</key>
@@ -35,25 +36,9 @@
 			<key>displayName</key>
 			<string>Selector</string>
 			<key>type</key>
-			<string>Block</string>
+			<string>BlockCCControl</string>
 			<key>name</key>
-			<string>block</string>
-		</dict>
-		<dict>
-			<key>codeConnection</key>
-			<true/>
-			<key>dontSetInEditor</key>
-			<true/>
-			<key>default</key>
-			<false/>
-			<key>defaultSerialization</key>
-			<false/>
-			<key>displayName</key>
-			<string>Continuous</string>
-			<key>type</key>
-			<string>Check</string>
-			<key>name</key>
-			<string>continuous</string>
+			<string>ccControl</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

@@ -76,7 +76,7 @@
 
 - (IBAction)blendAdditive:(id)sender
 {
-    self.blendSrc = GL_ONE;
+    self.blendSrc = GL_SRC_ALPHA;
     self.blendDst = GL_ONE;
 }
 
