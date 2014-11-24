@@ -1326,6 +1326,12 @@ static SequencerHandler* sharedSequencerHandler;
     else
     {
         CCNode* node = item;
+
+		if (node.plugIn.isJoint)
+		{
+			return;
+		}
+
 		node.seqExpanded = !node.seqExpanded;
     }
     
