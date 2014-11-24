@@ -91,6 +91,13 @@
         self.width = 0;
         self.height = 0;
     }
+    else if (objectType == kCCBNewDocTypeDialog)
+    {
+        // Node
+        self.canSetSize = NO;
+        self.width = 0;
+        self.height = 0;
+    }
     else if (objectType == kCCBNewDocTypeLayer)
     {
         // Layer

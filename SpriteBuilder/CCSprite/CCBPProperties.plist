@@ -139,14 +139,6 @@
 			<key>name</key>
 			<string>blendFunc</string>
 		</dict>
-		<dict>
-			<key>displayName</key>
-			<string>Effects</string>
-			<key>name</key>
-			<string>effects</string>
-			<key>type</key>
-			<string>EffectControl</string>
-		</dict>
 	</array>
 </dict>
 </plist>

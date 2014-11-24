@@ -86,6 +86,7 @@ enum {
     kCCBDocDimensionsTypeFullScreen,
     kCCBDocDimensionsTypeNode,
     kCCBDocDimensionsTypeLayer,
+    kCCBDocDimensionsTypeDialog,
 };
 
 

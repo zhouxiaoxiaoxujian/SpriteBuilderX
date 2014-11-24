@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4510"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NewDocWindowController">
@@ -17,8 +17,8 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
-        <window title="Create New Document" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="1">
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Create New Document" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="538" height="259"/>
@@ -91,62 +91,62 @@ Gw
                         </connections>
                     </textField>
                     <button id="GII-c6-xFL">
-                        <rect key="frame" x="81" y="125" width="64" height="64"/>
+                        <rect key="frame" x="39" y="125" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-scene" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jzI-TP-J1W">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                            <font key="font" size="10" name="LucidaGrande"/>
+                            <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                         <connections>
                             <action selector="pressedObjectTypeButton:" target="-2" id="c6m-Js-g93"/>
                         </connections>
                     </button>
-                    <button tag="1" id="BOn-7y-Z1Z">
-                        <rect key="frame" x="159" y="125" width="64" height="64"/>
+                    <button tag="2" id="BOn-7y-Z1Z">
+                        <rect key="frame" x="192" y="125" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-node" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ahQ-ra-qeO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                            <font key="font" size="10" name="LucidaGrande"/>
+                            <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                         <connections>
                             <action selector="pressedObjectTypeButton:" target="-2" id="UFN-Ga-a2K"/>
                         </connections>
                     </button>
-                    <button tag="2" id="Mdf-6M-gzu">
-                        <rect key="frame" x="237" y="125" width="64" height="64"/>
+                    <button tag="3" id="Mdf-6M-gzu">
+                        <rect key="frame" x="270" y="125" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-layer" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MuE-8A-l8I">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                            <font key="font" size="10" name="LucidaGrande"/>
+                            <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                         <connections>
                             <action selector="pressedObjectTypeButton:" target="-2" id="gz6-oh-mKD"/>
                         </connections>
                     </button>
-                    <button tag="3" id="B7g-Yq-1s6">
-                        <rect key="frame" x="315" y="125" width="64" height="64"/>
+                    <button tag="4" id="B7g-Yq-1s6">
+                        <rect key="frame" x="348" y="125" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-sprite" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="njb-Lq-rcU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                            <font key="font" size="10" name="LucidaGrande"/>
+                            <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                         <connections>
                             <action selector="pressedObjectTypeButton:" target="-2" id="fWH-lG-Ou8"/>
                         </connections>
                     </button>
-                    <button tag="4" id="r35-WD-JW2">
-                        <rect key="frame" x="393" y="125" width="64" height="64"/>
+                    <button tag="5" id="r35-WD-JW2">
+                        <rect key="frame" x="426" y="125" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-particlesystem" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VRo-3g-Y6E">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                            <font key="font" size="10" name="LucidaGrande"/>
+                            <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                         <connections>
                             <action selector="pressedObjectTypeButton:" target="-2" id="aaT-s5-dKJ"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ciu-RS-Cvd">
-                        <rect key="frame" x="94" y="109" width="38" height="14"/>
+                        <rect key="frame" x="52" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene" id="wec-Bt-iVR">
                             <font key="font" metaFont="smallSystem"/>
@@ -155,7 +155,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="r4J-px-CzM">
-                        <rect key="frame" x="172" y="109" width="38" height="14"/>
+                        <rect key="frame" x="205" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Node" id="kOr-E7-Qza">
                             <font key="font" metaFont="smallSystem"/>
@@ -164,7 +164,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LWU-rf-a3u">
-                        <rect key="frame" x="248" y="109" width="38" height="14"/>
+                        <rect key="frame" x="281" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Layer" id="WAd-9j-XCq">
                             <font key="font" metaFont="smallSystem"/>
@@ -173,7 +173,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W4g-an-3XP">
-                        <rect key="frame" x="328" y="109" width="38" height="14"/>
+                        <rect key="frame" x="361" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sprite" id="pCp-1E-8d5">
                             <font key="font" metaFont="smallSystem"/>
@@ -182,7 +182,7 @@ Gw
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YpT-Ns-s2H">
-                        <rect key="frame" x="401" y="109" width="49" height="14"/>
+                        <rect key="frame" x="434" y="109" width="49" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Particles" id="OSQ-kb-gkR">
                             <font key="font" metaFont="smallSystem"/>
@@ -206,13 +206,9 @@ Gw
                         <rect key="frame" x="359" y="63" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OGC-2f-ht5">
-                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0" negativeFormat="#0" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="0" nilSymbol="XoxoXo!!" id="oX8-P0-kz4">
-                                <real key="roundingIncrement" value="0.0"/>
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0" negativeFormat="#0" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="XoxoXo!!" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="oX8-P0-kz4">
                                 <real key="minimum" value="1"/>
                                 <real key="maximum" value="1000000"/>
-                                <metadata>
-                                    <bool key="localizesFormat" value="YES"/>
-                                </metadata>
                             </numberFormatter>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -227,13 +223,9 @@ Gw
                         <rect key="frame" x="448" y="63" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HsW-0M-iey">
-                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0" negativeFormat="#0" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="0" nilSymbol="XoxoXo!!" id="guT-O1-dlM">
-                                <real key="roundingIncrement" value="0.0"/>
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0" negativeFormat="#0" numberStyle="decimal" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="309" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" nilSymbol="XoxoXo!!" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="guT-O1-dlM">
                                 <real key="minimum" value="1"/>
                                 <real key="maximum" value="1000000"/>
-                                <metadata>
-                                    <bool key="localizesFormat" value="YES"/>
-                                </metadata>
                             </numberFormatter>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -256,12 +248,33 @@ Gw
                             <binding destination="-2" name="enabled" keyPath="canSetSize" id="Qjz-Xc-qBi"/>
                         </connections>
                     </textField>
+                    <button tag="1" id="4m5-4e-yHu">
+                        <rect key="frame" x="116" y="125" width="64" height="64"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="doc-dialog" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OND-rt-QLz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="system" size="10"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="pressedObjectTypeButton:" target="-2" id="JES-Ax-JpG"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="68o-yD-blB">
+                        <rect key="frame" x="129" y="109" width="38" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dialog" id="ndR-M9-Qd0">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="51"/>
     </objects>
     <resources>
+        <image name="doc-dialog" width="44" height="44"/>
         <image name="doc-layer" width="44" height="44"/>
         <image name="doc-node" width="44" height="44"/>
         <image name="doc-particlesystem" width="44" height="44"/>

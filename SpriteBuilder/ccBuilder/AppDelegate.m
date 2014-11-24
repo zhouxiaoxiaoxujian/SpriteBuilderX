@@ -1216,7 +1216,7 @@ typedef enum
             [updatedResolutions addObject:settingTablet];
         }
     }
-    else if (type == kCCBDocDimensionsTypeFullScreen)
+    else if (type == kCCBDocDimensionsTypeFullScreen || type == kCCBDocDimensionsTypeDialog)
     {
         if (projectSettings.defaultOrientation == kCCBOrientationLandscape)
         {
@@ -1758,8 +1758,8 @@ typedef enum
     [self updateWarningsButton];
     [self updateSmallTabBarsEnabled];
 
-    Cocos2dUpdater *cocos2dUpdater = [[Cocos2dUpdater alloc] initWithAppDelegate:self projectSettings:projectSettings];
-    [cocos2dUpdater updateAndBypassIgnore:NO];
+    /*Cocos2dUpdater *cocos2dUpdater = [[Cocos2dUpdater alloc] initWithAppDelegate:self projectSettings:projectSettings];
+    [cocos2dUpdater updateAndBypassIgnore:NO];*/
 
     self.window.representedFilename = [fileName stringByDeletingLastPathComponent];
 
@@ -1848,6 +1848,7 @@ typedef enum
     
     int docDimType = kCCBDocDimensionsTypeNode;
     if (type == kCCBNewDocTypeScene) docDimType = kCCBDocDimensionsTypeFullScreen;
+    else if (type == kCCBNewDocTypeDialog) docDimType = kCCBDocDimensionsTypeDialog;
     else if (type == kCCBNewDocTypeLayer) docDimType = kCCBDocDimensionsTypeLayer;
     
     NSString* class = NULL;
@@ -1856,6 +1857,7 @@ typedef enum
     else if (type == kCCBNewDocTypeScene) class = @"CCNode";
     else if (type == kCCBNewDocTypeSprite) class = @"CCSprite";
     else if (type == kCCBNewDocTypeParticleSystem) class = @"CCParticleSystem";
+    else if (type == kCCBNewDocTypeDialog) class = @"CCNode";
     
     resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
     
@@ -1877,7 +1879,7 @@ typedef enum
     [self deselectAll];
     [[CocosScene cocosScene] setStageSize:stageSize centeredOrigin:centered];
     
-    if (type == kCCBNewDocTypeScene)
+    if (type == kCCBNewDocTypeScene || type == kCCBNewDocTypeDialog)
     {
         [[CocosScene cocosScene] setStageBorder:0];
     }
@@ -1892,7 +1894,7 @@ typedef enum
     g.joints.node = [CCNode node];
     [[CocosScene cocosScene] replaceSceneNodes:g];
     
-    if (type == kCCBNewDocTypeScene)
+    if (type == kCCBNewDocTypeScene || type == kCCBNewDocTypeDialog)
     {
         // Set default contentSize to 100% x 100% for scenes
         [PositionPropertySetter setSize:NSMakeSize(1, 1) type:CCSizeTypeNormalized forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];

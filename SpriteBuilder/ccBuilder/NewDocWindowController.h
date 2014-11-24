@@ -27,6 +27,7 @@
 
 enum {
     kCCBNewDocTypeScene,
+    kCCBNewDocTypeDialog,
     kCCBNewDocTypeNode,
     kCCBNewDocTypeLayer,
     kCCBNewDocTypeSprite,

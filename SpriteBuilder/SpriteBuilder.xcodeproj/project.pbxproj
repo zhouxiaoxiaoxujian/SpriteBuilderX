@@ -286,7 +286,6 @@
 		92AEE8431979D62B00B50F74 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AEE8421979D62B00B50F74 /* Base64.m */; };
 		92B1B9D5192429A400DB91F5 /* joint-pivot-range.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B1B9D3192429A400DB91F5 /* joint-pivot-range.png */; };
 		92B1B9D6192429A400DB91F5 /* joint-pivot-range@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B1B9D4192429A400DB91F5 /* joint-pivot-range@2x.png */; };
-		92B5885D19B679E500BAE4C1 /* CCEffectNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 929D1BA31954D16C00B27340 /* CCEffectNode.ccbPlugNode */; };
 		92B7900518C808B7007DF895 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		92B792C918C92C60007DF895 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92B792C018C92C60007DF895 /* CCBPProperties.plist */; };
 		92B792CA18C92C60007DF895 /* CCPhysicsSpringJoint-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92B792C118C92C60007DF895 /* CCPhysicsSpringJoint-Info.plist */; };
@@ -344,6 +343,8 @@
 		92F85F37194F70CA0076B343 /* AnimationTest4.ccb in Resources */ = {isa = PBXBuildFile; fileRef = 92F85F36194F70CA0076B343 /* AnimationTest4.ccb */; };
 		92F85F3C194F8A4A0076B343 /* AnimationTest5.ccb in Resources */ = {isa = PBXBuildFile; fileRef = 92F85F3B194F8A4A0076B343 /* AnimationTest5.ccb */; };
 		A09AB6F714E993AA009C8B91 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = A09AB6F614E993AA009C8B91 /* fps_images.png */; };
+		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
+		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
 		B7083DF917B1CBC8006628C7 /* LocalizationEditorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF817B1CBC8006628C7 /* LocalizationEditorHandler.m */; };
@@ -541,14 +542,11 @@
 		DC680310189146900060BE39 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC68030C189146900060BE39 /* CCBPProperties.plist */; };
 		DC680311189146900060BE39 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC68030D189146900060BE39 /* Icon.png */; };
 		DC680312189146900060BE39 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC68030E189146900060BE39 /* Icon@2x.png */; };
-		DC680317189146FE0060BE39 /* SKSpriteNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DC5129C91891450D0091873D /* SKSpriteNode.ccbPlugNode */; };
-		DC680318189146FE0060BE39 /* SKLabelNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DC6803081891466C0060BE39 /* SKLabelNode.ccbPlugNode */; };
 		DC680321189156310060BE39 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
 		DC680333189156A60060BE39 /* CCBPluginSKColorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC68032F189156A60060BE39 /* CCBPluginSKColorSpriteNode.m */; };
 		DC680334189156A60060BE39 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC680330189156A60060BE39 /* CCBPProperties.plist */; };
 		DC680335189156A60060BE39 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC680331189156A60060BE39 /* Icon.png */; };
 		DC680336189156A60060BE39 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC680332189156A60060BE39 /* Icon@2x.png */; };
-		DC680339189157B90060BE39 /* SKColorSpriteNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DC680329189156310060BE39 /* SKColorSpriteNode.ccbPlugNode */; };
 		DC68033C189169510060BE39 /* CCNode+SKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC68031A18914E650060BE39 /* CCNode+SKNode.m */; };
 		DC680341189169D50060BE39 /* CCBPluginSKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB9F15C1890607D00128D78 /* CCBPluginSKNode.m */; };
 		DC680343189169E10060BE39 /* CCBPluginSKSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6802F4189145830060BE39 /* CCBPluginSKSpriteNode.m */; };
@@ -556,13 +554,11 @@
 		DCB9F1651890607D00128D78 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F15D1890607D00128D78 /* CCBPProperties.plist */; };
 		DCB9F1671890607D00128D78 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F1601890607D00128D78 /* Icon.png */; };
 		DCB9F1681890607D00128D78 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F1611890607D00128D78 /* Icon@2x.png */; };
-		DCB9F16C189060E900128D78 /* SKNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DCB9F1581890600D00128D78 /* SKNode.ccbPlugNode */; };
 		DCFB063718E32B7500DF02A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
 		DCFB064918E32BBD00DF02A0 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064518E32BBD00DF02A0 /* CCBPProperties.plist */; };
 		DCFB064A18E32BBD00DF02A0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064618E32BBD00DF02A0 /* Icon.png */; };
 		DCFB064B18E32BBD00DF02A0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064718E32BBD00DF02A0 /* Icon@2x.png */; };
 		DCFB064E18E32BFA00DF02A0 /* CCBPluginSKFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFB064D18E32BFA00DF02A0 /* CCBPluginSKFile.m */; };
-		DCFB065118E32C3900DF02A0 /* SKFile.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DCFB063F18E32B7500DF02A0 /* SKFile.ccbPlugNode */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
 		E312973316CC377700A09155 /* SequencerPopoverBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E312973216CC377700A09155 /* SequencerPopoverBlock.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		E312973516CC677400A09155 /* SequencerPopoverSound.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312973416CC677400A09155 /* SequencerPopoverSound.xib */; };
@@ -1076,13 +1072,6 @@
 			remoteGlobalIDString = 926D13D718B57B9500582959;
 			remoteInfo = CCPhysicsPinJoint;
 		};
-		929D1BB61954D37000B27340 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 929D1B971954D16C00B27340;
-			remoteInfo = CCEffectNode;
-		};
 		92A805C418D3CFAC004508E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
@@ -1159,41 +1148,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DC05E78418D0ACE000592A1E;
 			remoteInfo = SBButtonNode;
-		};
-		DC680313189146C80060BE39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC5129BD1891450D0091873D;
-			remoteInfo = SKSpriteNode;
-		};
-		DC680315189146C80060BE39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC6802FC1891466C0060BE39;
-			remoteInfo = SKLabelNode;
-		};
-		DC680337189157B00060BE39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC68031D189156310060BE39;
-			remoteInfo = SKSpriteNodeWithColor;
-		};
-		DCB9F16A189060DF00128D78 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DCB9F14C1890600D00128D78;
-			remoteInfo = SKNode;
-		};
-		DCFB064F18E32C2D00DF02A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DCFB063318E32B7500DF02A0;
-			remoteInfo = SKFile;
 		};
 		E35DBB8D14F226230070A6E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1288,17 +1242,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				92B5885D19B679E500BAE4C1 /* CCEffectNode.ccbPlugNode in Copy PlugIns */,
-				DCFB065118E32C3900DF02A0 /* SKFile.ccbPlugNode in Copy PlugIns */,
 				DC05E79B18D0ADF800592A1E /* SBControlNode.ccbPlugNode in Copy PlugIns */,
 				DC05E79C18D0ADF800592A1E /* SBButtonNode.ccbPlugNode in Copy PlugIns */,
 				92B792D518C9333E007DF895 /* CCPhysicsSpringJoint.ccbPlugNode in Copy PlugIns */,
 				9266089118B581BC007A0A05 /* CCPhysicsPinJoint.ccbPlugNode in Copy PlugIns */,
 				92154AE318A55A4200BD215C /* CCPhysicsPivotJoint.ccbPlugNode in Copy PlugIns */,
-				DC680339189157B90060BE39 /* SKColorSpriteNode.ccbPlugNode in Copy PlugIns */,
-				DC680317189146FE0060BE39 /* SKSpriteNode.ccbPlugNode in Copy PlugIns */,
-				DC680318189146FE0060BE39 /* SKLabelNode.ccbPlugNode in Copy PlugIns */,
-				DCB9F16C189060E900128D78 /* SKNode.ccbPlugNode in Copy PlugIns */,
 				B729AC6D181F0D2300BA0D9C /* CCSlider.ccbPlugNode in Copy PlugIns */,
 				B7EE6A0A1819EE6E00B983FE /* CCLayoutBox.ccbPlugNode in Copy PlugIns */,
 				B7EE69A718188ECC00B983FE /* CCTextField.ccbPlugNode in Copy PlugIns */,
@@ -1395,7 +1343,7 @@
 		776C688F1388107400153214 /* missing-font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "missing-font.fnt"; sourceTree = "<group>"; };
 		776C68901388107400153214 /* missing-font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missing-font.png"; sourceTree = "<group>"; };
 		776C6895138874C200153214 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		7789ABBE133AA82000CEFCC7 /* SpriteBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7789ABBE133AA82000CEFCC7 /* SpriteBuilderX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteBuilderX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7789ABC2133AA82000CEFCC7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7789ABC5133AA82000CEFCC7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7789ABC6133AA82000CEFCC7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -1780,6 +1728,9 @@
 		92F85F36194F70CA0076B343 /* AnimationTest4.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AnimationTest4.ccb; path = "SpriteBuilderTestProject.spritebuilder/SpriteBuilder Resources/AnimationTest4.ccb"; sourceTree = "<group>"; };
 		92F85F3B194F8A4A0076B343 /* AnimationTest5.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = AnimationTest5.ccb; path = "SpriteBuilderTestProject.spritebuilder/SpriteBuilder Resources/AnimationTest5.ccb"; sourceTree = "<group>"; };
 		A09AB6F614E993AA009C8B91 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = "libs/cocos2d-iphone/Resources/Fonts/fps_images.png"; sourceTree = SOURCE_ROOT; };
+		A59521A91A1F89C700934862 /* doc-dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog.png"; sourceTree = "<group>"; };
+		A59521AA1A1F89C700934862 /* doc-dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog@2x.png"; sourceTree = "<group>"; };
+		A59521CB1A1F8F1900934862 /* CCNode copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCNode copy-Info.plist"; path = "/Users/sergey/Documents/SpriteBuilderX/SpriteBuilder/CCNode copy-Info.plist"; sourceTree = "<absolute>"; };
 		B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalizationEditorWindow.xib; sourceTree = "<group>"; };
 		B7083DF417B1CB88006628C7 /* LocalizationEditorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationEditorWindow.h; sourceTree = "<group>"; };
 		B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationEditorWindow.m; sourceTree = "<group>"; };
@@ -3415,6 +3366,8 @@
 				80B149BC183D4D280085935B /* seq-keyframe-x4-sel.png */,
 				80B149BD183D4D280085935B /* seq-keyframe-x4.png */,
 				80FBACD71834530100C4BB69 /* visible-icon.png */,
+				A59521A91A1F89C700934862 /* doc-dialog.png */,
+				A59521AA1A1F89C700934862 /* doc-dialog@2x.png */,
 				B7096E1D180CD98E00164A8A /* doc-layer.png */,
 				B7096E1E180CD98E00164A8A /* doc-layer@2x.png */,
 				B7096E1F180CD98E00164A8A /* doc-node.png */,
@@ -3548,13 +3501,14 @@
 				FA98CFC5154E7D1C006E58C5 /* ccbpublish */,
 				7789ABC1133AA82000CEFCC7 /* Frameworks */,
 				7789ABBF133AA82000CEFCC7 /* Products */,
+				A59521CB1A1F8F1900934862 /* CCNode copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		7789ABBF133AA82000CEFCC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7789ABBE133AA82000CEFCC7 /* SpriteBuilder.app */,
+				7789ABBE133AA82000CEFCC7 /* SpriteBuilderX.app */,
 				E3B7AEC514E3193500DFD402 /* CCNode.ccbPlugNode */,
 				E3C365EB14E9E4D1007CD5FF /* CCSprite.ccbPlugNode */,
 				E35DBB8014F225D30070A6E4 /* CCNodeColor.ccbPlugNode */,
@@ -5778,9 +5732,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7789ABBD133AA82000CEFCC7 /* SpriteBuilder */ = {
+		7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7789ABDC133AA82000CEFCC7 /* Build configuration list for PBXNativeTarget "SpriteBuilder" */;
+			buildConfigurationList = 7789ABDC133AA82000CEFCC7 /* Build configuration list for PBXNativeTarget "SpriteBuilderX" */;
 			buildPhases = (
 				DC3DD33018A948560004D2AC /* ShellScript */,
 				7789ABBA133AA82000CEFCC7 /* Sources */,
@@ -5793,17 +5747,11 @@
 			);
 			dependencies = (
 				7A35B9E219F0DD5300FE3C59 /* PBXTargetDependency */,
-				929D1BB71954D37000B27340 /* PBXTargetDependency */,
-				DCFB065018E32C2D00DF02A0 /* PBXTargetDependency */,
 				DC05E79818D0ADDC00592A1E /* PBXTargetDependency */,
 				DC05E79A18D0ADDC00592A1E /* PBXTargetDependency */,
 				92A805C518D3CFAC004508E3 /* PBXTargetDependency */,
 				926D13E618B57C4200582959 /* PBXTargetDependency */,
 				92154AE218A5567400BD215C /* PBXTargetDependency */,
-				DC680338189157B00060BE39 /* PBXTargetDependency */,
-				DC680314189146C80060BE39 /* PBXTargetDependency */,
-				DC680316189146C80060BE39 /* PBXTargetDependency */,
-				DCB9F16B189060DF00128D78 /* PBXTargetDependency */,
 				B729AC6C181F0D1400BA0D9C /* PBXTargetDependency */,
 				B7EE6A091819EE6000B983FE /* PBXTargetDependency */,
 				B7EE69A618188EB800B983FE /* PBXTargetDependency */,
@@ -5822,9 +5770,9 @@
 				E3D5912E150F53CD004180CA /* PBXTargetDependency */,
 				E35DBC1614F4D7920070A6E4 /* PBXTargetDependency */,
 			);
-			name = SpriteBuilder;
+			name = SpriteBuilderX;
 			productName = ccBuilder;
-			productReference = 7789ABBE133AA82000CEFCC7 /* SpriteBuilder.app */;
+			productReference = 7789ABBE133AA82000CEFCC7 /* SpriteBuilderX.app */;
 			productType = "com.apple.product-type.application";
 		};
 		833A5C49192B48CA001837B3 /* SpriteBuilder Tests */ = {
@@ -6378,7 +6326,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				7789ABBD133AA82000CEFCC7 /* SpriteBuilder */,
+				7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */,
 				833A5C49192B48CA001837B3 /* SpriteBuilder Tests */,
 				E398C02114FB81A30078E771 /* Cocos2D iPhone */,
 				E3B7AEC414E3193500DFD402 /* CCNode */,
@@ -6430,7 +6378,7 @@
 		};
 		836E2D5A19EE5BCC00CD5B66 /* cocos2dJava.jar */ = {
 			isa = PBXReferenceProxy;
-			fileType = compiled.java.jar;
+			fileType = archive.jar;
 			path = cocos2dJava.jar;
 			remoteRef = 836E2D5919EE5BCC00CD5B66 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -6625,6 +6573,7 @@
 				E3E8B49015791FFB00373983 /* seq-tl-mark-origin.png in Resources */,
 				E3E8B4921579326A00373983 /* seq-timedisplay-bg.png in Resources */,
 				B73788F71804D8200076A88C /* ccbproj.icns in Resources */,
+				A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */,
 				B7DE848D1937A8030039FB72 /* RegistrationWindow.xib in Resources */,
 				E3E8B49915793AF800373983 /* seq-btn-play.png in Resources */,
 				926D13C118B5778300582959 /* joint-distance-handle-long@2x.png in Resources */,
@@ -6674,6 +6623,7 @@
 				E3DFA7CF15ACA0CD005D3B6F /* frame-android-xsmall.png in Resources */,
 				92CB085919BA2DE800EFDCE3 /* effect-blur.png in Resources */,
 				92CD1C161965D745002BF2DE /* EffectBloomControl.xib in Resources */,
+				A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */,
 				E3E2704815B18CF500287470 /* TB_play.png in Resources */,
 				9252073419623E2F00BFC071 /* SpriteBuilder.xcconfig in Resources */,
 				E3E2704915B18CF500287470 /* TB_stop.png in Resources */,
@@ -7828,7 +7778,7 @@
 		};
 		833A5C57192B48CB001837B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7789ABBD133AA82000CEFCC7 /* SpriteBuilder */;
+			target = 7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */;
 			targetProxy = 833A5C56192B48CB001837B3 /* PBXContainerItemProxy */;
 		};
 		92154AE218A5567400BD215C /* PBXTargetDependency */ = {
@@ -7840,11 +7790,6 @@
 			isa = PBXTargetDependency;
 			target = 926D13D718B57B9500582959 /* CCPhysicsPinJoint */;
 			targetProxy = 926D13E518B57C4200582959 /* PBXContainerItemProxy */;
-		};
-		929D1BB71954D37000B27340 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 929D1B971954D16C00B27340 /* CCEffectNode */;
-			targetProxy = 929D1BB61954D37000B27340 /* PBXContainerItemProxy */;
 		};
 		92A805C518D3CFAC004508E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7900,31 +7845,6 @@
 			isa = PBXTargetDependency;
 			target = DC05E78418D0ACE000592A1E /* SBButtonNode */;
 			targetProxy = DC05E79918D0ADDC00592A1E /* PBXContainerItemProxy */;
-		};
-		DC680314189146C80060BE39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC5129BD1891450D0091873D /* SKSpriteNode */;
-			targetProxy = DC680313189146C80060BE39 /* PBXContainerItemProxy */;
-		};
-		DC680316189146C80060BE39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC6802FC1891466C0060BE39 /* SKLabelNode */;
-			targetProxy = DC680315189146C80060BE39 /* PBXContainerItemProxy */;
-		};
-		DC680338189157B00060BE39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC68031D189156310060BE39 /* SKColorSpriteNode */;
-			targetProxy = DC680337189157B00060BE39 /* PBXContainerItemProxy */;
-		};
-		DCB9F16B189060DF00128D78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DCB9F14C1890600D00128D78 /* SKNode */;
-			targetProxy = DCB9F16A189060DF00128D78 /* PBXContainerItemProxy */;
-		};
-		DCFB065018E32C2D00DF02A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DCFB063318E32B7500DF02A0 /* SKFile */;
-			targetProxy = DCFB064F18E32C2D00DF02A0 /* PBXContainerItemProxy */;
 		};
 		E35DBB8E14F226230070A6E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8280,6 +8200,7 @@
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
+				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.2.0;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
@@ -8325,6 +8246,7 @@
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
+				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.2.0;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
@@ -8482,6 +8404,7 @@
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
+				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.2.0;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
@@ -11571,7 +11494,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7789ABDC133AA82000CEFCC7 /* Build configuration list for PBXNativeTarget "SpriteBuilder" */ = {
+		7789ABDC133AA82000CEFCC7 /* Build configuration list for PBXNativeTarget "SpriteBuilderX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7789ABDD133AA82000CEFCC7 /* Debug */,

@@ -869,10 +869,14 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
 
 - (BOOL) shouldDisableProperty:(NSString*) prop
 {
+    int docDimType = [[[AppDelegate appDelegate].currentDocument.data objectForKey:@"docDimensionsType"] intValue];
     // Disable properties on root node
-    if (self == [CocosScene cocosScene].rootNode)
+    if (self == [CocosScene cocosScene].rootNode && docDimType != kCCBDocDimensionsTypeDialog)
     {
         if ([prop isEqualToString:@"position"]) return YES;
+        else if ([prop isEqualToString:@"size"]) return YES;
+        else if ([prop isEqualToString:@"anchorPoint"]) return YES;
+        else if ([prop isEqualToString:@"contentSize"]) return YES;
         else if ([prop isEqualToString:@"scale"]) return YES;
         else if ([prop isEqualToString:@"rotation"]) return YES;
         else if ([prop isEqualToString:@"tag"]) return YES;

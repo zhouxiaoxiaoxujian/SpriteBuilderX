@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
-               BuildableName = "SpriteBuilder.app"
-               BlueprintName = "SpriteBuilder"
+               BuildableName = "SpriteBuilderX.app"
+               BlueprintName = "SpriteBuilderX"
                ReferencedContainer = "container:SpriteBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
-            BuildableName = "SpriteBuilder.app"
-            BlueprintName = "SpriteBuilder"
+            BuildableName = "SpriteBuilderX.app"
+            BlueprintName = "SpriteBuilderX"
             ReferencedContainer = "container:SpriteBuilder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -54,7 +54,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
-            BuildableName = "SpriteBuilder.app"
-            BlueprintName = "SpriteBuilder"
+            BuildableName = "SpriteBuilderX.app"
+            BlueprintName = "SpriteBuilderX"
             ReferencedContainer = "container:SpriteBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
-            BuildableName = "SpriteBuilder.app"
-            BlueprintName = "SpriteBuilder"
+            BuildableName = "SpriteBuilderX.app"
+            BlueprintName = "SpriteBuilderX"
             ReferencedContainer = "container:SpriteBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
