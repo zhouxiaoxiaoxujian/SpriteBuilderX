@@ -1721,8 +1721,8 @@ typedef enum
         return NO;
     }
 
-    ProjectMigrator *migrator = [[ProjectMigrator alloc] initWithProjectSettings:projectSettings];
-    [migrator migrate];
+    //ProjectMigrator *migrator = [[ProjectMigrator alloc] initWithProjectSettings:projectSettings];
+    //[migrator migrate];
 
     // Load or create language file
     NSString* langFile = [[ResourceManager sharedManager].mainActiveDirectoryPath stringByAppendingPathComponent:@"Strings.ccbLang"];
