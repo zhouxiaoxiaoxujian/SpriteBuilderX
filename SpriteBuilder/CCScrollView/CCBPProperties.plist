@@ -9,7 +9,7 @@
 	<key>description</key>
 	<string>References a containing node, which becomes a scrollable layer.</string>
 	<key>inheritsFrom</key>
-	<string>CCNode</string>
+	<string>CCWidget</string>
 	<key>canHaveChildren</key>
 	<false/>
 	<key>className</key>

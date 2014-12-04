@@ -564,10 +564,10 @@ __strong NSDictionary* renamedProperties = nil;
     if (!memberVarName) memberVarName = @"";
     int memberVarType = [[dict objectForKey:@"memberVarAssignmentType"] intValue];
     
-    //memberVarType is obsolete. Set to 1 upon deserialization.
+    //memberVarType is obsolete. Set to 2 upon deserialization.
     if(memberVarType == 0)
     {
-        memberVarType = 1;
+        memberVarType = 2;
         memberVarName = @""; //Make sure we clear the name, since it was unassigned.
     }
     

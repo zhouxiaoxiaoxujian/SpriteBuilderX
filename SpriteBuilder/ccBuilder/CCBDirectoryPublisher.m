@@ -177,6 +177,9 @@
 {
 	NSString *outDir = [_outputDir stringByAppendingPathComponent:subPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if([[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
+        return YES;
 
     BOOL isGeneratedSpriteSheet = [[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SMARTSHEET] boolValue];
     if (!isGeneratedSpriteSheet)

@@ -6,8 +6,13 @@
 //
 //
 
-#import "CCBPControl.h"
+#import "CCBPWidget.h"
 
-@implementation CCBPControl
+@implementation CCWidget
+
+-(void)onSetSizeFromTexture
+{
+    
+}
 
 @end

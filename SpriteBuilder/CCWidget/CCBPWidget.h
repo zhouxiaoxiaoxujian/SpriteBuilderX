@@ -6,8 +6,8 @@
 //
 //
 
-#import "CCControl.h"
+#import "CCNode.h"
 
-@interface CCBPControl : CCControl
+@interface CCWidget : CCNode
 
 @end

@@ -5,9 +5,9 @@
 	<key>inheritsFrom</key>
 	<string>CCNode</string>
 	<key>className</key>
-	<string>CCControl</string>
+	<string>CCWidget</string>
 	<key>editorClassName</key>
-	<string>CCControl</string>
+	<string>CCWidget</string>
 	<key>isAbstract</key>
 	<true/>
 	<key>properties</key>
@@ -16,9 +16,9 @@
 			<key>codeConnection</key>
 			<true/>
 			<key>displayName</key>
-			<string>CCControl</string>
+			<string>CCWidget</string>
 			<key>name</key>
-			<string>CCControl</string>
+			<string>CCWidget</string>
 			<key>type</key>
 			<string>Separator</string>
 			<key>dontSetInEditor</key>
@@ -28,72 +28,50 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<integer>1</integer>
+				<integer>2</integer>
 			</array>
 			<key>codeConnection</key>
 			<true/>
 			<key>displayName</key>
-			<string>Selector</string>
+			<string>Click</string>
 			<key>type</key>
 			<string>Block</string>
 			<key>name</key>
 			<string>block</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<integer>2</integer>
+				<integer>0</integer>
+			</array>
 			<key>codeConnection</key>
 			<true/>
-			<key>dontSetInEditor</key>
-			<true/>
-			<key>default</key>
-			<false/>
-			<key>defaultSerialization</key>
-			<false/>
 			<key>displayName</key>
-			<string>Continuous</string>
+			<string>Touch</string>
 			<key>type</key>
-			<string>Check</string>
+			<string>Block</string>
 			<key>name</key>
-			<string>continuous</string>
+			<string>blockTouch</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
-			<string>CCControl</string>
+			<string>CCWidget</string>
 			<key>name</key>
-			<string>CCControl</string>
+			<string>CCWidget</string>
 			<key>type</key>
 			<string>Separator</string>
 			<key>dontSetInEditor</key>
 			<true/>
 		</dict>
 		<dict>
-			<key>affectsProperties</key>
-			<array>
-				<string>maxSize</string>
-				<string>contentSize</string>
-			</array>
-			<key>readOnly</key>
-			<false/>
-			<key>type</key>
-			<string>Size</string>
-			<key>name</key>
-			<string>preferredSize</string>
 			<key>displayName</key>
-			<string>Preferred size</string>
-		</dict>
-		<dict>
-			<key>affectsProperties</key>
-			<array>
-				<string>preferredSize</string>
-				<string>contentSize</string>
-			</array>
-			<key>readOnly</key>
-			<false/>
+			<string>Reset to default size</string>
 			<key>type</key>
-			<string>Size</string>
+			<string>Button</string>
 			<key>name</key>
-			<string>maxSize</string>
-			<key>displayName</key>
-			<string>Max size</string>
+			<string>onSetSizeFromTexture</string>
 		</dict>
 		<dict>
 			<key>dontSetInEditor</key>

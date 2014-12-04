@@ -21,10 +21,30 @@
     if (!self) return NULL;
     
     self.userInteractionEnabled = NO;
+    self.zoomOnClick = 1.0f;
     
     return self;
 }
 
+/*- (void) setContentSizeType:(CCSizeType)contentSizeType
+{
+    [self setPreferredSizeType:contentSizeType];
+}
+
+- (CCSizeType) contentSizeType
+{
+    return self.preferredSizeType;
+}*/
+
+-(void) setContentSize:(CGSize)size
+{
+    [self setPreferredSize:size];
+}
+
+-(CGSize) contentSize
+{
+    return self.preferredSize;
+}
 
 -(void)onSetSizeFromTexture
 {
@@ -32,11 +52,14 @@
     if(spriteFrame == nil)
         return;
     
-    self.preferredSize = spriteFrame.texture.contentSize;
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"contentSize"];
     
-    [self willChangeValueForKey:@"preferredSize"];
-    [self didChangeValueForKey:@"preferredSize"];
-    [[InspectorController sharedController] refreshProperty:@"preferredSize"];
+    self.preferredSize = spriteFrame.texture.contentSize;
+    self.preferredSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
+    
+    [self willChangeValueForKey:@"contentSize"];
+    [self didChangeValueForKey:@"contentSize"];
+    [[InspectorController sharedController] refreshProperty:@"contentSize"];
     
 }
 

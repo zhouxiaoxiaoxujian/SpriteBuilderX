@@ -9,7 +9,7 @@
 	<key>description</key>
 	<string>Allows the user to visually select a value</string>
 	<key>inheritsFrom</key>
-	<string>CCControl</string>
+	<string>CCWidget</string>
 	<key>canHaveChildren</key>
 	<false/>
 	<key>className</key>

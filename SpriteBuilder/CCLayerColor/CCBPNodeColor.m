@@ -16,6 +16,8 @@
     if (!self) return NULL;
     
     self.userInteractionEnabled = NO;
+    self.opacity = 1.0;
+    self.color = [CCColor whiteColor];
     
     return self;
 }

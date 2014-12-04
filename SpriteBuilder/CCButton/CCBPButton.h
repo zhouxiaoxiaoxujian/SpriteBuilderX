@@ -23,4 +23,6 @@
 /** Sets the bottom margin exclusively. */
 @property (nonatomic, assign) float marginBottom;
 
+@property (nonatomic, assign) float zoomOnClick;
+
 @end

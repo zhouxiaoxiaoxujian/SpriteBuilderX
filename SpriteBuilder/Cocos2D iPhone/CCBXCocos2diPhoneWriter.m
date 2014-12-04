@@ -1029,7 +1029,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     [data appendBytes:&magic length:4];
     
     // Version
-    [self writeIntOLD:kCCBXVersion withSign:NO];
+    [self writeInt:kCCBXVersion withSign:NO];
 }
 
 - (void) writeStringCache

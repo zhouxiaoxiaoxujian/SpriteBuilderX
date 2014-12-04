@@ -16,6 +16,7 @@
 #import "PreviewSpriteSheetViewController.h"
 #import "RMDirectory.h"
 #import "PreviewCCBViewController.h"
+#import "PreviewFolderViewController.h"
 
 @interface PreviewContainerViewController ()
 
@@ -58,6 +59,10 @@
     {
         [self showCCBPreivew];
     }
+    else if (_previewedResource.type == kCCBResTypeDirectory)
+    {
+        [self showFolderPreview];
+    }
     else
     {
         [self showNoPreviewAvailable];
@@ -91,6 +96,18 @@
                                                                                        bundle:nil];
 
     [self addCurrentViewControllersViewToContainer];
+}
+
+- (void)showFolderPreview
+{
+    [self resetView];
+    
+    self.currentPreviewViewController = [[PreviewFolderViewController alloc] initWithNibName:@"PreviewFolderView"
+                                                                                       bundle:nil];
+    
+    [self addCurrentViewControllersViewToContainer];
+    
+    [_currentPreviewViewController setPreviewedResource:_previewedResource projectSettings:_projectSettings];
 }
 
 - (void)showAudioPreview

@@ -73,6 +73,13 @@
     [configCocos2d setObject:screenOrientation forKey:@"CCSetupScreenOrientation"];
 
     [configCocos2d setObject:[NSNumber numberWithBool:YES] forKey:@"CCSetupTabletScale2X"];
+    
+    if((_projectSettings.designSizeHeight !=0) && (_projectSettings.designSizeWidth !=0) && (_projectSettings.designResourceScale !=0.0f))
+    {
+        [configCocos2d setObject:[NSNumber numberWithInt:_projectSettings.designSizeHeight] forKey:@"CCSetupDesignSizeHeight"];
+        [configCocos2d setObject:[NSNumber numberWithInt:_projectSettings.designSizeWidth] forKey:@"CCSetupDesignSizeWidth"];
+        [configCocos2d setObject:[NSNumber numberWithFloat:_projectSettings.designResourceScale] forKey:@"CCSetupDesignResourceScale"];
+    }
 
     NSString *configCocos2dFile = [_outputDir stringByAppendingPathComponent:@"configCocos2d.plist"];
     [configCocos2d writeToFile:configCocos2dFile atomically:YES];

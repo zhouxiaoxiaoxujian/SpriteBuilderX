@@ -9,72 +9,15 @@
 	<key>description</key>
 	<string>Generates events when touched, can have a stretchable backround and a label.</string>
 	<key>inheritsFrom</key>
-	<string>CCControl</string>
+	<string>CCWidget</string>
 	<key>canHaveChildren</key>
 	<false/>
 	<key>className</key>
 	<string>CCButton</string>
 	<key>editorClassName</key>
 	<string>CCBPButton</string>
-	<key>propertiesOverridden</key>
-	<array>
-		<dict>
-			<key>readOnly</key>
-			<true/>
-			<key>type</key>
-			<string>Size</string>
-			<key>name</key>
-			<string>contentSize</string>
-			<key>displayName</key>
-			<string>Content size</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<array>
-				<integer>40</integer>
-				<integer>40</integer>
-				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>maxSize</string>
-				<string>contentSize</string>
-			</array>
-			<key>readOnly</key>
-			<false/>
-			<key>type</key>
-			<string>Size</string>
-			<key>name</key>
-			<string>preferredSize</string>
-			<key>displayName</key>
-			<string>Preferred size</string>
-		</dict>
-	</array>
 	<key>properties</key>
 	<array>
-		<dict>
-			<key>codeConnection</key>
-			<true/>
-			<key>displayName</key>
-			<string>CCButton</string>
-			<key>name</key>
-			<string>CCButton</string>
-			<key>type</key>
-			<string>Separator</string>
-			<key>dontSetInEditor</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>codeConnection</key>
-			<true/>
-			<key>displayName</key>
-			<string>Selector</string>
-			<key>type</key>
-			<string>Block</string>
-			<key>name</key>
-			<string>block</string>
-		</dict>
 		<dict>
 			<key>displayName</key>
 			<string>CCButton</string>
@@ -103,37 +46,15 @@
 			<key>dontSetInEditor</key>
 			<true/>
 			<key>default</key>
-			<false/>
+			<real>1</real>
 			<key>defaultSerialization</key>
-			<false/>
+			<integer>1</integer>
 			<key>displayName</key>
-			<string>Zoom when highlighted</string>
+			<string>Zoom on click</string>
 			<key>type</key>
-			<string>Check</string>
+			<string>Float</string>
 			<key>name</key>
-			<string>zoomWhenHighlighted</string>
-		</dict>
-		<dict>
-			<key>dontSetInEditor</key>
-			<true/>
-			<key>default</key>
-			<false/>
-			<key>defaultSerialization</key>
-			<false/>
-			<key>displayName</key>
-			<string>Toggles selected state</string>
-			<key>type</key>
-			<string>Check</string>
-			<key>name</key>
-			<string>togglesSelectedState</string>
-		</dict>
-		<dict>
-			<key>displayName</key>
-			<string>Reset to default size</string>
-			<key>type</key>
-			<string>Button</string>
-			<key>name</key>
-			<string>onSetSizeFromTexture</string>
+			<string>zoomOnClick</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
@@ -410,99 +331,6 @@
 			<string>Color3</string>
 			<key>name</key>
 			<string>labelColor|Disabled</string>
-		</dict>
-		<dict>
-			<key>displayName</key>
-			<string>Selected State</string>
-			<key>name</key>
-			<string>Selected State</string>
-			<key>type</key>
-			<string>SeparatorSub</string>
-			<key>dontSetInEditor</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>default</key>
-			<array>
-				<string></string>
-				<string>ccbResources/ccbButtonNormal.png</string>
-			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
-			<key>displayName</key>
-			<string>Sprite frame</string>
-			<key>type</key>
-			<string>SpriteFrame</string>
-			<key>name</key>
-			<string>backgroundSpriteFrame|Selected</string>
-		</dict>
-		<dict>
-			<key>defaultSerialization</key>
-			<real>0.5</real>
-			<key>default</key>
-			<real>0.5</real>
-			<key>displayName</key>
-			<string>Background opacity</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>backgroundOpacity|Selected</string>
-		</dict>
-		<dict>
-			<key>defaultSerialization</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>default</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>displayName</key>
-			<string>Background color</string>
-			<key>type</key>
-			<string>Color3</string>
-			<key>name</key>
-			<string>backgroundColor|Selected</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>1</integer>
-			<key>displayName</key>
-			<string>Label opacity</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>labelOpacity|Selected</string>
-		</dict>
-		<dict>
-			<key>defaultSerialization</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>default</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>displayName</key>
-			<string>Label color</string>
-			<key>type</key>
-			<string>Color3</string>
-			<key>name</key>
-			<string>labelColor|Selected</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

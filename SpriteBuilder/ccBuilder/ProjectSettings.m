@@ -239,6 +239,10 @@
 
     dict[@"publishEnablediPhone"] = @(_publishEnabledIOS);
     dict[@"publishEnabledAndroid"] = @(_publishEnabledAndroid);
+    
+    dict[@"designSizeWidth"] = @(_designSizeWidth);
+    dict[@"designSizeHeight"] = @(_designSizeHeight);
+    dict[@"designResourceScale"] = @(_designResourceScale);
 
     dict[@"publishResolution_ios_phone"] = @(_publishResolution_ios_phone);
     dict[@"publishResolution_ios_phonehd"] = @(_publishResolution_ios_phonehd);
@@ -270,7 +274,7 @@
 
     dict[@"publishEnvironment"] = @(_publishEnvironment);
 
-    dict[@"excludedFromPackageMigration"] = @(_excludedFromPackageMigration);
+    //dict[@"excludedFromPackageMigration"] = @(_excludedFromPackageMigration);
 
     if (_resourceProperties)
     {
@@ -648,13 +652,7 @@
 - (NSString* ) getVersion
 {
 	NSDictionary * versionDict = [self getVersionDictionary];
-	NSString * versionString = @"";
-	
-	for (NSString * key in versionDict) {
-		versionString = [versionString stringByAppendingFormat:@"%@ : %@\n", key, versionDict[key]];
-	}
-    
-    return versionString;
+    return versionDict[@"version"];
 }
 
 - (NSDictionary *)getVersionDictionary
