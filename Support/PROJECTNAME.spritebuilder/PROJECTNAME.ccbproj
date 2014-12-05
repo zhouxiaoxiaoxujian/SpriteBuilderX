@@ -5,7 +5,13 @@
 	<key>cocos2dUpdateIgnoredVersions</key>
 	<array/>
 	<key>defaultOrientation</key>
-	<integer>0</integer>
+	<integer>1</integer>
+	<key>designResourceScale</key>
+	<real>2</real>
+	<key>designSizeHeight</key>
+	<integer>640</integer>
+	<key>designSizeWidth</key>
+	<integer>960</integer>
 	<key>designTarget</key>
 	<integer>0</integer>
 	<key>deviceOrientationLandscapeLeft</key>
@@ -20,8 +26,6 @@
 	<integer>0</integer>
 	<key>engine</key>
 	<integer>0</integer>
-	<key>excludedFromPackageMigration</key>
-	<false/>
 	<key>exporter</key>
 	<string>ccbi</string>
 	<key>fileType</key>
@@ -35,9 +39,9 @@
 	<key>publishAudioQuality_ios</key>
 	<integer>4</integer>
 	<key>publishDirectory</key>
-	<string>Source/Resources/Published-iOS</string>
+	<string>Resources_ios</string>
 	<key>publishDirectoryAndroid</key>
-	<string>Source/Resources/Published-Android</string>
+	<string>Resources_android</string>
 	<key>publishEnabledAndroid</key>
 	<true/>
 	<key>publishEnablediPhone</key>
@@ -47,19 +51,19 @@
 	<key>publishResolution_android_phone</key>
 	<true/>
 	<key>publishResolution_android_phonehd</key>
-	<true/>
+	<false/>
 	<key>publishResolution_android_tablet</key>
 	<true/>
 	<key>publishResolution_android_tablethd</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ios_phone</key>
 	<true/>
 	<key>publishResolution_ios_phonehd</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ios_tablet</key>
 	<true/>
 	<key>publishResolution_ios_tablethd</key>
-	<true/>
+	<false/>
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
@@ -68,105 +72,12 @@
 	<array>
 		<dict>
 			<key>path</key>
-			<string>Packages/SpriteBuilder Resources.sbpack</string>
+			<string>.</string>
 		</dict>
 	</array>
 	<key>resourceProperties</key>
-	<dict>
-		<key></key>
-		<dict>
-			<key>previewFolderHidden</key>
-			<true/>
-		</dict>
-		<key>Sprites</key>
-		<dict/>
-		<key>ccbResources</key>
-		<dict>
-			<key>previewFolderHidden</key>
-			<true/>
-		</dict>
-		<key>ccbResources/ccbButtonHighlighted.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbButtonNormal.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbParticleFire.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbParticleMagic.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbParticleSmoke.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbParticleSnow.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbParticleStars.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>1</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbSliderBgHighlighted.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbSliderBgNormal.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbSliderHandle.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-		<key>ccbResources/ccbTextField.png</key>
-		<dict>
-			<key>scaleFrom</key>
-			<integer>2</integer>
-			<key>tabletScale</key>
-			<integer>1</integer>
-		</dict>
-	</dict>
+	<dict/>
 	<key>versionStr</key>
-	<string>revision : 106c48a287
-sku : default
-version : 1.3.0-beta
-</string>
+	<string>1.3.6</string>
 </dict>
 </plist>
