@@ -2,14 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>displayName</key>
+	<string>CCWidget</string>
+	<key>ordering</key>
+	<integer>10000</integer>
+	<key>description</key>
+	<string>Generates events when touched</string>
 	<key>inheritsFrom</key>
 	<string>CCNode</string>
 	<key>className</key>
 	<string>CCWidget</string>
 	<key>editorClassName</key>
 	<string>CCWidget</string>
-	<key>isAbstract</key>
-	<true/>
 	<key>properties</key>
 	<array>
 		<dict>
