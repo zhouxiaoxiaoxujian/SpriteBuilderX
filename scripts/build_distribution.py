@@ -81,7 +81,7 @@ class BuildDistribution:
         subprocess.check_call('/usr/bin/xcodebuild -alltargets clean', shell=True)
      
         try:
-            subprocess.check_call('/usr/bin/xcodebuild -target "SpriteBuilder Tests" -configuration Testing -scheme SpriteBuilder test', shell=True)
+            subprocess.check_call('/usr/bin/xcodebuild -target "SpriteBuilder Tests" -configuration Testing -scheme SpriteBuilderX test', shell=True)
         except Exception,e:
             print ("TESTS FAILED: %s" % e)
             print "Tests failed. If you'd like to ignore tests, build with '-tests false'" 
@@ -104,7 +104,7 @@ class BuildDistribution:
    
         print "=== BUILDING SPRITEBUILDER === (please be patient)"
         build_command = '/usr/bin/xcodebuild \
-            -target SpriteBuilder \
+            -target SpriteBuilderX \
             -configuration Release \
             -xcconfig \"{xcconfig}.xcconfig\" \
             SBPRO_PRIVATE_KEY=\"{private_key}\" \
@@ -171,10 +171,10 @@ class BuildDistribution:
         json.dump(version_info, open("Generated/Version.txt",'w'),sort_keys=True, indent=4)
     
         #Copy cocos version file.
-        shutil.copyfile('SpriteBuilder/libs/cocos2d-iphone/VERSION','Generated/cocos2d_version.txt')
+        #shutil.copyfile('SpriteBuilder/libs/cocos2d-iphone/VERSION','Generated/cocos2d_version.txt')
 
         self.generate_template_project('PROJECTNAME',sku_folder=sku)
-        self.generate_template_project('SPRITEKITPROJECTNAME',sku_folder='')    
+        #self.generate_template_project('SPRITEKITPROJECTNAME',sku_folder='')    
 
 
     def generate_template_project(self, project_name,sku_folder):
