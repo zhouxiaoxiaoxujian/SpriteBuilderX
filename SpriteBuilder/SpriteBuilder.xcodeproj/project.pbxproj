@@ -350,6 +350,9 @@
 		A58EE8311A30A211005F6E22 /* PreviewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */; };
 		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
 		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
+		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
+		A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1C1A31CF63004B114B /* Icon@2x.png */; };
+		A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EC6C291A31F65C004B114B /* AppKit.framework */; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
 		B7083DF917B1CBC8006628C7 /* LocalizationEditorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF817B1CBC8006628C7 /* LocalizationEditorHandler.m */; };
@@ -1741,6 +1744,9 @@
 		A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFolderViewController.m; sourceTree = "<group>"; };
 		A59521A91A1F89C700934862 /* doc-dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog.png"; sourceTree = "<group>"; };
 		A59521AA1A1F89C700934862 /* doc-dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog@2x.png"; sourceTree = "<group>"; };
+		A5EC6C1B1A31CF63004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A5EC6C1C1A31CF63004B114B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A5EC6C291A31F65C004B114B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalizationEditorWindow.xib; sourceTree = "<group>"; };
 		B7083DF417B1CB88006628C7 /* LocalizationEditorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationEditorWindow.h; sourceTree = "<group>"; };
 		B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationEditorWindow.m; sourceTree = "<group>"; };
@@ -2720,6 +2726,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */,
 				7B76CF8619F1AF9E006AF235 /* libcocos2d-mac.a in Frameworks */,
 				D35E589E18E391DA008571EC /* GLKit.framework in Frameworks */,
 				80AD79A21863878B00B653B7 /* libPVRTexLib.a in Frameworks */,
@@ -3558,6 +3565,7 @@
 		7789ABC1133AA82000CEFCC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5EC6C291A31F65C004B114B /* AppKit.framework */,
 				830F4EB019347032002B832D /* OCMock.framework */,
 				D35E589D18E391DA008571EC /* GLKit.framework */,
 				D2E0168418D783C900927430 /* AppleScriptKit.framework */,
@@ -4590,6 +4598,8 @@
 		B7C623D017F38B7800928F91 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5EC6C1B1A31CF63004B114B /* Icon.png */,
+				A5EC6C1C1A31CF63004B114B /* Icon@2x.png */,
 				B7C623D117F38B7800928F91 /* CCWidget-Info.plist */,
 				B7C623D217F38B7800928F91 /* InfoPlist.strings */,
 				B7C623D517F38B7800928F91 /* CCWidget-Prefix.pch */,
@@ -6977,6 +6987,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */,
+				A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */,
 				B7C623D417F38B7800928F91 /* InfoPlist.strings in Resources */,
 				B7C623DD17F392FE00928F91 /* CCBPProperties.plist in Resources */,
 			);
@@ -8238,14 +8250,14 @@
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
-				SB_VERSION = 1.2.0;
+				SB_VERSION = 1.3.6;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
@@ -8284,14 +8296,14 @@
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
-				SB_VERSION = 1.2.0;
+				SB_VERSION = 1.3.6;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
@@ -8442,14 +8454,14 @@
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
-				SB_VERSION = 1.2.0;
+				SB_VERSION = 1.3.6;
 				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
