@@ -47,6 +47,9 @@
 
 - (BOOL)willAllPackagesBeDeleted:(NSArray *)packagePathsToDelete
 {
+    if(packagePathsToDelete.count == 0)
+        return 0;
+    
     NSArray *packages = [_resourceManager allPackages];
 
     return packagePathsToDelete.count >= packages.count;
