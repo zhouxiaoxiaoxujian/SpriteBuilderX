@@ -1762,7 +1762,6 @@
 		A5EC6C1C1A31CF63004B114B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A5EC6C291A31F65C004B114B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCProgressNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5EC6C591A35C074004B114B /* CCNode copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCNode copy-Info.plist"; path = "/Users/sergey/Documents/SpriteBuilderX/SpriteBuilder/CCNode copy-Info.plist"; sourceTree = "<absolute>"; };
 		A5EC6C5F1A35C0E7004B114B /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A5EC6C601A35C0E7004B114B /* CCBProgressNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProgressNode.h; sourceTree = "<group>"; };
 		A5EC6C611A35C0E7004B114B /* CCBProgressNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBProgressNode.m; sourceTree = "<group>"; };
@@ -3552,7 +3551,6 @@
 				FA98CFC5154E7D1C006E58C5 /* ccbpublish */,
 				7789ABC1133AA82000CEFCC7 /* Frameworks */,
 				7789ABBF133AA82000CEFCC7 /* Products */,
-				A5EC6C591A35C074004B114B /* CCNode copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -9993,7 +9991,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
 				);
-				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INFOPLIST_FILE = "CCProgressNode/CCProgressNode-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = (
@@ -10025,7 +10023,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
 				);
-				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INFOPLIST_FILE = "CCProgressNode/CCProgressNode-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = (
@@ -10053,7 +10051,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
 				);
-				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INFOPLIST_FILE = "CCProgressNode/CCProgressNode-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = (
