@@ -10,6 +10,10 @@
 #import "CCBWarnings.h"
 #import "ResourceManager.h"
 #import "TaskStatusUpdaterProtocol.h"
+#import "CCBPublishingTarget.h"
+#import "ProjectSettings+Convenience.h"
+#import "ResourceManager+Publishing.h"
+#import "RMDirectory.h"
 
 
 @interface ConsoleTaskStatusUpdater : NSObject <TaskStatusUpdaterProtocol>
@@ -94,6 +98,28 @@ static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputP
 	}
 }
 
+CCBPublishingTarget * createTargetTargetForOSType(NSArray *inputDirectories, ProjectSettings* projectSettings, CCBPublisherOSType osType)
+{
+   /* NSMutableArray *inputDirs = NSMutableArray *result = [NSMutableArray array];
+    [inputDirs addObjectsFromArray:[self inputDirsOfResourcePaths]];
+    
+    if ([inputDirs count] == 0)
+    {
+        return;
+    }*/
+    
+    CCBPublishingTarget *target = [[CCBPublishingTarget alloc] init];
+    target.osType = osType;
+    target.outputDirectory = [projectSettings publishDirForOSType:osType];
+    target.resolutions = [projectSettings publishingResolutionsForOSType:osType];
+    target.inputDirectories = inputDirectories;
+    target.publishEnvironment = projectSettings.publishEnvironment;
+    target.audioQuality = [projectSettings audioQualityForOsType:osType];
+    target.directoryToClean = [projectSettings publishDirForOSType:osType];
+    
+    return target;
+}
+
 int main(int argc, char *argv[])
 {
     
@@ -171,6 +197,24 @@ int main(int argc, char *argv[])
             else
                 taskStatusUpdater = [[FakeTaskStatusUpdater alloc] init];
             publisher.taskStatusUpdater = taskStatusUpdater;
+            
+            NSArray * oldResourcePaths = [[ResourceManager sharedManager] oldResourcePaths];
+            NSMutableArray *inputDirectories = [NSMutableArray array];
+            for (RMDirectory *oldResourcePath in oldResourcePaths)
+            {
+                [inputDirectories addObject:oldResourcePath.dirPath];
+            }
+            
+            if (project.publishEnabledIOS)
+            {
+                [publisher addPublishingTarget:createTargetTargetForOSType(inputDirectories, project, kCCBPublisherOSTypeIOS)];
+            }
+            
+            //#ifdef SPRITEBUILDER_PRO
+            if (project.publishEnabledAndroid)
+            {
+                [publisher addPublishingTarget:createTargetTargetForOSType(inputDirectories, project, kCCBPublisherOSTypeAndroid)];
+            }
             
             succces = [publisher start];
             
