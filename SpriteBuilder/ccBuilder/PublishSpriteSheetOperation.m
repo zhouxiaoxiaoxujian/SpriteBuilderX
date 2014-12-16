@@ -19,6 +19,8 @@
 @property (nonatomic) BOOL format_android_dither;
 @property (nonatomic) BOOL format_android_compress;
 @property (nonatomic) BOOL trim;
+@property (nonatomic) int format_padding;
+@property (nonatomic) int format_extrude;
 
 @end
 
@@ -130,6 +132,8 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     _packer.directoryPrefix = _subPath;
     _packer.border = YES;
     _packer.trim = _trim;
+    _packer.padding = self.format_padding;
+    _packer.extrude = self.format_extrude;
 
     [self setImageFormatDependingOnTarget];
 
@@ -181,6 +185,8 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     self.format_android_dither = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_DITHER] boolValue];
     self.format_android_compress = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_COMPRESS] boolValue];
     self.trim = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_TRIM_SPRITES] boolValue];
+    self.format_padding = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_FORMAT_PADDING] integerValue];
+    self.format_extrude = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE] integerValue];
 }
 
 - (void)cancel

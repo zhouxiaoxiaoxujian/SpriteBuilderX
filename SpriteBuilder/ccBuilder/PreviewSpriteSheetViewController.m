@@ -47,6 +47,9 @@
         weakSelf.format_android_compress_enabled = [ImageFormatAndPropertiesHelper supportsCompress:(kFCImageFormat) weakSelf.format_android osType:kCCBPublisherOSTypeAndroid];
 
         weakSelf.trimSprites = [[weakSelf.projectSettings propertyForResource:weakSelf.previewedResource andKey:RESOURCE_PROPERTY_TRIM_SPRITES] boolValue];
+        
+        weakSelf.format_padding = [[weakSelf.projectSettings propertyForResource:weakSelf.previewedResource andKey:RESOURCE_PROPERTY_FORMAT_PADDING] integerValue];
+        weakSelf.format_extrude = [[weakSelf.projectSettings propertyForResource:weakSelf.previewedResource andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE] integerValue];
     }];
 
     NSString *imgPreviewPath = [_previewedResource.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
@@ -105,6 +108,18 @@
 {
     _trimSprites = trimSprites;
     [self setValue:@(trimSprites) withName:RESOURCE_PROPERTY_TRIM_SPRITES isAudio:NO];
+}
+
+- (void) setFormat_padding:(int) format_padding
+{
+    _format_padding = format_padding;
+    [self setValue:@(format_padding) withName:RESOURCE_PROPERTY_FORMAT_PADDING isAudio:NO];
+}
+
+- (void) setFormat_extrude:(int) format_extrude
+{
+    _format_extrude = format_extrude;
+    [self setValue:@(format_extrude) withName:RESOURCE_PROPERTY_FORMAT_EXTRUDE isAudio:NO];
 }
 
 @end

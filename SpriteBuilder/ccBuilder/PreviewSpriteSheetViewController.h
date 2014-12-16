@@ -31,5 +31,7 @@
 @property (nonatomic) BOOL format_android_dither_enabled;
 @property (nonatomic) BOOL format_android_compress_enabled;
 
+@property (nonatomic,readwrite) int format_padding;
+@property (nonatomic,readwrite) int format_extrude;
 
 @end

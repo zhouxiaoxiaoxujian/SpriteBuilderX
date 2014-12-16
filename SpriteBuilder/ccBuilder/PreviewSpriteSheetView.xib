@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreviewSpriteSheetViewController">
@@ -15,16 +15,16 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="sT4-zB-Pbt" userLabel="Sprite Sheet Preview View">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="238"/>
+            <rect key="frame" x="0.0" y="5" width="250" height="255"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView id="qf8-dC-2Wu" customClass="CCBImageView">
-                    <rect key="frame" x="2" y="59" width="246" height="177"/>
+                    <rect key="frame" x="2" y="76" width="246" height="177"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="czc-uX-c0w"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="jQh-YD-IOE" customClass="CCBTextFieldLabel">
-                    <rect key="frame" x="2" y="26" width="38" height="11"/>
+                    <rect key="frame" x="2" y="43" width="38" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="iOS" id="oJw-Q6-NfN">
                         <font key="font" metaFont="miniSystem"/>
@@ -33,7 +33,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="DKX-RZ-fZB">
-                    <rect key="frame" x="41" y="24" width="94" height="15"/>
+                    <rect key="frame" x="41" y="41" width="94" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="c5h-VT-6VC">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -64,7 +64,7 @@
                     </connections>
                 </popUpButton>
                 <button id="quC-p9-jbK">
-                    <rect key="frame" x="135" y="23" width="49" height="18"/>
+                    <rect key="frame" x="135" y="40" width="49" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Dither" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="R0j-Io-OE8">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -76,7 +76,7 @@
                     </connections>
                 </button>
                 <button id="jTM-6n-OVW">
-                    <rect key="frame" x="181" y="23" width="66" height="19"/>
+                    <rect key="frame" x="181" y="40" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Compress" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="wka-o9-3JI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -87,55 +87,8 @@
                         <binding destination="-2" name="enabled" keyPath="format_ios_compress_enabled" id="sZE-ZV-5AD"/>
                     </connections>
                 </button>
-                <button hidden="YES" id="4bC-EY-74V">
-                    <rect key="frame" x="181" y="-20" width="66" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="check" title="Compress" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" enabled="NO" state="on" inset="2" id="uLi-Ht-RtI">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                </button>
-                <textField hidden="YES" verticalHuggingPriority="750" id="Wzi-mL-bDq" customClass="CCBTextFieldLabel">
-                    <rect key="frame" x="2" y="-17" width="39" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Android" id="ZmG-Rd-fZ3">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton hidden="YES" verticalHuggingPriority="750" id="PfV-dt-6F8">
-                    <rect key="frame" x="41" y="-19" width="94" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8Qz-k9-xf9">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                        <menu key="menu" title="OtherViews" id="x7U-c7-EhC">
-                            <items>
-                                <menuItem title="PNG" id="6Ke-hB-ZpK"/>
-                                <menuItem title="PNG 8-bit" tag="1" hidden="YES" id="KoS-Hy-wUP"/>
-                                <menuItem isSeparatorItem="YES" id="VsX-5s-GMW"/>
-                                <menuItem title="PVR RGBA8888" tag="2" id="pQz-Nb-F3a"/>
-                                <menuItem title="PVR RGBA4444" tag="3" id="DW3-mG-WSu">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="PVR RGB565" tag="4" id="nF3-YA-X8t">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
-                <button hidden="YES" id="D9r-HM-tiU">
-                    <rect key="frame" x="135" y="-20" width="49" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="check" title="Dither" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="gK6-9Q-1dd">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                </button>
                 <customView id="2LO-ej-k62" userLabel="Android Settings Container">
-                    <rect key="frame" x="0.0" y="3" width="250" height="19"/>
+                    <rect key="frame" x="0.0" y="20" width="250" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button id="cRK-fI-NTm">
@@ -199,7 +152,7 @@
                     </subviews>
                 </customView>
                 <button id="oz6-nq-Ogm">
-                    <rect key="frame" x="0.0" y="40" width="208" height="22"/>
+                    <rect key="frame" x="0.0" y="57" width="208" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Trim sprites (saves space in sprite sheet)" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="RCb-aI-Jao">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -209,6 +162,48 @@
                         <binding destination="-2" name="value" keyPath="trimSprites" id="bfc-t9-A8L"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1sB-2i-OXR" customClass="CCBTextFieldLabel">
+                    <rect key="frame" x="2" y="5" width="77" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Padding" id="ACv-K9-iWx">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="KKR-6E-skt" userLabel="Padding">
+                    <rect key="frame" x="60" y="3" width="64" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="kym-Lq-Ss3">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="format_padding" id="IXb-cF-FXK"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="PK2-aJ-Sz7" customClass="CCBTextFieldLabel">
+                    <rect key="frame" x="132" y="5" width="55" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Extrude" id="BkQ-hH-l8G">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="TPf-o3-3KE" userLabel="Extrude">
+                    <rect key="frame" x="180" y="3" width="64" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="b53-Ia-TCt">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="format_extrude" id="yBJ-0h-5fr"/>
+                    </connections>
+                </textField>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="TYE-vJ-YFz"/>

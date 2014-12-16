@@ -24,3 +24,6 @@ NSString *const RESOURCE_PROPERTY_IOS_SOUND_QUALITY  = @"format_ios_sound_qualit
 NSString *const RESOURCE_PROPERTY_ANDROID_SOUND = @"format_android_sound";
 NSString *const RESOURCE_PROPERTY_ANDROID_SOUND_QUALITY = @"format_android_sound_quality";
 
+NSString *const RESOURCE_PROPERTY_FORMAT_PADDING = @"format_padding";
+NSString *const RESOURCE_PROPERTY_FORMAT_EXTRUDE = @"format_extrude";
+
