@@ -353,6 +353,12 @@
 		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
 		A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1C1A31CF63004B114B /* Icon@2x.png */; };
 		A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EC6C291A31F65C004B114B /* AppKit.framework */; };
+		A5EC6C4F1A35C073004B114B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
+		A5EC6C671A35C0E7004B114B /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C5F1A35C0E7004B114B /* CCBPProperties.plist */; };
+		A5EC6C681A35C0E7004B114B /* CCBProgressNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EC6C611A35C0E7004B114B /* CCBProgressNode.m */; };
+		A5EC6C6A1A35C0E7004B114B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C641A35C0E7004B114B /* InfoPlist.strings */; };
+		A5EC6C6B1A35C0E7004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C661A35C0E7004B114B /* Icon.png */; };
+		A5EC6C6F1A35C17A004B114B /* CCProgressNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
 		B7083DF917B1CBC8006628C7 /* LocalizationEditorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF817B1CBC8006628C7 /* LocalizationEditorHandler.m */; };
@@ -1087,6 +1093,13 @@
 			remoteGlobalIDString = 92B7900118C808B7007DF895;
 			remoteInfo = CCPhysicsSpringJoint;
 		};
+		A5EC6C6D1A35C167004B114B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5EC6C4B1A35C073004B114B;
+			remoteInfo = CCProgressNode;
+		};
 		B729AC6B181F0D1400BA0D9C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
@@ -1250,6 +1263,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A5EC6C6F1A35C17A004B114B /* CCProgressNode.ccbPlugNode in Copy PlugIns */,
 				DC05E79B18D0ADF800592A1E /* SBControlNode.ccbPlugNode in Copy PlugIns */,
 				DC05E79C18D0ADF800592A1E /* SBButtonNode.ccbPlugNode in Copy PlugIns */,
 				92B792D518C9333E007DF895 /* CCPhysicsSpringJoint.ccbPlugNode in Copy PlugIns */,
@@ -1747,6 +1761,15 @@
 		A5EC6C1B1A31CF63004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A5EC6C1C1A31CF63004B114B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A5EC6C291A31F65C004B114B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCProgressNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5EC6C591A35C074004B114B /* CCNode copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCNode copy-Info.plist"; path = "/Users/sergey/Documents/SpriteBuilderX/SpriteBuilder/CCNode copy-Info.plist"; sourceTree = "<absolute>"; };
+		A5EC6C5F1A35C0E7004B114B /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
+		A5EC6C601A35C0E7004B114B /* CCBProgressNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProgressNode.h; sourceTree = "<group>"; };
+		A5EC6C611A35C0E7004B114B /* CCBProgressNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBProgressNode.m; sourceTree = "<group>"; };
+		A5EC6C621A35C0E7004B114B /* CCProgressNode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCProgressNode-Info.plist"; sourceTree = "<group>"; };
+		A5EC6C631A35C0E7004B114B /* CCProgressNode-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCProgressNode-Prefix.pch"; sourceTree = "<group>"; };
+		A5EC6C651A35C0E7004B114B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5EC6C661A35C0E7004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalizationEditorWindow.xib; sourceTree = "<group>"; };
 		B7083DF417B1CB88006628C7 /* LocalizationEditorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationEditorWindow.h; sourceTree = "<group>"; };
 		B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationEditorWindow.m; sourceTree = "<group>"; };
@@ -2792,6 +2815,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5EC6C4E1A35C073004B114B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5EC6C4F1A35C073004B114B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B729AC4F181F091800BA0D9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3521,6 +3552,7 @@
 				FA98CFC5154E7D1C006E58C5 /* ccbpublish */,
 				7789ABC1133AA82000CEFCC7 /* Frameworks */,
 				7789ABBF133AA82000CEFCC7 /* Products */,
+				A5EC6C591A35C074004B114B /* CCNode copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3558,6 +3590,7 @@
 				DCFB063F18E32B7500DF02A0 /* SKFile.ccbPlugNode */,
 				833A5C4A192B48CB001837B3 /* SpriteBuilder Tests.xctest */,
 				929D1BA31954D16C00B27340 /* CCEffectNode.ccbPlugNode */,
+				A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4341,6 +4374,28 @@
 			name = CCLoadingBar;
 			sourceTree = "<group>";
 		};
+		A5EC6C5E1A35C0E7004B114B /* CCProgressNode */ = {
+			isa = PBXGroup;
+			children = (
+				A5EC6C6C1A35C116004B114B /* Supporting Files */,
+				A5EC6C601A35C0E7004B114B /* CCBProgressNode.h */,
+				A5EC6C611A35C0E7004B114B /* CCBProgressNode.m */,
+			);
+			path = CCProgressNode;
+			sourceTree = "<group>";
+		};
+		A5EC6C6C1A35C116004B114B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5EC6C5F1A35C0E7004B114B /* CCBPProperties.plist */,
+				A5EC6C621A35C0E7004B114B /* CCProgressNode-Info.plist */,
+				A5EC6C631A35C0E7004B114B /* CCProgressNode-Prefix.pch */,
+				A5EC6C641A35C0E7004B114B /* InfoPlist.strings */,
+				A5EC6C661A35C0E7004B114B /* Icon.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B7083DEF17B1C31E006628C7 /* Localization Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -4951,6 +5006,7 @@
 				E35DBBCE14F2AA360070A6E4 /* CCLabelBMFont */,
 				E35DBBEB14F3E2390070A6E4 /* CCLabelTTF */,
 				E35DBC0B14F4D72B0070A6E4 /* CCParticleSystem */,
+				A5EC6C5E1A35C0E7004B114B /* CCProgressNode */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -5795,6 +5851,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A5EC6C6E1A35C167004B114B /* PBXTargetDependency */,
 				7A35B9E219F0DD5300FE3C59 /* PBXTargetDependency */,
 				DC05E79818D0ADDC00592A1E /* PBXTargetDependency */,
 				DC05E79A18D0ADDC00592A1E /* PBXTargetDependency */,
@@ -5909,6 +5966,23 @@
 			name = CCPhysicsSpringJoint;
 			productName = CCPhysicsNode;
 			productReference = 92B7900D18C808B7007DF895 /* CCPhysicsSpringJoint.ccbPlugNode */;
+			productType = "com.apple.product-type.bundle";
+		};
+		A5EC6C4B1A35C073004B114B /* CCProgressNode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5EC6C541A35C073004B114B /* Build configuration list for PBXNativeTarget "CCProgressNode" */;
+			buildPhases = (
+				A5EC6C4C1A35C073004B114B /* Sources */,
+				A5EC6C4E1A35C073004B114B /* Frameworks */,
+				A5EC6C501A35C073004B114B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCProgressNode;
+			productName = CCNode;
+			productReference = A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */;
 			productType = "com.apple.product-type.bundle";
 		};
 		B729AC51181F091800BA0D9C /* CCSlider */ = {
@@ -6388,6 +6462,7 @@
 				E35DBBCB14F2AA350070A6E4 /* CCLabelBMFont */,
 				E35DBBE814F3E2390070A6E4 /* CCLabelTTF */,
 				E35DBC0814F4D72B0070A6E4 /* CCParticleSystem */,
+				A5EC6C4B1A35C073004B114B /* CCProgressNode */,
 				E3D59120150F5367004180CA /* CCBFile */,
 				B7C623B017F383CE00928F91 /* CCButton */,
 				B7C623CC17F38B7800928F91 /* CCWidget */,
@@ -6929,6 +7004,16 @@
 				9254805618D7706F00236DED /* InfoPlist.strings in Resources */,
 				92B792D918C933B7007DF895 /* CCBPProperties.plist in Resources */,
 				92B792D718C9339E007DF895 /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5EC6C501A35C073004B114B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5EC6C6A1A35C0E7004B114B /* InfoPlist.strings in Resources */,
+				A5EC6C6B1A35C0E7004B114B /* Icon.png in Resources */,
+				A5EC6C671A35C0E7004B114B /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7619,6 +7704,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5EC6C4C1A35C073004B114B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5EC6C681A35C0E7004B114B /* CCBProgressNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B729AC4E181F091800BA0D9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7852,6 +7945,11 @@
 			target = 92B7900118C808B7007DF895 /* CCPhysicsSpringJoint */;
 			targetProxy = 92A805C418D3CFAC004508E3 /* PBXContainerItemProxy */;
 		};
+		A5EC6C6E1A35C167004B114B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5EC6C4B1A35C073004B114B /* CCProgressNode */;
+			targetProxy = A5EC6C6D1A35C167004B114B /* PBXContainerItemProxy */;
+		};
 		B729AC6C181F0D1400BA0D9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B729AC51181F091800BA0D9C /* CCSlider */;
@@ -8010,6 +8108,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				92B792C418C92C60007DF895 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5EC6C641A35C0E7004B114B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5EC6C651A35C0E7004B114B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -9867,6 +9973,98 @@
 			};
 			name = Release;
 		};
+		A5EC6C551A35C073004B114B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCParticleSystem/CCParticleSystem-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+				);
+				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCProgressNode;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Debug;
+		};
+		A5EC6C561A35C073004B114B /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCParticleSystem/CCParticleSystem-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+				);
+				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCProgressNode;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Testing;
+		};
+		A5EC6C571A35C073004B114B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCParticleSystem/CCParticleSystem-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+				);
+				INFOPLIST_FILE = "CCNode copy-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCProgressNode;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Release;
+		};
 		B729AC5B181F091800BA0D9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -11606,6 +11804,16 @@
 				92B7900B18C808B7007DF895 /* Debug */,
 				83833172196578F500E6EFB1 /* Testing */,
 				92B7900C18C808B7007DF895 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5EC6C541A35C073004B114B /* Build configuration list for PBXNativeTarget "CCProgressNode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5EC6C551A35C073004B114B /* Debug */,
+				A5EC6C561A35C073004B114B /* Testing */,
+				A5EC6C571A35C073004B114B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
