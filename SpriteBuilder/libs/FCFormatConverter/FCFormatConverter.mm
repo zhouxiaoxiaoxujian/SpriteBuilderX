@@ -435,7 +435,7 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         {
             // oggenc can't convert things in place, so make a copy that will get deleted at the end
             NSString *newSrcPath = [srcPath stringByAppendingPathExtension:@"orig"];
-            [fm copyItemAtPath:srcPath toPath:newSrcPath error:NULL];
+            [fm moveItemAtPath:srcPath toPath:newSrcPath error:NULL];
             srcPath = newSrcPath;
         }
 

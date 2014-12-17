@@ -45,8 +45,8 @@
     else if (osType == kCCBPublisherOSTypeAndroid)
     {
         key = RESOURCE_PROPERTY_ANDROID_SOUND;
-        map = @{@(0):@(kFCSoundFormatWAV),
-                @(1):@(kFCSoundFormatOGG)};
+        map = @{@(0):@(kFCSoundFormatOGG),
+                @(1):@(kFCSoundFormatWAV)};
     }
     else
     {
