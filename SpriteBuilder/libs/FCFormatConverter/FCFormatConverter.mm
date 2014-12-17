@@ -19,6 +19,7 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 @property (nonatomic, strong) NSTask *pngQuantTask;
 @property (nonatomic, strong) NSTask *zipTask;
 @property (nonatomic, strong) NSTask *sndTask;
+@property (nonatomic, strong) NSTask *webpTask;
 
 @end
 
@@ -65,6 +66,12 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
              format == kFCImageFormatJPG_High)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
+        return dstPath;
+    }
+    else if (format == kFCImageFormatWEBP ||
+             format == kFCImageFormatWEBP_Lossy)
+    {
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
         return dstPath;
     }
     return NULL;
@@ -313,6 +320,32 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         {
             [fm removeItemAtPath:srcPath error:NULL];
         }
+        
+        *outputFilename = [dstPath copy];
+        return YES;
+        
+    }
+    else if (format == kFCImageFormatWEBP ||
+             format == kFCImageFormatWEBP_Lossy)
+    {
+        // JPG image format
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
+        
+        self.webpTask = [[NSTask alloc] init];
+        [_webpTask setCurrentDirectoryPath:dstDir];
+        [_webpTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cwebp"]];
+        NSMutableArray* args = nil;
+        if(format == kFCImageFormatWEBP)
+            args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
+        else
+            args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-lossless", @"-o", dstPath, nil];
+        [_webpTask setArguments:args];
+        [_webpTask launch];
+        [_webpTask waitUntilExit];
+        self.webpTask = nil;
+        
+        // Remove uncompressed file
+        [[NSFileManager defaultManager] removeItemAtPath:srcPath error:NULL];
         
         *outputFilename = [dstPath copy];
         return YES;

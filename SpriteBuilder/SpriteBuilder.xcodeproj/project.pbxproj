@@ -350,6 +350,7 @@
 		A58EE8311A30A211005F6E22 /* PreviewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */; };
 		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
 		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
+		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
 		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
 		A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1C1A31CF63004B114B /* Icon@2x.png */; };
 		A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EC6C291A31F65C004B114B /* AppKit.framework */; };
@@ -1757,6 +1758,7 @@
 		A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFolderViewController.m; sourceTree = "<group>"; };
 		A59521A91A1F89C700934862 /* doc-dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog.png"; sourceTree = "<group>"; };
 		A59521AA1A1F89C700934862 /* doc-dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog@2x.png"; sourceTree = "<group>"; };
+		A5A340581A41E33500861273 /* cwebp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cwebp; sourceTree = "<group>"; };
 		A5EC6C1B1A31CF63004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A5EC6C1C1A31CF63004B114B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A5EC6C291A31F65C004B114B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -3693,6 +3695,7 @@
 		7789ABEF133AB17100CEFCC7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				A5A340531A41E32000861273 /* WebP */,
 				8341326918DADF8C0088FFAB /* optipng */,
 				80AD79911863871200B653B7 /* PVRTexTool */,
 				B7D0918717C2C1310007FE7F /* Cocos2d */,
@@ -4369,6 +4372,14 @@
 			children = (
 			);
 			name = CCLoadingBar;
+			sourceTree = "<group>";
+		};
+		A5A340531A41E32000861273 /* WebP */ = {
+			isa = PBXGroup;
+			children = (
+				A5A340581A41E33500861273 /* cwebp */,
+			);
+			name = WebP;
 			sourceTree = "<group>";
 		};
 		A5EC6C5E1A35C0E7004B114B /* CCProgressNode */ = {
@@ -6892,6 +6903,7 @@
 				E525FC37EF1C0B3CA4B08E59 /* InspectorSize.xib in Resources */,
 				E525F28AC6A7BCDDE7048BA8 /* InspectorPoint.xib in Resources */,
 				E525F46241CE0EC990F40A75 /* InspectorPointLock.xib in Resources */,
+				A5A340591A41E33500861273 /* cwebp in Resources */,
 				E525FB30A10E77E6C59149A6 /* InspectorScaleLock.xib in Resources */,
 				E525F03B6CDF916ED1E70285 /* InspectorPopoverScaleLock.xib in Resources */,
 				E525FB20D3C6755CC64987B1 /* InspectorDegrees.xib in Resources */,
