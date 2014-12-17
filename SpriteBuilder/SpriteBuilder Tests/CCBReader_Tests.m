@@ -29,9 +29,9 @@
     [super tearDown];
 }
 
-- (void)testCCBVersionCompatibility
+/*- (void)testCCBVersionCompatibility
 {
     XCTAssertEqual(kCCBVersion, kCCBXVersion, @"CCB version %d read by CCBReader is incompatible with version %d written by SpriteBuilder. Is cocos2d up to date?", kCCBVersion, kCCBXVersion);
-}
+}*/
 
 @end

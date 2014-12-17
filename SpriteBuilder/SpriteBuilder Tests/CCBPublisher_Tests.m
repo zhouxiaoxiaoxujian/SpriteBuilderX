@@ -286,6 +286,8 @@
 
     _projectSettings.resourceAutoScaleFactor = 4;
     [_projectSettings setProperty:@(YES) forRelPath:@"sheet" andKey:RESOURCE_PROPERTY_IS_SMARTSHEET];
+    [_projectSettings setProperty:@(1) forRelPath:@"sheet" andKey:RESOURCE_PROPERTY_FORMAT_PADDING];
+    [_projectSettings setProperty:@(1) forRelPath:@"sheet" andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE];
 
     [_publisher addPublishingTarget:_targetIOS];
     [_publisher start];
@@ -293,13 +295,13 @@
     // The resolutions tests may be a bit too much here, but there are no
     // Tupac tests at the moment
     [self assertFileExists:@"Published-iOS/resources-tablet/sheet.plist"];
-    [self assertPNGAtPath:@"Published-iOS/resources-tablet/sheet.png" hasWidth:16 hasHeight:16];
+    [self assertPNGAtPath:@"Published-iOS/resources-tablet/sheet.png" hasWidth:32 hasHeight:16];
     [self assertFileExists:@"Published-iOS/resources-tablethd/sheet.plist"];
-    [self assertPNGAtPath:@"Published-iOS/resources-tablethd/sheet.png" hasWidth:32 hasHeight:16];
+    [self assertPNGAtPath:@"Published-iOS/resources-tablethd/sheet.png" hasWidth:32 hasHeight:32];
     [self assertFileExists:@"Published-iOS/resources-phone/sheet.plist"];
-    [self assertPNGAtPath:@"Published-iOS/resources-phone/sheet.png" hasWidth:16 hasHeight:8];
+    [self assertPNGAtPath:@"Published-iOS/resources-phone/sheet.png" hasWidth:16 hasHeight:16];
     [self assertFileExists:@"Published-iOS/resources-phonehd/sheet.plist"];
-    [self assertPNGAtPath:@"Published-iOS/resources-phonehd/sheet.png" hasWidth:16 hasHeight:16];
+    [self assertPNGAtPath:@"Published-iOS/resources-phonehd/sheet.png" hasWidth:32 hasHeight:16];
 
     // Previews are generated in texture packer
     [self assertFileExists:@"baa.spritebuilder/Packages/foo.sbpack/sheet.ppng"];

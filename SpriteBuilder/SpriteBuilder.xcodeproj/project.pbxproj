@@ -894,7 +894,6 @@
 		E525F4D53964A2B3E368777B /* InspectorCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FE561C3F2F72AC9FD31B /* InspectorCustom.m */; };
 		E525F4DEC802CEC768E89163 /* InspectorAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F620E2E7CFB0B4AF1693 /* InspectorAnimation.xib */; };
 		E525F4E581031BFDE7E6DC9A /* NSString+Publishing.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F74ADF149FB8398AE965 /* NSString+Publishing.m */; };
-		E525F4F04F018D82F3251813 /* CCAnimation_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FA8328B2749A80A9BB95 /* CCAnimation_Tests.m */; };
 		E525F4F4F15D32310BBCA63D /* CCBPublisherController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FA6F3FA1EC682616EB41 /* CCBPublisherController_Tests.m */; };
 		E525F50C89C6296C9FE062F9 /* ruler-numbers.fnt in Resources */ = {isa = PBXBuildFile; fileRef = E525FEFB9DD4C68B41FF4F1F /* ruler-numbers.fnt */; };
 		E525F50E27715B344266949A /* ResourceManager+Publishing.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F984FC2B05C07E7991CD /* ResourceManager+Publishing.m */; };
@@ -1037,13 +1036,6 @@
 			remoteGlobalIDString = 7A4037A719E37038007B6E8F;
 			remoteInfo = "cocos2d-mac";
 		};
-		833A5C56192B48CB001837B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7789ABBD133AA82000CEFCC7;
-			remoteInfo = SpriteBuilder;
-		};
 		836E2D5519EE5BCC00CD5B66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 836E2D3E19EE5AF300CD5B66 /* cocos2d.xcodeproj */;
@@ -1092,6 +1084,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 92B7900118C808B7007DF895;
 			remoteInfo = CCPhysicsSpringJoint;
+		};
+		A5A340411A41B51900861273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7789ABBD133AA82000CEFCC7;
+			remoteInfo = SpriteBuilderX;
 		};
 		A5EC6C6D1A35C167004B114B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1477,7 +1476,7 @@
 		830B39AF197032F400218021 /* blank.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blank.wav; sourceTree = "<group>"; };
 		830F4E9A192F5263002B832D /* Package.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Package.icns; sourceTree = "<group>"; };
 		830F4EB019347032002B832D /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = libs/OCMock.framework; sourceTree = "<group>"; };
-		833A5C4A192B48CB001837B3 /* SpriteBuilder Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SpriteBuilder Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		833A5C4A192B48CB001837B3 /* SpriteBuilder Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "SpriteBuilder Tests.xctest"; path = "SpriteBuilderX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833A5C4B192B48CB001837B3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		833A5C4F192B48CB001837B3 /* SpriteBuilder Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpriteBuilder Tests-Info.plist"; sourceTree = "<group>"; };
 		833A5C51192B48CB001837B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -5879,9 +5878,9 @@
 			productReference = 7789ABBE133AA82000CEFCC7 /* SpriteBuilderX.app */;
 			productType = "com.apple.product-type.application";
 		};
-		833A5C49192B48CA001837B3 /* SpriteBuilder Tests */ = {
+		833A5C49192B48CA001837B3 /* SpriteBuilderX Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 833A5C58192B48CB001837B3 /* Build configuration list for PBXNativeTarget "SpriteBuilder Tests" */;
+			buildConfigurationList = 833A5C58192B48CB001837B3 /* Build configuration list for PBXNativeTarget "SpriteBuilderX Tests" */;
 			buildPhases = (
 				833A5C46192B48CA001837B3 /* Sources */,
 				833A5C47192B48CA001837B3 /* Frameworks */,
@@ -5891,9 +5890,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				833A5C57192B48CB001837B3 /* PBXTargetDependency */,
+				A5A340421A41B51900861273 /* PBXTargetDependency */,
 			);
-			name = "SpriteBuilder Tests";
+			name = "SpriteBuilderX Tests";
 			productName = "SpriteBuilder Tests";
 			productReference = 833A5C4A192B48CB001837B3 /* SpriteBuilder Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -6448,7 +6447,7 @@
 			projectRoot = "";
 			targets = (
 				7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */,
-				833A5C49192B48CA001837B3 /* SpriteBuilder Tests */,
+				833A5C49192B48CA001837B3 /* SpriteBuilderX Tests */,
 				E398C02114FB81A30078E771 /* Cocos2D iPhone */,
 				E3B7AEC414E3193500DFD402 /* CCNode */,
 				B7EE69F71819EE0D00B983FE /* CCLayoutBox */,
@@ -7641,7 +7640,6 @@
 				E525F7AC155C1C4502F6A34A /* PackageImporter_Tests.m in Sources */,
 				83CD449A193F35C50086E9E7 /* ResourceContextMenu_Tests.m in Sources */,
 				E525F09EC8AF83CADB163700 /* CCBReader_Tests.m in Sources */,
-				E525F4F04F018D82F3251813 /* CCAnimation_Tests.m in Sources */,
 				E525F0B45E1523153C200B71 /* FileSystemTestCase.m in Sources */,
 				E525FCE3F78C45137345C537 /* NSString+Publishing_Tests.m in Sources */,
 				E525F2938670750314B81156 /* CCBPublisher_Tests.m in Sources */,
@@ -7923,11 +7921,6 @@
 			name = "cocos2d-mac";
 			targetProxy = 7A35B9E119F0DD5300FE3C59 /* PBXContainerItemProxy */;
 		};
-		833A5C57192B48CB001837B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */;
-			targetProxy = 833A5C56192B48CB001837B3 /* PBXContainerItemProxy */;
-		};
 		92154AE218A5567400BD215C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92154ACF18A5560B00BD215C /* CCPhysicsPivotJoint */;
@@ -7942,6 +7935,11 @@
 			isa = PBXTargetDependency;
 			target = 92B7900118C808B7007DF895 /* CCPhysicsSpringJoint */;
 			targetProxy = 92A805C418D3CFAC004508E3 /* PBXContainerItemProxy */;
+		};
+		A5A340421A41B51900861273 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7789ABBD133AA82000CEFCC7 /* SpriteBuilderX */;
+			targetProxy = A5A340411A41B51900861273 /* PBXContainerItemProxy */;
 		};
 		A5EC6C6E1A35C167004B114B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8417,7 +8415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilder.app/Contents/MacOS/SpriteBuilder";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilderX.app/Contents/MacOS/SpriteBuilderX";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -8454,7 +8452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilder.app/Contents/MacOS/SpriteBuilder";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilderX.app/Contents/MacOS/SpriteBuilderX";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -8575,7 +8573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilder.app/Contents/MacOS/SpriteBuilder";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpriteBuilderX.app/Contents/MacOS/SpriteBuilderX";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -11756,7 +11754,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		833A5C58192B48CB001837B3 /* Build configuration list for PBXNativeTarget "SpriteBuilder Tests" */ = {
+		833A5C58192B48CB001837B3 /* Build configuration list for PBXNativeTarget "SpriteBuilderX Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				833A5C59192B48CB001837B3 /* Debug */,

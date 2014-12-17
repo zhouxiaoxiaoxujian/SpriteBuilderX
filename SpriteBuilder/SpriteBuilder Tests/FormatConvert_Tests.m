@@ -31,6 +31,7 @@
 // be migrated with more effort to fix this change later on
 - (void)testEnums
 {
+    XCTAssertEqual(kFCImageFormatOriginal, -1, @"Enum value kFCImageFormatOriginal  must not change");
     XCTAssertEqual(kFCImageFormatPNG, 0, @"Enum value kFCImageFormatPNG  must not change");
     XCTAssertEqual(kFCImageFormatPNG_8BIT, 1, @"Enum value kFCImageFormatPNG_8BIT  must not change");
     XCTAssertEqual(kFCImageFormatPVR_RGBA8888, 2, @"Enum value kFCImageFormatPVR_RGBA8888  must not change");
@@ -46,6 +47,7 @@
     XCTAssertEqual(kFCSoundFormatCAF, 0, @"Enum value kFCSoundFormatCAF  must not change");
     XCTAssertEqual(kFCSoundFormatMP4, 1, @"Enum value kFCSoundFormatMP4  must not change");
     XCTAssertEqual(kFCSoundFormatOGG, 2, @"Enum value kFCSoundFormatOGG  must not change");
+    XCTAssertEqual(kFCSoundFormatWAV, 3, @"Enum value kFCSoundFormatWAV  must not change");
 }
 
 @end

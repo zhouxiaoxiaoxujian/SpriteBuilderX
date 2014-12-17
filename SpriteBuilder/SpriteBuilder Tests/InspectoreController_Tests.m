@@ -103,10 +103,10 @@ static NSString *const CODE_CONNECTION_NAMES_KEY = @"codeConnectionNames";
     [self assertUpdateInspectorFromSelectionForPlugin:@"CCBFile" expectCustomClassInCodeConnection:YES];
 }
 
-- (void)testUpdateInspectorFromSelectionForCCEffectNode
+/*- (void)testUpdateInspectorFromSelectionForCCEffectNode
 {
     [self assertUpdateInspectorFromSelectionForPlugin:@"CCEffectNode" expectCustomClassInCodeConnection:YES];
-}
+}*/
 
 - (void)testUpdateInspectorFromSelectionForCCGradientNode
 {
