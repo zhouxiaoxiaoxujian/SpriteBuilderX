@@ -61,7 +61,7 @@ class BuildDistribution:
         if sku=='pro':
             product_name = 'SpriteBuilder 1.3 Beta'
         else:
-            product_name = 'SpriteBuilder'
+            product_name = 'SpriteBuilderX'
         
         self.create_all_generated_files(version, sku, version_info)
 
