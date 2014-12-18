@@ -24,7 +24,7 @@
 		<string>spriteFrame</string>
 	</dict>
 	<key>editorClassName</key>
-	<string>CCLayoutBox</string>
+	<string>CCBPLayoutBox</string>
 	<key>propertiesOverridden</key>
 	<array>
 		<dict>
@@ -75,6 +75,14 @@
 			<string>FloatScale</string>
 			<key>name</key>
 			<string>spacing</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Clip content</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>clipContent</string>
 		</dict>
 	</array>
 </dict>

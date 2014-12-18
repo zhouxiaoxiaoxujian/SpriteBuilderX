@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ordering</key>
+	<integer>15000</integer>
+	<key>displayName</key>
+	<string>Scissors node</string>
+	<key>description</key>
+	<string>Clip its childs</string>
+	<key>inheritsFrom</key>
+	<string>CCNode</string>
+	<key>canHaveChildren</key>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
+	<key>className</key>
+	<string>CCScissorsNode</string>
+	<key>spriteFrameDrop</key>
+	<dict>
+		<key>className</key>
+		<string>CCSprite</string>
+		<key>property</key>
+		<string>spriteFrame</string>
+	</dict>
+	<key>editorClassName</key>
+	<string>CCScissorsNode</string>
+	<key>properties</key>
+	<array>
+		<dict>
+			<key>displayName</key>
+			<string>CCScissorsNode</string>
+			<key>name</key>
+			<string>CCScissorsNode</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -6,11 +6,8 @@
 //
 //
 
-#import "CCLayoutBox.h"
+#import "CCNode.h"
 
-@interface CCBPLayoutBox : CCLayoutBox
-
-@property (nonatomic,assign) BOOL clipContent;
+@interface CCScissorsNode : CCNode
 @property (nonatomic,readonly) CGRect clippingRect;
-
 @end

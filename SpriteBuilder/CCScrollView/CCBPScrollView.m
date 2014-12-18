@@ -12,6 +12,44 @@
 
 @implementation CCBPScrollView
 
+-(CGRect) clippingRect
+{
+    CCNode* parent = self;
+    
+    CGRect parentRect = CGRectMake(0, 0, INT_MAX, INT_MAX);
+    
+    while (parent)
+    {
+        parent = parent.parent;
+        if([parent respondsToSelector:NSSelectorFromString(@"clippingRect")])
+        {
+            NSValue *value = [parent valueForKey:@"clippingRect"];
+            if(value)
+                parentRect = [value CGRectValue];
+            break;
+        }
+    }
+    
+    CGRect ret;
+    if(_clipContent)
+    {
+        CGPoint positionInWorldCoords = [self convertToWorldSpace:ccp(0, 0)];
+        CGPoint rightCornerPosition = [self convertToWorldSpace:CGPointMake(self.contentSizeInPoints.width, self.contentSizeInPoints.height)];
+        CGFloat contentScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
+        
+        positionInWorldCoords = ccpMult(positionInWorldCoords, contentScaleFactor);
+        rightCornerPosition = ccpMult(rightCornerPosition, contentScaleFactor);
+        
+        ret = CGRectMake(positionInWorldCoords.x, positionInWorldCoords.y,(rightCornerPosition.x - positionInWorldCoords.x), (rightCornerPosition.y - positionInWorldCoords.y));
+    }
+    else
+    {
+        ret = CGRectMake(0, 0, INT_MAX, INT_MAX);
+    }
+    ret = CGRectIntersection(ret, parentRect);
+    return ret;
+}
+
 - (id) init
 {
     self = [super init];
