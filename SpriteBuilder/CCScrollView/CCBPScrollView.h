@@ -10,4 +10,6 @@
 
 @interface CCBPScrollView : CCScrollView
 
+@property (nonatomic,assign) BOOL clipContent;
+
 @end
