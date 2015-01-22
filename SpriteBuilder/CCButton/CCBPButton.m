@@ -39,6 +39,7 @@
 -(void) setContentSize:(CGSize)size
 {
     [self setPreferredSize:size];
+    [self setMaxSize:size];
 }
 
 -(CGSize) contentSize
@@ -56,6 +57,8 @@
     
     self.preferredSize = spriteFrame.texture.contentSize;
     self.preferredSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
+    self.maxSize = self.preferredSize;
+    self.maxSizeType = self.preferredSizeType;
     
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
