@@ -23,6 +23,18 @@
 /** Sets the bottom margin exclusively. */
 @property (nonatomic, assign) float marginBottom;
 
+/** Sets the left margin exclusively. */
+@property (nonatomic, assign) float offsetLeft;
+
+/** Sets the right margin exclusively. */
+@property (nonatomic, assign) float offsetRight;
+
+/** Sets the top margin exclusively. */
+@property (nonatomic, assign) float offsetTop;
+
+/** Sets the bottom margin exclusively. */
+@property (nonatomic, assign) float offsetBottom;
+
 @property (nonatomic, assign) float zoomOnClick;
 
 @end
