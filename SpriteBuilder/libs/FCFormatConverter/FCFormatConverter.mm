@@ -336,9 +336,9 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         [_webpTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cwebp"]];
         NSMutableArray* args = nil;
         if(format == kFCImageFormatWEBP)
-            args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
-        else
             args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-o", dstPath, nil];
+        else
+            args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
         [_webpTask setArguments:args];
         [_webpTask launch];
         [_webpTask waitUntilExit];
