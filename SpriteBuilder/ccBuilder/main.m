@@ -145,7 +145,11 @@ int main(int argc, char *argv[])
         if(inputPath)
         {
             
-            NSString *fileName = [[[NSFileManager defaultManager].currentDirectoryPath stringByAppendingPathComponent:inputPath] stringByStandardizingPath];
+            NSString *fileName = nil;
+            if([inputPath characterAtIndex:0] == '.')
+                fileName = [[[NSFileManager defaultManager].currentDirectoryPath stringByAppendingPathComponent:inputPath] stringByStandardizingPath];
+            else
+                fileName = inputPath;
             
             NSString* projName = [[fileName lastPathComponent] stringByDeletingPathExtension];
             fileName = [[fileName stringByAppendingPathComponent:projName] stringByAppendingPathExtension:@"ccbproj"];
