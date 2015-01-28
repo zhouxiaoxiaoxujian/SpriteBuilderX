@@ -198,15 +198,9 @@
                                 </menuItem>
                                 <menuItem title="WebP" tag="7" id="kVo-ot-mpg" userLabel="WebP">
                                     <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <binding destination="-2" name="enabled" keyPath="format_supportsPVRTC" id="CWN-xr-pvG"/>
-                                    </connections>
                                 </menuItem>
                                 <menuItem title="WebP lossy" tag="11" id="Szc-ZH-NXh" userLabel="WebP lossy">
                                     <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <binding destination="-2" name="enabled" keyPath="format_supportsPVRTC" id="ctC-QS-BgM"/>
-                                    </connections>
                                 </menuItem>
                             </items>
                         </menu>
@@ -466,15 +460,9 @@
                                         </menuItem>
                                         <menuItem title="WebP" state="on" tag="7" id="kxi-UO-TKC" userLabel="WebP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="-2" name="enabled" keyPath="format_supportsPVRTC" id="vFG-50-ag8"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem title="WebP lossy" tag="11" id="hhZ-dB-aJR" userLabel="WebP lossy">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="-2" name="enabled" keyPath="format_supportsPVRTC" id="z0C-td-dsD"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
