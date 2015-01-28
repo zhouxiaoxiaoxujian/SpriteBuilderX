@@ -142,10 +142,10 @@ int main(int argc, char *argv[])
         [[PlugInManager sharedManager] loadPlugIns];
         parseArgs(args, &configuration, &inputPath, &verbose);
         
-        NSString *fileName = inputPath;
-        
-        if(fileName)
+        if(inputPath)
         {
+            
+            NSString *fileName = [[[NSFileManager defaultManager].currentDirectoryPath stringByAppendingPathComponent:inputPath] stringByStandardizingPath];
             
             NSString* projName = [[fileName lastPathComponent] stringByDeletingPathExtension];
             fileName = [[fileName stringByAppendingPathComponent:projName] stringByAppendingPathExtension:@"ccbproj"];
