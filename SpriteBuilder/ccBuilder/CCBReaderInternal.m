@@ -466,12 +466,17 @@ __strong NSDictionary* renamedProperties = nil;
 			
 			
 			[effects addObject:effect];
-		}
+        }
 		
 		effectNode.effects = effects;
 		
 		
 	}
+    else if ([type isEqualToString:@"SoundFile"])
+    {
+        NSString* sound = serializedValue;
+        [node setExtraProp:sound forKey:name];
+    }
     else
     {
         NSLog(@"WARNING Unrecognized property type: %@", type);

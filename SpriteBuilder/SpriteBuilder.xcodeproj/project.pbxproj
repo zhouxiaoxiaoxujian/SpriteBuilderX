@@ -349,6 +349,8 @@
 		A51E63A71A7A5A63009F4FB9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A51E63A11A7A5A63009F4FB9 /* InfoPlist.strings */; };
 		A51E63A81A7A5A63009F4FB9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A51E63A31A7A5A63009F4FB9 /* Icon.png */; };
 		A51E63AC1A7A5AD6009F4FB9 /* CCScrollListView.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A51E63B31A7A82D0009F4FB9 /* InspectorSoundFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */; };
+		A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */; };
 		A54C735E1A43894800DB1CF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A54C73741A438A4100DB1CF7 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */; };
 		A54C73761A438A4100DB1CF7 /* CCScissorsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C736F1A438A4100DB1CF7 /* CCScissorsNode.m */; };
@@ -1787,6 +1789,9 @@
 		A51E63A01A7A5A63009F4FB9 /* CCScrollListView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCScrollListView-Prefix.pch"; sourceTree = "<group>"; };
 		A51E63A21A7A5A63009F4FB9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A51E63A31A7A5A63009F4FB9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A51E63B01A7A82D0009F4FB9 /* InspectorSoundFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorSoundFile.h; sourceTree = "<group>"; };
+		A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorSoundFile.m; sourceTree = "<group>"; };
+		A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorSoundFile.xib; sourceTree = "<group>"; };
 		A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScissorsNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A54C736C1A438A4100DB1CF7 /* CCScissorsNode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCScissorsNode-Info.plist"; sourceTree = "<group>"; };
@@ -5789,6 +5794,9 @@
 				E525F961ECB9CD7C5453D1A7 /* InspectorString.h */,
 				E525FFC4E205CD906143FE30 /* InspectorString.m */,
 				E525F441BF8BA2627B1411F5 /* InspectorString.xib */,
+				A51E63B01A7A82D0009F4FB9 /* InspectorSoundFile.h */,
+				A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */,
+				A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */,
 				E525F1A5F5AECF3D716E1723 /* InspectorStringSimple.h */,
 				E525FA43EE7D1C6B7C52E601 /* InspectorStringSimple.m */,
 				E525F12EA995AE91DCC34059 /* InspectorStringSimple.xib */,
@@ -6999,6 +7007,7 @@
 				8354FDFC198233AB004EC272 /* MainProjectSettingsDetailView.xib in Resources */,
 				B794AB91177A30EB004FF493 /* ui-nopreview.png in Resources */,
 				B732A1841799736500333C56 /* TB_build.png in Resources */,
+				A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */,
 				92F0960C18F8851300D47A94 /* inspector-body-remove-dis@2x.png in Resources */,
 				B732A1851799736500333C56 /* TB_build@2x.png in Resources */,
 				B7AC6969179E03BF0041B8BD /* select-corner.png in Resources */,
@@ -7473,6 +7482,7 @@
 				92B792D318C92FEF007DF895 /* CCBPhysicsTwoBodyJoint.m in Sources */,
 				832705A019E5389100A311A0 /* SBPasteboardTypes.m in Sources */,
 				92B792D218C92FE7007DF895 /* CCBPhysicsSpringJoint.m in Sources */,
+				A51E63B31A7A82D0009F4FB9 /* InspectorSoundFile.m in Sources */,
 				9294EC8E18C65EC10059014C /* CCBPhysicsPinJoint.m in Sources */,
 				9294EC8F18C65EC10059014C /* CCBPhysicsPivotJoint.m in Sources */,
 				9294EC9018C65EC10059014C /* CCBPhysicsJoint.m in Sources */,

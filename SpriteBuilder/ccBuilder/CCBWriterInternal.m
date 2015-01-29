@@ -431,6 +431,12 @@
 		serializedValue = serializedEffectsData;
 		
 	}
+    else if ([type isEqualToString:@"SoundFile"])
+    {
+        NSString* soundFile = [extraProps objectForKey:name];
+        if (!soundFile) soundFile = @"";
+        serializedValue = soundFile;
+    }
     else
     {
         NSLog(@"WARNING Unrecognized property type: %@", type);

@@ -68,6 +68,7 @@
     [propTypes addObject:@"NodeReference"];
     [propTypes addObject:@"FloatCheck"];
 	[propTypes addObject:@"EffectControl"];
+    [propTypes addObject:@"SoundFile"];
 }
 
 - (id) init
@@ -507,7 +508,8 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         [self writeInt:[c intValue] withSign:NO];
     }
     else if ([type isEqualToString:@"Texture"]
-             || [type isEqualToString:@"CCBFile"])
+             || [type isEqualToString:@"CCBFile"]
+             || [type isEqualToString:@"SoundFile"])
     {
         [self writeCachedString:prop isPath: YES];
     }
@@ -697,7 +699,8 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 		[self addToStringCache:[value objectAtIndex:0] isPath:NO];
 	}
 	else if ([type isEqualToString:@"Texture"]
-			 || [type isEqualToString:@"CCBFile"])
+			 || [type isEqualToString:@"CCBFile"]
+             || [type isEqualToString:@"SoundFile"])
 	{
 		[self addToStringCache:value isPath:YES];
 	}

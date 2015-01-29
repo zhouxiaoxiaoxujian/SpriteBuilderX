@@ -60,6 +60,16 @@
 			<string>blockTouch</string>
 		</dict>
 		<dict>
+			<key>codeConnection</key>
+			<true/>
+			<key>displayName</key>
+			<string>Sound File</string>
+			<key>name</key>
+			<string>sound</string>
+			<key>type</key>
+			<string>SoundFile</string>
+		</dict>
+		<dict>
 			<key>displayName</key>
 			<string>CCWidget</string>
 			<key>name</key>
