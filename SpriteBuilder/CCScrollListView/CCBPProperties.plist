@@ -9,7 +9,7 @@
 	<key>description</key>
 	<string>References a containing node, which becomes a scrollable layer.</string>
 	<key>inheritsFrom</key>
-	<string>CCNode</string>
+	<string>CCWidget</string>
 	<key>className</key>
 	<string>CCScrollListView</string>
 	<key>editorClassName</key>
@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>type</key>
-			<string>CCBFileName</string>
+			<string>CCBFile</string>
 			<key>name</key>
 			<string>template</string>
 			<key>displayName</key>

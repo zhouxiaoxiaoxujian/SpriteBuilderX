@@ -215,7 +215,7 @@
     [self RecalcPositions];
 }
 
--(void)setTemplate:(NSString *)template
+-(void)setTemplate:(CCNode *)template
 {
     _template = template;
     [self RecalcPositions];
@@ -247,7 +247,7 @@
 
 -(CCNode *)nodeFromTemplate
 {
-    NSString *ccbFileName = _template;
+    NSString *ccbFileName = [self extraPropForKey:@"template"];;
     CCNode* ccbFile = NULL;
     NSMutableArray* sequences = [NSMutableArray array];
     int startSequence = -1;
@@ -259,7 +259,7 @@
         NSString* ccbFileNameAbs = [[ResourceManager sharedManager] toAbsolutePath:ccbFileName];
         
         // Check that it's not the current document (or we get an inifnite loop)
-        if (![ad.currentDocument.fileName isEqualToString:ccbFileNameAbs])
+        if (![ad.currentDocument.filePath isEqualToString:ccbFileNameAbs])
         {
             // Load document dictionary
             NSMutableDictionary* doc = [NSMutableDictionary dictionaryWithContentsOfFile:ccbFileNameAbs];

@@ -27,7 +27,7 @@
 -(CCNode *)AddElement:(NSString *)name;
 -(CCNode *)nodeFromTemplate;
 
-@property (nonatomic, retain) NSString *template;
+@property (nonatomic, retain) CCNode* template;
 @property (nonatomic, assign) BOOL horizontal;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) CCTextAlignment textAlignment;
