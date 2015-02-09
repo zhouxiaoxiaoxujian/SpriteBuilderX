@@ -23,7 +23,9 @@ typedef enum {
     kFCImageFormatJPG_High = 8,
     kFCImageFormatJPG_Medium = 9,
     kFCImageFormatJPG_Low = 10,
-    kFCImageFormatWEBP_Lossy = 11,
+    kFCImageFormatWEBP_High = 11,
+    kFCImageFormatWEBP_Medium = 12,
+    kFCImageFormatWEBP_Low = 13,
 } kFCImageFormat;
 
 typedef enum {

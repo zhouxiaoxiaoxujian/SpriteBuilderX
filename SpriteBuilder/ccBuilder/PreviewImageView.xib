@@ -442,7 +442,7 @@
                         <popUpButton verticalHuggingPriority="750" id="f1L-4l-WSb">
                             <rect key="frame" x="41" y="2" width="94" height="15"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <popUpButtonCell key="cell" type="push" title="WebP" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="7" imageScaling="proportionallyDown" inset="2" selectedItem="kxi-UO-TKC" id="Du7-Nn-be3">
+                            <popUpButtonCell key="cell" type="push" title="WebP Low" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="13" imageScaling="proportionallyDown" inset="2" selectedItem="B5R-zh-SxC" id="Du7-Nn-be3">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="SH4-FK-yds">
@@ -458,10 +458,16 @@
                                         <menuItem title="PVR RGB565" tag="4" id="Ku2-hc-qSS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="WebP" state="on" tag="7" id="kxi-UO-TKC" userLabel="WebP">
+                                        <menuItem title="WebP" tag="7" id="kxi-UO-TKC" userLabel="WebP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="WebP lossy" tag="11" id="hhZ-dB-aJR" userLabel="WebP lossy">
+                                        <menuItem title="WebP High" tag="11" id="wnF-jW-1nf" userLabel="WebP lossy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP Medium" tag="12" id="ftu-Y9-jbr" userLabel="WebP lossy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP Low" state="on" tag="13" id="B5R-zh-SxC" userLabel="WebP lossy">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                     </items>

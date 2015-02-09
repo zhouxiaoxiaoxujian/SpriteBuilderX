@@ -1232,6 +1232,8 @@ typedef enum
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
         }
         else
         {
@@ -1241,6 +1243,8 @@ typedef enum
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
         }
     }
     

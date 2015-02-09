@@ -69,7 +69,9 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         return dstPath;
     }
     else if (format == kFCImageFormatWEBP ||
-             format == kFCImageFormatWEBP_Lossy)
+             format == kFCImageFormatWEBP_High ||
+             format == kFCImageFormatWEBP_Medium ||
+             format == kFCImageFormatWEBP_Low)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
         return dstPath;
@@ -326,7 +328,9 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         
     }
     else if (format == kFCImageFormatWEBP ||
-             format == kFCImageFormatWEBP_Lossy)
+             format == kFCImageFormatWEBP_High ||
+             format == kFCImageFormatWEBP_Medium ||
+             format == kFCImageFormatWEBP_Low)
     {
         // JPG image format
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
@@ -335,10 +339,26 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         [_webpTask setCurrentDirectoryPath:dstDir];
         [_webpTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"cwebp"]];
         NSMutableArray* args = nil;
-        if(format == kFCImageFormatWEBP)
-            args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-o", dstPath, nil];
-        else
-            args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
+        switch (format) {
+            case kFCImageFormatWEBP:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-o", dstPath, nil];
+                break;
+                
+            case kFCImageFormatWEBP_High:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"100", @"-o", dstPath, nil];
+                break;
+                
+            case kFCImageFormatWEBP_Medium:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
+                break;
+                
+            case kFCImageFormatWEBP_Low:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"50", @"-o", dstPath, nil];
+                break;
+                
+            default:
+                break;
+        }
         [_webpTask setArguments:args];
         [_webpTask launch];
         [_webpTask waitUntilExit];
