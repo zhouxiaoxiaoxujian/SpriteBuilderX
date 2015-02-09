@@ -1340,8 +1340,8 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         
         float mass = [[physicsBody objectForKey:@"mass"] floatValue];
         float moment = [[physicsBody objectForKey:@"moment"] floatValue];
-        BOOL setMass = [[physicsBody objectForKey:@"setMass"] boolValue];
-        BOOL setMoment = [[physicsBody objectForKey:@"setMoment"] boolValue];
+        BOOL massSet = [[physicsBody objectForKey:@"massSet"] boolValue];
+        BOOL momentSet = [[physicsBody objectForKey:@"momentSet"] boolValue];
         
         int categoryBitmask = (int)[[physicsBody objectForKey:@"categoryBitmask"] integerValue];
         int contactTestBitmask= (int)[[physicsBody objectForKey:@"contactTestBitmask"] integerValue];
@@ -1392,11 +1392,11 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         [self writeFloat:friction];
         [self writeFloat:elasticity];
         
-        [self writeBool:setMass];
-        if(setMass)
+        [self writeBool:massSet];
+        if(massSet)
             [self writeFloat:mass];
-        [self writeBool:setMoment];
-        if(setMoment)
+        [self writeBool:momentSet];
+        if(momentSet)
             [self writeFloat:moment];
         
         [self writeInt:categoryBitmask withSign:YES];

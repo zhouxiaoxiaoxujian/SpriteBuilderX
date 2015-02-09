@@ -162,8 +162,8 @@
     
     [ser setObject:[NSNumber numberWithFloat:_mass] forKey:@"mass"];
     [ser setObject:[NSNumber numberWithFloat:_moment] forKey:@"moment"];
-    [ser setObject:[NSNumber numberWithBool:_massSet] forKey:@"_massSet"];
-    [ser setObject:[NSNumber numberWithBool:_momentSet] forKey:@"_momentSet"];
+    [ser setObject:[NSNumber numberWithBool:_massSet] forKey:@"massSet"];
+    [ser setObject:[NSNumber numberWithBool:_momentSet] forKey:@"momentSet"];
     
     [ser setObject:[NSNumber numberWithUnsignedInt:_categoryBitmask] forKey:@"categoryBitmask"];
     [ser setObject:[NSNumber numberWithUnsignedInt:_contactTestBitmask] forKey:@"contactTestBitmask"];
