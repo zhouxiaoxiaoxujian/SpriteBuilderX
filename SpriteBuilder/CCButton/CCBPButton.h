@@ -37,4 +37,8 @@
 
 @property (nonatomic, assign) float zoomOnClick;
 
+@property (nonatomic,assign) BOOL adjustsFontSizeToFit;
+
+@property (nonatomic,assign) CGFloat fontSize;
+
 @end
