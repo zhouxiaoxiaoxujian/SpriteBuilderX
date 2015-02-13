@@ -10,6 +10,10 @@
 	<string>Generates events when touched</string>
 	<key>inheritsFrom</key>
 	<string>CCNode</string>
+	<key>canHaveChildren</key>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
 	<key>className</key>
 	<string>CCWidget</string>
 	<key>editorClassName</key>
