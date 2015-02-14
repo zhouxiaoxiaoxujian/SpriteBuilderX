@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>displayName</key>
-	<string>CCWidget</string>
+	<string>Widget</string>
 	<key>ordering</key>
 	<integer>10000</integer>
 	<key>description</key>

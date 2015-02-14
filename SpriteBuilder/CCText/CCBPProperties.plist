@@ -5,7 +5,7 @@
 	<key>displayName</key>
 	<string>Text</string>
 	<key>ordering</key>
-	<integer>9</integer>
+	<integer>10002</integer>
 	<key>description</key>
 	<string>Displays a true type font label.</string>
 	<key>inheritsFrom</key>
