@@ -86,29 +86,5 @@
     }
 }
 
-/*-(void) visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
-{
-    if(_clipContent)
-    {
-        glEnable(GL_SCISSOR_TEST);
-        
-        CGPoint worldPosition = [self convertToWorldSpace:CGPointZero];
-        CGPoint rightCornerPosition = [self convertToWorldSpace:CGPointMake(self.contentSizeInPoints.width, self.contentSizeInPoints.height)];
-        const CGFloat s = [[CCDirector sharedDirector] contentScaleFactor];
-        
-        glScissor(worldPosition.x,
-                  worldPosition.y,
-                  (rightCornerPosition.x - worldPosition.x),
-                  (rightCornerPosition.y - worldPosition.y));
-        
-        [super visit:renderer parentTransform:parentTransform];
-        
-        glDisable(GL_SCISSOR_TEST);
-    }
-    else
-    {
-        [super visit:renderer parentTransform:parentTransform];
-    }
-}*/
 
 @end

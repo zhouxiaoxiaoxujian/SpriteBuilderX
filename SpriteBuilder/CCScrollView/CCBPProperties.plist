@@ -85,6 +85,8 @@
 		<dict>
 			<key>displayName</key>
 			<string>Clip content</string>
+			<key>default</key>
+			<true/>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>
