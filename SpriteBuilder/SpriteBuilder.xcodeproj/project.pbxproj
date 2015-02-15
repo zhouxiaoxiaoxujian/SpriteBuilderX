@@ -375,16 +375,10 @@
 		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
 		A5DD59CF1A8FD50D00E56D8F /* CCBPText.m in Sources */ = {isa = PBXBuildFile; fileRef = A59471831A8E4A06002DB024 /* CCBPText.m */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
-		A5DD59D31A8FD50D00E56D8F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A594718A1A8E4A06002DB024 /* Icon@2x.png */; };
-		A5DD59D41A8FD50D00E56D8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A59471871A8E4A06002DB024 /* InfoPlist.strings */; };
-		A5DD59D51A8FD50D00E56D8F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A59471891A8E4A06002DB024 /* Icon.png */; };
-		A5DD59D61A8FD50D00E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59471811A8E4A06002DB024 /* CCBPProperties.plist */; };
 		A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */; };
 		A5DD59E91A8FD5A500E56D8F /* CCBPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DD59E31A8FD5A500E56D8F /* CCBPImage.m */; };
-		A5DD59EA1A8FD5A500E56D8F /* CCImage-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E41A8FD5A500E56D8F /* CCImage-Info.plist */; };
 		A5DD59EB1A8FD5A500E56D8F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E61A8FD5A500E56D8F /* Icon.png */; };
 		A5DD59EC1A8FD5A500E56D8F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E71A8FD5A500E56D8F /* Icon@2x.png */; };
-		A5DD59ED1A8FD5B100E56D8F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C623C117F3860A00928F91 /* Icon.png */; };
 		A5DD59F01A8FD5C300E56D8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59EE1A8FD5C200E56D8F /* InfoPlist.strings */; };
 		A5DD59F41A8FD76200E56D8F /* CCImage.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
@@ -5248,8 +5242,8 @@
 				B7EE69FA1819EE0D00B983FE /* CCLayoutBox */,
 				A58EE8491A30EB3B005F6E22 /* CCImageView */,
 				A58EE84A1A30EB4D005F6E22 /* CCLoadingBar */,
-				A51E639B1A7A5A63009F4FB9 /* CCScrollListView */,
 				B73788DB1804AC5E0076A88C /* CCScrollView */,
+				A51E639B1A7A5A63009F4FB9 /* CCScrollListView */,
 				B7EE699718188E0900B983FE /* CCTextField */,
 				B729AC54181F091800BA0D9C /* CCSlider */,
 			);
@@ -7353,15 +7347,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5DD59ED1A8FD5B100E56D8F /* Icon.png in Resources */,
-				A5DD59D31A8FD50D00E56D8F /* Icon@2x.png in Resources */,
 				A5DD59EC1A8FD5A500E56D8F /* Icon@2x.png in Resources */,
-				A5DD59D41A8FD50D00E56D8F /* InfoPlist.strings in Resources */,
-				A5DD59D51A8FD50D00E56D8F /* Icon.png in Resources */,
-				A5DD59EA1A8FD5A500E56D8F /* CCImage-Info.plist in Resources */,
 				A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */,
 				A5DD59EB1A8FD5A500E56D8F /* Icon.png in Resources */,
-				A5DD59D61A8FD50D00E56D8F /* CCBPProperties.plist in Resources */,
 				A5DD59F01A8FD5C300E56D8F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,8 +16,6 @@
 	<string>CCBScrollListView</string>
 	<key>canHaveChildren</key>
 	<false/>
-	<key>canBeRootNode</key>
-	<false/>
 	<key>properties</key>
 	<array>
 		<dict>
@@ -32,23 +30,13 @@
 		</dict>
 		<dict>
 			<key>displayName</key>
-			<string>Vertical Alignment</string>
+			<string>Gravity</string>
 			<key>type</key>
 			<string>IntegerLabeled</string>
 			<key>name</key>
-			<string>verticalTextAlignment</string>
+			<string>gravity</string>
 			<key>extra</key>
-			<string>Top|0|Center|1|Bottom|2</string>
-		</dict>
-		<dict>
-			<key>displayName</key>
-			<string>Horizontal Alignment</string>
-			<key>type</key>
-			<string>IntegerLabeled</string>
-			<key>name</key>
-			<string>textAlignment</string>
-			<key>extra</key>
-			<string>Left|0|Center|1|Right|2</string>
+			<string>LEFT|0|RIGHT|1|CENTER_HORIZONTAL|2|TOP|3|BOTTOM|4|CENTER_VERTICAL|5</string>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -77,6 +65,24 @@
 			<string>count</string>
 			<key>displayName</key>
 			<string>count</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Bounces</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>bounces</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Clip content</string>
+			<key>default</key>
+			<true/>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>clipContent</string>
 		</dict>
 	</array>
 </dict>

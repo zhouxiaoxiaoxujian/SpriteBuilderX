@@ -17,10 +17,6 @@
     NSMutableDictionary *_items;
     NSMutableDictionary *_selectorIndex;
     NSEnumerator *_curitem;
-    
-    BOOL _horizontal;
-    CCTextAlignment _textAlignment;
-    CCVerticalTextAlignment _verticalTextAlignment;
 }
 
 -(void)RecalcPositions;
@@ -30,7 +26,9 @@
 @property (nonatomic, retain) CCNode* template;
 @property (nonatomic, assign) BOOL horizontal;
 @property (nonatomic, assign) NSInteger count;
-@property (nonatomic, assign) CCTextAlignment textAlignment;
-@property (nonatomic, assign) CCVerticalTextAlignment verticalTextAlignment;
+@property (nonatomic, assign) NSInteger gravity;
+
+@property (nonatomic,assign) BOOL clipContent;
+@property (nonatomic,readonly) CGRect clippingRect;
 
 @end

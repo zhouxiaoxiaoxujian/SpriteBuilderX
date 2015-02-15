@@ -23,9 +23,6 @@
 @end
 
 @implementation ItemStruct
-    @synthesize item;
-    @synthesize variables;
-    @synthesize selectors;
 @end
 
 @interface IndexItem : NSObject
@@ -34,17 +31,9 @@
 @end
 
 @implementation IndexItem
-    @synthesize item;
-    @synthesize selector;
 @end
 
 @implementation CCBScrollListView
-
-@synthesize template=_template;
-@synthesize horizontal=_horizontal;
-@synthesize count=_count;
-@synthesize textAlignment=_textAlignment;
-@synthesize verticalTextAlignment=_verticalTextAlignment;
 
 -(id)init
 {
@@ -54,6 +43,8 @@
     }
     
     _items = [[NSMutableDictionary alloc] init];
+    
+    _gravity = 0;
     
     return self;
 }
@@ -74,37 +65,6 @@
     
     CGSize contentsize = node.contentSizeInPoints;
     CGSize viewsize = self.contentSizeInPoints;
-
-    float yoffset = 0;
-    switch (_verticalTextAlignment) {
-        case CCVerticalTextAlignmentTop:
-        {
-            yoffset = 0;
-            break;
-        }
-        case CCVerticalTextAlignmentBottom:
-        {
-            if (_horizontal) {
-                yoffset = viewsize.height - contentsize.height;
-            }
-            else {
-                yoffset = viewsize.height - contentsize.height*childrenCount;
-            }
-            break;
-        }
-        case CCVerticalTextAlignmentCenter:
-        {
-            if (_horizontal) {
-                yoffset = viewsize.height/2 - contentsize.height/2;
-            }
-            else {
-                yoffset = viewsize.height/2 - contentsize.height*childrenCount/2;
-            }
-            break;
-        }
-        default:
-            break;
-    }
     
     if (_horizontal) {
         float containerSize = 0;
@@ -114,28 +74,39 @@
             ++num;
         }
         
-        float xoffset = 0;
-        switch (_textAlignment) {
-            case CCTextAlignmentCenter:
+        float yoffset = 0;
+        
+        switch (_gravity) {
+            case 3:
             {
-                xoffset = viewsize.width/2 - containerSize/2;
+                yoffset = 0;
                 break;
             }
-            case CCTextAlignmentLeft:
+            case 4:
             {
-                xoffset = 0;
+                if (_horizontal) {
+                    yoffset = viewsize.height - contentsize.height;
+                }
+                else {
+                    yoffset = viewsize.height - contentsize.height*childrenCount;
+                }
                 break;
             }
-            case CCTextAlignmentRight:
+            case 5:
             {
-                xoffset = viewsize.width - contentsize.width*childrenCount;
+                if (_horizontal) {
+                    yoffset = viewsize.height/2 - contentsize.height/2;
+                }
+                else {
+                    yoffset = viewsize.height/2 - contentsize.height*childrenCount/2;
+                }
                 break;
             }
             default:
                 break;
         }
         
-        self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height - yoffset));
+        self.contentNode.position = ccp(0, -(viewsize.height - contentsize.height - yoffset));
         [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width * childrenCount, viewsize.width),
                                         MAX(contentsize.height, viewsize.height))];
 
@@ -149,18 +120,18 @@
         }
         
         float xoffset = 0;
-        switch (_textAlignment) {
-            case CCTextAlignmentCenter:
+        switch (_gravity) {
+            case 2:
             {
                 xoffset = viewsize.width/2 - contentsize.width/2;
                 break;
             }
-            case CCTextAlignmentLeft:
+            case 0:
             {
                 xoffset = 0;
                 break;
             }
-            case CCTextAlignmentRight:
+            case 1:
             {
                 xoffset = viewsize.width - contentsize.width;
                 break;
@@ -169,7 +140,7 @@
                 break;
         }
         
-        self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount - yoffset));
+        self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount));
         
         [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width, viewsize.width),
                                         MAX(contentsize.height, viewsize.height))];
@@ -227,15 +198,9 @@
     [self RecalcPositions];
 }
 
--(void)setTextAlignment:(CCTextAlignment)textAlignment
+-(void)setGravity:(NSInteger)gravity
 {
-    _textAlignment = textAlignment;
-    [self RecalcPositions];
-}
-
--(void)setVerticalTextAlignment:(CCVerticalTextAlignment)verticalTextAlignment
-{
-    _verticalTextAlignment = verticalTextAlignment;
+    _gravity = gravity;
     [self RecalcPositions];
 }
 
@@ -285,6 +250,42 @@
     }
 
     return ccbFile;
+}
+
+-(void)visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
+{
+    if(_clipContent)
+    {
+        CGPoint positionInWorldCoords = [self convertToWorldSpace:ccp(0, 0)];
+        CGPoint rightCornerPosition = [self convertToWorldSpace:CGPointMake(self.contentSizeInPoints.width, self.contentSizeInPoints.height)];
+        CGFloat contentScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
+        
+        positionInWorldCoords = ccpMult(positionInWorldCoords, contentScaleFactor);
+        rightCornerPosition = ccpMult(rightCornerPosition, contentScaleFactor);
+        
+        
+        [renderer enqueueBlock:^{
+            glEnable(GL_SCISSOR_TEST);
+            glScissor(positionInWorldCoords.x, positionInWorldCoords.y,(rightCornerPosition.x - positionInWorldCoords.x), (rightCornerPosition.y - positionInWorldCoords.y));
+        } globalSortOrder:0 debugLabel:nil threadSafe:YES];
+        
+        [super visit:renderer parentTransform:parentTransform];
+        
+        [renderer enqueueBlock:^{
+            glDisable(GL_SCISSOR_TEST);
+        } globalSortOrder:0 debugLabel:nil threadSafe:YES];
+    }
+    else
+    {
+        [super visit:renderer parentTransform:parentTransform];
+    }
+}
+
+- (NSArray*) ccbExcludePropertiesForSave
+{
+    return [NSArray arrayWithObjects:
+                @"count",
+                nil];
 }
 
 @end
