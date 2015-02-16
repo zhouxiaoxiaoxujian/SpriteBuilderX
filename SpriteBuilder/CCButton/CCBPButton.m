@@ -124,6 +124,7 @@
 {
     [self setPreferredSize:size];
     [self setMaxSize:size];
+    [super setContentSize:size];
 }
 
 -(CGSize) contentSize
