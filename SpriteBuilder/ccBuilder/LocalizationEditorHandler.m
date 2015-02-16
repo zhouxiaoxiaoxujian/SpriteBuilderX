@@ -136,9 +136,14 @@
     }
     else
     {
+        int i = 0; 
         for (LocalizationEditorLanguage* lang in activeLanguages)
         {
+            NSString* keyEquivalent = @"";
+            if (i < 10) keyEquivalent = [NSString stringWithFormat:@"%d",i+1];
             NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:lang.name action:@selector(menuSetLanguage:) keyEquivalent:@""];
+            [item setKeyEquivalentModifierMask: NSShiftKeyMask | NSCommandKeyMask];
+            [item setKeyEquivalent:keyEquivalent];
             item.target = self;
             
             if (lang == currentLanguage)
@@ -147,6 +152,8 @@
             }
             
             [languageMenu addItem:item];
+            
+            i++;
         }
     }
 }
