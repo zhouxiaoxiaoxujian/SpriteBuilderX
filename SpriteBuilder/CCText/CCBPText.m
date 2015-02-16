@@ -54,6 +54,18 @@
     return _adjustsFontSizeToFit;
 }
 
+- (void) setAttributedString:(NSAttributedString *)attributedString
+{
+    [super setAttributedString:attributedString];
+    _needsLayout = YES;
+}
+
+- (void) setString:(NSString*)str
+{
+    [super setString:str];
+    _needsLayout = YES;
+}
+
 /*
 -(void) setContentSize:(CGSize)size
 {
@@ -73,7 +85,7 @@
     if(_adjustsFontSizeToFit && _fontSize && self.dimensions.width && self.dimensions.height)
     {
         super.fontSize = _fontSize;
-        super.dimensions = CGSizeMake(paddedLabelSize.width, 0);
+        super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, 0) type:self.dimensionsType];
         if(super.contentSize.height>paddedLabelSize.height)
         {
             float startScale = 1.0;
@@ -100,17 +112,17 @@
                 }
             }
             super.fontSize = fontSize / (endScale * 1.05f);
-            super.dimensions = CGSizeMake(paddedLabelSize.width, paddedLabelSize.height);
+            super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
         }
         else
         {
-            super.dimensions = paddedLabelSize;
+            super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
             super.fontSize = _fontSize;
         }
     }
     else
     {
-        super.dimensions = paddedLabelSize;
+        super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
         super.fontSize = _fontSize;
     }
     _needsLayout = NO;
@@ -132,6 +144,12 @@
 -(CGFloat) fontSize
 {
     return _fontSize;
+}
+
+-(void) setDimensions:(CGSize) dim
+{
+    [super setDimensions:dim];
+    _needsLayout = true;
 }
 
 @end
