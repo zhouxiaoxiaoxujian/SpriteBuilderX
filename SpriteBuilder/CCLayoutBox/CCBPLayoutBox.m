@@ -57,7 +57,7 @@ static float roundUpToEven(float f)
 
 - (void) layout
 {
-    [super layout];
+    _needsLayout = NO;
     if (self.direction == CCLayoutBoxDirectionHorizontal)
     {
         // Get the maximum height
@@ -76,7 +76,7 @@ static float roundUpToEven(float f)
             {
                 CGSize childSize = child.contentSizeInPoints;
                 
-                CGPoint offset = child.anchorPointInPoints;
+                CGPoint offset = CGPointMake(child.contentSize.width/2, child.contentSize.height/2);
                 CGPoint localPos = ccp(roundf(width), roundf((maxHeight-childSize.height)/2.0f));
                 CGPoint position = ccpAdd(localPos, offset);
                 
@@ -113,7 +113,7 @@ static float roundUpToEven(float f)
             {
                 CGSize childSize = child.contentSizeInPoints;
                 
-                CGPoint offset = child.anchorPointInPoints;
+                CGPoint offset = CGPointMake(child.contentSize.width/2, child.contentSize.height/2);
                 CGPoint localPos = ccp(roundf((maxWidth-childSize.width)/2.0f), roundf(height));
                 CGPoint position = ccpAdd(localPos, offset);
                 
