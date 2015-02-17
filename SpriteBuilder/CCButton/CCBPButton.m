@@ -63,7 +63,7 @@
     CGSize contentSize = [self convertContentSizeToPoints:self.preferredSize type:self.contentSizeType];
     CGSize paddedLabelSize = CGSizeMake(contentSize.width - self.horizontalPadding * 2, contentSize.height -  self.verticalPadding * 2);
     
-    if(_adjustsFontSizeToFit)
+    if(_adjustsFontSizeToFit && paddedLabelSize.width>0 && paddedLabelSize.height>0)
     {
         self.label.fontSize = _fontSize;
         self.label.dimensions = CGSizeMake(paddedLabelSize.width, 0);
