@@ -139,6 +139,33 @@
 			<key>name</key>
 			<string>handleSpriteFrame|Highlighted</string>
 		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Disabled state</string>
+			<key>name</key>
+			<string>Disabled state</string>
+			<key>type</key>
+			<string>SeparatorSub</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Handle</string>
+			<key>type</key>
+			<string>SpriteFrame</string>
+			<key>name</key>
+			<string>handleSpriteFrame|Disabled</string>
+		</dict>
 	</array>
 </dict>
 </plist>

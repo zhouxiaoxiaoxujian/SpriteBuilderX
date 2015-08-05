@@ -100,18 +100,6 @@
 			<array>
 				<string>contentSize</string>
 			</array>
-			<key>displayName</key>
-			<string>Text</string>
-			<key>type</key>
-			<string>Text</string>
-			<key>name</key>
-			<string>string</string>
-		</dict>
-		<dict>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>default</key>
 			<string>Helvetica</string>
 			<key>displayName</key>
@@ -120,6 +108,48 @@
 			<string>FontTTF</string>
 			<key>name</key>
 			<string>fontName</string>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>fontSize</string>
+			<key>displayName</key>
+			<string>Font size</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Placeholder color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>placeholderFontColor</string>
+		</dict>
+		<dict>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Placeholder</string>
+			<key>type</key>
+			<string>Text</string>
+			<key>name</key>
+			<string>placeholder</string>
 		</dict>
 		<dict>
 			<key>defaultSerialization</key>
@@ -139,59 +169,11 @@
 				<integer>1</integer>
 			</array>
 			<key>displayName</key>
-			<string>Color</string>
+			<string>Text Color</string>
 			<key>type</key>
 			<string>Color3</string>
 			<key>name</key>
 			<string>fontColor</string>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>FloatScale</string>
-			<key>name</key>
-			<string>fontSize</string>
-			<key>displayName</key>
-			<string>Font size</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<string>Helvetica</string>
-			<key>displayName</key>
-			<string>Placeholder&apos;s font name</string>
-			<key>type</key>
-			<string>FontTTF</string>
-			<key>name</key>
-			<string>placeholderFontName</string>
-		</dict>
-		<dict>
-			<key>defaultSerialization</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>default</key>
-			<array>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<key>displayName</key>
-			<string>Placeholder&apos;s font color</string>
-			<key>type</key>
-			<string>Color3</string>
-			<key>name</key>
-			<string>placeholderFontColor</string>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>FloatScale</string>
-			<key>name</key>
-			<string>placeholderFontSize</string>
-			<key>displayName</key>
-			<string>Placeholder&apos;s font size</string>
 		</dict>
 		<dict>
 			<key>affectsProperties</key>
@@ -199,11 +181,31 @@
 				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
-			<string>Placeholder</string>
+			<string>Text</string>
 			<key>type</key>
 			<string>Text</string>
 			<key>name</key>
-			<string>placeholder</string>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Alignment</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>horizontalAlignment</string>
+			<key>extra</key>
+			<string>Left|0|Center|1|Right|2</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string></string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>verticalAlignment</string>
+			<key>extra</key>
+			<string>Top|0|Center|1|Bottom|2</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
@@ -214,38 +216,14 @@
 			<string>maxLength</string>
 		</dict>
 		<dict>
-			<key>default</key>
-			<integer>6</integer>
-			<key>displayName</key>
-			<string>Input mode</string>
+			<key>defaultSerialization</key>
+			<false/>
 			<key>type</key>
-			<string>IntegerLabeled</string>
+			<string>Check</string>
 			<key>name</key>
-			<string>inputMode</string>
-			<key>extra</key>
-			<string>ANY|0|EMAIL_ADDRESS|1|NUMERIC|2|PHONE_NUMBER|3|URL|4|DECIMAL|5|SINGLE_LINE|6</string>
-		</dict>
-		<dict>
+			<string>password</string>
 			<key>displayName</key>
-			<string>keyboard return type</string>
-			<key>type</key>
-			<string>IntegerLabeled</string>
-			<key>name</key>
-			<string>keyboardReturnType</string>
-			<key>extra</key>
-			<string>DEFAULT|0|DONE|1|SEND|2|SEARCH|3|GO|4</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>3</integer>
-			<key>displayName</key>
-			<string>Input flag</string>
-			<key>type</key>
-			<string>IntegerLabeled</string>
-			<key>name</key>
-			<string>inputFlag</string>
-			<key>extra</key>
-			<string>PASSWORD|0|SENSITIVE|1|INITIAL_CAPS_WORD|2|INITIAL_CAPS_SENTENCE|3|INTIAL_CAPS_ALL_CHARACTERS|4|</string>
+			<string>Passwoed</string>
 		</dict>
 	</array>
 </dict>
