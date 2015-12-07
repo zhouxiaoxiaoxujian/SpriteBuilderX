@@ -39,6 +39,17 @@
 			<string>LEFT|0|RIGHT|1|CENTER_HORIZONTAL|2|TOP|3|BOTTOM|4|CENTER_VERTICAL|5</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Magnetic</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>magnetic</string>
+			<key>extra</key>
+			<string>NONE|0|CENTER|1|BOTH_END|2|LEFT|3|RIGHT|4|TOP|5|BOTTOM|6</string>
+		</dict>
 			<key>type</key>
 			<string>CCBFile</string>
 			<key>name</key>
@@ -73,6 +84,26 @@
 			<string>Check</string>
 			<key>name</key>
 			<string>bounces</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<true/>
+			<key>displayName</key>
+			<string>Inertial scroll</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>inertialScroll</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<false/>
+			<key>displayName</key>
+			<string>Scroll bar enabled</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>scrollBarEnabled</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

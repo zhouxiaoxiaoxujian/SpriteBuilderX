@@ -27,8 +27,11 @@
 @property (nonatomic, assign) BOOL horizontal;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSInteger gravity;
+@property (nonatomic, assign) NSInteger magnetic;
 
 @property (nonatomic,assign) BOOL clipContent;
+@property (nonatomic,assign) BOOL inertialScroll;
+@property (nonatomic,assign) BOOL scrollBarEnabled;
 @property (nonatomic,readonly) CGRect clippingRect;
 
 @end

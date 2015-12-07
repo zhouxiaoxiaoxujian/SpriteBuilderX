@@ -22,4 +22,11 @@
 /** Sets the bottom margin exclusively. */
 @property (nonatomic, assign) float marginBottom;
 
+/** Progress spriteFrame. */
+@property (nonatomic,strong) CCSpriteFrame* progressSpriteFrame;
+
+@property (nonatomic, assign) float zoomScale;
+
+@property (nonatomic, assign) int maxPercent;
+
 @end

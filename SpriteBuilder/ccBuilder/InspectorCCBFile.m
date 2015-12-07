@@ -67,11 +67,8 @@
     }
     
     // Set the properties and sprite frames
-    if (ccbFile)
-    {
-        [selection setExtraProp:ccbFile forKey:propertyName];
-        [NodeGraphPropertySetter setNodeGraphForNode:selection andProperty:propertyName withFile:ccbFile parentSize:[PositionPropertySetter getParentSize:selection]];
-    }
+    [selection setExtraProp:ccbFile forKey:propertyName];
+    [NodeGraphPropertySetter setNodeGraphForNode:selection andProperty:propertyName withFile:ccbFile parentSize:[PositionPropertySetter getParentSize:selection]];
     
     [self updateAffectedProperties];
     
