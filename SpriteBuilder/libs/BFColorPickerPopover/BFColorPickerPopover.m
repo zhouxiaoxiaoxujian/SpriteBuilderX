@@ -105,6 +105,7 @@
 	}
 	
 	self.contentViewController = [[BFColorPickerViewController alloc] init];
+    [self removeTargetAndAction];
 	[super showRelativeToRect:positioningRect ofView:positioningView preferredEdge:preferredEdge];
 	
 	self.colorPanel.color = _color;
