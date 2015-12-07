@@ -34,7 +34,12 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<string>ccbResources/ccbSliderBgNormal.png</string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
 			</array>
 			<key>affectsProperties</key>
 			<array>
@@ -49,6 +54,11 @@
 		</dict>
 		<dict>
 			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
 			<array>
 				<string></string>
 				<string></string>
@@ -96,6 +106,11 @@
 				<string></string>
 				<string></string>
 			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -119,6 +134,11 @@
 		</dict>
 		<dict>
 			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
 			<array>
 				<string></string>
 				<string></string>
@@ -150,6 +170,11 @@
 				<string></string>
 				<string></string>
 			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -173,7 +198,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin left</string>
 			<key>type</key>
@@ -183,7 +210,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin right</string>
 			<key>type</key>
@@ -193,7 +222,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin top</string>
 			<key>type</key>
@@ -203,7 +234,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin bottom</string>
 			<key>type</key>

@@ -35,6 +35,8 @@
 			</array>
 			<key>default</key>
 			<string>Helvetica</string>
+			<key>defaultSerialization</key>
+			<string>Helvetica</string>
 			<key>displayName</key>
 			<string>Font name</string>
 			<key>type</key>
@@ -43,6 +45,16 @@
 			<string>fontName</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>17</integer>
+				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>17</integer>
+				<integer>0</integer>
+			</array>
 			<key>type</key>
 			<string>FloatScale</string>
 			<key>name</key>
@@ -51,14 +63,14 @@
 			<string>Font size</string>
 		</dict>
 		<dict>
-			<key>defaultSerialization</key>
+			<key>default</key>
 			<array>
 				<integer>1</integer>
 				<integer>1</integer>
 				<integer>1</integer>
 				<integer>1</integer>
 			</array>
-			<key>default</key>
+			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
 				<integer>1</integer>
@@ -73,6 +85,16 @@
 			<string>placeholderFontColor</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<false/>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<false/>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -109,6 +131,16 @@
 			<string>fontColor</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<false/>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<false/>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -121,6 +153,10 @@
 			<string>string</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Alignment</string>
 			<key>type</key>
@@ -131,8 +167,12 @@
 			<string>Left|0|Center|1|Right|2</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
-			<string></string>
+			<string>verticalAlignment</string>
 			<key>type</key>
 			<string>IntegerLabeled</string>
 			<key>name</key>
@@ -141,6 +181,10 @@
 			<string>Top|0|Center|1|Bottom|2</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Max length</string>
 			<key>type</key>
@@ -149,6 +193,8 @@
 			<string>maxLength</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<false/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>type</key>

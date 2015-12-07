@@ -72,7 +72,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin left</string>
 			<key>type</key>
@@ -82,7 +84,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin right</string>
 			<key>type</key>
@@ -92,7 +96,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin top</string>
 			<key>type</key>
@@ -102,7 +108,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin bottom</string>
 			<key>type</key>

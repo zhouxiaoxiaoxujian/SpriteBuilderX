@@ -37,12 +37,12 @@
 			<key>displayName</key>
 			<string>Content size</string>
 		</dict>
-        <dict>
-            <key>name</key>
-            <string>effects</string>
-            <key>type</key>
-            <string>None</string>
-        </dict>
+		<dict>
+			<key>name</key>
+			<string>effects</string>
+			<key>type</key>
+			<string>None</string>
+		</dict>
 	</array>
 	<key>properties</key>
 	<array>
@@ -59,6 +59,8 @@
 		<dict>
 			<key>default</key>
 			<real>0.33</real>
+			<key>defaultSerialization</key>
+			<real>0.33</real>
 			<key>displayName</key>
 			<string>Margin left</string>
 			<key>type</key>
@@ -68,6 +70,8 @@
 		</dict>
 		<dict>
 			<key>default</key>
+			<real>0.33</real>
+			<key>defaultSerialization</key>
 			<real>0.33</real>
 			<key>displayName</key>
 			<string>Margin right</string>
@@ -79,6 +83,8 @@
 		<dict>
 			<key>default</key>
 			<real>0.33</real>
+			<key>defaultSerialization</key>
+			<real>0.33</real>
 			<key>displayName</key>
 			<string>Margin top</string>
 			<key>type</key>
@@ -88,6 +94,8 @@
 		</dict>
 		<dict>
 			<key>default</key>
+			<real>0.33</real>
+			<key>defaultSerialization</key>
 			<real>0.33</real>
 			<key>displayName</key>
 			<string>Margin bottom</string>

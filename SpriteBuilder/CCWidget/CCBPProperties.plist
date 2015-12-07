@@ -38,6 +38,11 @@
 				<string></string>
 				<integer>2</integer>
 			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<integer>2</integer>
+			</array>
 			<key>codeConnection</key>
 			<true/>
 			<key>displayName</key>
@@ -52,7 +57,11 @@
 			<array>
 				<string></string>
 				<integer>2</integer>
-				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<integer>2</integer>
 			</array>
 			<key>codeConnection</key>
 			<true/>
@@ -64,6 +73,10 @@
 			<string>blockTouch</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<string></string>
+			<key>defaultSerialization</key>
+			<string></string>
 			<key>codeConnection</key>
 			<true/>
 			<key>displayName</key>
@@ -95,6 +108,8 @@
 			<key>dontSetInEditor</key>
 			<true/>
 			<key>default</key>
+			<true/>
+			<key>defaultSerialization</key>
 			<true/>
 			<key>displayName</key>
 			<string>User Interaction Enabled</string>

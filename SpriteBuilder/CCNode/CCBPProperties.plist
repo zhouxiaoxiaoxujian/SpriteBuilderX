@@ -48,6 +48,10 @@
 			<string>Visible</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<string></string>
+			<key>default</key>
+			<string></string>
 			<key>name</key>
 			<string>name</string>
 			<key>displayName</key>
@@ -56,6 +60,8 @@
 			<string>StringSimple</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>name</key>
 			<string>tag</string>
 			<key>displayName</key>
@@ -66,6 +72,8 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<array>
+				<integer>0</integer>
+				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
@@ -85,10 +93,13 @@
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
+				<integer>0</integer>
 			</array>
 			<key>default</key>
 			<array>
-				<string>0</string>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
 				<integer>0</integer>
 			</array>
 			<key>type</key>
@@ -99,6 +110,11 @@
 			<string>Content size</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>type</key>
 			<string>Point</string>
 			<key>name</key>
@@ -109,8 +125,9 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<array>
-				<integer>0</integer>
-				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<false/>
 				<integer>0</integer>
 			</array>
 			<key>animatable</key>
@@ -198,9 +215,10 @@
 		<dict>
 			<key>defaultSerialization</key>
 			<array>
-				<integer>255</integer>
-				<integer>255</integer>
-				<integer>255</integer>
+				<real>1</real>
+				<real>1</real>
+				<real>1</real>
+				<real>1</real>
 			</array>
 			<key>animatable</key>
 			<true/>

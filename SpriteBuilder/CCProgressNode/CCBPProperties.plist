@@ -38,10 +38,10 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>100</integer>
 			<key>defaultSerialization</key>
-			<array>
-				<integer>100</integer>
-			</array>
+			<integer>100</integer>
 			<key>displayName</key>
 			<string>Percentage</string>
 			<key>type</key>
@@ -50,10 +50,10 @@
 			<string>percentage</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<false/>
 			<key>defaultSerialization</key>
-			<array>
-				<false/>
-			</array>
+			<false/>
 			<key>displayName</key>
 			<string>reverseDirection</string>
 			<key>type</key>
@@ -62,6 +62,10 @@
 			<string>reverseDirection</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>type</string>
 			<key>type</key>

@@ -59,6 +59,10 @@
 			<string>contentNode</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<true/>
 			<key>displayName</key>
 			<string>Horizontal scroll enabled</string>
 			<key>type</key>
@@ -67,6 +71,10 @@
 			<string>horizontalScrollEnabled</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<true/>
 			<key>displayName</key>
 			<string>Vertical scroll enabled</string>
 			<key>type</key>
@@ -75,6 +83,10 @@
 			<string>verticalScrollEnabled</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<false/>
+			<key>defaultSerialization</key>
+			<false/>
 			<key>displayName</key>
 			<string>Bounces</string>
 			<key>type</key>
@@ -83,10 +95,12 @@
 			<string>bounces</string>
 		</dict>
 		<dict>
-			<key>displayName</key>
-			<string>Clip content</string>
 			<key>default</key>
 			<true/>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>displayName</key>
+			<string>Clip content</string>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>

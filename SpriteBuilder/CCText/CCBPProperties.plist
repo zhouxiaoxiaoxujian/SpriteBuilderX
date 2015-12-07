@@ -58,6 +58,8 @@
 			</array>
 			<key>default</key>
 			<string>Helvetica</string>
+			<key>defaultSerialization</key>
+			<string>Helvetica</string>
 			<key>displayName</key>
 			<string>Font name</string>
 			<key>type</key>
@@ -70,6 +72,10 @@
 			<array>
 				<string>contentSize</string>
 			</array>
+			<key>default</key>
+			<integer>17</integer>
+			<key>defaultSerialization</key>
+			<integer>17</integer>
 			<key>displayName</key>
 			<string>Font size</string>
 			<key>type</key>
@@ -78,6 +84,20 @@
 			<string>fontSize</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -90,6 +110,10 @@
 			<string>dimensions</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Alignment</string>
 			<key>type</key>
@@ -100,6 +124,10 @@
 			<string>Left|0|Center|1|Right|2</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string></string>
 			<key>type</key>
@@ -110,6 +138,10 @@
 			<string>Top|0|Center|1|Bottom|2</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<false/>
+			<key>defaultSerialization</key>
+			<false/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -136,10 +168,10 @@
 			<string>fontColor</string>
 			<key>defaultSerialization</key>
 			<array>
-				<integer>255</integer>
-				<string>255</string>
-				<string>255</string>
-				<string>255</string>
+				<integer>1</integer>
+				<string>1</string>
+				<string>1</string>
+				<string>1</string>
 			</array>
 			<key>displayName</key>
 			<string>Draw Color</string>
@@ -180,6 +212,10 @@
 			</array>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -203,7 +239,7 @@
 				<integer>0</integer>
 				<string>0</string>
 				<string>0</string>
-				<string>0</string>
+				<string>0,5</string>
 			</array>
 			<key>displayName</key>
 			<string>Shadow color</string>
@@ -214,10 +250,14 @@
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
-				<integer>0</integer>
+				<real>0.5</real>
 			</array>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -230,8 +270,18 @@
 			<string>shadowBlurRadius</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
 			<array>
+				<integer>0</integer>
+				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>

@@ -51,6 +51,10 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -65,6 +69,16 @@
 			<string>Horizontal|0|Vertical|1</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -77,6 +91,10 @@
 			<string>spacing</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<false/>
+			<key>defaultSerialization</key>
+			<false/>
 			<key>displayName</key>
 			<string>Clip content</string>
 			<key>type</key>
