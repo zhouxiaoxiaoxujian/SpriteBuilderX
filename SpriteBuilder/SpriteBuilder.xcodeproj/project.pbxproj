@@ -351,6 +351,13 @@
 		A51E63AC1A7A5AD6009F4FB9 /* CCScrollListView.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A51E63B31A7A82D0009F4FB9 /* InspectorSoundFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */; };
 		A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */; };
+		A521EECB1C17298B00918650 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
+		A521EEE51C172A3600918650 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A521EEDC1C172A3600918650 /* CCBPProperties.plist */; };
+		A521EEE71C172A3600918650 /* CCBPLoadingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A521EEE01C172A3600918650 /* CCBPLoadingBar.m */; };
+		A521EEE81C172A3600918650 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A521EEE11C172A3600918650 /* InfoPlist.strings */; };
+		A521EEE91C172A3600918650 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EEE31C172A3600918650 /* Icon.png */; };
+		A521EEEA1C172A3600918650 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EEE41C172A3600918650 /* Icon@2x.png */; };
+		A521EEED1C1732A800918650 /* CCLoadingBar.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A521EED51C17298B00918650 /* CCLoadingBar.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54C735E1A43894800DB1CF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A54C73741A438A4100DB1CF7 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */; };
 		A54C73761A438A4100DB1CF7 /* CCScissorsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C736F1A438A4100DB1CF7 /* CCScissorsNode.m */; };
@@ -1123,6 +1130,13 @@
 			remoteGlobalIDString = A51E63711A7A5932009F4FB9;
 			remoteInfo = CCScrollListView;
 		};
+		A521EEEB1C17329A00918650 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A521EEC71C17298B00918650;
+			remoteInfo = CCLoadingBar;
+		};
 		A54C737B1A438C9700DB1CF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
@@ -1321,6 +1335,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A521EEED1C1732A800918650 /* CCLoadingBar.ccbPlugNode in Copy PlugIns */,
 				A5DD59F41A8FD76200E56D8F /* CCImage.ccbPlugNode in Copy PlugIns */,
 				A59471941A8E5066002DB024 /* CCText.ccbPlugNode in Copy PlugIns */,
 				A51E63AC1A7A5AD6009F4FB9 /* CCScrollListView.ccbPlugNode in Copy PlugIns */,
@@ -1823,6 +1838,15 @@
 		A51E63B01A7A82D0009F4FB9 /* InspectorSoundFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorSoundFile.h; sourceTree = "<group>"; };
 		A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorSoundFile.m; sourceTree = "<group>"; };
 		A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorSoundFile.xib; sourceTree = "<group>"; };
+		A521EED51C17298B00918650 /* CCLoadingBar.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCLoadingBar.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
+		A521EEDC1C172A3600918650 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
+		A521EEDD1C172A3600918650 /* CCLoadingBar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCLoadingBar-Info.plist"; sourceTree = "<group>"; };
+		A521EEDE1C172A3600918650 /* CCLoadingBar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCLoadingBar-Prefix.pch"; sourceTree = "<group>"; };
+		A521EEDF1C172A3600918650 /* CCBPLoadingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPLoadingBar.h; sourceTree = "<group>"; };
+		A521EEE01C172A3600918650 /* CCBPLoadingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPLoadingBar.m; sourceTree = "<group>"; };
+		A521EEE21C172A3600918650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A521EEE31C172A3600918650 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A521EEE41C172A3600918650 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScissorsNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A54C736C1A438A4100DB1CF7 /* CCScissorsNode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCScissorsNode-Info.plist"; sourceTree = "<group>"; };
@@ -2923,6 +2947,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A521EECA1C17298B00918650 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A521EECB1C17298B00918650 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A54C735D1A43894800DB1CF7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3726,6 +3758,7 @@
 				A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */,
 				A594716B1A8E4851002DB024 /* CCText.ccbPlugNode */,
 				A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */,
+				A521EED51C17298B00918650 /* CCLoadingBar.ccbPlugNode */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4511,6 +4544,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A521EEDB1C172A3600918650 /* CCLoadingBar */ = {
+			isa = PBXGroup;
+			children = (
+				A521EEF41C1736AC00918650 /* Supporting Files */,
+				A521EEDF1C172A3600918650 /* CCBPLoadingBar.h */,
+				A521EEE01C172A3600918650 /* CCBPLoadingBar.m */,
+			);
+			path = CCLoadingBar;
+			sourceTree = "<group>";
+		};
+		A521EEF41C1736AC00918650 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A521EEDC1C172A3600918650 /* CCBPProperties.plist */,
+				A521EEDD1C172A3600918650 /* CCLoadingBar-Info.plist */,
+				A521EEDE1C172A3600918650 /* CCLoadingBar-Prefix.pch */,
+				A521EEE11C172A3600918650 /* InfoPlist.strings */,
+				A521EEE31C172A3600918650 /* Icon.png */,
+				A521EEE41C172A3600918650 /* Icon@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A54C736A1A438A4100DB1CF7 /* CCScissorsNode */ = {
 			isa = PBXGroup;
 			children = (
@@ -4552,13 +4608,6 @@
 				A5DD59E31A8FD5A500E56D8F /* CCBPImage.m */,
 			);
 			name = CCImageView;
-			sourceTree = "<group>";
-		};
-		A58EE84A1A30EB4D005F6E22 /* CCLoadingBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CCLoadingBar;
 			sourceTree = "<group>";
 		};
 		A59471911A8E4A10002DB024 /* Supporting Files */ = {
@@ -5235,13 +5284,13 @@
 		E35392481518AD4100471721 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A521EEDB1C172A3600918650 /* CCLoadingBar */,
 				A54C736A1A438A4100DB1CF7 /* CCScissorsNode */,
 				B7C623CF17F38B7800928F91 /* CCWidget */,
 				B7C623B417F383CE00928F91 /* CCButton */,
 				A58EE8481A30EB2C005F6E22 /* CCText */,
 				B7EE69FA1819EE0D00B983FE /* CCLayoutBox */,
 				A58EE8491A30EB3B005F6E22 /* CCImageView */,
-				A58EE84A1A30EB4D005F6E22 /* CCLoadingBar */,
 				B73788DB1804AC5E0076A88C /* CCScrollView */,
 				A51E639B1A7A5A63009F4FB9 /* CCScrollListView */,
 				B7EE699718188E0900B983FE /* CCTextField */,
@@ -6077,6 +6126,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A521EEEC1C17329A00918650 /* PBXTargetDependency */,
 				A5DD59F31A8FD75400E56D8F /* PBXTargetDependency */,
 				A59471931A8E505C002DB024 /* PBXTargetDependency */,
 				A51E63AB1A7A5AC1009F4FB9 /* PBXTargetDependency */,
@@ -6213,6 +6263,23 @@
 			name = CCScrollListView;
 			productName = CCScrollView;
 			productReference = A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */;
+			productType = "com.apple.product-type.bundle";
+		};
+		A521EEC71C17298B00918650 /* CCLoadingBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A521EED11C17298B00918650 /* Build configuration list for PBXNativeTarget "CCLoadingBar" */;
+			buildPhases = (
+				A521EEC81C17298B00918650 /* Sources */,
+				A521EECA1C17298B00918650 /* Frameworks */,
+				A521EECC1C17298B00918650 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CCLoadingBar;
+			productName = CCSlider;
+			productReference = A521EED51C17298B00918650 /* CCLoadingBar.ccbPlugNode */;
 			productType = "com.apple.product-type.bundle";
 		};
 		A54C735A1A43894800DB1CF7 /* CCScissorsNode */ = {
@@ -6775,6 +6842,7 @@
 				92154ACF18A5560B00BD215C /* CCPhysicsPivotJoint */,
 				926D13D718B57B9500582959 /* CCPhysicsPinJoint */,
 				92B7900118C808B7007DF895 /* CCPhysicsSpringJoint */,
+				A521EEC71C17298B00918650 /* CCLoadingBar */,
 				FA98CFC0154E7D1C006E58C5 /* ccbpublish */,
 				DCB9F14C1890600D00128D78 /* SKNode */,
 				DC5129BD1891450D0091873D /* SKSpriteNode */,
@@ -7318,6 +7386,17 @@
 				A51E63A71A7A5A63009F4FB9 /* InfoPlist.strings in Resources */,
 				A51E63A81A7A5A63009F4FB9 /* Icon.png in Resources */,
 				A51E63A41A7A5A63009F4FB9 /* CCBPProperties.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A521EECC1C17298B00918650 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A521EEE91C172A3600918650 /* Icon.png in Resources */,
+				A521EEE51C172A3600918650 /* CCBPProperties.plist in Resources */,
+				A521EEE81C172A3600918650 /* InfoPlist.strings in Resources */,
+				A521EEEA1C172A3600918650 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8059,6 +8138,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A521EEC81C17298B00918650 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A521EEE71C172A3600918650 /* CCBPLoadingBar.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A54C735B1A43894800DB1CF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -8325,6 +8412,11 @@
 			target = A51E63711A7A5932009F4FB9 /* CCScrollListView */;
 			targetProxy = A51E63AA1A7A5AC1009F4FB9 /* PBXContainerItemProxy */;
 		};
+		A521EEEC1C17329A00918650 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A521EEC71C17298B00918650 /* CCLoadingBar */;
+			targetProxy = A521EEEB1C17329A00918650 /* PBXContainerItemProxy */;
+		};
 		A54C737C1A438C9700DB1CF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A54C735A1A43894800DB1CF7 /* CCScissorsNode */;
@@ -8516,6 +8608,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				A51E63A21A7A5A63009F4FB9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A521EEE11C172A3600918650 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A521EEE21C172A3600918650 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -10537,6 +10637,144 @@
 					dynamic_lookup,
 				);
 				PRODUCT_NAME = CCScrollListView;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Release;
+		};
+		A521EED21C17298B00918650 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCLoadingBar/CCLoadingBar-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+					"libs/cocos2d-iphone/external/ObjectAL/**",
+				);
+				INFOPLIST_FILE = "CCLoadingBar/CCLoadingBar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCLoadingBar;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Debug;
+		};
+		A521EED31C17298B00918650 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCLoadingBar/CCLoadingBar-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+					"libs/cocos2d-iphone/external/ObjectAL/**",
+				);
+				INFOPLIST_FILE = "CCLoadingBar/CCLoadingBar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCLoadingBar;
+				WRAPPER_EXTENSION = ccbPlugNode;
+			};
+			name = Testing;
+		};
+		A521EED41C17298B00918650 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CCLoadingBar/CCLoadingBar-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"libs/cocos2d-iphone/cocos2d/**",
+					"libs/cocos2d-iphone/cocos2d-ui/**",
+					"libs/cocos2d-iphone/external/ObjectAL/**",
+				);
+				INFOPLIST_FILE = "CCLoadingBar/CCLoadingBar-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = CCLoadingBar;
 				WRAPPER_EXTENSION = ccbPlugNode;
 			};
 			name = Release;
@@ -12787,6 +13025,16 @@
 				A51E637B1A7A5932009F4FB9 /* Debug */,
 				A51E637C1A7A5932009F4FB9 /* Testing */,
 				A51E637D1A7A5932009F4FB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A521EED11C17298B00918650 /* Build configuration list for PBXNativeTarget "CCLoadingBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A521EED21C17298B00918650 /* Debug */,
+				A521EED31C17298B00918650 /* Testing */,
+				A521EED41C17298B00918650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
