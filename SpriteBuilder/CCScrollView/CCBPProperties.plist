@@ -95,6 +95,30 @@
 			<string>bounces</string>
 		</dict>
 		<dict>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>default</key>
+			<true/>
+			<key>displayName</key>
+			<string>Inertial scroll</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>inertialScroll</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<false/>
+			<key>default</key>
+			<false/>
+			<key>displayName</key>
+			<string>Scroll bar enabled</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>scrollBarEnabled</string>
+		</dict>
+		<dict>
 			<key>default</key>
 			<true/>
 			<key>defaultSerialization</key>

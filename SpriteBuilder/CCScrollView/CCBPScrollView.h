@@ -11,6 +11,8 @@
 @interface CCBPScrollView : CCScrollView
 
 @property (nonatomic,assign) BOOL clipContent;
+@property (nonatomic,assign) BOOL inertialScroll;
+@property (nonatomic,assign) BOOL scrollBarEnabled;
 @property (nonatomic,readonly) CGRect clippingRect;
 
 @end
