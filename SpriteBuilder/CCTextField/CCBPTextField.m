@@ -36,7 +36,7 @@
     _label = [[CCLabelTTF alloc] initWithString:_string fontName:_fontName fontSize:_fontSize];
     _label.horizontalAlignment = _horizontalAlignment;
     _label.verticalAlignment = _verticalAlignment;
-    _label.anchorPoint = CGPointMake(0, 0.5);
+    _label.anchorPoint = CGPointMake(0, 0);
     _label.adjustsFontSizeToFit = NO;
     
     [self updateFont];
@@ -82,6 +82,12 @@
     [self updateFont];
 }
 
+- (void)setFontName:(NSString*) name
+{
+    _fontName = name;
+    [self updateFont];
+}
+
 - (void)setPlaceholderFontColor:(CCColor*) placeholderFontColor
 {
     _placeholderFontColor = placeholderFontColor;
@@ -116,7 +122,6 @@
 {
     _label.dimensions = self.contentSize;
     _label.dimensionsType = self.contentSizeType;
-    _label.position = CGPointMake(0, self.contentSizeInPoints.height/2);
     _label.horizontalAlignment = _horizontalAlignment;
     _label.verticalAlignment = _verticalAlignment;
     _label.fontSize = self.fontSize;

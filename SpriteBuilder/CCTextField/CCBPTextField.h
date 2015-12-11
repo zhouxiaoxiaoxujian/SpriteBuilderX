@@ -27,9 +27,6 @@
 
 @property (nonatomic,strong) NSString* placeholder;
 
-@property (nonatomic,assign) int inputFlag;
-@property (nonatomic,assign) int keyboardReturnType;
-@property (nonatomic,assign) int inputMode;
 @property (nonatomic,assign) int maxLength;
 
 /** The horizontal alignment technique of the text. */
@@ -37,5 +34,7 @@
 
 /** The vertical alignment technique of the text. */
 @property (nonatomic,assign) CCVerticalTextAlignment verticalAlignment;
+
+@property (nonatomic,assign) BOOL password;
 
 @end
