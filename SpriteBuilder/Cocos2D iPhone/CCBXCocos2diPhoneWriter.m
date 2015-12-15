@@ -69,6 +69,7 @@
     [propTypes addObject:@"FloatCheck"];
 	[propTypes addObject:@"EffectControl"];
     [propTypes addObject:@"SoundFile"];
+    [propTypes addObject:@"Offsets"];
 }
 
 - (id) init
@@ -422,6 +423,17 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         float b = [[prop objectAtIndex:1] floatValue];
         [self writeFloat:a];
         [self writeFloat:b];
+    }
+    else if ([type isEqualToString:@"Offsets"])
+    {
+        float left = [[prop objectAtIndex:0] floatValue];
+        float top = [[prop objectAtIndex:1] floatValue];
+        float right = [[prop objectAtIndex:2] floatValue];
+        float bottom = [[prop objectAtIndex:3] floatValue];
+        [self writeFloat:left];
+        [self writeFloat:top];
+        [self writeFloat:right];
+        [self writeFloat:bottom];
     }
     else if ([type isEqualToString:@"ScaleLock"])
     {

@@ -174,6 +174,25 @@ __strong NSDictionary* renamedProperties = nil;
 		
         [node setValue:[NSValue valueWithPoint:pt] forKey:name];
     }
+    else if ([type isEqualToString:@"Offsets"])
+    {
+        float left = [[serializedValue objectAtIndex:0] floatValue];
+        float top = [[serializedValue objectAtIndex:1] floatValue];
+        float right = [[serializedValue objectAtIndex:2] floatValue];
+        float bottom = [[serializedValue objectAtIndex:3] floatValue];
+        
+        if(left<right)
+            [node setValue:[NSNumber numberWithFloat:left] forKey:[name stringByAppendingString:@"Left"]];
+        [node setValue:[NSNumber numberWithFloat:right] forKey:[name stringByAppendingString:@"Right"]];
+        if(left>=right)
+            [node setValue:[NSNumber numberWithFloat:left] forKey:[name stringByAppendingString:@"Left"]];
+        
+        if(top<bottom)
+            [node setValue:[NSNumber numberWithFloat:top] forKey:[name stringByAppendingString:@"Top"]];
+        [node setValue:[NSNumber numberWithFloat:bottom] forKey:[name stringByAppendingString:@"Bottom"]];
+        if(top>=bottom)
+            [node setValue:[NSNumber numberWithFloat:top] forKey:[name stringByAppendingString:@"Top"]];
+    }
     else if ([type isEqualToString:@"Size"])
     {
         float w = [[serializedValue objectAtIndex:0] floatValue];

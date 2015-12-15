@@ -395,6 +395,8 @@
 		A5DD59EC1A8FD5A500E56D8F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E71A8FD5A500E56D8F /* Icon@2x.png */; };
 		A5DD59F01A8FD5C300E56D8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59EE1A8FD5C200E56D8F /* InfoPlist.strings */; };
 		A5DD59F41A8FD76200E56D8F /* CCImage.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5E8BA2C1C20354300476C19 /* InspectorOffsets.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8BA2A1C20354300476C19 /* InspectorOffsets.m */; settings = {ASSET_TAGS = (); }; };
+		A5E8BA2D1C20354300476C19 /* InspectorOffsets.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8BA2B1C20354300476C19 /* InspectorOffsets.xib */; settings = {ASSET_TAGS = (); }; };
 		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
 		A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1C1A31CF63004B114B /* Icon@2x.png */; };
 		A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EC6C291A31F65C004B114B /* AppKit.framework */; };
@@ -1907,6 +1909,9 @@
 		A5DD59E61A8FD5A500E56D8F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = CCImage/Icon.png; sourceTree = "<group>"; };
 		A5DD59E71A8FD5A500E56D8F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "CCImage/Icon@2x.png"; sourceTree = "<group>"; };
 		A5DD59EF1A8FD5C300E56D8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = CCImage/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5E8BA291C20354300476C19 /* InspectorOffsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorOffsets.h; sourceTree = "<group>"; };
+		A5E8BA2A1C20354300476C19 /* InspectorOffsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorOffsets.m; sourceTree = "<group>"; };
+		A5E8BA2B1C20354300476C19 /* InspectorOffsets.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorOffsets.xib; sourceTree = "<group>"; };
 		A5EC6C1B1A31CF63004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A5EC6C1C1A31CF63004B114B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A5EC6C291A31F65C004B114B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -5958,6 +5963,9 @@
 				E525FE21A2662188C1454FEB /* InspectorNodeReference.h */,
 				E525F2016B3DB7DF1651B605 /* InspectorNodeReference.m */,
 				E525F3EC220BB11985744E64 /* InspectorNodeReference.xib */,
+				A5E8BA291C20354300476C19 /* InspectorOffsets.h */,
+				A5E8BA2A1C20354300476C19 /* InspectorOffsets.m */,
+				A5E8BA2B1C20354300476C19 /* InspectorOffsets.xib */,
 				E525F85B020D91884C61B387 /* InspectorPhysicsUnavailable.h */,
 				E525F40B4A984D6D907A54CF /* InspectorPhysicsUnavailable.m */,
 				E525F377E4B3F3DF3FE57AF5 /* InspectorPhysicsUnavailable.xib */,
@@ -7007,6 +7015,7 @@
 				B73788F51804D80B0076A88C /* ccb.icns in Resources */,
 				B75CB46518468FA70036259F /* seq-btn-loop.png in Resources */,
 				772BE57C134398EE0009B5B9 /* NewDocWindow.xib in Resources */,
+				A5E8BA2D1C20354300476C19 /* InspectorOffsets.xib in Resources */,
 				774F95C613638D74005D43EB /* missing-particle-texture.png in Resources */,
 				774E4EC2136D98AB0025D0A8 /* select-bl.png in Resources */,
 				9218DF3C1919B04D0033851E /* joint-pivot-mode-bg@2x.png in Resources */,
@@ -7891,6 +7900,7 @@
 				5BB9A3551A038C59008184AE /* ResourceDuplicateCommand.m in Sources */,
 				E34E5D6615357CF2000201FB /* RulersLayer.m in Sources */,
 				E3A16AF31536D096004B528A /* GuidesLayer.m in Sources */,
+				A5E8BA2C1C20354300476C19 /* InspectorOffsets.m in Sources */,
 				E3B9AF4B153C150D00489438 /* CCBTransparentWindow.m in Sources */,
 				E3B9AF4E153C48E300489438 /* CCBTransparentView.m in Sources */,
 				E3F3F83F153C72A3005443EE /* NotesLayer.m in Sources */,
@@ -8969,7 +8979,6 @@
 			baseConfigurationReference = 9252073319623E2F00BFC071 /* SpriteBuilder.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = NonSandboxed.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -9005,7 +9014,6 @@
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.3.6;
-				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9015,7 +9023,6 @@
 			baseConfigurationReference = 9252073319623E2F00BFC071 /* SpriteBuilder.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = NonSandboxed.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -9051,7 +9058,6 @@
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.3.6;
-				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -9169,7 +9175,6 @@
 			baseConfigurationReference = 9252073319623E2F00BFC071 /* SpriteBuilder.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = NonSandboxed.entitlements;
 				CODE_SIGN_IDENTITY = "";
@@ -9209,7 +9214,6 @@
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
 				SB_VERSION = 1.3.6;
-				SDKROOT = macosx10.9;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Testing;

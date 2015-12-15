@@ -169,6 +169,16 @@
             nil];
 }
 
++ (id) serializeOffsets:(float)left Top:(float)top Right:(float)right Bottom:(float)bottom
+{
+    return [NSArray arrayWithObjects:
+            [NSNumber numberWithFloat:left],
+            [NSNumber numberWithFloat:top],
+            [NSNumber numberWithFloat:right],
+            [NSNumber numberWithFloat:bottom],
+            nil];
+}
+
 #pragma mark Writer
 
 + (id) serializePropertyForNode:(CCNode*) node propInfo:(NSMutableDictionary*) propInfo excludeProps:(NSArray*) excludeProps
@@ -227,6 +237,14 @@
     {
         CGPoint pt = NSPointToCGPoint( [[node valueForKey:name] pointValue] );
         serializedValue = [CCBWriterInternal serializePoint:pt];
+    }
+    else if ([type isEqualToString:@"Offsets"])
+    {
+        float left = [[node valueForKey:[NSString stringWithFormat:@"%@Left",name]] floatValue];
+        float top = [[node valueForKey:[NSString stringWithFormat:@"%@Top",name]] floatValue];
+        float right = [[node valueForKey:[NSString stringWithFormat:@"%@Right",name]] floatValue];
+        float bottom = [[node valueForKey:[NSString stringWithFormat:@"%@Bottom",name]] floatValue];
+        serializedValue = [CCBWriterInternal serializeOffsets:left Top:top Right:right Bottom:bottom];
     }
     else if ([type isEqualToString:@"Size"])
     {
