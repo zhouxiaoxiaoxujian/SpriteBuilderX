@@ -78,6 +78,14 @@
 				<integer>0</integer>
 				<integer>0</integer>
 			</array>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>animatable</key>
 			<true/>
 			<key>displayName</key>
@@ -111,6 +119,11 @@
 		</dict>
 		<dict>
 			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>default</key>
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
