@@ -58,51 +58,25 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
-			<real>0.33</real>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>displayName</key>
-			<string>Margin left</string>
+			<string>Margins</string>
 			<key>type</key>
-			<string>Float</string>
+			<string>Offsets</string>
 			<key>name</key>
-			<string>marginLeft</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<real>0.33</real>
-			<key>defaultSerialization</key>
-			<real>0.33</real>
-			<key>displayName</key>
-			<string>Margin right</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginRight</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<real>0.33</real>
-			<key>defaultSerialization</key>
-			<real>0.33</real>
-			<key>displayName</key>
-			<string>Margin top</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginTop</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<real>0.33</real>
-			<key>defaultSerialization</key>
-			<real>0.33</real>
-			<key>displayName</key>
-			<string>Margin bottom</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginBottom</string>
+			<string>margin</string>
 		</dict>
 	</array>
 </dict>

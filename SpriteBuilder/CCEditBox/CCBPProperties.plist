@@ -5,7 +5,7 @@
 	<key>displayName</key>
 	<string>Edit Box</string>
 	<key>ordering</key>
-	<integer>12000</integer>
+	<integer>12500</integer>
 	<key>description</key>
 	<string>Allows the user to enter text, sends events when the text finishes editing.</string>
 	<key>inheritsFrom</key>
@@ -263,52 +263,36 @@
 			<string>maxLength</string>
 		</dict>
 		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
 			<key>displayName</key>
-			<string>Margin left</string>
-			<key>type</key>
-			<string>Float</string>
+			<string>CCSprite9Slice</string>
 			<key>name</key>
-			<string>marginLeft</string>
+			<string>CCSprite</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>default</key>
-			<integer>0</integer>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
-			<integer>0</integer>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>displayName</key>
-			<string>Margin right</string>
+			<string>Margins</string>
 			<key>type</key>
-			<string>Float</string>
+			<string>Offsets</string>
 			<key>name</key>
-			<string>marginRight</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
-			<key>displayName</key>
-			<string>Margin top</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginTop</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
-			<key>displayName</key>
-			<string>Margin bottom</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginBottom</string>
+			<string>margin</string>
 		</dict>
 	</array>
 </dict>

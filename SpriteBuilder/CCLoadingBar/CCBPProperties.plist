@@ -5,9 +5,9 @@
 	<key>displayName</key>
 	<string>LoadingBar</string>
 	<key>ordering</key>
-	<integer>13000</integer>
+	<integer>13500</integer>
 	<key>description</key>
-	<string>Allows the user to visually select a value</string>
+	<string>Show progress.</string>
 	<key>inheritsFrom</key>
 	<string>CCWidget</string>
 	<key>canHaveChildren</key>
@@ -90,51 +90,25 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<integer>0</integer>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
-			<integer>0</integer>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
 			<key>displayName</key>
-			<string>Margin left</string>
+			<string>Margins</string>
 			<key>type</key>
-			<string>Float</string>
+			<string>Offsets</string>
 			<key>name</key>
-			<string>marginLeft</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
-			<key>displayName</key>
-			<string>Margin right</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginRight</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
-			<key>displayName</key>
-			<string>Margin top</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginTop</string>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
-			<key>displayName</key>
-			<string>Margin bottom</string>
-			<key>type</key>
-			<string>Float</string>
-			<key>name</key>
-			<string>marginBottom</string>
+			<string>margin</string>
 		</dict>
 	</array>
 </dict>

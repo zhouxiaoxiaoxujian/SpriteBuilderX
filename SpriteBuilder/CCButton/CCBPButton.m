@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "InspectorController.h"
 #import "CCSprite9Slice.h"
+#import "PositionPropertySetter.h"
 
 @implementation CCBPButton
 
@@ -140,30 +141,68 @@
     
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"contentSize"];
     
-    self.preferredSize = spriteFrame.texture.contentSize;
-    self.preferredSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
+    self.contentSize = spriteFrame.texture.contentSize;
+    self.contentSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
     self.maxSize = self.preferredSize;
     self.maxSizeType = self.preferredSizeType;
     
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
     [[InspectorController sharedController] refreshProperty:@"contentSize"];
-    
 }
 
 - (void)setMarginLeft:(float)marginLeft
 {
-    self.background.marginLeft = marginLeft;
+    marginLeft = clampf(marginLeft, 0, 1);
+    
+    if(self.marginRight + marginLeft >= 1)
+    {
+        [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
+        [[InspectorController sharedController] refreshProperty:@"marginLeft"];
+        return;
+    }
+    [self.background setMarginLeft:marginLeft];
 }
 
 - (void)setMarginRight:(float)marginRight
 {
-    self.background.marginRight = marginRight;
+    marginRight = clampf(marginRight, 0, 1);
+    if(self.marginLeft + marginRight >= 1)
+    {
+        [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
+        [[InspectorController sharedController] refreshProperty:@"marginRight"];
+        
+        return;
+    }
+    
+    [self.background setMarginRight:marginRight];
 }
 
 - (void)setMarginTop:(float)marginTop
 {
-    self.background.marginTop = marginTop;
+    marginTop = clampf(marginTop, 0, 1);
+    if(self.marginBottom + marginTop >= 1)
+    {
+        [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
+        [[InspectorController sharedController] refreshProperty:@"marginTop"];
+        return;
+    }
+    
+    [self.background setMarginTop:marginTop];
+    
+}
+
+- (void)setMarginBottom:(float)marginBottom
+{
+    marginBottom = clampf(marginBottom, 0, 1);
+    if(self.marginTop + marginBottom >= 1)
+    {
+        [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
+        [[InspectorController sharedController] refreshProperty:@"marginBottom"];
+        return;
+    }
+    
+    [self.background setMarginBottom:marginBottom];
 }
 
 - (float)marginBottom
@@ -184,11 +223,6 @@
 - (float)marginTop
 {
     return self.background.marginTop;
-}
-
-- (void)setMarginBottom:(float)marginBottom
-{
-    self.background.marginBottom = marginBottom;
 }
 
 @end
