@@ -11,6 +11,12 @@
 #import "AppDelegate.h"
 #import "InspectorController.h"
 
+@interface CCBPEditBox()
+{
+    BOOL _fontDirty;
+}
+@end
+
 @implementation CCBPEditBox
 {
     CCLabelTTF *_label;
@@ -31,6 +37,8 @@
     _placeholder = @"";
     _fontSize = 17;
     _maxLength = -1;
+    
+    _fontDirty = YES;
     
     _label = [[CCLabelTTF alloc] initWithString:_string fontName:_fontName fontSize:_fontSize];
     _label.horizontalAlignment = CCTextAlignmentLeft;
@@ -130,26 +138,35 @@
 - (void) removeUITextView
 {}
 
+-(void) visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
+{
+    [super visit:renderer parentTransform:parentTransform];
+    if(_fontDirty)
+    {
+        _label.dimensions = self.contentSizeInPoints;
+        _label.horizontalAlignment = CCTextAlignmentLeft;
+        _label.verticalAlignment = CCVerticalTextAlignmentCenter;
+        if(self.string && self.string.length>0)
+        {
+            _label.fontSize = _fontSize;
+            _label.fontName = _fontName;
+            _label.fontColor = _fontColor;
+            _label.string = self.string;
+        }
+        else
+        {
+            _label.fontSize = _placeholderFontSize;
+            _label.fontName = _placeholderFontName;
+            _label.fontColor = _placeholderFontColor;
+            _label.string = self.placeholder;
+        }
+        _fontDirty = NO;
+    }
+}
+
 - (void) updateFont
 {
-    _label.dimensions = self.contentSize;
-    _label.dimensionsType = self.contentSizeType;
-    _label.horizontalAlignment = CCTextAlignmentLeft;
-    _label.verticalAlignment = CCVerticalTextAlignmentCenter;
-    if(self.string && self.string.length>0)
-    {
-        _label.fontSize = _fontSize;
-        _label.fontName = _fontName;
-        _label.fontColor = _fontColor;
-        _label.string = self.string;
-    }
-    else
-    {
-        _label.fontSize = _placeholderFontSize;
-        _label.fontName = _placeholderFontName;
-        _label.fontColor = _placeholderFontColor;
-        _label.string = self.placeholder;
-    }
+    _fontDirty = YES;
 }
 
 - (void)setMarginLeft:(float)marginLeft
