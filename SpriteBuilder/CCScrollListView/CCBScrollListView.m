@@ -67,46 +67,34 @@
     CGSize viewsize = self.contentSizeInPoints;
     
     if (_horizontal) {
-        float containerSize = 0;
-        for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(pChild.contentSize.width * num, 0);
-            containerSize += pChild.contentSize.width;
-            ++num;
-        }
-        
         float yoffset = 0;
         
         switch (_gravity) {
             case 3:
             {
-                yoffset = 0;
+                yoffset = viewsize.height - contentsize.height;
                 break;
             }
             case 4:
             {
-                if (_horizontal) {
-                    yoffset = viewsize.height - contentsize.height;
-                }
-                else {
-                    yoffset = viewsize.height - contentsize.height*childrenCount;
-                }
+                yoffset = 0;
                 break;
             }
             case 5:
             {
-                if (_horizontal) {
-                    yoffset = viewsize.height/2 - contentsize.height/2;
-                }
-                else {
-                    yoffset = viewsize.height/2 - contentsize.height*childrenCount/2;
-                }
+                yoffset = viewsize.height/2 - contentsize.height/2;
                 break;
             }
             default:
                 break;
         }
         
-        self.contentNode.position = ccp(0, -(viewsize.height - contentsize.height - yoffset));
+        for (CCNode *pChild in self.contentNode.children) {
+            pChild.position = ccp(pChild.contentSize.width * num, yoffset);
+            ++num;
+        }
+        
+        //self.contentNode.position = ccp(0, -(viewsize.height - contentsize.height - yoffset));
         [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width * childrenCount, viewsize.width),
                                         MAX(contentsize.height, viewsize.height))];
 
@@ -114,10 +102,6 @@
         self.verticalScrollEnabled = NO;
     }
     else {
-        for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(0, pChild.contentSize.height*(childrenCount - num - 1));
-            ++num;
-        }
         
         float xoffset = 0;
         switch (_gravity) {
@@ -140,7 +124,12 @@
                 break;
         }
         
-        self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount));
+        
+        for (CCNode *pChild in self.contentNode.children) {
+            pChild.position = ccp(xoffset, pChild.contentSize.height*(childrenCount - num - 1));
+            ++num;
+        }
+        //self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount));
         
         [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width, viewsize.width),
                                         MAX(contentsize.height, viewsize.height))];
