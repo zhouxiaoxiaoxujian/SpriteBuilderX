@@ -48,6 +48,7 @@
     [_background setSpriteFrame:spriteFrame];
     [_background setAnchorPoint:CGPointMake(0.0,0.5)];
     [_background setPosition:CGPointMake(0.0f, _contentSize.height*0.5f)];
+    [self updateProgressBar];
 }
 
 - (CCSpriteFrame*) spriteFrame
