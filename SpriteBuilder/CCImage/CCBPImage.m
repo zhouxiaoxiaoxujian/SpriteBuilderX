@@ -84,4 +84,20 @@
     [super setMarginBottom:marginBottom];
 }
 
+-(void)onSetSizeFromTexture
+{
+    CCSpriteFrame * spriteFrame = self.spriteFrame;
+    if(spriteFrame == nil)
+        return;
+    
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"contentSize"];
+    
+    self.contentSize = spriteFrame.texture.contentSize;
+    self.contentSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
+    
+    [self willChangeValueForKey:@"contentSize"];
+    [self didChangeValueForKey:@"contentSize"];
+    [[InspectorController sharedController] refreshProperty:@"contentSize"];
+}
+
 @end

@@ -9,7 +9,7 @@
 	<key>description</key>
 	<string>Displays stretchable 9-sliced texture with configurable margins.</string>
 	<key>inheritsFrom</key>
-	<string>CCSprite</string>
+	<string>CCWidget</string>
 	<key>canHaveChildren</key>
 	<true/>
 	<key>canBeRootNode</key>
@@ -60,6 +60,24 @@
 	</array>
 	<key>properties</key>
 	<array>
+		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>displayName</key>
+			<string>Sprite frame</string>
+			<key>type</key>
+			<string>SpriteFrame</string>
+			<key>name</key>
+			<string>spriteFrame</string>
+		</dict>
 		<dict>
 			<key>displayName</key>
 			<string>CCSprite9Slice</string>
