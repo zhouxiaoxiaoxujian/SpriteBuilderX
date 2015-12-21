@@ -57,6 +57,14 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>displayName</key>
+			<string>Reset to default size</string>
+			<key>type</key>
+			<string>Button</string>
+			<key>name</key>
+			<string>onSetSizeFromTexture</string>
+		</dict>
+		<dict>
 			<key>default</key>
 			<array>
 				<integer>0</integer>
