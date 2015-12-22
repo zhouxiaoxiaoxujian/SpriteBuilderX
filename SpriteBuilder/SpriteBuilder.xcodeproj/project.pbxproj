@@ -387,7 +387,6 @@
 		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
 		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
 		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
-		A5DD59CF1A8FD50D00E56D8F /* CCBPText.m in Sources */ = {isa = PBXBuildFile; fileRef = A59471831A8E4A06002DB024 /* CCBPText.m */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */; };
 		A5DD59E91A8FD5A500E56D8F /* CCBPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DD59E31A8FD5A500E56D8F /* CCBPImage.m */; };
@@ -395,8 +394,8 @@
 		A5DD59EC1A8FD5A500E56D8F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E71A8FD5A500E56D8F /* Icon@2x.png */; };
 		A5DD59F01A8FD5C300E56D8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59EE1A8FD5C200E56D8F /* InfoPlist.strings */; };
 		A5DD59F41A8FD76200E56D8F /* CCImage.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A5E8BA2C1C20354300476C19 /* InspectorOffsets.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8BA2A1C20354300476C19 /* InspectorOffsets.m */; settings = {ASSET_TAGS = (); }; };
-		A5E8BA2D1C20354300476C19 /* InspectorOffsets.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8BA2B1C20354300476C19 /* InspectorOffsets.xib */; settings = {ASSET_TAGS = (); }; };
+		A5E8BA2C1C20354300476C19 /* InspectorOffsets.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8BA2A1C20354300476C19 /* InspectorOffsets.m */; };
+		A5E8BA2D1C20354300476C19 /* InspectorOffsets.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8BA2B1C20354300476C19 /* InspectorOffsets.xib */; };
 		A5EC6C1D1A31CF63004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1B1A31CF63004B114B /* Icon.png */; };
 		A5EC6C1E1A31CF63004B114B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C1C1A31CF63004B114B /* Icon@2x.png */; };
 		A5EC6C2A1A31F65C004B114B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EC6C291A31F65C004B114B /* AppKit.framework */; };
@@ -8272,7 +8271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5DD59E91A8FD5A500E56D8F /* CCBPImage.m in Sources */,
-				A5DD59CF1A8FD50D00E56D8F /* CCBPText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
