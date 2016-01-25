@@ -478,11 +478,11 @@
 				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
-			<string>Horizontal padding</string>
+			<string>Left padding</string>
 			<key>type</key>
 			<string>FloatScale</string>
 			<key>name</key>
-			<string>horizontalPadding</string>
+			<string>leftPadding</string>
 		</dict>
 		<dict>
 			<key>default</key>
@@ -500,11 +500,55 @@
 				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
-			<string>Vertical padding</string>
+			<string>Top padding</string>
 			<key>type</key>
 			<string>FloatScale</string>
 			<key>name</key>
-			<string>verticalPadding</string>
+			<string>topPadding</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Right padding</string>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>rightPadding</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Bottom padding</string>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>bottomPadding</string>
 		</dict>
 		<dict>
 			<key>default</key>

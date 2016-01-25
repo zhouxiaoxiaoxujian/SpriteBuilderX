@@ -59,10 +59,34 @@
     _needsLayout = true;
 }
 
+- (void) setLeftPadding:(float)leftPadding
+{
+    _leftPadding = leftPadding;
+    _needsLayout = true;
+}
+
+- (void) setRightPadding:(float)rightPadding
+{
+    _rightPadding = rightPadding;
+    _needsLayout = true;
+}
+
+- (void) setTopPadding:(float)topPadding
+{
+    _topPadding = topPadding;
+    _needsLayout = true;
+}
+
+- (void) setBottomPadding:(float)bottomPadding
+{
+    _bottomPadding = bottomPadding;
+    _needsLayout = true;
+}
+
 - (void) layout
 {
     CGSize contentSize = [self convertContentSizeToPoints:self.preferredSize type:self.contentSizeType];
-    CGSize paddedLabelSize = CGSizeMake(contentSize.width - self.horizontalPadding * 2, contentSize.height -  self.verticalPadding * 2);
+    CGSize paddedLabelSize = CGSizeMake(contentSize.width - (self.leftPadding + self.rightPadding), contentSize.height -  (self.topPadding + self.bottomPadding));
     
     if(_adjustsFontSizeToFit && paddedLabelSize.width>0 && paddedLabelSize.height>0)
     {
@@ -109,8 +133,9 @@
     self.background.positionType = CCPositionTypeNormalized;
     self.background.position = ccp(0.5f,0.5f);
     
-    self.label.positionType = CCPositionTypeNormalized;
-    self.label.position = ccp(0.5f, 0.5f);
+    self.label.positionType = CCPositionTypePoints;
+    self.label.anchorPoint = ccp(0, 0);
+    self.label.position = ccp(self.leftPadding, self.bottomPadding);
     
     _needsLayout = NO;
 }

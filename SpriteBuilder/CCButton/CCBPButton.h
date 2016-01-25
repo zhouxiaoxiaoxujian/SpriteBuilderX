@@ -41,4 +41,9 @@
 
 @property (nonatomic,assign) CGFloat fontSize;
 
+@property (nonatomic,assign) float leftPadding;
+@property (nonatomic,assign) float rightPadding;
+@property (nonatomic,assign) float topPadding;
+@property (nonatomic,assign) float bottomPadding;
+
 @end
