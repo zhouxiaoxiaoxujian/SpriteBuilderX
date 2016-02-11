@@ -32,7 +32,7 @@
 #import "BFColorPickerViewController.h"
 
 @interface NSPopover (ColorPickerPopover)
-- (BOOL)_delegatePopoverShouldClose:(id)sender;
+- (BOOL)popoverShouldClose:(id)sender;
 @end
 
 
@@ -152,8 +152,8 @@
 	[self closeAndDeactivateColorWell:YES removeTarget:YES removeObserver:YES];
 }
 
-- (BOOL)_delegatePopoverShouldClose:(id)sender {
-	if ([super _delegatePopoverShouldClose:sender]) {
+- (BOOL)popoverShouldClose:(id)sender {
+	if ([super popoverShouldClose:sender]) {
 		[self removeTargetAndAction];
         if (addedObserver)
         {
