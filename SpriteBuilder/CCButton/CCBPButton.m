@@ -118,15 +118,14 @@
                 }
             }
             self.label.fontSize = fontSize / (endScale * 1.05f);
-            self.label.dimensions = CGSizeMake(paddedLabelSize.width, paddedLabelSize.height);
         }
     }
     else
     {
-        self.label.scale = 1.0f;
-        self.label.dimensions = paddedLabelSize;
         self.label.fontSize = _fontSize;
     }
+    
+    self.label.dimensions = paddedLabelSize;
     
     self.background.contentSize = contentSize;
     self.background.anchorPoint = ccp(0.5f,0.5f);
