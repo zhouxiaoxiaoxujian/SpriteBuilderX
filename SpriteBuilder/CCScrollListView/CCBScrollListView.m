@@ -90,7 +90,7 @@
         }
         
         for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(pChild.contentSize.width * num, yoffset);
+            pChild.position = ccp(pChild.contentSizeInPoints.width * num, yoffset);
             ++num;
         }
         
@@ -126,7 +126,7 @@
         
         
         for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(xoffset, pChild.contentSize.height*(childrenCount - num - 1));
+            pChild.position = ccp(xoffset, pChild.contentSizeInPoints.height*(childrenCount - num - 1));
             ++num;
         }
         //self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount));
