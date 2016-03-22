@@ -365,6 +365,7 @@
 		A521EF491C1B0B9100918650 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF431C1B0B9100918650 /* Icon.png */; };
 		A521EF4A1C1B0B9100918650 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF441C1B0B9100918650 /* Icon@2x.png */; };
 		A521EF4D1C1B0CD700918650 /* CCEditBox.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A521EF391C1B0A7700918650 /* CCEditBox.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A54B403B1CA15B0F00196D02 /* CCProtectedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */; };
 		A54C735E1A43894800DB1CF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A54C73741A438A4100DB1CF7 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */; };
 		A54C73761A438A4100DB1CF7 /* CCScissorsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54C736F1A438A4100DB1CF7 /* CCScissorsNode.m */; };
@@ -1152,6 +1153,13 @@
 			remoteGlobalIDString = A521EF2B1C1B0A7700918650;
 			remoteInfo = CCEditBox;
 		};
+		A54B40331CA15A5000196D02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7C623CC17F38B7800928F91;
+			remoteInfo = CCWidget;
+		};
 		A54C737B1A438C9700DB1CF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7789ABB5133AA82000CEFCC7 /* Project object */;
@@ -1872,6 +1880,8 @@
 		A521EF421C1B0B9100918650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A521EF431C1B0B9100918650 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A521EF441C1B0B9100918650 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A54B40391CA15B0F00196D02 /* CCProtectedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProtectedNode.h; sourceTree = "<group>"; };
+		A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCProtectedNode.m; sourceTree = "<group>"; };
 		A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScissorsNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A54C736C1A438A4100DB1CF7 /* CCScissorsNode-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCScissorsNode-Info.plist"; sourceTree = "<group>"; };
@@ -3270,6 +3280,8 @@
 		776041E21498F5A70078095D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A54B40391CA15B0F00196D02 /* CCProtectedNode.h */,
+				A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */,
 				4D0C1E7718F49A3700B028CA /* CCNode+PositionExtentions.h */,
 				4D0C1E7818F49A3700B028CA /* CCNode+PositionExtentions.m */,
 				921EEB2218ADB7EA00D864C2 /* GeometryUtil.h */,
@@ -6409,6 +6421,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A54B40341CA15A5000196D02 /* PBXTargetDependency */,
 			);
 			name = CCImage;
 			productName = CCButton;
@@ -8102,6 +8115,7 @@
 				E525FFCC2C4C3A9E49F87D64 /* InspectorSeparator.m in Sources */,
 				E525F634C2EE9B50F56B0E27 /* InspectorSeparatorSub.m in Sources */,
 				E525F8CC32EB23EC8FC384F3 /* InspectorPosition.m in Sources */,
+				A54B403B1CA15B0F00196D02 /* CCProtectedNode.m in Sources */,
 				E525F1775124A78C8A2FFE99 /* InspectorSize.m in Sources */,
 				E525F002884ABE8D1CA3F0C5 /* InspectorPoint.m in Sources */,
 				E525FC31D70B5FC45A92D878 /* InspectorPointLock.m in Sources */,
@@ -8524,6 +8538,11 @@
 			isa = PBXTargetDependency;
 			target = A521EF2B1C1B0A7700918650 /* CCEditBox */;
 			targetProxy = A521EF4B1C1B0C6900918650 /* PBXContainerItemProxy */;
+		};
+		A54B40341CA15A5000196D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7C623CC17F38B7800928F91 /* CCWidget */;
+			targetProxy = A54B40331CA15A5000196D02 /* PBXContainerItemProxy */;
 		};
 		A54C737C1A438C9700DB1CF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
