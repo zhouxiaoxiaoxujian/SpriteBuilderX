@@ -9,6 +9,11 @@
 #import "CCBPSlider.h"
 #import "AppDelegate.h"
 #import "InspectorController.h"
+#import "CCControlSubclass.h"
+
+#import "CCSlider.h"
+#import "CCControlSubclass.h"
+#import "CCTouch.h"
 
 @implementation CCBPSlider
 
@@ -17,16 +22,131 @@
     self = [super init];
     if (!self) return NULL;
     
-    self.userInteractionEnabled = NO;
+    _state = CCBPControlStateNormal;
+    
+    _handleSpriteFrames = [[NSMutableDictionary alloc] init];
+    _background = [[CCSprite9Slice alloc] init];
+    _background.anchorPoint = ccp(0.f,0.f);
+    _background.position = ccp(0.f,0.f);
+    _background.positionType = CCPositionTypePoints;
+    _background.contentSizeType = CCSizeTypePoints;
+    
+    _progress = [[CCSprite9Slice alloc] init];
+    _progress.anchorPoint = ccp(0.f,0.f);
+    _progress.position = ccp(0.f,0.f);
+    _progress.positionType = CCPositionTypePoints;
+    _progress.contentSizeType = CCSizeTypePoints;
+    
+    _handle = [[CCSprite alloc] init];
+    _handle.anchorPoint = ccp(0.5f,0.5f);
+    _handle.positionType = CCPositionTypePoints;
+    
+    _maxPercent = 100.0f;
+    _sliderValue = .0f;
+    _imageScale = 1.0f;
+    
+    [self addProtectedChild:_background];
+    [self addProtectedChild:_progress];
+    [self addProtectedChild:_handle];
+    
+    [self needsLayout];
+    [self stateChanged];
     
     return self;
 }
 
--(void) setContentSize:(CGSize)size
+- (void) updateSliderPositionFromValue
 {
-    [self setPreferredSize:size];
-    [self setMaxSize:size];
-    [super setContentSize:size];
+    CGSize size = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
+    float val = clampf(_sliderValue / _maxPercent, 0.0f, 1.0f);
+    _handle.position = ccp(size.width * val, size.height/2.0f);
+    [_progress setContentSize:CGSizeMake(size.width / _imageScale * val, size.height / _imageScale)];
+}
+
+- (void) stateChanged
+{
+    CCSpriteFrame *frame = [_handleSpriteFrames objectForKey:[NSNumber numberWithInt:_state]];
+    if(frame)
+        [_handle setSpriteFrame:frame];
+    else
+        [_handle setSpriteFrame:[_handleSpriteFrames objectForKey:[NSNumber numberWithInt:CCBPControlStateNormal]]];
+}
+
+- (void) layout
+{
+    CGSize sizeInPoints = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
+    
+    [_background setContentSize:CGSizeMake(sizeInPoints.width / _imageScale, sizeInPoints.height / _imageScale)];
+    _background.scale = _imageScale;
+
+    _progress.scale = _imageScale;
+    
+    _handle.scale = _imageScale;
+    
+    [self updateSliderPositionFromValue];
+    [super layout];
+}
+
+#pragma mark Properties
+
+- (void) setSliderValue:(float)sliderValue
+{
+    _sliderValue = sliderValue;
+    
+    [self updateSliderPositionFromValue];
+}
+
+- (void) setMaxPercent:(float)maxPercent
+{
+    _maxPercent = maxPercent;
+    
+    [self updateSliderPositionFromValue];
+}
+
+- (void) setBackgroundSpriteFrame:(CCSpriteFrame*)spriteFrame
+{
+    _background.spriteFrame = spriteFrame;
+}
+
+- (CCSpriteFrame*) backgroundSpriteFrame
+{
+    return _background.spriteFrame;
+}
+
+- (void) setProgressSpriteFrame:(CCSpriteFrame*)spriteFrame
+{
+    _progress.spriteFrame = spriteFrame;
+}
+
+- (CCSpriteFrame*) progressSpriteFrame
+{
+    return _progress.spriteFrame;
+}
+
+- (void) setHandleSpriteFrame:(CCSpriteFrame*)spriteFrame forState:(CCBPControlState)state
+{
+    if (spriteFrame)
+        [_handleSpriteFrames setObject:spriteFrame forKey:[NSNumber numberWithInt:state]];
+    else
+        [_handleSpriteFrames removeObjectForKey:[NSNumber numberWithInt:state]];
+    [self stateChanged];
+}
+
+- (CCSpriteFrame*) handleSpriteFrameForState:(CCBPControlState)state
+{
+    return [_handleSpriteFrames objectForKey:[NSNumber numberWithInt:state]];
+}
+
+- (void) setState:(CCBPControlState)state
+{
+    _state = state;
+    [self stateChanged];
+}
+
+- (void) setImageScale:(CGFloat) imageScale
+{
+    _imageScale = imageScale;
+    [self needsLayout];
 }
 
 - (void)setMarginLeft:(float)marginLeft
@@ -39,7 +159,9 @@
         [[InspectorController sharedController] refreshProperty:@"marginLeft"];
         return;
     }
-    [self.background setMarginLeft:marginLeft];
+    _marginLeft = marginLeft;
+    [_background setMarginLeft:marginLeft];
+    [_progress setMarginLeft:marginLeft];
 }
 
 - (void)setMarginRight:(float)marginRight
@@ -53,7 +175,9 @@
         return;
     }
     
-    [self.background setMarginRight:marginRight];
+    _marginRight = marginRight;
+    [_background setMarginRight:marginRight];
+    [_progress setMarginRight:marginRight];
 }
 
 - (void)setMarginTop:(float)marginTop
@@ -66,7 +190,9 @@
         return;
     }
     
-    [self.background setMarginTop:marginTop];
+    _marginTop = marginTop;
+    [_background setMarginTop:marginTop];
+    [_progress setMarginTop:marginTop];
     
 }
 
@@ -80,27 +206,105 @@
         return;
     }
     
-    [self.background setMarginBottom:marginBottom];
+    _marginBottom = marginBottom;
+    [_background setMarginBottom:marginBottom];
+    [_progress setMarginBottom:marginBottom];
 }
 
-- (float)marginBottom
+- (void) setContentSize:(CGSize) contentSize
 {
-    return self.background.marginBottom;
+    [super setContentSize:contentSize];
+    [self needsLayout];
 }
 
-- (float)marginLeft
+- (void) setContentSizeType:(CCSizeType)contentSizeType
 {
-    return self.background.marginLeft;
+    [super setContentSizeType:contentSizeType];
+    [self needsLayout];
 }
 
-- (float)marginRight
+#pragma mark Setting properties by name
+
+- (CCBPControlState) controlStateFromString:(NSString*)stateName
 {
-    return self.background.marginRight;
+    CCBPControlState state = 0;
+    if ([stateName isEqualToString:@"Normal"]) state = CCBPControlStateNormal;
+    else if ([stateName isEqualToString:@"Highlighted"]) state = CCBPControlStateHighlighted;
+    else if ([stateName isEqualToString:@"Disabled"]) state = CCBPControlStateDisabled;
+    
+    return state;
 }
 
-- (float)marginTop
+- (void) setValue:(id)value forKey:(NSString *)key
 {
-    return self.background.marginTop;
+    NSRange separatorRange = [key rangeOfString:@"|"];
+    NSUInteger separatorLoc = separatorRange.location;
+    
+    if (separatorLoc == NSNotFound)
+    {
+        [super setValue:value forKey:key];
+        return;
+    }
+    
+    NSString* propName = [key substringToIndex:separatorLoc];
+    NSString* stateName = [key substringFromIndex:separatorLoc+1];
+    
+    CCBPControlState state = [self controlStateFromString:stateName];
+    
+    [self setValue:value forKey:propName state:state];
+}
+
+- (id) valueForKey:(NSString *)key
+{
+    NSRange separatorRange = [key rangeOfString:@"|"];
+    NSUInteger separatorLoc = separatorRange.location;
+    
+    if (separatorLoc == NSNotFound)
+    {
+        return [super valueForKey:key];
+    }
+    
+    NSString* propName = [key substringToIndex:separatorLoc];
+    NSString* stateName = [key substringFromIndex:separatorLoc+1];
+    
+    CCBPControlState state = [self controlStateFromString:stateName];
+    
+    return [self valueForKey:propName state:state];
+}
+
+
+- (void) setValue:(id)value forKey:(NSString *)key state:(CCBPControlState)state
+{
+    if ([key isEqualToString:@"handleSpriteFrame"])
+    {
+        [self setHandleSpriteFrame:value forState:state];
+    }
+}
+
+- (id) valueForKey:(NSString *)key state:(CCBPControlState)state
+{
+    if ([key isEqualToString:@"handleSpriteFrame"])
+    {
+        return [self handleSpriteFrameForState:state];
+    }
+    
+    return NULL;
+}
+
+-(void)onSetSizeFromTexture
+{
+    CCSpriteFrame * spriteFrame = _background.spriteFrame;
+    if(spriteFrame == nil)
+        return;
+    
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"contentSize"];
+    
+    self.contentSize = spriteFrame.texture.contentSize;
+    self.contentSizeType = CCSizeTypeMake(CCSizeUnitPoints, CCSizeUnitPoints);
+    
+    [self willChangeValueForKey:@"contentSize"];
+    [self didChangeValueForKey:@"contentSize"];
+    [[InspectorController sharedController] refreshProperty:@"contentSize"];
 }
 
 @end

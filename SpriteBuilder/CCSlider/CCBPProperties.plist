@@ -11,7 +11,9 @@
 	<key>inheritsFrom</key>
 	<string>CCWidget</string>
 	<key>canHaveChildren</key>
-	<false/>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
 	<key>className</key>
 	<string>CCSlider</string>
 	<key>editorClassName</key>
@@ -46,11 +48,11 @@
 				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
-			<string>Background</string>
+			<string>Background SpriteFrame</string>
 			<key>type</key>
 			<string>SpriteFrame</string>
 			<key>name</key>
-			<string>backgroundSpriteFrame|Normal</string>
+			<string>backgroundSpriteFrame</string>
 		</dict>
 		<dict>
 			<key>default</key>
@@ -82,6 +84,16 @@
 		</dict>
 		<dict>
 			<key>default</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Slider value</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>sliderValue</string>
+		</dict>
+		<dict>
+			<key>default</key>
 			<integer>100</integer>
 			<key>displayName</key>
 			<string>Max percent</string>
@@ -89,6 +101,36 @@
 			<string>Integer</string>
 			<key>name</key>
 			<string>maxPercent</string>
+		</dict>
+		<dict>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>default</key>
+			<integer>1</integer>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Image scale</string>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>imageScale</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>State</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>state</string>
+			<key>extra</key>
+			<string>Normal|0|Highlighted|1|Disabled|2</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

@@ -6,9 +6,45 @@
 //
 //
 
-#import "CCSlider.h"
+#import "CCProtectedNode.h"
+#import "cocos2d.h"
 
-@interface CCBPSlider : CCSlider
+/**
+ *  A CCSlider object is a visual control used to select a single value from a continuous range of values. An indicator, or an handle, notes the current value of the slider and can be moved by the user to change the setting.
+ */
+
+/**
+ The possible states for a CCControl.
+ */
+typedef NS_ENUM(NSUInteger, CCBPControlState)
+{
+    /** The normal, or default state of a control — that is, enabled but neither selected nor highlighted. */
+    CCBPControlStateNormal       = 1,
+    
+    /** Highlighted state of a control. A control enters this state when a touch down, drag inside or drag enter is performed. You can retrieve and set this value through the highlighted property. */
+    CCBPControlStateHighlighted  = 2,
+    
+    /** Disabled state of a control. This state indicates that the control is currently disabled. You can retrieve and set this value through the enabled property. */
+    CCBPControlStateDisabled     = 3,
+};
+
+@interface CCBPSlider : CCProtectedNode
+{
+    NSMutableDictionary* _handleSpriteFrames;
+}
+/** The background's sprite 9 slice. */
+@property (nonatomic,readonly) CCSprite9Slice* background;
+/** The background's sprite 9 slice. */
+@property (nonatomic,readonly) CCSprite9Slice* progress;
+/** The handle's sprite. */
+@property (nonatomic,readonly) CCSprite* handle;
+/**
+ Contains the receiver’s current value. Setting this property causes the
+ receiver to redraw itself using the new value.
+ If you try to set a value that is below 0.0f or above 1.0f, the minimum
+ or maximum value is set instead. The default value of this property is 0.0.
+ */
+@property (nonatomic,assign) float sliderValue;
 
 /** Sets the left margin exclusively. */
 @property (nonatomic, assign) float marginLeft;
@@ -22,11 +58,65 @@
 /** Sets the bottom margin exclusively. */
 @property (nonatomic, assign) float marginBottom;
 
-/** Progress spriteFrame. */
-@property (nonatomic,strong) CCSpriteFrame* progressSpriteFrame;
-
 @property (nonatomic, assign) float zoomScale;
 
-@property (nonatomic, assign) int maxPercent;
+@property (nonatomic, assign) float maxPercent;
+
+@property (nonatomic,assign) CGFloat imageScale;
+
+@property (nonatomic,assign) CCBPControlState state;
+
+#pragma mark Customizing the Appearance of the Slider
+
+/**
+ *  Sets the background's sprite frame for the specified state. The sprite frame will be stretched to the preferred size of the label. If set to `NULL` no background will be drawn.
+ *
+ *  @param spriteFrame Sprite frame to use for drawing the background.
+ *  @param state       State to set the background for.
+ */
+- (void) setBackgroundSpriteFrame:(CCSpriteFrame*)spriteFrame;
+
+/**
+ *  Gets the background's sprite frame for the specified state.
+ *
+ *  @param state State to get the sprite frame for.
+ *
+ *  @return Background sprite frame.
+ */
+- (CCSpriteFrame*) backgroundSpriteFrame;
+
+/**
+ *  Sets the background's sprite frame for the specified state. The sprite frame will be stretched to the preferred size of the label. If set to `NULL` no background will be drawn.
+ *
+ *  @param spriteFrame Sprite frame to use for drawing the background.
+ *  @param state       State to set the background for.
+ */
+- (void) setProgressSpriteFrame:(CCSpriteFrame*)spriteFrame;
+
+/**
+ *  Gets the background's sprite frame for the specified state.
+ *
+ *  @param state State to get the sprite frame for.
+ *
+ *  @return Background sprite frame.
+ */
+- (CCSpriteFrame*) progressSpriteFrame;
+
+/**
+ *  Sets the handle's sprite frame for the specified state. If set to `NULL` no handle will be drawn.
+ *
+ *  @param spriteFrame Sprite frame to use for drawing the handle.
+ *  @param state       State to set the handle for.
+ */
+- (void) setHandleSpriteFrame:(CCSpriteFrame*)spriteFrame forState:(CCBPControlState)state;
+
+/**
+ *  Gets the handle's sprite frame for the specified state.
+ *
+ *  @param state State to get the sprite frame for.
+ *
+ *  @return Handle sprite frame.
+ */
+- (CCSpriteFrame*) handleSpriteFrameForState:(CCBPControlState)state;
 
 @end
