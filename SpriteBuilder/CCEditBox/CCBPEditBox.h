@@ -6,9 +6,10 @@
 //
 //
 
-#import "CCTextField.h"
+#import "CCProtectedNode.h"
+#import "cocos2d.h"
 
-@interface CCBPEditBox : CCNode
+@interface CCBPEditBox : CCProtectedNode
 
 /** The font size of the text field, defined in the unit specified by the heightUnit component of the contentSizeType. */
 @property (nonatomic,assign) float fontSize;
@@ -38,6 +39,8 @@
 
 /** The background's sprite 9 slice. */
 @property (nonatomic,readonly) CCSprite9Slice* background;
+
+@property (nonatomic,readonly) CCLabelTTF* label;
 
 @property (nonatomic,assign) int inputFlag;
 @property (nonatomic,assign) int keyboardReturnType;

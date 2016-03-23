@@ -19,7 +19,6 @@
 
 @implementation CCBPEditBox
 {
-    CCLabelTTF *_label;
 }
 
 - (id) init
@@ -54,8 +53,8 @@
     sizeType.widthUnit = CCSizeUnitNormalized;
     [_background setContentSizeType:sizeType];
     [_background setContentSize:CGSizeMake(1.0f, 1.0f)];
-    [self addChild:_background];
-    [self addChild:_label];
+    [self addProtectedChild:_background];
+    [self addProtectedChild:_label];
     
     [self updateFont];
     
