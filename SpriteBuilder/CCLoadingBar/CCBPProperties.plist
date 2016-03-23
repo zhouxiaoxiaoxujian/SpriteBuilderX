@@ -81,10 +81,6 @@
 			<string>percentage</string>
 		</dict>
 		<dict>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>default</key>
 			<integer>1</integer>
 			<key>defaultSerialization</key>

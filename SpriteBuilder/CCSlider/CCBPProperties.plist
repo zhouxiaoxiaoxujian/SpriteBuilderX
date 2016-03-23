@@ -43,10 +43,6 @@
 				<string></string>
 				<string></string>
 			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>displayName</key>
 			<string>Background SpriteFrame</string>
 			<key>type</key>
@@ -75,6 +71,8 @@
 		<dict>
 			<key>default</key>
 			<integer>1</integer>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
 			<key>displayName</key>
 			<string>Zoom scale</string>
 			<key>type</key>
@@ -84,7 +82,9 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<integer>1</integer>
+			<integer>0</integer>
+			<key>defaultSerialization</key>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Slider value</string>
 			<key>type</key>
@@ -95,6 +95,8 @@
 		<dict>
 			<key>default</key>
 			<integer>100</integer>
+			<key>defaultSerialization</key>
+			<integer>100</integer>
 			<key>displayName</key>
 			<string>Max percent</string>
 			<key>type</key>
@@ -103,10 +105,6 @@
 			<string>maxPercent</string>
 		</dict>
 		<dict>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>default</key>
 			<integer>1</integer>
 			<key>defaultSerialization</key>
@@ -153,10 +151,6 @@
 				<string></string>
 				<string></string>
 			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>displayName</key>
 			<string>Handle</string>
 			<key>type</key>
@@ -185,10 +179,6 @@
 				<string></string>
 				<string></string>
 			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
-			</array>
 			<key>displayName</key>
 			<string>Handle</string>
 			<key>type</key>
@@ -216,10 +206,6 @@
 			<array>
 				<string></string>
 				<string></string>
-			</array>
-			<key>affectsProperties</key>
-			<array>
-				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
 			<string>Handle</string>

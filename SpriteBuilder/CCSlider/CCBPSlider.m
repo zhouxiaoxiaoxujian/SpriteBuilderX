@@ -305,6 +305,7 @@
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
     [[InspectorController sharedController] refreshProperty:@"contentSize"];
+    [super needsLayout];
 }
 
 @end
