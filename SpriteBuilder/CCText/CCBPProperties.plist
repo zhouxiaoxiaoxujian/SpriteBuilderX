@@ -11,7 +11,9 @@
 	<key>inheritsFrom</key>
 	<string>CCWidget</string>
 	<key>canHaveChildren</key>
-	<false/>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
 	<key>className</key>
 	<string>CCText</string>
 	<key>editorClassName</key>

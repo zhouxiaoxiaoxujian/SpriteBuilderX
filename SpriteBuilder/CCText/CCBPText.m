@@ -26,9 +26,6 @@
 
 @implementation CCBPText
 {
-    CGFloat _fontSize;
-    BOOL _needsLayout;
-    BOOL _adjustsFontSizeToFit;
 }
 
 - (id) init
@@ -36,9 +33,16 @@
     self = [super init];
     if (!self) return NULL;
     
-    _needsLayout = YES;
     _fontSize = 12;
-    _adjustsFontSizeToFit = YES;
+    _adjustsFontSizeToFit = NO;
+    _dimensions = CGSizeZero;
+    _dimensionsType = CCSizeTypePoints;
+    _label = [[CCLabelTTF alloc] init];
+    _label.positionType = CCPositionTypeNormalized;
+    _label.anchorPoint = CGPointMake(0.5f, 0.5f);
+    _label.position = CGPointMake(0.5f, 0.5f);
+    [self addProtectedChild:_label];
+    [self needsLayout];
     
     return self;
 }
@@ -46,37 +50,60 @@
 -(void) setAdjustsFontSizeToFit:(BOOL)value
 {
     _adjustsFontSizeToFit = value;
-    _needsLayout = YES;
-}
-
--(BOOL) adjustsFontSizeToFit
-{
-    return _adjustsFontSizeToFit;
-}
-
-- (void) setAttributedString:(NSAttributedString *)attributedString
-{
-    [super setAttributedString:attributedString];
-    _needsLayout = YES;
+    [self needsLayout];
 }
 
 - (void) setString:(NSString*)str
 {
-    [super setString:str];
-    _needsLayout = YES;
+    [_label setString:str];
+    [self needsLayout];
 }
 
-/*
--(void) setContentSize:(CGSize)size
+- (NSArray*) keysForwardedToLabel
 {
-    self.dimensions = size;
-    _needsLayout = YES;
+    return @[@"string",
+             @"fontName",
+             @"horizontalAlignment",
+             @"verticalAlignment",
+             @"fontColor",
+             @"outlineColor",
+             @"outlineWidth",
+             @"shadowColor",
+             @"shadowBlurRadius",
+             @"shadowOffset"];
 }
 
--(CGSize) contentSize
+- (void) setValue:(id)value forKey:(NSString *)key
 {
-    return self.dimensions;
-}*/
+    if ([[self keysForwardedToLabel] containsObject:key])
+    {
+        [_label setValue:value forKey:key];
+        [self needsLayout];
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
+- (id) valueForKey:(NSString *)key
+{
+    if ([[self keysForwardedToLabel] containsObject:key])
+    {
+        return [_label valueForKey:key];
+    }
+    return [super valueForKey:key];
+}
+
+- (void) setDimensionsType:(CCSizeType)dimensionsType
+{
+    _dimensionsType = dimensionsType;
+    [self needsLayout];
+}
+
+- (void) setDimensions:(CGSize)dimensions
+{
+    _dimensions = dimensions;
+    [self needsLayout];
+}
 
 - (void) layout
 {
@@ -84,25 +111,25 @@
     
     if(_adjustsFontSizeToFit && _fontSize && self.dimensions.width && self.dimensions.height)
     {
-        super.fontSize = _fontSize;
-        super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, 0) type:self.dimensionsType];
-        if(super.contentSize.height>paddedLabelSize.height)
+        _label.fontSize = _fontSize;
+        _label.dimensions = CGSizeMake(paddedLabelSize.width, 0);
+        if(_label.contentSize.height>paddedLabelSize.height)
         {
             float startScale = 1.0;
             float endScale = 1.0;
             float fontSize = _fontSize;
             do
             {
-                super.fontSize = fontSize / (endScale * 2.0);
+                _label.fontSize = fontSize / (endScale * 2.0);
                 startScale = endScale;
                 endScale = endScale*2;
-            }while (super.contentSize.height>paddedLabelSize.height);
+            }while (_label.contentSize.height>paddedLabelSize.height);
             float midScale;
             for(int i=0;i<4;++i)
             {
                 midScale = (startScale + endScale) / 2.0f;
-                super.fontSize = fontSize / midScale;
-                if(super.contentSize.height>paddedLabelSize.height)
+                _label.fontSize = fontSize / midScale;
+                if(_label.contentSize.height>paddedLabelSize.height)
                 {
                     startScale = midScale;
                 }
@@ -111,45 +138,29 @@
                     endScale = midScale;
                 }
             }
-            super.fontSize = fontSize / (endScale * 1.05f);
-            super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
+            _label.fontSize = fontSize / (endScale * 1.05f);
+            _label.dimensions = paddedLabelSize;
         }
         else
         {
-            super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
-            super.fontSize = _fontSize;
+            _label.dimensions = paddedLabelSize;
+            _label.fontSize = _fontSize;
         }
     }
     else
     {
-        super.dimensions = [super convertContentSizeFromPoints:CGSizeMake(paddedLabelSize.width, paddedLabelSize.height) type:self.dimensionsType];
-        super.fontSize = _fontSize;
+        _label.dimensions = paddedLabelSize;
+        _label.fontSize = _fontSize;
     }
-    _needsLayout = NO;
+    self.contentSize = _label.contentSize;
+    [super layout];
 
-}
-
-- (void) visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
-{
-    if (_needsLayout) [self layout];
-    [super visit:renderer parentTransform:parentTransform];
 }
 
 - (void) setFontSize:(CGFloat)fontSize
 {
     _fontSize = fontSize;
-    _needsLayout = true;
-}
-
--(CGFloat) fontSize
-{
-    return _fontSize;
-}
-
--(void) setDimensions:(CGSize) dim
-{
-    [super setDimensions:dim];
-    _needsLayout = true;
+    [self needsLayout];
 }
 
 @end
