@@ -209,7 +209,7 @@ static NSString *const CODE_CONNECTION_NAMES_KEY = @"codeConnectionNames";
 - (void)testRefreshPropertyForType
 {
     CCLabelTTF *label = [self setupInspectorAndSelectedNodeWithPlugin:@"CCLabelTTF"];
-    label.string = @"foo";
+    [label setValue:@"foo" forKey:@"string"];
 
     [_inspectorController updateInspectorFromSelection];
 
@@ -220,11 +220,11 @@ static NSString *const CODE_CONNECTION_NAMES_KEY = @"codeConnectionNames";
                                                      binding:NSAttributedStringBinding
                                                    viewClass:[NSTextView class]];
 
-    label.string = @"baa";
+    [label setValue:@"baa" forKey:@"string"];
 
     [_inspectorController refreshPropertiesOfType:@"Text"];
 
-    SBAssertEqualStrings([[textView textStorage] string], label.string, @"change to label.string was not updated in inspector view");
+    SBAssertEqualStrings([[textView textStorage] string], [label valueForKey:@"string"], @"change to label.string was not updated in inspector view");
 
 }
 
