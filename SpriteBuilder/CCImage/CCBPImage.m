@@ -98,18 +98,6 @@
     [_background setContentSizeType:contentSizeType];
 }
 
-- (void) setOpacity:(CGFloat)opacity
-{
-    [super setOpacity:opacity];
-    _background.opacity = opacity;
-}
-
-- (void) setColor:(CCColor*)color
-{
-    [super setColor:color];
-    _background.color = color;
-}
-
 - (void) setImageScale:(CGFloat) imageScale
 {
     _background.scaleX = imageScale;
