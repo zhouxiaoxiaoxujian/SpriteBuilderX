@@ -66,6 +66,24 @@
     [_protectedChildren makeObjectsPerformSelector:@selector(onExit)];
 }
 
+- (void)updateDisplayedColor:(ccColor4F) parentColor
+{
+    [super updateDisplayedColor:parentColor];
+    
+    for (CCNode* item in _protectedChildren) {
+        [item updateDisplayedColor:_displayColor];
+    }
+}
+
+- (void)updateDisplayedOpacity:(CGFloat)parentOpacity
+{
+    [super updateDisplayedOpacity:parentOpacity];
+    
+    for (CCNode* item in _protectedChildren) {
+        [item updateDisplayedOpacity:_displayColor.a];
+    }
+}
+
 - (void)cleanup
 {
     [_protectedChildren makeObjectsPerformSelector:@selector(cleanup)];
