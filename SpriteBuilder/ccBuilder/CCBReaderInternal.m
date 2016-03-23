@@ -569,13 +569,16 @@ __strong NSDictionary* renamedProperties = nil;
             name = [renameRule objectForKey:@"newName"];
         }
         
-        if ([plugIn dontSetInEditorProperty:name])
+        if (![plugIn skipSerializationEditorProperty:name])
         {
-            [extraProps setObject:serializedValue forKey:name];
-        }
-        else
-        {
-            [CCBReaderInternal setProp:name ofType:type toValue:serializedValue forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
+            if ([plugIn dontSetInEditorProperty:name])
+            {
+                [extraProps setObject:serializedValue forKey:name];
+            }
+            else
+            {
+                [CCBReaderInternal setProp:name ofType:type toValue:serializedValue forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
+            }
         }
         id baseValue = [propInfo objectForKey:@"baseValue"];
         if (baseValue) [node setBaseValue:baseValue forProperty:name];

@@ -204,6 +204,13 @@
     return dontSetInEditor;
 }
 
+- (BOOL) skipSerializationEditorProperty: (NSString*) prop
+{
+    NSDictionary* propInfo = nodePropertiesDict[prop];
+    BOOL skipSerialization = [propInfo[@"skipSerialization"] boolValue];
+    return skipSerialization;
+}
+
 - (NSString*) positionProperty
 {
     if (positionProperty) return positionProperty;

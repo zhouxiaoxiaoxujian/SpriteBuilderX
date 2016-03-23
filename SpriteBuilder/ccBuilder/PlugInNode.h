@@ -81,6 +81,7 @@
 @property (nonatomic, readonly) CCBTargetEngine targetEngine;
 
 - (BOOL) dontSetInEditorProperty: (NSString*) prop;
+- (BOOL) skipSerializationEditorProperty: (NSString*) prop;
 
 - (id)initWithBundle:(NSBundle *)aBundle mainBundle:(NSBundle *)mainBundle;
 

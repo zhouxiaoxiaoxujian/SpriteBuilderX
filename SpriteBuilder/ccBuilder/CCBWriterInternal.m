@@ -221,7 +221,11 @@
     }
     
     // Handle different type of properties
-    if ([plugIn dontSetInEditorProperty:name])
+    if ([plugIn skipSerializationEditorProperty:name])
+    {
+        //skip
+    }
+    else if ([plugIn dontSetInEditorProperty:name])
     {
         // Get the serialized value from the extra props
         serializedValue = [extraProps objectForKey:name];
