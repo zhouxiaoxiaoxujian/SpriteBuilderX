@@ -26,11 +26,6 @@
 
 @synthesize protectedChildren = _protectedChildren;
 
--(void)onSetSizeFromTexture
-{
-    
-}
-
 -(id) init
 {
     if ((self=[super init]) ) {
