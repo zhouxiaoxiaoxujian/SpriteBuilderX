@@ -6,7 +6,8 @@
 //
 //
 
-#import "CCSlider.h"
+#import "CCProtectedNode.h"
+#import "cocos2d.h"
 
 /**
  *  Declares the possible directions for laying out nodes in a CCLayoutBox.
@@ -17,7 +18,7 @@ typedef NS_ENUM(NSUInteger, CCLoadingBarDirection)
     CCLoadingBarDirectionRight,
 };
 
-@interface CCBPLoadingBar : CCNode
+@interface CCBPLoadingBar : CCProtectedNode
 
 /** Sets the left margin exclusively. */
 @property (nonatomic, assign) float marginLeft;
@@ -44,5 +45,7 @@ typedef NS_ENUM(NSUInteger, CCLoadingBarDirection)
 
 /** The background's sprite 9 slice. */
 @property (nonatomic,readonly) CCSprite9Slice* background;
+
+@property (nonatomic,assign) CGFloat imageScale;
 
 @end

@@ -12,7 +12,6 @@
 
 @interface CCBPLoadingBar()
 {
-    NSInteger _totalLength;
 }
 @end
 
@@ -24,22 +23,32 @@
     if (!self) return NULL;
     
     self.userInteractionEnabled = NO;
+    _imageScale = 1.0f;
     
      _background = [[CCSprite9Slice alloc] init];
-    [self addChild:_background];
+    [self addProtectedChild:_background];
     _direction = CCLoadingBarDirectionLeft;
-    
-    _totalLength = _contentSize.width;
     
     return self;
 }
 
 -(void) setContentSize:(CGSize)size
 {
-    //[self setPreferredSize:size];
-    //[self setMaxSize:size];
-    _totalLength = size.width;
     [super setContentSize:size];
+    [self updateProgressBar];
+}
+
+- (void) setContentSizeType:(CCSizeType)contentSizeType
+{
+    [super setContentSizeType:contentSizeType];
+    [self updateProgressBar];
+}
+
+- (void) setImageScale:(CGFloat) imageScale
+{
+    _background.scaleX = imageScale;
+    _background.scaleY = imageScale;
+    _imageScale = imageScale;
     [self updateProgressBar];
 }
 
@@ -68,17 +77,18 @@
 
 - (void)updateProgressBar
 {
-    float width = (float)(_percentage) / 100.0f * _totalLength;
-    [_background setContentSize:CGSizeMake(width, _contentSize.height)];
+    CGSize size = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
+    float width = (float)(_percentage) / 100.0f * size.width;
+    [_background setContentSize:CGSizeMake(width / _imageScale, size.height / _imageScale)];
     switch (_direction)
     {
         case CCLoadingBarDirectionLeft:
             [_background setAnchorPoint:CGPointMake(0.0f, 0.5f)];
-            [_background setPosition:CGPointMake(0.0f, _contentSize.height*0.5f)];
+            [_background setPosition:CGPointMake(0.0f, size.height*0.5f)];
             break;
         case CCLoadingBarDirectionRight:
             [_background setAnchorPoint:CGPointMake(1.0f,0.5)];
-            [_background setPosition:CGPointMake(_totalLength, _contentSize.height*0.5f)];
+            [_background setPosition:CGPointMake(size.width, size.height*0.5f)];
             break;
     }
 }
@@ -114,7 +124,7 @@
     }
     _percentage = percentage;
     
-    if (_totalLength <= 0)
+    if (_contentSize.width <= 0)
     {
         return;
     }

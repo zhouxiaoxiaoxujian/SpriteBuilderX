@@ -11,7 +11,9 @@
 	<key>inheritsFrom</key>
 	<string>CCWidget</string>
 	<key>canHaveChildren</key>
-	<false/>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
 	<key>className</key>
 	<string>CCLoadingBar</string>
 	<key>editorClassName</key>
@@ -77,6 +79,22 @@
 			<string>Float</string>
 			<key>name</key>
 			<string>percentage</string>
+		</dict>
+		<dict>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>default</key>
+			<integer>1</integer>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Image scale</string>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>imageScale</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
