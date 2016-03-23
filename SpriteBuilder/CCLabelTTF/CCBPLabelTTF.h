@@ -22,11 +22,17 @@
  * THE SOFTWARE.
  */
 
+#import "CCProtectedNode.h"
 #import "cocos2d.h"
 
-@interface CCBPLabelTTF : CCLabelTTF
+@interface CCBPLabelTTF : CCProtectedNode
 
 // Add property to maintain backwards compatibility
+@property (nonatomic,readonly) CCLabelTTF* label;
 @property (nonatomic,assign) int alignment;
+@property (nonatomic,assign) CGFloat fontSize;
+@property (nonatomic,assign) BOOL adjustsFontSizeToFit;
+@property (nonatomic,assign) CGSize dimensions;
+@property (nonatomic,assign) CCSizeType dimensionsType;
 
 @end

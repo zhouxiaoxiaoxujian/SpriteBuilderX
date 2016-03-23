@@ -11,7 +11,9 @@
 	<key>inheritsFrom</key>
 	<string>CCNode</string>
 	<key>canHaveChildren</key>
-	<false/>
+	<true/>
+	<key>canBeRootNode</key>
+	<true/>
 	<key>className</key>
 	<string>CCLabelTTF</string>
 	<key>editorClassName</key>
@@ -136,6 +138,22 @@
 			<string>verticalAlignment</string>
 			<key>extra</key>
 			<string>Top|0|Center|1|Bottom|2</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<false/>
+			<key>defaultSerialization</key>
+			<false/>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Adjusts font size to fit</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>adjustsFontSizeToFit</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
