@@ -67,6 +67,7 @@
         _background.anchorPoint = CGPointMake(0.5f, 0.5f);
         _background.position = CGPointMake(0.5f, 0.5f);
         [self addProtectedChild:_background];
+        [super needsLayout];
     }
     return self;
 }
@@ -86,16 +87,23 @@
     return self;
 }
 
+- (void) layout
+{
+    CGSize contentSize = [self convertContentSizeToPoints:self.contentSize type:self.contentSizeType];
+    [_background setContentSize:CGSizeMake(contentSize.width / _imageScale, contentSize.height / _imageScale)];
+    [super layout];
+}
+
 - (void) setContentSize:(CGSize) contentSize
 {
     [super setContentSize:contentSize];
-    [_background setContentSize:CGSizeMake(contentSize.width / _imageScale, contentSize.height / _imageScale)];
+    [self needsLayout];
 }
 
 - (void) setContentSizeType:(CCSizeType)contentSizeType
 {
     [super setContentSizeType:contentSizeType];
-    [_background setContentSizeType:contentSizeType];
+    [self needsLayout];
 }
 
 - (void) setImageScale:(CGFloat) imageScale
@@ -103,7 +111,7 @@
     _background.scaleX = imageScale;
     _background.scaleY = imageScale;
     _imageScale = imageScale;
-    [_background setContentSize:CGSizeMake(_contentSize.width / _imageScale, _contentSize.height / _imageScale)];
+    [self needsLayout];
 }
 
 - (void)setMarginLeft:(float)marginLeft
@@ -194,6 +202,7 @@
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
     [[InspectorController sharedController] refreshProperty:@"contentSize"];
+    [super needsLayout];
 }
 
 @end
