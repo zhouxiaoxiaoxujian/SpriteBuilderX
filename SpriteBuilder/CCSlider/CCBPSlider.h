@@ -19,13 +19,13 @@
 typedef NS_ENUM(NSUInteger, CCBPControlState)
 {
     /** The normal, or default state of a control — that is, enabled but neither selected nor highlighted. */
-    CCBPControlStateNormal       = 1,
+    CCBPControlStateNormal       = 0,
     
     /** Highlighted state of a control. A control enters this state when a touch down, drag inside or drag enter is performed. You can retrieve and set this value through the highlighted property. */
-    CCBPControlStateHighlighted  = 2,
+    CCBPControlStateHighlighted  = 1,
     
     /** Disabled state of a control. This state indicates that the control is currently disabled. You can retrieve and set this value through the enabled property. */
-    CCBPControlStateDisabled     = 3,
+    CCBPControlStateDisabled     = 2,
 };
 
 @interface CCBPSlider : CCProtectedNode

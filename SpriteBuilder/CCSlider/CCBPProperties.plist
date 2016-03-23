@@ -121,8 +121,8 @@
 		<dict>
 			<key>default</key>
 			<integer>0</integer>
-			<key>defaultSerialization</key>
-			<integer>0</integer>
+			<key>skipSerialization</key>
+			<true/>
 			<key>displayName</key>
 			<string>State</string>
 			<key>type</key>
