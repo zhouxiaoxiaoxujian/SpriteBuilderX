@@ -356,7 +356,6 @@
 - (NSArray*) keysForwardedToLabel
 {
     return @[@"fontName",
-             @"fontSize",
              @"fontColor",
              @"outlineColor",
              @"outlineWidth",
