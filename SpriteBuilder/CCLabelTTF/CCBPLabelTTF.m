@@ -55,7 +55,8 @@
              @"outlineWidth",
              @"shadowColor",
              @"shadowBlurRadius",
-             @"shadowOffset"];
+             @"shadowOffset",
+             @"shadowOffsetType"];
 }
 
 - (void) setValue:(id)value forKey:(NSString *)key
