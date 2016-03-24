@@ -79,17 +79,22 @@
 			<string>spriteFrame</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
-				<integer>771</integer>
+				<integer>0</integer>
 			</array>
 			<key>displayName</key>
-			<string></string>
+			<string>Image scale</string>
 			<key>type</key>
-			<string>Blendmode</string>
+			<string>FloatScale</string>
 			<key>name</key>
-			<string>blendFunc</string>
+			<string>imageScale</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
@@ -100,18 +105,6 @@
 			<string>Separator</string>
 			<key>dontSetInEditor</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>default</key>
-			<integer>1</integer>
-			<key>defaultSerialization</key>
-			<integer>1</integer>
-			<key>displayName</key>
-			<string>Image scale</string>
-			<key>type</key>
-			<string>FloatScale</string>
-			<key>name</key>
-			<string>imageScale</string>
 		</dict>
 		<dict>
 			<key>default</key>

@@ -88,9 +88,15 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<integer>1</integer>
+			<array>
+				<integer>1</integer>
+				<integer>0</integer>
+			</array>
 			<key>defaultSerialization</key>
-			<integer>1</integer>
+			<array>
+				<integer>1</integer>
+				<integer>0</integer>
+			</array>
 			<key>displayName</key>
 			<string>Image scale</string>
 			<key>type</key>
