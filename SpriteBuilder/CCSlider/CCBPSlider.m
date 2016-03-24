@@ -41,8 +41,8 @@
     _handle.anchorPoint = ccp(0.5f,0.5f);
     _handle.positionType = CCPositionTypePoints;
     
-    _maxPercent = 100.0f;
-    _sliderValue = .0f;
+    _maxPercent = 100;
+    _percent = 0;
     _imageScale = 1.0f;
     
     [self addProtectedChild:_background];
@@ -58,7 +58,7 @@
 - (void) updateSliderPositionFromValue
 {
     CGSize size = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
-    float val = clampf(_sliderValue / _maxPercent, 0.0f, 1.0f);
+    float val = clampf((double)_percent / _maxPercent, 0.0f, 1.0f);
     _handle.position = ccp(size.width * val, size.height/2.0f);
     [_progress setContentSize:CGSizeMake(size.width / _imageScale * val, size.height / _imageScale)];
 }
@@ -89,14 +89,14 @@
 
 #pragma mark Properties
 
-- (void) setSliderValue:(float)sliderValue
+- (void) setPercent:(int)percent
 {
-    _sliderValue = sliderValue;
+    _percent = percent;
     
     [self updateSliderPositionFromValue];
 }
 
-- (void) setMaxPercent:(float)maxPercent
+- (void) setMaxPercent:(int)maxPercent
 {
     _maxPercent = maxPercent;
     

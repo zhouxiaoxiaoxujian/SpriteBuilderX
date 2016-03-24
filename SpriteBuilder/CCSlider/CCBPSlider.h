@@ -38,13 +38,6 @@ typedef NS_ENUM(NSUInteger, CCBPControlState)
 @property (nonatomic,readonly) CCSprite9Slice* progress;
 /** The handle's sprite. */
 @property (nonatomic,readonly) CCSprite* handle;
-/**
- Contains the receiver’s current value. Setting this property causes the
- receiver to redraw itself using the new value.
- If you try to set a value that is below 0.0f or above 1.0f, the minimum
- or maximum value is set instead. The default value of this property is 0.0.
- */
-@property (nonatomic,assign) float sliderValue;
 
 /** Sets the left margin exclusively. */
 @property (nonatomic, assign) float marginLeft;
@@ -60,7 +53,9 @@ typedef NS_ENUM(NSUInteger, CCBPControlState)
 
 @property (nonatomic, assign) float zoomScale;
 
-@property (nonatomic, assign) float maxPercent;
+
+@property (nonatomic,assign) int percent;
+@property (nonatomic, assign) int maxPercent;
 
 @property (nonatomic,assign) CGFloat imageScale;
 
