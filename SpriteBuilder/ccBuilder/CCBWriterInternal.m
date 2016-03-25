@@ -608,11 +608,11 @@
 
     
     // Selection
-    NSArray* selection = [AppDelegate appDelegate].selectedNodes;
+    /*NSArray* selection = [AppDelegate appDelegate].selectedNodes;
     if (selection && [selection containsObject:node])
     {
         [dict setObject:[NSNumber numberWithBool:YES] forKey:@"selected"];
-    }
+    }*/
     
     // Add code connection props
     NSString* customClass = [extraProps objectForKey:@"customClass"];
