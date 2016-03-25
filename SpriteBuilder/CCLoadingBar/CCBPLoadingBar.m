@@ -101,7 +101,8 @@
     
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"contentSize"];
     
-    self.contentSize = spriteFrame.texture.contentSize;
+    self.contentSizeType = CCSizeTypeUIPoints;
+    self.contentSizeInPoints = spriteFrame.originalSize;
     
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];

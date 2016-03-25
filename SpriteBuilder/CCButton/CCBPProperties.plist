@@ -448,12 +448,7 @@
 			<key>default</key>
 			<array>
 				<integer>17</integer>
-				<integer>0</integer>
-			</array>
-			<key>defaultSerialization</key>
-			<array>
-				<integer>17</integer>
-				<integer>0</integer>
+				<integer>2</integer>
 			</array>
 			<key>affectsProperties</key>
 			<array>

@@ -70,14 +70,15 @@
 			<string>fontName</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<array>
+				<integer>17</integer>
+				<integer>2</integer>
+			</array>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
 			</array>
-			<key>default</key>
-			<integer>17</integer>
-			<key>defaultSerialization</key>
-			<integer>17</integer>
 			<key>displayName</key>
 			<string>Font size</string>
 			<key>type</key>
