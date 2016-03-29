@@ -430,27 +430,41 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 -(void)renderBorder:(CCNode*)node
 {
 	// Selection corners in world space
-	CGPoint points[4]; //{bl,br,tr,tl}
+	CGPoint points[8]; //{bl,br,tr,tl}
 
 	
 	[self getCornerPointsForNode:node withPoints:points];
-	
 	
 	CCSprite* blSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
 	CCSprite* brSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
 	CCSprite* tlSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
 	CCSprite* trSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    
+    CCSprite* lSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* bSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* rSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* tSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
 	
 	
 	blSprt.position = points[0];
 	brSprt.position = points[1];
 	trSprt.position = points[2];
 	tlSprt.position = points[3];
+    
+    lSprt.position = points[4];
+    bSprt.position = points[5];
+    rSprt.position = points[6];
+    tSprt.position = points[7];
 	
 	[selectionLayer addChild:blSprt];
 	[selectionLayer addChild:brSprt];
 	[selectionLayer addChild:tlSprt];
 	[selectionLayer addChild:trSprt];
+    
+    [selectionLayer addChild:lSprt];
+    [selectionLayer addChild:bSprt];
+    [selectionLayer addChild:rSprt];
+    [selectionLayer addChild:tSprt];
 	
 	CCDrawNode* drawing = [CCDrawNode node];
 	
@@ -495,29 +509,44 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 anchorPointSprite.position = anchorPointPos;
                 [selectionLayer addChild:anchorPointSprite z:1];
                 
-                CGPoint points[4]; //{bl,br,tr,tl}
+                CGPoint points[8]; //{bl,br,tr,tl}
                 BOOL isContentSizeZero = NO;
                 
                 if (node.contentSize.width > 0 && node.contentSize.height > 0)
                 {
                     // Selection corners in world space
+                    [self getCornerPointsForNode:node withPoints:points];
                     
                     CCSprite* blSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* brSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* tlSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* trSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     
-                    [self getCornerPointsForNode:node withPoints:points];
+                    CCSprite* lSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* bSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* rSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* tSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    
                     
                     blSprt.position = points[0];
                     brSprt.position = points[1];
                     trSprt.position = points[2];
                     tlSprt.position = points[3];
                     
+                    lSprt.position = points[4];
+                    bSprt.position = points[5];
+                    rSprt.position = points[6];
+                    tSprt.position = points[7];
+                    
                     [selectionLayer addChild:blSprt];
                     [selectionLayer addChild:brSprt];
                     [selectionLayer addChild:tlSprt];
                     [selectionLayer addChild:trSprt];
+                    
+                    [selectionLayer addChild:lSprt];
+                    [selectionLayer addChild:bSprt];
+                    [selectionLayer addChild:rSprt];
+                    [selectionLayer addChild:tSprt];
                     
                     CCDrawNode* drawing = [CCDrawNode node];
                 
@@ -628,10 +657,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 -(void)getCornerPointsForNode:(CCNode*)node withPoints:(CGPoint*)points
 {
     // Selection corners in world space
-    points[0] = ccpRound([node convertToWorldSpace: ccp(0,0)]);
-    points[1] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width,0)]);
-    points[2] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width,node.contentSizeInPoints.height)]);
-    points[3] = ccpRound([node convertToWorldSpace: ccp(0,node.contentSizeInPoints.height)]);
+    points[0] = ccpRound([node convertToWorldSpace: ccp(0, 0)]);
+    points[1] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, 0)]);
+    points[2] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, node.contentSizeInPoints.height)]);
+    points[3] = ccpRound([node convertToWorldSpace: ccp(0, node.contentSizeInPoints.height)]);
+    
+    points[4] = ccpRound([node convertToWorldSpace: ccp(0, node.contentSizeInPoints.height / 2)]);
+    points[5] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width / 2, 0)]);
+    points[6] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, node.contentSizeInPoints.height / 2)]);
+    points[7] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width / 2, node.contentSizeInPoints.height)]);
   
 }
 
@@ -649,6 +683,11 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     points[1] = ccpRound( ccpAdd(position,ccpRPerp(diaganol)));
     points[2] = ccpRound( ccpAdd(position,diaganol));
     points[3] = ccpRound( ccpAdd(position, ccpPerp(diaganol)));
+    
+    points[4] = ccpRound(ccp(points[0].x, (points[0].y + points[2].y) / 2));
+    points[5] = ccpRound(ccp((points[0].x + points[2].x) / 2, points[0].y));
+    points[6] = ccp(points[2].x, points[4].y);
+    points[7] = ccp(points[5].x, points[2].y);
 
 }
 
@@ -667,7 +706,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 - (BOOL) isOverSkew:(CCNode*)node withPoint:(CGPoint)pt withOrientation:(CGPoint*)orientation alongAxis:(int*)isXAxis  //{b,r,t,l}
 {
     
-    CGPoint points[4]; //{bl,br,tr,tl}
+    CGPoint points[8]; //{bl,br,tr,tl}
     [self getCornerPointsForNode:node withPoints:points];
     
     if([self isOverContentBorders:mousePos withPoints:points])
@@ -778,6 +817,44 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
         return YES;
     }
+    
+    for (int i = 0; i < 4; i++)
+    {
+        CGPoint p1 = points[i % 4 + 4];
+        CGPoint p2 = points[(i + 1) % 4 + 4];
+        CGPoint p3 = points[(i + 2) % 4 + 4];
+        
+        const float kDistanceToCorner = 8.0f;
+        
+        float distance = ccpLength(ccpSub(_mousePos, p2));
+        
+        if(distance < kDistanceToCorner  && distance < minDistance)
+        {
+            CGPoint segment1 = ccpSub(p2, p1);
+            CGPoint segment2 = ccpSub(p2, p3);
+            
+            orientation = ccpNormalize(ccpAdd(segment1, segment2));
+            lCornerIndex = (i + 1) % 4 + 4;
+            minDistance = distance;
+            
+        }
+        
+    }
+    
+    if(lCornerIndex != -1)
+    {
+        if(_orientation)
+        {
+            *_orientation = orientation;
+        }
+        
+        if(_cornerIndex)
+        {
+            *_cornerIndex = lCornerIndex;
+        }
+        return YES;
+    }
+
     
     return NO;
     
@@ -1011,7 +1088,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         BOOL isJoint = node.plugIn.isJoint;
         
         BOOL isContentSizeZero = NO;
-        CGPoint points[4];
+        CGPoint points[8];
         
         
         if (transformScalingNode.contentSize.width == 0 || transformScalingNode.contentSize.height == 0)
@@ -1179,6 +1256,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         {
             // Start scale transform
             currentMouseTransform = kCCBTransformHandleScale;
+            transformContentSize = transformScalingNode.contentSizeInPoints;
             transformStartScaleX = [PositionPropertySetter scaleXForNode:transformScalingNode prop:@"scale"];
             transformStartScaleY = [PositionPropertySetter scaleYForNode:transformScalingNode prop:@"scale"];
             return;
@@ -1305,6 +1383,17 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             vertexScaler.y = 0.0f;
         }
     }
+    
+    if(cornerSelected == 5 || cornerSelected == 7)
+    {
+        vertexScaler.x = 0.0f;
+    }
+    
+    if(cornerSelected == 4 || cornerSelected == 6)
+    {
+        vertexScaler.y = 0.0f;
+    }
+    
     return vertexScaler;
 }
 
@@ -1533,46 +1622,118 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
         CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
         
-        CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
-        if(isinf(scale.x) || isnan(scale.x))
+        if (([event modifierFlags] & NSAlternateKeyMask))
         {
-            scale.x = 0.0;
-            vertexScaler.x = 0.0f;
-        }
-
-        if(isinf(scale.y) || isnan(scale.y))
-        {
-            scale.y = 0.0;
-            vertexScaler.y = 0.0f;
-        }
-
-        
-        // Calculate new scale
-        float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
-        float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
-        
-        NodeInfo* nodeInfo = transformScalingNode.userObject;
-        
-        // Handle shift key (uniform scale)
-        if ([event modifierFlags] & NSShiftKeyMask ||  [nodeInfo.extraProps[@"scaleLock"] boolValue])
-        {
-            // Use the smallest scale composit
-            if (fabs(xScaleNew) < fabs(yScaleNew))
+            CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
+            if(isinf(scale.x) || isnan(scale.x))
             {
-                yScaleNew = xScaleNew;
+                scale.x = 0.0;
+                vertexScaler.x = 0.0f;
             }
-            else
+            
+            if(isinf(scale.y) || isnan(scale.y))
             {
-                xScaleNew = yScaleNew;
+                scale.y = 0.0;
+                vertexScaler.y = 0.0f;
             }
+            
+            
+            // Calculate new scale
+            float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
+            float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
+            
+            NodeInfo* nodeInfo = transformScalingNode.userObject;
+            // Handle shift key (uniform scale)
+            if ([event modifierFlags] & NSShiftKeyMask ||  [nodeInfo.extraProps[@"scaleLock"] boolValue])
+            {
+                // Use the smallest scale composit
+                if (fabs(xScaleNew) < fabs(yScaleNew))
+                {
+                    yScaleNew = xScaleNew;
+                }
+                else
+                {
+                    xScaleNew = yScaleNew;
+                }
+            }
+            
+            // Set new scale
+            [appDelegate saveUndoStateWillChangeProperty:@"scale"];
+            int type = [PositionPropertySetter scaledFloatTypeForNode:transformScalingNode prop:@"scale"];
+            [PositionPropertySetter setScaledX:xScaleNew Y:yScaleNew type:type forNode:transformScalingNode prop:@"scale"];
+            [[InspectorController sharedController] refreshProperty:@"scale"];
         }
-        
-        // Set new scale
-        [appDelegate saveUndoStateWillChangeProperty:@"scale"];
-        int type = [PositionPropertySetter scaledFloatTypeForNode:transformScalingNode prop:@"scale"];
-        [PositionPropertySetter setScaledX:xScaleNew Y:yScaleNew type:type forNode:transformScalingNode prop:@"scale"];
-        [[InspectorController sharedController] refreshProperty:@"scale"];
-        
+        else
+        {
+            CGPoint deltaPos = CGPointMake(intermediate.x - unRotatedMouse.x, intermediate.y - unRotatedMouse.y);
+            
+            switch (cornerIndex) {
+                case 0: //bl
+                    break;
+                    
+                case 1: //br
+                    break;
+                    
+                case 2: //tl
+                    break;
+                    
+                case 3: //tr
+                    break;
+                    
+                case 4: //l
+                    break;
+                    
+                case 5: //b
+                    break;
+                    
+                case 6: //r
+                    break;
+                    
+                case 7: //t
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            printf("deltaPos %f %f/n", deltaPos.x, deltaPos.y);
+            
+            CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
+            if(isinf(scale.x) || isnan(scale.x))
+            {
+                scale.x = 0.0;
+                vertexScaler.x = 0.0f;
+            }
+            
+            if(isinf(scale.y) || isnan(scale.y))
+            {
+                scale.y = 0.0;
+                vertexScaler.y = 0.0f;
+            }
+            
+            
+            // Calculate new scale
+            float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
+            float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
+            
+            
+            if ([event modifierFlags] & NSShiftKeyMask)
+            {
+                // Use the smallest scale composit
+                if (fabs(xScaleNew) < fabs(yScaleNew))
+                {
+                    yScaleNew = xScaleNew;
+                }
+                else
+                {
+                    xScaleNew = yScaleNew;
+                }
+            }
+            
+            [appDelegate saveUndoStateWillChangeProperty:@"contentSize"];
+            transformScalingNode.contentSizeInPoints = CGSizeMake(transformContentSize.width * xScaleNew, transformContentSize.height * yScaleNew);
+            [[InspectorController sharedController] refreshProperty:@"contentSize"];
+        }
         
         //UpdateTheScaleTool
         cornerOrientation = ccpNormalize(deltaNew);

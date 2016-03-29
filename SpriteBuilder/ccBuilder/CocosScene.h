@@ -104,6 +104,7 @@ enum {
     float transformStartRotation;
     float transformStartScaleX;
     float transformStartScaleY;
+    CGSize transformContentSize;
     CCNode* transformScalingNode;
     float transformStartSkewX;
     float transformStartSkewY;
