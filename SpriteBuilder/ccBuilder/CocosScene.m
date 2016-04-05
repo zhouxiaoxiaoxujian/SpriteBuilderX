@@ -659,7 +659,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     CGPoint center = [node convertToWorldSpace:localAnchor];
 
-    if (ccpDistance(pt, center) < kCCBAnchorPointRadius)
+    if (ccpDistance(pt, center) < kCCBAnchorPointRadius * stageZoom)
         return YES;
     
     return NO;
@@ -682,7 +682,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint unitSegment = ccpNormalize(segment);
 
         const int kInsetFromEdge = 8;
-        const float kDistanceFromSegment = 3.0f;
+        const float kDistanceFromSegment = 3.0f * stageZoom;
         
         if(ccpLength(segment) <= kInsetFromEdge * 2)
         {
@@ -748,11 +748,11 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint p2 = points[(i + 1) % 4];
         CGPoint p3 = points[(i + 2) % 4];
         
-        const float kDistanceToCorner = 8.0f;
+        const float kDistanceToCorner = 8.0f * stageZoom;
         
         float distance = ccpLength(ccpSub(_mousePos, p2));
         
-        if(distance < kDistanceToCorner  && distance < minDistance)
+        if(distance < kDistanceToCorner && distance < minDistance)
         {
             CGPoint segment1 = ccpSub(p2, p1);
             CGPoint segment2 = ccpSub(p2, p3);
@@ -798,8 +798,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint segment2 = ccpSub(p2, p3);
         CGPoint unitSegment2 = ccpNormalize(segment2);
         
-        const float kMinDistanceForRotation = 8.0f;
-        const float kMaxDistanceForRotation = 25.0f;
+        const float kMinDistanceForRotation = 8.0f * stageZoom;
+        const float kMaxDistanceForRotation = 25.0f * stageZoom;;
        
         
         CGPoint mouseVector = ccpSub(_mousePos, p2);
@@ -1063,14 +1063,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ((node.contentSize.width == 0 || node.contentSize.height == 0) && !node.plugIn.isJoint)
     {
         CGPoint worldPos = [node.parent convertToWorldSpace:node.position];
-        if (ccpDistance(worldPos, pt) < kCCBSinglePointSelectionRadius)
+        if (node.visible && ccpDistance(worldPos, pt) < kCCBSinglePointSelectionRadius * stageZoom)
         {
             [nodes addObject:node];
         }
     }
     else
     {
-        if ([node hitTestWithWorldPos:pt])
+        if (node.visible && [node hitTestWithWorldPos:pt])
         {
             [nodes addObject:node];
         }
