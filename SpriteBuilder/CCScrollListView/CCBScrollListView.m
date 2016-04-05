@@ -90,13 +90,13 @@
         }
         
         for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(pChild.contentSizeInPoints.width * num, yoffset);
+            pChild.positionInPoints = ccp(pChild.contentSizeInPoints.width * num, yoffset);
             ++num;
         }
         
         //self.contentNode.position = ccp(0, -(viewsize.height - contentsize.height - yoffset));
-        [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width * childrenCount, viewsize.width),
-                                        MAX(contentsize.height, viewsize.height))];
+        self.contentNode.contentSizeInPoints = CGSizeMake(MAX(contentsize.width * childrenCount, viewsize.width),
+                                        MAX(contentsize.height, viewsize.height));
 
         self.horizontalScrollEnabled = YES;
         self.verticalScrollEnabled = NO;
@@ -126,13 +126,13 @@
         
         
         for (CCNode *pChild in self.contentNode.children) {
-            pChild.position = ccp(xoffset, viewsize.height - pChild.contentSizeInPoints.height*(0.5f + num));
+            pChild.positionInPoints = ccp(xoffset, viewsize.height - pChild.contentSizeInPoints.height*(0.5f + num));
             ++num;
         }
         //self.contentNode.position = ccp(xoffset, -(viewsize.height - contentsize.height*childrenCount));
         
-        [self.contentNode setContentSize:CGSizeMake(MAX(contentsize.width, viewsize.width),
-                                        MAX(contentsize.height, viewsize.height))];
+        self.contentNode.contentSizeInPoints = CGSizeMake(MAX(contentsize.width, viewsize.width),
+                                        MAX(contentsize.height, viewsize.height));
 
         self.horizontalScrollEnabled = NO;
         self.verticalScrollEnabled = YES;
