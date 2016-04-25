@@ -414,6 +414,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 
 #pragma mark Handle selections
 
+- (float) selectionZoom
+{
+    if(stageZoom>1.0f)
+        return 1.0f;
+    else
+        return sqrt(stageZoom);
+}
+
 - (BOOL) selectedNodeHasReadOnlyProperty:(NSString*)prop
 {
     CCNode* selectedNode = appDelegate.selectedNode;
@@ -659,7 +667,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     CGPoint center = [node convertToWorldSpace:localAnchor];
 
-    if (ccpDistance(pt, center) < kCCBAnchorPointRadius * stageZoom)
+    if (ccpDistance(pt, center) < kCCBAnchorPointRadius * [self selectionZoom])
         return YES;
     
     return NO;
@@ -682,7 +690,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint unitSegment = ccpNormalize(segment);
 
         const int kInsetFromEdge = 8;
-        const float kDistanceFromSegment = 3.0f * stageZoom;
+        const float kDistanceFromSegment = 3.0f * [self selectionZoom];
         
         if(ccpLength(segment) <= kInsetFromEdge * 2)
         {
@@ -728,7 +736,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 - (BOOL) isOverContentBorders:(CGPoint)_mousePoint withPoints:(const CGPoint *)points /*{bl,br,tr,tl}*/ 
 {
     CGMutablePathRef mutablePath = CGPathCreateMutable();
-    CGPathAddLines(mutablePath, nil, points, 4);
+    CGPathAddLines(mutablePath, nil, points, 4 * [self selectionZoom]);
     CGPathCloseSubpath(mutablePath);
     BOOL result = CGPathContainsPoint(mutablePath, nil, _mousePoint, NO);
     CFRelease(mutablePath);
@@ -748,7 +756,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint p2 = points[(i + 1) % 4];
         CGPoint p3 = points[(i + 2) % 4];
         
-        const float kDistanceToCorner = 8.0f * stageZoom;
+        const float kDistanceToCorner = 8.0f * [self selectionZoom];
         
         float distance = ccpLength(ccpSub(_mousePos, p2));
         
@@ -798,8 +806,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint segment2 = ccpSub(p2, p3);
         CGPoint unitSegment2 = ccpNormalize(segment2);
         
-        const float kMinDistanceForRotation = 8.0f * stageZoom;
-        const float kMaxDistanceForRotation = 25.0f * stageZoom;;
+        const float kMinDistanceForRotation = 8.0f * [self selectionZoom];
+        const float kMaxDistanceForRotation = 25.0f * [self selectionZoom];
        
         
         CGPoint mouseVector = ccpSub(_mousePos, p2);
@@ -1063,7 +1071,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ((node.contentSize.width == 0 || node.contentSize.height == 0) && !node.plugIn.isJoint)
     {
         CGPoint worldPos = [node.parent convertToWorldSpace:node.position];
-        if (node.visible && ccpDistance(worldPos, pt) < kCCBSinglePointSelectionRadius * stageZoom)
+        if (node.visible && ccpDistance(worldPos, pt) < kCCBSinglePointSelectionRadius * [self selectionZoom])
         {
             [nodes addObject:node];
         }
@@ -1077,10 +1085,11 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     }
     
     // Visit children
-    for (int i = 0; i < [node.children count]; i++)
-    {
-        [self nodesUnderPt:pt rootNode:[node.children objectAtIndex:i] nodes:nodes];
-    }
+    if (node.visible)
+        for (int i = 0; i < [node.children count]; i++)
+        {
+            [self nodesUnderPt:pt rootNode:[node.children objectAtIndex:i] nodes:nodes];
+        }
   
     //Don't select nodes that are locked or hidden.
     NSArray * selectableNodes = [nodes filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CCNode * node, NSDictionary *bindings) {
