@@ -245,7 +245,9 @@ static SequencerHandler* sharedSequencerHandler;
 {
 	[self expandSelectedNodes];
 
- 	[outlineHierarchy selectRowIndexes:[self createSelectionIndexes] byExtendingSelection:NO];
+	NSIndexSet *indexes = [self createSelectionIndexes];
+ 	[outlineHierarchy selectRowIndexes:indexes byExtendingSelection:NO];
+	[outlineHierarchy scrollRowToVisible:indexes.firstIndex];
 }
 
 - (NSIndexSet *)createSelectionIndexes
