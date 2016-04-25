@@ -231,6 +231,7 @@
     if ([stateName isEqualToString:@"Normal"]) state = CCBPControlStateNormal;
     else if ([stateName isEqualToString:@"Highlighted"]) state = CCBPControlStateHighlighted;
     else if ([stateName isEqualToString:@"Disabled"]) state = CCBPControlStateDisabled;
+    else if ([stateName isEqualToString:@"MouseOver"]) state = CCBPControlStateMouseOver;
     
     return state;
 }

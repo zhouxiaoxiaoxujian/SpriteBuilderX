@@ -22,6 +22,9 @@ typedef NS_ENUM(NSUInteger, CCBPControlState)
     
     /** Disabled state of a control. This state indicates that the control is currently disabled. You can retrieve and set this value through the enabled property. */
     CCBPControlStateDisabled     = 2,
+    
+    /** Mouse over state of a control. A control enters this state when mouse move inside. You can retrieve and set this value through the mouseOver property. */
+    CCBPControlStateMouseOver  = 3,
 };
 
 @interface CCBPButton : CCProtectedNode
@@ -85,10 +88,11 @@ typedef NS_ENUM(NSUInteger, CCBPControlState)
  *  @param spriteFrame Stretchable background image for the normal state.
  *  @param highlighted Stretchable background image for the highlighted state.
  *  @param disabled    Stretchable background image for the disabled state.
+ *  @param mouseOver   Stretchable background image for the mouseOver state.
  *
  *  @return A new button.
  */
-- (id) initWithTitle:(NSString*) title spriteFrame:(CCSpriteFrame*) spriteFrame highlightedSpriteFrame:(CCSpriteFrame*) highlighted disabledSpriteFrame:(CCSpriteFrame*) disabled;
+- (id) initWithTitle:(NSString*) title spriteFrame:(CCSpriteFrame*) spriteFrame highlightedSpriteFrame:(CCSpriteFrame*) highlighted disabledSpriteFrame:(CCSpriteFrame*) disabled mouseOverSpriteFrame:(CCSpriteFrame*) mouseOver;
 
 /**
  *  Sets the background color for the specified state. The color is multiplied into the background sprite frame.

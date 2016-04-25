@@ -25,7 +25,7 @@
 
 - (id) initWithTitle:(NSString *)title
 {
-    self = [self initWithTitle:title spriteFrame:NULL highlightedSpriteFrame:NULL disabledSpriteFrame:NULL];
+    self = [self initWithTitle:title spriteFrame:NULL highlightedSpriteFrame:NULL disabledSpriteFrame:NULL mouseOverSpriteFrame:NULL];
     
     return self;
 }
@@ -41,7 +41,7 @@
 
 - (id) initWithTitle:(NSString*) title spriteFrame:(CCSpriteFrame*) spriteFrame
 {
-    self = [self initWithTitle:title spriteFrame:spriteFrame highlightedSpriteFrame:NULL disabledSpriteFrame:NULL];
+    self = [self initWithTitle:title spriteFrame:spriteFrame highlightedSpriteFrame:NULL disabledSpriteFrame:NULL mouseOverSpriteFrame:NULL];
     
     // Setup default colors for when only one frame is used
     [self setBackgroundColor:[CCColor colorWithWhite:0.7 alpha:1] forState:CCBPControlStateHighlighted];
@@ -53,7 +53,7 @@
     return self;
 }
 
-- (id) initWithTitle:(NSString*) title spriteFrame:(CCSpriteFrame*) spriteFrame highlightedSpriteFrame:(CCSpriteFrame*) highlighted disabledSpriteFrame:(CCSpriteFrame*) disabled
+- (id) initWithTitle:(NSString*) title spriteFrame:(CCSpriteFrame*) spriteFrame highlightedSpriteFrame:(CCSpriteFrame*) highlighted disabledSpriteFrame:(CCSpriteFrame*) disabled mouseOverSpriteFrame:(CCSpriteFrame*) mouseOver
 {
     self = [super init];
     if (!self) return NULL;
@@ -93,6 +93,11 @@
     if (disabled)
     {
         [self setBackgroundSpriteFrame:disabled forState:CCBPControlStateDisabled];
+    }
+    
+    if (mouseOver)
+    {
+        [self setBackgroundSpriteFrame:mouseOver forState:CCBPControlStateMouseOver];
     }
     
     [self addProtectedChild:_background z:0];
@@ -222,6 +227,14 @@
             [self updatePropertiesForState:CCBPControlStateDisabled];
             break;
             
+        case CCBPControlStateMouseOver:
+            _label.scaleX = _originalScaleX;
+            _label.scaleY = _originalScaleY;
+            _background.scaleX = _originalScaleX * _imageScale;
+            _background.scaleY = _originalScaleY * _imageScale;
+            [self updatePropertiesForState:CCBPControlStateMouseOver];
+            break;
+            
         default:
             break;
     }
@@ -349,6 +362,7 @@
     if ([stateName isEqualToString:@"Normal"]) state = CCBPControlStateNormal;
     else if ([stateName isEqualToString:@"Highlighted"]) state = CCBPControlStateHighlighted;
     else if ([stateName isEqualToString:@"Disabled"]) state = CCBPControlStateDisabled;
+    else if ([stateName isEqualToString:@"MouseOver"]) state = CCBPControlStateMouseOver;
     
     return state;
 }

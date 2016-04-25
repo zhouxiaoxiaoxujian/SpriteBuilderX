@@ -116,7 +116,7 @@
 			<key>name</key>
 			<string>state</string>
 			<key>extra</key>
-			<string>Normal|0|Highlighted|1|Disabled|2</string>
+			<string>Normal|0|Pressed|1|Disabled|2|MouseOver|3</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
@@ -220,9 +220,9 @@
 		</dict>
 		<dict>
 			<key>displayName</key>
-			<string>Highlighted State</string>
+			<string>Pressed State</string>
 			<key>name</key>
-			<string>Highlighted State</string>
+			<string>Pressed State</string>
 			<key>type</key>
 			<string>SeparatorSub</string>
 			<key>dontSetInEditor</key>
@@ -417,6 +417,106 @@
 			<string>Color3</string>
 			<key>name</key>
 			<string>labelColor|Disabled</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Mouse over State</string>
+			<key>name</key>
+			<string>Mouse over State</string>
+			<key>type</key>
+			<string>SeparatorSub</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>displayName</key>
+			<string>Sprite frame</string>
+			<key>type</key>
+			<string>SpriteFrame</string>
+			<key>name</key>
+			<string>backgroundSpriteFrame|MouseOver</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
+			<key>default</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Background opacity</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>backgroundOpacity|MouseOver</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Background color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>backgroundColor|MouseOver</string>
+		</dict>
+		<dict>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
+			<key>default</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Label opacity</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>labelOpacity|MouseOver</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Label color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>labelColor|MouseOver</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

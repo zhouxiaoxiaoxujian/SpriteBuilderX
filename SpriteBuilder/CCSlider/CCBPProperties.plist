@@ -134,7 +134,7 @@
 			<key>name</key>
 			<string>state</string>
 			<key>extra</key>
-			<string>Normal|0|Highlighted|1|Disabled|2</string>
+			<string>Normal|0|Pressed|1|Disabled|2|MouseOver|3</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
@@ -166,9 +166,9 @@
 		</dict>
 		<dict>
 			<key>displayName</key>
-			<string>Highlighted state</string>
+			<string>Pressed state</string>
 			<key>name</key>
-			<string>Highlighted state</string>
+			<string>Pressed state</string>
 			<key>type</key>
 			<string>SeparatorSub</string>
 			<key>dontSetInEditor</key>
@@ -219,6 +219,34 @@
 			<string>SpriteFrame</string>
 			<key>name</key>
 			<string>handleSpriteFrame|Disabled</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Mouse over state</string>
+			<key>name</key>
+			<string>Mouse over state</string>
+			<key>type</key>
+			<string>SeparatorSub</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<string></string>
+				<string></string>
+			</array>
+			<key>displayName</key>
+			<string>Handle</string>
+			<key>type</key>
+			<string>SpriteFrame</string>
+			<key>name</key>
+			<string>handleSpriteFrame|MouseOver</string>
 		</dict>
 		<dict>
 			<key>displayName</key>

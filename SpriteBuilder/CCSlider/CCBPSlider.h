@@ -26,6 +26,9 @@ typedef NS_ENUM(NSUInteger, CCBPControlState)
     
     /** Disabled state of a control. This state indicates that the control is currently disabled. You can retrieve and set this value through the enabled property. */
     CCBPControlStateDisabled     = 2,
+    
+    /** Mouse over state of a control. A control enters this state when mouse move inside. You can retrieve and set this value through the mouseOver property. */
+    CCBPControlStateMouseOver  = 3,
 };
 
 @interface CCBPSlider : CCProtectedNode
