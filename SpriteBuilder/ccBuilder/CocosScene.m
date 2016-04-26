@@ -1238,6 +1238,13 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
     }
     
+    // shortcut for Select Behind: Alt + LeftClick
+    if ([event modifierFlags] & NSAlternateKeyMask)
+    {
+        NSLog(@"selectBehind");
+        [self selectBehind];
+    }
+    
     return;
 }
 
