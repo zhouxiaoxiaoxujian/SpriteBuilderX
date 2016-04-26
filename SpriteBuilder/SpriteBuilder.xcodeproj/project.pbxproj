@@ -280,9 +280,6 @@
 		929D1BB21954D34300B27340 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 929D1B921954D15400B27340 /* InfoPlist.strings */; };
 		929D1BB31954D34300B27340 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 929D1B941954D15400B27340 /* Icon.png */; };
 		929D1BB51954D36200B27340 /* CCBPEffectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 929D1B8E1954D15400B27340 /* CCBPEffectNode.m */; };
-		92AEE8381979D33D00B50F74 /* LicenseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AEE8361979D33D00B50F74 /* LicenseWindow.m */; };
-		92AEE8391979D33D00B50F74 /* LicenseWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92AEE8371979D33D00B50F74 /* LicenseWindow.xib */; };
-		92AEE83D1979D55000B50F74 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AEE83C1979D55000B50F74 /* LicenseManager.m */; };
 		92AEE8431979D62B00B50F74 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AEE8421979D62B00B50F74 /* Base64.m */; };
 		92B1B9D5192429A400DB91F5 /* joint-pivot-range.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B1B9D3192429A400DB91F5 /* joint-pivot-range.png */; };
 		92B1B9D6192429A400DB91F5 /* joint-pivot-range@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B1B9D4192429A400DB91F5 /* joint-pivot-range@2x.png */; };
@@ -406,6 +403,8 @@
 		A5EC6C6A1A35C0E7004B114B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C641A35C0E7004B114B /* InfoPlist.strings */; };
 		A5EC6C6B1A35C0E7004B114B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5EC6C661A35C0E7004B114B /* Icon.png */; };
 		A5EC6C6F1A35C17A004B114B /* CCProgressNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A5EC6C581A35C073004B114B /* CCProgressNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5F251041CD019190016092E /* frame-iphone6.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F251031CD019190016092E /* frame-iphone6.png */; };
+		A5F2510A1CD01A200016092E /* frame-iphone6Plus.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F251091CD01A200016092E /* frame-iphone6Plus.png */; };
 		B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */; };
 		B7083DF617B1CB88006628C7 /* LocalizationEditorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */; };
 		B7083DF917B1CBC8006628C7 /* LocalizationEditorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7083DF817B1CBC8006628C7 /* LocalizationEditorHandler.m */; };
@@ -445,8 +444,6 @@
 		B72D1DCF18612D340091252F /* CCBPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DCE18612D340091252F /* CCBPScrollView.m */; };
 		B72D1DD218612D570091252F /* CCBPSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DD118612D570091252F /* CCBPSprite.m */; };
 		B72D1DD518612D790091252F /* CCBPSprite9Slice.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DD418612D790091252F /* CCBPSprite9Slice.m */; };
-		B72D1DEB186393AE0091252F /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72D1DEA186393AE0091252F /* HockeySDK.framework */; };
-		B72D1DEC186393C80091252F /* HockeySDK.framework in Copy Files (Sparkle framework) */ = {isa = PBXBuildFile; fileRef = B72D1DEA186393AE0091252F /* HockeySDK.framework */; };
 		B732A1841799736500333C56 /* TB_build.png in Resources */ = {isa = PBXBuildFile; fileRef = B732A1821799736500333C56 /* TB_build.png */; };
 		B732A1851799736500333C56 /* TB_build@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B732A1831799736500333C56 /* TB_build@2x.png */; };
 		B73788DA1804AC5E0076A88C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
@@ -466,7 +463,6 @@
 		B759E4B91880B60B00E8166C /* logo-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B759E4B71880B60B00E8166C /* logo-white@2x.png */; };
 		B75CB46518468FA70036259F /* seq-btn-loop.png in Resources */ = {isa = PBXBuildFile; fileRef = B75CB46318468FA70036259F /* seq-btn-loop.png */; };
 		B75CB46618468FA70036259F /* seq-btn-loop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B75CB46418468FA70036259F /* seq-btn-loop@2x.png */; };
-		B75CB48B184D31270036259F /* UsageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B75CB48A184D31270036259F /* UsageManager.m */; };
 		B77EC96618087011004C09FF /* CCBProjectCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B77EC96518087011004C09FF /* CCBProjectCreator.m */; };
 		B78AE44B17E263B20028BE0B /* CCBPNodeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B78AE44A17E263B20028BE0B /* CCBPNodeColor.m */; };
 		B78AE44E17E263FC0028BE0B /* CCBPNodeGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = B78AE44D17E263FC0028BE0B /* CCBPNodeGradient.m */; };
@@ -537,8 +533,6 @@
 		B7C623D417F38B7800928F91 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7C623D217F38B7800928F91 /* InfoPlist.strings */; };
 		B7C623DB17F3903900928F91 /* CCWidget.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = B7C623CD17F38B7800928F91 /* CCWidget.ccbPlugNode */; };
 		B7C623DD17F392FE00928F91 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7C623DC17F392FE00928F91 /* CCBPProperties.plist */; };
-		B7DE848D1937A8030039FB72 /* RegistrationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DE848C1937A8030039FB72 /* RegistrationWindow.xib */; };
-		B7DE84901937A8390039FB72 /* RegistrationWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DE848F1937A8390039FB72 /* RegistrationWindow.m */; };
 		B7DE84931937B18B0039FB72 /* signup-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84911937B18B0039FB72 /* signup-bg.png */; };
 		B7DE84941937B18B0039FB72 /* signup-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84921937B18B0039FB72 /* signup-bottom.png */; };
 		B7DE84961937C6380039FB72 /* SpriteBuilder-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84951937C6380039FB72 /* SpriteBuilder-logo.png */; };
@@ -1337,7 +1331,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B72D1DEC186393C80091252F /* HockeySDK.framework in Copy Files (Sparkle framework) */,
 			);
 			name = "Copy Files (Sparkle framework)";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1787,11 +1780,6 @@
 		929D1B941954D15400B27340 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		929D1B951954D15400B27340 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		929D1BA31954D16C00B27340 /* CCEffectNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCEffectNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		92AEE8351979D33D00B50F74 /* LicenseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseWindow.h; sourceTree = "<group>"; };
-		92AEE8361979D33D00B50F74 /* LicenseWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseWindow.m; sourceTree = "<group>"; };
-		92AEE8371979D33D00B50F74 /* LicenseWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseWindow.xib; sourceTree = "<group>"; };
-		92AEE83B1979D55000B50F74 /* LicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
-		92AEE83C1979D55000B50F74 /* LicenseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
 		92AEE8411979D62B00B50F74 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		92AEE8421979D62B00B50F74 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		92B1B9D3192429A400DB91F5 /* joint-pivot-range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joint-pivot-range.png"; sourceTree = "<group>"; };
@@ -1932,6 +1920,8 @@
 		A5EC6C631A35C0E7004B114B /* CCProgressNode-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCProgressNode-Prefix.pch"; sourceTree = "<group>"; };
 		A5EC6C651A35C0E7004B114B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5EC6C661A35C0E7004B114B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A5F251031CD019190016092E /* frame-iphone6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-iphone6.png"; sourceTree = "<group>"; };
+		A5F251091CD01A200016092E /* frame-iphone6Plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-iphone6Plus.png"; sourceTree = "<group>"; };
 		B7083DF217B1C363006628C7 /* LocalizationEditorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocalizationEditorWindow.xib; sourceTree = "<group>"; };
 		B7083DF417B1CB88006628C7 /* LocalizationEditorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalizationEditorWindow.h; sourceTree = "<group>"; };
 		B7083DF517B1CB88006628C7 /* LocalizationEditorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalizationEditorWindow.m; sourceTree = "<group>"; };
@@ -1987,7 +1977,6 @@
 		B72D1DD118612D570091252F /* CCBPSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPSprite.m; sourceTree = "<group>"; };
 		B72D1DD318612D790091252F /* CCBPSprite9Slice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPSprite9Slice.h; sourceTree = "<group>"; };
 		B72D1DD418612D790091252F /* CCBPSprite9Slice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPSprite9Slice.m; sourceTree = "<group>"; };
-		B72D1DEA186393AE0091252F /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = libs/HockeySDK.framework; sourceTree = "<group>"; };
 		B732A1821799736500333C56 /* TB_build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_build.png; sourceTree = "<group>"; };
 		B732A1831799736500333C56 /* TB_build@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TB_build@2x.png"; sourceTree = "<group>"; };
 		B73788D91804AC5D0076A88C /* CCScrollView.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScrollView.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2010,8 +1999,6 @@
 		B759E4B71880B60B00E8166C /* logo-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-white@2x.png"; sourceTree = "<group>"; };
 		B75CB46318468FA70036259F /* seq-btn-loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-loop.png"; sourceTree = "<group>"; };
 		B75CB46418468FA70036259F /* seq-btn-loop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-btn-loop@2x.png"; sourceTree = "<group>"; };
-		B75CB489184D31270036259F /* UsageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsageManager.h; sourceTree = "<group>"; };
-		B75CB48A184D31270036259F /* UsageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsageManager.m; sourceTree = "<group>"; };
 		B77EC96418087011004C09FF /* CCBProjectCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBProjectCreator.h; sourceTree = "<group>"; };
 		B77EC96518087011004C09FF /* CCBProjectCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBProjectCreator.m; sourceTree = "<group>"; };
 		B78AE44917E263B20028BE0B /* CCBPNodeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPNodeColor.h; sourceTree = "<group>"; };
@@ -2117,9 +2104,6 @@
 		B7C623D317F38B7800928F91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7C623D517F38B7800928F91 /* CCWidget-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CCWidget-Prefix.pch"; sourceTree = "<group>"; };
 		B7C623DC17F392FE00928F91 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		B7DE848C1937A8030039FB72 /* RegistrationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationWindow.xib; sourceTree = "<group>"; };
-		B7DE848E1937A8390039FB72 /* RegistrationWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationWindow.h; sourceTree = "<group>"; };
-		B7DE848F1937A8390039FB72 /* RegistrationWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationWindow.m; sourceTree = "<group>"; };
 		B7DE84911937B18B0039FB72 /* signup-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-bg.png"; sourceTree = "<group>"; };
 		B7DE84921937B18B0039FB72 /* signup-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-bottom.png"; sourceTree = "<group>"; };
 		B7DE84951937C6380039FB72 /* SpriteBuilder-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SpriteBuilder-logo.png"; sourceTree = "<group>"; };
@@ -2922,7 +2906,6 @@
 				E3A4747A16D43BEA00DB0D61 /* OpenAL.framework in Frameworks */,
 				E3A4747816D43B5800DB0D61 /* AudioToolbox.framework in Frameworks */,
 				E3B19F6B15E62ADA000B023E /* Carbon.framework in Frameworks */,
-				B72D1DEB186393AE0091252F /* HockeySDK.framework in Frameworks */,
 				E3E0879015669FA2008F1FDB /* libffi.dylib in Frameworks */,
 				E3E0878E15669F58008F1FDB /* JavaScriptCore.framework in Frameworks */,
 				776A37161395925D00960E94 /* Quartz.framework in Frameworks */,
@@ -3310,8 +3293,6 @@
 				B78DA3681773EA0E00B85CC0 /* NSPasteboard+CCB.m */,
 				B7083E0817B567E5006628C7 /* StringPropertySetter.h */,
 				B7083E0917B567E5006628C7 /* StringPropertySetter.m */,
-				B75CB489184D31270036259F /* UsageManager.h */,
-				B75CB48A184D31270036259F /* UsageManager.m */,
 				9297AC2E18A43BCA003C3705 /* NSArray+Query.h */,
 				9297AC2F18A43BCA003C3705 /* NSArray+Query.m */,
 				926D139318B2DC2E00582959 /* NSDictionary+Query.h */,
@@ -3552,6 +3533,8 @@
 				B7C3533917FA2EDA005697C1 /* select-physics-corner.png */,
 				B7AC6968179E03BF0041B8BD /* select-corner.png */,
 				E3DFE830160226760068CB50 /* frame-iphone5.png */,
+				A5F251031CD019190016092E /* frame-iphone6.png */,
+				A5F251091CD01A200016092E /* frame-iphone6Plus.png */,
 				E36078BB15EE0B2C0040A172 /* sel-round.png */,
 				E360788F15EBA5420040A172 /* sel-frame.png */,
 				E3F3F84A153DBA43005443EE /* notes-close-down.png */,
@@ -3820,7 +3803,6 @@
 				D35E589D18E391DA008571EC /* GLKit.framework */,
 				D2E0168418D783C900927430 /* AppleScriptKit.framework */,
 				DC68033A189168390060BE39 /* SpriteKit.framework */,
-				B72D1DEA186393AE0091252F /* HockeySDK.framework */,
 				B7E1EFDC185F8D3D00C9E6E0 /* WebKit.framework */,
 				80985259182C40170054BBF3 /* CoreMedia.framework */,
 				835DB0CA17156421003A2F7B /* Security.framework */,
@@ -5567,14 +5549,6 @@
 				E390C77B170A2C9B003E9E92 /* AboutWindow.h */,
 				E390C77C170A2C9B003E9E92 /* AboutWindow.m */,
 				E390C77D170A2C9B003E9E92 /* AboutWindow.xib */,
-				B7DE848E1937A8390039FB72 /* RegistrationWindow.h */,
-				B7DE848F1937A8390039FB72 /* RegistrationWindow.m */,
-				B7DE848C1937A8030039FB72 /* RegistrationWindow.xib */,
-				92AEE8351979D33D00B50F74 /* LicenseWindow.h */,
-				92AEE8361979D33D00B50F74 /* LicenseWindow.m */,
-				92AEE8371979D33D00B50F74 /* LicenseWindow.xib */,
-				92AEE83B1979D55000B50F74 /* LicenseManager.h */,
-				92AEE83C1979D55000B50F74 /* LicenseManager.m */,
 			);
 			name = "About Box & Email list";
 			sourceTree = "<group>";
@@ -7042,7 +7016,6 @@
 				774E4ED2136DFFB70025D0A8 /* btn-scale-hi.png in Resources */,
 				774E4ED3136DFFB70025D0A8 /* btn-scale.png in Resources */,
 				77E1995213858DE0006C361B /* overflowImage.png in Resources */,
-				92AEE8391979D33D00B50F74 /* LicenseWindow.xib in Resources */,
 				83EDACF9193DC99100327B86 /* Features.plist in Resources */,
 				77E1995313858DE0006C361B /* overflowImagePressed.png in Resources */,
 				77E1995413858DE0006C361B /* pi.png in Resources */,
@@ -7148,6 +7121,7 @@
 				921EEADC18A5760700D864C2 /* joint-pivot.png in Resources */,
 				E3EDBC1615483EE000EEF1F3 /* ResolutionSettingsWindow.xib in Resources */,
 				E370BA0C1549B2460048ED73 /* scale-0.png in Resources */,
+				A5F2510A1CD01A200016092E /* frame-iphone6Plus.png in Resources */,
 				A57319941A2FB0E50044B884 /* scale-7.png in Resources */,
 				E370BA0D1549B2460048ED73 /* scale-1.png in Resources */,
 				E3DCFD9C15629FC700BD7D7F /* TaskStatusWindow.xib in Resources */,
@@ -7166,7 +7140,6 @@
 				E3E8B4921579326A00373983 /* seq-timedisplay-bg.png in Resources */,
 				B73788F71804D8200076A88C /* ccbproj.icns in Resources */,
 				A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */,
-				B7DE848D1937A8030039FB72 /* RegistrationWindow.xib in Resources */,
 				E3E8B49915793AF800373983 /* seq-btn-play.png in Resources */,
 				926D13C118B5778300582959 /* joint-distance-handle-long@2x.png in Resources */,
 				E3E8B49A15793AF800373983 /* seq-btn-restart.png in Resources */,
@@ -7341,6 +7314,7 @@
 				9266EE29195A1603006CBE81 /* effect-glow.png in Resources */,
 				926D13C318B5778300582959 /* joint-distance-handle-short@2x.png in Resources */,
 				B7083DF317B1C363006628C7 /* LocalizationEditorWindow.xib in Resources */,
+				A5F251041CD019190016092E /* frame-iphone6.png in Resources */,
 				B7083DFB17B2CC65006628C7 /* LocaliztaionEditorLanguageList.plist in Resources */,
 				92B1B9D6192429A400DB91F5 /* joint-pivot-range@2x.png in Resources */,
 				B7DEBD6417D113B800942E4D /* SpriteBuilder.icns in Resources */,
@@ -7840,7 +7814,6 @@
 				80FBACC41833FAE000C4BB69 /* WarningTableViewHandler.m in Sources */,
 				92CD1C201965D824002BF2DE /* CCBPEffectPixelate.m in Sources */,
 				921EEAE018A5884300D864C2 /* SequencerJoints.m in Sources */,
-				B75CB48B184D31270036259F /* UsageManager.m in Sources */,
 				7789ABD0133AA82000CEFCC7 /* main.m in Sources */,
 				9297636D18777BAF008F997B /* AudioPlayerViewController.m in Sources */,
 				7789ABD6133AA82000CEFCC7 /* AppDelegate.m in Sources */,
@@ -7895,7 +7868,6 @@
 				92CB085E19BA2E4300EFDCE3 /* EffectBlurControl.m in Sources */,
 				E3C3660414EB2C1B007CD5FF /* CCBReaderInternal.m in Sources */,
 				9297AC3018A43BCA003C3705 /* NSArray+Query.m in Sources */,
-				92AEE83D1979D55000B50F74 /* LicenseManager.m in Sources */,
 				E398C03314FB86D20078E771 /* PlugInExport.m in Sources */,
 				E398C03814FB8A430078E771 /* CCBX.m in Sources */,
 				E3C5C1A41504D17E000CF6F3 /* ResourceManager.m in Sources */,
@@ -7955,7 +7927,6 @@
 				E3926188159C69D20034FF1D /* SequencerKeyframeEasing.m in Sources */,
 				E3FD4DD315A0A2C10032C2DD /* SequencerKeyframeEasingWindow.m in Sources */,
 				E3FD4DDF15A455B90032C2DD /* SequencerSequenceArrayController.m in Sources */,
-				B7DE84901937A8390039FB72 /* RegistrationWindow.m in Sources */,
 				92CD1C211965D824002BF2DE /* EffectBrightnessControl.m in Sources */,
 				E35A135F15B038D700C9AA15 /* ThoMoClientStub.m in Sources */,
 				926FDC88196C8EEC008C0132 /* CCBPEffectRefraction.m in Sources */,
@@ -7976,7 +7947,6 @@
 				581BCFE8162DADE7007DE600 /* CCBSplitHorizontalView.m in Sources */,
 				E3808DBA1641D4B800398456 /* CCBTextFieldLabel.m in Sources */,
 				E380B2521642FC3C0006D31C /* TexturePacker.cpp in Sources */,
-				92AEE8381979D33D00B50F74 /* LicenseWindow.m in Sources */,
 				E380B2531642FC3C0006D31C /* Tupac.mm in Sources */,
 				B7C3534117FA3DF1005697C1 /* PhysicsHandler.m in Sources */,
 				E39108081679365600391C3B /* MaxRectsBinPack.cpp in Sources */,

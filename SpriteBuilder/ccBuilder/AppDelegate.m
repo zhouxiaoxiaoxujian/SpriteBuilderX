@@ -104,7 +104,6 @@
 #import "WarningTableViewHandler.h"
 #import "CCNode+NodeInfo.h"
 #import "CCNode_Private.h"
-#import "UsageManager.h"
 #import <ExceptionHandling/NSExceptionHandler.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
@@ -119,7 +118,6 @@
 #import "FeatureToggle.h"
 #import "AnimationPlaybackManager.h"
 #import "NotificationNames.h"
-#import "RegistrationWindow.h"
 #import "ResourceTypes.h"
 #import "RMDirectory.h"
 #import "RMResource.h"
@@ -127,14 +125,11 @@
 #import "PackageCreator.h"
 #import "ResourceCommandController.h"
 #import "ProjectMigrator.h"
-#import "UsageManager.h"
 #import "ProjectSettings+Convenience.h"
 #import "CCBDocumentDataCreator.h"
 #import "CCBPublisherCacheCleaner.h"
 #import "CCBPublisherController.h"
 #import "ResourceManager+Publishing.h"
-#import "LicenseManager.h"
-#import "LicenseWindow.h"
 #import "SBUpdater.h"
 #import "OpenProjectInXCode.h"
 #import "CCNode+NodeInfo.h"
@@ -524,12 +519,6 @@ typedef enum
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-#ifndef TESTING
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"138b7cc7454016e05dbbc512f38082b7" delegate:self];
-    
-    [[BITHockeyManager sharedHockeyManager] startManager];
-#endif
-
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"ApplePersistenceIgnoreState"];
 
     [self registerUserDefaults];
@@ -541,9 +530,6 @@ typedef enum
     {
         [[_menuItemExperimentalSpriteKitProject menu] removeItem:_menuItemExperimentalSpriteKitProject];
     }
-
-    UsageManager* usageManager = [[UsageManager alloc] init];
-    [usageManager registerUsage];
     
     // Initialize Audio
     //[OALSimpleAudio sharedInstance];
@@ -644,27 +630,7 @@ typedef enum
 #ifdef TESTING
 	return;
 #endif
-	
 
-//#ifndef SPRITEBUILDER_PRO
-    // Open registration window
-    if(![self openRegistration])
-	{
-		[[NSApplication sharedApplication] terminate:self];
-	}
-//#else
-//	if([LicenseManager requiresLicensing])
-//	{
-//		if(![self openLicensingWindow])
-//		{
-//			[[NSApplication sharedApplication] terminate:self];
-//		}
-//	}
-
-//#endif
-	
-	
-	
     if (delayOpenFiles)
     {
         [self openFiles:delayOpenFiles];
@@ -4190,55 +4156,6 @@ typedef enum
     
     [[aboutWindow window] makeKeyAndOrderFront:self];
 }
-
-- (IBAction) openRegistrationWindow:(id)sender
-{
-	[self openRegistration];
-}
-	
-	
--(BOOL)openRegistration
-{
-	if ([[NSUserDefaults standardUserDefaults] objectForKey:kSbRegisteredEmail])
-    {
-        // Email already registered or skipped
-        return YES;
-    }
-    
-    if (!registrationWindow)
-    {
-        registrationWindow = [[RegistrationWindow alloc] initWithWindowNibName:@"RegistrationWindow"];
-    }
-    
-	NSInteger result = [NSApp runModalForWindow: registrationWindow.window];
-	[NSApp endSheet:registrationWindow.window];
-	[registrationWindow.window close];
-	
-	if(result == NSModalResponseStop)
-	{
-		return YES;
-	}
-
-	return NO;
-}
-
--(BOOL)openLicensingWindow
-{
-	LicenseWindow * licenseWindow = [[LicenseWindow alloc] initWithWindowNibName:@"LicenseWindow"];
-	
-	NSInteger result = [NSApp runModalForWindow: licenseWindow.window];
-	[NSApp endSheet:licenseWindow.window];
-	[licenseWindow.window close];
-	
-	if(result == NSModalResponseStop)
-	{
-		return YES;
-	}
-	
-	return NO;
-
-}
-
 
 - (NSUndoManager*) windowWillReturnUndoManager:(NSWindow *)window
 {
