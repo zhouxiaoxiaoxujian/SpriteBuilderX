@@ -556,6 +556,16 @@ typedef enum
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone5.png" andRotated:YES andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(1136, 640)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone5.png" andRotated:NO andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(640, 1136)]];
     
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(667, 375)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(375, 667)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6.png" andRotated:YES andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(1334, 750)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6.png" andRotated:NO andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(750, 1334)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6Plus.png" andRotated:YES andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(960, 540)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6Plus.png" andRotated:NO andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(540, 960)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6Plus.png" andRotated:YES andScale:4.0] forKey:[NSValue valueWithSize:CGSizeMake(1920, 1080)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-iphone6Plus.png" andRotated:NO andScale:4.0] forKey:[NSValue valueWithSize:CGSizeMake(1080, 1920)]];
+    
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:YES andScale:0.5] forKey:[NSValue valueWithSize:CGSizeMake(512, 384)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:NO andScale:0.5] forKey:[NSValue valueWithSize:CGSizeMake(384, 512)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(1024, 768)]];
