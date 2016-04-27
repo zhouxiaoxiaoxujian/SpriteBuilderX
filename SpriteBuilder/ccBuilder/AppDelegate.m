@@ -2148,6 +2148,7 @@ typedef enum
     SceneGraph* g = [SceneGraph instance];
     
     CCNode* parent;
+    int index = CCNODE_INDEX_LAST;
     if (!self.selectedNode)
     {
         parent = g.rootNode;
@@ -2159,11 +2160,21 @@ typedef enum
     else
     {
         parent = self.selectedNode.parent;
+        index = 0;
+        for (CCNode * child in parent.children)
+        {
+            ++index;
+            if(child == self.selectedNode)
+            {
+                break;
+            }
+        }
     }
     
     if (asChild)
     {
         parent = self.selectedNode;
+        index = CCNODE_INDEX_LAST;
         
         if(!parent && !g.rootNode)
             return NO;
@@ -2173,9 +2184,8 @@ typedef enum
             self.selectedNodes = [NSArray arrayWithObject: g.rootNode];
         }
     }
-    
-    
-    BOOL success = [self addCCObject:obj toParent:parent];
+
+    BOOL success = [self addCCObject:obj toParent:parent atIndex:index];
     
     if (!success && !asChild)
     {
