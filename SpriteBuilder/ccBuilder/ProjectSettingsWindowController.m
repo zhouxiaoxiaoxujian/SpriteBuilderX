@@ -9,7 +9,8 @@
 #import "ProjectSettingsWindowController.h"
 #import "ProjectSettings.h"
 #import "PackagePublishSettings.h"
-#import "PackageSettingsDetailView.h"
+#import "PlatformSettings.h"
+#import "PlatformSettingsDetailView.h"
 #import "RMPackage.h"
 #import "ResourceManager.h"
 #import "MainProjectSettingsDetailView.h"
@@ -24,7 +25,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) BOOL canBeModified;
-@property (nonatomic, strong) PackagePublishSettings *packagePublishSettings;
+@property (nonatomic, strong) PlatformSettings *platformSettings;
 
 @end
 
@@ -37,17 +38,14 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     if (self)
     {
         self.canBeModified = NO;
+        self.platformSettings = [[PlatformSettings alloc] init];
     }
     return self;
 }
 
 - (NSString *)name
 {
-    if (_packagePublishSettings)
-    {
-        return _packagePublishSettings.package.name;
-    }
-    return @"Main Project";
+    return self.platformSettings.name;
 }
 
 @end
@@ -78,14 +76,15 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     NSIndexSet *firstRow = [[NSIndexSet alloc] initWithIndex:0];
     [_tableView selectRowIndexes:firstRow byExtendingSelection:NO];
 
-    [self loadMainProjectSettingsView];
+    SettingsListEntry *listEntry = _settingsList[(NSUInteger) 0];
+    [self loadDetailViewForPlatform:listEntry.platformSettings];
 }
 
 - (void)populateSettingsList
 {
     SettingsListEntry *mainProjectEntry = [[SettingsListEntry alloc] init];
     [_settingsList addObject:mainProjectEntry];
-
+/*
     for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
     {
         PackagePublishSettings *packagePublishSettings = [[PackagePublishSettings alloc] initWithPackage:package];
@@ -95,20 +94,13 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
         packageEntry.packagePublishSettings = packagePublishSettings;
 
         [_settingsList addObject:packageEntry];
-    }
+    }*/
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     SettingsListEntry *listEntry = _settingsList[(NSUInteger) _tableView.selectedRow];
-    if (listEntry.packagePublishSettings)
-    {
-        [self loadDetailViewForPackage:listEntry.packagePublishSettings];
-    }
-    else
-    {
-        [self loadMainProjectSettingsView];
-    }
+    [self loadDetailViewForPlatform:listEntry.platformSettings];
 }
 
 - (void)removeAllSubviewsOfDetailView
@@ -119,19 +111,12 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     }
 }
 
-- (void)loadMainProjectSettingsView
-{
-    MainProjectSettingsDetailView *view = [self loadViewWithNibName:@"MainProjectSettingsDetailView" viewClass:[MainProjectSettingsDetailView class]];
-
-    view.showAndroidSettings = YES;
-}
-
-- (void)loadDetailViewForPackage:(PackagePublishSettings *)settings
+- (void)loadDetailViewForPlatform:(PlatformSettings *)settings
 {
     NSAssert(settings != nil, @"packagePublishSettings must not be nil");
-    self.currentPackageSettings = settings;
+    self.currentPlatformSettings = settings;
 
-    PackageSettingsDetailView *view = [self loadViewWithNibName:@"PackageSettingsDetailView" viewClass:[PackageSettingsDetailView class]];
+    PlatformSettingsDetailView *view = [self loadViewWithNibName:@"PlatformSettingsDetailView" viewClass:[PlatformSettingsDetailView class]];
 
     view.showAndroidSettings = YES;
 }
@@ -164,7 +149,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 {
     for (SettingsListEntry *listEntry in _settingsList)
     {
-        [listEntry.packagePublishSettings store];
+        [listEntry.platformSettings store];
     }
     [_projectSettings store];
 }
@@ -189,16 +174,16 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 - (IBAction)selectPackagePublishingCustomDirectory:(id)sender;
 {
     SettingsListEntry *listEntry = _settingsList[(NSUInteger) _tableView.selectedRow];
-    if (!listEntry.packagePublishSettings)
+    if (!listEntry.platformSettings)
     {
         return;
     }
 
-    [self selectPublishCurrentPath:listEntry.packagePublishSettings.customOutputDirectory
-                    dirSetterBlock:^(NSString *directoryPath)
-    {
-        listEntry.packagePublishSettings.customOutputDirectory = directoryPath;
-    }];
+//    [self selectPublishCurrentPath:listEntry.packagePublishSettings.customOutputDirectory
+//                    dirSetterBlock:^(NSString *directoryPath)
+//    {
+//        listEntry.packagePublishSettings.customOutputDirectory = directoryPath;
+//    }];
 }
 
 - (void)selectPublishCurrentPath:(NSString *)currentPath dirSetterBlock:(DirectorySetterBlock)dirSetterBlock

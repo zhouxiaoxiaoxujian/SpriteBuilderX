@@ -18,6 +18,7 @@
 @property (nonatomic, strong) FCFormatConverter *formatConverter;
 
 @property (nonatomic) int format;
+@property (nonatomic) int quality;
 @property (nonatomic) BOOL dither;
 @property (nonatomic) BOOL compress;
 
@@ -133,6 +134,7 @@
         self.formatConverter = [FCFormatConverter defaultConverter];
         if (![_formatConverter convertImageAtPath:_dstFilePath
                                            format:_format
+                                          quality:_quality
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
@@ -188,6 +190,7 @@
         self.formatConverter = [FCFormatConverter defaultConverter];
         if (![_formatConverter convertImageAtPath:_dstFilePath
                                            format:_format
+                                          quality:_quality
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
@@ -230,6 +233,7 @@
 - (void)setFormatDitherAndCompress:(NSString *)relPath
 {
     self.format = kFCImageFormatPNG;
+    self.quality = 100;
     self.dither = NO;
     self.compress = NO;
 

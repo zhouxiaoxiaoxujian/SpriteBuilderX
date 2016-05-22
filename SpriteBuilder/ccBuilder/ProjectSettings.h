@@ -24,6 +24,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CCBPublisherTypes.h"
+#import "FCFormatConverter.h"
 
 #define kCCBProjectSettingsVersion 1
 #define kCCBDefaultExportPlugIn @"ccbi"
@@ -54,6 +55,7 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 
 @class RMResource;
 @class CCBWarnings;
+@class PlatformSettings;
 
 @interface ProjectSettings : NSObject
 
@@ -99,6 +101,8 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 @property (nonatomic, assign) BOOL deviceOrientationLandscapeRight;
 @property (nonatomic, assign) int resourceAutoScaleFactor;
 @property (nonatomic, assign) CCBPublishEnvironment publishEnvironment;
+
+@property (nonatomic, readonly) NSMutableArray* platformsSettings;
 
 // *** Temporary property, do not persist ***
 @property (nonatomic) BOOL canUpdateCocos2D;

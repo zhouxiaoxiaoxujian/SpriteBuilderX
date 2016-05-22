@@ -34,7 +34,7 @@
 
     _publisher.taskStatusUpdater = _taskStatusUpdater;
 
-    [self configurePublisher];
+    //[self configurePublisher];
 
     if (async)
     {
@@ -46,7 +46,7 @@
     }
 }
 
-- (void)configurePublisher
+/*- (void)configurePublisher
 {
     [self addPublishingTargetsForMainProject];
 
@@ -210,7 +210,7 @@
         [inputDirs addObject:somePackageSettings.package.dirPath];
     }
     return inputDirs;
-}
+}*/
 
 - (void)cancel
 {

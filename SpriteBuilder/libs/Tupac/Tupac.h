@@ -38,6 +38,7 @@
 @property(nonatomic, copy) NSString* previewFile;
 @property(nonatomic, copy) NSString *outputFormat;
 @property(nonatomic,assign) int imageFormat;
+@property(nonatomic,assign) int imageQuality;
 @property(nonatomic,copy) NSString* directoryPrefix;
 @property(nonatomic,assign) int maxTextureSize;
 @property(nonatomic,assign) int padding;

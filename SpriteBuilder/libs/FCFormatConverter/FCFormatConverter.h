@@ -20,12 +20,16 @@ typedef enum {
     kFCImageFormatPVRTC_4BPP = 5,
     kFCImageFormatPVRTC_2BPP = 6,
     kFCImageFormatWEBP = 7,
-    kFCImageFormatJPG_High = 8,
-    kFCImageFormatJPG_Medium = 9,
-    kFCImageFormatJPG_Low = 10,
-    kFCImageFormatWEBP_High = 11,
-    kFCImageFormatWEBP_Medium = 12,
-    kFCImageFormatWEBP_Low = 13,
+    kFCImageFormatWEBP_LOSSY = 8,
+    kFCImageFormatJPG = 9,
+    kFCImageFormatDXT1 = 10,
+    kFCImageFormatDXT2 = 11,
+    kFCImageFormatDXT3 = 12,
+    kFCImageFormatDXT4 = 13,
+    kFCImageFormatDXT5 = 14,
+    kFCImageFormatATC_RGB = 12,
+    kFCImageFormatATC_EXPLICIT_ALPHA = 13,
+    kFCImageFormatATC_INTERPOLATED_ALPHA = 14
 } kFCImageFormat;
 
 typedef enum {
@@ -33,7 +37,19 @@ typedef enum {
     kFCSoundFormatMP4 = 1,
     kFCSoundFormatOGG = 2,
     kFCSoundFormatWAV = 3,
+    kFCSoundFormatMP3 = 4,
 } kFCSoundFormat;
+
+typedef enum {
+    kFCSoundParamsMono11025,
+    kFCSoundParamsMono22050,
+    kFCSoundParamsMono44100,
+    kFCSoundParamsMono48000,
+    kFCSoundParamsStereo11025,
+    kFCSoundParamsStereo22050,
+    kFCSoundParamsStereo44100,
+    kFCSoundParamsStereo48000,
+} kFCSoundParams;
 
 @interface FCFormatConverter : NSObject
 
@@ -43,6 +59,7 @@ typedef enum {
 
 -(BOOL)convertImageAtPath:(NSString*)srcPath
                    format:(int)format
+                  quality:(int)quality
                    dither:(BOOL)dither
                  compress:(BOOL)compress
             isSpriteSheet:(BOOL)isSpriteSheet

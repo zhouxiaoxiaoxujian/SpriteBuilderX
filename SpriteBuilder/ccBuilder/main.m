@@ -210,17 +210,6 @@ int main(int argc, char *argv[])
                 [inputDirectories addObject:oldResourcePath.dirPath];
             }
             
-            if (project.publishEnabledIOS)
-            {
-                [publisher addPublishingTarget:createTargetTargetForOSType(inputDirectories, project, kCCBPublisherOSTypeIOS)];
-            }
-            
-            //#ifdef SPRITEBUILDER_PRO
-            if (project.publishEnabledAndroid)
-            {
-                [publisher addPublishingTarget:createTargetTargetForOSType(inputDirectories, project, kCCBPublisherOSTypeAndroid)];
-            }
-            
             succces = [publisher start];
             
             for (CCBWarning *warning in warnings.warnings)

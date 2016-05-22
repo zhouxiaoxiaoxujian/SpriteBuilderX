@@ -20,6 +20,6 @@
 
 - (void)cancel;
 
-- (void)addPublishingTarget:(CCBPublishingTarget *)target;
+//- (void)addPublishingTarget:(CCBPublishingTarget *)target;
 
 @end

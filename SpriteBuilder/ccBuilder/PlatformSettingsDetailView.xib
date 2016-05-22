@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ProjectSettingsWindowController"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" userLabel="Platform Settings Detail View" customClass="PlatformSettingsDetailView">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="292"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-9J-jr5">
+                    <rect key="frame" x="0.0" y="97" width="480" height="148"/>
+                    <subviews>
+                        <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
+                            <rect key="frame" x="20" y="145" width="440" height="5"/>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <font key="titleFont" metaFont="system"/>
+                        </box>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4i-P9-OgD">
+                            <rect key="frame" x="18" y="119" width="99" height="16"/>
+                            <buttonCell key="cell" type="check" title="Images 1x" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1Ip-fI-oGa">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="fQs-gc-FpM"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish1x" id="yd4-5U-4k7"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20Q-SB-q8R">
+                            <rect key="frame" x="134" y="119" width="99" height="16"/>
+                            <buttonCell key="cell" type="check" title="Images 2x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5rR-xK-KM3">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="8it-WV-3N3"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish2x" id="fzb-Ne-kZ3"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-Da-Pp0">
+                            <rect key="frame" x="242" y="119" width="99" height="16"/>
+                            <buttonCell key="cell" type="check" title="Images 4x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rfu-7q-xKM">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="ds5-3Y-aAg"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish4x" id="BEG-Ks-yfi"/>
+                            </connections>
+                        </button>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1X-aa-Nid" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="18" y="86" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Compressed image with alpha" id="LzD-24-wYA">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-Pf-L05" userLabel="Compressed image with alpha">
+                            <rect key="frame" x="198" y="85" width="94" height="15"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="A81-6h-iWn" userLabel="PNG">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="bOo-4a-9LB">
+                                    <items>
+                                        <menuItem title="Origin" tag="-1" id="yAc-MG-yY8"/>
+                                        <menuItem title="PNG" state="on" id="Wrw-eR-kPd"/>
+                                        <menuItem title="PNG 8-bit" tag="1" id="zNH-FO-YXg"/>
+                                        <menuItem isSeparatorItem="YES" id="QQf-24-nIB"/>
+                                        <menuItem title="WebP" tag="7" id="ANk-4i-l7N" userLabel="WebP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="L9D-nv-Srr"/>
+                                        <menuItem title="PVR RGBA8888" tag="2" id="VyW-zg-XVX"/>
+                                        <menuItem title="PVR RGBA4444" tag="3" id="vrZ-2n-Eat">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVR RGB565" tag="4" id="9hQ-FN-n3a">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 4bpp" tag="5" id="Ksc-5B-cqs">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 2bpp" tag="6" id="YRg-Xf-gIv">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT1" tag="6" id="vrV-lI-6aA" userLabel="DXT1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT2" tag="6" id="OAa-td-RoO" userLabel="DXT2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT3" tag="6" id="g0p-kF-Fek" userLabel="DXT3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT4" tag="6" id="1Ef-6V-Xzb" userLabel="DXT4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT5" tag="6" id="KU4-K8-SPX" userLabel="DXT5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="t42-M2-1Qq"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
+                            <rect key="frame" x="298" y="83" width="57" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="enl-v8-Xmu">
+                                <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="cVl-Jx-4UR">
+                                    <real key="minimum" value="0.0"/>
+                                    <real key="maximum" value="100"/>
+                                </numberFormatter>
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Nn8-f1-Pf4"/>
+                            </connections>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-lY-pXv" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="18" y="64" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Compressed image without alpha" id="URY-og-k7e">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-6w-L6m" userLabel="Compressed image without alpha">
+                            <rect key="frame" x="198" y="63" width="94" height="15"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="RGJ-Sm-M8A" userLabel="PNH">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="Lzn-tz-Irj">
+                                    <items>
+                                        <menuItem title="Origin" tag="-1" id="Pcl-PD-Opt"/>
+                                        <menuItem title="PNG" state="on" id="FM7-Ib-CyB"/>
+                                        <menuItem title="PNG 8-bit" tag="1" id="fAh-Yi-M4K"/>
+                                        <menuItem isSeparatorItem="YES" id="AY1-kN-cVi"/>
+                                        <menuItem title="JPG" tag="8" id="Ro2-Lb-T90">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP" tag="7" id="mvQ-6F-JmL" userLabel="WebP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="BLi-ya-yCX"/>
+                                        <menuItem title="PVR RGBA8888" tag="2" id="ngb-Li-mfD"/>
+                                        <menuItem title="PVR RGBA4444" tag="3" id="2sq-VD-i0b">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVR RGB565" tag="4" id="Jyb-6j-4ZR">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 4bpp" tag="5" id="1h5-hG-bBA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 2bpp" tag="6" id="FDb-2E-0tC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT1" tag="6" id="pBD-Va-jeA" userLabel="DXT1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT2" tag="6" id="57K-Ec-1gW" userLabel="DXT2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT3" tag="6" id="c1m-Jp-A0G" userLabel="DXT3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT4" tag="6" id="I0g-qO-8p1" userLabel="DXT4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT5" tag="6" id="Vyb-4u-cSg" userLabel="DXT5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="bbc-kf-oEU"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
+                            <rect key="frame" x="298" y="61" width="57" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="VEp-jJ-qal">
+                                <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="sZc-AY-jS9">
+                                    <real key="minimum" value="0.0"/>
+                                    <real key="maximum" value="100"/>
+                                </numberFormatter>
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iSg-Lt-2Q0"/>
+                            </connections>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-Et-gFU" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="18" y="41" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Uncompressed image" id="w4V-I7-6qM">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asq-JC-25w" userLabel="Uncompressed image">
+                            <rect key="frame" x="198" y="40" width="94" height="15"/>
+                            <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mg5-QR-u7q">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="ga7-mB-uLT">
+                                    <items>
+                                        <menuItem title="Origin" tag="-1" id="Uxl-Pq-Ogq"/>
+                                        <menuItem title="PNG" state="on" id="xz7-N7-DqL"/>
+                                        <menuItem title="PNG 8-bit" tag="1" id="YMZ-0q-v8E"/>
+                                        <menuItem isSeparatorItem="YES" id="slJ-qW-haJ"/>
+                                        <menuItem title="JPG" tag="8" id="Smp-3O-Izk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP" tag="7" id="G6q-nI-bSp" userLabel="WebP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="S6w-Ct-ewi"/>
+                                        <menuItem title="PVR RGBA8888" tag="2" id="OZR-OV-epN"/>
+                                        <menuItem title="PVR RGBA4444" tag="3" id="KaP-YX-S3v">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVR RGB565" tag="4" id="uKx-8T-d1I">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 4bpp" tag="5" id="hq5-SS-25m">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 2bpp" tag="6" id="bSN-8C-L9p">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT1" tag="6" id="t3f-pD-0P6" userLabel="DXT1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT2" tag="6" id="4kJ-oV-Qk8" userLabel="DXT2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT3" tag="6" id="brc-jS-2IB" userLabel="DXT3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT4" tag="6" id="BPe-Tl-ghh" userLabel="DXT4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT5" tag="6" id="OC1-CY-S0C" userLabel="DXT5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="KhB-68-2MW"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-H5-GwE">
+                            <rect key="frame" x="298" y="38" width="57" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="h6x-Nm-y0S">
+                                <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="w1f-pB-9Yy">
+                                    <real key="minimum" value="0.0"/>
+                                    <real key="maximum" value="100"/>
+                                </numberFormatter>
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IXl-cq-CBu"/>
+                            </connections>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQ2-Ek-Axd" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="18" y="18" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom image" id="jX1-Xp-YBe">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-cl-Bsw" userLabel="Custom image">
+                            <rect key="frame" x="198" y="17" width="94" height="15"/>
+                            <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="3Dl-09-A4U">
+                                    <items>
+                                        <menuItem title="Origin" tag="-1" id="1CK-z2-FTK"/>
+                                        <menuItem title="PNG" state="on" id="qKp-qs-9aB"/>
+                                        <menuItem title="PNG 8-bit" tag="1" id="aPt-OT-K22"/>
+                                        <menuItem isSeparatorItem="YES" id="baD-se-AAo"/>
+                                        <menuItem title="JPG" tag="8" id="XUf-QF-7S1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP" tag="7" id="QcW-9v-v6u" userLabel="WebP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="ZMb-4F-Bxj"/>
+                                        <menuItem title="PVR RGBA8888" tag="2" id="J5F-37-j1z"/>
+                                        <menuItem title="PVR RGBA4444" tag="3" id="bNX-ab-U8w">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVR RGB565" tag="4" id="cl8-zp-gvN">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 4bpp" tag="5" id="fvQ-Gd-XB4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="PVRTC 2bpp" tag="6" id="Az3-eh-yM1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT1" tag="6" id="qst-xr-lC9" userLabel="DXT1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT2" tag="6" id="oVV-w6-n0I" userLabel="DXT2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT3" tag="6" id="QkO-gj-znk" userLabel="DXT3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT4" tag="6" id="mJH-JM-HNb" userLabel="DXT4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="DXT5" tag="6" id="syB-IL-3aa" userLabel="DXT5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="X3A-40-hWB"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
+                            <rect key="frame" x="298" y="15" width="57" height="19"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="nO3-ra-FUw">
+                                <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="PjL-kB-hKU">
+                                    <real key="minimum" value="0.0"/>
+                                    <real key="maximum" value="100"/>
+                                </numberFormatter>
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Zdf-8T-caC"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                </customView>
+                <button identifier=" " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-zb-gM5">
+                    <rect key="frame" x="424" y="256" width="48" height="21"/>
+                    <buttonCell key="cell" type="smallSquare" title="Select" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RsQ-4R-yom">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectPackagePublishingCustomDirectory:" target="-2" id="nHc-JI-osY"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="RwE-Dy-kcs"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
+                    <rect key="frame" x="125" y="257" width="296" height="19"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="p1j-hg-a42">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="currentPackageSettings.customOutputDirectory" id="AF6-Dy-VU2"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="oER-Ww-Z8I"/>
+                    </connections>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-Kh-fMe">
+                    <rect key="frame" x="18" y="258" width="116" height="18"/>
+                    <buttonCell key="cell" type="check" title="Publish" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2SJ-2h-VGr">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="title" keyPath="currentPlatformSettings.name" id="Xax-KE-XJj"/>
+                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="iad-5a-KXo"/>
+                    </connections>
+                </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-1B-jMi">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="98"/>
+                    <subviews>
+                        <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-uA-EFL">
+                            <rect key="frame" x="20" y="95" width="440" height="5"/>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <font key="titleFont" metaFont="system"/>
+                        </box>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nra-uo-XBx" userLabel="Custom sound" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="13" y="54" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Effects" id="KLN-N0-kwn">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcU-Ds-rqN">
+                            <rect key="frame" x="198" y="54" width="73" height="15"/>
+                            <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="Knw-Ym-bPr" id="cqu-gt-djk">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="XeQ-aL-xgK">
+                                    <items>
+                                        <menuItem title="WAV" id="edn-28-VnL" userLabel="WAV"/>
+                                        <menuItem title="CAF" tag="1" id="LDc-eS-rIx" userLabel="CAF"/>
+                                        <menuItem title="MP4" tag="1" id="xRi-xt-wVP"/>
+                                        <menuItem title="OGG" tag="1" id="D8u-L1-ApO" userLabel="OGG"/>
+                                        <menuItem title="WAV" state="on" tag="1" id="Knw-Ym-bPr" userLabel="MP3"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="ZCY-f9-0sj"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-O2-5tw">
+                            <rect key="frame" x="298" y="49" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="Rz1-rO-nvu">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <menu key="menu" title="OtherViews" id="mnf-uW-pLd">
+                                    <items>
+                                        <menuItem title="8 - Best" state="on" tag="8" id="8lb-pz-ity"/>
+                                        <menuItem title="7" tag="7" id="AIe-og-9VQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="6" tag="6" id="VSQ-Ai-EKt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="5" tag="5" id="FLH-iM-Jyd">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="4" tag="4" id="5Mu-Hc-iTo">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="3" tag="3" id="spj-TT-kzK">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="2" tag="2" id="M6U-Lt-9jI">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="1 - Smallest" tag="1" id="zYM-4D-gM7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="cMv-4Z-O9U"/>
+                                <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="oEX-l6-LfN"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-Qu-lP0" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="13" y="32" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Music" id="lof-Nn-57l">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-5h-XA8">
+                            <rect key="frame" x="198" y="32" width="73" height="15"/>
+                            <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="yEJ-2o-9en" id="XC6-P6-Z68">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="N1g-da-oF0">
+                                    <items>
+                                        <menuItem title="WAV" id="e0u-xf-bmD" userLabel="WAV"/>
+                                        <menuItem title="CAF" tag="1" id="EO3-XZ-S0w" userLabel="CAF"/>
+                                        <menuItem title="MP4" tag="1" id="d4b-Ar-cUR"/>
+                                        <menuItem title="OGG" tag="1" id="ZPP-H6-WUd" userLabel="OGG"/>
+                                        <menuItem title="WAV" state="on" tag="1" id="yEJ-2o-9en" userLabel="MP3"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Vyb-hD-amn"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
+                            <rect key="frame" x="298" y="5" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="IJx-nk-les">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <menu key="menu" title="OtherViews" id="sAC-BU-k3U">
+                                    <items>
+                                        <menuItem title="8 - Best" state="on" tag="8" id="1kA-sn-9ly"/>
+                                        <menuItem title="7" tag="7" id="H7P-6p-TWm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="6" tag="6" id="cfo-42-ZN3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="5" tag="5" id="Nkd-Yl-XxG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="4" tag="4" id="OxI-Q9-FW3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="3" tag="3" id="nyB-OB-zbO">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="2" tag="2" id="7uE-Oy-Jcx">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="1 - Smallest" tag="1" id="tg1-4n-lN7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IZa-SK-kUu"/>
+                                <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="Gwm-CN-iTr"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
+                            <rect key="frame" x="298" y="27" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="oc4-Ea-OdP">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <menu key="menu" title="OtherViews" id="ghP-zD-Eue">
+                                    <items>
+                                        <menuItem title="8 - Best" state="on" tag="8" id="JQd-8z-WJ0"/>
+                                        <menuItem title="7" tag="7" id="rDn-x4-alf">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="6" tag="6" id="eJe-sk-DsD">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="5" tag="5" id="GIq-S4-5xJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="4" tag="4" id="Zoo-t9-2uw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="3" tag="3" id="4Qs-yh-bwT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="2" tag="2" id="AdI-er-yxE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="1 - Smallest" tag="1" id="hVt-nt-bO5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="yG4-kS-UpX"/>
+                                <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="0fb-6K-HRK"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-XY-nkX">
+                            <rect key="frame" x="198" y="9" width="73" height="15"/>
+                            <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="uSn-O1-Fb0" id="cPE-Bk-ZZ6">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                                <menu key="menu" title="OtherViews" id="aY2-ar-hFQ">
+                                    <items>
+                                        <menuItem title="WAV" id="jlb-lP-962" userLabel="WAV"/>
+                                        <menuItem title="CAF" tag="1" id="UaQ-SD-OW7" userLabel="CAF"/>
+                                        <menuItem title="MP4" tag="1" id="fkV-rj-igJ"/>
+                                        <menuItem title="OGG" tag="1" id="nJz-Ab-fw3" userLabel="OGG"/>
+                                        <menuItem title="WAV" state="on" tag="1" id="uSn-O1-Fb0" userLabel="MP3"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="zD4-Zu-knk"/>
+                            </connections>
+                        </popUpButton>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-hk-0Pe" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="13" y="10" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom sound" id="Rgt-LU-jEE">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFB-ze-Zus">
+                            <rect key="frame" x="13" y="73" width="116" height="18"/>
+                            <buttonCell key="cell" type="check" title="Sounds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MOb-xz-d0B">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iUr-WR-yzR"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="Tkk-Lp-njs"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="405" y="271"/>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="ttd-bs-ebq"/>
+    </objects>
+</document>

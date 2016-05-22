@@ -23,6 +23,19 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 
 @end
 
+#define CC_SWAP( x, y )			\
+({ __typeof__(x) temp  = (x);		\
+x = y; y = temp;		\
+})
+
+static float clampf(float value, float min_inclusive, float max_inclusive)
+{
+    if (min_inclusive > max_inclusive) {
+        CC_SWAP(min_inclusive,max_inclusive);
+    }
+    return value < min_inclusive ? min_inclusive : value < max_inclusive? value : max_inclusive;
+}
+
 @implementation FCFormatConverter
 
 + (FCFormatConverter*) defaultConverter
@@ -61,17 +74,13 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         if (compress) dstPath = [dstPath stringByAppendingPathExtension:@"ccz"];
         return dstPath;
     }
-    else if (format == kFCImageFormatJPG_Low ||
-             format == kFCImageFormatJPG_Medium ||
-             format == kFCImageFormatJPG_High)
+    else if (format == kFCImageFormatJPG)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
         return dstPath;
     }
     else if (format == kFCImageFormatWEBP ||
-             format == kFCImageFormatWEBP_High ||
-             format == kFCImageFormatWEBP_Medium ||
-             format == kFCImageFormatWEBP_Low)
+             format == kFCImageFormatWEBP_LOSSY)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
         return dstPath;
@@ -81,6 +90,7 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 
 -(BOOL)convertImageAtPath:(NSString*)srcPath
                    format:(int)format
+                  quality:(int)quality
                    dither:(BOOL)dither
                  compress:(BOOL)compress
             isSpriteSheet:(BOOL)isSpriteSheet
@@ -296,18 +306,13 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
             return YES;
         }
     }
-    else if (format == kFCImageFormatJPG_Low ||
-             format == kFCImageFormatJPG_Medium ||
-             format == kFCImageFormatJPG_High)
+    else if (format == kFCImageFormatJPG)
     {
         // JPG image format
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"jpg"];
         
         // Set the compression factor
-        float compressionFactor = 1;
-        if (format == kFCImageFormatJPG_High) compressionFactor = 0.9;
-        else if (format == kFCImageFormatJPG_Medium) compressionFactor = 0.6;
-        else if (format == kFCImageFormatJPG_Low) compressionFactor = 0.3;
+        float compressionFactor = clampf(quality / 100.0f, 0.f, 100.0f);
         
         NSDictionary* props = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:compressionFactor] forKey:NSImageCompressionFactor];
         
@@ -328,9 +333,7 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
         
     }
     else if (format == kFCImageFormatWEBP ||
-             format == kFCImageFormatWEBP_High ||
-             format == kFCImageFormatWEBP_Medium ||
-             format == kFCImageFormatWEBP_Low)
+             format == kFCImageFormatWEBP_LOSSY)
     {
         // JPG image format
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
@@ -344,16 +347,8 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
                 args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-o", dstPath, nil];
                 break;
                 
-            case kFCImageFormatWEBP_High:
-                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"100", @"-o", dstPath, nil];
-                break;
-                
-            case kFCImageFormatWEBP_Medium:
-                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"80", @"-o", dstPath, nil];
-                break;
-                
-            case kFCImageFormatWEBP_Low:
-                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", @"50", @"-o", dstPath, nil];
+            case kFCImageFormatWEBP_LOSSY:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", [@(quality) stringValue], @"-o", dstPath, nil];
                 break;
                 
             default:

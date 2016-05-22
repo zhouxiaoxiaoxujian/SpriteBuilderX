@@ -373,6 +373,9 @@
 		A57319921A2FB0E50044B884 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A573198F1A2FB0E50044B884 /* scale-5.png */; };
 		A57319931A2FB0E50044B884 /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319901A2FB0E50044B884 /* scale-6.png */; };
 		A57319941A2FB0E50044B884 /* scale-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319911A2FB0E50044B884 /* scale-7.png */; };
+		A57D009E1CF2463900434840 /* PlatformSettingsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D009C1CF2463900434840 /* PlatformSettingsDetailView.m */; };
+		A57D009F1CF2463900434840 /* PlatformSettingsDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57D009D1CF2463900434840 /* PlatformSettingsDetailView.xib */; };
+		A57D00A71CF24B0600434840 /* PlatformSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D00A61CF24B0600434840 /* PlatformSettings.m */; };
 		A58EE8301A30A211005F6E22 /* PreviewFolderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58EE82D1A30A211005F6E22 /* PreviewFolderView.xib */; };
 		A58EE8311A30A211005F6E22 /* PreviewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */; };
 		A59471621A8E4851002DB024 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
@@ -1882,6 +1885,11 @@
 		A573198F1A2FB0E50044B884 /* scale-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-5.png"; sourceTree = "<group>"; };
 		A57319901A2FB0E50044B884 /* scale-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-6.png"; sourceTree = "<group>"; };
 		A57319911A2FB0E50044B884 /* scale-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-7.png"; sourceTree = "<group>"; };
+		A57D009B1CF2463900434840 /* PlatformSettingsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformSettingsDetailView.h; sourceTree = "<group>"; };
+		A57D009C1CF2463900434840 /* PlatformSettingsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformSettingsDetailView.m; sourceTree = "<group>"; };
+		A57D009D1CF2463900434840 /* PlatformSettingsDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlatformSettingsDetailView.xib; sourceTree = "<group>"; };
+		A57D00A51CF24B0600434840 /* PlatformSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformSettings.h; sourceTree = "<group>"; };
+		A57D00A61CF24B0600434840 /* PlatformSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformSettings.m; sourceTree = "<group>"; };
 		A58EE82D1A30A211005F6E22 /* PreviewFolderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewFolderView.xib; sourceTree = "<group>"; };
 		A58EE82E1A30A211005F6E22 /* PreviewFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFolderViewController.h; sourceTree = "<group>"; };
 		A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFolderViewController.m; sourceTree = "<group>"; };
@@ -4136,6 +4144,9 @@
 		8354FDF919823370004EC272 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A57D009B1CF2463900434840 /* PlatformSettingsDetailView.h */,
+				A57D009C1CF2463900434840 /* PlatformSettingsDetailView.m */,
+				A57D009D1CF2463900434840 /* PlatformSettingsDetailView.xib */,
 				83FC410B1981391600799B6C /* PackageSettingsDetailView.xib */,
 				83FC410F198154CD00799B6C /* PackageSettingsDetailView.h */,
 				83FC4110198154CD00799B6C /* PackageSettingsDetailView.m */,
@@ -4308,6 +4319,8 @@
 				E525FCD604B9708D96E9EE11 /* ProjectSettings+Convenience.m */,
 				E525FA61F7480E7C1152B7B5 /* ProjectSettings+Packages.m */,
 				E525F3A67926C2386CC09571 /* ProjectSettings+Packages.h */,
+				A57D00A51CF24B0600434840 /* PlatformSettings.h */,
+				A57D00A61CF24B0600434840 /* PlatformSettings.m */,
 				E3799EAB155979BF00196B4A /* ProjectSettings.h */,
 				E3799EAC155979BF00196B4A /* ProjectSettings.m */,
 			);
@@ -7236,6 +7249,7 @@
 				9266EE42195A17EE006CBE81 /* EffectPixelateControl.xib in Resources */,
 				E35D78D616826C0100A53BEF /* SpriteSheetSettingsWindow.xib in Resources */,
 				E3DEF5B7169B359C00B9DCF4 /* lame in Resources */,
+				A57D009F1CF2463900434840 /* PlatformSettingsDetailView.xib in Resources */,
 				E3DEF5B9169B35DF00B9DCF4 /* lame-COPYING in Resources */,
 				E334741D169DC5A7000737CC /* APIDocsWindow.xib in Resources */,
 				92F0961818F8855A00D47A94 /* inspector-body-goto-hi@2x.png in Resources */,
@@ -7926,11 +7940,13 @@
 				E3E05578159B2322001066C5 /* NSString+AppendToFile.m in Sources */,
 				E3926188159C69D20034FF1D /* SequencerKeyframeEasing.m in Sources */,
 				E3FD4DD315A0A2C10032C2DD /* SequencerKeyframeEasingWindow.m in Sources */,
+				A57D009E1CF2463900434840 /* PlatformSettingsDetailView.m in Sources */,
 				E3FD4DDF15A455B90032C2DD /* SequencerSequenceArrayController.m in Sources */,
 				92CD1C211965D824002BF2DE /* EffectBrightnessControl.m in Sources */,
 				E35A135F15B038D700C9AA15 /* ThoMoClientStub.m in Sources */,
 				926FDC88196C8EEC008C0132 /* CCBPEffectRefraction.m in Sources */,
 				E35A136015B038D700C9AA15 /* ThoMoNetworkStub.m in Sources */,
+				A57D00A71CF24B0600434840 /* PlatformSettings.m in Sources */,
 				E35A136115B038D700C9AA15 /* ThoMoServerStub.m in Sources */,
 				E35A136215B038D700C9AA15 /* ThoMoTCPConnection.m in Sources */,
 				E33C2AAC15C987EB0043EF9B /* ResourceManagerOutlineView.m in Sources */,

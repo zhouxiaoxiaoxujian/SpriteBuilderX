@@ -38,6 +38,7 @@
 #import "ResourceManagerUtil.h"
 #import "RMDirectory.h"
 #import "ResourcePropertyKeys.h"
+#import "PlatformSettings.h"
 
 #import <ApplicationServices/ApplicationServices.h>
 
@@ -149,6 +150,13 @@
     self.publishResolution_android_phonehd = [[dict objectForKey:@"publishResolution_android_phonehd"] boolValue];
     self.publishResolution_android_tablet = [[dict objectForKey:@"publishResolution_android_tablet"] boolValue];
     self.publishResolution_android_tablethd = [[dict objectForKey:@"publishResolution_android_tablethd"] boolValue];
+    
+    NSArray *platformsSettingsArray = [dict objectForKey:@"platformsSettings"];
+    NSMutableArray *temp = [NSMutableArray array];
+    for (id object in platformsSettingsArray) {
+        [temp addObject:[[PlatformSettings alloc] initWithSerialization:object]];
+    }
+    _platformsSettings = temp;
     
     self.publishAudioQuality_ios = [[dict objectForKey:@"publishAudioQuality_ios"]intValue];
     if (!self.publishAudioQuality_ios)
@@ -274,6 +282,12 @@
     dict[@"deviceScaling"] = @(_deviceScaling);
 
     dict[@"publishEnvironment"] = @(_publishEnvironment);
+    
+    NSMutableArray *temp = [NSMutableArray array];
+    for (id object in _platformsSettings) {
+        [temp addObject:[object serialize]];
+    }
+    dict[@"platformsSettings"] = temp;
 
     //dict[@"excludedFromPackageMigration"] = @(_excludedFromPackageMigration);
 
