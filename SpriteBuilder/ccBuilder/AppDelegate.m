@@ -2592,21 +2592,33 @@ typedef enum
 
     [self saveUndoState];
     
+    CCNode *nextSelection = nil;
+    
     // Change zOrder of nodes after this one
     int zOrder = node.zOrder;
     NSArray* siblings = [node.parent children];
     for (int i = zOrder+1; i < [siblings count]; i++)
     {
         CCNode* sibling = siblings[i];
+        if(!nextSelection)
+            nextSelection = sibling;
         sibling.zOrder -= 1;
     }
     
+    if(!nextSelection && [siblings count] && zOrder-1>=0)
+        nextSelection = siblings[zOrder-1];
+    
+    if(!nextSelection)
+        nextSelection = node.parent;
+    
+    CCNode *parent = node.parent;
+    
     [node removeFromParentAndCleanup:YES];
     
-    [node.parent sortAllChildren];
+    [parent sortAllChildren];
     [outlineHierarchy reloadData];
     
-    [self deselectAll];
+    [self setSelectedNodes:@[nextSelection]];
     [sequenceHandler updateOutlineViewSelection];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:SCENEGRAPH_NODE_DELETED object:node];
