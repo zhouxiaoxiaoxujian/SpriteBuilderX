@@ -122,6 +122,8 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 
 @property (nonatomic, readonly) CCBTargetEngine engine;
 
+@property (nonatomic, assign) BOOL readOnly;
+
 
 - (id) initWithSerialization:(id)dict;
 - (BOOL) store;

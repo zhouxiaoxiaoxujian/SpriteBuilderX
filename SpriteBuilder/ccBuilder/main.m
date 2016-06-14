@@ -169,6 +169,7 @@ int main(int argc, char *argv[])
                 return EXIT_FAILURE;
             }
             project.projectPath = fileName;
+            project.readOnly = YES;
             
             if(configuration)
             {

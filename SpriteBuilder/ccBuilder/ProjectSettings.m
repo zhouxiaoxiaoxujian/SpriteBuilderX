@@ -93,6 +93,7 @@
 
     self.canUpdateCocos2D = NO;
     self.cocos2dUpdateIgnoredVersions = [NSMutableArray array];
+    self.readOnly = NO;
     
     self.resourceProperties = [NSMutableDictionary dictionary];
     
@@ -351,6 +352,8 @@
 
 - (BOOL) store
 {
+    if(self.readOnly)
+        return true;
     return [[self serialize] writeToFile:self.projectPath atomically:YES];
 }
 
