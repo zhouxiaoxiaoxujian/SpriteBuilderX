@@ -1291,6 +1291,27 @@ static SequencerHandler* sharedSequencerHandler;
 	}
 }
 
+- (void)outlineViewItemWillCollapse:(NSNotification *)notification
+{
+    NSArray *values = [notification.userInfo allValues];
+    
+    if ([values count] != 0)
+    {
+        CCNode *collapsingNode = [values objectAtIndex:0];
+        CCNode *selectedNode = [outlineHierarchy itemAtRow:[outlineHierarchy selectedRow]];
+        CCNode *parent = selectedNode.parent;
+        while(parent)
+        {
+            if(parent == collapsingNode)
+            {
+                [appDelegate setSelectedNodes:[NSArray arrayWithObject:parent]];
+                break;
+            }
+            parent = parent.parent;
+        }
+    }
+}
+
 - (void) updateExpandedForNode:(CCNode*)node
 {
     if ([self outlineView:outlineHierarchy isItemExpandable:node])
