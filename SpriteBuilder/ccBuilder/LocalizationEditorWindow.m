@@ -20,6 +20,7 @@
 
 - (void) awakeFromNib
 {
+    self.window.delegate = self;
     [tableTranslations registerForDraggedTypes:[NSArray arrayWithObject:@"com.cocosbuilder.LocalizationEditorTranslation"]];
     [self populateLanguageAddMenu];
     [tableLanguages reloadData];
@@ -175,6 +176,12 @@
     [self updateLanguageSelectionMenu];
     [self updateQuickEditLangs];
     [self updateInspector];
+}
+
+- (void) windowWillClose:(NSNotification *)notification
+{
+    LocalizationEditorHandler* handler = [AppDelegate appDelegate].localizationEditorHandler;
+    [handler setEdited];
 }
 
 #pragma mark Actions
