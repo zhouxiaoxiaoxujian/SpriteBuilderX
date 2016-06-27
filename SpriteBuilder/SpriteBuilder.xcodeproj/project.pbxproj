@@ -362,6 +362,9 @@
 		A521EF491C1B0B9100918650 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF431C1B0B9100918650 /* Icon.png */; };
 		A521EF4A1C1B0B9100918650 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF441C1B0B9100918650 /* Icon@2x.png */; };
 		A521EF4D1C1B0CD700918650 /* CCEditBox.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A521EF391C1B0A7700918650 /* CCEditBox.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A53568661D214800009EC595 /* nvcompress in Resources */ = {isa = PBXBuildFile; fileRef = A53568651D214800009EC595 /* nvcompress */; };
+		A535686B1D21480E009EC595 /* libTextureConverter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; };
+		A535686C1D214B18009EC595 /* libTextureConverter.dylib in Copy Files (Frameworks) */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A54B403B1CA15B0F00196D02 /* CCProtectedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */; };
 		A54C735E1A43894800DB1CF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A54C73741A438A4100DB1CF7 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */; };
@@ -1328,14 +1331,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		776C6897138878FB00153214 /* Copy Files (Sparkle framework) */ = {
+		776C6897138878FB00153214 /* Copy Files (Frameworks) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A535686C1D214B18009EC595 /* libTextureConverter.dylib in Copy Files (Frameworks) */,
 			);
-			name = "Copy Files (Sparkle framework)";
+			name = "Copy Files (Frameworks)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		830F4ECA193486DA002B832D /* CopyFiles */ = {
@@ -1871,6 +1875,10 @@
 		A521EF421C1B0B9100918650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A521EF431C1B0B9100918650 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A521EF441C1B0B9100918650 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A53568651D214800009EC595 /* nvcompress */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = nvcompress; sourceTree = "<group>"; };
+		A53568681D21480E009EC595 /* libTextureConverter.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libTextureConverter.dylib; sourceTree = "<group>"; };
+		A53568691D21480E009EC595 /* TextureConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureConverter.h; sourceTree = "<group>"; };
+		A535686A1D21480E009EC595 /* TextureConverterInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureConverterInternal.h; sourceTree = "<group>"; };
 		A54B40391CA15B0F00196D02 /* CCProtectedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProtectedNode.h; sourceTree = "<group>"; };
 		A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCProtectedNode.m; sourceTree = "<group>"; };
 		A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScissorsNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2910,6 +2918,7 @@
 				B7E1EFDD185F8D3D00C9E6E0 /* WebKit.framework in Frameworks */,
 				8098525A182C40170054BBF3 /* CoreMedia.framework in Frameworks */,
 				835DB0CB17156421003A2F7B /* Security.framework in Frameworks */,
+				A535686B1D21480E009EC595 /* libTextureConverter.dylib in Frameworks */,
 				E3A4747C16D43BF300DB0D61 /* AVFoundation.framework in Frameworks */,
 				E3A4747A16D43BEA00DB0D61 /* OpenAL.framework in Frameworks */,
 				E3A4747816D43B5800DB0D61 /* AudioToolbox.framework in Frameworks */,
@@ -3903,6 +3912,8 @@
 		7789ABEF133AB17100CEFCC7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				A53568671D21480E009EC595 /* TextureConverter */,
+				A53568601D2147ED009EC595 /* NVCompress */,
 				A5A340531A41E32000861273 /* WebP */,
 				8341326918DADF8C0088FFAB /* optipng */,
 				80AD79911863871200B653B7 /* PVRTexTool */,
@@ -4632,6 +4643,24 @@
 				A521EF441C1B0B9100918650 /* Icon@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A53568601D2147ED009EC595 /* NVCompress */ = {
+			isa = PBXGroup;
+			children = (
+				A53568651D214800009EC595 /* nvcompress */,
+			);
+			name = NVCompress;
+			sourceTree = "<group>";
+		};
+		A53568671D21480E009EC595 /* TextureConverter */ = {
+			isa = PBXGroup;
+			children = (
+				A53568681D21480E009EC595 /* libTextureConverter.dylib */,
+				A53568691D21480E009EC595 /* TextureConverter.h */,
+				A535686A1D21480E009EC595 /* TextureConverterInternal.h */,
+			);
+			path = TextureConverter;
 			sourceTree = "<group>";
 		};
 		A54C736A1A438A4100DB1CF7 /* CCScissorsNode */ = {
@@ -6183,8 +6212,9 @@
 				7789ABBA133AA82000CEFCC7 /* Sources */,
 				7789ABBB133AA82000CEFCC7 /* Frameworks */,
 				7789ABBC133AA82000CEFCC7 /* Resources */,
-				776C6897138878FB00153214 /* Copy Files (Sparkle framework) */,
+				776C6897138878FB00153214 /* Copy Files (Frameworks) */,
 				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
+				A535686D1D214BA8009EC595 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -7112,6 +7142,7 @@
 				9266EE24195A15EE006CBE81 /* EffectContrastControl.xib in Resources */,
 				E34E5D6E1535AA78000201FB /* ruler-mark-major.png in Resources */,
 				E34E5D6F1535AA78000201FB /* ruler-mark-minor.png in Resources */,
+				A53568661D214800009EC595 /* nvcompress in Resources */,
 				E34E5D711535B34F000201FB /* ruler-mark-origin.png in Resources */,
 				92F0960618F8851300D47A94 /* inspector-body-disconnected.png in Resources */,
 				E34E5D731535BC5E000201FB /* ruler-numbers.png in Resources */,
@@ -7792,6 +7823,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A535686D1D214BA8009EC595 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change \"../../../../Lib/osx/x64/libTextureConverter.dylib\" \"@executable_path/../Frameworks/libTextureConverter.dylib\" \"$TARGET_BUILD_DIR/$TARGET_NAME.app/Contents/MacOS/$PRODUCT_NAME\"";
+		};
 		DC3DD33018A948560004D2AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -9008,6 +9052,7 @@
 					"\"$(SRCROOT)/libs/MMMarkdown\"",
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
+					"\"$(SRCROOT)/libs/TextureConverter\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -9052,6 +9097,7 @@
 					"\"$(SRCROOT)/libs/MMMarkdown\"",
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
+					"\"$(SRCROOT)/libs/TextureConverter\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -9208,6 +9254,7 @@
 					"\"$(SRCROOT)/libs/MMMarkdown\"",
 					"\"$(SRCROOT)/libs/Tupac\"",
 					"\"$(SRCROOT)/libs/PVRTexTool\"",
+					"\"$(SRCROOT)/libs/TextureConverter\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
