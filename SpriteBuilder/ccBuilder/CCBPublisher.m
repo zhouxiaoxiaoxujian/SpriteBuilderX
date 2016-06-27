@@ -11,6 +11,7 @@
 #import "CCBPublisherCacheCleaner.h"
 #import "ZipDirectoryOperation.h"
 #import "MiscConstants.h"
+#import "PlatformSettings.h"
 
 
 @interface CCBPublisher ()
@@ -60,7 +61,7 @@
     if (_publishingTargets.count == 0)
     {
         NSLog(@"[PUBLISH] Nothing to do: no publishing targets added.");
-        [_warnings setCurrentOSType:kCCBPublisherOSTypeNone];
+        [_warnings setCurrentPlatform:@"none"];
         [_warnings addWarningWithDescription:@"Nothing to publish. Check Project Settings. Common cause: No package is set to publish \"in Main Project\" or \"as Zip file\"" isFatal:YES];
         [self callFinishedBlock];
         return false;
@@ -164,7 +165,7 @@
 
 - (BOOL)enqueuePublishingOperationsForTarget:(CCBPublishingTarget *)target
 {
-    _warnings.currentOSType = target.osType;
+    _warnings.currentPlatform = target.platform.name;
 
     target.renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
 

@@ -63,8 +63,6 @@
     self.engine = CCBTargetEngineCocos2d;
 
     self.resourcePaths = [[NSMutableArray alloc] init];
-    self.publishDirectory = @"Published-iOS";
-    self.publishDirectoryAndroid = @"Published-Android";
 
     self.onlyPublishCCBs = NO;
     self.publishToZipFile = NO;
@@ -73,22 +71,7 @@
     self.deviceOrientationLandscapeRight = YES;
     self.resourceAutoScaleFactor = 4;
     
-    self.publishEnabledIOS = YES;
-    self.publishEnabledAndroid = YES;
-
-    self.publishResolution_ios_phone = YES;
-    self.publishResolution_ios_phonehd = YES;
-    self.publishResolution_ios_tablet = YES;
-    self.publishResolution_ios_tablethd = YES;
-    self.publishResolution_android_phone = YES;
-    self.publishResolution_android_phonehd = YES;
-    self.publishResolution_android_tablet = YES;
-    self.publishResolution_android_tablethd = YES;
-    
     self.publishEnvironment = kCCBPublishEnvironmentDevelop;
-
-    self.publishAudioQuality_ios = DEFAULT_AUDIO_QUALITY;
-    self.publishAudioQuality_android = DEFAULT_AUDIO_QUALITY;
     
     self.tabletPositionScaleFactor = 2.0f;
 
@@ -122,34 +105,10 @@
 
 	self.engine = (CCBTargetEngine)[[dict objectForKey:@"engine"] intValue];
     self.resourcePaths = [dict objectForKey:@"resourcePaths"];
-
-    self.publishDirectory = [dict objectForKey:@"publishDirectory"];
-    if (!_publishDirectory)
-    {
-        self.publishDirectory = @"";
-    }
-
-    self.publishDirectoryAndroid = [dict objectForKey:@"publishDirectoryAndroid"];
-    if (!_publishDirectoryAndroid)
-    {
-        self.publishDirectoryAndroid = @"";
-    }
-
-    self.publishEnabledIOS = [[dict objectForKey:@"publishEnablediPhone"] boolValue];
-    self.publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
     
     self.designSizeWidth = [[dict objectForKey:@"designSizeWidth"] integerValue];
     self.designSizeHeight = [[dict objectForKey:@"designSizeHeight"] integerValue];
     self.designResourceScale = [[dict objectForKey:@"designResourceScale"] floatValue];
-    
-    self.publishResolution_ios_phone = [[dict objectForKey:@"publishResolution_ios_phone"] boolValue];
-    self.publishResolution_ios_phonehd = [[dict objectForKey:@"publishResolution_ios_phonehd"] boolValue];
-    self.publishResolution_ios_tablet = [[dict objectForKey:@"publishResolution_ios_tablet"] boolValue];
-    self.publishResolution_ios_tablethd = [[dict objectForKey:@"publishResolution_ios_tablethd"] boolValue];
-    self.publishResolution_android_phone = [[dict objectForKey:@"publishResolution_android_phone"] boolValue];
-    self.publishResolution_android_phonehd = [[dict objectForKey:@"publishResolution_android_phonehd"] boolValue];
-    self.publishResolution_android_tablet = [[dict objectForKey:@"publishResolution_android_tablet"] boolValue];
-    self.publishResolution_android_tablethd = [[dict objectForKey:@"publishResolution_android_tablethd"] boolValue];
     
     NSArray *platformsSettingsArray = [dict objectForKey:@"platformsSettings"];
     NSMutableArray *temp = [NSMutableArray array];
@@ -158,16 +117,81 @@
     }
     _platformsSettings = temp;
     
-    self.publishAudioQuality_ios = [[dict objectForKey:@"publishAudioQuality_ios"]intValue];
-    if (!self.publishAudioQuality_ios)
+    if(self.platformsSettings.count == 0)
     {
-        self.publishAudioQuality_ios = DEFAULT_AUDIO_QUALITY;
-    }
-
-    self.publishAudioQuality_android = [[dict objectForKey:@"publishAudioQuality_android"]intValue];
-    if (!self.publishAudioQuality_android)
-    {
-        self.publishAudioQuality_android = DEFAULT_AUDIO_QUALITY;
+        BOOL publishEnabledIOS = [[dict objectForKey:@"publishEnablediPhone"] boolValue];
+        BOOL publishResolution_ios_phone = [[dict objectForKey:@"publishResolution_ios_phone"] boolValue];
+        BOOL publishResolution_ios_phonehd = [[dict objectForKey:@"publishResolution_ios_phonehd"] boolValue];
+        BOOL publishResolution_ios_tablet = [[dict objectForKey:@"publishResolution_ios_tablet"] boolValue];
+        BOOL publishResolution_ios_tablethd = [[dict objectForKey:@"publishResolution_ios_tablethd"] boolValue];
+        int publishAudioQuality_ios = [[dict objectForKey:@"publishAudioQuality_ios"]intValue];
+        NSString *iosPublishDirectory = [dict objectForKey:@"publishDirectory"];
+        if(!iosPublishDirectory)
+            iosPublishDirectory = @"";
+        PlatformSettings *iosPlatformSettings = [[PlatformSettings alloc] init];
+        iosPlatformSettings.name = @"iOS";
+        iosPlatformSettings.publishDirectory = iosPublishDirectory;
+        iosPlatformSettings.publishEnabled = publishEnabledIOS;
+        iosPlatformSettings.publish1x = publishResolution_ios_phone;
+        iosPlatformSettings.publish2x = publishResolution_ios_phonehd || publishResolution_ios_tablet;
+        iosPlatformSettings.publish4x = publishResolution_ios_tablethd;
+        iosPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
+        iosPlatformSettings.compressedImageFormat = 0;
+        iosPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
+        iosPlatformSettings.compressedNoAlphaImageQuality = 85;
+        iosPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
+        iosPlatformSettings.uncompressedImageQuality = 0;
+        iosPlatformSettings.customImageFormat = kFCImageFormatPNG;
+        iosPlatformSettings.customImageQuality = 0;
+        
+        iosPlatformSettings.publishSound = YES;
+        iosPlatformSettings.effectFormat = kFCSoundFormatCAF;
+        iosPlatformSettings.effectParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.effectQuality = publishAudioQuality_ios;
+        iosPlatformSettings.musicFormat = kFCSoundFormatMP4;
+        iosPlatformSettings.musicParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.musicQuality = publishAudioQuality_ios;
+        iosPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
+        iosPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.customSoundQuality = publishAudioQuality_ios;
+        
+        [_platformsSettings addObject:iosPlatformSettings];
+        
+        BOOL publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
+        BOOL publishResolution_android_phone = [[dict objectForKey:@"publishResolution_android_phone"] boolValue];
+        BOOL publishResolution_android_phonehd = [[dict objectForKey:@"publishResolution_android_phonehd"] boolValue];
+        BOOL publishResolution_android_tablet = [[dict objectForKey:@"publishResolution_android_tablet"] boolValue];
+        BOOL publishResolution_android_tablethd = [[dict objectForKey:@"publishResolution_android_tablethd"] boolValue];
+        int publishAudioQuality_android = [[dict objectForKey:@"publishAudioQuality_android"]intValue];
+        NSString *publishDirectoryAndroid = [dict objectForKey:@"publishDirectoryAndroid"];
+        if (!publishDirectoryAndroid)
+            publishDirectoryAndroid = @"";
+        PlatformSettings *androidPlatformSettings = [[PlatformSettings alloc] init];
+        androidPlatformSettings.publishEnabled = publishEnabledAndroid;
+        androidPlatformSettings.publish1x = publishResolution_android_phone;
+        androidPlatformSettings.publish2x = publishResolution_android_phonehd || publishResolution_android_tablet;
+        androidPlatformSettings.publish4x = publishResolution_android_tablethd;
+        androidPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
+        androidPlatformSettings.compressedImageFormat = 0;
+        androidPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
+        androidPlatformSettings.compressedNoAlphaImageQuality = 85;
+        androidPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
+        androidPlatformSettings.uncompressedImageQuality = 0;
+        androidPlatformSettings.customImageFormat = kFCImageFormatPNG;
+        androidPlatformSettings.customImageQuality = 0;
+        
+        androidPlatformSettings.publishSound = YES;
+        androidPlatformSettings.effectFormat = kFCSoundFormatWAV;
+        androidPlatformSettings.effectParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.effectQuality = publishAudioQuality_android;
+        androidPlatformSettings.musicFormat = kFCSoundFormatOGG;
+        androidPlatformSettings.musicParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.musicQuality = publishAudioQuality_android;
+        androidPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
+        androidPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.customSoundQuality = publishAudioQuality_android;
+        [_platformsSettings addObject:androidPlatformSettings];
+        //try to load old settings
     }
 
     self.publishToZipFile = [[dict objectForKey:@"publishToZipFile"] boolValue];
@@ -243,27 +267,9 @@
     dict[@"fileVersion"] = @kCCBProjectSettingsVersion;
     dict[@"resourcePaths"] = _resourcePaths;
     
-    dict[@"publishDirectory"] = _publishDirectory;
-    dict[@"publishDirectoryAndroid"] = _publishDirectoryAndroid;
-
-    dict[@"publishEnablediPhone"] = @(_publishEnabledIOS);
-    dict[@"publishEnabledAndroid"] = @(_publishEnabledAndroid);
-    
     dict[@"designSizeWidth"] = @(_designSizeWidth);
     dict[@"designSizeHeight"] = @(_designSizeHeight);
     dict[@"designResourceScale"] = @(_designResourceScale);
-
-    dict[@"publishResolution_ios_phone"] = @(_publishResolution_ios_phone);
-    dict[@"publishResolution_ios_phonehd"] = @(_publishResolution_ios_phonehd);
-    dict[@"publishResolution_ios_tablet"] = @(_publishResolution_ios_tablet);
-    dict[@"publishResolution_ios_tablethd"] = @(_publishResolution_ios_tablethd);
-    dict[@"publishResolution_android_phone"] = @(_publishResolution_android_phone);
-    dict[@"publishResolution_android_phonehd"] = @(_publishResolution_android_phonehd);
-    dict[@"publishResolution_android_tablet"] = @(_publishResolution_android_tablet);
-    dict[@"publishResolution_android_tablethd"] = @(_publishResolution_android_tablethd);
-    
-    dict[@"publishAudioQuality_ios"] = @(_publishAudioQuality_ios);
-    dict[@"publishAudioQuality_android"] = @(_publishAudioQuality_android);
 
     dict[@"publishToZipFile"] = @(_publishToZipFile);
     dict[@"onlyPublishCCBs"] = @(_onlyPublishCCBs);
@@ -710,7 +716,7 @@
         : anArray;
 }
 
--(void) setPublishResolution_ios_phone:(BOOL)publishResolution
+/*-(void) setPublishResolution_ios_phone:(BOOL)publishResolution
 {
 	if (_engine != CCBTargetEngineSpriteKit)
 	{
@@ -721,7 +727,7 @@
 		// Sprite Kit doesn't run on non-Retina phones to begin with...
 		_publishResolution_ios_phone = NO;
 	}
-}
+}*/
 
 - (void)flagFilesDirtyWithWarnings:(CCBWarnings *)warnings
 {

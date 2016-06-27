@@ -35,7 +35,7 @@
 }
 @property (nonatomic,copy) NSString* message;
 @property (nonatomic,copy) NSString* relatedFile;
-@property (nonatomic) CCBPublisherOSType osType;
+@property (nonatomic,copy) NSString* plaformName;
 @property (nonatomic,copy) NSString* resolution;
 @property (nonatomic,readonly) NSString* description;
 
@@ -47,12 +47,10 @@
 {
     NSString* warningsDescription;
     NSMutableDictionary* warningsFiles;
-    
-    CCBPublisherOSType currentOSType;
 }
 @property (nonatomic,readonly) NSMutableArray* warnings;
 @property (nonatomic,copy) NSString* warningsDescription;
-@property (nonatomic,assign) CCBPublisherOSType currentOSType;
+@property (nonatomic,copy) NSString* currentPlatform;
 
 - (void) addWarningWithDescription:(NSString*)description isFatal:(BOOL)fatal relatedFile:(NSString*) relatedFile resolution:(NSString*) resolution;
 - (void) addWarningWithDescription:(NSString*)description isFatal:(BOOL)fatal relatedFile:(NSString*) relatedFile;

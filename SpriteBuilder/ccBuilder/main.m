@@ -98,15 +98,15 @@ static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputP
 	}
 }
 
-CCBPublishingTarget * createTargetTargetForOSType(NSArray *inputDirectories, ProjectSettings* projectSettings, CCBPublisherOSType osType)
+/*CCBPublishingTarget * createTargetTargetForOSType(NSArray *inputDirectories, ProjectSettings* projectSettings, CCBPublisherOSType osType)
 {
-   /* NSMutableArray *inputDirs = NSMutableArray *result = [NSMutableArray array];
+    NSMutableArray *inputDirs = NSMutableArray *result = [NSMutableArray array];
     [inputDirs addObjectsFromArray:[self inputDirsOfResourcePaths]];
     
     if ([inputDirs count] == 0)
     {
         return;
-    }*/
+    }
     
     CCBPublishingTarget *target = [[CCBPublishingTarget alloc] init];
     target.osType = osType;
@@ -118,7 +118,7 @@ CCBPublishingTarget * createTargetTargetForOSType(NSArray *inputDirectories, Pro
     target.directoryToClean = [projectSettings publishDirForOSType:osType];
     
     return target;
-}
+}*/
 
 int main(int argc, char *argv[])
 {

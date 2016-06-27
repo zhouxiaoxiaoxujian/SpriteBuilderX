@@ -34,7 +34,7 @@
 
     _publisher.taskStatusUpdater = _taskStatusUpdater;
 
-    //[self configurePublisher];
+    [self configurePublisher];
 
     if (async)
     {
@@ -46,7 +46,7 @@
     }
 }
 
-/*- (void)configurePublisher
+- (void)configurePublisher
 {
     [self addPublishingTargetsForMainProject];
 
@@ -77,14 +77,14 @@
         NSString *packagePublishName = [self generatePublishedPackageName:packageSettings.package.name osType:osType resolution:resolution];
 
         CCBPublishingTarget *target = [[CCBPublishingTarget alloc] init];
-        target.osType = osType;
-        target.resolutions = @[resolution];
+        //target.osType = osType;
+        //target.resolutions = @[resolution];
         target.inputDirectories = @[packageSettings.package.fullPath];
         target.publishEnvironment = packageSettings.publishEnvironment;
-        target.audioQuality = [packageSettings settingsForOsType:osType].audio_quality;
+        //target.audioQuality = [packageSettings settingsForOsType:osType].audio_quality;
         target.zipOutputPath = [self zipOutputPath:packagePublishName baseDir:packageSettings.effectiveOutputDirectory];
-        target.outputDirectory = [self cachesPath:packagePublishName];
-        target.directoryToClean = [packageSettings.effectiveOutputDirectory absolutePathFromBaseDirPath:_projectSettings.projectPathDir];
+        //target.outputDirectory = [self cachesPath:packagePublishName];
+        //target.directoryToClean = [packageSettings.effectiveOutputDirectory absolutePathFromBaseDirPath:_projectSettings.projectPathDir];
 
         [_publisher addPublishingTarget:target];
     }
@@ -152,7 +152,7 @@
 
 - (void)addPublishingTargetsForMainProject
 {
-    if (_projectSettings.publishEnabledIOS)
+    /*if (_projectSettings.publishEnabledIOS)
     {
         [self addMainProjectPublishingTargetToPublisherForOSType:kCCBPublisherOSTypeIOS];
     }
@@ -161,11 +161,15 @@
     if (_projectSettings.publishEnabledAndroid)
     {
         [self addMainProjectPublishingTargetToPublisherForOSType:kCCBPublisherOSTypeAndroid];
+    }*/
+    for(PlatformSettings *platform in _projectSettings.platformsSettings)
+    {
+        [self addMainProjectPublishingTargetToPublisherForPlatform:platform];
     }
     //#endif
 }
 
-- (void)addMainProjectPublishingTargetToPublisherForOSType:(CCBPublisherOSType)osType
+- (void)addMainProjectPublishingTargetToPublisherForPlatform:(PlatformSettings*)platform
 {
     NSMutableArray *inputDirs = [[self inputDirsOfPackagePublishSettingsEnabledForMainProject] mutableCopy];
     [inputDirs addObjectsFromArray:[self inputDirsOfResourcePaths]];
@@ -176,13 +180,14 @@
     }
 
     CCBPublishingTarget *target = [[CCBPublishingTarget alloc] init];
-    target.osType = osType;
-    target.outputDirectory = [_projectSettings publishDirForOSType:osType];
-    target.resolutions = [_projectSettings publishingResolutionsForOSType:osType];
+    //target.osType = osType;
+    //target.outputDirectory = [_projectSettings publishDirForOSType:osType];
+    //target.resolutions = [_projectSettings publishingResolutionsForOSType:osType];
+    target.platform = platform;
     target.inputDirectories = inputDirs;
     target.publishEnvironment = _projectSettings.publishEnvironment;
-    target.audioQuality = [_projectSettings audioQualityForOsType:osType];
-    target.directoryToClean = [_projectSettings publishDirForOSType:osType];
+    //target.audioQuality = [_projectSettings audioQualityForOsType:osType];
+    //target.directoryToClean = [_projectSettings publishDirForOSType:osType];
 
     [_publisher addPublishingTarget:target];
 }
@@ -210,7 +215,7 @@
         [inputDirs addObject:somePackageSettings.package.dirPath];
     }
     return inputDirs;
-}*/
+}
 
 - (void)cancel
 {

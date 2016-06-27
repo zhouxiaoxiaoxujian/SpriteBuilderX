@@ -154,7 +154,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [_projectSettings store];
 }
 
-- (IBAction)selectPublishDirectoryIOS:(id)sender
+/*- (IBAction)selectPublishDirectoryIOS:(id)sender
 {
     [self selectPublishCurrentPath:_projectSettings.publishDirectory
                     dirSetterBlock:^(NSString *directoryPath) {
@@ -169,7 +169,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     {
         _projectSettings.publishDirectoryAndroid = directoryPath;
     }];
-}
+}*/
 
 - (IBAction)selectPackagePublishingCustomDirectory:(id)sender;
 {

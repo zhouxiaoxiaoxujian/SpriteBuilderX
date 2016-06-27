@@ -62,7 +62,7 @@
            : -1;
 }
 
-- (NSArray *)publishingResolutionsForOSType:(CCBPublisherOSType)osType;
+/*- (NSArray *)publishingResolutionsForOSType:(CCBPublisherOSType)osType;
 {
     if (osType == kCCBPublisherOSTypeAndroid)
     {
@@ -174,6 +174,6 @@
     }
 
     return DEFAULT_AUDIO_QUALITY;
-}
+}*/
 
 @end

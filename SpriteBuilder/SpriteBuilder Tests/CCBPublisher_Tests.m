@@ -41,7 +41,7 @@
 
     self.projectSettings = [[ProjectSettings alloc] init];
     _projectSettings.projectPath = [self fullPathForFile:@"baa.spritebuilder/publishtest.ccbproj"];
-    _projectSettings.publishEnabledIOS = YES;
+    _projectSettings.publishEnabledIOS = NO;
     _projectSettings.publishEnabledAndroid = NO;
     [_projectSettings addResourcePath:[self fullPathForFile:@"baa.spritebuilder/Packages/foo.sbpack"] error:nil];
 

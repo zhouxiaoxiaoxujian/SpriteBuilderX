@@ -53,7 +53,7 @@
     if(self.relatedFile) relaventFile = [NSString stringWithFormat:@" (%@)", self.relatedFile];
     
     
-    return [NSString stringWithFormat:@"%@%@%@: %@", [CCBWarning formatOsType:self.osType], resString, relaventFile, self.message];
+    return [NSString stringWithFormat:@"%@%@%@: %@", self.plaformName, resString, relaventFile, self.message];
 }
 
 @end
@@ -62,7 +62,6 @@
 @implementation CCBWarnings
 
 @synthesize warningsDescription;
-@synthesize currentOSType;
 
 - (id) init
 {
@@ -105,7 +104,7 @@
 
 - (void) addWarning:(CCBWarning*)warning
 {
-    warning.osType = currentOSType;
+    warning.plaformName = _currentPlatform;
     
     [_warnings addObject:warning];
     NSLog(@"CCB WARNING: %@", warning.description);
