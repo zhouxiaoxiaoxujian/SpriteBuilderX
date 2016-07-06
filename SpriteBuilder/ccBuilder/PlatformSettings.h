@@ -37,8 +37,9 @@
 @property (nonatomic, assign) kFCSoundParams customSoundParams;
 @property (nonatomic, assign) int customSoundQuality;
 @property (nonatomic, retain) NSMutableArray *packets;
+@property (nonatomic, retain, readonly) NSArray *packetsPublish;
 
-- (BOOL) store;
+
 - (id) initWithSerialization:(id)dict;
 - (id) init;
 

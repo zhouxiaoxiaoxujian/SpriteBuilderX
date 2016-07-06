@@ -18,7 +18,6 @@
 @property (nonatomic, weak) ProjectSettings* projectSettings;
 @property (nonatomic, strong) PackagePublishSettings *currentPackageSettings;
 @property (nonatomic, strong) PlatformSettings *currentPlatformSettings;
-@property (nonatomic, strong) NSMutableArray *settingsList;
 
 @property (nonatomic, strong) IBOutlet NSArrayController *arrayController;
 @property (nonatomic, strong) IBOutlet NSTableView *tableView;

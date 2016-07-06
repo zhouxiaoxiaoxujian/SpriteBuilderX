@@ -41,11 +41,11 @@ DQ
                     <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-g8-rGo">
                         <rect key="frame" x="20" y="188" width="156" height="268"/>
                         <clipView key="contentView" ambiguous="YES" id="Zwh-7J-mpo">
-                            <rect key="frame" x="1" y="1" width="154" height="266"/>
+                            <rect key="frame" x="1" y="1" width="154" height="251"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="124-eh-2ro">
-                                    <rect key="frame" x="0.0" y="0.0" width="154" height="266"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="155" height="251"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,6 @@ DQ
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="h7q-zs-Blb" name="value" keyPath="arrangedObjects.name" id="KM0-so-SQu"/>
-                                                <binding destination="h7q-zs-Blb" name="editable" keyPath="selection.canBeModified" id="2bZ-ub-5C9"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -81,8 +80,8 @@ DQ
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="j5G-gq-qeV">
-                            <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="j5G-gq-qeV">
+                            <rect key="frame" x="1" y="252" width="154" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="nxT-f5-3Ga">
@@ -283,7 +282,7 @@ DQ
         </window>
         <arrayController objectClassName="SettingsListEntry" editable="NO" automaticallyPreparesContent="YES" id="h7q-zs-Blb">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="settingsList" id="PNp-Dg-q1y"/>
+                <binding destination="-2" name="contentArray" keyPath="projectSettings.platformsSettings" id="9U9-9L-Z5K"/>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="HNl-Tz-Obk"/>

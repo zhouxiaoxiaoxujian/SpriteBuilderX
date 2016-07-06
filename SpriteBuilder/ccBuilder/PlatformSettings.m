@@ -7,12 +7,51 @@
 //
 
 #import "PlatformSettings.h"
+#import "ResourceManager.h"
+#import "RMPackage.h"
+
+@interface PacketPublish : NSObject
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) BOOL publish;
+@property (nonatomic, assign) NSMutableArray *packets;
+@end
+
+@implementation PacketPublish
+- (void) setPublish:(BOOL) value
+{
+    _publish = value;
+    if(value)
+    {
+        if(![_packets containsObject:_name])
+            [_packets addObject:_name];
+    }
+    else
+    {
+        if([_packets containsObject:_name])
+            [_packets removeObject:_name];
+    }
+}
+@end
 
 @implementation PlatformSettings
 
-- (BOOL) store
+- (NSArray*) packetsPublish
 {
-    return YES;
+    NSMutableArray *ret = [NSMutableArray array];
+    PacketPublish *mainPacket = [[PacketPublish alloc] init];
+    mainPacket.name = @"Main";
+    mainPacket.publish = [_packets containsObject:@"Main"];
+    mainPacket.packets = _packets;
+    [ret addObject:mainPacket];
+    for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
+    {
+        PacketPublish *packetPublish = [[PacketPublish alloc] init];
+        packetPublish.name = package.name;
+        packetPublish.publish = [_packets containsObject:packetPublish.name];
+        packetPublish.packets = _packets;
+        [ret addObject:packetPublish];
+    }
+    return ret;
 }
 
 - (id) serialize
@@ -52,16 +91,55 @@
     return dict;
 }
 
+- (id) init
+{
+    self = [super init];
+    if (!self)
+    {
+        return NULL;
+    }
+    _packets = [NSMutableArray array];
+    _name = @"Empty";
+    
+    _publishEnabled = YES;
+    _publishDirectory = @".";
+    
+    _publish1x = YES;
+    _publish2x = YES;
+    _publish4x = YES;
+    
+    _publishSound = YES;
+    _effectFormat = 0;
+    _effectParams= 0;
+    _effectQuality = 0;
+    _musicFormat = 0;
+    _musicParams = 0;
+    _musicQuality = 0;
+    _customSoundFormat = 0;
+    _customSoundParams = 0;
+    _customSoundQuality = 0;
+    
+    _compressedImageFormat = 0;
+    _compressedImageQuality = 0;
+    _compressedNoAlphaImageFormat = 0;
+    _compressedNoAlphaImageQuality = 0;
+    _uncompressedImageFormat = 0;
+    _uncompressedImageQuality = 0;
+    _customImageFormat = 0;
+    _customImageQuality = 0;
+    return self;
+}
+
 - (id) initWithSerialization:(id)dict
 {
-    self = [self init];
+    self = [super init];
     if (!self)
     {
         return NULL;
     }
     
     _name = [dict objectForKey:@"name"];
-    self.publishEnabled = [[dict objectForKey:@"platformName"] boolValue];
+    self.publishEnabled = [[dict objectForKey:@"publishEnabled"] boolValue];
     self.publishDirectory = [dict objectForKey:@"publishDirectory"];
     
     self.publish1x = [[dict objectForKey:@"publish1x"] boolValue];
@@ -91,16 +169,6 @@
     if(!self.packets)
         self.packets = [NSMutableArray array];
     
-    return self;
-}
-
-- (id) init
-{
-    self = [super init];
-    if (!self)
-    {
-        return NULL;
-    }
     return self;
 }
 

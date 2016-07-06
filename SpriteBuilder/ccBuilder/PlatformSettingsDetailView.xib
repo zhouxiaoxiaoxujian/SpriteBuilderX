@@ -376,8 +376,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
                         <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishDirectory" id="omv-nT-ubj"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
                     </connections>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-Kh-fMe">
@@ -618,25 +618,47 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="135" minWidth="40" maxWidth="1000" id="Ydm-3I-pFN">
+                                    <tableColumn width="20" minWidth="20" maxWidth="1000" id="Ydm-3I-pFN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ei9-LE-FcD">
+                                        <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ei9-LE-FcD">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.publish" id="Xjb-7X-34m"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn width="92" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" selectable="YES" editable="YES" alignment="left" title="Text Cell" usesSingleLineMode="YES" id="geo-qV-dX1">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.name" id="Gl9-az-LGT"/>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <binding destination="hX1-CZ-OUh" name="content" keyPath="arrangedObjects" id="o4A-DW-3Be"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="sHc-ML-axH">
-                        <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
+                        <rect key="frame" x="1" y="229" width="138" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gnQ-ZO-3kR">
@@ -648,5 +670,10 @@
             <point key="canvasLocation" x="405" y="271"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="ttd-bs-ebq"/>
+        <arrayController objectClassName="SettingsListEntry" editable="NO" automaticallyPreparesContent="YES" id="hX1-CZ-OUh">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="currentPlatformSettings.packetsPublish" id="f6a-uw-5wI"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

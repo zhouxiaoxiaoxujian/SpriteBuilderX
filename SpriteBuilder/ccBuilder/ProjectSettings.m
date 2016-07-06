@@ -155,7 +155,7 @@
         iosPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
         iosPlatformSettings.customSoundQuality = publishAudioQuality_ios;
         [_platformsSettings addObject:iosPlatformSettings];
-        [iosPlatformSettings.packets addObject:@"main"];
+        [iosPlatformSettings.packets addObject:@"Main"];
         
         BOOL publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
         BOOL publishResolution_android_phone = [[dict objectForKey:@"publishResolution_android_phone"] boolValue];
@@ -192,7 +192,7 @@
         androidPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
         androidPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
         androidPlatformSettings.customSoundQuality = publishAudioQuality_android;
-        [androidPlatformSettings.packets addObject:@"main"];
+        [androidPlatformSettings.packets addObject:@"Main"];
         [_platformsSettings addObject:androidPlatformSettings];
         //try to load old settings
     }

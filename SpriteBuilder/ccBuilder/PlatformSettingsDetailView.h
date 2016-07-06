@@ -12,7 +12,4 @@
 
 @interface PlatformSettingsDetailView : NSView
 
-@property (nonatomic, strong) IBOutlet NSView *androidView;
-@property (nonatomic) BOOL showAndroidSettings;
-
 @end

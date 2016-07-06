@@ -11,10 +11,4 @@
 
 @implementation PlatformSettingsDetailView
 
-- (void)setShowAndroidSettings:(BOOL)showAndroidSettings
-{
-    _showAndroidSettings = showAndroidSettings;
-    [_androidView setHidden:!showAndroidSettings];
-}
-
 @end

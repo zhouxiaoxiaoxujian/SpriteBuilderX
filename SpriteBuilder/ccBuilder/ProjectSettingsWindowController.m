@@ -73,9 +73,6 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     if (self)
     {
         self.projectSettings = projectSettings;
-        self.settingsList = [NSMutableArray array];
-
-        [self populateSettingsList];
     }
     
     return self;
@@ -88,18 +85,17 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     NSIndexSet *firstRow = [[NSIndexSet alloc] initWithIndex:0];
     [_tableView selectRowIndexes:firstRow byExtendingSelection:NO];
 
-    SettingsListEntry *listEntry = _settingsList[(NSUInteger) 0];
-    [self loadDetailViewForPlatform:listEntry.platformSettings];
+    [self loadDetailViewForPlatform:_projectSettings.platformsSettings[(NSUInteger) 0]];
 }
 
-- (void)populateSettingsList
+/*- (void)populateSettingsList
 {
     for (PlatformSettings *platformSettings in _projectSettings.platformsSettings)
     {
         SettingsListEntry *mainProjectEntry = [[SettingsListEntry alloc] initWithPlatformSettings:platformSettings];
         [_settingsList addObject:mainProjectEntry];
     }
-/*
+
     for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
     {
         PackagePublishSettings *packagePublishSettings = [[PackagePublishSettings alloc] initWithPackage:package];
@@ -109,13 +105,12 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
         packageEntry.packagePublishSettings = packagePublishSettings;
 
         [_settingsList addObject:packageEntry];
-    }*/
-}
+    }
+}*/
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
-    SettingsListEntry *listEntry = _settingsList[(NSUInteger) _tableView.selectedRow];
-    [self loadDetailViewForPlatform:listEntry.platformSettings];
+    [self loadDetailViewForPlatform:_projectSettings.platformsSettings[(NSUInteger) _tableView.selectedRow]];
 }
 
 - (void)removeAllSubviewsOfDetailView
@@ -133,7 +128,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
     PlatformSettingsDetailView *view = [self loadViewWithNibName:@"PlatformSettingsDetailView" viewClass:[PlatformSettingsDetailView class]];
 
-    view.showAndroidSettings = YES;
+    //view.showAndroidSettings = YES;
 }
 
 - (id)loadViewWithNibName:(NSString *)nibName viewClass:(Class)viewClass
@@ -162,10 +157,6 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 - (void)saveAllSettings
 {
-    for (SettingsListEntry *listEntry in _settingsList)
-    {
-        [listEntry.platformSettings store];
-    }
     [_projectSettings store];
 }
 
@@ -188,16 +179,12 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 - (IBAction)selectPackagePublishingCustomDirectory:(id)sender;
 {
-    SettingsListEntry *listEntry = _settingsList[(NSUInteger) _tableView.selectedRow];
-    if (!listEntry.platformSettings)
-    {
-        return;
-    }
+    PlatformSettings *platformSettings = _projectSettings.platformsSettings[(NSUInteger) _tableView.selectedRow];
 
-    [self selectPublishCurrentPath:listEntry.platformSettings.publishDirectory
+    [self selectPublishCurrentPath:platformSettings.publishDirectory
                     dirSetterBlock:^(NSString *directoryPath)
     {
-        listEntry.platformSettings.publishDirectory = directoryPath;
+        platformSettings.publishDirectory = directoryPath;
     }];
 }
 
