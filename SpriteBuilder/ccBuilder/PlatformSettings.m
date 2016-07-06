@@ -52,6 +52,7 @@
     dict[@"uncompressedImageQuality"] = @(_uncompressedImageQuality);
     dict[@"customImageFormat"] = @(_customImageFormat);
     dict[@"customImageQuality"] = @(_customImageQuality);
+    dict[@"packets"] = _packets;
     
     return dict;
 }
@@ -91,6 +92,9 @@
     self.uncompressedImageQuality = [[dict objectForKey:@"uncompressedImageQuality"] intValue];
     self.customImageFormat = [[dict objectForKey:@"customImageFormat"] intValue];
     self.customImageQuality = [[dict objectForKey:@"customImageQuality"] intValue];
+    self.packets = [dict objectForKey:@"packets"];
+    if(!self.packets)
+        self.packets = [NSMutableArray array];
     
     return self;
 }

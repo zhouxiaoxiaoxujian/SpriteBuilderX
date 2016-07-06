@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -9,11 +9,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" userLabel="Platform Settings Detail View" customClass="PlatformSettingsDetailView">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="292"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-9J-jr5">
-                    <rect key="frame" x="0.0" y="97" width="480" height="148"/>
+                    <rect key="frame" x="154" y="105" width="339" height="148"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
                             <rect key="frame" x="20" y="145" width="440" height="5"/>
@@ -70,7 +70,7 @@
                                 <menu key="menu" title="OtherViews" id="bOo-4a-9LB">
                                     <items>
                                         <menuItem title="Origin" tag="-1" id="yAc-MG-yY8"/>
-                                        <menuItem title="PNG" state="on" id="Wrw-eR-kPd"/>
+                                        <menuItem title="PNG" id="Wrw-eR-kPd"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="zNH-FO-YXg"/>
                                         <menuItem isSeparatorItem="YES" id="QQf-24-nIB"/>
                                         <menuItem title="WebP" tag="7" id="ANk-4i-l7N" userLabel="WebP">
@@ -113,7 +113,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
-                            <rect key="frame" x="298" y="83" width="57" height="19"/>
+                            <rect key="frame" x="298" y="83" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="enl-v8-Xmu">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="cVl-Jx-4UR">
                                     <real key="minimum" value="0.0"/>
@@ -143,7 +143,7 @@
                                 <menu key="menu" title="OtherViews" id="Lzn-tz-Irj">
                                     <items>
                                         <menuItem title="Origin" tag="-1" id="Pcl-PD-Opt"/>
-                                        <menuItem title="PNG" state="on" id="FM7-Ib-CyB"/>
+                                        <menuItem title="PNG" id="FM7-Ib-CyB"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="fAh-Yi-M4K"/>
                                         <menuItem isSeparatorItem="YES" id="AY1-kN-cVi"/>
                                         <menuItem title="JPG" tag="8" id="Ro2-Lb-T90">
@@ -189,7 +189,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
-                            <rect key="frame" x="298" y="61" width="57" height="19"/>
+                            <rect key="frame" x="298" y="61" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="VEp-jJ-qal">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="sZc-AY-jS9">
                                     <real key="minimum" value="0.0"/>
@@ -213,13 +213,13 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asq-JC-25w" userLabel="Uncompressed image">
                             <rect key="frame" x="198" y="40" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mg5-QR-u7q">
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mg5-QR-u7q">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="ga7-mB-uLT">
                                     <items>
                                         <menuItem title="Origin" tag="-1" id="Uxl-Pq-Ogq"/>
-                                        <menuItem title="PNG" state="on" id="xz7-N7-DqL"/>
+                                        <menuItem title="PNG" id="xz7-N7-DqL"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="YMZ-0q-v8E"/>
                                         <menuItem isSeparatorItem="YES" id="slJ-qW-haJ"/>
                                         <menuItem title="JPG" tag="8" id="Smp-3O-Izk">
@@ -265,7 +265,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-H5-GwE">
-                            <rect key="frame" x="298" y="38" width="57" height="19"/>
+                            <rect key="frame" x="298" y="38" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="h6x-Nm-y0S">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="w1f-pB-9Yy">
                                     <real key="minimum" value="0.0"/>
@@ -289,13 +289,13 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-cl-Bsw" userLabel="Custom image">
                             <rect key="frame" x="198" y="17" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="3Dl-09-A4U">
                                     <items>
                                         <menuItem title="Origin" tag="-1" id="1CK-z2-FTK"/>
-                                        <menuItem title="PNG" state="on" id="qKp-qs-9aB"/>
+                                        <menuItem title="PNG" id="qKp-qs-9aB"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="aPt-OT-K22"/>
                                         <menuItem isSeparatorItem="YES" id="baD-se-AAo"/>
                                         <menuItem title="JPG" tag="8" id="XUf-QF-7S1">
@@ -341,7 +341,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
-                            <rect key="frame" x="298" y="15" width="57" height="19"/>
+                            <rect key="frame" x="298" y="15" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="nO3-ra-FUw">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="PjL-kB-hKU">
                                     <real key="minimum" value="0.0"/>
@@ -358,7 +358,7 @@
                     </subviews>
                 </customView>
                 <button identifier=" " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-zb-gM5">
-                    <rect key="frame" x="424" y="256" width="48" height="21"/>
+                    <rect key="frame" x="445" y="264" width="48" height="21"/>
                     <buttonCell key="cell" type="smallSquare" title="Select" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RsQ-4R-yom">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
@@ -369,7 +369,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
-                    <rect key="frame" x="125" y="257" width="296" height="19"/>
+                    <rect key="frame" x="154" y="265" width="288" height="19"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="p1j-hg-a42">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -381,7 +381,7 @@
                     </connections>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-Kh-fMe">
-                    <rect key="frame" x="18" y="258" width="116" height="18"/>
+                    <rect key="frame" x="18" y="266" width="116" height="18"/>
                     <buttonCell key="cell" type="check" title="Publish" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2SJ-2h-VGr">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -392,7 +392,7 @@
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-1B-jMi">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="98"/>
+                    <rect key="frame" x="154" y="8" width="339" height="98"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-uA-EFL">
                             <rect key="frame" x="20" y="95" width="440" height="5"/>
@@ -408,8 +408,35 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-Qu-lP0" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="13" y="32" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Music" id="lof-Nn-57l">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-hk-0Pe" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="13" y="10" width="180" height="14"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom sound" id="Rgt-LU-jEE">
+                                <font key="font" metaFont="smallSystem"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFB-ze-Zus">
+                            <rect key="frame" x="13" y="73" width="116" height="18"/>
+                            <buttonCell key="cell" type="check" title="Sounds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MOb-xz-d0B">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="Tkk-Lp-njs"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iUr-WR-yzR"/>
+                            </connections>
+                        </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcU-Ds-rqN">
-                            <rect key="frame" x="198" y="54" width="73" height="15"/>
+                            <rect key="frame" x="134" y="54" width="73" height="15"/>
                             <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="Knw-Ym-bPr" id="cqu-gt-djk">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -428,13 +455,13 @@
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-O2-5tw">
-                            <rect key="frame" x="298" y="49" width="96" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="Rz1-rO-nvu">
+                            <rect key="frame" x="234" y="49" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Rz1-rO-nvu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="mnf-uW-pLd">
                                     <items>
-                                        <menuItem title="8 - Best" state="on" tag="8" id="8lb-pz-ity"/>
+                                        <menuItem title="8 - Best" tag="8" id="8lb-pz-ity"/>
                                         <menuItem title="7" tag="7" id="AIe-og-9VQ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -460,20 +487,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="cMv-4Z-O9U"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="oEX-l6-LfN"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="cMv-4Z-O9U"/>
                             </connections>
                         </popUpButton>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-Qu-lP0" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="13" y="32" width="180" height="14"/>
-                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Music" id="lof-Nn-57l">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-5h-XA8">
-                            <rect key="frame" x="198" y="32" width="73" height="15"/>
+                            <rect key="frame" x="134" y="32" width="73" height="15"/>
                             <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="yEJ-2o-9en" id="XC6-P6-Z68">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -492,13 +511,13 @@
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
-                            <rect key="frame" x="298" y="5" width="96" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="IJx-nk-les">
+                            <rect key="frame" x="234" y="5" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="IJx-nk-les">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="sAC-BU-k3U">
                                     <items>
-                                        <menuItem title="8 - Best" state="on" tag="8" id="1kA-sn-9ly"/>
+                                        <menuItem title="8 - Best" tag="8" id="1kA-sn-9ly"/>
                                         <menuItem title="7" tag="7" id="H7P-6p-TWm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -524,18 +543,18 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IZa-SK-kUu"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="Gwm-CN-iTr"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IZa-SK-kUu"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
-                            <rect key="frame" x="298" y="27" width="96" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="8 - Best" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="8" imageScaling="proportionallyDown" inset="2" id="oc4-Ea-OdP">
+                            <rect key="frame" x="234" y="27" width="96" height="22"/>
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="oc4-Ea-OdP">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="ghP-zD-Eue">
                                     <items>
-                                        <menuItem title="8 - Best" state="on" tag="8" id="JQd-8z-WJ0"/>
+                                        <menuItem title="8 - Best" tag="8" id="JQd-8z-WJ0"/>
                                         <menuItem title="7" tag="7" id="rDn-x4-alf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -561,12 +580,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="yG4-kS-UpX"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="0fb-6K-HRK"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="yG4-kS-UpX"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-XY-nkX">
-                            <rect key="frame" x="198" y="9" width="73" height="15"/>
+                            <rect key="frame" x="134" y="9" width="73" height="15"/>
                             <popUpButtonCell key="cell" type="push" title="WAV" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="uSn-O1-Fb0" id="cPE-Bk-ZZ6">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -584,27 +603,47 @@
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="zD4-Zu-knk"/>
                             </connections>
                         </popUpButton>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-hk-0Pe" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="13" y="10" width="180" height="14"/>
-                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom sound" id="Rgt-LU-jEE">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFB-ze-Zus">
-                            <rect key="frame" x="13" y="73" width="116" height="18"/>
-                            <buttonCell key="cell" type="check" title="Sounds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MOb-xz-d0B">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iUr-WR-yzR"/>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="Tkk-Lp-njs"/>
-                            </connections>
-                        </button>
                     </subviews>
                 </customView>
+                <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6M-Yx-fPn">
+                    <rect key="frame" x="6" y="8" width="140" height="245"/>
+                    <clipView key="contentView" ambiguous="YES" id="d4D-Dq-xmy">
+                        <rect key="frame" x="1" y="1" width="138" height="243"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="o0f-we-ZuS">
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="243"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="135" minWidth="40" maxWidth="1000" id="Ydm-3I-pFN">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Ei9-LE-FcD">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="sHc-ML-axH">
+                        <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gnQ-ZO-3kR">
+                        <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <point key="canvasLocation" x="405" y="271"/>
         </customView>

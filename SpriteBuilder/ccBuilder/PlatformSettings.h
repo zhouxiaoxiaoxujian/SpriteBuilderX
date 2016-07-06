@@ -36,6 +36,7 @@
 @property (nonatomic, assign) kFCSoundFormat customSoundFormat;
 @property (nonatomic, assign) kFCSoundParams customSoundParams;
 @property (nonatomic, assign) int customSoundQuality;
+@property (nonatomic, retain) NSMutableArray *packets;
 
 - (BOOL) store;
 - (id) initWithSerialization:(id)dict;
