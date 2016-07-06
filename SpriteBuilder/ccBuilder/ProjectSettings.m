@@ -125,12 +125,12 @@
         BOOL publishResolution_ios_tablet = [[dict objectForKey:@"publishResolution_ios_tablet"] boolValue];
         BOOL publishResolution_ios_tablethd = [[dict objectForKey:@"publishResolution_ios_tablethd"] boolValue];
         int publishAudioQuality_ios = [[dict objectForKey:@"publishAudioQuality_ios"]intValue];
-        NSString *iosPublishDirectory = [dict objectForKey:@"publishDirectory"];
-        if(!iosPublishDirectory)
-            iosPublishDirectory = @"";
+        NSString *publishDirectoryIos = [dict objectForKey:@"publishDirectory"];
+        if(!publishDirectoryIos)
+            publishDirectoryIos = @"";
         PlatformSettings *iosPlatformSettings = [[PlatformSettings alloc] init];
         iosPlatformSettings.name = @"iOS";
-        iosPlatformSettings.publishDirectory = iosPublishDirectory;
+        iosPlatformSettings.publishDirectory = publishDirectoryIos;
         iosPlatformSettings.publishEnabled = publishEnabledIOS;
         iosPlatformSettings.publish1x = publishResolution_ios_phone;
         iosPlatformSettings.publish2x = publishResolution_ios_phonehd || publishResolution_ios_tablet;
@@ -154,8 +154,8 @@
         iosPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
         iosPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
         iosPlatformSettings.customSoundQuality = publishAudioQuality_ios;
-        
         [_platformsSettings addObject:iosPlatformSettings];
+        [iosPlatformSettings.packets addObject:@"main"];
         
         BOOL publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
         BOOL publishResolution_android_phone = [[dict objectForKey:@"publishResolution_android_phone"] boolValue];
@@ -167,6 +167,8 @@
         if (!publishDirectoryAndroid)
             publishDirectoryAndroid = @"";
         PlatformSettings *androidPlatformSettings = [[PlatformSettings alloc] init];
+        androidPlatformSettings.name = @"Android";
+        androidPlatformSettings.publishDirectory = publishDirectoryAndroid;
         androidPlatformSettings.publishEnabled = publishEnabledAndroid;
         androidPlatformSettings.publish1x = publishResolution_android_phone;
         androidPlatformSettings.publish2x = publishResolution_android_phonehd || publishResolution_android_tablet;
@@ -190,6 +192,7 @@
         androidPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
         androidPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
         androidPlatformSettings.customSoundQuality = publishAudioQuality_android;
+        [androidPlatformSettings.packets addObject:@"main"];
         [_platformsSettings addObject:androidPlatformSettings];
         //try to load old settings
     }

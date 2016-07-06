@@ -10,11 +10,6 @@
 
 @implementation PlatformSettings
 
-- (NSString *)name
-{
-    return @"test";
-}
-
 - (BOOL) store
 {
     return YES;
@@ -101,7 +96,7 @@
 
 - (id) init
 {
-    self = [self init];
+    self = [super init];
     if (!self)
     {
         return NULL;

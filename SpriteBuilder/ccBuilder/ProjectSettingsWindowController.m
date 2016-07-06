@@ -43,6 +43,17 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     return self;
 }
 
+- (instancetype)initWithPlatformSettings:(PlatformSettings*)platformSettings
+{
+    self = [super init];
+    if (self)
+    {
+        self.canBeModified = NO;
+        self.platformSettings = platformSettings;
+    }
+    return self;
+}
+
 - (NSString *)name
 {
     return self.platformSettings.name;
@@ -55,12 +66,13 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 @implementation ProjectSettingsWindowController
 
-- (instancetype)init
+- (instancetype)initWithProjectSettings:(ProjectSettings*) projectSettings;
 {
     self = [self initWithWindowNibName:@"ProjectSettingsWindow"];
     
     if (self)
     {
+        self.projectSettings = projectSettings;
         self.settingsList = [NSMutableArray array];
 
         [self populateSettingsList];
@@ -82,8 +94,11 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 - (void)populateSettingsList
 {
-    SettingsListEntry *mainProjectEntry = [[SettingsListEntry alloc] init];
-    [_settingsList addObject:mainProjectEntry];
+    for (PlatformSettings *platformSettings in _projectSettings.platformsSettings)
+    {
+        SettingsListEntry *mainProjectEntry = [[SettingsListEntry alloc] initWithPlatformSettings:platformSettings];
+        [_settingsList addObject:mainProjectEntry];
+    }
 /*
     for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
     {
@@ -179,11 +194,11 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
         return;
     }
 
-//    [self selectPublishCurrentPath:listEntry.packagePublishSettings.customOutputDirectory
-//                    dirSetterBlock:^(NSString *directoryPath)
-//    {
-//        listEntry.packagePublishSettings.customOutputDirectory = directoryPath;
-//    }];
+    [self selectPublishCurrentPath:listEntry.platformSettings.publishDirectory
+                    dirSetterBlock:^(NSString *directoryPath)
+    {
+        listEntry.platformSettings.publishDirectory = directoryPath;
+    }];
 }
 
 - (void)selectPublishCurrentPath:(NSString *)currentPath dirSetterBlock:(DirectorySetterBlock)dirSetterBlock

@@ -28,4 +28,6 @@
 - (IBAction)selectPublishDirectoryAndroid:(id)sender;
 - (IBAction)selectPackagePublishingCustomDirectory:(id)sender;
 
+- (instancetype)initWithProjectSettings:(ProjectSettings*) projectSettings;
+
 @end

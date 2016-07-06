@@ -28,8 +28,8 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="fQs-gc-FpM"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish1x" id="yd4-5U-4k7"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="feG-bJ-yu1"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20Q-SB-q8R">
@@ -39,8 +39,8 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="8it-WV-3N3"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish2x" id="fzb-Ne-kZ3"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="6TW-bZ-wb7"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-Da-Pp0">
@@ -50,8 +50,8 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="ds5-3Y-aAg"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish4x" id="BEG-Ks-yfi"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="ezA-JO-wg1"/>
                             </connections>
                         </button>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1X-aa-Nid" customClass="CCBTextFieldLabel">
@@ -109,7 +109,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="t42-M2-1Qq"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="JmQ-Sl-Z7r"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
@@ -124,7 +124,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Nn8-f1-Pf4"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Z1n-aJ-s9B"/>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-lY-pXv" customClass="CCBTextFieldLabel">
@@ -185,7 +185,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="bbc-kf-oEU"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="3gr-dD-tC5"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
@@ -200,7 +200,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iSg-Lt-2Q0"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="bhJ-El-zvL"/>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-Et-gFU" customClass="CCBTextFieldLabel">
@@ -261,7 +261,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="KhB-68-2MW"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="0Or-TX-7m3"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-H5-GwE">
@@ -276,7 +276,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IXl-cq-CBu"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="v57-9E-zuS"/>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQ2-Ek-Axd" customClass="CCBTextFieldLabel">
@@ -337,7 +337,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="X3A-40-hWB"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="71s-Tg-DLC"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
@@ -352,7 +352,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Zdf-8T-caC"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="d8i-uD-Kfj"/>
                             </connections>
                         </textField>
                     </subviews>
@@ -365,7 +365,7 @@
                     </buttonCell>
                     <connections>
                         <action selector="selectPackagePublishingCustomDirectory:" target="-2" id="nHc-JI-osY"/>
-                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="RwE-Dy-kcs"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="pcp-22-IAY"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
@@ -376,8 +376,8 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="currentPackageSettings.customOutputDirectory" id="AF6-Dy-VU2"/>
-                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="oER-Ww-Z8I"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
+                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishDirectory" id="omv-nT-ubj"/>
                     </connections>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-Kh-fMe">
@@ -388,7 +388,7 @@
                     </buttonCell>
                     <connections>
                         <binding destination="-2" name="title" keyPath="currentPlatformSettings.name" id="Xax-KE-XJj"/>
-                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="iad-5a-KXo"/>
+                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishEnabled" id="LtH-3c-ArN"/>
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-1B-jMi">
@@ -431,8 +431,8 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publish" id="Tkk-Lp-njs"/>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="iUr-WR-yzR"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="gzW-JE-vAb"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishSound" id="Ql3-Vh-ZYe"/>
                             </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcU-Ds-rqN">
@@ -451,7 +451,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="ZCY-f9-0sj"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="yvv-N0-K57"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-O2-5tw">
@@ -488,7 +488,7 @@
                             </popUpButtonCell>
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="oEX-l6-LfN"/>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="cMv-4Z-O9U"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="kBT-xf-keS"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-5h-XA8">
@@ -507,7 +507,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="Vyb-hD-amn"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="76R-0c-4Ex"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
@@ -544,7 +544,7 @@
                             </popUpButtonCell>
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="Gwm-CN-iTr"/>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="IZa-SK-kUu"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="6Cx-hT-9DO"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
@@ -581,7 +581,7 @@
                             </popUpButtonCell>
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPackageSettings.osSettings.ios.audio_quality" id="0fb-6K-HRK"/>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="yG4-kS-UpX"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Zmn-gg-PTl"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-XY-nkX">
@@ -600,7 +600,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publish" id="zD4-Zu-knk"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Nqs-3g-fqP"/>
                             </connections>
                         </popUpButton>
                     </subviews>

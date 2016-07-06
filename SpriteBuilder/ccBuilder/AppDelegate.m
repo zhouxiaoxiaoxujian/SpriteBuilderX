@@ -2948,7 +2948,7 @@ typedef enum
         return;
     }
 
-    ProjectSettingsWindowController *settingsWindowController = [[ProjectSettingsWindowController alloc] init];
+    ProjectSettingsWindowController *settingsWindowController = [[ProjectSettingsWindowController alloc] initWithProjectSettings:self.projectSettings];
     settingsWindowController.projectSettings = self.projectSettings;
 
     if ([settingsWindowController runModalSheetForWindow:window])
