@@ -633,7 +633,7 @@
                                             <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.publish" id="Xjb-7X-34m"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="92" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
+                                    <tableColumn editable="NO" width="110" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -646,7 +646,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.name" id="Gl9-az-LGT"/>
+                                            <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.name" id="KUk-c9-Z5U"/>
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
@@ -658,7 +658,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="sHc-ML-axH">
-                        <rect key="frame" x="1" y="229" width="138" height="15"/>
+                        <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gnQ-ZO-3kR">
