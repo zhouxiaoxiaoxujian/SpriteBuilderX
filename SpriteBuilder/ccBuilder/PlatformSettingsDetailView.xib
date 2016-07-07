@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ProjectSettingsWindowController"/>
@@ -12,8 +12,31 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <button identifier=" " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-zb-gM5">
+                    <rect key="frame" x="445" y="256" width="48" height="21"/>
+                    <buttonCell key="cell" type="smallSquare" title="Select" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RsQ-4R-yom">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectPackagePublishingCustomDirectory:" target="-2" id="nHc-JI-osY"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="pcp-22-IAY"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
+                    <rect key="frame" x="154" y="257" width="288" height="19"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="p1j-hg-a42">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishDirectory" id="omv-nT-ubj"/>
+                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
+                    </connections>
+                </textField>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-9J-jr5">
-                    <rect key="frame" x="154" y="105" width="339" height="148"/>
+                    <rect key="frame" x="154" y="105" width="339" height="138"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
                             <rect key="frame" x="20" y="145" width="440" height="5"/>
@@ -22,7 +45,7 @@
                             <font key="titleFont" metaFont="system"/>
                         </box>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4i-P9-OgD">
-                            <rect key="frame" x="18" y="119" width="99" height="16"/>
+                            <rect key="frame" x="18" y="114" width="99" height="16"/>
                             <buttonCell key="cell" type="check" title="Images 1x" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1Ip-fI-oGa">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -33,7 +56,7 @@
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20Q-SB-q8R">
-                            <rect key="frame" x="134" y="119" width="99" height="16"/>
+                            <rect key="frame" x="134" y="114" width="99" height="16"/>
                             <buttonCell key="cell" type="check" title="Images 2x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5rR-xK-KM3">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -44,7 +67,7 @@
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-Da-Pp0">
-                            <rect key="frame" x="242" y="119" width="99" height="16"/>
+                            <rect key="frame" x="242" y="114" width="99" height="16"/>
                             <buttonCell key="cell" type="check" title="Images 4x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rfu-7q-xKM">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -55,7 +78,7 @@
                             </connections>
                         </button>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1X-aa-Nid" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="18" y="86" width="180" height="14"/>
+                            <rect key="frame" x="18" y="81" width="180" height="14"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Compressed image with alpha" id="LzD-24-wYA">
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -63,7 +86,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-Pf-L05" userLabel="Compressed image with alpha">
-                            <rect key="frame" x="198" y="85" width="94" height="15"/>
+                            <rect key="frame" x="198" y="80" width="94" height="15"/>
                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="A81-6h-iWn" userLabel="PNG">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -90,6 +113,7 @@
                                         <menuItem title="PVRTC 2bpp" tag="6" id="YRg-Xf-gIv">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Bec-sH-zBq"/>
                                         <menuItem title="DXT1" tag="6" id="vrV-lI-6aA" userLabel="DXT1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -113,7 +137,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
-                            <rect key="frame" x="298" y="83" width="30" height="19"/>
+                            <rect key="frame" x="298" y="78" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="enl-v8-Xmu">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="cVl-Jx-4UR">
                                     <real key="minimum" value="0.0"/>
@@ -128,7 +152,7 @@
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-lY-pXv" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="18" y="64" width="180" height="14"/>
+                            <rect key="frame" x="18" y="59" width="180" height="14"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Compressed image without alpha" id="URY-og-k7e">
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -136,7 +160,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-6w-L6m" userLabel="Compressed image without alpha">
-                            <rect key="frame" x="198" y="63" width="94" height="15"/>
+                            <rect key="frame" x="198" y="58" width="94" height="15"/>
                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="RGJ-Sm-M8A" userLabel="PNH">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -166,6 +190,7 @@
                                         <menuItem title="PVRTC 2bpp" tag="6" id="FDb-2E-0tC">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Jng-KA-bmE"/>
                                         <menuItem title="DXT1" tag="6" id="pBD-Va-jeA" userLabel="DXT1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -189,7 +214,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
-                            <rect key="frame" x="298" y="61" width="30" height="19"/>
+                            <rect key="frame" x="298" y="56" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="VEp-jJ-qal">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="sZc-AY-jS9">
                                     <real key="minimum" value="0.0"/>
@@ -204,7 +229,7 @@
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-Et-gFU" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="18" y="41" width="180" height="14"/>
+                            <rect key="frame" x="18" y="36" width="180" height="14"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Uncompressed image" id="w4V-I7-6qM">
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -212,7 +237,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asq-JC-25w" userLabel="Uncompressed image">
-                            <rect key="frame" x="198" y="40" width="94" height="15"/>
+                            <rect key="frame" x="198" y="35" width="94" height="15"/>
                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Mg5-QR-u7q">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -242,6 +267,7 @@
                                         <menuItem title="PVRTC 2bpp" tag="6" id="bSN-8C-L9p">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="v0H-ie-26X"/>
                                         <menuItem title="DXT1" tag="6" id="t3f-pD-0P6" userLabel="DXT1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -265,7 +291,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-H5-GwE">
-                            <rect key="frame" x="298" y="38" width="30" height="19"/>
+                            <rect key="frame" x="298" y="33" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="h6x-Nm-y0S">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="w1f-pB-9Yy">
                                     <real key="minimum" value="0.0"/>
@@ -280,7 +306,7 @@
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQ2-Ek-Axd" customClass="CCBTextFieldLabel">
-                            <rect key="frame" x="18" y="18" width="180" height="14"/>
+                            <rect key="frame" x="18" y="13" width="180" height="14"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom image" id="jX1-Xp-YBe">
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -288,7 +314,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-cl-Bsw" userLabel="Custom image">
-                            <rect key="frame" x="198" y="17" width="94" height="15"/>
+                            <rect key="frame" x="198" y="12" width="94" height="15"/>
                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
@@ -318,6 +344,7 @@
                                         <menuItem title="PVRTC 2bpp" tag="6" id="Az3-eh-yM1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="t4d-5o-lTG"/>
                                         <menuItem title="DXT1" tag="6" id="qst-xr-lC9" userLabel="DXT1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -341,7 +368,7 @@
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
-                            <rect key="frame" x="298" y="15" width="30" height="19"/>
+                            <rect key="frame" x="298" y="10" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="nO3-ra-FUw">
                                 <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="%" negativePrefix="-" negativeSuffix="%" id="PjL-kB-hKU">
                                     <real key="minimum" value="0.0"/>
@@ -357,40 +384,6 @@
                         </textField>
                     </subviews>
                 </customView>
-                <button identifier=" " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-zb-gM5">
-                    <rect key="frame" x="445" y="264" width="48" height="21"/>
-                    <buttonCell key="cell" type="smallSquare" title="Select" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RsQ-4R-yom">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="selectPackagePublishingCustomDirectory:" target="-2" id="nHc-JI-osY"/>
-                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="pcp-22-IAY"/>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
-                    <rect key="frame" x="154" y="265" width="288" height="19"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="p1j-hg-a42">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishDirectory" id="omv-nT-ubj"/>
-                        <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
-                    </connections>
-                </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-Kh-fMe">
-                    <rect key="frame" x="18" y="266" width="116" height="18"/>
-                    <buttonCell key="cell" type="check" title="Publish" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2SJ-2h-VGr">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="title" keyPath="currentPlatformSettings.name" id="Xax-KE-XJj"/>
-                        <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishEnabled" id="LtH-3c-ArN"/>
-                    </connections>
-                </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-1B-jMi">
                     <rect key="frame" x="154" y="8" width="339" height="98"/>
                     <subviews>
@@ -605,14 +598,22 @@
                         </popUpButton>
                     </subviews>
                 </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i5l-Zi-Lgo">
+                    <rect key="frame" x="4" y="278" width="144" height="17"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Packages" usesSingleLineMode="YES" id="ILj-7N-i4H">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6M-Yx-fPn">
-                    <rect key="frame" x="6" y="8" width="140" height="245"/>
+                    <rect key="frame" x="6" y="8" width="140" height="268"/>
                     <clipView key="contentView" ambiguous="YES" id="d4D-Dq-xmy">
-                        <rect key="frame" x="1" y="1" width="138" height="243"/>
+                        <rect key="frame" x="1" y="1" width="138" height="266"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="o0f-we-ZuS">
-                                <rect key="frame" x="0.0" y="0.0" width="138" height="243"/>
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="266"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -633,7 +634,7 @@
                                             <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.publish" id="Xjb-7X-34m"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="110" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
+                                    <tableColumn editable="NO" width="40" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -666,11 +667,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fyS-Zz-Ihw">
+                    <rect key="frame" x="226" y="278" width="144" height="17"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Publish path" usesSingleLineMode="YES" id="xeS-uu-i5M">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="405" y="271"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="ttd-bs-ebq"/>
-        <arrayController objectClassName="SettingsListEntry" editable="NO" automaticallyPreparesContent="YES" id="hX1-CZ-OUh">
+        <arrayController objectClassName="PacketPublish" editable="NO" automaticallyPreparesContent="YES" id="hX1-CZ-OUh">
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="currentPlatformSettings.packetsPublish" id="f6a-uw-5wI"/>
             </connections>
