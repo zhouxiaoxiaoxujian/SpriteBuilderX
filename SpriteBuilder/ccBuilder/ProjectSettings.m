@@ -146,13 +146,13 @@
         
         iosPlatformSettings.publishSound = YES;
         iosPlatformSettings.effectFormat = kFCSoundFormatCAF;
-        iosPlatformSettings.effectParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.effectStereo = YES;
         iosPlatformSettings.effectQuality = publishAudioQuality_ios;
         iosPlatformSettings.musicFormat = kFCSoundFormatMP4;
-        iosPlatformSettings.musicParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.musicStereo = YES;
         iosPlatformSettings.musicQuality = publishAudioQuality_ios;
         iosPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
-        iosPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
+        iosPlatformSettings.customSoundStereo = YES;
         iosPlatformSettings.customSoundQuality = publishAudioQuality_ios;
         [_platformsSettings addObject:iosPlatformSettings];
         [iosPlatformSettings.packets addObject:@"Main"];
@@ -184,13 +184,13 @@
         
         androidPlatformSettings.publishSound = YES;
         androidPlatformSettings.effectFormat = kFCSoundFormatWAV;
-        androidPlatformSettings.effectParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.effectStereo = YES;
         androidPlatformSettings.effectQuality = publishAudioQuality_android;
         androidPlatformSettings.musicFormat = kFCSoundFormatOGG;
-        androidPlatformSettings.musicParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.musicStereo = YES;
         androidPlatformSettings.musicQuality = publishAudioQuality_android;
         androidPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
-        androidPlatformSettings.customSoundParams = kFCSoundParamsStereo44100;
+        androidPlatformSettings.customSoundStereo = YES;
         androidPlatformSettings.customSoundQuality = publishAudioQuality_android;
         [androidPlatformSettings.packets addObject:@"Main"];
         [_platformsSettings addObject:androidPlatformSettings];

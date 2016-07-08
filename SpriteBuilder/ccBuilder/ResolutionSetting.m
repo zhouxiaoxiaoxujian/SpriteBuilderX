@@ -154,18 +154,6 @@
     
     return setting;
 }
-+ (ResolutionSetting*) settingTablet
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Tablet";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"tablet phonehd phone";
-    setting.resourceScale = 2;
-    
-    return setting;
-}
 + (ResolutionSetting*) settingTabletHd
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
@@ -333,7 +321,7 @@
     setting.name = @"iPad";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"tablet phonehd phone";
+    setting.ext = @"phonehd phone";
     setting.resourceScale = 2;
     
     return setting;
@@ -368,7 +356,7 @@
     setting.name = @"iPad Retina";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"tablethd tablet phonehd phone";
+    setting.ext = @"tablethd phonehd phone";
     setting.resourceScale = 4;
     
     return setting;
@@ -543,7 +531,7 @@
     setting.name = @"Android X-Large";
     setting.width = 0;
     setting.height = 0;
-    setting.ext = @"tablethd tablet phonehd phone";
+    setting.ext = @"tablethd phonehd phone";
     setting.resourceScale = 4;
     
     return setting;

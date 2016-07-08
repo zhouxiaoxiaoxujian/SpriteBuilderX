@@ -1187,14 +1187,12 @@ typedef enum
     if (type == kCCBDocDimensionsTypeNode)
     {
         [updatedResolutions addObject:[ResolutionSetting settingPhone]];
-        [updatedResolutions addObject:[ResolutionSetting settingTablet]];
         [updatedResolutions addObject:[ResolutionSetting settingPhoneHd]];
         [updatedResolutions addObject:[ResolutionSetting settingTabletHd]];
     }
     else if (type == kCCBDocDimensionsTypeLayer)
     {
         [updatedResolutions addObject:[ResolutionSetting settingPhone]];
-        [updatedResolutions addObject:[ResolutionSetting settingTablet]];
         [updatedResolutions addObject:[ResolutionSetting settingPhoneHd]];
         [updatedResolutions addObject:[ResolutionSetting settingTabletHd]];
     }

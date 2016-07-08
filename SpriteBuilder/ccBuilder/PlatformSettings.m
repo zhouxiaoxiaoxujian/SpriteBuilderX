@@ -10,6 +10,19 @@
 #import "ResourceManager.h"
 #import "RMPackage.h"
 
+@interface EnumTransformer: NSValueTransformer {}
+@end
+@implementation EnumTransformer
++ (Class)transformedValueClass { return [NSString class]; }
++ (BOOL)allowsReverseTransformation { return YES; }
+-(id)transformedValue:(id)value {
+    return [NSNumber numberWithInteger:[value intValue]];
+}
+-(id)reverseTransformedValue:(id)value {
+    return [NSNumber numberWithInteger:[value intValue]];
+}
+@end
+
 @interface PacketPublish : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) BOOL publish;
@@ -69,15 +82,16 @@
     
     dict[@"publishSound"] = @(_publishSound);
     dict[@"effectFormat"] = @(_effectFormat);
-    dict[@"effectParams"] = @(_effectParams);
+    dict[@"effectStereo"] = @(_effectStereo);
     dict[@"effectQuality"] = @(_effectQuality);
     dict[@"musicFormat"] = @(_musicFormat);
-    dict[@"musicParams"] = @(_musicParams);
+    dict[@"musicStereo"] = @(_musicStereo);
     dict[@"musicQuality"] = @(_musicQuality);
     dict[@"customSoundFormat"] = @(_customSoundFormat);
-    dict[@"customSoundParams"] = @(_customSoundParams);
+    dict[@"customSoundStereo"] = @(_customSoundStereo);
     dict[@"customSoundQuality"] = @(_customSoundQuality);
     
+    dict[@"cczCompression"] = @(_cczCompression);
     dict[@"compressedImageFormat"] = @(_compressedImageFormat);
     dict[@"compressedImageQuality"] = @(_compressedImageQuality);
     dict[@"compressedNoAlphaImageFormat"] = @(_compressedNoAlphaImageFormat);
@@ -107,16 +121,17 @@
     _publish1x = YES;
     _publish2x = YES;
     _publish4x = YES;
+    _cczCompression = YES;
     
     _publishSound = YES;
     _effectFormat = 0;
-    _effectParams= 0;
+    _effectStereo= YES;
     _effectQuality = 0;
     _musicFormat = 0;
-    _musicParams = 0;
+    _musicStereo = YES;
     _musicQuality = 0;
     _customSoundFormat = 0;
-    _customSoundParams = 0;
+    _customSoundStereo = YES;
     _customSoundQuality = 0;
     
     _compressedImageFormat = 0;
@@ -148,19 +163,20 @@
     
     self.publishSound = [[dict objectForKey:@"publishSound"] boolValue];
     self.effectFormat = [[dict objectForKey:@"effectFormat"] intValue];
-    self.effectParams= [[dict objectForKey:@"effectParams"] intValue];
+    self.effectStereo= [[dict objectForKey:@"effectStereo"] intValue];
     self.effectQuality = [[dict objectForKey:@"effectQuality"] intValue];
     self.musicFormat = [[dict objectForKey:@"musicFormat"] intValue];
-    self.musicParams = [[dict objectForKey:@"musicParams"] intValue];
+    self.musicStereo = [[dict objectForKey:@"musicStereo"] intValue];
     self.musicQuality = [[dict objectForKey:@"musicQuality"] intValue];
     self.customSoundFormat = [[dict objectForKey:@"customSoundFormat"] intValue];
-    self.customSoundParams = [[dict objectForKey:@"customSoundParams"] intValue];
+    self.customSoundStereo = [[dict objectForKey:@"customSoundStereo"] intValue];
     self.customSoundQuality = [[dict objectForKey:@"customSoundQuality"] intValue];
     
+    self.cczCompression = [[dict objectForKey:@"cczCompression"] boolValue];
     self.compressedImageFormat = [[dict objectForKey:@"compressedImageFormat"] intValue];
     self.compressedImageQuality = [[dict objectForKey:@"compressedImageQuality"] intValue];
-    self.compressedNoAlphaImageFormat = [[dict objectForKey:@"compressedImageFormat"] intValue];
-    self.compressedNoAlphaImageQuality = [[dict objectForKey:@"compressedImageQuality"] intValue];
+    self.compressedNoAlphaImageFormat = [[dict objectForKey:@"compressedNoAlphaImageFormat"] intValue];
+    self.compressedNoAlphaImageQuality = [[dict objectForKey:@"compressedNoAlphaImageQuality"] intValue];
     self.uncompressedImageFormat = [[dict objectForKey:@"uncompressedImageFormat"] intValue];
     self.uncompressedImageQuality = [[dict objectForKey:@"uncompressedImageQuality"] intValue];
     self.customImageFormat = [[dict objectForKey:@"customImageFormat"] intValue];

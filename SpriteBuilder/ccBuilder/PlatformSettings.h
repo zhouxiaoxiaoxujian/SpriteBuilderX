@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL publish2x;
 @property (nonatomic, assign) BOOL publish4x;
 
+@property (nonatomic, assign) BOOL cczCompression;
 @property (nonatomic, assign) kFCImageFormat compressedImageFormat;
 @property (nonatomic, assign) int compressedImageQuality;
 @property (nonatomic, assign) kFCImageFormat compressedNoAlphaImageFormat;
@@ -28,13 +29,13 @@
 
 @property (nonatomic, assign) BOOL publishSound;
 @property (nonatomic, assign) kFCSoundFormat effectFormat;
-@property (nonatomic, assign) kFCSoundParams effectParams;
+@property (nonatomic, assign) BOOL effectStereo;
 @property (nonatomic, assign) int effectQuality;
 @property (nonatomic, assign) kFCSoundFormat musicFormat;
-@property (nonatomic, assign) kFCSoundParams musicParams;
+@property (nonatomic, assign) BOOL musicStereo;
 @property (nonatomic, assign) int musicQuality;
 @property (nonatomic, assign) kFCSoundFormat customSoundFormat;
-@property (nonatomic, assign) kFCSoundParams customSoundParams;
+@property (nonatomic, assign) BOOL customSoundStereo;
 @property (nonatomic, assign) int customSoundQuality;
 @property (nonatomic, retain) NSMutableArray *packets;
 @property (nonatomic, retain, readonly) NSArray *packetsPublish;

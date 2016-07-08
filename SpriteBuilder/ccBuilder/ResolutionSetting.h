@@ -49,7 +49,6 @@
 // Fixed resolutions
 + (ResolutionSetting*) settingPhone;
 + (ResolutionSetting*) settingPhoneHd;
-+ (ResolutionSetting*) settingTablet;
 + (ResolutionSetting*) settingTabletHd;
 
 // iOS resolutions
