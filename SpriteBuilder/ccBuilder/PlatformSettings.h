@@ -9,6 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "FCFormatConverter.h"
 
+typedef enum {
+    kPlatformSettingsImageTypesCompressed = 0,
+    kPlatformSettingsImageTypesCompressedWOAlpha = 1,
+    kPlatformSettingsImageTypesUncompressed = 2,
+    kPlatformSettingsImageTypesCustom = 3,
+} PlatformSettingsImageTypes;
+
+typedef enum {
+    kPlatformSettingsSoundTypesEffect = 0,
+    kPlatformSettingsSoundTypesMusic = 1,
+    kPlatformSettingsSoundTypesCustom = 2,
+} PlatformSettingsSoundTypes;
+
 @interface PlatformSettings : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString* publishDirectory;
@@ -17,15 +30,22 @@
 @property (nonatomic, assign) BOOL publish2x;
 @property (nonatomic, assign) BOOL publish4x;
 
-@property (nonatomic, assign) BOOL cczCompression;
 @property (nonatomic, assign) kFCImageFormat compressedImageFormat;
 @property (nonatomic, assign) int compressedImageQuality;
+@property (nonatomic, assign) BOOL compressedImageCCZCompression;
+@property (nonatomic, assign) BOOL compressedImageDither;
 @property (nonatomic, assign) kFCImageFormat compressedNoAlphaImageFormat;
 @property (nonatomic, assign) int compressedNoAlphaImageQuality;
+@property (nonatomic, assign) BOOL compressedNoAlphaImageCCZCompression;
+@property (nonatomic, assign) BOOL compressedNoAlphaImageDither;
 @property (nonatomic, assign) kFCImageFormat uncompressedImageFormat;
 @property (nonatomic, assign) int uncompressedImageQuality;
+@property (nonatomic, assign) BOOL uncompressedImageCCZCompression;
+@property (nonatomic, assign) BOOL uncompressedImageDither;
 @property (nonatomic, assign) kFCImageFormat customImageFormat;
 @property (nonatomic, assign) int customImageQuality;
+@property (nonatomic, assign) BOOL customImageCCZCompression;
+@property (nonatomic, assign) BOOL customImageDither;
 
 @property (nonatomic, assign) BOOL publishSound;
 @property (nonatomic, assign) kFCSoundFormat effectFormat;
@@ -39,10 +59,20 @@
 @property (nonatomic, assign) int customSoundQuality;
 @property (nonatomic, retain) NSMutableArray *packets;
 @property (nonatomic, retain, readonly) NSArray *packetsPublish;
+@property (nonatomic, copy, readonly) NSArray *inputDirs;
 
 
 - (id) initWithSerialization:(id)dict;
 - (id) init;
-
 - (id) serialize;
+
+- (kFCImageFormat) imageFormat:(int)type;
+- (int) imageQuality:(int)type;
+- (BOOL) imageCCZCompression:(int)type;
+- (BOOL) imageDither:(int)type;
+
+- (kFCSoundFormat) soundFormat:(int)type;
+- (BOOL) soundStereo:(int)type;
+- (int) soundQuality:(int)type;
+
 @end

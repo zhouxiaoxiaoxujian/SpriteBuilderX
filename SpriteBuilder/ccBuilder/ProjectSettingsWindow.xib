@@ -19,33 +19,20 @@
         <window title="Publish Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="710" height="476"/>
+            <rect key="contentRect" x="196" y="240" width="740" height="456"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="710" height="476"/>
+                <rect key="frame" x="0.0" y="0.0" width="740" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ici-ob-vgc">
-                        <rect key="frame" x="623" y="13" width="73" height="32"/>
-                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uoz-ue-jQk">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="acceptSheet:" target="-2" id="Laf-IM-ZXH"/>
-                        </connections>
-                    </button>
                     <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-g8-rGo">
-                        <rect key="frame" x="20" y="188" width="156" height="268"/>
+                        <rect key="frame" x="20" y="179" width="156" height="257"/>
                         <clipView key="contentView" ambiguous="YES" id="Zwh-7J-mpo">
-                            <rect key="frame" x="1" y="1" width="154" height="266"/>
+                            <rect key="frame" x="1" y="1" width="154" height="255"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="124-eh-2ro">
-                                    <rect key="frame" x="0.0" y="0.0" width="154" height="266"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="154" height="255"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -105,9 +92,9 @@ DQ
                         </scroller>
                     </scrollView>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Global" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="pgK-Fu-CcX">
-                        <rect key="frame" x="17" y="49" width="676" height="95"/>
+                        <rect key="frame" x="17" y="37" width="716" height="95"/>
                         <view key="contentView" id="o6Z-9z-I0o">
-                            <rect key="frame" x="1" y="1" width="674" height="79"/>
+                            <rect key="frame" x="1" y="1" width="714" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNt-fb-odC">
@@ -253,7 +240,7 @@ DQ
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqy-R3-uFf">
-                        <rect key="frame" x="49" y="151" width="51" height="32"/>
+                        <rect key="frame" x="49" y="142" width="51" height="32"/>
                         <buttonCell key="cell" type="push" title="+" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cYy-H5-8dU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -263,7 +250,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v59-SV-zcJ">
-                        <rect key="frame" x="100" y="151" width="48" height="32"/>
+                        <rect key="frame" x="100" y="142" width="48" height="32"/>
                         <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GE6-kf-HUR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -278,19 +265,32 @@ DQ
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" fixedFrame="YES" boxType="secondary" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-DY-4PH">
-                        <rect key="frame" x="181" y="138" width="512" height="320"/>
+                        <rect key="frame" x="181" y="138" width="552" height="300"/>
                         <view key="contentView" id="ml1-sT-Hwp">
-                            <rect key="frame" x="1" y="1" width="510" height="318"/>
+                            <rect key="frame" x="1" y="1" width="550" height="298"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iaj-JH-N3e">
-                                    <rect key="frame" x="5" y="5" width="500" height="308"/>
+                                    <rect key="frame" x="5" y="5" width="540" height="288"/>
                                 </customView>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ici-ob-vgc">
+                        <rect key="frame" x="663" y="3" width="73" height="32"/>
+                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uoz-ue-jQk">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="acceptSheet:" target="-2" id="Laf-IM-ZXH"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="407" y="248"/>

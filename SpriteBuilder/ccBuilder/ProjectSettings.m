@@ -136,7 +136,7 @@
         iosPlatformSettings.publish2x = publishResolution_ios_phonehd || publishResolution_ios_tablet;
         iosPlatformSettings.publish4x = publishResolution_ios_tablethd;
         iosPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
-        iosPlatformSettings.compressedImageFormat = 75;
+        iosPlatformSettings.compressedImageQuality = 75;
         iosPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
         iosPlatformSettings.compressedNoAlphaImageQuality = 75;
         iosPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
@@ -174,7 +174,7 @@
         androidPlatformSettings.publish2x = publishResolution_android_phonehd || publishResolution_android_tablet;
         androidPlatformSettings.publish4x = publishResolution_android_tablethd;
         androidPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
-        androidPlatformSettings.compressedImageFormat = 75;
+        androidPlatformSettings.compressedImageQuality = 75;
         androidPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
         androidPlatformSettings.compressedNoAlphaImageQuality = 75;
         androidPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
