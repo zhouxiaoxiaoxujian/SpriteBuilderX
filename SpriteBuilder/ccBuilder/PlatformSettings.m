@@ -31,7 +31,6 @@
 + (BOOL)allowsReverseTransformation { return NO; }
 -(id)transformedValue:(id)value {
     switch ([value intValue]) {
-        case kFCImageFormatWEBP:
         case kFCImageFormatWEBP_LOSSY:
         case kFCImageFormatJPG:
             return [NSNumber numberWithBool:YES];

@@ -12,6 +12,7 @@
 #import "ZipDirectoryOperation.h"
 #import "MiscConstants.h"
 #import "PlatformSettings.h"
+#import "NSString+RelativePath.h"
 
 
 @interface CCBPublisher ()
@@ -205,8 +206,9 @@
         CCBDirectoryPublisher *dirPublisher = [[CCBDirectoryPublisher alloc] initWithProjectSettings:_projectSettings
                                                                                             warnings:_warnings
                                                                                                queue:_publishingQueue];
+        dirPublisher.platformSettings = platform;
         dirPublisher.inputDir = aDir;
-        dirPublisher.outputDir = platform.publishDirectory;
+        dirPublisher.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
         //dirPublisher.osType = target.osType;
         dirPublisher.resolutions = resolutions;
         //dirPublisher.audioQuality = target.audioQuality;
@@ -261,16 +263,17 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         for (PlatformSettings *platform in _publishingPlatforms)
         {
-            if(!platform.publishDirectory)
+            NSString *publishDirectory = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+            if(!publishDirectory)
             {
                 continue;
             }
             
             NSError *error;
-            if (![fileManager removeItemAtPath:platform.publishDirectory error:&error]
+            if (![fileManager removeItemAtPath:publishDirectory error:&error]
                 && error.code != NSFileNoSuchFileError)
             {
-                NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", platform.publishDirectory, error);
+                NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", publishDirectory, error);
             }
         }
     }
