@@ -87,12 +87,12 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-Pf-L05" userLabel="Compressed image with alpha">
                             <rect key="frame" x="193" y="78" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="yAc-MG-yY8" id="A81-6h-iWn" userLabel="PNG">
+                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="yAc-MG-yY8" id="A81-6h-iWn" userLabel="PNG">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="bOo-4a-9LB">
                                     <items>
-                                        <menuItem title="Origin" tag="-1" id="yAc-MG-yY8"/>
+                                        <menuItem title="Origin" state="on" tag="-1" id="yAc-MG-yY8"/>
                                         <menuItem title="PNG" id="Wrw-eR-kPd"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="zNH-FO-YXg"/>
                                         <menuItem isSeparatorItem="YES" id="QQf-24-nIB"/>
@@ -119,7 +119,7 @@
                                         <menuItem title="PVRTC2 2bpp" tag="12" id="kUK-NP-2ud" userLabel="PVRTC2 2bpp">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" state="on" id="Bec-sH-zBq"/>
+                                        <menuItem isSeparatorItem="YES" id="Bec-sH-zBq"/>
                                         <menuItem title="ETC with alpha" tag="14" id="34T-8g-byD" userLabel="ETC with alpha">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -156,12 +156,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="JmQ-Sl-Z7r"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.compressedImageFormat" id="Tl5-KM-LIH">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="JmQ-Sl-Z7r"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
@@ -176,8 +176,17 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Z1n-aJ-s9B"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImageQuality" id="fTg-KR-jXF"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Z1n-aJ-s9B"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.compressedImageFormat" previousBinding="Z1n-aJ-s9B" id="lEN-zc-Kf3">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">ImageFormatQulityEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-lY-pXv" customClass="CCBTextFieldLabel">
@@ -247,12 +256,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="3gr-dD-tC5"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.compressedNoAlphaImageFormat" id="pjW-pZ-iKG">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="3gr-dD-tC5"/>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
@@ -267,8 +276,17 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="bhJ-El-zvL"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImageQuality" id="zye-V3-l9q"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="bhJ-El-zvL"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.compressedNoAlphaImageFormat" previousBinding="bhJ-El-zvL" id="e3U-XF-Y8K">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">ImageFormatQulityEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-Et-gFU" customClass="CCBTextFieldLabel">
@@ -337,6 +355,15 @@
                             <connections>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="v57-9E-zuS"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImageQuality" id="ZPg-Cz-R1T"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.uncompressedImageFormat" previousBinding="v57-9E-zuS" id="GvK-Ul-HrA">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">ImageFormatQulityEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQ2-Ek-Axd" customClass="CCBTextFieldLabel">
@@ -437,14 +464,25 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="71s-Tg-DLC"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.customImageFormat" id="wCL-mN-cud">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="71s-Tg-DLC"/>
                             </connections>
                         </popUpButton>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jl1-jg-qYh" userLabel="cczCompression">
+                            <rect key="frame" x="12" y="98" width="309" height="20"/>
+                            <buttonCell key="cell" type="check" title="Prefer CCZ compression" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="Y2T-jq-mww">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="cellTitle"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.cczCompression" id="S94-6n-xyU"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="7Ro-D8-VZB"/>
+                            </connections>
+                        </button>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
                             <rect key="frame" x="293" y="8" width="30" height="19"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="70%" drawsBackground="YES" id="nO3-ra-FUw">
@@ -457,21 +495,19 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="d8i-uD-Kfj"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImageQuality" id="uM1-x7-O9V"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="d8i-uD-Kfj"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.customImageFormat" previousBinding="d8i-uD-Kfj" id="jVk-P4-uzT">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                        <string key="NSValueTransformerName">ImageFormatQulityEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jl1-jg-qYh" userLabel="cczCompression">
-                            <rect key="frame" x="12" y="98" width="309" height="20"/>
-                            <buttonCell key="cell" type="check" title="Prefer CCZ compression" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="Y2T-jq-mww">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
-                            </buttonCell>
-                            <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="7Ro-D8-VZB"/>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.cczCompression" id="S94-6n-xyU"/>
-                            </connections>
-                        </button>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-1B-jMi">
@@ -520,7 +556,7 @@
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcU-Ds-rqN">
                             <rect key="frame" x="103" y="54" width="73" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="MP3" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="4" imageScaling="proportionallyDown" inset="2" selectedItem="Knw-Ym-bPr" id="cqu-gt-djk">
+                            <popUpButtonCell key="cell" type="push" title="MP3" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="4" imageScaling="proportionallyDown" inset="2" selectedItem="Knw-Ym-bPr" id="cqu-gt-djk">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="XeQ-aL-xgK">
@@ -529,17 +565,17 @@
                                         <menuItem title="CAF" tag="1" id="LDc-eS-rIx" userLabel="CAF"/>
                                         <menuItem title="MP4" tag="2" id="xRi-xt-wVP"/>
                                         <menuItem title="OGG" tag="3" id="D8u-L1-ApO" userLabel="OGG"/>
-                                        <menuItem title="MP3" tag="4" id="Knw-Ym-bPr" userLabel="MP3"/>
+                                        <menuItem title="MP3" state="on" tag="4" id="Knw-Ym-bPr" userLabel="MP3"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="yvv-N0-K57"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.effectFormat" id="3sD-fy-eAq">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="yvv-N0-K57"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-O2-5tw">
@@ -577,8 +613,8 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="kBT-xf-keS"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.effectQuality" id="DmP-nw-D7R"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="kBT-xf-keS"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-5h-XA8">
@@ -597,12 +633,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="76R-0c-4Ex"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.musicFormat" id="412-Rh-inr">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="76R-0c-4Ex"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
@@ -640,8 +676,8 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Zmn-gg-PTl"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.musicQuality" id="ual-9p-KZU"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Zmn-gg-PTl"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-XY-nkX">
@@ -660,12 +696,12 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Nqs-3g-fqP"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.customSoundFormat" id="oBh-hv-yel">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Nqs-3g-fqP"/>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
@@ -703,26 +739,26 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="6Cx-hT-9DO"/>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.customSoundQuality" id="3fP-lw-jF1"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="6Cx-hT-9DO"/>
                             </connections>
                         </popUpButton>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kv5-if-uUy">
                             <rect key="frame" x="265" y="50" width="64" height="20"/>
                             <buttonCell key="cell" type="check" title="stereo" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="xhf-QJ-DRE">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
+                                <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="sST-jQ-hYv"/>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.effectStereo" id="R9q-2A-KQm"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="sST-jQ-hYv"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8TC-G5-ZEN">
                             <rect key="frame" x="265" y="29" width="64" height="20"/>
                             <buttonCell key="cell" type="check" title="stereo" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="cVD-Q7-pM7">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
+                                <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
                             <connections>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="aYD-nY-q7t"/>
@@ -733,7 +769,7 @@
                             <rect key="frame" x="265" y="7" width="64" height="20"/>
                             <buttonCell key="cell" type="check" title="stereo" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="hm6-zQ-5Pd">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
+                                <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
                             <connections>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="S3v-A8-9rh"/>

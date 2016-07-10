@@ -23,6 +23,24 @@
 }
 @end
 
+@interface ImageFormatQulityEnabledTransformer: NSValueTransformer {}
+@end
+@implementation ImageFormatQulityEnabledTransformer
++ (Class)transformedValueClass { return [NSString class]; }
++ (BOOL)allowsReverseTransformation { return NO; }
+-(id)transformedValue:(id)value {
+    switch ([value intValue]) {
+        case kFCImageFormatWEBP:
+        case kFCImageFormatWEBP_LOSSY:
+        case kFCImageFormatJPG:
+            return [NSNumber numberWithBool:YES];
+            
+        default:
+            return [NSNumber numberWithBool:NO];
+    }
+}
+@end
+
 @interface PacketPublish : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) BOOL publish;
@@ -124,24 +142,24 @@
     _cczCompression = YES;
     
     _publishSound = YES;
-    _effectFormat = 0;
+    _effectFormat = kFCSoundFormatMP3;
     _effectStereo= YES;
-    _effectQuality = 0;
-    _musicFormat = 0;
+    _effectQuality = 4;
+    _musicFormat = kFCSoundFormatMP3;
     _musicStereo = YES;
-    _musicQuality = 0;
-    _customSoundFormat = 0;
+    _musicQuality = 4;
+    _customSoundFormat = kFCSoundFormatMP3;
     _customSoundStereo = YES;
-    _customSoundQuality = 0;
+    _customSoundQuality = 4;
     
-    _compressedImageFormat = 0;
-    _compressedImageQuality = 0;
-    _compressedNoAlphaImageFormat = 0;
-    _compressedNoAlphaImageQuality = 0;
-    _uncompressedImageFormat = 0;
-    _uncompressedImageQuality = 0;
-    _customImageFormat = 0;
-    _customImageQuality = 0;
+    _compressedImageFormat = kFCImageFormatPNG;
+    _compressedImageQuality = 75;
+    _compressedNoAlphaImageFormat = kFCImageFormatPNG;
+    _compressedNoAlphaImageQuality = 75;
+    _uncompressedImageFormat = kFCImageFormatPNG;
+    _uncompressedImageQuality = 75;
+    _customImageFormat = kFCImageFormatPNG;
+    _customImageQuality = 75;
     return self;
 }
 

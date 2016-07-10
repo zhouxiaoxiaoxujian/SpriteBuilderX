@@ -136,13 +136,13 @@
         iosPlatformSettings.publish2x = publishResolution_ios_phonehd || publishResolution_ios_tablet;
         iosPlatformSettings.publish4x = publishResolution_ios_tablethd;
         iosPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
-        iosPlatformSettings.compressedImageFormat = 0;
+        iosPlatformSettings.compressedImageFormat = 75;
         iosPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
-        iosPlatformSettings.compressedNoAlphaImageQuality = 85;
+        iosPlatformSettings.compressedNoAlphaImageQuality = 75;
         iosPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
-        iosPlatformSettings.uncompressedImageQuality = 0;
+        iosPlatformSettings.uncompressedImageQuality = 75;
         iosPlatformSettings.customImageFormat = kFCImageFormatPNG;
-        iosPlatformSettings.customImageQuality = 0;
+        iosPlatformSettings.customImageQuality = 75;
         
         iosPlatformSettings.publishSound = YES;
         iosPlatformSettings.effectFormat = kFCSoundFormatCAF;
@@ -174,13 +174,13 @@
         androidPlatformSettings.publish2x = publishResolution_android_phonehd || publishResolution_android_tablet;
         androidPlatformSettings.publish4x = publishResolution_android_tablethd;
         androidPlatformSettings.compressedImageFormat = kFCImageFormatPNG;
-        androidPlatformSettings.compressedImageFormat = 0;
+        androidPlatformSettings.compressedImageFormat = 75;
         androidPlatformSettings.compressedNoAlphaImageFormat = kFCImageFormatJPG;
-        androidPlatformSettings.compressedNoAlphaImageQuality = 85;
+        androidPlatformSettings.compressedNoAlphaImageQuality = 75;
         androidPlatformSettings.uncompressedImageFormat = kFCImageFormatPNG;
-        androidPlatformSettings.uncompressedImageQuality = 0;
+        androidPlatformSettings.uncompressedImageQuality = 75;
         androidPlatformSettings.customImageFormat = kFCImageFormatPNG;
-        androidPlatformSettings.customImageQuality = 0;
+        androidPlatformSettings.customImageQuality = 75;
         
         androidPlatformSettings.publishSound = YES;
         androidPlatformSettings.effectFormat = kFCSoundFormatWAV;
