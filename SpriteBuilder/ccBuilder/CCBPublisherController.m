@@ -50,7 +50,7 @@
 {
     [self addPublishingTargetsForMainProject];
 
-    [self addPublishingTargetsForPackages];
+    //[self addPublishingTargetsForPackages];
 }
 
 - (void)addPublishingTargetsForPackages
@@ -86,7 +86,7 @@
         //target.outputDirectory = [self cachesPath:packagePublishName];
         //target.directoryToClean = [packageSettings.effectiveOutputDirectory absolutePathFromBaseDirPath:_projectSettings.projectPathDir];
 
-        [_publisher addPublishingTarget:target];
+        //[_publisher addPublishingTarget:target];
     }
 }
 
@@ -189,7 +189,7 @@
     //target.audioQuality = [_projectSettings audioQualityForOsType:osType];
     //target.directoryToClean = [_projectSettings publishDirForOSType:osType];
 
-    [_publisher addPublishingTarget:target];
+    //[_publisher addPublishingTarget:target];
 }
 
 - (NSArray *)inputDirsOfResourcePaths

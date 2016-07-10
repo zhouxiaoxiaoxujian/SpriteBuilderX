@@ -106,8 +106,6 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 
 @property (nonatomic, strong) CCBWarnings* lastWarnings;
 
-@property (nonatomic, readonly) CCBTargetEngine engine;
-
 @property (nonatomic, assign) BOOL readOnly;
 
 

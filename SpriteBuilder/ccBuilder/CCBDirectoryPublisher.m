@@ -45,12 +45,12 @@
 #import "NSString+Publishing.h"
 #import "PublishGeneratedFilesOperation.h"
 #import "PublishRenamedFilesLookup.h"
-#import "PublishSpriteKitSpriteSheetOperation.h"
 #import "PublishingTaskStatusProgress.h"
 #import "PublishLogging.h"
 #import "MiscConstants.h"
 #import "PublishIntermediateFilesLookup.h"
 #import "ResourcePropertyKeys.h"
+#import "PlatformSettings.h"
 
 @interface CCBDirectoryPublisher ()
 
@@ -113,12 +113,13 @@
                                                                                      warnings:_warnings
                                                                                statusProgress:_publishingTaskStatusProgress];
 
+    operation.platformSettings = _platformSettings;
     operation.srcFilePath = srcFilePath;
     operation.dstFilePath = dstFilePath;
     operation.isSpriteSheet = isSpriteSheet;
     operation.outputDir = outputDir;
     operation.resolution = resolution;
-    operation.osType = _osType;
+    //operation.osType = _osType;
     operation.modifiedFileDateCache = _modifiedDatesCache;
     operation.intermediateProduct = intermediateProduct;
     operation.publishedPNGFiles = _publishedPNGFiles;
@@ -137,12 +138,9 @@
         return;
     }
 
-    int format = [_projectSettings soundFormatForRelPath:relPath osType:_osType];
-    NSInteger quality = [_projectSettings soundQualityForRelPath:relPath osType:_osType];
-    if (quality == NSNotFound)
-    {
-        quality = _audioQuality;
-    }
+    int rawFormat = [_projectSettings soundFormatForRelPath:relPath];
+    int quality = [_platformSettings soundQuality: rawFormat];
+    int format = [_platformSettings soundFormat: rawFormat];
 
     if (format == -1)
     {
@@ -212,24 +210,11 @@
 
 - (void)publishSpriteSheetDir:(NSString *)publishDirectory subPath:(NSString *)subPath outputDir:(NSString *)outputDir
 {
-    BOOL publishForSpriteKit = _projectSettings.engine == CCBTargetEngineSpriteKit;
-    if (publishForSpriteKit)
-    {
-        [self publishSpriteKitAtlasDir:[outputDir stringByDeletingLastPathComponent]
-                             sheetName:[outputDir lastPathComponent]
-                               subPath:subPath
-                      publishDirectory:publishDirectory
-                             outputDir:outputDir];
-    }
-    else
-    {
-        // Sprite files should have been saved to the temp cache directory, now actually generate the sprite sheets
-        [self publishSpriteSheetDir:[outputDir stringByDeletingLastPathComponent]
-                          sheetName:[outputDir lastPathComponent]
-                   publishDirectory:publishDirectory
-                            subPath:subPath
-                          outputDir:outputDir];
-    }
+    [self publishSpriteSheetDir:[outputDir stringByDeletingLastPathComponent]
+                      sheetName:[outputDir lastPathComponent]
+               publishDirectory:publishDirectory
+                        subPath:subPath
+                      outputDir:outputDir];
 }
 
 - (BOOL)processAllFilesWithinPublishDir:(NSString *)publishDirectory
@@ -488,6 +473,7 @@
     PublishSpriteSheetOperation *operation = [[PublishSpriteSheetOperation alloc] initWithProjectSettings:_projectSettings
                                                                                                  warnings:_warnings
                                                                                            statusProgress:_publishingTaskStatusProgress];
+    operation.platformSettings = _platformSettings;
     operation.publishDirectory = publishDirectory;
     operation.publishedPNGFiles = _publishedPNGFiles;
     operation.srcSpriteSheetDate = srcSpriteSheetDate;
@@ -497,7 +483,7 @@
             _projectSettings.tempSpriteSheetCacheDirectory];
     operation.spriteSheetFile = spriteSheetFile;
     operation.subPath = subPath;
-    operation.osType = _osType;
+    operation.platformName = _platformSettings.name;
     return operation;
 }
 
@@ -538,71 +524,6 @@
                         fileLookup:fileLookup];
         }
     }
-}
-
-- (void)publishSpriteKitAtlasDir:(NSString *)spriteSheetDir
-                       sheetName:(NSString *)spriteSheetName
-                         subPath:(NSString *)subPath
-                publishDirectory:(NSString *)publishDirectory
-                       outputDir:(NSString *)outputDir
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-
-    NSString *textureAtlasPath = [[NSBundle mainBundle] pathForResource:@"SpriteKitTextureAtlasToolPath" ofType:@"txt"];
-    NSAssert(textureAtlasPath, @"Missing bundle file: SpriteKitTextureAtlasToolPath.txt");
-    NSString *textureAtlasToolLocation = [NSString stringWithContentsOfFile:textureAtlasPath encoding:NSUTF8StringEncoding error:nil];
-    LocalLog(@"Using Sprite Kit Texture Atlas tool: %@", textureAtlasToolLocation);
-
-    if ([fileManager fileExistsAtPath:textureAtlasToolLocation] == NO)
-    {
-        [_warnings addWarningWithDescription:@"<-- file not found! Install a public (non-beta) Xcode version to generate sprite sheets. Xcode beta users may edit 'SpriteKitTextureAtlasToolPath.txt' inside SpriteBuilder.app bundle." isFatal:YES relatedFile:textureAtlasToolLocation];
-        return;
-    }
-	
-	for (NSString* resolution in _resolutions)
-	{
-        NSString *intermediateFileLookupPath = [publishDirectory stringByAppendingPathComponent:INTERMEDIATE_FILE_LOOKUP_NAME];
-        [_renamedFilesLookup addIntermediateLookupPath:intermediateFileLookupPath];
-
-        // Note: these lookups are written as intermediate products to generate the final fileLookup.plist
-        PublishIntermediateFilesLookup *publishIntermediateFilesLookup = [[PublishIntermediateFilesLookup alloc] init];
-
-        [self prepareImagesForSpriteSheetPublishing:publishDirectory
-                                          outputDir:outputDir
-                                         resolution:resolution
-                                         fileLookup:publishIntermediateFilesLookup];
-
-        PublishSpriteKitSpriteSheetOperation *operation = [self createSpriteKitSheetOperation:spriteSheetDir
-                                                                              spriteSheetName:spriteSheetName
-                                                                                      subPath:subPath
-                                                                     textureAtlasToolLocation:textureAtlasToolLocation
-                                                                                   resolution:resolution];
-        [_queue addOperation:operation];
-
-        [_queue addOperationWithBlock:^{
-            if (![publishIntermediateFilesLookup writeToFile:intermediateFileLookupPath])
-            {
-                [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Could not write intermediate file lookup for smart spritesheet %@ @ %@", spriteSheetName, resolution]];
-            }
-        }];
-    }
-}
-
-- (PublishSpriteKitSpriteSheetOperation *)createSpriteKitSheetOperation:(NSString *)spriteSheetDir
-                                                        spriteSheetName:(NSString *)spriteSheetName
-                                                                subPath:(NSString *)subPath
-                                               textureAtlasToolLocation:(NSString *)textureAtlasToolLocation
-                                                             resolution:(NSString *)resolution
-{
-    PublishSpriteKitSpriteSheetOperation *operation = [[PublishSpriteKitSpriteSheetOperation alloc] initWithProjectSettings:_projectSettings
-                                                                                                                   warnings:_warnings
-                                                                                                             statusProgress:_publishingTaskStatusProgress];
-    operation.resolution = resolution;
-    operation.spriteSheetDir = spriteSheetDir;
-    operation.spriteSheetName = spriteSheetName;
-    operation.subPath = subPath;
-    operation.textureAtlasToolFilePath = textureAtlasToolLocation;
-    return operation;
 }
 
 - (BOOL)generateAndEnqueuePublishingTasks

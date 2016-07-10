@@ -6,18 +6,14 @@
 #import "ProjectSettings.h"
 #import "ResourcePropertyKeys.h"
 #import "MiscConstants.h"
+#import "PlatformSettings.h"
 
 
 @interface PublishSpriteSheetOperation()
 
 @property (nonatomic, strong) Tupac *packer;
 @property (nonatomic, copy) NSString *previewFilePath;
-@property (nonatomic) int format_ios;
-@property (nonatomic) BOOL format_ios_dither;
-@property (nonatomic) BOOL format_ios_compress;
-@property (nonatomic) int format_android;
-@property (nonatomic) BOOL format_android_dither;
-@property (nonatomic) BOOL format_android_compress;
+@property (nonatomic) int format;
 @property (nonatomic) BOOL trim;
 @property (nonatomic) int format_padding;
 @property (nonatomic) int format_extrude;
@@ -142,18 +138,10 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
 - (void)setImageFormatDependingOnTarget
 {
-    if (_osType == kCCBPublisherOSTypeIOS)
-    {
-        _packer.imageFormat = self.format_ios;
-        _packer.compress = self.format_ios_compress;
-        _packer.dither = self.format_ios_dither;
-    }
-    else if (_osType == kCCBPublisherOSTypeAndroid)
-    {
-        _packer.imageFormat = self.format_android;
-        _packer.compress = self.format_android_compress;
-        _packer.dither = self.format_android_dither;
-    }
+    _packer.imageFormat = [_platformSettings imageFormat:self.format];
+    _packer.compress = [_platformSettings imageCCZCompression:self.format];
+    _packer.dither = [_platformSettings imageDither:self.format];
+    _packer.imageQuality = [_platformSettings imageQuality:self.format];
 }
 
 - (void)setTextureMaxSize
@@ -178,12 +166,7 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
 - (void)loadSettings
 {
-    self.format_ios = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_FORMAT] intValue];
-    self.format_ios_dither = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_DITHER] boolValue];
-    self.format_ios_compress = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_COMPRESS] boolValue];
-    self.format_android = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_FORMAT] intValue];
-    self.format_android_dither = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_DITHER] boolValue];
-    self.format_android_compress = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_COMPRESS] boolValue];
+    self.format = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_IMAGE_FORMAT] intValue];
     self.trim = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_TRIM_SPRITES] boolValue];
     self.format_padding = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_FORMAT_PADDING] integerValue];
     self.format_extrude = [[_projectSettings propertyForRelPath:_subPath andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE] integerValue];
@@ -197,8 +180,8 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"file: %@, res: %@, osType: %i, filefull: %@, srcdirs: %@, publishDirectory: %@, date: %@",
-                                      [_spriteSheetFile lastPathComponent], _resolution, _osType, _spriteSheetFile, _srcDirs, _publishDirectory, _srcSpriteSheetDate];
+    return [NSString stringWithFormat:@"file: %@, res: %@, osType: %@, filefull: %@, srcdirs: %@, publishDirectory: %@, date: %@",
+                                      [_spriteSheetFile lastPathComponent], _resolution, _platformName, _spriteSheetFile, _srcDirs, _publishDirectory, _srcSpriteSheetDate];
 }
 
 

@@ -5,11 +5,13 @@
 
 @class CCBWarnings;
 @class ProjectSettings;
+@class PlatformSettings;
 
 @interface PublishSpriteSheetOperation : PublishBaseOperation
 
+@property (nonatomic, retain) PlatformSettings *platformSettings;
 @property (nonatomic, copy) NSString *spriteSheetFile;
-@property (nonatomic) CCBPublisherOSType osType;
+@property (nonatomic, copy) NSString *platformName;
 @property (nonatomic, copy) NSString *subPath;
 @property (nonatomic, strong) NSArray *srcDirs;
 @property (nonatomic, copy) NSString *resolution;

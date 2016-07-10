@@ -47,10 +47,7 @@ CCNode * findSceneRoot(CCNode * node)
     if (self)
     {
 		// no joints in Sprite Kit projects
-		if (projectSettings.engine != CCBTargetEngineSpriteKit)
-		{
-			self.joints = [[SequencerJoints alloc] init];
-		}
+		self.joints = [[SequencerJoints alloc] init];
     }
     return self;
 }

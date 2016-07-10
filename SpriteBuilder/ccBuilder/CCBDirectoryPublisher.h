@@ -34,13 +34,14 @@
 @class PublishRenamedFilesLookup;
 @class DateCache;
 @class PublishingTaskStatusProgress;
+@class PlatformSettings;
 
 
 @interface CCBDirectoryPublisher : NSObject
 
+@property (nonatomic, retain) PlatformSettings *platformSettings;
 @property (nonatomic, copy) NSString *inputDir;
 @property (nonatomic, copy) NSString *outputDir;
-@property (nonatomic) CCBPublisherOSType osType;
 @property (nonatomic) NSInteger audioQuality;
 @property (nonatomic, weak) NSArray *resolutions;
 @property (nonatomic, weak) NSMutableSet *publishedPNGFiles;

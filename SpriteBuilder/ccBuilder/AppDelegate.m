@@ -444,17 +444,6 @@ typedef enum
         [itemViewTabs setSelectedItem:[itemViewTabs.items objectAtIndex:0]];
         [itemTabView selectTabViewItemAtIndex:0];
     }
-	
-	// physics tab forcibly disabled for Sprite Kit projects as there is no pyhsics editing support (yet)
-	if (projectSettings.engine == CCBTargetEngineSpriteKit)
-	{
-		if (itemViewTabs.items.count > 2)
-		{
-			SMTabBarItem* item = [itemViewTabs.items objectAtIndex:2];
-			item.enabled = NO;
-			//NSLog(@"Sprite Kit disabled tab item: %@", item);
-		}
-	}
 }
 
 - (void) setupProjectTilelessEditor
@@ -1691,7 +1680,7 @@ typedef enum
     [self updateResourcePathsFromProjectSettings];
 
     // Update Node Plugins list
-	[plugInNodeViewHandler showNodePluginsForEngine:prjctSettings.engine];
+	[plugInNodeViewHandler showNodePluginsForEngine:CCBTargetEngineCocos2d];
 	
     BOOL success = [self checkForTooManyDirectoriesInCurrentProject];
     if (!success)

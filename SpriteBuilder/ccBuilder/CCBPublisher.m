@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) PublishingTaskStatusProgress *publishingTaskStatusProgress;
 @property (nonatomic, strong) NSOperationQueue *publishingQueue;
-@property (nonatomic, strong) NSMutableArray *publishingTargets;
+@property (nonatomic, strong) NSMutableArray *publishingPlatforms;
 @property (nonatomic, strong) ProjectSettings *projectSettings;
 
 // Shared for targets
@@ -51,18 +51,26 @@
     _publishingQueue.maxConcurrentOperationCount = 1;
 
     self.modifiedDatesCache = [[DateCache alloc] init];
-    self.publishingTargets = [NSMutableArray array];
+    self.publishingPlatforms = [NSMutableArray array];
 
     return self;
 }
 
 - (bool)start
 {
-    if (_publishingTargets.count == 0)
+    [_publishingPlatforms removeAllObjects];
+    for(PlatformSettings *platfromSettings in _projectSettings.platformsSettings)
+    {
+        if(platfromSettings.publishEnabled && [platfromSettings.packets count] != 0)
+        {
+            [_publishingPlatforms addObject:platfromSettings];
+        }
+    }
+    if ([_publishingPlatforms count] == 0)
     {
         NSLog(@"[PUBLISH] Nothing to do: no publishing targets added.");
         [_warnings setCurrentPlatform:@"none"];
-        [_warnings addWarningWithDescription:@"Nothing to publish. Check Project Settings. Common cause: No package is set to publish \"in Main Project\" or \"as Zip file\"" isFatal:YES];
+        [_warnings addWarningWithDescription:@"Nothing to publish. Check Project Settings. Common cause: No platforms is set to publish or no packages selected inside platforms" isFatal:YES];
         [self callFinishedBlock];
         return false;
     }
@@ -153,9 +161,9 @@
 
 - (BOOL)enqueuePublishOperationsForAllTargets
 {
-    for (CCBPublishingTarget *target in _publishingTargets)
+    for (PlatformSettings *platform in _publishingPlatforms)
     {
-        if (![self enqueuePublishingOperationsForTarget:target])
+        if (![self enqueuePublishingOperationsForPlatform:platform])
         {
              return NO;
         }
@@ -163,25 +171,48 @@
     return YES;
 }
 
-- (BOOL)enqueuePublishingOperationsForTarget:(CCBPublishingTarget *)target
+- (NSArray *)publishingResolutionsForPlatform:(PlatformSettings*) platform
 {
-    _warnings.currentPlatform = target.platform.name;
+    NSMutableArray *result = [NSMutableArray array];
+    
+    if (platform.publish1x)
+    {
+        [result addObject:RESOLUTION_PHONE];
+    }
+    if (platform.publish2x)
+    {
+        [result addObject:RESOLUTION_PHONE_HD];
+    }
+    if (platform.publish4x)
+    {
+        [result addObject:RESOLUTION_TABLET_HD];
+    }
+    return result;
+}
 
-    target.renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
+- (BOOL)enqueuePublishingOperationsForPlatform:(PlatformSettings*) platform
+{
+    _warnings.currentPlatform = platform.name;
 
-    for (NSString *aDir in target.inputDirectories)
+    PublishRenamedFilesLookup *renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
+    NSMutableSet *publishedPNGFiles = [NSMutableSet set];
+    NSMutableSet *publishedSpriteSheetFiles = [NSMutableSet set];
+    
+    NSArray *resolutions = [self publishingResolutionsForPlatform:platform];
+
+    for (NSString *aDir in platform.inputDirs)
     {
         CCBDirectoryPublisher *dirPublisher = [[CCBDirectoryPublisher alloc] initWithProjectSettings:_projectSettings
                                                                                             warnings:_warnings
                                                                                                queue:_publishingQueue];
         dirPublisher.inputDir = aDir;
-        dirPublisher.outputDir = target.outputDirectory;
-        dirPublisher.osType = target.osType;
-        dirPublisher.resolutions = target.resolutions;
-        dirPublisher.audioQuality = target.audioQuality;
-        dirPublisher.publishedPNGFiles = target.publishedPNGFiles;
-        dirPublisher.renamedFilesLookup = target.renamedFilesLookup;
-        dirPublisher.publishedSpriteSheetFiles = target.publishedSpriteSheetFiles;
+        dirPublisher.outputDir = platform.publishDirectory;
+        //dirPublisher.osType = target.osType;
+        dirPublisher.resolutions = resolutions;
+        //dirPublisher.audioQuality = target.audioQuality;
+        dirPublisher.publishedPNGFiles = publishedPNGFiles;
+        dirPublisher.renamedFilesLookup = renamedFilesLookup;
+        dirPublisher.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
         dirPublisher.publishingTaskStatusProgress = _publishingTaskStatusProgress;
         dirPublisher.modifiedDatesCache = _modifiedDatesCache;
 
@@ -193,22 +224,22 @@
 
     if (!_projectSettings.onlyPublishCCBs)
     {
-        [self enqueueGenerateFilesOperationWithTarget:target];
+        [self enqueueGenerateFilesOperationWithTarget:platform withRenamedFilesLookup:renamedFilesLookup withPublishedSpriteSheetFiles:publishedSpriteSheetFiles];
     }
 
     // Yiee Haa!
     return YES;
 }
 
-- (void)enqueueGenerateFilesOperationWithTarget:(CCBPublishingTarget *)target
+- (void)enqueueGenerateFilesOperationWithTarget:(PlatformSettings*) platform withRenamedFilesLookup:(PublishRenamedFilesLookup*)renamedFilesLookup withPublishedSpriteSheetFiles:(NSMutableSet*)publishedSpriteSheetFiles
 {
     PublishGeneratedFilesOperation *operation = [[PublishGeneratedFilesOperation alloc] initWithProjectSettings:_projectSettings
                                                                                                        warnings:_warnings
                                                                                                  statusProgress:_publishingTaskStatusProgress];
-    operation.osType = target.osType;
-    operation.outputDir = target.outputDirectory;
-    operation.publishedSpriteSheetFiles = target.publishedSpriteSheetFiles;
-    operation.fileLookup = target.renamedFilesLookup;
+    //operation.osType = target.osType;
+    operation.outputDir = platform.publishDirectory;
+    operation.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
+    operation.fileLookup = renamedFilesLookup;
 
     [_publishingQueue addOperation:operation];
 }
@@ -228,18 +259,18 @@
         && !_projectSettings.onlyPublishCCBs)
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        for (CCBPublishingTarget *target in _publishingTargets)
+        for (PlatformSettings *platform in _publishingPlatforms)
         {
-            if (!target.directoryToClean)
+            if(!platform.publishDirectory)
             {
                 continue;
             }
-
+            
             NSError *error;
-            if (![fileManager removeItemAtPath:target.directoryToClean error:&error]
+            if (![fileManager removeItemAtPath:platform.publishDirectory error:&error]
                 && error.code != NSFileNoSuchFileError)
             {
-                NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", target.outputDirectory, error);
+                NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", platform.publishDirectory, error);
             }
         }
     }
@@ -247,10 +278,9 @@
 
 - (void)enqueuePostPublishingOperationsForAllTargets
 {
-    for (CCBPublishingTarget *target in _publishingTargets)
+    for (PlatformSettings *platform in _publishingPlatforms)
     {
-        [self postProcessPublishedPNGFilesWithOptiPNGWithTarget:target];
-        [self zipFolderWithTarget:target];
+        //[self postProcessPublishedPNGFilesWithOptiPNGWithTarget:platform];
     }
 }
 
@@ -325,7 +355,7 @@
     self.publishingTaskStatusProgress = [[PublishingTaskStatusProgress alloc] initWithTaskStatus:taskStatusUpdater];
 }
 
-- (void)addPublishingTarget:(CCBPublishingTarget *)target
+/*- (void)addPublishingTarget:(CCBPublishingTarget *)target
 {
     if (!target)
     {
@@ -333,6 +363,6 @@
     }
 
     [_publishingTargets addObject:target];
-}
+}*/
 
 @end

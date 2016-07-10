@@ -12,6 +12,7 @@
 #import "PublishLogging.h"
 #import "ResourcePropertyKeys.h"
 #import "MiscConstants.h"
+#import "PlatformSettings.h"
 
 @interface PublishImageOperation ()
 
@@ -89,12 +90,6 @@
 
     self.srcFilePath = [srcDir stringByAppendingPathComponent:srcFileName];
     self.dstFilePath = [dstDir stringByAppendingPathComponent:dstFileName];
-
-    // Sprite Kit requires specific extensions for specific image resolutions (ie @2x, ~ipad, ..)
-    if (_projectSettings.engine == CCBTargetEngineSpriteKit)
-    {
-        self.dstFilePath = [self pathWithCocoaImageResolutionSuffix:_dstFilePath resolution:_resolution];
-    }
 
     // Fetch new name
     NSString *dstPathProposal = [[FCFormatConverter defaultConverter] proposedNameForConvertedImageAtPath:_dstFilePath
@@ -240,18 +235,11 @@
     // TODO: Move to data object: format, dither, compress
     if (!_isSpriteSheet)
     {
-        if (_osType == kCCBPublisherOSTypeIOS)
-        {
-            self.format = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_FORMAT] intValue];
-            self.dither = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_DITHER] boolValue];
-            self.compress = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IOS_IMAGE_COMPRESS] boolValue];
-        }
-        else if (_osType == kCCBPublisherOSTypeAndroid)
-        {
-            self.format = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_FORMAT] intValue];
-            self.dither = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_DITHER] boolValue];
-            self.compress = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_ANDROID_IMAGE_COMPRESS] boolValue];
-        }
+        int format = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IMAGE_FORMAT] intValue];
+        self.format = [_platformSettings imageFormat:format];
+        self.compress = [_platformSettings imageCCZCompression:format];
+        self.dither = [_platformSettings imageDither:format];
+        self.quality = [_platformSettings imageQuality:format];
     }
 }
 
@@ -377,7 +365,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"src: %@, dst: %@, target: %i, resolution: %@, srcfull: %@, dstfull: %@", [_srcFilePath lastPathComponent], [_dstFilePath lastPathComponent], _osType, _resolution, _srcFilePath, _dstFilePath];
+    return [NSString stringWithFormat:@"src: %@, dst: %@, target: %@, resolution: %@, srcfull: %@, dstfull: %@", [_srcFilePath lastPathComponent], [_dstFilePath lastPathComponent], _platformName, _resolution, _srcFilePath, _dstFilePath];
 }
 
 @end
