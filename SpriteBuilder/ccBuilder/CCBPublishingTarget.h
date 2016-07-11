@@ -18,7 +18,6 @@
 
 @property (nonatomic, copy) NSString *zipOutputPath;
 
-@property (nonatomic, strong) NSMutableSet *publishedPNGFiles;
 @property (nonatomic, strong) PublishRenamedFilesLookup *renamedFilesLookup;
 @property (nonatomic, strong) NSMutableSet *publishedSpriteSheetFiles;
 

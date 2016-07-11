@@ -12,7 +12,6 @@
     if (self)
     {
         self.publishEnvironment = kCCBPublishEnvironmentDevelop;
-        self.publishedPNGFiles = [NSMutableSet set];
         self.publishedSpriteSheetFiles = [[NSMutableSet alloc] init];
         self.renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
         self.platform = nil;

@@ -17,7 +17,6 @@
 @property (nonatomic, copy) NSString *resolution;
 @property (nonatomic, copy) NSString *platformName;
 
-@property (nonatomic, strong) NSMutableSet *publishedPNGFiles;
 @property (nonatomic, strong) id<PublishFileLookupProtocol> fileLookup;
 
 @property (nonatomic) BOOL isSpriteSheet;

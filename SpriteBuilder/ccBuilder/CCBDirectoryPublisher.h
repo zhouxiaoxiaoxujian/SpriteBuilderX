@@ -44,7 +44,6 @@
 @property (nonatomic, copy) NSString *outputDir;
 @property (nonatomic) NSInteger audioQuality;
 @property (nonatomic, weak) NSArray *resolutions;
-@property (nonatomic, weak) NSMutableSet *publishedPNGFiles;
 @property (nonatomic, weak) NSMutableSet *publishedSpriteSheetFiles;
 @property (nonatomic, weak) PublishRenamedFilesLookup *renamedFilesLookup;
 @property (nonatomic, strong) DateCache *modifiedDatesCache;

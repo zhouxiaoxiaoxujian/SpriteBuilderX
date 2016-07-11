@@ -131,6 +131,8 @@
     dict[@"name"] = _name;
     
     dict[@"publishEnabled"] = @(_publishEnabled);
+    dict[@"publishCCB"] = @(_publishCCB);
+    dict[@"publishOther"] = @(_publishOther);
     dict[@"publishDirectory"] = _publishDirectory;
     
     dict[@"publish1x"] = @(_publish1x);
@@ -184,6 +186,8 @@
     _name = @"Empty";
     
     _publishEnabled = YES;
+    _publishCCB = YES;
+    _publishOther = YES;
     _publishDirectory = @".";
     
     _publish1x = YES;
@@ -233,6 +237,8 @@
     
     _name = [dict objectForKey:@"name"];
     self.publishEnabled = [[dict objectForKey:@"publishEnabled"] boolValue];
+    self.publishCCB = [[dict objectForKey:@"publishCCB"] boolValue];
+    self.publishOther = [[dict objectForKey:@"publishOther"] boolValue];
     self.publishDirectory = [dict objectForKey:@"publishDirectory"];
     
     self.publish1x = [[dict objectForKey:@"publish1x"] boolValue];
@@ -427,6 +433,29 @@
         default:
             return 4;
     }
+}
+
+- (void) setPublish1x:(BOOL)value
+{
+    _publish1x = value;
+    self.publishImages = _publish1x || _publish2x || _publish4x;
+}
+
+- (void) setPublish2x:(BOOL)value
+{
+    _publish2x = value;
+    self.publishImages = _publish1x || _publish2x || _publish4x;
+}
+
+- (void) setPublish4x:(BOOL)value
+{
+    _publish4x = value;
+    self.publishImages = _publish1x || _publish2x || _publish4x;
+}
+
+-(BOOL) publishImages
+{
+    return _publish1x || _publish2x || _publish4x;
 }
 
 @end

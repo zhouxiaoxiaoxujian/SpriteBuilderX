@@ -9,11 +9,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" userLabel="Platform Settings Detail View" customClass="PlatformSettingsDetailView">
-            <rect key="frame" x="0.0" y="0.0" width="540" height="288"/>
+            <rect key="frame" x="0.0" y="0.0" width="540" height="308"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmF-MD-VA9">
-                    <rect key="frame" x="154" y="245" width="328" height="19"/>
+                    <rect key="frame" x="154" y="265" width="328" height="19"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="p1j-hg-a42">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -24,11 +24,46 @@
                         <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="dXY-nP-btE"/>
                     </connections>
                 </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01A-QM-Ccz">
+                    <rect key="frame" x="154" y="232" width="379" height="25"/>
+                    <subviews>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00P-vh-8jM" customClass="CCBTextFieldLabel">
+                            <rect key="frame" x="14" y="2" width="108" height="20"/>
+                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Publish file types" id="P32-yi-OJK">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E94-9D-K3e">
+                            <rect key="frame" x="130" y="4" width="79" height="17"/>
+                            <buttonCell key="cell" type="check" title="CCB" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="SRN-dQ-uHy">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="n9o-NH-0sF"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishCCB" id="2Pi-fu-Lqs"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FkY-Gz-zuN">
+                            <rect key="frame" x="253" y="4" width="69" height="18"/>
+                            <buttonCell key="cell" type="check" title="Other" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="PjX-TL-OFb">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="IKK-Rc-GdO"/>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishOther" id="HaY-du-lzn"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-9J-jr5">
                     <rect key="frame" x="154" y="106" width="379" height="127"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
-                            <rect key="frame" x="20" y="134" width="440" height="5"/>
+                            <rect key="frame" x="0.0" y="124" width="379" height="5"/>
                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <font key="titleFont" metaFont="system"/>
@@ -45,7 +80,7 @@
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20Q-SB-q8R">
-                            <rect key="frame" x="120" y="103" width="99" height="16"/>
+                            <rect key="frame" x="130" y="103" width="99" height="16"/>
                             <buttonCell key="cell" type="check" title="Images 2x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5rR-xK-KM3">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -56,7 +91,7 @@
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P8A-Da-Pp0">
-                            <rect key="frame" x="242" y="103" width="99" height="16"/>
+                            <rect key="frame" x="253" y="103" width="99" height="16"/>
                             <buttonCell key="cell" type="check" title="Images 4x" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rfu-7q-xKM">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -151,6 +186,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="JmQ-Sl-Z7r"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="JmQ-Sl-Z7r" id="RSm-Ms-Cbb">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-op-WTk">
@@ -176,6 +219,14 @@
                                 </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImageQuality" id="fTg-KR-jXF"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Z1n-aJ-s9B"/>
+                                <binding destination="-2" name="enabled3" keyPath="currentPlatformSettings.publishImages" previousBinding="lEN-zc-Kf3" id="Asn-JH-Zb1">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-lY-pXv" customClass="CCBTextFieldLabel">
@@ -251,6 +302,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="3gr-dD-tC5"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="3gr-dD-tC5" id="X2T-E1-MhQ">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6F-iD-seL">
@@ -276,6 +335,14 @@
                                 </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImageQuality" id="zye-V3-l9q"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="bhJ-El-zvL"/>
+                                <binding destination="-2" name="enabled3" keyPath="currentPlatformSettings.publishImages" previousBinding="e3U-XF-Y8K" id="z57-sS-EQ1">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-Et-gFU" customClass="CCBTextFieldLabel">
@@ -328,6 +395,14 @@
                                         <string key="NSValueTransformerName">EnumTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="0Or-TX-7m3" id="66x-03-89y">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-H5-GwE">
@@ -353,6 +428,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImageQuality" id="ZPg-Cz-R1T"/>
+                                <binding destination="-2" name="enabled3" keyPath="currentPlatformSettings.publishImages" previousBinding="GvK-Ul-HrA" id="ms7-Mh-7TN">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQ2-Ek-Axd" customClass="CCBTextFieldLabel">
@@ -459,6 +542,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="71s-Tg-DLC"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="71s-Tg-DLC" id="OvF-N7-gLC">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jK5-5y-D0e">
@@ -484,6 +575,14 @@
                                 </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImageQuality" id="uM1-x7-O9V"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="d8i-uD-Kfj"/>
+                                <binding destination="-2" name="enabled3" keyPath="currentPlatformSettings.publishImages" previousBinding="jVk-P4-uzT" id="qG6-pj-ZmP">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </textField>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9dR-h8-vuQ">
@@ -497,6 +596,14 @@
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="3qR-jN-No9">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">ImageFormatDichterEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="3qR-jN-No9" id="WMy-49-a8c">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -514,6 +621,14 @@
                                         <string key="NSValueTransformerName">ImageFormatDichterEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="qFz-nU-dNn" id="P78-Vl-qLL">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3N-yH-4zT">
@@ -527,6 +642,14 @@
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.uncompressedImageFormat" id="bsX-P7-8eq">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">ImageFormatDichterEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="bsX-P7-8eq" id="cFE-gh-W8T">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -544,6 +667,14 @@
                                         <string key="NSValueTransformerName">ImageFormatDichterEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="rAQ-X6-fuX" id="jd6-no-PYv">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52o-Mg-ynl">
@@ -557,6 +688,14 @@
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="C0B-T0-rT8">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="C0B-T0-rT8" id="hKW-cg-p7X">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -574,6 +713,14 @@
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="BZi-e8-vUm" id="sca-m7-dC0">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqL-2t-Dsb">
@@ -587,6 +734,14 @@
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.uncompressedImageFormat" id="wND-kb-TgK">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="wND-kb-TgK" id="46B-op-KgU">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -604,6 +759,14 @@
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="U3j-0O-g8Y" id="JCk-8Z-7dx">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                     </subviews>
@@ -612,7 +775,7 @@
                     <rect key="frame" x="154" y="9" width="379" height="98"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-uA-EFL">
-                            <rect key="frame" x="20" y="95" width="440" height="5"/>
+                            <rect key="frame" x="0.0" y="95" width="379" height="5"/>
                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <font key="titleFont" metaFont="system"/>
@@ -689,6 +852,14 @@
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.effectQuality" id="DmP-nw-D7R"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="kBT-xf-keS"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="kBT-xf-keS" id="xEx-LX-p22">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
@@ -728,6 +899,14 @@
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.musicQuality" id="ual-9p-KZU"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Zmn-gg-PTl"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="Zmn-gg-PTl" id="wb0-3v-Lac">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
@@ -767,6 +946,14 @@
                             <connections>
                                 <binding destination="-2" name="selectedTag" keyPath="currentPlatformSettings.customSoundQuality" id="3fP-lw-jF1"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="6Cx-hT-9DO"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="6Cx-hT-9DO" id="N8w-5I-JxE">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kv5-if-uUy">
@@ -778,6 +965,14 @@
                             <connections>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.effectStereo" id="R9q-2A-KQm"/>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="sST-jQ-hYv"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="sST-jQ-hYv" id="cLU-U6-rSW">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8TC-G5-ZEN">
@@ -788,7 +983,15 @@
                             </buttonCell>
                             <connections>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="aYD-nY-q7t"/>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishSound" id="w94-0u-xro"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="aYD-nY-q7t" id="P3c-W6-dBq">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.musicStereo" id="16E-CS-bVe"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrG-Bj-VqY">
@@ -799,7 +1002,15 @@
                             </buttonCell>
                             <connections>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="S3v-A8-9rh"/>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.publishSound" id="8os-55-2Ab"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="S3v-A8-9rh" id="H2r-cW-X8Q">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customSoundStereo" id="rQM-fV-XF8"/>
                             </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcU-Ds-rqN">
@@ -824,6 +1035,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="yvv-N0-K57"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="yvv-N0-K57" id="97U-A0-IBh">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Waa-5h-XA8">
@@ -848,6 +1067,14 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="76R-0c-4Ex"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="76R-0c-4Ex" id="mYN-qV-gOi">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu4-XY-nkX">
@@ -872,26 +1099,26 @@
                                     </dictionary>
                                 </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="Nqs-3g-fqP"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="Nqs-3g-fqP" id="ZBV-d6-Nbd">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </popUpButton>
                     </subviews>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i5l-Zi-Lgo">
-                    <rect key="frame" x="4" y="266" width="144" height="17"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Packages" usesSingleLineMode="YES" id="ILj-7N-i4H">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6M-Yx-fPn">
-                    <rect key="frame" x="6" y="9" width="140" height="256"/>
+                    <rect key="frame" x="6" y="9" width="140" height="276"/>
                     <clipView key="contentView" ambiguous="YES" id="d4D-Dq-xmy">
-                        <rect key="frame" x="1" y="1" width="138" height="254"/>
+                        <rect key="frame" x="1" y="1" width="138" height="274"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="o0f-we-ZuS">
-                                <rect key="frame" x="0.0" y="0.0" width="138" height="254"/>
+                                <rect key="frame" x="0.0" y="0.0" width="138" height="274"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -946,7 +1173,7 @@
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fyS-Zz-Ihw">
-                    <rect key="frame" x="226" y="266" width="144" height="17"/>
+                    <rect key="frame" x="226" y="286" width="144" height="17"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Publish path" usesSingleLineMode="YES" id="xeS-uu-i5M">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -954,7 +1181,7 @@
                     </textFieldCell>
                 </textField>
                 <button identifier=" " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-zb-gM5">
-                    <rect key="frame" x="485" y="244" width="48" height="21"/>
+                    <rect key="frame" x="485" y="264" width="48" height="21"/>
                     <buttonCell key="cell" type="smallSquare" title="Select" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RsQ-4R-yom">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>

@@ -57,7 +57,6 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     NSAssert(_resolution != nil, @"resolution should not be nil");
     NSAssert(_srcSpriteSheetDate != nil, @"srcSpriteSheetDate should not be nil");
     NSAssert(_publishDirectory != nil, @"publishDirectory should not be nil");
-    NSAssert(_publishedPNGFiles != nil, @"publishedPNGFiles should not be nil");
 }
 
 - (void)publishSpriteSheet
@@ -70,8 +69,6 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
     NSArray *createdFiles = [_packer createTextureAtlasFromDirectoryPaths:_srcDirs];
 
-    [self addCreatedPNGFilesToCreatedFilesSet:createdFiles];
-
     [self processWarnings];
 
     [self setDateForCreatedFiles:createdFiles];
@@ -82,17 +79,6 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     for (NSString *filePath in createFiles)
     {
         [CCBFileUtil setModificationDate:_srcSpriteSheetDate forFile:filePath];
-    }
-}
-
-- (void)addCreatedPNGFilesToCreatedFilesSet:(NSArray *)createdFiles
-{
-    for (NSString *aFile in createdFiles)
-    {
-        if ([[aFile pathExtension] isEqualToString:@"png"])
-        {
-            [_publishedPNGFiles addObject:aFile];
-        }
     }
 }
 
@@ -130,6 +116,7 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     _packer.trim = _trim;
     _packer.padding = self.format_padding;
     _packer.extrude = self.format_extrude;
+    _packer.optimize = self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease;
 
     [self setImageFormatDependingOnTarget];
 

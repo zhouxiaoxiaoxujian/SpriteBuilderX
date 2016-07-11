@@ -26,6 +26,9 @@ typedef enum {
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString* publishDirectory;
 @property (nonatomic, assign) BOOL publishEnabled;
+@property (nonatomic, assign) BOOL publishCCB;
+@property (nonatomic, assign) BOOL publishOther;
+@property (nonatomic, assign) BOOL publishImages;
 @property (nonatomic, assign) BOOL publish1x;
 @property (nonatomic, assign) BOOL publish2x;
 @property (nonatomic, assign) BOOL publish4x;
@@ -74,5 +77,7 @@ typedef enum {
 - (kFCSoundFormat) soundFormat:(int)type;
 - (BOOL) soundStereo:(int)type;
 - (int) soundQuality:(int)type;
+
+- (BOOL) kublish4x;
 
 @end

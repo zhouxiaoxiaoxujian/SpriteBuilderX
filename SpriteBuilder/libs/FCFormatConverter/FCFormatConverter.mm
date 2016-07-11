@@ -88,12 +88,54 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return NULL;
 }
 
+-(BOOL)optimizePngAtPath:(NSString*)srcPath
+{
+
+    NSTask *task = [[NSTask alloc] init];
+    NSString *pathToOptiPNG = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"optipng"];
+    [task setLaunchPath:pathToOptiPNG];
+    [task setArguments:@[srcPath]];
+
+    // NSPipe *pipe = [NSPipe pipe];
+    NSPipe *pipeErr = [NSPipe pipe];
+    [task setStandardError:pipeErr];
+
+    // [_task setStandardOutput:pipe];
+    // NSFileHandle *file = [pipe fileHandleForReading];
+
+    NSFileHandle *fileErr = [pipeErr fileHandleForReading];
+
+    int status = 0;
+
+    @try
+    {
+        [task launch];
+        [task waitUntilExit];
+        status = [task terminationStatus];
+    }
+    @catch (NSException *ex)
+    {
+        NSLog(@"[%@] %@", [self class], ex);
+        return NO;
+    }
+
+    /*if (status)
+    {
+        NSData *data = [fileErr readDataToEndOfFile];
+        NSString *stdErrOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *warningDescription = [NSString stringWithFormat:@"optipng error: %@", stdErrOutput];
+        [_warnings addWarningWithDescription:warningDescription];
+    }*/
+    return YES;
+}
+
 -(BOOL)convertImageAtPath:(NSString*)srcPath
                    format:(int)format
                   quality:(int)quality
                    dither:(BOOL)dither
                  compress:(BOOL)compress
             isSpriteSheet:(BOOL)isSpriteSheet
+                isRelease:(BOOL)isRelease
            outputFilename:(NSString**)outputFilename
                     error:(NSError**)error;
 {
@@ -133,6 +175,8 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         if([[srcPath pathExtension] isEqualToString:@"png"])
         {
             *outputFilename = [srcPath copy];
+            if(!isSpriteSheet && isRelease)
+                [self optimizePngAtPath:srcPath];
             return YES;
         }
         else
@@ -152,6 +196,8 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
             
             [fm removeItemAtPath:srcPath error:nil];
             *outputFilename = out_path;
+            if(!isSpriteSheet && isRelease)
+                [self optimizePngAtPath:srcPath];
             return YES;
         }
     }
@@ -171,6 +217,8 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         if ([fm fileExistsAtPath:srcPath])
         {
             *outputFilename = [srcPath copy];
+            if(!isSpriteSheet && isRelease)
+                [self optimizePngAtPath:srcPath];
             return YES;
         }
     }

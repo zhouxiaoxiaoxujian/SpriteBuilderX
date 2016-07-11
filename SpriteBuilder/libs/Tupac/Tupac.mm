@@ -73,7 +73,7 @@ typedef struct _PVRTexHeader
     BOOL cancelled_;
 }
 
-@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, outputFormat=outputFormat_, imageFormat=imageFormat_, imageQuality=imageQuality_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, extrude=extrude_, dither=dither_, compress=compress_;
+@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, outputFormat=outputFormat_, imageFormat=imageFormat_, imageQuality=imageQuality_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, extrude=extrude_, dither=dither_, compress=compress_, optimize=optimize_;
 @synthesize errorMessage;
 
 + (Tupac*) tupac
@@ -518,6 +518,7 @@ typedef struct _PVRTexHeader
                                       dither:dither_
                                     compress:compress_
                                isSpriteSheet:YES
+                                   isRelease:optimize_
                               outputFilename:&textureFileName
                                        error:&error])
     {

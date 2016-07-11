@@ -45,7 +45,6 @@
     NSAssert(_dstFilePath != nil, @"dstPath should not be nil");
     NSAssert(_outputDir != nil, @"outDir should not be nil");
     NSAssert(_resolution != nil, @"resolution should not be nil");
-    NSAssert(_publishedPNGFiles != nil, @"publishedPNGFiles should not be nil");
     NSAssert(_fileLookup != nil, @"fileLookup should not be nil");
 }
 
@@ -133,6 +132,7 @@
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
+                                        isRelease:self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease
                                    outputFilename:&dstPathConverted
                                             error:&error])
         {
@@ -145,13 +145,6 @@
 
         // Update modification date
         [CCBFileUtil setModificationDate:srcDate forFile:dstPathConverted];
-
-        if (!_isSpriteSheet
-            && !_intermediateProduct
-            && _format == kFCImageFormatPNG)
-        {
-            [_publishedPNGFiles addObject:dstPathConverted];
-        }
     }
     else if (![_resolution isEqualToString:@"universal"] && [fileManager fileExistsAtPath:srcAutoPath])
     {
@@ -189,6 +182,7 @@
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
+                                        isRelease:self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease
                                    outputFilename:&dstPathConverted
                                             error:&error])
         {
@@ -199,13 +193,6 @@
 
         // Update modification date
         [CCBFileUtil setModificationDate:srcDate forFile:dstPathConverted];
-
-        if (!_isSpriteSheet
-            && !_intermediateProduct
-            && _format == kFCImageFormatPNG)
-        {
-            [_publishedPNGFiles addObject:dstPathConverted];
-        }
     }
     else
     {

@@ -19,20 +19,20 @@
         <window title="Publish Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="740" height="456"/>
+            <rect key="contentRect" x="196" y="240" width="740" height="476"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="740" height="456"/>
+                <rect key="frame" x="0.0" y="0.0" width="740" height="476"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-g8-rGo">
-                        <rect key="frame" x="20" y="179" width="156" height="257"/>
+                        <rect key="frame" x="20" y="179" width="156" height="277"/>
                         <clipView key="contentView" ambiguous="YES" id="Zwh-7J-mpo">
-                            <rect key="frame" x="1" y="1" width="154" height="255"/>
+                            <rect key="frame" x="1" y="1" width="154" height="275"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="124-eh-2ro">
-                                    <rect key="frame" x="0.0" y="0.0" width="154" height="255"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="154" height="275"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -265,13 +265,13 @@
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" fixedFrame="YES" boxType="secondary" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-DY-4PH">
-                        <rect key="frame" x="181" y="138" width="552" height="300"/>
+                        <rect key="frame" x="181" y="138" width="552" height="320"/>
                         <view key="contentView" id="ml1-sT-Hwp">
-                            <rect key="frame" x="1" y="1" width="550" height="298"/>
+                            <rect key="frame" x="1" y="1" width="550" height="318"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iaj-JH-N3e">
-                                    <rect key="frame" x="5" y="5" width="540" height="288"/>
+                                    <rect key="frame" x="5" y="5" width="540" height="308"/>
                                 </customView>
                             </subviews>
                         </view>
@@ -279,7 +279,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ici-ob-vgc">
-                        <rect key="frame" x="663" y="3" width="73" height="32"/>
+                        <rect key="frame" x="663" y="23" width="73" height="32"/>
                         <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uoz-ue-jQk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>

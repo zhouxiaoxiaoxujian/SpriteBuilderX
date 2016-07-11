@@ -196,7 +196,6 @@
     _warnings.currentPlatform = platform.name;
 
     PublishRenamedFilesLookup *renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
-    NSMutableSet *publishedPNGFiles = [NSMutableSet set];
     NSMutableSet *publishedSpriteSheetFiles = [NSMutableSet set];
     
     NSArray *resolutions = [self publishingResolutionsForPlatform:platform];
@@ -212,7 +211,6 @@
         //dirPublisher.osType = target.osType;
         dirPublisher.resolutions = resolutions;
         //dirPublisher.audioQuality = target.audioQuality;
-        dirPublisher.publishedPNGFiles = publishedPNGFiles;
         dirPublisher.renamedFilesLookup = renamedFilesLookup;
         dirPublisher.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
         dirPublisher.publishingTaskStatusProgress = _publishingTaskStatusProgress;
@@ -239,7 +237,7 @@
                                                                                                        warnings:_warnings
                                                                                                  statusProgress:_publishingTaskStatusProgress];
     //operation.osType = target.osType;
-    operation.outputDir = platform.publishDirectory;
+    operation.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
     operation.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
     operation.fileLookup = renamedFilesLookup;
 
@@ -308,9 +306,9 @@
     [_publishingQueue addOperation:operation];
 }
 
-- (void)postProcessPublishedPNGFilesWithOptiPNGWithTarget:(CCBPublishingTarget *)target
+- (void)postProcessPublishedPNGFilesWithOptiPNGWithTarget:(PlatformSettings *)platform publishedPNGFiles:(NSSet*)publishedPNGFiles
 {
-    if (target.publishEnvironment == kCCBPublishEnvironmentDevelop)
+    if (_projectSettings.publishEnvironment == kCCBPublishEnvironmentDevelop)
     {
         return;
     }
@@ -324,7 +322,7 @@
     }
     NSMutableDictionary *optyPngCache = [NSMutableDictionary dictionary];
 
-    for (NSString *pngFile in target.publishedPNGFiles)
+    /*for (NSString *pngFile in target.publishedPNGFiles)
     {
         OptimizeImageWithOptiPNGOperation *operation = [[OptimizeImageWithOptiPNGOperation alloc] initWithProjectSettings:_projectSettings
                                                                                                            warnings:_warnings
@@ -334,7 +332,7 @@
         operation.optiPngCache = optyPngCache;
 
         [_publishingQueue addOperation:operation];
-    }
+    }*/
 }
 
 - (void)startAsync

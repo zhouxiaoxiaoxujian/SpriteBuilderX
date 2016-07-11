@@ -122,7 +122,6 @@
     //operation.osType = _osType;
     operation.modifiedFileDateCache = _modifiedDatesCache;
     operation.intermediateProduct = intermediateProduct;
-    operation.publishedPNGFiles = _publishedPNGFiles;
     operation.fileLookup = fileLookup;
 
     [_queue addOperation:operation];
@@ -176,10 +175,12 @@
 	NSString *outDir = [_outputDir stringByAppendingPathComponent:subPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if([[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
+    NSString *relPath = [publishDirectory substringFromIndex:[_projectSettings.projectPath stringByDeletingLastPathComponent].length + 1];
+    
+    if([[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
         return YES;
 
-    BOOL isGeneratedSpriteSheet = [[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SMARTSHEET] boolValue];
+    BOOL isGeneratedSpriteSheet = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IS_SMARTSHEET] boolValue];
     if (!isGeneratedSpriteSheet)
 	{
         [_queue addOperationWithBlock:^
@@ -200,7 +201,7 @@
         return NO;
     }
 
-    if (isGeneratedSpriteSheet)
+    if (isGeneratedSpriteSheet && (_platformSettings.publish1x || _platformSettings.publish2x || _platformSettings.publish4x))
     {
         [self publishSpriteSheetDir:publishDirectory subPath:subPath outputDir:outDir];
     }
@@ -293,21 +294,25 @@
         if (!isGeneratedSpriteSheet
             && ([fileName isSmartSpriteSheetCompatibleFile]))
         {
-            [self publishImageForResolutions:filePath to:dstFilePath isSpriteSheet:isGeneratedSpriteSheet outDir:outputDir fileLookup:_renamedFilesLookup];
+            if(_platformSettings.publish1x || _platformSettings.publish2x || _platformSettings.publish4x)
+                [self publishImageForResolutions:filePath to:dstFilePath isSpriteSheet:isGeneratedSpriteSheet outDir:outputDir fileLookup:_renamedFilesLookup];
         }
         else if ([fileName isWaveSoundFile])
         {
-            [self publishSoundFile:filePath to:dstFilePath];
+            if(_platformSettings.publishSound)
+                [self publishSoundFile:filePath to:dstFilePath];
         }
         else
         {
-            [self publishRegularFile:filePath to:dstFilePath];
+            if(_platformSettings.publishOther)
+                [self publishRegularFile:filePath to:dstFilePath];
         }
     }
     else if (!isGeneratedSpriteSheet
              && [[fileName lowercaseString] hasSuffix:@"ccb"])
     {
-        [self publishCCB:fileName filePath:filePath outputDir:outputDir];
+        if(_platformSettings.publishCCB)
+            [self publishCCB:fileName filePath:filePath outputDir:outputDir];
     }
     return YES;
 }
@@ -393,14 +398,17 @@
 - (void)publishBMFont:(NSString *)directoryName dirPath:(NSString *)dirPath outputDir:(NSString *)outputDir
 {
     NSString *bmFontOutDir = [outputDir stringByAppendingPathComponent:directoryName];
-    [self publishRegularFile:dirPath to:bmFontOutDir];
+    if(_platformSettings.publishOther)
+    {
+        [self publishRegularFile:dirPath to:bmFontOutDir];
+    }
 
     // Run after regular file has been copied, else png files cannot be found
-    [_queue addOperationWithBlock:^
+    /*[_queue addOperationWithBlock:^
             {
                 [_publishedPNGFiles addObjectsFromArray:[bmFontOutDir allPNGFilesInPath]];
             }];
-
+    */
     return;
 }
 
@@ -475,7 +483,6 @@
                                                                                            statusProgress:_publishingTaskStatusProgress];
     operation.platformSettings = _platformSettings;
     operation.publishDirectory = publishDirectory;
-    operation.publishedPNGFiles = _publishedPNGFiles;
     operation.srcSpriteSheetDate = srcSpriteSheetDate;
     operation.resolution = resolution;
     operation.srcDirs = @[
@@ -517,7 +524,7 @@
             NSString *dstFile = [[_projectSettings tempSpriteSheetCacheDirectory] stringByAppendingPathComponent:fileName];
             [self publishImageFile:filePath
                                 to:dstFile
-                     isSpriteSheet:NO
+                     isSpriteSheet:YES
                          outputDir:outputDir
                         resolution:resolution
                intermediateProduct:YES
@@ -528,7 +535,6 @@
 
 - (BOOL)generateAndEnqueuePublishingTasks
 {
-    NSAssert(_publishedPNGFiles != nil, @"publishedPNGFiles must not be nil");
     NSAssert(_inputDir != nil, @"inputDir must not be nil");
     NSAssert(_outputDir != nil, @"outputDir must not be nil");
     NSAssert(_resolutions != nil, @"resolutions must not be nil");
