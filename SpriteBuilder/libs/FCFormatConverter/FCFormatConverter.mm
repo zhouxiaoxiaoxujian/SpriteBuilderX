@@ -129,6 +129,26 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return YES;
 }
 
+-(NSString*)compress:(NSString*)dstPath andDir:(NSString*)dstDir
+{
+    // Create compressed file (ccz)
+    self.zipTask = [[NSTask alloc] init];
+    [_zipTask setCurrentDirectoryPath:dstDir];
+    [_zipTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ccz"]];
+    NSMutableArray* args = [NSMutableArray arrayWithObjects:dstPath, nil];
+    [_zipTask setArguments:args];
+    [_zipTask launch];
+    [_zipTask waitUntilExit];
+    self.zipTask = nil;
+    
+    // Remove uncompressed file
+    [[NSFileManager defaultManager] removeItemAtPath:dstPath error:NULL];
+    
+    // Update name of texture file
+    dstPath = [dstPath stringByAppendingPathExtension:@"ccz"];
+    return dstPath;
+}
+
 -(BOOL)convertImageAtPath:(NSString*)srcPath
                    format:(int)format
                   quality:(int)quality
@@ -243,6 +263,10 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
             pixelType = pvrtexture::PixelType('r','g','b','a',4,4,4,4);
             variableType = ePVRTVarTypeUnsignedShortNorm;
         }
+        else if (format == kFCImageFormatPVR_RGB888)
+        {
+            pixelType = pvrtexture::PixelType('r','g','b',0,8,8,8,0);
+        }
         else if (format == kFCImageFormatPVR_RGB565)
         {
             pixelType = pvrtexture::PixelType('r','g','b',0,5,6,5,0);
@@ -255,6 +279,14 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         else if (format == kFCImageFormatPVRTC_2BPP)
         {
             pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCI_2bpp_RGB);
+        }
+        else if (format == kFCImageFormatPVRTC2_4BPP)
+        {
+            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCII_4bpp);
+        }
+        else if (format == kFCImageFormatPVRTC2_2BPP)
+        {
+            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCII_2bpp);
         }
 
         NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
@@ -307,7 +339,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         {
             CPVRTString filePath([dstPath UTF8String], dstPath.length);
             
-            if(!pvrTexture->saveFileLegacyPVR(filePath,  pvrtexture::eOGLES2))
+            if(!pvrTexture->saveFile(filePath))
             {
 				if (error)
 				{
@@ -331,21 +363,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         
         if (compress)
         {
-            // Create compressed file (ccz)
-            self.zipTask = [[NSTask alloc] init];
-            [_zipTask setCurrentDirectoryPath:dstDir];
-            [_zipTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ccz"]];
-            NSMutableArray* args = [NSMutableArray arrayWithObjects:dstPath, nil];
-            [_zipTask setArguments:args];
-            [_zipTask launch];
-            [_zipTask waitUntilExit];
-            self.zipTask = nil;
-
-            // Remove uncompressed file
-            [[NSFileManager defaultManager] removeItemAtPath:dstPath error:NULL];
-            
-            // Update name of texture file
-            dstPath = [dstPath stringByAppendingPathExtension:@"ccz"];
+            dstPath = [self compress:dstPath andDir:dstDir];
         }
         
         if ([fm fileExistsAtPath:dstPath])
