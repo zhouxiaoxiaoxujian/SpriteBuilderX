@@ -175,7 +175,8 @@
 	NSString *outDir = [_outputDir stringByAppendingPathComponent:subPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *relPath = [publishDirectory substringFromIndex:[_projectSettings.projectPath stringByDeletingLastPathComponent].length + 1];
+    NSUInteger projectPathLen = [_projectSettings.projectPath stringByDeletingLastPathComponent].length + 1;
+    NSString *relPath = projectPathLen<publishDirectory.length?[publishDirectory substringFromIndex:projectPathLen]:nil;
     
     if([[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
         return YES;

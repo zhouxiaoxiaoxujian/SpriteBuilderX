@@ -392,11 +392,11 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         NSMutableArray* args = nil;
         switch (format) {
             case kFCImageFormatWEBP:
-                args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-o", dstPath, nil];
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-alpha_cleanup", @"-o", dstPath, nil];
                 break;
                 
             case kFCImageFormatWEBP_LOSSY:
-                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", [@(quality) stringValue], @"-o", dstPath, nil];
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", [@(quality) stringValue], @"-alpha_cleanup", @"-o", dstPath, nil];
                 break;
                 
             default:

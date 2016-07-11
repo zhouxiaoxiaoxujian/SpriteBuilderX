@@ -76,15 +76,15 @@
                 <popUpButton verticalHuggingPriority="750" id="DKX-RZ-fZB">
                     <rect key="frame" x="41" y="24" width="205" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="c5h-VT-6VC">
+                    <popUpButtonCell key="cell" type="push" title="Compressed w/o alpha" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="VDj-hh-89E" id="c5h-VT-6VC">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                         <menu key="menu" title="OtherViews" id="nrq-OD-sFm">
                             <items>
                                 <menuItem title="Compressed" id="j4g-Jp-8Cw"/>
+                                <menuItem title="Compressed w/o alpha" state="on" tag="1" id="VDj-hh-89E"/>
                                 <menuItem title="Uncompressed" tag="2" id="Rxg-Vi-j59"/>
                                 <menuItem title="Custom" tag="2" id="fNb-96-9NA"/>
-                                <menuItem title="Compressed w/o alpha" tag="1" id="VDj-hh-89E"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
