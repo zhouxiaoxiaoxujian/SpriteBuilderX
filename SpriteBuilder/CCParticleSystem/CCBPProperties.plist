@@ -68,6 +68,18 @@
 		<dict>
 			<key>saveInTemplate</key>
 			<true/>
+			<key>displayName</key>
+			<string>Particle position type</string>
+			<key>name</key>
+			<string>particlePositionType</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>extra</key>
+			<string>Free|0|Relative|1|Grouped|2</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>40</integer>

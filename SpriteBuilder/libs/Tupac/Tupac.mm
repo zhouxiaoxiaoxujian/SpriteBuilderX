@@ -299,78 +299,96 @@ typedef struct _PVRTexHeader
     }
     maxSideLen = upper_power_of_two(maxSideLen);
     
-    // Pack using max rects
-    int outW = maxSideLen;
-    int outH = 8;
+    std::vector<TPRect> bestOutRects;
+    int bestOutW = INT_MAX;
+    int bestOutH = INT_MAX;
     
-    std::vector<TPRect> outRects;
+    BOOL globalPackingError = NO;
     
-    BOOL makeSquare = NO;
-    if (self.imageFormat == kFCImageFormatPVRTC_2BPP || self.imageFormat == kFCImageFormatPVRTC_4BPP)
+    for(int i=MaxRectsBinPack::RectBestShortSideFit;i<=MaxRectsBinPack::RectContactPointRule;++i)
     {
-        makeSquare = YES;
-        outH = outW;
-    }
-    
-    BOOL allFitted = NO;
-    BOOL packingError = NO;
-    while (!packingError && !allFitted)
-    {
-        MaxRectsBinPack bin(outW, outH);
+        BOOL allFitted = NO;
         
-        std::vector<TPRectSize> inRects;
-        
-        int numImages = 0;
-        for (NSDictionary* imageInfo in imageInfos)
+        // Pack using max rects
+        int outW = maxSideLen;
+        int outH = 8;
+        BOOL makeSquare = NO;
+        if (self.imageFormat == kFCImageFormatPVRTC_2BPP || self.imageFormat == kFCImageFormatPVRTC_4BPP)
         {
-            NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
-            
-            inRects.push_back(TPRectSize());
-            inRects[numImages].width = trimRect.size.width + (self.padding + self.extrude) * 2;
-            inRects[numImages].height = trimRect.size.height + (self.padding + self.extrude) * 2;
-            inRects[numImages].idx = numImages;
-            
-            numImages++;
+            makeSquare = YES;
+            outH = outW;
         }
-       
-        bin.Insert(inRects, outRects, MaxRectsBinPack::RectBestShortSideFit);
         
-        if (numImages == (int)outRects.size())
+        BOOL packingError = NO;
+        std::vector<TPRect> outRects;
+        
+        while (!packingError && !allFitted)
         {
-            allFitted = YES;
-        }
-        else
-        {
-            if (makeSquare)
+            MaxRectsBinPack bin(outW, outH);
+            
+            std::vector<TPRectSize> inRects;
+            
+            int numImages = 0;
+            for (NSDictionary* imageInfo in imageInfos)
             {
-                outW *= 2;
-                outH *= 2;
+                NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
+                
+                inRects.push_back(TPRectSize());
+                inRects[numImages].width = trimRect.size.width + (self.padding + self.extrude) * 2;
+                inRects[numImages].height = trimRect.size.height + (self.padding + self.extrude) * 2;
+                inRects[numImages].idx = numImages;
+                
+                numImages++;
+            }
+            
+            bin.Insert(inRects, outRects, (MaxRectsBinPack::FreeRectChoiceHeuristic)i);
+            
+            if (numImages == (int)outRects.size())
+            {
+                allFitted = YES;
             }
             else
             {
-                if (outW > outH)
-                    outH *= 2;
-                else
+                if (makeSquare)
+                {
                     outW *= 2;
+                    outH *= 2;
+                }
+                else
+                {
+                    if (outW > outH)
+                        outH *= 2;
+                    else
+                        outW *= 2;
+                }
+                
+                if (outW > self.maxTextureSize || outH > self.maxTextureSize)
+                    packingError = YES;
             }
-            
-            if (outW > self.maxTextureSize)
-                packingError = YES;
+        }
+        if(outRects.size() >= bestOutRects.size())
+        {
+            if(std::max(outW, outH) <= std::max(bestOutW, bestOutH) && std::max(outW, outH) <= std::max(bestOutW, bestOutH))
+            {
+                bestOutRects = outRects;
+                bestOutW = outW;
+                bestOutH = outH;
+            }
         }
     }
     
-    if (packingError)
+    if (globalPackingError)
     {
         [self setErrorMessage:@"Failed to fit all sprites in smart sprite sheet."];
     }
     
     // Create the output graphics context
-    CGContextRef dstContext = CGBitmapContextCreate(NULL, outW, outH, 8, outW*32, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGContextRef dstContext = CGBitmapContextCreate(NULL, bestOutW, bestOutH, 8, bestOutW*32, colorSpace, kCGImageAlphaPremultipliedLast);
 	NSAssert(dstContext != nil, @"CG bitmap context is nil");
 
     // Draw all the individual images
     int index = 0;
-    while (index < outRects.size())
+    while (index < bestOutRects.size())
     {
         if (cancelled_)
         {
@@ -381,13 +399,13 @@ typedef struct _PVRTexHeader
         int  x, y, w, h;
         
         // Get the image and info
-        CGImageRef srcImage = (CGImageRef)[[images objectAtIndex:outRects[index].idx] pointerValue];
-        NSDictionary* imageInfo = [imageInfos objectAtIndex:outRects[index].idx];
+        CGImageRef srcImage = (CGImageRef)[[images objectAtIndex:bestOutRects[index].idx] pointerValue];
+        NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
         
-        x = outRects[index].x;
-        y = outRects[index].y;
+        x = bestOutRects[index].x;
+        y = bestOutRects[index].y;
        
-        rot = outRects[index].rotated;
+        rot = bestOutRects[index].rotated;
         
         x += self.padding + self.extrude;
         y += self.padding + self.extrude;
@@ -438,34 +456,34 @@ typedef struct _PVRTexHeader
         }
         
         // Draw the image
-        CGContextDrawImage(dstContext, CGRectMake(x, outH-y-h, w, h), srcImage);
+        CGContextDrawImage(dstContext, CGRectMake(x, bestOutH-y-h, w, h), srcImage);
         
         if(self.extrude>0)
         {
             CGImageRef left = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,h-dy));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-h, self.extrude, h-dy), left);
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-h, self.extrude, h-dy), left);
             CFRelease(left);
             CGImageRef right = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,h-dy));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-h, self.extrude, h-dy), right);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-h, self.extrude, h-dy), right);
             CFRelease(right);
             CGImageRef bottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy - 1,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
             CFRelease(bottom);
             CGImageRef top = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx,outH-y-dy, w-dx, self.extrude), top);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-dy, w-dx, self.extrude), top);
             CFRelease(top);
             
             CGImageRef leftTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-dy, self.extrude, self.extrude), leftTop);
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-dy, self.extrude, self.extrude), leftTop);
             CFRelease(leftTop);
             CGImageRef rightTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-dy, self.extrude, self.extrude), rightTop);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-dy, self.extrude, self.extrude), rightTop);
             CFRelease(rightTop);
             CGImageRef leftBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
+            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
             CFRelease(leftBottom);
             CGImageRef rightBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, outH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
+            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
             CFRelease(rightBottom);
         }
         
@@ -547,25 +565,25 @@ typedef struct _PVRTexHeader
         [outDict setObject:metadata forKey:@"metadata"];
         
         int index = 0;
-        while(index < outRects.size())
+        while(index < bestOutRects.size())
         {
             // Get info about the image
-            NSString* filename = [self.filenames objectAtIndex:outRects[index].idx];
+            NSString* filename = [self.filenames objectAtIndex:bestOutRects[index].idx];
             NSString* exportFilename = [filename lastPathComponent];
             if (directoryPrefix_) exportFilename = [directoryPrefix_ stringByAppendingPathComponent:exportFilename];
-            NSDictionary* imageInfo = [imageInfos objectAtIndex:outRects[index].idx];
+            NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
             
             bool rot = false;
             int x, y, w, h, wSrc, hSrc, xOffset, yOffset;
-            x = outRects[index].x + (self.padding + self.extrude);
-            y = outRects[index].y + (self.padding + self.extrude);
-            w = outRects[index].width - (self.padding + self.extrude)*2;
-            h = outRects[index].height - (self.padding + self.extrude)*2;
+            x = bestOutRects[index].x + (self.padding + self.extrude);
+            y = bestOutRects[index].y + (self.padding + self.extrude);
+            w = bestOutRects[index].width - (self.padding + self.extrude)*2;
+            h = bestOutRects[index].height - (self.padding + self.extrude)*2;
             wSrc = [[imageInfo objectForKey:@"width"] intValue];
             hSrc = [[imageInfo objectForKey:@"height"] intValue];
             NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
             
-            rot = outRects[index].rotated;
+            rot = bestOutRects[index].rotated;
             
             if (rot)
             {
@@ -592,7 +610,7 @@ typedef struct _PVRTexHeader
         
         [metadata setObject:textureFileName                                     forKey:@"textureFileName"];
         [metadata setObject:[NSNumber numberWithInt:2]                      forKey:@"format"];
-        [metadata setObject:NSStringFromSize(NSMakeSize(outW, outH))        forKey:@"size"];
+        [metadata setObject:NSStringFromSize(NSMakeSize(bestOutW, bestOutH))        forKey:@"size"];
         
         NSString *plistFilename = [self.outputName stringByAppendingPathExtension:@"plist"];
         [outDict writeToFile:plistFilename atomically:YES];
