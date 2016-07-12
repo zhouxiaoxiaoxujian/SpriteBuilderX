@@ -66,9 +66,12 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     }
     else if (format == kFCImageFormatPVR_RGBA8888 ||
              format == kFCImageFormatPVR_RGBA4444 ||
+             format == kFCImageFormatPVR_RGB888 ||
              format == kFCImageFormatPVR_RGB565 ||
              format == kFCImageFormatPVRTC_4BPP ||
-             format == kFCImageFormatPVRTC_2BPP)
+             format == kFCImageFormatPVRTC_2BPP ||
+             format == kFCImageFormatPVRTC2_4BPP ||
+             format == kFCImageFormatPVRTC2_2BPP)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"pvr"];
         if (compress) dstPath = [dstPath stringByAppendingPathExtension:@"ccz"];
@@ -83,6 +86,15 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
              format == kFCImageFormatWEBP_LOSSY)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
+        return dstPath;
+    }
+    else if (format == kFCImageFormatDXT1 ||
+             format == kFCImageFormatDXT2 ||
+             format == kFCImageFormatDXT3 ||
+             format == kFCImageFormatDXT4 ||
+             format == kFCImageFormatDXT5)
+    {
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"dds"];
         return dstPath;
     }
     return NULL;
@@ -147,6 +159,51 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     // Update name of texture file
     dstPath = [dstPath stringByAppendingPathExtension:@"ccz"];
     return dstPath;
+}
+
++ (BOOL) saveRawDataToPng:(void*)data width:(int)width hight:(int)height path:(NSString*)path
+{
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Big|kCGImageAlphaLast;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL,
+                                                              data,
+                                                              width*height*4,
+                                                              NULL);
+    CGImageRef imageRef = CGImageCreate(width,
+                                        height,
+                                        8,
+                                        32,
+                                        4*width,colorSpaceRef,
+                                        bitmapInfo,
+                                        provider,NULL,NO,renderingIntent);
+    
+    CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:path];
+    CGImageDestinationRef destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, NULL);
+    if (!destination) {
+        NSLog(@"Failed to create CGImageDestination for %@", path);
+        return NO;
+    }
+    
+    CGImageDestinationAddImage(destination, imageRef, nil);
+    
+    if (!CGImageDestinationFinalize(destination)) {
+        NSLog(@"Failed to write image to %@", path);
+        CFRelease(destination);
+        return NO;
+    }
+    
+    CFRelease(destination);
+    return YES;
+}
+
+static void replacebytes(const char* path, long offset, const char * newBytes, long len)
+{
+    FILE* f = fopen(path, "r+b"); // Error checking omitted
+    fseek(f, offset, SEEK_SET);
+    fwrite(newBytes, len, 1, f);
+    fclose(f);
 }
 
 -(BOOL)convertImageAtPath:(NSString*)srcPath
@@ -244,9 +301,12 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     }
     else if (format == kFCImageFormatPVR_RGBA8888 ||
              format == kFCImageFormatPVR_RGBA4444 ||
+             format == kFCImageFormatPVR_RGB888 ||
              format == kFCImageFormatPVR_RGB565 ||
              format == kFCImageFormatPVRTC_4BPP ||
-             format == kFCImageFormatPVRTC_2BPP)
+             format == kFCImageFormatPVRTC_2BPP ||
+             format == kFCImageFormatPVRTC2_4BPP ||
+             format == kFCImageFormatPVRTC2_2BPP)
     {
         // PVR(TC) image
         NSString *dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"pvr"];
@@ -310,20 +370,8 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
 			}
             hasError = YES;
         }
-        
-        if(!hasError && !pvrtexture::Flip(*pvrTexture, ePVRTAxisY))
-        {
-            if (error)
-			{
-				NSString * errorMessage = [NSString stringWithFormat:@"Failure to flip texture: %@", srcPath];
-				NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
-				*error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
-			}
-            hasError = YES;
-        }
-        
        
-        if(!hasError && !Transcode(*pvrTexture, pixelType, variableType, ePVRTCSpacelRGB, pvrtexture::ePVRTCBest, dither))
+        if(!hasError && !Transcode(*pvrTexture, pixelType, variableType, ePVRTCSpacelRGB, isRelease?pvrtexture::ePVRTCBest:pvrtexture::ePVRTCFast, dither))
         {
             if (error)
             {
@@ -333,7 +381,6 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
             }
             hasError = YES;
         }
-    
         
         if(!hasError)
         {
@@ -401,7 +448,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     else if (format == kFCImageFormatWEBP ||
              format == kFCImageFormatWEBP_LOSSY)
     {
-        // JPG image format
+        // WEBP image format
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
         
         self.webpTask = [[NSTask alloc] init];
@@ -431,6 +478,88 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         *outputFilename = [dstPath copy];
         return YES;
         
+    }
+    
+    else if (format == kFCImageFormatDXT1 ||
+             format == kFCImageFormatDXT2 ||
+             format == kFCImageFormatDXT3 ||
+             format == kFCImageFormatDXT4 ||
+             format == kFCImageFormatDXT5)
+    {
+        // DDS image format
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"dds"];
+        NSString* tmpPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"tmp.png"];
+        
+        if(format == kFCImageFormatDXT2 || format == kFCImageFormatDXT4)
+        {
+            NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
+            NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+            
+            pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
+            pvrtexture::CPVRTexture     * pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
+
+            if(!pvrtexture::PreMultiplyAlpha(*pvrTexture))
+            {
+                if (error)
+                {
+                    NSString * errorMessage = [NSString stringWithFormat:@"Failure to premultiple alpha: %@", srcPath];
+                    NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+                    *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+                }
+                return NO;
+            }
+            
+            [FCFormatConverter saveRawDataToPng:pvrTexture->getDataPtr() width:pvrTexture->getWidth() hight:pvrTexture->getHeight() path:tmpPath];
+        }
+        else
+        {
+            tmpPath = srcPath;
+        }
+
+        self.webpTask = [[NSTask alloc] init];
+        [_webpTask setCurrentDirectoryPath:dstDir];
+        [_webpTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"nvcompress"]];
+        NSMutableArray* args = nil;
+        switch (format) {
+            case kFCImageFormatDXT1:
+                args = [NSMutableArray arrayWithObjects:@"-nomips", @"-alpha", @"-bc1", tmpPath, dstPath, nil];
+                break;
+            
+            case kFCImageFormatDXT2:
+            case kFCImageFormatDXT3:
+                args = [NSMutableArray arrayWithObjects:@"-nomips", @"-alpha", @"-bc2", tmpPath, dstPath, nil];
+                break;
+                
+            case kFCImageFormatDXT4:
+            case kFCImageFormatDXT5:
+                args = [NSMutableArray arrayWithObjects:@"-nomips", @"-alpha", @"-bc3", tmpPath, dstPath, nil];
+                break;
+                
+            default:
+                break;
+        }
+        [_webpTask setArguments:args];
+        [_webpTask launch];
+        [_webpTask waitUntilExit];
+        self.webpTask = nil;
+        
+        if(format == kFCImageFormatDXT2)
+            replacebytes([dstPath UTF8String], 84, "DXT2", 4);
+        if(format == kFCImageFormatDXT4)
+            replacebytes([dstPath UTF8String], 84, "DXT4", 4);
+        
+        // Remove uncompressed file
+        [[NSFileManager defaultManager] removeItemAtPath:tmpPath error:NULL];
+        if(![tmpPath isEqualToString:srcPath])
+            [[NSFileManager defaultManager] removeItemAtPath:srcPath error:NULL];
+        
+        if (compress)
+        {
+            dstPath = [self compress:dstPath andDir:dstDir];
+        }
+        
+        *outputFilename = [dstPath copy];
+        return YES;
     }
     
 	// Conversion failed

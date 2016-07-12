@@ -111,12 +111,12 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qBs-Pf-L05" userLabel="Compressed image with alpha">
                             <rect key="frame" x="142" y="78" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="yAc-MG-yY8" id="A81-6h-iWn" userLabel="PNG">
+                            <popUpButtonCell key="cell" type="push" title="DXT3" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="20" imageScaling="proportionallyDown" inset="2" selectedItem="g0p-kF-Fek" id="A81-6h-iWn" userLabel="PNG">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="bOo-4a-9LB">
                                     <items>
-                                        <menuItem title="Origin" state="on" tag="-1" id="yAc-MG-yY8"/>
+                                        <menuItem title="Origin" tag="-1" id="yAc-MG-yY8"/>
                                         <menuItem title="PNG" id="Wrw-eR-kPd"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="zNH-FO-YXg"/>
                                         <menuItem isSeparatorItem="YES" id="QQf-24-nIB"/>
@@ -160,13 +160,13 @@
                                         <menuItem title="DXT2" tag="19" id="OAa-td-RoO" userLabel="DXT2">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="DXT3" tag="20" id="g0p-kF-Fek" userLabel="DXT3">
+                                        <menuItem title="DXT3" state="on" tag="20" hidden="YES" id="g0p-kF-Fek" userLabel="DXT3">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="DXT4" tag="21" id="1Ef-6V-Xzb" userLabel="DXT4">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="DXT5" tag="22" id="KU4-K8-SPX" userLabel="DXT5">
+                                        <menuItem title="DXT5" tag="22" hidden="YES" id="KU4-K8-SPX" userLabel="DXT5">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="vX8-R0-M7a"/>
@@ -448,12 +448,12 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-cl-Bsw" userLabel="Custom image">
                             <rect key="frame" x="142" y="10" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="1CK-z2-FTK" id="8bz-PB-DOu">
+                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="3Dl-09-A4U">
                                     <items>
-                                        <menuItem title="Origin" state="on" tag="-1" id="1CK-z2-FTK"/>
+                                        <menuItem title="Origin" tag="-1" id="1CK-z2-FTK"/>
                                         <menuItem title="PNG" id="qKp-qs-9aB"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="aPt-OT-K22"/>
                                         <menuItem isSeparatorItem="YES" id="baD-se-AAo"/>
@@ -510,13 +510,13 @@
                                         <menuItem title="DXT1" tag="18" id="y83-4n-Viu" userLabel="DXT1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="DXT2" tag="19" id="gn0-7z-WEI" userLabel="DXT2">
+                                        <menuItem title="DXT2" tag="19" hidden="YES" id="gn0-7z-WEI" userLabel="DXT2">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="DXT3" tag="20" id="CSd-9z-uPX" userLabel="DXT3">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="DXT4" tag="21" id="JIy-EG-9k7" userLabel="DXT4">
+                                        <menuItem title="DXT4" tag="21" hidden="YES" id="JIy-EG-9k7" userLabel="DXT4">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="DXT5" tag="22" id="tqu-EU-8Lz" userLabel="DXT5">
@@ -817,12 +817,12 @@
                         </button>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjC-O2-5tw">
                             <rect key="frame" x="220" y="48" width="84" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="Rnr-qH-VP9" id="Rz1-rO-nvu">
+                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="Rnr-qH-VP9" id="Rz1-rO-nvu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="mnf-uW-pLd">
                                     <items>
-                                        <menuItem title="Default" tag="-1" id="Rnr-qH-VP9" userLabel="Default"/>
+                                        <menuItem title="Default" state="on" tag="-1" id="Rnr-qH-VP9" userLabel="Default"/>
                                         <menuItem title="10 - Best" tag="10" id="8lb-pz-ity" userLabel="10 - Best"/>
                                         <menuItem title="9" tag="9" id="Jvh-lE-wpD" userLabel="9"/>
                                         <menuItem title="8" tag="8" id="L7T-50-LgC" userLabel="8"/>
@@ -865,12 +865,12 @@
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eE-Rr-Oum">
                             <rect key="frame" x="220" y="26" width="84" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="pgd-iP-a8N" id="oc4-Ea-OdP">
+                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="pgd-iP-a8N" id="oc4-Ea-OdP">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="ghP-zD-Eue">
                                     <items>
-                                        <menuItem title="Default" tag="-1" id="pgd-iP-a8N" userLabel="Default"/>
+                                        <menuItem title="Default" state="on" tag="-1" id="pgd-iP-a8N" userLabel="Default"/>
                                         <menuItem title="10 - Best" tag="10" id="r1J-wg-cak" userLabel="10 - Best"/>
                                         <menuItem title="9" tag="9" id="Wt7-yR-gIA" userLabel="9"/>
                                         <menuItem title="8" tag="8" id="cEL-ze-cca" userLabel="8"/>
@@ -913,12 +913,12 @@
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-nM-F4h">
                             <rect key="frame" x="220" y="4" width="84" height="22"/>
-                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="srO-nl-goF" id="IJx-nk-les">
+                            <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="srO-nl-goF" id="IJx-nk-les">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="smallSystem"/>
                                 <menu key="menu" title="OtherViews" id="sAC-BU-k3U">
                                     <items>
-                                        <menuItem title="Default" tag="-1" id="srO-nl-goF" userLabel="Default"/>
+                                        <menuItem title="Default" state="on" tag="-1" id="srO-nl-goF" userLabel="Default"/>
                                         <menuItem title="10 - Best" tag="10" id="Hik-5A-MsR" userLabel="10 - Best"/>
                                         <menuItem title="9" tag="9" id="3pi-67-ZRD" userLabel="9"/>
                                         <menuItem title="8" tag="8" id="fQu-VL-zdx" userLabel="8"/>
@@ -966,6 +966,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.effectStereo" id="AsH-zw-BI9">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="sST-jQ-hYv"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="sST-jQ-hYv" id="cLU-U6-rSW">
                                     <dictionary key="options">
@@ -973,11 +978,6 @@
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.effectStereo" id="AsH-zw-BI9">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -989,6 +989,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.musicStereo" id="MVw-Sa-qMw">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="aYD-nY-q7t"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="aYD-nY-q7t" id="P3c-W6-dBq">
                                     <dictionary key="options">
@@ -996,11 +1001,6 @@
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.musicStereo" id="MVw-Sa-qMw">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -1012,6 +1012,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customSoundStereo" id="mRB-OK-qx7">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.publishEnabled" id="S3v-A8-9rh"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishSound" previousBinding="S3v-A8-9rh" id="H2r-cW-X8Q">
                                     <dictionary key="options">
@@ -1019,11 +1024,6 @@
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customSoundStereo" id="mRB-OK-qx7">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>
