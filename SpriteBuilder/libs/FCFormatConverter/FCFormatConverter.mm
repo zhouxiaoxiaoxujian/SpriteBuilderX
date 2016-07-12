@@ -449,6 +449,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     else if (format == kFCSoundFormatCAF) ext = @"caf";
     else if (format == kFCSoundFormatMP4) ext = @"m4a";
     else if (format == kFCSoundFormatOGG) ext = @"ogg";
+    else if (format == kFCSoundFormatMP3) ext = @"mp3";
     
     if (ext)
     {
@@ -457,7 +458,37 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return NULL;
 }
 
-- (NSString*) convertSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality
+- (NSString*) afconvertDataFormatWithQuality:(int)quality prefix8Bit:(NSString*)prefix8Bit prefix16Bit:(NSString*)prefix16Bit
+{
+    switch (quality) {
+        case 1:
+            return [NSString stringWithFormat:@"%@@%@", prefix8Bit, @"11025"];
+        case 2:
+            return [NSString stringWithFormat:@"%@@%@", prefix8Bit, @"22050"];
+        case 3:
+            return [NSString stringWithFormat:@"%@@%@", prefix8Bit, @"32000"];
+        case 4:
+            return [NSString stringWithFormat:@"%@@%@", prefix8Bit, @"41000"];
+        case 5:
+            return [NSString stringWithFormat:@"%@@%@", prefix8Bit, @"48000"];
+            
+        case 6:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"11025"];
+        case 7:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"22050"];
+        case 8:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"32000"];
+        case 9:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"44100"];
+        case 10:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"48000"];
+        
+        default:
+            return [NSString stringWithFormat:@"%@@%@", prefix16Bit, @"22050"];
+    }
+}
+
+- (NSString*) convertSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality stereo:(BOOL)stereo;
 {
     NSString* dstPath = [self proposedNameForConvertedSoundAtPath:srcPath format:format quality:quality];
     NSFileManager* fm = [NSFileManager defaultManager];
@@ -467,12 +498,20 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         // Convert to WAV
         NSTask* sndTask = [[NSTask alloc] init];
         
+        NSString *qualityString = [self afconvertDataFormatWithQuality:quality prefix8Bit:@"UI8" prefix16Bit:@"LEI16"];
+        
         [sndTask setLaunchPath:@"/usr/bin/afconvert"];
         NSMutableArray* args = [NSMutableArray arrayWithObjects:
                                 @"-f", @"WAVE",
-                                @"-d", @"I16@22050",
-                                @"-c", @"1",
-                                srcPath, dstPath, nil];
+                                @"-d", qualityString, nil];
+        if(!stereo)
+        {
+            [args addObject:@"-c"];
+            [args addObject:@"1"];
+        }
+        [args addObject:srcPath];
+        [args addObject:dstPath];
+        
         [sndTask setArguments:args];
         [sndTask launch];
         [sndTask waitUntilExit];
@@ -491,12 +530,20 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         // Convert to CAF
         self.sndTask = [[NSTask alloc] init];
         
+        NSString *qualityString = [self afconvertDataFormatWithQuality:quality prefix8Bit:@"I8" prefix16Bit:@"LEI16"];
+        
         [_sndTask setLaunchPath:@"/usr/bin/afconvert"];
         NSMutableArray* args = [NSMutableArray arrayWithObjects:
                                 @"-f", @"caff",
-                                @"-d", @"LEI16@44100",
-                                @"-c", @"1",
-                                srcPath, dstPath, nil];
+                                @"-d", qualityString, nil];
+        if(!stereo)
+        {
+            [args addObject:@"-c"];
+            [args addObject:@"1"];
+        }
+        [args addObject:srcPath];
+        [args addObject:dstPath];
+        
         [_sndTask setArguments:args];
         [_sndTask launch];
         [_sndTask waitUntilExit];
@@ -514,7 +561,11 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     {
         // Convert to AAC
         
-        int qualityScaled = ((quality -1) * 127) / 7;//Quality [1,8]
+        //default value
+        if(quality == -1)
+            quality = 3;
+        
+        int qualityScaled = ((quality -1) * 127) / 9;//Quality [1,10]
         
         // Do the conversion
         self.sndTask = [[NSTask alloc] init];
@@ -526,8 +577,15 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
                                 @"-u", @"pgcm", @"2",
                                 @"-u", @"vbrq", [NSString stringWithFormat:@"%i",qualityScaled],
                                 @"-q", @"127",
-                                @"-s", @"3",
-                                srcPath, dstPath, nil];
+                                @"-s", @"3", nil];
+        if(!stereo)
+        {
+            [args addObject:@"-c"];
+            [args addObject:@"1"];
+        }
+        [args addObject:srcPath];
+        [args addObject:dstPath];
+        
         [_sndTask setArguments:args];
         [_sndTask launch];
         [_sndTask waitUntilExit];
@@ -552,14 +610,22 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
             [fm moveItemAtPath:srcPath toPath:newSrcPath error:NULL];
             srcPath = newSrcPath;
         }
+        
+        //default value
+        if(quality == -1)
+            quality = 3;
 
         self.sndTask = [[NSTask alloc] init];
         NSString *temp = [NSString stringWithFormat:@"%@.temp",dstPath];
         [_sndTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"oggenc"]];
         NSMutableArray* args = [NSMutableArray arrayWithObjects:
-                                [NSString stringWithFormat:@"-q%d", quality],
-                                @"-o", temp, srcPath,
-                                nil];
+                                [NSString stringWithFormat:@"-q%d", quality], nil];
+        if(!stereo)
+            [args addObject:@"--downmix"];
+        [args addObject:@"-o"];
+        [args addObject:temp];
+        [args addObject:srcPath];
+        
         [_sndTask setArguments:args];
         [_sndTask launch];
         [_sndTask waitUntilExit];
@@ -572,6 +638,46 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         
         [fm moveItemAtPath:temp toPath:dstPath error:nil];
 
+        self.sndTask = nil;
+        return dstPath;
+    }
+    else if (format == kFCSoundFormatMP3)
+    {
+        // Convert to MP3
+        
+        if ([srcPath isEqualToString:dstPath])
+        {
+            // oggenc can't convert things in place, so make a copy that will get deleted at the end
+            NSString *newSrcPath = [srcPath stringByAppendingPathExtension:@"orig"];
+            [fm moveItemAtPath:srcPath toPath:newSrcPath error:NULL];
+            srcPath = newSrcPath;
+        }
+        
+        //default value
+        if(quality == -1)
+            quality = 4;
+        
+        self.sndTask = [[NSTask alloc] init];
+        NSString *temp = [NSString stringWithFormat:@"%@.temp",dstPath];
+        [_sndTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lame"]];
+        NSMutableArray* args = [NSMutableArray arrayWithObjects:
+                                @"-h",
+                                [NSString stringWithFormat:@"-V%d", quality],
+                                stereo?@"":@"-a",
+                                srcPath, temp,
+                                nil];
+        [_sndTask setArguments:args];
+        [_sndTask launch];
+        [_sndTask waitUntilExit];
+        
+        // Remove old file
+        if (![srcPath isEqualToString:temp])
+        {
+            [fm removeItemAtPath:srcPath error:NULL];
+        }
+        
+        [fm moveItemAtPath:temp toPath:dstPath error:nil];
+        
         self.sndTask = nil;
         return dstPath;
     }

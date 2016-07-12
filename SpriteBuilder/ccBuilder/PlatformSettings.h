@@ -78,6 +78,4 @@ typedef enum {
 - (BOOL) soundStereo:(int)type;
 - (int) soundQuality:(int)type;
 
-- (BOOL) kublish4x;
-
 @end

@@ -56,19 +56,6 @@ typedef enum {
     kFCSoundFormatMP3 = 4,
 } kFCSoundFormat;
 
-typedef enum {
-    kFCSoundParamsMono11025,
-    kFCSoundParamsMono22050,
-    kFCSoundParamsMono32000,
-    kFCSoundParamsMono44100,
-    kFCSoundParamsMono48000,
-    kFCSoundParamsStereo11025,
-    kFCSoundParamsStereo22050,
-    kFCSoundParamsStereo32000,
-    kFCSoundParamsStereo44100,
-    kFCSoundParamsStereo48000,
-} kFCSoundParams;
-
 @interface FCFormatConverter : NSObject
 
 + (FCFormatConverter*) defaultConverter;
@@ -88,6 +75,6 @@ typedef enum {
 - (void)cancel;
 
 - (NSString*) proposedNameForConvertedSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality;
-- (NSString*) convertSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality;
+- (NSString*) convertSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality stereo:(BOOL)stereo;
 
 @end

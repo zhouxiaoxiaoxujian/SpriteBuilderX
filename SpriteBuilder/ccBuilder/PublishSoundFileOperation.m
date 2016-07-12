@@ -71,7 +71,7 @@
     }
 
     self.formatConverter = [FCFormatConverter defaultConverter];
-    self.dstFilePath = [_formatConverter convertSoundAtPath:_dstFilePath format:_format quality:_quality];
+    self.dstFilePath = [_formatConverter convertSoundAtPath:_dstFilePath format:_format quality:_quality stereo:_stereo];
     if (!_dstFilePath)
     {
         [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to convert audio file %@", relPath] isFatal:NO];

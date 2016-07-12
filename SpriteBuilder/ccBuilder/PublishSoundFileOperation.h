@@ -11,6 +11,7 @@
 @property (nonatomic, copy) NSString *dstFilePath;
 @property (nonatomic) int format;
 @property (nonatomic) int quality;
+@property (nonatomic) BOOL stereo;
 @property (nonatomic, strong) id<PublishFileLookupProtocol>  fileLookup;
 
 @end

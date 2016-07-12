@@ -197,13 +197,13 @@
     _publishSound = YES;
     _effectFormat = kFCSoundFormatMP3;
     _effectStereo= YES;
-    _effectQuality = 4;
+    _effectQuality = -1;
     _musicFormat = kFCSoundFormatMP3;
     _musicStereo = YES;
-    _musicQuality = 4;
+    _musicQuality = -1;
     _customSoundFormat = kFCSoundFormatMP3;
     _customSoundStereo = YES;
-    _customSoundQuality = 4;
+    _customSoundQuality = -1;
     
     _compressedImageFormat = kFCImageFormatPNG;
     _compressedImageQuality = 75;

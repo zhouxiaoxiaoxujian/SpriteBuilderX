@@ -138,8 +138,9 @@
     }
 
     int rawFormat = [_projectSettings soundFormatForRelPath:relPath];
-    int quality = [_platformSettings soundQuality: rawFormat];
-    int format = [_platformSettings soundFormat: rawFormat];
+    int quality = [_platformSettings soundQuality:rawFormat];
+    int format = [_platformSettings soundFormat:rawFormat];
+    BOOL stereo = [_platformSettings soundStereo:rawFormat];
 
     if (format == -1)
     {
@@ -154,6 +155,7 @@
     operation.dstFilePath = dstFilePath;
     operation.format = format;
     operation.quality = quality;
+    operation.stereo = stereo;
     operation.fileLookup = _renamedFilesLookup;
 
     [_queue addOperation:operation];
