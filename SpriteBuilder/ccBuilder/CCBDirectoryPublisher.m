@@ -175,13 +175,10 @@
 	NSString *outDir = [_outputDir stringByAppendingPathComponent:subPath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSUInteger projectPathLen = [_projectSettings.projectPath stringByDeletingLastPathComponent].length + 1;
-    NSString *relPath = projectPathLen<publishDirectory.length?[publishDirectory substringFromIndex:projectPathLen]:nil;
-    
-    if([[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
+    if([[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SKIPDIRECTORY] boolValue])
         return YES;
 
-    BOOL isGeneratedSpriteSheet = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IS_SMARTSHEET] boolValue];
+    BOOL isGeneratedSpriteSheet = [[_projectSettings propertyForRelPath:subPath andKey:RESOURCE_PROPERTY_IS_SMARTSHEET] boolValue];
     if (!isGeneratedSpriteSheet)
 	{
         [_queue addOperationWithBlock:^
