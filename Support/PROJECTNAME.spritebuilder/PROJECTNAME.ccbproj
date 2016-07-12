@@ -34,36 +34,159 @@
 	<integer>1</integer>
 	<key>onlyPublishCCBs</key>
 	<false/>
-	<key>publishAudioQuality_android</key>
-	<integer>4</integer>
-	<key>publishAudioQuality_ios</key>
-	<integer>4</integer>
-	<key>publishDirectory</key>
-	<string>Resources_ios</string>
-	<key>publishDirectoryAndroid</key>
-	<string>Resources_android</string>
-	<key>publishEnabledAndroid</key>
-	<true/>
-	<key>publishEnablediPhone</key>
-	<true/>
+	<key>platformsSettings</key>
+	<array>
+		<dict>
+			<key>compressedImageCCZCompression</key>
+			<true/>
+			<key>compressedImageDither</key>
+			<true/>
+			<key>compressedImageFormat</key>
+			<integer>0</integer>
+			<key>compressedImageQuality</key>
+			<integer>75</integer>
+			<key>compressedNoAlphaImageCCZCompression</key>
+			<true/>
+			<key>compressedNoAlphaImageDither</key>
+			<true/>
+			<key>compressedNoAlphaImageFormat</key>
+			<integer>4</integer>
+			<key>compressedNoAlphaImageQuality</key>
+			<integer>75</integer>
+			<key>customImageCCZCompression</key>
+			<true/>
+			<key>customImageDither</key>
+			<true/>
+			<key>customImageFormat</key>
+			<integer>0</integer>
+			<key>customImageQuality</key>
+			<integer>75</integer>
+			<key>customSoundFormat</key>
+			<integer>4</integer>
+			<key>customSoundQuality</key>
+			<integer>-1</integer>
+			<key>customSoundStereo</key>
+			<true/>
+			<key>effectFormat</key>
+			<integer>1</integer>
+			<key>effectQuality</key>
+			<integer>-1</integer>
+			<key>effectStereo</key>
+			<true/>
+			<key>musicFormat</key>
+			<integer>2</integer>
+			<key>musicQuality</key>
+			<integer>-1</integer>
+			<key>musicStereo</key>
+			<true/>
+			<key>name</key>
+			<string>iOS</string>
+			<key>packets</key>
+			<array>
+				<string>Main</string>
+			</array>
+			<key>publish1x</key>
+			<true/>
+			<key>publish2x</key>
+			<true/>
+			<key>publish4x</key>
+			<true/>
+			<key>publishCCB</key>
+			<true/>
+			<key>publishDirectory</key>
+			<string>Resources_ios</string>
+			<key>publishEnabled</key>
+			<true/>
+			<key>publishOther</key>
+			<true/>
+			<key>publishSound</key>
+			<true/>
+			<key>uncompressedImageCCZCompression</key>
+			<true/>
+			<key>uncompressedImageDither</key>
+			<true/>
+			<key>uncompressedImageFormat</key>
+			<integer>0</integer>
+			<key>uncompressedImageQuality</key>
+			<integer>75</integer>
+		</dict>
+		<dict>
+			<key>compressedImageCCZCompression</key>
+			<true/>
+			<key>compressedImageDither</key>
+			<true/>
+			<key>compressedImageFormat</key>
+			<integer>0</integer>
+			<key>compressedImageQuality</key>
+			<integer>75</integer>
+			<key>compressedNoAlphaImageCCZCompression</key>
+			<true/>
+			<key>compressedNoAlphaImageDither</key>
+			<true/>
+			<key>compressedNoAlphaImageFormat</key>
+			<integer>4</integer>
+			<key>compressedNoAlphaImageQuality</key>
+			<integer>75</integer>
+			<key>customImageCCZCompression</key>
+			<true/>
+			<key>customImageDither</key>
+			<true/>
+			<key>customImageFormat</key>
+			<integer>0</integer>
+			<key>customImageQuality</key>
+			<integer>75</integer>
+			<key>customSoundFormat</key>
+			<integer>4</integer>
+			<key>customSoundQuality</key>
+			<integer>-1</integer>
+			<key>customSoundStereo</key>
+			<true/>
+			<key>effectFormat</key>
+			<integer>0</integer>
+			<key>effectQuality</key>
+			<integer>-1</integer>
+			<key>effectStereo</key>
+			<true/>
+			<key>musicFormat</key>
+			<integer>3</integer>
+			<key>musicQuality</key>
+			<integer>-1</integer>
+			<key>musicStereo</key>
+			<true/>
+			<key>name</key>
+			<string>Android</string>
+			<key>packets</key>
+			<array>
+				<string>Main</string>
+			</array>
+			<key>publish1x</key>
+			<true/>
+			<key>publish2x</key>
+			<true/>
+			<key>publish4x</key>
+			<true/>
+			<key>publishCCB</key>
+			<true/>
+			<key>publishDirectory</key>
+			<string>Resources_android</string>
+			<key>publishEnabled</key>
+			<true/>
+			<key>publishOther</key>
+			<true/>
+			<key>publishSound</key>
+			<true/>
+			<key>uncompressedImageCCZCompression</key>
+			<true/>
+			<key>uncompressedImageDither</key>
+			<true/>
+			<key>uncompressedImageFormat</key>
+			<integer>0</integer>
+			<key>uncompressedImageQuality</key>
+			<integer>75</integer>
+		</dict>
+	</array>
 	<key>publishEnvironment</key>
 	<integer>0</integer>
-	<key>publishResolution_android_phone</key>
-	<true/>
-	<key>publishResolution_android_phonehd</key>
-	<false/>
-	<key>publishResolution_android_tablet</key>
-	<true/>
-	<key>publishResolution_android_tablethd</key>
-	<false/>
-	<key>publishResolution_ios_phone</key>
-	<true/>
-	<key>publishResolution_ios_phonehd</key>
-	<false/>
-	<key>publishResolution_ios_tablet</key>
-	<true/>
-	<key>publishResolution_ios_tablethd</key>
-	<false/>
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
@@ -72,12 +195,12 @@
 	<array>
 		<dict>
 			<key>path</key>
-			<string>.</string>
+			<string>Main</string>
 		</dict>
 	</array>
 	<key>resourceProperties</key>
 	<dict/>
 	<key>versionStr</key>
-	<string>1.3.6</string>
+	<string>1.4.0</string>
 </dict>
 </plist>
