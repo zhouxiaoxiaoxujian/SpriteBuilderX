@@ -139,7 +139,12 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     }
     else if (format == kFCImageFormatATC_RGB ||
              format == kFCImageFormatATC_EXPLICIT_ALPHA ||
-             format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+             format == kFCImageFormatATC_INTERPOLATED_ALPHA ||
+             format == kFCImageFormatETC ||
+             format == kFCImageFormatETC_ALPHA ||
+             format == kFCImageFormatETC2_RGB8 ||
+             format == kFCImageFormatETC2_RGBA8 ||
+             format == kFCImageFormatETC2_RGB8A1)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"ktx"];
         return dstPath;
@@ -625,7 +630,12 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
     }
     else if (format == kFCImageFormatATC_RGB ||
              format == kFCImageFormatATC_EXPLICIT_ALPHA ||
-             format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+             format == kFCImageFormatATC_INTERPOLATED_ALPHA ||
+             format == kFCImageFormatETC ||
+             format == kFCImageFormatETC_ALPHA ||
+             format == kFCImageFormatETC2_RGB8 ||
+             format == kFCImageFormatETC2_RGBA8 ||
+             format == kFCImageFormatETC2_RGB8A1)
     {
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"ktx"];
         
@@ -642,22 +652,39 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         qualcommTextureInput.nHeight    = image.size.height;
         qualcommTextureInput.nFormat    = Q_FORMAT_RGBA_8UI;
         qualcommTextureInput.nDataSize  = image.size.height * image.size.width * 4;
-        qualcommTextureInput.pFormatFlags->nMaskRed     = 0xFF0000;
-        qualcommTextureInput.pFormatFlags->nMaskGreen   = 0x00FF00;
-        qualcommTextureInput.pFormatFlags->nMaskBlue    = 0x0000FF;
         qualcommTextureInput.pFormatFlags->nFlipY       = 0;
+        if(format == kFCImageFormatETC ||
+           format == kFCImageFormatETC_ALPHA ||
+           format == kFCImageFormatETC2_RGB8 ||
+           format == kFCImageFormatETC2_RGBA8 ||
+           format == kFCImageFormatETC2_RGB8A1)
+        {
+            qualcommTextureInput.pFormatFlags->nMaskRed     = 0x0000FF;
+            qualcommTextureInput.pFormatFlags->nMaskGreen   = 0x00FF00;
+            qualcommTextureInput.pFormatFlags->nMaskBlue    = 0xFF0000;
+        }
+        else
+        {
+            qualcommTextureInput.pFormatFlags->nMaskRed     = 0xFF0000;
+            qualcommTextureInput.pFormatFlags->nMaskGreen   = 0x00FF00;
+            qualcommTextureInput.pFormatFlags->nMaskBlue    = 0x0000FF;
+        }
+
+        NSMutableData *data = nil;
         
-        pvrtexture::CPVRTexture     * pvrTexture = NULL;
-        
-        if(format == kFCImageFormatATC_EXPLICIT_ALPHA || format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+        if(format == kFCImageFormatATC_EXPLICIT_ALPHA ||
+           format == kFCImageFormatATC_INTERPOLATED_ALPHA ||
+           format == kFCImageFormatETC_ALPHA ||
+           format == kFCImageFormatETC2_RGBA8 ||
+           format == kFCImageFormatETC2_RGB8A1)
         {
             NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
             NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
             
             pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
-            pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
+            pvrtexture::CPVRTexture pvrTexture(header , rawImg.bitmapData);
             
-            if(!pvrtexture::PreMultiplyAlpha(*pvrTexture))
+            if(!pvrtexture::PreMultiplyAlpha(pvrTexture))
             {
                 if (error)
                 {
@@ -665,10 +692,29 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
                     NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
                     *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
                 }
-                delete pvrTexture;
                 return NO;
             }
-            qualcommTextureInput.pData                      = (unsigned char*)pvrTexture->getDataPtr();
+            
+            NSLog(@"Texture %@", srcPath);
+            NSUInteger dataLen = image.size.height * image.size.width * 4;
+            if(format == kFCImageFormatETC_ALPHA)
+            {
+                data = [[NSMutableData alloc] initWithLength:dataLen * 2];
+                memcpy(data.mutableBytes, pvrTexture.getDataPtr(), dataLen);
+                pvrtexture::EChannelName szChannel[3] = { pvrtexture::eRed, pvrtexture::eGreen, pvrtexture::eBlue};
+                pvrtexture::EChannelName szChannelSource[3] = { pvrtexture::eAlpha, pvrtexture::eAlpha, pvrtexture::eAlpha};
+                pvrtexture::CopyChannels(pvrTexture, pvrTexture, 3, szChannel, szChannelSource);
+                memcpy((unsigned char*)data.mutableBytes + dataLen, pvrTexture.getDataPtr(), dataLen);
+                qualcommTextureInput.nHeight *= 2;
+                //saveRawDataToPng(data.mutableBytes, image.size.width, image.size.height * 2, NO, [srcPath stringByAppendingPathExtension:@"png"], nil);
+            }
+            else
+            {
+                data = [[NSMutableData alloc] initWithLength:dataLen];
+                memcpy(data.mutableBytes, pvrTexture.getDataPtr(), dataLen);
+            }
+
+            qualcommTextureInput.pData                      = (unsigned char*)data.mutableBytes;
         }
         else
         {
@@ -692,6 +738,21 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
             case kFCImageFormatATC_INTERPOLATED_ALPHA:
                 qualcommTextureOutput.nFormat = Q_FORMAT_ATC_RGBA_INTERPOLATED_ALPHA;
                 break;
+            case kFCImageFormatETC:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ETC1_RGB8;
+                break;
+            case kFCImageFormatETC_ALPHA:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ETC1_RGB8;
+                break;
+            case kFCImageFormatETC2_RGB8:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ETC2_RGB8;
+                break;
+            case kFCImageFormatETC2_RGBA8:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ETC2_RGBA8;
+                break;
+            case kFCImageFormatETC2_RGB8A1:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ETC2_RGB8_PUNCHTHROUGH_ALPHA1;
+                break;
             default:
                 break;
         }
@@ -702,8 +763,6 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
             NSString * errorMessage = [NSString stringWithFormat:@"The first Qonvert call failed: %@", srcPath];
             NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
             *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
-            if(pvrTexture)
-                delete pvrTexture;
             return NO;
         }
         qualcommTextureOutput.pData = (unsigned char*) malloc(qualcommTextureOutput.nDataSize);
@@ -713,19 +772,14 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
             NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
             *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
             free(qualcommTextureOutput.pData);
-            if(pvrTexture)
-                delete pvrTexture;
             return NO;
         }
-        
-        if(pvrTexture)
-            delete pvrTexture;
         
         // http://www.khronos.org/registry/gles/extensions/AMD/AMD_compressed_ATC_texture.txt
         
         KtxFormat ktx;
-        ktx.pixelWidth           = image.size.width;
-        ktx.pixelHeight          = image.size.height;
+        ktx.pixelWidth           = qualcommTextureInput.nWidth;
+        ktx.pixelHeight          = qualcommTextureInput.nHeight;
         ktx.pixelDepth           = 32;
         ktx.numberOfMipmapLevels = 1;
         
@@ -739,24 +793,59 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
             case Q_FORMAT_ATC_RGBA_INTERPOLATED_ALPHA:
                 ktx.glInternalFormat = 0x87EE; // ATC_RGBA_INTERPOLATED_ALPHA_AMD
                 break;
+            case Q_FORMAT_ETC1_RGB8:
+                ktx.glInternalFormat = 0x8D64; // CC_GL_ETC1_RGB8_OES
+                break;
+            case Q_FORMAT_ETC2_RGB8:
+                ktx.glInternalFormat = 0x9274; // CC_GL_COMPRESSED_RGB8_ETC2
+                break;
+            case Q_FORMAT_ETC2_RGBA8:
+                ktx.glInternalFormat = 0x9278; // CC_GL_COMPRESSED_RGBA8_ETC2_EAC
+                break;
+            case Q_FORMAT_ETC2_RGB8_PUNCHTHROUGH_ALPHA1:
+                ktx.glInternalFormat = 0x9276; // CC_GL_COMPRESSED_RGB8_PUNCHTHROUGH_ALPHA1_ETC2
+                break;
+
             default:
                 break;
         }
         
         FILE* out = fopen([dstPath UTF8String], "w");
         
-        // Write the header:
-        fwrite((void*) &ktx, 1, sizeof(KtxFormat), out);
+        if(format == kFCImageFormatETC_ALPHA)
+        {
+            // Write metadata data:
+            const char *key = "alpha";
+            const char *value = "down";
+            int keyLen = strlen(key) + 1;
+            int valueLen = strlen(value) + 1;
+            uint32_t keyAndValueLen = keyLen + valueLen;
+            uint8_t padding[4] = {'\0', '\0', '\0', '\0'};
+            ktx.bytesOfKeyValueData = ((keyLen + valueLen + 3)/4)*4 + 4;
+            // Write the header:
+            fwrite((void*) &ktx, 1, sizeof(KtxFormat), out);
+            fwrite(&keyAndValueLen, 1, 4, out);
+            fwrite(key, 1, keyLen, out);
+            fwrite(value, 1, valueLen, out);
+            if(keyAndValueLen + 4 < ktx.bytesOfKeyValueData)
+                fwrite(padding, 1, ktx.bytesOfKeyValueData - 4 - keyAndValueLen, out);
+        }
+        else
+        {
+            // Write the header:
+            fwrite((void*) &ktx, 1, sizeof(KtxFormat), out);
+        }
         
         // Write the data size:
         fwrite((void*) &(qualcommTextureOutput.nDataSize), 1, sizeof(unsigned int), out);
         
         // Write actual data:
         fwrite(qualcommTextureOutput.pData, 1, qualcommTextureOutput.nDataSize, out);
+        
         fclose(out);
         
         // Remove uncompressed file
-        //[[NSFileManager defaultManager] removeItemAtPath:srcPath error:NULL];
+        [[NSFileManager defaultManager] removeItemAtPath:srcPath error:NULL];
         
         if (compress)
         {
