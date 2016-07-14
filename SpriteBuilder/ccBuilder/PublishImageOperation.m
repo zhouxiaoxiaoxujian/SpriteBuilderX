@@ -132,7 +132,7 @@
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
-                                        isRelease:self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease
+                                        isRelease:_projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease && !_intermediateProduct
                                    outputFilename:&dstPathConverted
                                             error:&error])
         {
@@ -182,7 +182,7 @@
                                            dither:_dither
                                          compress:_compress
                                     isSpriteSheet:_isSpriteSheet
-                                        isRelease:self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease
+                                        isRelease:self.projectSettings.publishEnvironment == kCCBPublishEnvironmentRelease && !_intermediateProduct
                                    outputFilename:&dstPathConverted
                                             error:&error])
         {
@@ -220,7 +220,7 @@
     self.compress = NO;
 
     // TODO: Move to data object: format, dither, compress
-    if (!_isSpriteSheet)
+    if (!_intermediateProduct)
     {
         int format = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_IMAGE_FORMAT] intValue];
         self.format = [_platformSettings imageFormat:format];

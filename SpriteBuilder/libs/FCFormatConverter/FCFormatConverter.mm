@@ -9,10 +9,49 @@
 #import "FCFormatConverter.h"
 #import "PVRTexture.h"
 #import "PVRTextureUtilities.h"
+#include "TextureConverter.h"
 
 static FCFormatConverter* gDefaultConverter = NULL;
 
 static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
+
+struct KtxFormat {
+    /// Constructor is only required when creating KTX images.
+    KtxFormat() :
+    endianness(0), glType(0), glTypeSize(0), glFormat(0), glInternalFormat(0),
+    glBaseInternalFormat(0), pixelWidth(0), pixelHeight(0), pixelDepth(0),
+    numberOfArrayElements(0), numberOfFaces(0), numberOfMipmapLevels(0), bytesOfKeyValueData(0) {
+        
+        // As per http://www.khronos.org/opengles/sdk/tools/KTX/file_format_spec/
+        identifier[0]  = 0xAB;
+        identifier[1]  = 0x4B;
+        identifier[2]  = 0x54;
+        identifier[3]  = 0x58;
+        identifier[4]  = 0x20;
+        identifier[5]  = 0x31;
+        identifier[6]  = 0x31;
+        identifier[7]  = 0xBB;
+        identifier[8]  = 0x0D;
+        identifier[9]  = 0x0A;
+        identifier[10] = 0x1A;
+        identifier[11] = 0x0A;
+    }
+    
+    unsigned char identifier[12];
+    uint32_t endianness;
+    uint32_t glType;
+    uint32_t glTypeSize;
+    uint32_t glFormat;
+    uint32_t glInternalFormat;
+    uint32_t glBaseInternalFormat;
+    uint32_t pixelWidth;
+    uint32_t pixelHeight;
+    uint32_t pixelDepth;
+    uint32_t numberOfArrayElements;
+    uint32_t numberOfFaces;
+    uint32_t numberOfMipmapLevels;
+    uint32_t bytesOfKeyValueData;
+};
 
 @interface FCFormatConverter ()
 
@@ -27,6 +66,7 @@ static NSString * kErrorDomain = @"com.apportable.SpriteBuilder";
 ({ __typeof__(x) temp  = (x);		\
 x = y; y = temp;		\
 })
+
 
 static float clampf(float value, float min_inclusive, float max_inclusive)
 {
@@ -97,33 +137,37 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"dds"];
         return dstPath;
     }
+    else if (format == kFCImageFormatATC_RGB ||
+             format == kFCImageFormatATC_EXPLICIT_ALPHA ||
+             format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+    {
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"ktx"];
+        return dstPath;
+    }
     return NULL;
 }
 
--(BOOL)optimizePngAtPath:(NSString*)srcPath
+-(BOOL)optimizePngAtPath:(NSString*)srcPath premultipliedAlpha:(BOOL)premultipliedAlpha
 {
 
     NSTask *task = [[NSTask alloc] init];
-    NSString *pathToOptiPNG = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"optipng"];
-    [task setLaunchPath:pathToOptiPNG];
-    [task setArguments:@[srcPath]];
+    NSString *pathToPNGCrush = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"pngcrush"];
+    [task setLaunchPath:pathToPNGCrush];
+    if(premultipliedAlpha)
+        [task setArguments:@[@"-force", @"-ow", @"-ztxt", @"b", @"premultiplied_alpha", @"true", srcPath]];
+    else
+        [task setArguments:@[@"-force", @"-ow", srcPath]];
 
-    // NSPipe *pipe = [NSPipe pipe];
-    NSPipe *pipeErr = [NSPipe pipe];
-    [task setStandardError:pipeErr];
-
-    // [_task setStandardOutput:pipe];
-    // NSFileHandle *file = [pipe fileHandleForReading];
-
-    NSFileHandle *fileErr = [pipeErr fileHandleForReading];
-
-    int status = 0;
+//    NSPipe *pipeErr = [NSPipe pipe];
+//    [task setStandardError:pipeErr];
+//
+//    int status = 0;
 
     @try
     {
         [task launch];
         [task waitUntilExit];
-        status = [task terminationStatus];
+        //status = [task terminationStatus];
     }
     @catch (NSException *ex)
     {
@@ -131,13 +175,15 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         return NO;
     }
 
-    /*if (status)
-    {
-        NSData *data = [fileErr readDataToEndOfFile];
-        NSString *stdErrOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSString *warningDescription = [NSString stringWithFormat:@"optipng error: %@", stdErrOutput];
-        [_warnings addWarningWithDescription:warningDescription];
-    }*/
+//    if (status)
+//    {
+//        NSFileHandle *fileErr = [pipeErr fileHandleForReading];
+//        NSData *data = [fileErr readDataToEndOfFile];
+//        NSString *stdErrOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSString *warningDescription = [NSString stringWithFormat:@"pngcrush error: %@", stdErrOutput];
+//        NSLog(@"%@", warningDescription);
+//        [_warnings addWarningWithDescription:warningDescription];
+//    }
     return YES;
 }
 
@@ -161,41 +207,78 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return dstPath;
 }
 
-+ (BOOL) saveRawDataToPng:(void*)data width:(int)width hight:(int)height path:(NSString*)path
+static BOOL saveRawDataToPng(void* data, int width, int height, BOOL alpha, NSString *path, NSError **error)
 {
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Big|kCGImageAlphaLast;
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Big|(alpha?kCGImageAlphaLast:kCGImageAlphaNone);
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
     
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL,
-                                                              data,
-                                                              width*height*4,
-                                                              NULL);
-    CGImageRef imageRef = CGImageCreate(width,
-                                        height,
-                                        8,
-                                        32,
-                                        4*width,colorSpaceRef,
-                                        bitmapInfo,
-                                        provider,NULL,NO,renderingIntent);
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, data, width*height*4, NULL);
+    CGImageRef imageRef = CGImageCreate(width, height, 8, 32, 4*width, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     
     CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:path];
     CGImageDestinationRef destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, NULL);
     if (!destination) {
-        NSLog(@"Failed to create CGImageDestination for %@", path);
+        if (error)
+        {
+            NSString * errorMessage = [NSString stringWithFormat:@"Failed to create CGImageDestination for: %@", path];
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
         return NO;
     }
-    
     CGImageDestinationAddImage(destination, imageRef, nil);
     
     if (!CGImageDestinationFinalize(destination)) {
-        NSLog(@"Failed to write image to %@", path);
+        NSString * errorMessage = [NSString stringWithFormat:@"Failed to write image to: %@", path];
+        NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+        *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
         CFRelease(destination);
         return NO;
     }
     
     CFRelease(destination);
     return YES;
+}
+
+typedef enum {
+    kFCAlphaProcessingNone,
+    kFCAlphaProcessingPremultiply,
+    kFCAlphaProcessingDrop
+} kFCAlphaProcessing;
+
+static BOOL convertToPng(NSString *srcPath, NSString *dstPath, kFCAlphaProcessing alphaProcessing, NSError **error)
+{
+    if(alphaProcessing == kFCAlphaProcessingNone && [[srcPath pathExtension] isEqualToString:@"png"])
+    {
+        return YES;
+    }
+    NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
+    NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+    if(alphaProcessing == kFCAlphaProcessingPremultiply)
+    {
+        pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
+        pvrtexture::CPVRTexture     * pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
+        
+        if(!pvrtexture::PreMultiplyAlpha(*pvrTexture))
+        {
+            if (error)
+            {
+                NSString * errorMessage = [NSString stringWithFormat:@"Failure to premultiple alpha: %@", srcPath];
+                NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+                *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            }
+            delete pvrTexture;
+            return NO;
+        }
+        BOOL ret = saveRawDataToPng(pvrTexture->getDataPtr(), image.size.width, image.size.height, YES, dstPath, error);
+        delete pvrTexture;
+        return ret;
+    }
+    else
+    {
+        return saveRawDataToPng(rawImg.bitmapData, image.size.width, image.size.height, alphaProcessing != kFCAlphaProcessingDrop, dstPath, error);
+    }
 }
 
 static void replacebytes(const char* path, long offset, const char * newBytes, long len)
@@ -245,59 +328,44 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         *outputFilename = [srcPath copy];
         return YES;
     }
-    else if (format == kFCImageFormatPNG)
+    else if (format == kFCImageFormatPNG ||
+             format == kFCImageFormatPNG_8BIT ||
+             format == kFCImageFormatPNG_NO_ALPHA ||
+             format == kFCImageFormatPNG_8BIT_NO_ALPHA)
     {
         // PNG image - no conversion required
         //*outputFilename = [srcPath copy];
-        if([[srcPath pathExtension] isEqualToString:@"png"])
-        {
-            *outputFilename = [srcPath copy];
-            if(!isSpriteSheet && isRelease)
-                [self optimizePngAtPath:srcPath];
-            return YES;
-        }
-        else
-        {
-            CGImageSourceRef image_source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:srcPath], NULL);
-            CGImageRef image = CGImageSourceCreateImageAtIndex(image_source, 0, NULL);
-            
-            NSString *out_path = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
-            CFURLRef out_url = (__bridge CFURLRef)[NSURL fileURLWithPath:out_path];
-            CGImageDestinationRef image_destination = CGImageDestinationCreateWithURL(out_url, kUTTypePNG, 1, NULL);
-            CGImageDestinationAddImage(image_destination, image, NULL);
-            CGImageDestinationFinalize(image_destination);
-            
-            CFRelease(image_source);
-            CGImageRelease(image);
-            CFRelease(image_destination);
-            
-            [fm removeItemAtPath:srcPath error:nil];
-            *outputFilename = out_path;
-            if(!isSpriteSheet && isRelease)
-                [self optimizePngAtPath:srcPath];
-            return YES;
-        }
-    }
-    if (format == kFCImageFormatPNG_8BIT)
-    {
-        // 8 bit PNG image
-        self.pngQuantTask = [[NSTask alloc] init];
-        [_pngQuantTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"pngquant"]];
-        NSMutableArray* args = [NSMutableArray arrayWithObjects:
-                                @"--force", @"--ext", @".png", srcPath, nil];
-        if (dither) [args addObject:@"-dither"];
-        [_pngQuantTask setArguments:args];
-        [_pngQuantTask launch];
-        [_pngQuantTask waitUntilExit];
+        BOOL dropAlpha = format == kFCImageFormatPNG_NO_ALPHA || format == kFCImageFormatPNG_8BIT_NO_ALPHA;
+        BOOL convertTo8Bit = format == kFCImageFormatPNG_8BIT || format == kFCImageFormatPNG_8BIT_NO_ALPHA;
         
-        self.pngQuantTask = nil;
-        if ([fm fileExistsAtPath:srcPath])
+        kFCAlphaProcessing alphaProcessing = kFCAlphaProcessingNone;
+        if(dropAlpha)
+            alphaProcessing = kFCAlphaProcessingDrop;
+        else if(isRelease)
+            alphaProcessing = kFCAlphaProcessingPremultiply;
+        
+         NSString *out_path = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"png"];
+        
+        if(!convertToPng(srcPath, out_path, alphaProcessing, error))
+            return NO;
+        
+        if(convertTo8Bit)
         {
-            *outputFilename = [srcPath copy];
-            if(!isSpriteSheet && isRelease)
-                [self optimizePngAtPath:srcPath];
-            return YES;
+            self.pngQuantTask = [[NSTask alloc] init];
+            [_pngQuantTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"pngquant"]];
+            NSMutableArray* args = [NSMutableArray arrayWithObjects: @"--force", @"--ext", @".png", out_path, nil];
+            [_pngQuantTask setArguments:args];
+            [_pngQuantTask launch];
+            [_pngQuantTask waitUntilExit];
+            
+            self.pngQuantTask = nil;
         }
+        
+        if(isRelease)
+            [self optimizePngAtPath:srcPath premultipliedAlpha:YES];
+        
+        *outputFilename = [out_path copy];
+        return YES;
     }
     else if (format == kFCImageFormatPVR_RGBA8888 ||
              format == kFCImageFormatPVR_RGBA4444 ||
@@ -446,7 +514,9 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         
     }
     else if (format == kFCImageFormatWEBP ||
-             format == kFCImageFormatWEBP_LOSSY)
+             format == kFCImageFormatWEBP_LOSSY ||
+             format == kFCImageFormatWEBP_NO_ALPHA ||
+             format == kFCImageFormatWEBP_LOSSY_NO_ALPHA)
     {
         // WEBP image format
         NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"webp"];
@@ -462,6 +532,14 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
                 
             case kFCImageFormatWEBP_LOSSY:
                 args = [NSMutableArray arrayWithObjects:srcPath, @"-q", [@(quality) stringValue], @"-alpha_cleanup", @"-o", dstPath, nil];
+                break;
+                
+            case kFCImageFormatWEBP_NO_ALPHA:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-lossless", @"-noalpha", @"-o", dstPath, nil];
+                break;
+                
+            case kFCImageFormatWEBP_LOSSY_NO_ALPHA:
+                args = [NSMutableArray arrayWithObjects:srcPath, @"-q", [@(quality) stringValue], @"-noalpha", @"-o", dstPath, nil];
                 break;
                 
             default:
@@ -492,24 +570,8 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         
         if(format == kFCImageFormatDXT2 || format == kFCImageFormatDXT4)
         {
-            NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
-            NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
-            
-            pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
-            pvrtexture::CPVRTexture     * pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
-
-            if(!pvrtexture::PreMultiplyAlpha(*pvrTexture))
-            {
-                if (error)
-                {
-                    NSString * errorMessage = [NSString stringWithFormat:@"Failure to premultiple alpha: %@", srcPath];
-                    NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
-                    *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
-                }
+            if(!convertToPng(srcPath, tmpPath, kFCAlphaProcessingPremultiply, error))
                 return NO;
-            }
-            
-            [FCFormatConverter saveRawDataToPng:pvrTexture->getDataPtr() width:pvrTexture->getWidth() hight:pvrTexture->getHeight() path:tmpPath];
         }
         else
         {
@@ -560,6 +622,151 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         
         *outputFilename = [dstPath copy];
         return YES;
+    }
+    else if (format == kFCImageFormatATC_RGB ||
+             format == kFCImageFormatATC_EXPLICIT_ALPHA ||
+             format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+    {
+        NSString* dstPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"ktx"];
+        
+        NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
+        NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+        
+        TQonvertImage qualcommTextureInput;
+        
+        TFormatFlags inputFormatFlags;
+        qualcommTextureInput.pFormatFlags = &inputFormatFlags;
+        memset(qualcommTextureInput.pFormatFlags, 0, sizeof(TFormatFlags));
+        
+        qualcommTextureInput.nWidth     = image.size.width;
+        qualcommTextureInput.nHeight    = image.size.height;
+        qualcommTextureInput.nFormat    = Q_FORMAT_RGBA_8UI;
+        qualcommTextureInput.nDataSize  = image.size.height * image.size.width * 4;
+        qualcommTextureInput.pFormatFlags->nMaskRed     = 0xFF0000;
+        qualcommTextureInput.pFormatFlags->nMaskGreen   = 0x00FF00;
+        qualcommTextureInput.pFormatFlags->nMaskBlue    = 0x0000FF;
+        qualcommTextureInput.pFormatFlags->nFlipY       = 0;
+        
+        pvrtexture::CPVRTexture     * pvrTexture = NULL;
+        
+        if(format == kFCImageFormatATC_EXPLICIT_ALPHA || format == kFCImageFormatATC_INTERPOLATED_ALPHA)
+        {
+            NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
+            NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+            
+            pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
+            pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
+            
+            if(!pvrtexture::PreMultiplyAlpha(*pvrTexture))
+            {
+                if (error)
+                {
+                    NSString * errorMessage = [NSString stringWithFormat:@"Failure to premultiple alpha: %@", srcPath];
+                    NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+                    *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+                }
+                delete pvrTexture;
+                return NO;
+            }
+            qualcommTextureInput.pData                      = (unsigned char*)pvrTexture->getDataPtr();
+        }
+        else
+        {
+            qualcommTextureInput.pData                      = (unsigned char*) rawImg.bitmapData;
+        }
+        
+        TQonvertImage qualcommTextureOutput;
+        TFormatFlags outputFormatFlags;
+        qualcommTextureOutput.pFormatFlags = &outputFormatFlags;
+        memset(qualcommTextureOutput.pFormatFlags, 0, sizeof(TFormatFlags));
+        
+        qualcommTextureOutput.nWidth    = qualcommTextureInput.nWidth;
+        qualcommTextureOutput.nHeight   = qualcommTextureInput.nHeight;
+        switch (format) {
+            case kFCImageFormatATC_RGB:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ATC_RGB;
+                break;
+            case kFCImageFormatATC_EXPLICIT_ALPHA:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ATC_RGBA_EXPLICIT_ALPHA;
+                break;
+            case kFCImageFormatATC_INTERPOLATED_ALPHA:
+                qualcommTextureOutput.nFormat = Q_FORMAT_ATC_RGBA_INTERPOLATED_ALPHA;
+                break;
+            default:
+                break;
+        }
+        qualcommTextureOutput.nDataSize = 0;
+        qualcommTextureOutput.pData     = NULL;
+        
+        if(Qonvert(&qualcommTextureInput, &qualcommTextureOutput) != Q_SUCCESS) {
+            NSString * errorMessage = [NSString stringWithFormat:@"The first Qonvert call failed: %@", srcPath];
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            if(pvrTexture)
+                delete pvrTexture;
+            return NO;
+        }
+        qualcommTextureOutput.pData = (unsigned char*) malloc(qualcommTextureOutput.nDataSize);
+        
+        if(Qonvert(&qualcommTextureInput, &qualcommTextureOutput) != Q_SUCCESS) {
+            NSString * errorMessage = [NSString stringWithFormat:@"The second Qonvert call failed: %@", srcPath];
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            free(qualcommTextureOutput.pData);
+            if(pvrTexture)
+                delete pvrTexture;
+            return NO;
+        }
+        
+        if(pvrTexture)
+            delete pvrTexture;
+        
+        // http://www.khronos.org/registry/gles/extensions/AMD/AMD_compressed_ATC_texture.txt
+        
+        KtxFormat ktx;
+        ktx.pixelWidth           = image.size.width;
+        ktx.pixelHeight          = image.size.height;
+        ktx.pixelDepth           = 32;
+        ktx.numberOfMipmapLevels = 1;
+        
+        switch(qualcommTextureOutput.nFormat) {
+            case Q_FORMAT_ATITC_RGB:
+                ktx.glInternalFormat = 0x8C92; // ATC_RGB_AMD
+                break;
+            case Q_FORMAT_ATC_RGBA_EXPLICIT_ALPHA:
+                ktx.glInternalFormat = 0x8C93; // ATC_RGBA_EXPLICIT_ALPHA_AMD
+                break;
+            case Q_FORMAT_ATC_RGBA_INTERPOLATED_ALPHA:
+                ktx.glInternalFormat = 0x87EE; // ATC_RGBA_INTERPOLATED_ALPHA_AMD
+                break;
+            default:
+                break;
+        }
+        
+        FILE* out = fopen([dstPath UTF8String], "w");
+        
+        // Write the header:
+        fwrite((void*) &ktx, 1, sizeof(KtxFormat), out);
+        
+        // Write the data size:
+        fwrite((void*) &(qualcommTextureOutput.nDataSize), 1, sizeof(unsigned int), out);
+        
+        // Write actual data:
+        fwrite(qualcommTextureOutput.pData, 1, qualcommTextureOutput.nDataSize, out);
+        fclose(out);
+        
+        // Remove uncompressed file
+        //[[NSFileManager defaultManager] removeItemAtPath:srcPath error:NULL];
+        
+        if (compress)
+        {
+            dstPath = [self compress:dstPath andDir:dstDir];
+        }
+        
+        *outputFilename = [dstPath copy];
+        
+        return YES;
+        
     }
     
 	// Conversion failed

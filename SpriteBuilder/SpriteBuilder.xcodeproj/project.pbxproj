@@ -373,6 +373,7 @@
 		A54C73781A438A4100DB1CF7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73721A438A4100DB1CF7 /* Icon.png */; };
 		A54C73791A438A4100DB1CF7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73731A438A4100DB1CF7 /* Icon@2x.png */; };
 		A54C737D1A438C9E00DB1CF7 /* CCScissorsNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A56B9ADC1D36D5620027788E /* pngcrush in Resources */ = {isa = PBXBuildFile; fileRef = A56B9ADB1D36D5620027788E /* pngcrush */; };
 		A57319921A2FB0E50044B884 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A573198F1A2FB0E50044B884 /* scale-5.png */; };
 		A57319931A2FB0E50044B884 /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319901A2FB0E50044B884 /* scale-6.png */; };
 		A57319941A2FB0E50044B884 /* scale-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319911A2FB0E50044B884 /* scale-7.png */; };
@@ -1889,6 +1890,7 @@
 		A54C73711A438A4100DB1CF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A54C73721A438A4100DB1CF7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A54C73731A438A4100DB1CF7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A56B9ADB1D36D5620027788E /* pngcrush */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngcrush; sourceTree = "<group>"; };
 		A573198F1A2FB0E50044B884 /* scale-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-5.png"; sourceTree = "<group>"; };
 		A57319901A2FB0E50044B884 /* scale-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-6.png"; sourceTree = "<group>"; };
 		A57319911A2FB0E50044B884 /* scale-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-7.png"; sourceTree = "<group>"; };
@@ -3909,6 +3911,7 @@
 		7789ABEF133AB17100CEFCC7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				A56B9AD61D36D5520027788E /* pngcrush */,
 				A53568671D21480E009EC595 /* TextureConverter */,
 				A53568601D2147ED009EC595 /* NVCompress */,
 				A5A340531A41E32000861273 /* WebP */,
@@ -4679,6 +4682,14 @@
 				A54C73731A438A4100DB1CF7 /* Icon@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A56B9AD61D36D5520027788E /* pngcrush */ = {
+			isa = PBXGroup;
+			children = (
+				A56B9ADB1D36D5620027788E /* pngcrush */,
+			);
+			name = pngcrush;
 			sourceTree = "<group>";
 		};
 		A58EE8481A30EB2C005F6E22 /* CCText */ = {
@@ -7232,6 +7243,7 @@
 				9252073419623E2F00BFC071 /* SpriteBuilder.xcconfig in Resources */,
 				E3E2704915B18CF500287470 /* TB_stop.png in Resources */,
 				E3E2704B15B1904400287470 /* toolbar-bottom.png in Resources */,
+				A56B9ADC1D36D5620027788E /* pngcrush in Resources */,
 				E326EFB615C84123006D6CE6 /* seq-endmarker.png in Resources */,
 				921EEADA18A5760700D864C2 /* joint-pivot-sel.png in Resources */,
 				E33C2AB515CAE2590043EF9B /* SequencerStretchWindow.xib in Resources */,

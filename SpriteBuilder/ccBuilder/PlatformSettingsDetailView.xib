@@ -239,19 +239,19 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vc-6w-L6m" userLabel="Compressed image without alpha">
                             <rect key="frame" x="142" y="56" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="Pcl-PD-Opt" id="RGJ-Sm-M8A" userLabel="PNH">
+                            <popUpButtonCell key="cell" type="push" title="WebP no alpha" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" tag="28" imageScaling="proportionallyDown" inset="2" selectedItem="mvQ-6F-JmL" id="RGJ-Sm-M8A" userLabel="PNH">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="Lzn-tz-Irj">
                                     <items>
-                                        <menuItem title="Origin" state="on" tag="-1" id="Pcl-PD-Opt"/>
-                                        <menuItem title="PNG" id="FM7-Ib-CyB"/>
-                                        <menuItem title="PNG 8-bit" tag="1" id="fAh-Yi-M4K"/>
+                                        <menuItem title="Origin" tag="-1" id="Pcl-PD-Opt"/>
+                                        <menuItem title="PNG no alpha" tag="26" id="FM7-Ib-CyB"/>
+                                        <menuItem title="PNG 8-bit no alpha" tag="27" id="fAh-Yi-M4K"/>
                                         <menuItem isSeparatorItem="YES" id="LNN-rv-Kvj"/>
-                                        <menuItem title="WebP" tag="2" id="mvQ-6F-JmL" userLabel="WebP">
+                                        <menuItem title="WebP no alpha" tag="28" id="mvQ-6F-JmL">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="WebP Lossy" tag="3" id="Adl-Wr-mVq" userLabel="WebP Lossy">
+                                        <menuItem title="WebP Lossy no alpha" tag="29" id="Adl-Wr-mVq">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="AY1-kN-cVi"/>
@@ -355,19 +355,27 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asq-JC-25w" userLabel="Uncompressed image">
                             <rect key="frame" x="142" y="33" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" title="Origin" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="2vD-ZR-iro" id="Mg5-QR-u7q">
+                            <popUpButtonCell key="cell" type="push" title="WebP no alpha" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="28" imageScaling="proportionallyDown" inset="2" selectedItem="KNx-qd-xNR" id="Mg5-QR-u7q">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="ga7-mB-uLT">
                                     <items>
-                                        <menuItem title="Origin" state="on" tag="-1" id="2vD-ZR-iro"/>
+                                        <menuItem title="Origin" tag="-1" id="2vD-ZR-iro"/>
                                         <menuItem title="PNG" id="6tG-Xa-e93"/>
+                                        <menuItem title="PNG no alpha" tag="26" id="AkL-Xc-fUi"/>
                                         <menuItem title="PNG 8-bit" tag="1" id="Fbq-Xn-tqU"/>
+                                        <menuItem title="PNG 8-bit no alpha" tag="27" id="LlC-vQ-h1S"/>
                                         <menuItem isSeparatorItem="YES" id="Pbz-GG-Ueb"/>
                                         <menuItem title="WebP" tag="2" id="26w-OJ-lja" userLabel="WebP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem title="WebP no alpha" state="on" tag="28" id="KNx-qd-xNR">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                         <menuItem title="WebP Lossy" tag="3" id="aDa-DO-Lsy" userLabel="WebP Lossy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP Lossy no alpha" tag="29" id="gRw-GY-Im2">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" state="on" id="Pd9-uE-mA7"/>
@@ -448,19 +456,27 @@
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aOO-cl-Bsw" userLabel="Custom image">
                             <rect key="frame" x="142" y="10" width="94" height="15"/>
-                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8bz-PB-DOu">
+                            <popUpButtonCell key="cell" type="push" title="PNG 8-bit" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="aPt-OT-K22" id="8bz-PB-DOu">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                                 <menu key="menu" title="OtherViews" id="3Dl-09-A4U">
                                     <items>
                                         <menuItem title="Origin" tag="-1" id="1CK-z2-FTK"/>
                                         <menuItem title="PNG" id="qKp-qs-9aB"/>
-                                        <menuItem title="PNG 8-bit" tag="1" id="aPt-OT-K22"/>
+                                        <menuItem title="PNG no alpha" tag="26" id="jIa-UP-1qy"/>
+                                        <menuItem title="PNG 8-bit" state="on" tag="1" id="aPt-OT-K22"/>
+                                        <menuItem title="PNG 8-bit no alpha" tag="27" id="hAr-L3-dIN"/>
                                         <menuItem isSeparatorItem="YES" id="baD-se-AAo"/>
                                         <menuItem title="WebP" tag="2" id="QcW-9v-v6u" userLabel="WebP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
+                                        <menuItem title="WebP no alpha" tag="28" id="aEe-RU-MCL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                         <menuItem title="WebP Lossy" tag="3" id="HWx-1G-g5Q" userLabel="WebP Lossy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="WebP Lossy no alpha" tag="29" id="fRn-K6-evN">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bgT-BY-5mC"/>

@@ -524,7 +524,7 @@
             NSString *dstFile = [[_projectSettings tempSpriteSheetCacheDirectory] stringByAppendingPathComponent:fileName];
             [self publishImageFile:filePath
                                 to:dstFile
-                     isSpriteSheet:YES
+                     isSpriteSheet:NO
                          outputDir:outputDir
                         resolution:resolution
                intermediateProduct:YES

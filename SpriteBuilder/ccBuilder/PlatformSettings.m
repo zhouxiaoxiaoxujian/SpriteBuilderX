@@ -48,7 +48,6 @@
 + (BOOL)allowsReverseTransformation { return NO; }
 -(id)transformedValue:(id)value {
     switch ([value intValue]) {
-        case kFCImageFormatPNG_8BIT:
         case kFCImageFormatPVR_RGB565:
         case kFCImageFormatPVR_RGBA4444:
             return [NSNumber numberWithBool:YES];
@@ -72,6 +71,10 @@
         case kFCImageFormatWEBP:
         case kFCImageFormatWEBP_LOSSY:
         case kFCImageFormatJPG:
+        case kFCImageFormatPNG_NO_ALPHA:
+        case kFCImageFormatPNG_8BIT_NO_ALPHA:
+        case kFCImageFormatWEBP_NO_ALPHA:
+        case kFCImageFormatWEBP_LOSSY_NO_ALPHA:
             return [NSNumber numberWithBool:NO];
             
         default:

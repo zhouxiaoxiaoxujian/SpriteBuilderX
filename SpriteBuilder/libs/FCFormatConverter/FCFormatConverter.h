@@ -15,9 +15,13 @@ typedef enum {
     
     kFCImageFormatPNG = 0,
     kFCImageFormatPNG_8BIT = 1,
+    kFCImageFormatPNG_NO_ALPHA = 26,
+    kFCImageFormatPNG_8BIT_NO_ALPHA = 27,
     
     kFCImageFormatWEBP = 2,
     kFCImageFormatWEBP_LOSSY = 3,
+    kFCImageFormatWEBP_NO_ALPHA = 28,
+    kFCImageFormatWEBP_LOSSY_NO_ALPHA = 29,
     
     kFCImageFormatJPG = 4,
     
