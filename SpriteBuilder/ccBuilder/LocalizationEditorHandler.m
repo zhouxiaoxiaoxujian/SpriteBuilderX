@@ -80,7 +80,15 @@
     [ser setObject:serTransls forKey:@"translations"];
     
     // Store
-    [ser writeToFile:managedFile atomically:YES];
+    BOOL ret = [NSJSONSerialization isValidJSONObject:ser];
+    if(ret)
+    {
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:ser options:NSJSONWritingPrettyPrinted error:&error];
+        if(!error)
+            [data writeToFile:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"json"] atomically:YES];
+    }
+    //[ser writeToFile:managedFile atomically:YES];
     
     // Make sure that the scene is redrawn
     [StringPropertySetter refreshAllStringProps];
@@ -91,7 +99,22 @@
 {
     if (!managedFile) return NO;
     
-    NSDictionary* ser = [NSDictionary dictionaryWithContentsOfFile:managedFile];
+    NSData *data = [NSData dataWithContentsOfFile:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"json"]];
+    
+    BOOL loaded = NO;
+    
+    NSDictionary* ser = nil;
+    
+    if(data)
+    {
+        NSError *error = nil;
+        ser = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if(!error)
+            loaded = true;
+    }
+    
+    if(!loaded)
+        ser = [NSDictionary dictionaryWithContentsOfFile:managedFile];
     
     // Validate file
     if (!ser) return NO;
