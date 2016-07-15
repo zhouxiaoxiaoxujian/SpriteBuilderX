@@ -2367,88 +2367,97 @@ typedef enum
         [cb setString:stringToWrite forType:NSStringPboardType];
         return;
     }
-
-    // Copy keyframes
-    NSArray* keyframes = [sequenceHandler selectedKeyframesForCurrentSequence];
-    if ([keyframes count] > 0)
+    
+    if([[self window] firstResponder] != sequenceHandler.outlineHierarchy)
     {
-        NSMutableSet* propsSet = [NSMutableSet set];
-        NSMutableSet* seqsSet = [NSMutableSet set];
-        BOOL duplicatedProps = NO;
-        BOOL hasNodeKeyframes = NO;
-        BOOL hasChannelKeyframes = NO;
-        
-        for (int i = 0; i < keyframes.count; i++)
+        // Copy keyframes
+        NSArray* keyframes = [sequenceHandler selectedKeyframesForCurrentSequence];
+        if ([keyframes count] > 0)
         {
-            SequencerKeyframe* keyframe = [keyframes objectAtIndex:i];
+            NSMutableSet* propsSet = [NSMutableSet set];
+            NSMutableSet* seqsSet = [NSMutableSet set];
+            BOOL duplicatedProps = NO;
+            BOOL hasNodeKeyframes = NO;
+            BOOL hasChannelKeyframes = NO;
             
-            NSValue* seqVal = [NSValue valueWithPointer:(__bridge const void *)(keyframe.parent)];
-            if (![seqsSet containsObject:seqVal])
+            for (int i = 0; i < keyframes.count; i++)
             {
-                NSString* propName = keyframe.name;
+                SequencerKeyframe* keyframe = [keyframes objectAtIndex:i];
                 
-                if (propName)
+                NSValue* seqVal = [NSValue valueWithPointer:(__bridge const void *)(keyframe.parent)];
+                if (![seqsSet containsObject:seqVal])
                 {
-                    if ([propsSet containsObject:propName])
-                    {
-                        duplicatedProps = YES;
-                        break;
-                    }
-                    [propsSet addObject:propName];
-                    [seqsSet addObject:seqVal];
+                    NSString* propName = keyframe.name;
                     
-                    hasNodeKeyframes = YES;
-                }
-                else
-                {
-                    hasChannelKeyframes = YES;
+                    if (propName)
+                    {
+                        if ([propsSet containsObject:propName])
+                        {
+                            duplicatedProps = YES;
+                            break;
+                        }
+                        [propsSet addObject:propName];
+                        [seqsSet addObject:seqVal];
+                        
+                        hasNodeKeyframes = YES;
+                    }
+                    else
+                    {
+                        hasChannelKeyframes = YES;
+                    }
                 }
             }
-        }
-        
-        if (duplicatedProps)
-        {
-            [self modalDialogTitle:@"Failed to Copy" message:@"You can only copy keyframes from one node."];
+            
+            if (duplicatedProps)
+            {
+                [self modalDialogTitle:@"Failed to Copy" message:@"You can only copy keyframes from one node."];
+                return;
+            }
+            
+            if (hasChannelKeyframes && hasNodeKeyframes)
+            {
+                [self modalDialogTitle:@"Failed to Copy" message:@"You cannot copy sound/callback keyframes and node keyframes at once."];
+                return;
+            }
+            
+            NSString* clipType = kClipboardKeyFrames;
+            if (hasChannelKeyframes)
+            {
+                clipType = kClipboardChannelKeyframes;
+            }
+            
+            // Serialize keyframe
+            NSMutableArray* serKeyframes = [NSMutableArray array];
+            for (SequencerKeyframe* keyframe in keyframes)
+            {
+                [serKeyframes addObject:[keyframe serialization]];
+            }
+            NSData* clipData = [NSKeyedArchiver archivedDataWithRootObject:serKeyframes];
+            NSPasteboard* cb = [NSPasteboard generalPasteboard];
+            [cb declareTypes:[NSArray arrayWithObject:clipType] owner:self];
+            [cb setData:clipData forType:clipType];
+            
             return;
         }
-        
-        if (hasChannelKeyframes && hasNodeKeyframes)
-        {
-            [self modalDialogTitle:@"Failed to Copy" message:@"You cannot copy sound/callback keyframes and node keyframes at once."];
-            return;
-        }
-        
-        NSString* clipType = kClipboardKeyFrames;
-        if (hasChannelKeyframes)
-        {
-            clipType = kClipboardChannelKeyframes;
-        }
-        
-        // Serialize keyframe
-        NSMutableArray* serKeyframes = [NSMutableArray array];
-        for (SequencerKeyframe* keyframe in keyframes)
-        {
-            [serKeyframes addObject:[keyframe serialization]];
-        }
-        NSData* clipData = [NSKeyedArchiver archivedDataWithRootObject:serKeyframes];
-        NSPasteboard* cb = [NSPasteboard generalPasteboard];
-        [cb declareTypes:[NSArray arrayWithObject:clipType] owner:self];
-        [cb setData:clipData forType:clipType];
-        
-        return;
     }
     
     
     // Copy node
-    if (!self.selectedNode)
+    if (self.selectedNodes.count == 0)
         return;
     
     if(self.selectedNode.plugIn.isJoint)
         return;
     
+    NSMutableArray *serArray = [NSMutableArray array];
+    
     // Serialize selected node
-    NSMutableDictionary* clipDict = [CCBWriterInternal dictionaryFromCCObject:self.selectedNode];
-    NSData* clipData = [NSKeyedArchiver archivedDataWithRootObject:clipDict];
+    for(CCNode* node in self.selectedNodes)
+    {
+        [serArray addObject:[CCBWriterInternal dictionaryFromCCObject:node]];
+    }
+    //NSMutableDictionary* clipDict = [CCBWriterInternal dictionaryFromCCObject:self.selectedNode];
+    NSData* clipData = [NSKeyedArchiver archivedDataWithRootObject:serArray];
     NSPasteboard* cb = [NSPasteboard generalPasteboard];
     
     [cb declareTypes:[NSArray arrayWithObjects:@"com.cocosbuilder.node", nil] owner:self];
@@ -2475,18 +2484,26 @@ typedef enum
         [animationPlaybackManager stop];
 
         NSData* clipData = [cb dataForType:type];
-        NSMutableDictionary* clipDict = [NSKeyedUnarchiver unarchiveObjectWithData:clipData];
         
-        CGSize parentSize;
-        if (asChild) parentSize = self.selectedNode.contentSize;
-        else parentSize = self.selectedNode.parent.contentSize;
+        NSMutableArray *serArray = [NSKeyedUnarchiver unarchiveObjectWithData:clipData];
         
-        CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict parentSize:parentSize fileVersion:kCCBFileFormatVersion];
-		[CCBReaderInternal postDeserializationFixup:clipNode];
-        [self updateUUIDs:clipNode];
+        NSArray* selecetdNodes = [self.selectedNodes copy];
         
-        
-        [self addCCObject:clipNode asChild:asChild];
+        // Serialize selected node
+        for(NSDictionary* clipDict in serArray)
+        {
+            self.selectedNodes = [selecetdNodes copy];
+            CGSize parentSize;
+            if (asChild) parentSize = self.selectedNode.contentSize;
+            else parentSize = self.selectedNode.parent.contentSize;
+            
+            CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict parentSize:parentSize fileVersion:kCCBFileFormatVersion];
+            [CCBReaderInternal postDeserializationFixup:clipNode];
+            [self updateUUIDs:clipNode];
+            
+            
+            [self addCCObject:clipNode asChild:asChild];
+        }
         
         //We might have copy/cut/pasted and body. Fix it up.		
         [SceneGraph fixupReferences];
