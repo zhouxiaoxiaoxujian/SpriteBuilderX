@@ -86,7 +86,7 @@
         NSError *error = nil;
         NSData *data = [NSJSONSerialization dataWithJSONObject:ser options:NSJSONWritingPrettyPrinted error:&error];
         if(!error)
-            [data writeToFile:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"json"] atomically:YES];
+            [data writeToFile:managedFile atomically:YES];
     }
     //[ser writeToFile:managedFile atomically:YES];
     
@@ -99,7 +99,7 @@
 {
     if (!managedFile) return NO;
     
-    NSData *data = [NSData dataWithContentsOfFile:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"json"]];
+    NSData *data = [NSData dataWithContentsOfFile:managedFile];
     
     BOOL loaded = NO;
     
@@ -114,7 +114,7 @@
     }
     
     if(!loaded)
-        ser = [NSDictionary dictionaryWithContentsOfFile:managedFile];
+        ser = [NSDictionary dictionaryWithContentsOfFile:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"ccbLang"]];
     
     // Validate file
     if (!ser) return NO;
@@ -196,7 +196,7 @@
     
     if (file)
     {
-        if ([[NSFileManager defaultManager] fileExistsAtPath:managedFile])
+        if ([[NSFileManager defaultManager] fileExistsAtPath:managedFile] || [[NSFileManager defaultManager] fileExistsAtPath:[[managedFile stringByDeletingPathExtension] stringByAppendingPathExtension:@"ccbLang"]])
         {
             [self load];
         }
