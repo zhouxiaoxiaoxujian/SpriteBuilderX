@@ -569,6 +569,16 @@ __strong NSDictionary* renamedProperties = nil;
             name = [renameRule objectForKey:@"newName"];
         }
         
+        if([name isEqualToString:@"adjustsFontSizeToFit"])
+        {
+            type = @"IntegerLabeled";
+            name = @"overflowType";
+            if([serializedValue boolValue])
+                serializedValue = [NSNumber numberWithInteger:2];
+            else
+                continue;
+        }
+        
         if (![plugIn skipSerializationEditorProperty:name])
         {
             if ([plugIn dontSetInEditorProperty:name])

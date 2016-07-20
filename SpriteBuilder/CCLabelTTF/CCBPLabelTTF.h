@@ -25,14 +25,36 @@
 #import "CCProtectedNode.h"
 #import "cocos2d.h"
 
+@class CCExtLabelTTF;
+
+typedef NS_ENUM(unsigned char, CCTextOwerflow)
+{
+    //In NONE mode, the dimensions is (0,0) and the content size will change dynamically to fit the label.
+    CCTextOwerflowNone,
+    /**
+     *In CLAMP mode, when label content goes out of the bounding box, it will be clipped.
+     */
+    CCTextOwerflowClamp,
+    /**
+     * In SHRINK mode, the font size will change dynamically to adapt the content size.
+     */
+    CCTextOwerflowShrink,
+    /**
+     *In RESIZE_HEIGHT mode, you can only change the width of label and the height is changed automatically.
+     */
+    CCTextOwerflowResizeHeight
+};
+
 @interface CCBPLabelTTF : CCProtectedNode
 
 // Add property to maintain backwards compatibility
-@property (nonatomic,readonly) CCLabelTTF* label;
+@property (nonatomic,readonly) CCExtLabelTTF* label;
 @property (nonatomic,assign) int alignment;
 @property (nonatomic,assign) CGFloat fontSize;
 @property (nonatomic,assign) BOOL adjustsFontSizeToFit;
 @property (nonatomic,assign) CGSize dimensions;
 @property (nonatomic,assign) CCSizeType dimensionsType;
+@property (nonatomic,assign) CCTextOwerflow owerflowType;
+@property (nonatomic,assign) BOOL worldWrap;
 
 @end

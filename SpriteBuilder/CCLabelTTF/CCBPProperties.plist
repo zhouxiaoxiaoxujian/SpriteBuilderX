@@ -146,19 +146,33 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<false/>
+			<integer>0</integer>
 			<key>defaultSerialization</key>
-			<false/>
+			<integer>0</integer>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
 			</array>
 			<key>displayName</key>
-			<string>Adjusts font size to fit</string>
+			<string>Text owerflow type</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>owerflowType</string>
+			<key>extra</key>
+			<string>None|0|Clamp|1|Shrink|2|ResizeHeight|3</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>displayName</key>
+			<string>World wrap</string>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>
-			<string>adjustsFontSizeToFit</string>
+			<string>worldWrap</string>
 		</dict>
 		<dict>
 			<key>displayName</key>
