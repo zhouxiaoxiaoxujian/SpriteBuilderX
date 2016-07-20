@@ -7,18 +7,18 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="InspectorAnimation">
             <connections>
-                <outlet property="popup" destination="uMA-aw-IYi" id="l63-tE-3Wx"/>
+                <outlet property="popup" destination="I2C-8F-hr5" id="SR3-eH-9he"/>
                 <outlet property="view" destination="1" id="Mgt-gd-x20"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="244" height="36"/>
+            <rect key="frame" x="0.0" y="0.0" width="233" height="33"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qUR-ij-72A">
-                    <rect key="frame" x="-2" y="8" width="80" height="17"/>
+                    <rect key="frame" x="4" y="5" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="bCi-4k-6DI">
                         <font key="font" metaFont="smallSystem"/>
@@ -32,30 +32,22 @@
                         <binding destination="-2" name="value" keyPath="self.displayName" id="TB8-EH-KLw"/>
                     </connections>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" id="uMA-aw-IYi" userLabel="Popup">
-                    <rect key="frame" x="81" y="6" width="149" height="22"/>
+                <popUpButton verticalHuggingPriority="750" id="I2C-8F-hr5" userLabel="Popup">
+                    <rect key="frame" x="81" y="4" width="149" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="X4p-A8-fec">
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="lC6-kC-ulp">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="tCw-jz-Lue">
+                        <menu key="menu" title="OtherViews" id="275-8u-dOt">
                             <items>
-                                <menuItem title="Item 1" id="1aS-Eg-vlJ"/>
-                                <menuItem title="Item 2" id="Dp3-SP-axO"/>
-                                <menuItem title="Item 3" id="M5Y-0z-A5D"/>
+                                <menuItem title="Item 1" state="on" id="5im-cK-Wep"/>
+                                <menuItem title="Item 2" id="fNx-4E-Blr"/>
+                                <menuItem title="Item 3" id="UiO-Ux-CMK"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
-                    <connections>
-                        <binding destination="-2" name="enabled" keyPath="readOnly" id="dKi-Vm-vwH">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="331" y="326"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="Tar-2s-prI"/>
     </objects>

@@ -136,6 +136,10 @@ NSString * kClipboardChannelKeyframes   = @"com.cocosbuilder.channelkeyframes";
     {
         return kCCBKeyframeTypeFloat;
     }
+    else if ([type isEqualToString:@"Animation"])
+    {
+        return kCCBKeyframeTypeAnimation;
+    }
     else if ([type isEqualToString:@"String"])
     {
 		NSAssert(false, @"Need to handle");//TODO
@@ -200,7 +204,7 @@ NSString * kClipboardChannelKeyframes   = @"com.cocosbuilder.channelkeyframes";
 
 - (BOOL) supportsFiniteTimeInterpolations
 {
-    return (type != kCCBKeyframeTypeToggle && type != kCCBKeyframeTypeUndefined && type != kCCBKeyframeTypeSpriteFrame);
+    return (type != kCCBKeyframeTypeToggle && type != kCCBKeyframeTypeUndefined && type != kCCBKeyframeTypeSpriteFrame && type != kCCBKeyframeTypeAnimation);
 }
 
 

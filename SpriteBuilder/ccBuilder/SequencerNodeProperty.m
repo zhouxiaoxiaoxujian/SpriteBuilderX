@@ -294,10 +294,12 @@
     }
     
     // Skip interpolation for spriteframes
-    if (type == kCCBKeyframeTypeSpriteFrame)
+    if (type == kCCBKeyframeTypeSpriteFrame || type == kCCBKeyframeTypeAnimation)
     {
-        if (time < keyframeEnd.time) return keyframeStart.value;
-        else return keyframeEnd.value;
+        if (time < keyframeEnd.time)
+            return keyframeStart.value;
+        else
+            return keyframeEnd.value;
     }
     
     // interpolVal will be in the range 0.0 - 1.0

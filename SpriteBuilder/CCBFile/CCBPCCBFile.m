@@ -68,6 +68,10 @@
     {
         return [ccbFile extraPropForKey:@"customClass"];
     }
+    if ([key isEqualToString:@"**sequences"] && ccbFile)
+    {
+        return [ccbFile extraPropForKey:@"*sequences"];
+    }
     else
     {
         return [super extraPropForKey:key];

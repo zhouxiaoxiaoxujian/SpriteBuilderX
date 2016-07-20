@@ -343,6 +343,12 @@ __strong NSDictionary* renamedProperties = nil;
         [extraProps setObject:spriteFile forKey:name];
         [TexturePropertySetter setSpriteFrameForNode:node andProperty:name withFile:spriteFile andSheetFile:spriteSheetFile];
     }
+    else if ([type isEqualToString:@"Animation"])
+    {
+        NSString* animationName = serializedValue;
+        if (!animationName) animationName = @"";
+        [node setValue:animationName forKey:name];
+    }
     else if ([type isEqualToString:@"Texture"])
     {
         NSString* spriteFile = serializedValue;

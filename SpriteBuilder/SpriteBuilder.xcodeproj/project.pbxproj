@@ -392,6 +392,7 @@
 		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
 		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
 		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
+		A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */; };
 		A5DD59E91A8FD5A500E56D8F /* CCBPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DD59E31A8FD5A500E56D8F /* CCBPImage.m */; };
@@ -1914,6 +1915,7 @@
 		A59521A91A1F89C700934862 /* doc-dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog.png"; sourceTree = "<group>"; };
 		A59521AA1A1F89C700934862 /* doc-dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog@2x.png"; sourceTree = "<group>"; };
 		A5A340581A41E33500861273 /* cwebp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cwebp; sourceTree = "<group>"; };
+		A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorPopoverAnimation.xib; sourceTree = "<group>"; };
 		A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCImage.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CCBPProperties.plist; path = CCImage/CCBPProperties.plist; sourceTree = "<group>"; };
 		A5DD59E21A8FD5A500E56D8F /* CCBPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBPImage.h; path = CCImage/CCBPImage.h; sourceTree = "<group>"; };
@@ -6008,6 +6010,7 @@
 				E525F41EF24ED269266294D3 /* InspectorPointLock.h */,
 				E525FB412FD4D7DCB9F0F248 /* InspectorPointLock.m */,
 				E525FA6634EE8E705E1E1A0B /* InspectorPointLock.xib */,
+				A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */,
 				E525F13251AC905E5A0F52EF /* InspectorPopoverByte.xib */,
 				E525FC21381F84E752612C80 /* InspectorPopoverColor3.xib */,
 				E525FED28257D82C09E2EB7B /* InspectorPopoverDegrees.xib */,
@@ -7333,6 +7336,7 @@
 				E37FCAEF175D2704009F81D6 /* ui-cogs@2x.png in Resources */,
 				8354FDFC198233AB004EC272 /* MainProjectSettingsDetailView.xib in Resources */,
 				B794AB91177A30EB004FF493 /* ui-nopreview.png in Resources */,
+				A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */,
 				B732A1841799736500333C56 /* TB_build.png in Resources */,
 				A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */,
 				92F0960C18F8851300D47A94 /* inspector-body-remove-dis@2x.png in Resources */,

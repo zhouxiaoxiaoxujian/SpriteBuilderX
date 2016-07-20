@@ -491,10 +491,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     }
     else if ([type isEqualToString:@"Animation"])
     {
-        NSString* animationFile = [prop objectAtIndex:0];
-        NSString* animation = [prop objectAtIndex:1];
-        [self writeCachedString:animationFile isPath:YES];
-        [self writeCachedString:animation isPath:NO];
+        [self writeCachedString:prop isPath:NO];
     }
     else if ([type isEqualToString:@"Block"])
     {
@@ -699,8 +696,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 	}
 	else if( [type isEqualToString:@"Animation"])
 	{
-		[self addToStringCache:[value objectAtIndex:0] isPath:YES];
-		[self addToStringCache:[value objectAtIndex:1] isPath:NO];
+		[self addToStringCache:value isPath:NO];
 	}
 	else if ([type isEqualToString:@"Block"])
 	{
@@ -1202,6 +1198,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
             else if (kfType == kCCBKeyframeTypePosition) propType = @"Position";
             else if (kfType == kCCBKeyframeTypeFloatXY) propType = @"FloatXY";
             else if (kfType == kCCBKeyframeTypeFloat) propType = @"Float";
+            else if (kfType == kCCBKeyframeTypeAnimation) propType = @"Animation";
             
             NSAssert(propType, @"Unknown animated property type");
             

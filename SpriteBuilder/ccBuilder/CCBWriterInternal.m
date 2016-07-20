@@ -326,9 +326,9 @@
     }
     else if ([type isEqualToString:@"Animation"])
     {
-        NSString* animation = [extraProps objectForKey:name];
-        NSString* animationFile = [extraProps objectForKey:[NSString stringWithFormat:@"%@Animation",name]];
-        serializedValue = [CCBWriterInternal serializeAnimation:animation file:animationFile];
+        NSString* animationName = [extraProps objectForKey:name];
+        if (!animationName) animationName = @"";
+        serializedValue = animationName;
     }
     else if ([type isEqualToString:@"Texture"])
     {

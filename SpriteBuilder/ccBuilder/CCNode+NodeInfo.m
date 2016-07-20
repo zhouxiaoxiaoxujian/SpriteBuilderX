@@ -410,6 +410,12 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
                 [NSNumber numberWithFloat:y],
                 nil];
     }
+    else if (type == kCCBKeyframeTypeAnimation)
+    {
+        NSString* animationName = [self extraPropForKey:name];
+        return animationName;
+    }
+
     
     return NULL;
 }
@@ -471,6 +477,10 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
         
         [self setValue:[NSNumber numberWithFloat:x] forKey:[propName stringByAppendingString:@"X"]];
         [self setValue:[NSNumber numberWithFloat:y] forKey:[propName stringByAppendingString:@"Y"]];
+    }
+    else if (type == kCCBKeyframeTypeAnimation)
+    {
+        [self setValue:value forKey:propName];
     }
     
 }

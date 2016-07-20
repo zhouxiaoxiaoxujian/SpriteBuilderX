@@ -61,6 +61,7 @@
 			<array>
 				<string>anchorPoint</string>
 				<string>contentSize</string>
+				<string>animation</string>
 			</array>
 			<key>displayName</key>
 			<string>CCB File</string>
@@ -68,6 +69,18 @@
 			<string>CCBFile</string>
 			<key>name</key>
 			<string>ccbFile</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<string></string>
+			<key>animatable</key>
+			<true/>
+			<key>displayName</key>
+			<string>Run animation</string>
+			<key>type</key>
+			<string>Animation</string>
+			<key>name</key>
+			<string>animation</string>
 		</dict>
 	</array>
 </dict>
