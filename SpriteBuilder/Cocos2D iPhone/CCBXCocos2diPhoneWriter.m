@@ -491,7 +491,8 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     }
     else if ([type isEqualToString:@"Animation"])
     {
-        [self writeCachedString:prop isPath:NO];
+        int a = [prop intValue];
+        [self writeInt:a withSign:YES];
     }
     else if ([type isEqualToString:@"Block"])
     {
@@ -693,10 +694,6 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 		
 		//[self addToStringCache: a isPath:YES];
 		[self addToStringCache:b isPath:[a isEqualToString:@""]];
-	}
-	else if( [type isEqualToString:@"Animation"])
-	{
-		[self addToStringCache:value isPath:NO];
 	}
 	else if ([type isEqualToString:@"Block"])
 	{

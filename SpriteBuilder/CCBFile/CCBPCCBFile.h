@@ -30,6 +30,6 @@
 }
 
 @property (nonatomic,strong) CCNode* ccbFile;
-@property (nonatomic,strong) NSString* animation;
+@property (nonatomic,assign) NSInteger animation;
 
 @end

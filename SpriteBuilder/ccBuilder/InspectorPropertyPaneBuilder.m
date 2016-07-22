@@ -149,6 +149,8 @@
 
 - (void)configureInspectorValue:(BOOL)readOnly affectsProps:(NSArray *)affectsProps inspectorValue:(InspectorValue *)inspectorValue
 {
+    if(readOnly)
+        NSLog(@"readOnly");
     inspectorValue.readOnly = readOnly;
     inspectorValue.rootNode = (_node == _cocosScene.rootNode);
     inspectorValue.affectsProperties = affectsProps;
@@ -218,17 +220,16 @@
     {
         return NO;
     }
-
-    // Disable visiblilty if there are keyframes
-    if (sequencerNodeProperty.keyframes.count > 0 && [name isEqualToString:@"visible"])
-    {
-        return YES;
-    }
-
-    // Do not disable if we are currently at a keyframe
-    if ([sequencerNodeProperty hasKeyframeAtTime:sequence.timelinePosition])
+    
+    // Do not disable if we are currently at a keyframe or beore
+    if(![sequencerNodeProperty activeKeyframeAtTime:sequence.timelinePosition])
     {
         return NO;
+    }
+    else
+    {
+        if ([sequencerNodeProperty keyframeAtTime:sequence.timelinePosition])
+            return NO;
     }
 
     // Between keyframes - disable

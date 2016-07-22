@@ -231,16 +231,20 @@
     if (numKeyframes == 1 && type == kCCBKeyframeTypeToggle)
     {
         SequencerKeyframe* keyframe = [keyframes objectAtIndex:0];
-        return [NSNumber numberWithBool: (time >= keyframe.time)];
+        [NSNumber numberWithBool: (time >= keyframe.time)];
     }
     
     if (numKeyframes == 1)
     {
         SequencerKeyframe* keyframe = [keyframes objectAtIndex:0];
-        return keyframe.value;
+        if (time < keyframe.time)
+            return nil;
+        else
+            return keyframe.value;
     }
     
     SequencerKeyframe* keyframeFirst = [keyframes objectAtIndex:0];
+    
     SequencerKeyframe* keyframeLast = [keyframes objectAtIndex:numKeyframes-1];
     
     if (type == kCCBKeyframeTypeToggle)
@@ -265,7 +269,7 @@
         return [NSNumber numberWithBool:visible];
     }
     
-    if (time <= keyframeFirst.time)
+    if (time == keyframeFirst.time)
     {
         return keyframeFirst.value;
     }
@@ -432,6 +436,18 @@
         if (keyframe.time == time) return keyframe;
     }
     return NULL;
+}
+
+- (SequencerKeyframe*) activeKeyframeAtTime:(float)time
+{
+    SequencerKeyframe* lastKeyFrame = nil;
+    for (SequencerKeyframe* keyframe in keyframes)
+    {
+        if (keyframe.time > time)
+            return lastKeyFrame;
+        lastKeyFrame = keyframe;
+    }
+    return lastKeyFrame;
 }
 
 - (NSArray*) keyframesAtTime:(float)time

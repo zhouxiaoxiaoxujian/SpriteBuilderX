@@ -1506,20 +1506,49 @@ static SequencerHandler* sharedSequencerHandler;
         
         // Sub ccb files uses different sequence id:s
         NSArray* childSequences = [child extraPropForKey:@"*sequences"];
-        int childStartSequence = [[child extraPropForKey:@"*startSequence"] intValue];
+        //int childStartSequence = [[child extraPropForKey:@"*startSequence"] intValue];
         
-        if (childSequences && childStartSequence != -1)
+        //todo
+        
+        if(childSequences)
         {
-            childSeqId = childStartSequence;
-            SequencerSequence* seq = [self seqId:childSeqId inArray:childSequences];
-            
-            while (localTime > seq.timelineLength && seq.chainedSequenceId != -1)
+            int sequenseId = [[child.parent valueForKey:@"animation"] intValue];
+            if(sequenseId == -2)
             {
-                localTime -= seq.timelineLength;
-                seq = [self seqId:seq.chainedSequenceId inArray:childSequences];
-                childSeqId = seq.sequenceId;
+                sequenseId = [[child extraPropForKey:@"*startSequence"] intValue];
+            }
+            if(sequenseId != -1)
+            {
+                SequencerNodeProperty *sequencerNodeProperty = [child.parent sequenceNodeProperty:@"animation" sequenceId:seqId];
+                SequencerKeyframe* keyFrame = [sequencerNodeProperty activeKeyframeAtTime:time];
+                if(keyFrame)
+                {
+                    localTime = time - keyFrame.time;
+                }
+                SequencerSequence* seq = [self seqId:sequenseId inArray:childSequences];
+                while (localTime > seq.timelineLength)
+                {
+                    localTime -= seq.timelineLength;
+                    seq = [self seqId:seq.chainedSequenceId inArray:childSequences];
+                    sequenseId = seq.sequenceId;
+                }
+                childSeqId = sequenseId;
+                NSLog(@"sequenceId = %d", sequenseId);
             }
         }
+        
+//        if (childSequences && childStartSequence != -1)
+//        {
+//            childSeqId = childStartSequence;
+//            SequencerSequence* seq = [self seqId:childSeqId inArray:childSequences];
+//            
+//            while (localTime > seq.timelineLength && seq.chainedSequenceId != -1)
+//            {
+//                localTime -= seq.timelineLength;
+//                seq = [self seqId:seq.chainedSequenceId inArray:childSequences];
+//                childSeqId = seq.sequenceId;
+//            }
+//        }
         
         [self updatePropertiesToTimelinePositionForNode:child sequenceId:childSeqId localTime:localTime];
     }

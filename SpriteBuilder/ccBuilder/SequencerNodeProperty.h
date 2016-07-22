@@ -54,6 +54,7 @@
 - (id) valueAtTime:(float)time;
 - (BOOL) hasKeyframeAtTime:(float)time;
 - (SequencerKeyframe*) keyframeAtTime:(float)time;
+- (SequencerKeyframe*) activeKeyframeAtTime:(float)time;
 - (NSArray*) keyframesAtTime:(float)time;
 - (BOOL) deleteDuplicateKeyframes;
 - (void) deleteKeyframesAfterTime:(float)time;

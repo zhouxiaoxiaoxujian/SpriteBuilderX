@@ -345,9 +345,8 @@ __strong NSDictionary* renamedProperties = nil;
     }
     else if ([type isEqualToString:@"Animation"])
     {
-        NSString* animationName = serializedValue;
-        if (!animationName) animationName = @"";
-        [node setValue:animationName forKey:name];
+        int d = [CCBReaderInternal deserializeInt: serializedValue];
+        [node setValue:[NSNumber numberWithInt:d] forKey:name];
     }
     else if ([type isEqualToString:@"Texture"])
     {

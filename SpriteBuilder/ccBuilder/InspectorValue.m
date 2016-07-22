@@ -137,12 +137,16 @@
         
         if (seqNodeProp)
         {
-            SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
-            if (keyframe)
+            if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
             {
-                keyframe.value = value;
+                [nodeInfo.baseValues setObject:value forKey:propertyName];
             }
-            
+            else
+            {
+                SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
+                if (keyframe)
+                    keyframe.value = value;
+            }
             [[SequencerHandler sharedHandler] redrawTimeline];
         }
         else

@@ -326,9 +326,8 @@
     }
     else if ([type isEqualToString:@"Animation"])
     {
-        NSString* animationName = [extraProps objectForKey:name];
-        if (!animationName) animationName = @"";
-        serializedValue = animationName;
+        int d = [[node valueForKey:name] intValue];
+        serializedValue = [CCBWriterInternal serializeInt:d];
     }
     else if ([type isEqualToString:@"Texture"])
     {

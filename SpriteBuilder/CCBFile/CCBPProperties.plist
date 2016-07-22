@@ -72,7 +72,7 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<string></string>
+			<integer>-2</integer>
 			<key>animatable</key>
 			<true/>
 			<key>displayName</key>

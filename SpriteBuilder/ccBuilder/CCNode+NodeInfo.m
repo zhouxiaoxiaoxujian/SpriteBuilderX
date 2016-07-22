@@ -349,10 +349,24 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
         seqValue = [seqNodeProp valueAtTime:time];
     }
     if (seqValue)
-        return seqValue;
+    {
+        if (type == kCCBKeyframeTypeToggle)
+        {
+            NodeInfo* info = self.userObject;
+            id baseValue = [info.baseValues objectForKey:name];
+            if([seqValue boolValue])
+                return @(![baseValue boolValue]);
+            else
+                return @([baseValue boolValue]);
+        }
+        return  seqValue;
+    }
     
     // Check for base value
     NodeInfo* info = self.userObject;
+    
+    if(type == kCCBKeyframeTypeAnimation)
+        NSLog(@"test");
     
     id baseValue = [info.baseValues objectForKey:name];
     if (baseValue)
@@ -412,8 +426,7 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     }
     else if (type == kCCBKeyframeTypeAnimation)
     {
-        NSString* animationName = [self extraPropForKey:name];
-        return animationName;
+        return @(-2);
     }
 
     
