@@ -1530,10 +1530,14 @@ static SequencerHandler* sharedSequencerHandler;
                 {
                     localTime -= seq.timelineLength;
                     seq = [self seqId:seq.chainedSequenceId inArray:childSequences];
+                    if(!seq)
+                    {
+                        sequenseId = -1;
+                        break;
+                    }
                     sequenseId = seq.sequenceId;
                 }
                 childSeqId = sequenseId;
-                NSLog(@"sequenceId = %d", sequenseId);
             }
         }
         

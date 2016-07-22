@@ -149,8 +149,6 @@
 
 - (void)configureInspectorValue:(BOOL)readOnly affectsProps:(NSArray *)affectsProps inspectorValue:(InspectorValue *)inspectorValue
 {
-    if(readOnly)
-        NSLog(@"readOnly");
     inspectorValue.readOnly = readOnly;
     inspectorValue.rootNode = (_node == _cocosScene.rootNode);
     inspectorValue.affectsProperties = affectsProps;

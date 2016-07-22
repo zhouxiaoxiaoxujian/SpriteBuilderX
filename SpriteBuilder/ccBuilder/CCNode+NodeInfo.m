@@ -365,9 +365,6 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     // Check for base value
     NodeInfo* info = self.userObject;
     
-    if(type == kCCBKeyframeTypeAnimation)
-        NSLog(@"test");
-    
     id baseValue = [info.baseValues objectForKey:name];
     if (baseValue)
     {
