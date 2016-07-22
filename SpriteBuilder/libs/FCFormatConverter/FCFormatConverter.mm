@@ -407,11 +407,11 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         }
         else if (format == kFCImageFormatPVRTC_4BPP)
         {
-            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCI_4bpp_RGB);
+            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCI_4bpp_RGBA);
         }
         else if (format == kFCImageFormatPVRTC_2BPP)
         {
-            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCI_2bpp_RGB);
+            pixelType = pvrtexture::PixelType(ePVRTPF_PVRTCI_2bpp_RGBA);
         }
         else if (format == kFCImageFormatPVRTC2_4BPP)
         {
