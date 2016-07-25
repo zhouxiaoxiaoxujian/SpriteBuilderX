@@ -1117,6 +1117,10 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         //[self writeCachedString:a isPath:YES];
         [self writeCachedString:b isPath:[a isEqualToString:@""]];
     }
+    else if ([type isEqualToString:@"Animation"])
+    {
+        [self writeInt:[value intValue] withSign:YES];
+    }
 }
 
 -(BOOL)writeCodeConnections:(NSDictionary*)node
