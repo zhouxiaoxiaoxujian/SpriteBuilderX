@@ -169,8 +169,8 @@
     self.background.position = ccp(0.5f,0.5f);
     
     self.label.anchorPoint = ccp(0.5f,0.5f);
-    self.label.positionType = CCPositionTypeNormalized;
-    self.label.position = ccp(0.5f,0.5f);
+    self.label.positionType = CCPositionTypePoints;
+    self.label.position = ccp((contentSize.width + (self.leftPadding - self.rightPadding))/2, (contentSize.height + (self.bottomPadding - self.topPadding))/2);
     
     [super layout];
 }
