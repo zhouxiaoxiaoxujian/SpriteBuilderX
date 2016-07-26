@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>1000</integer>
 	<key>displayName</key>
@@ -96,6 +98,8 @@
 			<string>position</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
@@ -118,6 +122,8 @@
 			<string>Content size</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
@@ -136,6 +142,8 @@
 			<string>Anchor point</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
@@ -153,6 +161,8 @@
 			<string>Scale</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>0</integer>
 			<key>animatable</key>
@@ -165,6 +175,8 @@
 			<string>Rotation</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>0</integer>
 			<key>animatable</key>
@@ -177,6 +189,8 @@
 			<string>Rotational Skew X</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>0</integer>
 			<key>animatable</key>
@@ -189,6 +203,8 @@
 			<string>Rotational Skew Y</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>animatable</key>
 			<true/>
 			<key>defaultSerialization</key>
@@ -204,6 +220,8 @@
 			<string>Skew</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>1</integer>
 			<key>animatable</key>
@@ -216,6 +234,8 @@
 			<string>opacity</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>type</key>
@@ -226,6 +246,8 @@
 			<string>Cascade Opacity</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<real>1</real>
@@ -243,6 +265,8 @@
 			<string>color</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>type</key>

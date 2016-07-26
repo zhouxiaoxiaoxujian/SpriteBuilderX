@@ -45,6 +45,12 @@
         {
             id serializedValue = [CCBWriterInternal serializePropertyForNode:node propInfo:propInfo excludeProps:NULL];
             
+            if(!serializedValue)
+            {
+                NSLog(@"skip %@", [propInfo objectForKey:@"name"]);
+                continue;
+            }
+            
             NSMutableDictionary* serProp = [NSMutableDictionary dictionary];
             [serProp setObject:serializedValue forKey:@"value"];
             [serProp setObject:[propInfo objectForKey:@"type"] forKey:@"type"];

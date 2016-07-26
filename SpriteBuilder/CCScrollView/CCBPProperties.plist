@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>14000</integer>
 	<key>displayName</key>
@@ -47,6 +49,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -59,6 +63,8 @@
 			<string>contentNode</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<true/>
 			<key>defaultSerialization</key>
@@ -71,6 +77,8 @@
 			<string>horizontalScrollEnabled</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<true/>
 			<key>defaultSerialization</key>
@@ -83,6 +91,8 @@
 			<string>verticalScrollEnabled</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>
@@ -95,6 +105,8 @@
 			<string>bounces</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<true/>
 			<key>default</key>
@@ -107,6 +119,8 @@
 			<string>inertialScroll</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>default</key>
@@ -119,6 +133,8 @@
 			<string>scrollBarEnabled</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<true/>
 			<key>defaultSerialization</key>

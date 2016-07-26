@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Label BM-Font</string>
 	<key>ordering</key>
@@ -42,6 +44,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<string></string>
 			<key>affectsProperties</key>
@@ -56,6 +60,8 @@
 			<string>fntFile</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>1</integer>

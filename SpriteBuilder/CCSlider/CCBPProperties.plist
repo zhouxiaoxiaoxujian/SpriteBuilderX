@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Slider</string>
 	<key>ordering</key>
@@ -33,6 +35,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -51,6 +55,8 @@
 			<string>backgroundSpriteFrame</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -69,6 +75,8 @@
 			<string>progressSpriteFrame</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>1</integer>
 			<key>defaultSerialization</key>
@@ -93,6 +101,8 @@
 			<string>percent</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>100</integer>
 			<key>defaultSerialization</key>
@@ -105,6 +115,8 @@
 			<string>maxPercent</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>1</integer>
@@ -123,6 +135,8 @@
 			<string>imageScale</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>skipSerialization</key>
@@ -147,6 +161,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -175,6 +191,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -203,6 +221,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -231,6 +251,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -259,6 +281,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>

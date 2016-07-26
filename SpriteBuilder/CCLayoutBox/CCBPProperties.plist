@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>15000</integer>
 	<key>displayName</key>
@@ -51,6 +53,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -69,6 +73,8 @@
 			<string>Horizontal|0|Vertical|1</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>
@@ -91,6 +97,8 @@
 			<string>spacing</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>

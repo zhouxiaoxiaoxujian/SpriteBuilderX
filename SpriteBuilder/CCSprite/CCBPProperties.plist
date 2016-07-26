@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>6000</integer>
 	<key>displayName</key>
@@ -51,6 +53,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>animatable</key>
 			<true/>
 			<key>default</key>
@@ -76,6 +80,8 @@
 			<string>spriteFrame</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<false/>
@@ -89,6 +95,8 @@
 			<string>flip</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>

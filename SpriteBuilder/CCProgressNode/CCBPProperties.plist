@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>9700</integer>
 	<key>displayName</key>
@@ -50,6 +52,8 @@
 			<string>percentage</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>
@@ -62,6 +66,8 @@
 			<string>reverseDirection</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -76,6 +82,8 @@
 			<string>Radial|0|Bar|1</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>displayName</key>
 			<string>midpoint</string>
 			<key>type</key>
@@ -84,6 +92,8 @@
 			<string>midpoint</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>displayName</key>
 			<string>barChangeRate</string>
 			<key>type</key>

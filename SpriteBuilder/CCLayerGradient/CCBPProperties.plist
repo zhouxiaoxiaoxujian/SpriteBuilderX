@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Gradient Node</string>
 	<key>ordering</key>
@@ -52,6 +54,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<real>0.21</real>
@@ -67,6 +71,8 @@
 			<string>startColor</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>1</integer>
 			<key>default</key>
@@ -79,6 +85,8 @@
 			<string>startOpacity</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<real>0.13</real>
@@ -94,6 +102,8 @@
 			<string>endColor</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>1</integer>
 			<key>default</key>
@@ -106,6 +116,8 @@
 			<string>endOpacity</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
@@ -124,6 +136,8 @@
 			<string>blendFunc</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>

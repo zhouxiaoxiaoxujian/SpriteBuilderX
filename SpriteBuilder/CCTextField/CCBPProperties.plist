@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Text Field</string>
 	<key>ordering</key>
@@ -29,6 +31,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<string>Helvetica</string>
 			<key>defaultSerialization</key>
@@ -41,6 +45,8 @@
 			<string>fontName</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>17</integer>
@@ -54,6 +60,8 @@
 			<string>Font size</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>1</integer>
@@ -94,6 +102,8 @@
 			<string>placeholder</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
@@ -136,6 +146,8 @@
 			<string>string</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -150,6 +162,8 @@
 			<string>Left|0|Center|1|Right|2</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -164,6 +178,8 @@
 			<string>Top|0|Center|1|Bottom|2</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -176,6 +192,8 @@
 			<string>maxLength</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>

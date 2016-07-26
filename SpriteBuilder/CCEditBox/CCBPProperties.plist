@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Edit Box</string>
 	<key>ordering</key>
@@ -29,6 +31,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<string></string>
@@ -51,6 +55,8 @@
 			<string>backgroundSpriteFrame</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -67,6 +73,8 @@
 			<string>placeholderFontName</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>17</integer>
@@ -85,6 +93,8 @@
 			<string>Placeholder font size</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>1</integer>
@@ -129,6 +139,8 @@
 			<string>placeholder</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -145,6 +157,8 @@
 			<string>fontName</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>17</integer>
@@ -163,6 +177,8 @@
 			<string>Font size</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
@@ -209,6 +225,8 @@
 			<string>string</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -223,6 +241,8 @@
 			<string>DEFAULT|0|DONE|1|SEND|2|SEARCH|3|GO|4</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>6</integer>
 			<key>defaultSerialization</key>
@@ -237,6 +257,8 @@
 			<string>ANY|0|EMAIL_ADDRESS|1|NUMERIC|2|PHONE_NUMBER|3|URL|4|DECIMAL|5|SINGLE_LINE|6</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>3</integer>
 			<key>defaultSerialization</key>
@@ -251,6 +273,8 @@
 			<string>PASSWORD|0|SENSITIVE|1|INITIAL_CAPS_WORD|2|INITIAL_CAPS_SENTENCE|3|INITIAL_CAPS_ALL_CHARACTERS|4</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -273,6 +297,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>

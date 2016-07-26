@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>ordering</key>
 	<integer>15000</integer>
 	<key>displayName</key>
@@ -29,6 +31,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -43,6 +47,8 @@
 			<string>LEFT|0|RIGHT|1|CENTER_HORIZONTAL|2|TOP|3|BOTTOM|4|CENTER_VERTICAL|5</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -57,6 +63,8 @@
 			<string>NONE|0|CENTER|1|BOTH_END|2|LEFT|3|RIGHT|4|TOP|5|BOTTOM|6</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>type</key>
 			<string>CCBFile</string>
 			<key>name</key>
@@ -65,6 +73,8 @@
 			<string>Template</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>
@@ -77,6 +87,8 @@
 			<string>horizontal</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<integer>0</integer>
 			<key>type</key>
@@ -87,6 +99,8 @@
 			<string>count</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>default</key>
@@ -99,6 +113,8 @@
 			<string>bounces</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<true/>
 			<key>default</key>
@@ -111,6 +127,8 @@
 			<string>inertialScroll</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>default</key>
@@ -123,6 +141,8 @@
 			<string>scrollBarEnabled</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>displayName</key>
 			<string>Clip content</string>
 			<key>defaultSerialization</key>

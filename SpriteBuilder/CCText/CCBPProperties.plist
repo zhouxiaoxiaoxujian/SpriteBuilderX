@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>supportsTemplates</key>
+	<true/>
 	<key>displayName</key>
 	<string>Text</string>
 	<key>ordering</key>
@@ -54,6 +56,8 @@
 			<string>string</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -70,6 +74,8 @@
 			<string>fontName</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>17</integer>
@@ -87,6 +93,8 @@
 			<string>fontSize</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>
@@ -113,6 +121,8 @@
 			<string>dimensions</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -127,6 +137,8 @@
 			<string>Left|0|Center|1|Right|2</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -141,6 +153,8 @@
 			<string>Top|0|Center|1|Bottom|2</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<false/>
 			<key>defaultSerialization</key>
@@ -167,6 +181,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>name</key>
 			<string>fontColor</string>
 			<key>defaultSerialization</key>
@@ -189,6 +205,8 @@
 			</array>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -215,6 +233,8 @@
 			</array>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -231,6 +251,8 @@
 			<string>outlineWidth</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>
@@ -257,6 +279,8 @@
 			</array>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<integer>0</integer>
 			<key>defaultSerialization</key>
@@ -273,6 +297,8 @@
 			<string>shadowBlurRadius</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>default</key>
 			<array>
 				<integer>0</integer>
