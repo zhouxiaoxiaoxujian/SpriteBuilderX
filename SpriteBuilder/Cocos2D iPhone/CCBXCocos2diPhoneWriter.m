@@ -1211,17 +1211,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
             if (kfType == kCCBKeyframeTypeToggle && keyframes.count > 0)
             {
                 BOOL visible = YES;
-                NSDictionary* keyframeFirst = [keyframes objectAtIndex:0];
-                if ([[keyframeFirst objectForKey:@"time"] floatValue] != 0)
-                {
-                    [self writeInt:(int)[keyframes count]+1 withSign:NO];
-                    // Add a first keyframe
-                    [self writeKeyframeValue:[NSNumber numberWithBool:NO] type:propType time:0 easingType:kCCBKeyframeEasingInstant easingOpt:0];
-                }
-                else
-                {
-                    [self writeInt:(int)[keyframes count] withSign:NO];
-                }
+                [self writeInt:(int)[keyframes count] withSign:NO];
                 for (NSDictionary* keyframe in keyframes)
                 {
                     float time = [[keyframe objectForKey:@"time"] floatValue];
