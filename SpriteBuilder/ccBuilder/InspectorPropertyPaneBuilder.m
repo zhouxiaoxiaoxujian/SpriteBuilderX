@@ -226,7 +226,7 @@
     }
     else
     {
-        if ([sequencerNodeProperty keyframeAtTime:sequence.timelinePosition])
+        if ([sequencerNodeProperty keyframeAtTime:sequence.timelinePosition] && ![name isEqualToString:@"visible"])
             return NO;
     }
 
