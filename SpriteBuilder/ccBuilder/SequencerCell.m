@@ -35,6 +35,7 @@
 #import "SequencerChannel.h"
 #import "SequencerSoundChannel.h"
 #import "SoundFileImageController.h"
+#import "NodeInfo.h"
 
 @implementation SequencerCell
 
@@ -76,11 +77,24 @@
         // Draw keyframes & and visibility
         NSArray* keyframes = nodeProp.keyframes;
         
-        for (int i = 0; i < [keyframes count]; i++)
+        NodeInfo* info = node.userObject;
+        id baseValue = [info.baseValues objectForKey:propName];
+        
+        for (int i = -1; i < (int)[keyframes count]; i++)
         {
-            SequencerKeyframe* keyframe = [keyframes objectAtIndex:i];
+            SequencerKeyframe* keyframe = NULL;
+            if(i>=0)
+            {
+                keyframe = [keyframes objectAtIndex:i];
+            }
+            else
+            {
+                keyframe = [[SequencerKeyframe alloc] init];
+                keyframe.time = 0;
+                keyframe.value = [NSNumber numberWithBool:YES];
+            }
             SequencerKeyframe* keyframeNext = NULL;
-            if (i < [keyframes count]-1)
+            if (i < (int)[keyframes count]-1)
             {
                 keyframeNext = [keyframes objectAtIndex:i+1];
             }
@@ -88,7 +102,7 @@
             int xPos = [seq timeToPosition:keyframe.time];
             
             // Draw visibility
-            if ((i % 2) == 0)
+            if (((i + 1) % 2) != [baseValue boolValue])
             {
                 // Draw interpolation line
                 int xPosNext = 0;
@@ -123,32 +137,34 @@
             }
             
             // Draw keyframes
-            
-            NSImage* img = NULL;
-            if (i % 2 == 0)
+            if(i>=0)
             {
-                if (keyframe.selected)
+                NSImage* img = NULL;
+                if (((i + 1) % 2) != [baseValue boolValue])
                 {
-                    img = imgKeyframeLSel;
+                    if (keyframe.selected)
+                    {
+                        img = imgKeyframeLSel;
+                    }
+                    else
+                    {
+                        img = imgKeyframeL;
+                    }
                 }
                 else
                 {
-                    img = imgKeyframeL;
+                    if (keyframe.selected)
+                    {
+                        img = imgKeyframeRSel;
+                    }
+                    else
+                    {
+                        img = imgKeyframeR;
+                    }
                 }
+                
+                [img drawAtPoint:NSMakePoint(cellFrame.origin.x + xPos-3, cellFrame.origin.y+kCCBSeqDefaultRowHeight*row+1) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
             }
-            else
-            {
-                if (keyframe.selected)
-                {
-                    img = imgKeyframeRSel;
-                }
-                else
-                {
-                    img = imgKeyframeR;
-                }
-            }
-            
-            [img drawAtPoint:NSMakePoint(cellFrame.origin.x + xPos-3, cellFrame.origin.y+kCCBSeqDefaultRowHeight*row+1) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
         }
     }
 }

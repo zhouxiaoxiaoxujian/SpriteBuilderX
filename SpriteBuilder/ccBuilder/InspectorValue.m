@@ -135,7 +135,7 @@
         int seqId = seq.sequenceId;
         SequencerNodeProperty* seqNodeProp = [selection sequenceNodeProperty:propertyName sequenceId:seqId];
         
-        if (seqNodeProp)
+        if (seqNodeProp && seqNodeProp.type != kCCBKeyframeTypeToggle)
         {
             if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
             {
@@ -147,12 +147,12 @@
                 if (keyframe)
                     keyframe.value = value;
             }
-            [[SequencerHandler sharedHandler] redrawTimeline];
         }
         else
         {
             [nodeInfo.baseValues setObject:value forKey:propertyName];
         }
+        [[SequencerHandler sharedHandler] redrawTimeline];
     }
 }
 
