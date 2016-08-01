@@ -15,4 +15,11 @@
 @property (nonatomic,assign) BOOL scrollBarEnabled;
 @property (nonatomic,readonly) CGRect clippingRect;
 
+@property (nonatomic,assign) CGFloat scrollBarWidth;
+@property (nonatomic,assign) BOOL scrollBarAutoHideEnabled;
+@property (nonatomic,assign) CGPoint scrollBarPosition;
+@property (nonatomic,assign) CCPositionType scrollBarPositionType;
+@property (nonatomic,retain) CCColor* scrollBarColor;
+@property (nonatomic,assign) CGFloat scrollBarOpacity;
+
 @end

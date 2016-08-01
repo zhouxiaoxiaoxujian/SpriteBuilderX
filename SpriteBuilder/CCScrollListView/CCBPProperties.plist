@@ -129,6 +129,20 @@
 		<dict>
 			<key>saveInTemplate</key>
 			<true/>
+			<key>displayName</key>
+			<string>Clip content</string>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>default</key>
+			<true/>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>clipContent</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
 			<key>defaultSerialization</key>
 			<false/>
 			<key>default</key>
@@ -143,16 +157,93 @@
 		<dict>
 			<key>saveInTemplate</key>
 			<true/>
+			<key>default</key>
+			<array>
+				<integer>12</integer>
+				<integer>2</integer>
+			</array>
 			<key>displayName</key>
-			<string>Clip content</string>
-			<key>defaultSerialization</key>
+			<string>Scroll bar width</string>
+			<key>type</key>
+			<string>FloatScale</string>
+			<key>name</key>
+			<string>scrollBarWidth</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
 			<true/>
 			<key>default</key>
 			<true/>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>displayName</key>
+			<string>Scroll bar auto hide</string>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>
-			<string>clipContent</string>
+			<string>scrollBarAutoHideEnabled</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<array>
+				<integer>20</integer>
+				<integer>20</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>20</integer>
+				<integer>20</integer>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Scroll bar position</string>
+			<key>type</key>
+			<string>Position</string>
+			<key>name</key>
+			<string>scrollBarPosition</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<array>
+				<real>0.203125</real>
+				<real>0.25390625</real>
+				<real>0.33984375</real>
+				<integer>1</integer>
+			</array>
+			<key>default</key>
+			<array>
+				<real>0.203125</real>
+				<real>0.25390625</real>
+				<real>0.33984375</real>
+				<integer>1</integer>
+			</array>
+			<key>displayName</key>
+			<string>Scroll bar color</string>
+			<key>type</key>
+			<string>Color3</string>
+			<key>name</key>
+			<string>scrollBarColor</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<real>0.4</real>
+			<key>default</key>
+			<real>0.4</real>
+			<key>displayName</key>
+			<string>Scroll bar opacity</string>
+			<key>type</key>
+			<string>Float</string>
+			<key>name</key>
+			<string>scrollBarOpacity</string>
 		</dict>
 	</array>
 </dict>
