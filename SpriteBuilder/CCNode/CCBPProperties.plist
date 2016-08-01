@@ -122,8 +122,6 @@
 			<string>Content size</string>
 		</dict>
 		<dict>
-			<key>saveInTemplate</key>
-			<true/>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
