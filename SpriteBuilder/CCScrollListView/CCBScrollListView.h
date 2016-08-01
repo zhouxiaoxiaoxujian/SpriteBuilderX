@@ -36,6 +36,7 @@
 
 @property (nonatomic,assign) CGFloat scrollBarWidth;
 @property (nonatomic,assign) BOOL scrollBarAutoHideEnabled;
+@property (nonatomic,assign) BOOL scrollHideIfSizeFit;
 @property (nonatomic,assign) CGPoint scrollBarPosition;
 @property (nonatomic,assign) CCPositionType scrollBarPositionType;
 @property (nonatomic,retain) CCColor* scrollBarColor;

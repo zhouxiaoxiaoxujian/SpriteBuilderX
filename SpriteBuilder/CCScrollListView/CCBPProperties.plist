@@ -184,6 +184,20 @@
 			<string>scrollBarAutoHideEnabled</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>default</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<true/>
+			<key>displayName</key>
+			<string>Scroll bar hide If size fit</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>scrollHideIfSizeFit</string>
+		</dict>
+		<dict>
 			<key>default</key>
 			<array>
 				<integer>20</integer>
