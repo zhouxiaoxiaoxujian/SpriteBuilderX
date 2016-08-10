@@ -458,6 +458,9 @@
         if (!soundFile) soundFile = @"";
         serializedValue = soundFile;
     }
+    else if ([type isEqualToString:@"Button"])
+    {
+    }
     else
     {
         NSLog(@"WARNING Unrecognized property type: %@", type);
