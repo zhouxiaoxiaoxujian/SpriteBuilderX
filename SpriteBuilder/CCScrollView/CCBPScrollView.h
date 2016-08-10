@@ -22,5 +22,6 @@
 @property (nonatomic,assign) CCPositionType scrollBarPositionType;
 @property (nonatomic,retain) CCColor* scrollBarColor;
 @property (nonatomic,assign) CGFloat scrollBarOpacity;
+@property (nonatomic,assign) NSInteger animation;
 
 @end
