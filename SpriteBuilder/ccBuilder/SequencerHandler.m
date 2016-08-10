@@ -1293,15 +1293,18 @@ static SequencerHandler* sharedSequencerHandler;
     {
         CCNode *collapsingNode = [values objectAtIndex:0];
         CCNode *selectedNode = [outlineHierarchy itemAtRow:[outlineHierarchy selectedRow]];
-        CCNode *parent = selectedNode.parent;
-        while(parent)
+        if ([selectedNode isKindOfClass:[CCNode class]])
         {
-            if(parent == collapsingNode)
+            CCNode *parent = selectedNode.parent;
+            while(parent)
             {
-                [appDelegate setSelectedNodes:[NSArray arrayWithObject:parent]];
-                break;
+                if(parent == collapsingNode)
+                {
+                    [appDelegate setSelectedNodes:[NSArray arrayWithObject:parent]];
+                    break;
+                }
+                parent = parent.parent;
             }
-            parent = parent.parent;
         }
     }
 }
