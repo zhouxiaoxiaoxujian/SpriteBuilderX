@@ -1226,10 +1226,10 @@ typedef enum
     jsControlled = [[doc objectForKey:@"jsControlled"] boolValue];
     
     int docDimType = [[doc objectForKey:@"docDimensionsType"] intValue];
-    if (docDimType == kCCBDocDimensionsTypeNode) centered = YES;
-    else centered = NO;
+    //if (docDimType == kCCBDocDimensionsTypeNode) centered = YES;
+    //else centered = NO;
     
-    if (docDimType == kCCBDocDimensionsTypeLayer) self.canEditStageSize = YES;
+    if (docDimType == kCCBDocDimensionsTypeLayer || docDimType == kCCBDocDimensionsTypeNode) self.canEditStageSize = YES;
     else self.canEditStageSize = NO;
     
     if (docDimType == kCCBDocDimensionsTypeFullScreen || docDimType == kCCBDocDimensionsTypeDialog)
@@ -1242,9 +1242,9 @@ typedef enum
     if (serializedResolutions)
     {
         NSMutableArray* resolutions = [NSMutableArray array];
-        if((docDimType == kCCBDocDimensionsTypeNode) || (docDimType == kCCBDocDimensionsTypeLayer))
+        /*if((docDimType == kCCBDocDimensionsTypeNode) || (docDimType == kCCBDocDimensionsTypeLayer))
              resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
-        else
+        else*/
         {
             // Load resolutions
             for (id serRes in serializedResolutions)
@@ -3251,23 +3251,26 @@ typedef enum
 {
     if (!currentDocument) return;
     
-    ResolutionSetting* setting = [currentDocument.resolutions objectAtIndex:0];
+    ResolutionSetting* setting = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     
     StageSizeWindow* wc = [[StageSizeWindow alloc] initWithWindowNibName:@"StageSizeWindow"];
-    wc.wStage = setting.width;
-    wc.hStage = setting.height;
+    wc.wStage = setting.width / setting.resourceScale;
+    wc.hStage = setting.height / setting.resourceScale;
     
     int success = [wc runModalSheetForWindow:window];
     if (success)
     {
         [self saveUndoStateWillChangeProperty:@"*stageSize"];
         
-        setting.width = wc.wStage;
-        setting.height = wc.hStage;
+        for(ResolutionSetting* resolution in currentDocument.resolutions)
+        {
+            resolution.width = wc.wStage * resolution.resourceScale;
+            resolution.height = wc.hStage * resolution.resourceScale;
+        }
         
-        currentDocument.resolutions = [self updateResolutions:currentDocument.resolutions forDocDimensionType:kCCBDocDimensionsTypeLayer];
+        //currentDocument.resolutions = [self updateResolutions:currentDocument.resolutions forDocDimensionType:kCCBDocDimensionsTypeLayer];
         [self updateResolutionMenu];
-        [self setResolution:0];
+        [self setResolution:currentDocument.currentResolution];
     }
 }
 
