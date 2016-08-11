@@ -79,6 +79,8 @@
 			<true/>
 			<key>default</key>
 			<integer>-2</integer>
+			<key>defaultSerialization</key>
+			<integer>-2</integer>
 			<key>animatable</key>
 			<true/>
 			<key>displayName</key>
