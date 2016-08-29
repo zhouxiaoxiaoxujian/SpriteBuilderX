@@ -191,6 +191,10 @@
     NSString* name = [propInfo objectForKey:@"name"];
     //NSString* platform = [propInfo objectForKey:@"platform"];
     BOOL readOnly = [[propInfo objectForKey:@"readOnly"] boolValue];
+    
+    if ([node.parent isKindOfClass:[CCLayout class]] && [name isEqualToString:@"position"])
+        readOnly = YES;
+    
     //BOOL hasKeyframes = [node hasKeyframesForProperty:name];
     //id defaultSerialization = [propInfo objectForKey:@"defaultSerialization"];
     id serializedValue = NULL;
