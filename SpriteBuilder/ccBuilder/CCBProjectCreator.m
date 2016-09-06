@@ -77,6 +77,7 @@
 	NSString* ccbproj = [NSString stringWithFormat:@"%@.ccbproj", substitutableProjectName];
     [fm moveItemAtPath:[parentPath stringByAppendingPathComponent:ccbproj] toPath:fileName error:NULL];
     
+    /*
     // Update the Xcode project
 	NSString* xcodeproj = [NSString stringWithFormat:@"%@.xcodeproj", substitutableProjectName];
     NSString* xcodeFileName = [parentPath stringByAppendingPathComponent:xcodeproj];
@@ -212,7 +213,8 @@
     NSString *replacement = [NSString stringWithFormat:@"\"default_target\": {\"project\": \"%@\", \"project_config\": \"Release\", \"target\": \"%@\"},", projName, projName];
     apportableConfigurationContents = [apportableConfigurationContents stringByReplacingOccurrencesOfString:@"default_target" withString:replacement];
     [apportableConfigurationContents writeToFile:apportableConfigFile atomically:YES encoding:NSUTF8StringEncoding error:&error];
-	
+	*/
+     
 	// perform cleanup to remove unnecessary files which only bloat the project
 	[CCBFileUtil cleanupSpriteBuilderProjectAtPath:fileName];
 	
