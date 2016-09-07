@@ -2351,6 +2351,7 @@ typedef enum
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:@"CCBFile"];
     [NodeGraphPropertySetter setNodeGraphForNode:node andProperty:@"ccbFile" withFile:ccbFile parentSize:parent.contentSize];
     [PositionPropertySetter setPosition:NSPointFromCGPoint(pt) type:CCPositionTypePoints forNode:node prop:@"position"];
+    [PositionPropertySetter setPositionType:CCPositionTypeUIPoints oldPositionType:CCPositionTypePoints forNode:node prop:@"position"];
     [self addCCObject:node toParent:parent];
 }
 
