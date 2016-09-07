@@ -1782,8 +1782,8 @@ typedef enum
         [self updateDirtyMark];
     }
         
-    [currentDocument.undoManager removeAllActions];
-    currentDocument.lastEditedProperty = NULL;
+    //[currentDocument.undoManager removeAllActions];
+    //currentDocument.lastEditedProperty = NULL;
     
     // Generate preview
     
@@ -1794,7 +1794,7 @@ typedef enum
     
     sequenceHandler.currentSequence = [currentDocument.sequences objectAtIndex:0];
     sequenceHandler.currentSequence.timelinePosition = 0;
-    [self reloadResources];
+    //[self reloadResources];
     //[PositionPropertySetter refreshAllPositions];
     
     // Save preview
@@ -1803,7 +1803,7 @@ typedef enum
     // Restore resolution and timeline
     currentDocument.currentResolution = currentResolution;
     sequenceHandler.currentSequence = currentSeq;
-    [self reloadResources];
+    //[self reloadResources];
     //[PositionPropertySetter refreshAllPositions];
     sequenceHandler.currentSequence.timelinePosition = currentTime;
     
