@@ -103,15 +103,15 @@
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>affectsProperties</key>
 			<array>
