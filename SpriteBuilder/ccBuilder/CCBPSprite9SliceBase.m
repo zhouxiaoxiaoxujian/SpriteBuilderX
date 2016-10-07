@@ -113,7 +113,7 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
                     params.wrapS = GL_CLAMP_TO_EDGE;
                     params.wrapT = GL_CLAMP_TO_EDGE;
                     [self.texture setTexParameters:&params];
-                    [self setTextureRect: CGRectMake(0.0, 0.0, self.texture.pixelWidth, self.self.texture.pixelHeight)];
+                    [self setTextureRect: CGRectMake(0.0, 0.0, self.texture.contentSize.width, self.self.texture.contentSize.height)];
                 }
                 
                 CGSize size = self.contentSizeInPoints;
