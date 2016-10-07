@@ -423,7 +423,7 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     }
     else if (type == kCCBKeyframeTypeAnimation)
     {
-        return @(-2);
+        return [self valueForKey:name];
     }
 
     
