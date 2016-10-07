@@ -7,7 +7,10 @@
 //
 
 #import "CCSprite9Slice.h"
+#import "CCProtectedNode.h"
+#import "CCBPSprite9SliceBase.h"
 
-@interface CCBPSprite9Slice : CCSprite9Slice
+@interface CCBPSprite9Slice : CCBPSprite9SliceBase {
+}
 
 @end

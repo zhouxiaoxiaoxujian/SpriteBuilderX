@@ -365,6 +365,7 @@
 		A53568661D214800009EC595 /* nvcompress in Resources */ = {isa = PBXBuildFile; fileRef = A53568651D214800009EC595 /* nvcompress */; };
 		A535686B1D21480E009EC595 /* libTextureConverter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; };
 		A535686C1D214B18009EC595 /* libTextureConverter.dylib in Copy Files (Frameworks) */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A5424C661DA800CD00A854B4 /* CCBPSprite9SliceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5424C651DA800CD00A854B4 /* CCBPSprite9SliceBase.m */; };
 		A54B403B1CA15B0F00196D02 /* CCProtectedNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */; };
 		A54C735E1A43894800DB1CF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A54C73741A438A4100DB1CF7 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54C736B1A438A4100DB1CF7 /* CCBPProperties.plist */; };
@@ -1880,6 +1881,8 @@
 		A53568681D21480E009EC595 /* libTextureConverter.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libTextureConverter.dylib; sourceTree = "<group>"; };
 		A53568691D21480E009EC595 /* TextureConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureConverter.h; sourceTree = "<group>"; };
 		A535686A1D21480E009EC595 /* TextureConverterInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureConverterInternal.h; sourceTree = "<group>"; };
+		A5424C641DA800CD00A854B4 /* CCBPSprite9SliceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPSprite9SliceBase.h; sourceTree = "<group>"; };
+		A5424C651DA800CD00A854B4 /* CCBPSprite9SliceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPSprite9SliceBase.m; sourceTree = "<group>"; };
 		A54B40391CA15B0F00196D02 /* CCProtectedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProtectedNode.h; sourceTree = "<group>"; };
 		A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCProtectedNode.m; sourceTree = "<group>"; };
 		A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScissorsNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3281,6 +3284,8 @@
 		776041E21498F5A70078095D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A5424C641DA800CD00A854B4 /* CCBPSprite9SliceBase.h */,
+				A5424C651DA800CD00A854B4 /* CCBPSprite9SliceBase.m */,
 				A54B40391CA15B0F00196D02 /* CCProtectedNode.h */,
 				A54B403A1CA15B0F00196D02 /* CCProtectedNode.m */,
 				4D0C1E7718F49A3700B028CA /* CCNode+PositionExtentions.h */,
@@ -7974,6 +7979,7 @@
 				E335CAF3157603C200A612EE /* SequencerHandler.m in Sources */,
 				E335CAF6157649F900A612EE /* SequencerExpandBtnCell.m in Sources */,
 				4D0C1E7618F4760800B028CA /* SnapLayer.m in Sources */,
+				A5424C661DA800CD00A854B4 /* CCBPSprite9SliceBase.m in Sources */,
 				837E940019815C8D00A9F90B /* ProjectSettingsWindowController.m in Sources */,
 				E335CAFB1576592600A612EE /* SequencerCell.m in Sources */,
 				E335CB001576702300A612EE /* MainWindow.m in Sources */,

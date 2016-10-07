@@ -84,6 +84,22 @@
 			<key>saveInTemplate</key>
 			<true/>
 			<key>default</key>
+			<integer>1</integer>
+			<key>defaultSerialization</key>
+			<integer>1</integer>
+			<key>displayName</key>
+			<string>Rendering type</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>name</key>
+			<string>renderingType</string>
+			<key>extra</key>
+			<string>Simple|0|Slice|1|Tiled|2</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>default</key>
 			<array>
 				<integer>0</integer>
 				<integer>0</integer>
