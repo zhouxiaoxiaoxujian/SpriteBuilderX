@@ -25,6 +25,8 @@
         [self setSprite:[CCSprite emptySprite]];
     else
         [self setSprite:[CCSprite spriteWithSpriteFrame:newSpriteFrame]];
+    [self setColor:self.color];
+    [self setOpacity:self.opacity];
     [super performSelector:@selector(updateProgress)];
 }
 
