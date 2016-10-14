@@ -265,6 +265,10 @@
     {
         return kCCBResTypeGeneratedSpriteSheetDef;
     }
+    else if ([ext isEqualToString:@"fbx"])
+    {
+        return kCCBResTypeModel;
+    }
     return kCCBResTypeNone;
 }
 
@@ -427,6 +431,7 @@
         [dir.ttfFonts removeAllObjects];
         [dir.ccbFiles removeAllObjects];
         [dir.audioFiles removeAllObjects];
+        [dir.models removeAllObjects];
         
         for (NSString* file in resources)
         {
@@ -464,6 +469,11 @@
                 [dir.audioFiles addObject:res];
                 
             }
+            if (res.type == kCCBResTypeModel
+                || res.type == kCCBResTypeDirectory)
+            {
+                [dir.models addObject:res];
+            }
             if (res.type == kCCBResTypeImage
                 || res.type == kCCBResTypeSpriteSheet
                 || res.type == kCCBResTypeAnimation
@@ -473,7 +483,8 @@
                 || res.type == kCCBResTypeDirectory
                 || res.type == kCCBResTypeJS
                 || res.type == kCCBResTypeJSON
-                || res.type == kCCBResTypeAudio)
+                || res.type == kCCBResTypeAudio
+                || res.type == kCCBResTypeModel)
             {
                 [dir.any addObject:res];
             }
@@ -486,6 +497,7 @@
         [dir.ttfFonts sortUsingSelector:@selector(compare:)];
         [dir.ccbFiles sortUsingSelector:@selector(compare:)];
         [dir.audioFiles sortUsingSelector:@selector(compare:)];
+        [dir.models sortUsingSelector:@selector(compare:)];
     }
     
     if (resourcesChanged) [self notifyResourceObserversResourceListUpdated];

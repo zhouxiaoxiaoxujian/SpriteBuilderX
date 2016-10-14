@@ -59,6 +59,7 @@ struct KtxFormat {
 @property (nonatomic, strong) NSTask *zipTask;
 @property (nonatomic, strong) NSTask *sndTask;
 @property (nonatomic, strong) NSTask *webpTask;
+@property (nonatomic, strong) NSTask *fbxTask;
 
 @end
 
@@ -883,6 +884,16 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
     return NULL;
 }
 
+- (NSString*) proposedNameForConvertedModelAtPath:(NSString*)srcPath
+{
+    NSString* ext = @"c3b";
+    if (ext)
+    {
+        return [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:ext];
+    }
+    return NULL;
+}
+
 - (NSString*) afconvertDataFormatWithQuality:(int)quality prefix8Bit:(NSString*)prefix8Bit prefix16Bit:(NSString*)prefix16Bit
 {
     switch (quality) {
@@ -921,11 +932,11 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
     if (format == kFCSoundFormatWAV)
     {
         // Convert to WAV
-        NSTask* sndTask = [[NSTask alloc] init];
+        _sndTask = [[NSTask alloc] init];
         
         NSString *qualityString = [self afconvertDataFormatWithQuality:quality prefix8Bit:@"UI8" prefix16Bit:@"LEI16"];
         
-        [sndTask setLaunchPath:@"/usr/bin/afconvert"];
+        [_sndTask setLaunchPath:@"/usr/bin/afconvert"];
         NSMutableArray* args = [NSMutableArray arrayWithObjects:
                                 @"-f", @"WAVE",
                                 @"-d", qualityString, nil];
@@ -937,9 +948,9 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         [args addObject:srcPath];
         [args addObject:dstPath];
         
-        [sndTask setArguments:args];
-        [sndTask launch];
-        [sndTask waitUntilExit];
+        [_sndTask setArguments:args];
+        [_sndTask launch];
+        [_sndTask waitUntilExit];
         
         
         // Remove old file
@@ -1110,6 +1121,39 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
     return NULL;
 }
 
+- (NSString*) convertModelAtPath:(NSString*)srcPath
+{
+    NSString* dstPath = [self proposedNameForConvertedModelAtPath:srcPath];
+    NSFileManager* fm = [NSFileManager defaultManager];
+    
+    if ([srcPath isEqualToString:dstPath])
+    {
+        // oggenc can't convert things in place, so make a copy that will get deleted at the end
+        NSString *newSrcPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"fbx"];
+        [fm moveItemAtPath:srcPath toPath:newSrcPath error:NULL];
+        srcPath = newSrcPath;
+    }
+    
+    self.fbxTask = [[NSTask alloc] init];
+    [_fbxTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"fbx-conv"]];
+    NSMutableArray* args = [NSMutableArray arrayWithObjects:
+                            [NSString stringWithFormat:@"-b"], nil];
+    [args addObject:srcPath];
+    
+    [_fbxTask setArguments:args];
+    [_fbxTask launch];
+    [_fbxTask waitUntilExit];
+    
+    // Remove old file
+    if (![srcPath isEqualToString:dstPath])
+    {
+        [fm removeItemAtPath:srcPath error:NULL];
+    }
+    
+    self.sndTask = nil;
+    return dstPath;
+}
+
 - (void)cancel
 {
     @try
@@ -1117,10 +1161,12 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         [_pngQuantTask terminate];
         [_zipTask terminate];
         [_sndTask  terminate];
+        [_fbxTask  terminate];
 
         self.pngQuantTask = nil;
         self.zipTask = nil;
         self.sndTask = nil;
+        self.fbxTask = nil;
     }
     @catch (NSException *exception)
     {

@@ -51,6 +51,7 @@
 #import "PublishIntermediateFilesLookup.h"
 #import "ResourcePropertyKeys.h"
 #import "PlatformSettings.h"
+#import "PublishModelFileOperation.h"
 
 @interface CCBDirectoryPublisher ()
 
@@ -81,7 +82,7 @@
 
         self.modifiedDatesCache = [[DateCache alloc] init];
 
-        self.supportedFileExtensions = @[@"jpg", @"png", @"psd", @"pvr", @"ccz", @"plist", @"fnt", @"ttf",@"js", @"json", @"wav",@"mp3",@"m4a",@"caf",@"ccblang"];
+        self.supportedFileExtensions = @[@"jpg", @"png", @"psd", @"pvr", @"ccz", @"plist", @"fnt", @"ttf",@"js", @"json", @"wav",@"mp3",@"m4a",@"caf",@"ccblang",@"fbx"];
 	}
 
     return self;
@@ -127,6 +128,26 @@
     [_queue addOperation:operation];
     return YES;
 }
+
+- (void)publishModelFile:(NSString *)srcFilePath to:(NSString *)dstFilePath
+{
+    NSString *relPath = [_projectSettings findRelativePathInPackagesForAbsolutePath:srcFilePath];
+    if (!relPath)
+    {
+        [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Could not find relative path for model file: \"%@\"", srcFilePath] isFatal:YES];
+        return;
+    }
+    
+    PublishModelFileOperation *operation = [[PublishModelFileOperation alloc] initWithProjectSettings:_projectSettings
+                                                                                             warnings:_warnings
+                                                                                       statusProgress:_publishingTaskStatusProgress];
+    operation.srcFilePath = srcFilePath;
+    operation.dstFilePath = dstFilePath;
+    operation.fileLookup = _renamedFilesLookup;
+    
+    [_queue addOperation:operation];
+}
+
 
 - (void)publishSoundFile:(NSString *)srcFilePath to:(NSString *)dstFilePath
 {
@@ -301,6 +322,11 @@
         {
             if(_platformSettings.publishSound)
                 [self publishSoundFile:filePath to:dstFilePath];
+        }
+        else if ([fileName isModelFile])
+        {
+            if(_platformSettings.publishOther)
+                [self publishModelFile:filePath to:dstFilePath];
         }
         else
         {

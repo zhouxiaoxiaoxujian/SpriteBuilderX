@@ -23,3 +23,4 @@ NSString *const RESOLUTION_PHONE = @"phone";
 NSString *const RESOLUTION_PHONE_HD = @"phonehd";
 NSString *const RESOLUTION_TABLET = @"tablet";
 NSString *const RESOLUTION_TABLET_HD = @"tablethd";
+NSString *const RESOLUTION_UNIVERSAL = @"universal";

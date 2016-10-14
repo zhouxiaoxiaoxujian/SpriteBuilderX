@@ -17,6 +17,7 @@
 @synthesize ttfFonts;
 @synthesize ccbFiles;
 @synthesize audioFiles;
+@synthesize models;
 
 - (id) init
 {
@@ -31,6 +32,7 @@
     ttfFonts = [[NSMutableArray alloc] init];
     ccbFiles = [[NSMutableArray alloc] init];
     audioFiles = [[NSMutableArray alloc] init];
+    models = [[NSMutableArray alloc] init];
 
     return self;
 }
@@ -44,6 +46,7 @@
     if (type == kCCBResTypeAnimation) return animations;
     if (type == kCCBResTypeCCBFile) return ccbFiles;
     if (type == kCCBResTypeAudio) return audioFiles;
+    if (type == kCCBResTypeModel) return models;
     return NULL;
 }
 

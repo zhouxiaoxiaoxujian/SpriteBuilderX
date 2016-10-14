@@ -34,6 +34,7 @@
 @property (nonatomic, readonly) NSMutableArray *ttfFonts;
 @property (nonatomic, readonly) NSMutableArray *ccbFiles;
 @property (nonatomic, readonly) NSMutableArray *audioFiles;
+@property (nonatomic, readonly) NSMutableArray *models;
 
 
 - (NSArray *)resourcesForType:(int)type;

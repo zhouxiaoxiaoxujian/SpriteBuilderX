@@ -36,6 +36,12 @@
     return [extension isEqualToString:@"wav"];
 }
 
+- (BOOL)isModelFile
+{
+    NSString *extension = [[self pathExtension] lowercaseString];
+    return [extension isEqualToString:@"fbx"];
+}
+
 - (BOOL)isSmartSpriteSheetCompatibleFile
 {
     NSString *extension = [[self pathExtension] lowercaseString];
