@@ -94,7 +94,13 @@
                             outDir:(NSString *)outDir
                         fileLookup:(id <PublishFileLookupProtocol>)fileLookup
 {
-    for (NSString* resolution in _resolutions)
+    NSMutableArray * resolutions = [NSMutableArray arrayWithArray:_resolutions];
+    if([resolutions count])
+    {
+        [resolutions addObject:@"universal"];
+    }
+    
+    for (NSString *resolution in resolutions)
     {
         [self publishImageFile:srcFile to:dstFile isSpriteSheet:isSpriteSheet outputDir:outDir resolution:resolution intermediateProduct:NO fileLookup:fileLookup];
 	}
@@ -250,6 +256,7 @@
     NSMutableSet* files = [NSMutableSet setWithArray:[fileManager contentsOfDirectoryAtPath:publishDirectory error:NULL]];
 	[files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:_resolutions]];
     [files addObjectsFromArray:[publishDirectory filesInAutoDirectory]];
+    [files addObjectsFromArray:[publishDirectory filesInUniversalDirectory]];
 
     for (NSString* fileName in files)
     {
@@ -457,8 +464,14 @@
 	[_publishedSpriteSheetFiles addObject:[subPath stringByAppendingPathExtension:@"plist"]];
 
     [PublishSpriteSheetOperation resetSpriteSheetPreviewsGeneration];
+    
+    NSMutableArray * resolutions = [NSMutableArray arrayWithArray:_resolutions];
+    if([resolutions count])
+    {
+        [resolutions addObject:@"universal"];
+    }
 
-	for (NSString *resolution in _resolutions)
+	for (NSString *resolution in resolutions)
 	{
 		NSString *spriteSheetFile = [[spriteSheetDir stringByAppendingPathComponent:[NSString stringWithFormat:@"resources-%@", resolution]] stringByAppendingPathComponent:spriteSheetName];
 
@@ -539,6 +552,7 @@
     NSMutableSet *files = [NSMutableSet setWithArray:[fileManager contentsOfDirectoryAtPath:publishDirectory error:NULL]];
 	[files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:nil]];
     [files addObjectsFromArray:[publishDirectory filesInAutoDirectory]];
+    [files addObjectsFromArray:[publishDirectory filesInUniversalDirectory]];
 
     for (NSString *fileName in files)
     {

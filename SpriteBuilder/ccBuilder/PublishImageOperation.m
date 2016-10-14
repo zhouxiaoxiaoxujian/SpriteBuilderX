@@ -98,6 +98,11 @@
 
     // Copy and convert the image
     BOOL isDirty = [_projectSettings isDirtyRelPath:relPath];
+    
+    if([_resolution isEqualToString:@"universal"])
+    {
+        isDirty = isDirty;
+    }
 
     if ([fileManager fileExistsAtPath:_srcFilePath])
     {
@@ -146,7 +151,7 @@
         // Update modification date
         [CCBFileUtil setModificationDate:srcDate forFile:dstPathConverted];
     }
-    else if (![_resolution isEqualToString:@"universal"] && [fileManager fileExistsAtPath:srcAutoPath])
+    else if ([fileManager fileExistsAtPath:srcAutoPath])
     {
         // Use resources-auto file for conversion
 
@@ -196,9 +201,9 @@
     }
     else
     {
-        if (![fileManager fileExistsAtPath:srcUniversalPath] && ![_resolution isEqualToString:@"universal"])
+        if (![fileManager fileExistsAtPath:srcUniversalPath])
         {
-            [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to publish file %@, make sure it is in the resources-auto folder or device dependent folders.", srcFileName] isFatal:NO];
+            [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to publish file %@, make sure it is in the resources-auto folder, resources-universal folder or device dependent folders.", srcFileName] isFatal:NO];
         }
     }
 }

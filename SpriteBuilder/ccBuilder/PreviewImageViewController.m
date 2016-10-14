@@ -48,11 +48,23 @@
 - (void)populateInitialValues
 {
     // TODO: necessary?
-    self.imgMain = [_previewedResource previewForResolution:RESOLUTION_AUTO];
-    self.imgPhone = [_previewedResource previewForResolution:RESOLUTION_PHONE];
-    self.imgPhonehd = [_previewedResource previewForResolution:RESOLUTION_PHONE_HD];
-    self.imgTablet = [_previewedResource previewForResolution:RESOLUTION_TABLET];
-    self.imgTablethd = [_previewedResource previewForResolution:RESOLUTION_TABLET_HD];
+    NSImage* universalImage = [_previewedResource previewForResolution:RESOLUTION_UNIVERSAL];
+    if(universalImage)
+    {
+        self.imgMain = universalImage;
+        self.imgPhone = universalImage;
+        self.imgPhonehd = universalImage;
+        self.imgTablet = universalImage;
+        self.imgTablethd = universalImage;
+    }
+    else
+    {
+        self.imgMain = [_previewedResource previewForResolution:RESOLUTION_AUTO];
+        self.imgPhone = [_previewedResource previewForResolution:RESOLUTION_PHONE];
+        self.imgPhonehd = [_previewedResource previewForResolution:RESOLUTION_PHONE_HD];
+        self.imgTablet = [_previewedResource previewForResolution:RESOLUTION_TABLET];
+        self.imgTablethd = [_previewedResource previewForResolution:RESOLUTION_TABLET_HD];
+    }
 
     [_previewMain setImage:self.imgMain];
     [_previewPhone setImage:self.imgPhone];
