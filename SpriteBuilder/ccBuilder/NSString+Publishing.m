@@ -18,8 +18,8 @@
 {
     NSString *filename = [self lastPathComponent];
     NSString *directory = [self stringByDeletingLastPathComponent];
-    NSString *autoDir = [directory stringByAppendingPathComponent:@"resources-universal"];
-    return [autoDir stringByAppendingPathComponent:filename];
+    //NSString *autoDir = [directory stringByAppendingPathComponent:@"resources-universal"];
+    return [directory stringByAppendingPathComponent:filename];
 }
 
 - (BOOL)isResourceAutoFile

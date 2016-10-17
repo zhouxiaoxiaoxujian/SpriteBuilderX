@@ -256,7 +256,6 @@
     NSMutableSet* files = [NSMutableSet setWithArray:[fileManager contentsOfDirectoryAtPath:publishDirectory error:NULL]];
 	[files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:_resolutions]];
     [files addObjectsFromArray:[publishDirectory filesInAutoDirectory]];
-    [files addObjectsFromArray:[publishDirectory filesInUniversalDirectory]];
 
     for (NSString* fileName in files)
     {
@@ -466,10 +465,6 @@
     [PublishSpriteSheetOperation resetSpriteSheetPreviewsGeneration];
     
     NSMutableArray * resolutions = [NSMutableArray arrayWithArray:_resolutions];
-    if([resolutions count])
-    {
-        [resolutions addObject:@"universal"];
-    }
 
 	for (NSString *resolution in resolutions)
 	{
@@ -550,9 +545,9 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     NSMutableSet *files = [NSMutableSet setWithArray:[fileManager contentsOfDirectoryAtPath:publishDirectory error:NULL]];
-	[files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:nil]];
+    [files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:nil]];
     [files addObjectsFromArray:[publishDirectory filesInAutoDirectory]];
-    [files addObjectsFromArray:[publishDirectory filesInUniversalDirectory]];
+    //[files addObjectsFromArray:[publishDirectory filesInUniversalDirectory]];
 
     for (NSString *fileName in files)
     {

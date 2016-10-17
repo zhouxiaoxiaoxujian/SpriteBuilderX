@@ -84,8 +84,11 @@
     NSString *srcUniversalPath = [_srcFilePath resourceUniversalFilePath];
 
     // Update path to reflect resolution
-    srcDir = [srcDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
-    dstDir = [dstDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
+    if(![_resolution isEqualToString:@"universal"])
+    {
+       srcDir = [srcDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
+       dstDir = [dstDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
+    }
 
     self.srcFilePath = [srcDir stringByAppendingPathComponent:srcFileName];
     self.dstFilePath = [dstDir stringByAppendingPathComponent:dstFileName];
@@ -98,11 +101,6 @@
 
     // Copy and convert the image
     BOOL isDirty = [_projectSettings isDirtyRelPath:relPath];
-    
-    if([_resolution isEqualToString:@"universal"])
-    {
-        isDirty = isDirty;
-    }
 
     if ([fileManager fileExistsAtPath:_srcFilePath])
     {
