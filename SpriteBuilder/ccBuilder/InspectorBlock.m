@@ -47,6 +47,7 @@
 
 - (void) setTarget:(int)target
 {
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:[NSString stringWithFormat:@"%@Target", propertyName]];
     [selection setExtraProp:[NSNumber numberWithInt:target] forKey:[NSString stringWithFormat:@"%@Target", propertyName]];
 }
 
