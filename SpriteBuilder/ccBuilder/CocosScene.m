@@ -293,17 +293,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             NSAssert (NO, @"Illegal stage color");
     }
     NSAssert(color != nil, @"No stage color");
-
-    if (docDimensionsType == kCCBDocDimensionsTypeNode)
-    {
-        bgLayer.color = color;
-        stageBgLayer.color = [CCColor blackColor];
-    }
-    else
-    {
-        bgLayer.color = [CCColor grayColor];
-        stageBgLayer.color = color;
-    }
+    
+    bgLayer.color = [CCColor grayColor];
+    stageBgLayer.color = color;
 }
 
 - (void) setupDefaultNodes
