@@ -461,30 +461,54 @@ typedef struct _PVRTexHeader
         if(self.extrude>0)
         {
             CGImageRef left = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,h-dy));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-h, self.extrude, h-dy), left);
-            CFRelease(left);
+            if(left)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-h, self.extrude, h-dy), left);
+                CFRelease(left);
+            }
             CGImageRef right = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,h-dy));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-h, self.extrude, h-dy), right);
-            CFRelease(right);
+            if(right)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-h, self.extrude, h-dy), right);
+                CFRelease(right);
+            }
             CGImageRef bottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy - 1,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
-            CFRelease(bottom);
+            if(bottom)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-trimHeight-self.extrude-dy, w-dx, self.extrude), bottom);
+                CFRelease(bottom);
+            }
             CGImageRef top = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,w-dx,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-dy, w-dx, self.extrude), top);
-            CFRelease(top);
+            if(top)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x+dx,bestOutH-y-dy, w-dx, self.extrude), top);
+                CFRelease(top);
+            }
             
             CGImageRef leftTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-dy, self.extrude, self.extrude), leftTop);
-            CFRelease(leftTop);
+            if(leftTop)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-dy, self.extrude, self.extrude), leftTop);
+                CFRelease(leftTop);
+            }
             CGImageRef rightTop = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,dy,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-dy, self.extrude, self.extrude), rightTop);
-            CFRelease(rightTop);
+            if(rightTop)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-dy, self.extrude, self.extrude), rightTop);
+                CFRelease(rightTop);
+            }
             CGImageRef leftBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(dx,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
-            CFRelease(leftBottom);
+            if(leftBottom)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x-self.extrude+dx, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), leftBottom);
+                CFRelease(leftBottom);
+            }
             CGImageRef rightBottom = CGImageCreateWithImageInRect(srcImage,CGRectMake(trimWidth + dx - 1,trimHeight + dy -1,1,1));
-            CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
-            CFRelease(rightBottom);
+            if(rightBottom)
+            {
+                CGContextDrawImage(dstContext, CGRectMake(x+dx+trimWidth, bestOutH-y-trimHeight-self.extrude-dy, self.extrude, self.extrude), rightBottom);
+                CFRelease(rightBottom);
+            }
         }
         
         // Release the image
