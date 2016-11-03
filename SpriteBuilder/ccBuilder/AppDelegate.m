@@ -1788,24 +1788,28 @@ typedef enum
     // Generate preview
     
     // Reset to first frame in first timeline in first resolution
+    /*
     float currentTime = sequenceHandler.currentSequence.timelinePosition;
     int currentResolution = currentDocument.currentResolution;
     SequencerSequence* currentSeq = sequenceHandler.currentSequence;
     
     sequenceHandler.currentSequence = [currentDocument.sequences objectAtIndex:0];
     sequenceHandler.currentSequence.timelinePosition = 0;
-    //[self reloadResources];
-    //[PositionPropertySetter refreshAllPositions];
+    [self reloadResources];
+    [PositionPropertySetter refreshAllPositions];
+    */
     
     // Save preview
     [[CocosScene cocosScene] savePreviewToFile:[fileName stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
     
     // Restore resolution and timeline
+    /*
     currentDocument.currentResolution = currentResolution;
     sequenceHandler.currentSequence = currentSeq;
-    //[self reloadResources];
-    //[PositionPropertySetter refreshAllPositions];
+    [self reloadResources];
+    [PositionPropertySetter refreshAllPositions];
     sequenceHandler.currentSequence.timelinePosition = currentTime;
+    */
     
     [projectOutlineHandler updateSelectionPreview];
 }
