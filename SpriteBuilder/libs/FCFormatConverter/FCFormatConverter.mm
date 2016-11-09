@@ -213,14 +213,15 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return dstPath;
 }
 
-static BOOL saveRawDataToPng(void* data, int width, int height, BOOL alpha, NSString *path, NSError **error)
+static BOOL saveRawDataToPng(void* data, int width, int height, BOOL hasAlpha, BOOL alpha, NSString *path, NSError **error)
 {
+    int sourceBytes = hasAlpha?4:3;
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Big|(alpha?kCGImageAlphaLast:kCGImageAlphaNone);
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Big|((hasAlpha&&alpha)?kCGImageAlphaLast:kCGImageAlphaNone);
     CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
     
-    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, data, width*height*4, NULL);
-    CGImageRef imageRef = CGImageCreate(width, height, 8, 32, 4*width, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, data, width*height*sourceBytes, NULL);
+    CGImageRef imageRef = CGImageCreate(width, height, 8, 8*sourceBytes, sourceBytes*width, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     
     CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:path];
     CGImageDestinationRef destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, NULL);
@@ -261,7 +262,7 @@ static BOOL convertToPng(NSString *srcPath, NSString *dstPath, kFCAlphaProcessin
     }
     NSImage * image = [[NSImage alloc] initWithContentsOfFile:srcPath];
     NSBitmapImageRep* rawImg = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
-    if(alphaProcessing == kFCAlphaProcessingPremultiply)
+    if(alphaProcessing == kFCAlphaProcessingPremultiply && [rawImg hasAlpha])
     {
         pvrtexture::CPVRTextureHeader header(pvrtexture::PVRStandard8PixelType.PixelTypeID, image.size.height , image.size.width);
         pvrtexture::CPVRTexture     * pvrTexture = new pvrtexture::CPVRTexture(header , rawImg.bitmapData);
@@ -277,13 +278,13 @@ static BOOL convertToPng(NSString *srcPath, NSString *dstPath, kFCAlphaProcessin
             delete pvrTexture;
             return NO;
         }
-        BOOL ret = saveRawDataToPng(pvrTexture->getDataPtr(), image.size.width, image.size.height, YES, dstPath, error);
+        BOOL ret = saveRawDataToPng(pvrTexture->getDataPtr(), image.size.width, image.size.height, [rawImg hasAlpha], YES, dstPath, error);
         delete pvrTexture;
         return ret;
     }
     else
     {
-        return saveRawDataToPng(rawImg.bitmapData, image.size.width, image.size.height, alphaProcessing != kFCAlphaProcessingDrop, dstPath, error);
+        return saveRawDataToPng(rawImg.bitmapData, image.size.width, image.size.height, [rawImg hasAlpha], alphaProcessing != kFCAlphaProcessingDrop, dstPath, error);
     }
 }
 
