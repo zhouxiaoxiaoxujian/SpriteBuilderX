@@ -91,6 +91,13 @@ void MaxRectsBinPack::Insert(std::vector<TPRectSize> &rects, std::vector<TPRect>
 		{
 			int score1;
 			int score2;
+            if(rects[i].width == 0 && rects[i].height == 0)
+            {
+                bestRectIndex = rects[i].idx;
+                TPRect newNode = {0,0,0,0,rects[i].idx,false};
+                bestNode = newNode;
+                break;
+            }
 			TPRect newNode = ScoreRect(rects[i].width, rects[i].height, method, score1, score2, rects[i].idx);
 
 			if (score1 < bestScore1 || (score1 == bestScore1 && score2 < bestScore2))
