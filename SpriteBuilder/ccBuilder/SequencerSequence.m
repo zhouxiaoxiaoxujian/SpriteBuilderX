@@ -226,6 +226,22 @@
     return [self formatTime:timelineLength];
 }
 
+- (void) setLengthDisplayTime:(NSString*) time
+{
+    NSArray *listItems = [time componentsSeparatedByString:@":"];
+    int stage = -1;
+    float result = 0.0f;
+    for(int i=listItems.count-1 ; i>=0 ; --i )
+    {
+        if(i == listItems.count-1)
+            result += [listItems[i] floatValue] / timelineResolution;
+        else
+            result += [listItems[i] floatValue] * pow(60, stage);
+        stage++;
+    }
+    timelineLength = result;
+}
+
 - (float) alignTimeToResolution:(float)time
 {
     return roundf(time * timelineResolution)/timelineResolution;

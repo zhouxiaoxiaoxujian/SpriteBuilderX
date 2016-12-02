@@ -66,7 +66,7 @@
 
 
 @property (nonatomic,readonly) NSString* currentDisplayTime;
-@property (nonatomic,readonly) NSString* lengthDisplayTime;
+@property (nonatomic,copy) NSString* lengthDisplayTime;
 
 @property (nonatomic,assign) BOOL autoPlay;
 
