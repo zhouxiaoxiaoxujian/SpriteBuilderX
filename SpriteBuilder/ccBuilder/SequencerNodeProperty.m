@@ -269,6 +269,11 @@
         return [NSNumber numberWithBool:visible];
     }
     
+    if (time < keyframeFirst.time)
+    {
+        return nil;
+    }
+    
     if (time == keyframeFirst.time)
     {
         return keyframeFirst.value;
