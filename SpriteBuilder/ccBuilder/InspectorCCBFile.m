@@ -76,4 +76,14 @@
     [[InspectorController sharedController] performSelectorOnMainThread:@selector(updateInspectorFromSelection) withObject:NULL waitUntilDone:NO];
 }
 
+- (IBAction)onClick:(id)sender {
+    NSString* sf = [selection extraPropForKey:propertyName];
+    if(![sf isEqualToString:@""])
+    {
+        NSString* ccbFile = ccbFile = [[ResourceManager sharedManager] toAbsolutePath:sf];
+        if(ccbFile)
+            [[AppDelegate appDelegate] openFile:ccbFile];
+    }
+}
+
 @end
