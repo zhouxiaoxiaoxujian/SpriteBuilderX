@@ -375,6 +375,8 @@
 		A54C73781A438A4100DB1CF7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73721A438A4100DB1CF7 /* Icon.png */; };
 		A54C73791A438A4100DB1CF7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73731A438A4100DB1CF7 /* Icon@2x.png */; };
 		A54C737D1A438C9E00DB1CF7 /* CCScissorsNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A55F2CA11DF1D73000377AEC /* SequencerIdWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */; };
+		A55F2CA21DF1D73000377AEC /* SequencerIdWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */; };
 		A56B9ADC1D36D5620027788E /* pngcrush in Resources */ = {isa = PBXBuildFile; fileRef = A56B9ADB1D36D5620027788E /* pngcrush */; };
 		A57319921A2FB0E50044B884 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A573198F1A2FB0E50044B884 /* scale-5.png */; };
 		A57319931A2FB0E50044B884 /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319901A2FB0E50044B884 /* scale-6.png */; };
@@ -1897,6 +1899,9 @@
 		A54C73711A438A4100DB1CF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A54C73721A438A4100DB1CF7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A54C73731A438A4100DB1CF7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A55F2C9E1DF1D73000377AEC /* SequencerIdWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerIdWindow.h; sourceTree = "<group>"; };
+		A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerIdWindow.m; sourceTree = "<group>"; };
+		A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerIdWindow.xib; sourceTree = "<group>"; };
 		A56B9ADB1D36D5620027788E /* pngcrush */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngcrush; sourceTree = "<group>"; };
 		A573198F1A2FB0E50044B884 /* scale-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-5.png"; sourceTree = "<group>"; };
 		A57319901A2FB0E50044B884 /* scale-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-6.png"; sourceTree = "<group>"; };
@@ -5292,6 +5297,9 @@
 				E3F73DB41593908A00D74084 /* SequencerDurationWindow.h */,
 				E3F73DB51593908A00D74084 /* SequencerDurationWindow.m */,
 				E3F73DB71593916E00D74084 /* SequencerDurationWindow.xib */,
+				A55F2C9E1DF1D73000377AEC /* SequencerIdWindow.h */,
+				A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */,
+				A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */,
 				E3926186159C69D20034FF1D /* SequencerKeyframeEasing.h */,
 				E3926187159C69D20034FF1D /* SequencerKeyframeEasing.m */,
 				E3FD4DCE15A09F6D0032C2DD /* SequencerKeyframeEasingWindow.xib */,
@@ -7440,6 +7448,7 @@
 				E525F005EE181A7F5BF74749 /* InspectorPopoverColor3.xib in Resources */,
 				E525F5E78A703F1381486AA8 /* InspectorColor4.xib in Resources */,
 				E525F851B68D85236DBC459A /* InspectorColor4FVar.xib in Resources */,
+				A55F2CA21DF1D73000377AEC /* SequencerIdWindow.xib in Resources */,
 				E525F45C0B173D2FF63B9573 /* InspectorFlip.xib in Resources */,
 				E525F6BF45DFEFF964A46DE5 /* InspectorBlendmode.xib in Resources */,
 				E525F256F90C8CD3CA91EE63 /* InspectorFntFile.xib in Resources */,
@@ -8016,6 +8025,7 @@
 				E3A0ED5A159119E7000BDF4B /* SequencerSettingsWindow.m in Sources */,
 				E3F73DB61593908A00D74084 /* SequencerDurationWindow.m in Sources */,
 				E3E05578159B2322001066C5 /* NSString+AppendToFile.m in Sources */,
+				A55F2CA11DF1D73000377AEC /* SequencerIdWindow.m in Sources */,
 				E3926188159C69D20034FF1D /* SequencerKeyframeEasing.m in Sources */,
 				E3FD4DD315A0A2C10032C2DD /* SequencerKeyframeEasingWindow.m in Sources */,
 				A57D009E1CF2463900434840 /* PlatformSettingsDetailView.m in Sources */,

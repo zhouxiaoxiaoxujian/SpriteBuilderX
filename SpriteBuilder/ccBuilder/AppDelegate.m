@@ -69,6 +69,7 @@
 #import "SequencerSequence.h"
 #import "SequencerSettingsWindow.h"
 #import "SequencerDurationWindow.h"
+#import "SequencerIdWindow.h"
 #import "SequencerKeyframe.h"
 #import "SequencerKeyframeEasing.h"
 #import "SequencerKeyframeEasingWindow.h"
@@ -3559,6 +3560,49 @@ typedef enum
         [animationPlaybackManager stop];
     }
 }
+
+- (IBAction)menuTimelineId:(id)sender
+{
+    if (!currentDocument) return;
+    
+    SequencerIdWindow* wc = [[SequencerIdWindow alloc] initWithWindowNibName:@"SequencerIdWindow"];
+    int currentSequenceId = sequenceHandler.currentSequence.sequenceId;
+    wc.sequenceId = currentSequenceId;
+    
+    int success = [wc runModalSheetForWindow:window];
+    if (success && currentSequenceId != wc.sequenceId)
+    {
+        for (SequencerSequence* seqCheck in currentDocument.sequences)
+        {
+            if (seqCheck.sequenceId == wc.sequenceId)
+                return;
+        }
+        
+        NSMutableArray *newSequences = [NSMutableArray array];
+        
+        SequencerSequence* newSeq = [sequenceHandler.currentSequence duplicateWithNewId:wc.sequenceId];
+        newSeq.name = sequenceHandler.currentSequence.name;
+        for (SequencerSequence* seq in [AppDelegate appDelegate].currentDocument.sequences)
+        {
+            if (seq.chainedSequenceId == sequenceHandler.currentSequence.sequenceId)
+            {
+                seq.chainedSequenceId = newSeq.sequenceId;
+            }
+            if(seq.sequenceId != sequenceHandler.currentSequence.sequenceId)
+            {
+                [newSequences addObject:seq];
+            }
+        }
+        [[CocosScene cocosScene].rootNode deleteSequenceId:sequenceHandler.currentSequence.sequenceId];
+        [sequenceHandler deleteSequenceId:currentSequenceId];
+        [currentDocument.sequences addObject:newSeq];
+        sequenceHandler.currentSequence = newSeq;
+        [newSequences addObject:newSeq];
+        currentDocument.sequences = newSequences;
+        [animationPlaybackManager stop];
+    }
+}
+
 
 - (IBAction) menuOpenResourceManager:(id)sender
 {
