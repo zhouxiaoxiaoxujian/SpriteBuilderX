@@ -83,8 +83,6 @@
 #import "CustomPropSetting.h"
 #import "MainToolbarDelegate.h"
 #import "InspectorSeparator.h"
-#import "HelpWindow.h"
-#import "APIDocsWindow.h"
 #import "NodeGraphPropertySetter.h"
 #import "CCBSplitHorizontalView.h"
 #import "SpriteSheetSettingsWindow.h"

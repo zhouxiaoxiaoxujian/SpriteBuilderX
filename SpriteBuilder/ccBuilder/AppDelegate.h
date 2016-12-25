@@ -114,8 +114,6 @@ enum {
 @class SequencerHandler;
 @class SequencerScrubberSelectionView;
 @class MainWindow;
-@class HelpWindow;
-@class APIDocsWindow;
 @class MainToolbarDelegate;
 @class CCBSplitHorizontalView;
 @class AboutWindow;
@@ -281,9 +279,6 @@ typedef void (^CompletionCallback) (BOOL success);
     // Modal status window
     TaskStatusWindow* modalTaskStatusWindow;
     
-    // Help window
-    HelpWindow* helpWindow;
-    APIDocsWindow* apiDocsWindow;
     
     // About window
     AboutWindow* aboutWindow;

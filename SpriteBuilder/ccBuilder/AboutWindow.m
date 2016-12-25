@@ -102,10 +102,10 @@
 
 - (IBAction)btnViewOnGithub:(id)sender
 {
-    if (self.version)
-    {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/apportable/SpriteBuilder/tree/%@",self.version]]];
-    }
+
+    [[NSWorkspace sharedWorkspace] openURL:
+     [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/newnon/SpriteBuilderX"]]];
+    
     [self.window orderOut:sender];
 }
 
