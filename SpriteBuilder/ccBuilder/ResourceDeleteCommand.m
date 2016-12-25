@@ -52,7 +52,7 @@
     
     NSArray *packages = [_resourceManager allPackages];
 
-    return packagePathsToDelete.count >= packages.count;
+    return packagePathsToDelete.count > packages.count;
 }
 
 - (void)deleteResourcesInArrays:(NSMutableArray *)resourcesToDelete
