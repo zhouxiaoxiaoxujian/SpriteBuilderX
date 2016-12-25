@@ -39,10 +39,10 @@
     
     // iOS
     //[predefinedResolutions addObject:[ResolutionSetting settingIPhone]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhonePortrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
+//    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneLandscape]];
+//    [predefinedResolutions addObject:[ResolutionSetting settingIPhonePortrait]];
+//    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
+//    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];

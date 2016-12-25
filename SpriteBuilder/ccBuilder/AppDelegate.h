@@ -383,7 +383,7 @@ typedef void (^CompletionCallback) (BOOL success);
 - (void) closeLastDocument;
 - (void) openFile:(NSString*)filePath;
 
-- (void)newFile:(NSString *)fileName type:(int)type resolutions:(NSMutableArray *)resolutions;
+- (void)newFile:(NSString *)fileName type:(int)type resolutions:(NSMutableArray *)resolutions layerWidth:(float) width layerHeight:(float) height;
 
 // Publish commands
 - (void)checkForDirtyDocumentAndPublishAsync:(BOOL)async;

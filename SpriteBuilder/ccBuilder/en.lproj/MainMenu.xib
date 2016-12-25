@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,7 +117,7 @@
                                                 </binding>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Package" keyEquivalent="N" id="g6Z-Mh-Dls">
+                                        <menuItem title="Package" hidden="YES" enabled="NO" keyEquivalent="N" id="g6Z-Mh-Dls">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="menuNewPackage:" target="494" id="KZt-lS-hjH"/>
@@ -1031,12 +1031,12 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">
                         <items>
-                            <menuItem title="SpriteBuilder User Guide" keyEquivalent="?" id="492" customClass="SBMenuItem">
+                            <menuItem title="SpriteBuilder User Guide" hidden="YES" keyEquivalent="?" id="492" customClass="SBMenuItem">
                                 <connections>
                                     <action selector="showHelp:" target="494" id="1806"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Cocos2D API Documentation" id="EfM-fK-0Im">
+                            <menuItem title="Cocos2D API Documentation" hidden="YES" id="EfM-fK-0Im">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showAPIDocs:" target="494" id="4Ms-oL-y1G"/>
@@ -1382,7 +1382,7 @@ CA
                                                     <action selector="menuNewFolder:" target="494" id="fEV-XG-RIU"/>
                                                 </connections>
                                             </menuItem>
-                                            <menuItem title="New Package" id="fe0-WO-wub">
+                                            <menuItem title="New Package" hidden="YES" enabled="NO" id="fe0-WO-wub">
                                                 <connections>
                                                     <action selector="menuNewPackage:" target="494" id="b2M-0S-MIK"/>
                                                 </connections>

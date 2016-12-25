@@ -1189,8 +1189,8 @@ typedef enum
         if (projectSettings.defaultOrientation == kCCBOrientationLandscape)
         {
             // Full screen landscape
-            [updatedResolutions addObject:[ResolutionSetting settingIPhoneLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
+//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneLandscape]];
+//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
@@ -1200,8 +1200,8 @@ typedef enum
         else
         {
             // Full screen portrait
-            [updatedResolutions addObject:[ResolutionSetting settingIPhonePortrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
+//            [updatedResolutions addObject:[ResolutionSetting settingIPhonePortrait]];
+//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
@@ -1448,7 +1448,8 @@ typedef enum
     //[self updateStateOriginCenteredMenu];
     
     CocosScene* cs = [CocosScene cocosScene];
-    [cs setStageZoom:document.stageZoom];
+    [cs setStageZoom:0.45/*document.stageZoom*/]; //TODO: fix this!
+    NSLog(@"document.stageZoom: %f",document.stageZoom); //always 1.0
     [cs setScrollOffset:document.stageScrollOffset];
     
     // Make sure timeline is up to date
@@ -1813,7 +1814,7 @@ typedef enum
     [projectOutlineHandler updateSelectionPreview];
 }
 
-- (void) newFile:(NSString*) fileName type:(int)type resolutions: (NSMutableArray*) resolutions;
+- (void) newFile:(NSString*) fileName type:(int)type resolutions: (NSMutableArray*) resolutions layerWidth:(float) width layerHeight:(float) height
 {
     BOOL centered = NO;
     if (type == kCCBNewDocTypeNode ||
@@ -1875,8 +1876,14 @@ typedef enum
     }
     else if (type == kCCBNewDocTypeLayer)
     {
+        for(ResolutionSetting* resolution in resolutions)
+        {
+            resolution.width = width * resolution.resourceScale;
+            resolution.height = height * resolution.resourceScale;
+        }
+        [[CocosScene cocosScene] setStageSize:CGSizeMake(width, height) centeredOrigin:centered];
         // Set contentSize to w x h in scaled coordinates for layers
-        [PositionPropertySetter setSize:NSMakeSize(resolution.width, resolution.height) type:CCSizeTypePoints forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];
+        [PositionPropertySetter setSize:NSMakeSize(0, 0) type:CCSizeTypePoints forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];
     }
     
     [outlineHierarchy reloadData];
@@ -1920,7 +1927,7 @@ typedef enum
     
     //[self updateStateOriginCenteredMenu];
     
-    [[CocosScene cocosScene] setStageZoom:1];
+    [[CocosScene cocosScene] setStageZoom:0.45];
     [[CocosScene cocosScene] setScrollOffset:ccp(0,0)];
     
     [self checkForTooManyDirectoriesInCurrentDoc];
@@ -3416,6 +3423,9 @@ typedef enum
     zoom *= 1.2;
     if (zoom > 8) zoom = 8;
     [cs setStageZoom:zoom];
+    if (self.currentDocument) {
+        [self.currentDocument.data setValue:[NSNumber numberWithFloat:zoom] forKey:@"stageZoom"];
+    }
 }
 
 - (IBAction) menuZoomOut:(id)sender
@@ -3437,7 +3447,7 @@ typedef enum
 {
     CocosScene* cs = [CocosScene cocosScene];
     cs.scrollOffset = ccp(0,0);
-    [cs setStageZoom:1];
+    [cs setStageZoom:0.45];
 }
 
 - (IBAction) pressedToolSelection:(id)sender
@@ -4135,7 +4145,7 @@ typedef enum
 - (IBAction)menuAddStickyNote:(id)sender
 {
     CocosScene* cs = [CocosScene cocosScene];
-    [cs setStageZoom:1];
+    [cs setStageZoom:0.45];
     self.showStickyNotes = YES;
     [cs.notesLayer addNote];
 }
@@ -4312,7 +4322,7 @@ typedef enum
     self.snapToggle      = YES;
     self.snapToGuides    = YES;
     self.snapGrid        = NO;
-    self.snapNode        = NO;
+    self.snapNode        = YES;
 }
 
 -(void) setShowGuides:(BOOL)showGuidesNew {
