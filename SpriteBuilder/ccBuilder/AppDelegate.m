@@ -3049,9 +3049,10 @@ typedef enum
     // Configure the accessory view
     [saveDlg setAccessoryView:saveDlgAccessoryView];
     [saveDlgLanguagePopup removeAllItems];
-    [saveDlgLanguagePopup addItemsWithTitles:@[@"Objective-C", @"Swift"]];
+//    [saveDlgLanguagePopup addItemsWithTitles:@[@"Objective-C", @"Swift"]];
+    [saveDlgLanguagePopup addItemsWithTitles:@[@"C++"]];
     ((NSMenuItem*)saveDlgLanguagePopup.itemArray.firstObject).tag = CCBProgrammingLanguageObjectiveC;
-    ((NSMenuItem*)saveDlgLanguagePopup.itemArray.lastObject).tag = CCBProgrammingLanguageSwift;
+//    ((NSMenuItem*)saveDlgLanguagePopup.itemArray.lastObject).tag = CCBProgrammingLanguageSwift;
     saveDlgLanguagePopup.target = self;
     saveDlgLanguagePopup.action = @selector(updateLanguageHint);
     [self updateLanguageHint];
@@ -3070,8 +3071,8 @@ typedef enum
                 [[NSFileManager defaultManager] createDirectoryAtPath:fileName withIntermediateDirectories:NO attributes:NULL error:NULL];
                 
                 // Set icon of created directory
-                NSImage* folderIcon = [NSImage imageNamed:@"Folder.icns"];
-                [[NSWorkspace sharedWorkspace] setIcon:folderIcon forFile:fileName options:0];
+                //NSImage* folderIcon = [NSImage imageNamed:@"Folder.icns"];
+                //[[NSWorkspace sharedWorkspace] setIcon:folderIcon forFile:fileName options:0];
                 
                 // Create project file
                 NSString* projectName = [fileNameRaw lastPathComponent];
