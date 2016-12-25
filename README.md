@@ -2,7 +2,7 @@
 
 This branch was forked from: https://github.com/newnon/SpriteBuilderX
 
-My repo contaion two branches of SB: 
+My repo contains of two branches of SB: 
 
  - "SpriteBuilderX" - for iOS & Anroid. It requires the use - https://github.com/newnon/cocos2d-x
  - "1.5" - iOS only(also it's renamed to CocosBuilder)
