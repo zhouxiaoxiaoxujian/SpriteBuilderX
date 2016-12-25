@@ -117,7 +117,7 @@
                                                 </binding>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Package" hidden="YES" enabled="NO" keyEquivalent="N" id="g6Z-Mh-Dls">
+                                        <menuItem title="Package" keyEquivalent="N" id="g6Z-Mh-Dls">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="menuNewPackage:" target="494" id="KZt-lS-hjH"/>
@@ -1382,7 +1382,7 @@ CA
                                                     <action selector="menuNewFolder:" target="494" id="fEV-XG-RIU"/>
                                                 </connections>
                                             </menuItem>
-                                            <menuItem title="New Package" hidden="YES" enabled="NO" id="fe0-WO-wub">
+                                            <menuItem title="New Package" id="fe0-WO-wub">
                                                 <connections>
                                                     <action selector="menuNewPackage:" target="494" id="b2M-0S-MIK"/>
                                                 </connections>
