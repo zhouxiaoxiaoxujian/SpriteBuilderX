@@ -3423,9 +3423,6 @@ typedef enum
     zoom *= 1.2;
     if (zoom > 8) zoom = 8;
     [cs setStageZoom:zoom];
-    if (self.currentDocument) {
-        [self.currentDocument.data setValue:[NSNumber numberWithFloat:zoom] forKey:@"stageZoom"];
-    }
 }
 
 - (IBAction) menuZoomOut:(id)sender
