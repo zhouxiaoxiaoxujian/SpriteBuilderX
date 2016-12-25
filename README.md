@@ -1,5 +1,12 @@
 # SpriteBuilderX
 
+This branch was forked from: https://github.com/newnon/SpriteBuilderX
+
+My repo contaion two branches of SB: 
+
+ - "SpriteBuilderX" - for iOS & Anroid. It requires the use - https://github.com/newnon/cocos2d-x
+ - "1.5" - iOS only(also it's renamed to CocosBuilder)
+
 SpriteBuilderX is the first game development suite for rapidly building native iOS games with Objective-C and Xcode. SpriteBuilderX is free and open source (MIT licensed) and available on github.
 
 Core Features:
