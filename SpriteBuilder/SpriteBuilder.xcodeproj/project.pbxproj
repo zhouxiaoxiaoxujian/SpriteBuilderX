@@ -2889,6 +2889,9 @@
 		E525FFE261905E5B939DC1F1 /* InspectorCCBFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCCBFile.xib; sourceTree = "<group>"; };
 		E525FFEB091D46AB06B02BF1 /* CCBPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisher.m; sourceTree = "<group>"; };
 		F85F7C4D1E100C7000A13B3F /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
+		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
+		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
+		F85F7C571E10205F00A13B3F /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		FA98CFC1154E7D1C006E58C5 /* ccbpublish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ccbpublish; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98CFC3154E7D1C006E58C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccbpublish.m; sourceTree = "<group>"; };
@@ -6076,6 +6079,9 @@
 		E525F5A4A89A3C9ABF48EA61 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				F85F7C561E10177800A13B3F /* Rakefile */,
+				F85F7C571E10205F00A13B3F /* Version.xcconfig */,
+				F85F7C551E10177800A13B3F /* build_distribution.py */,
 				E525F74DC72109C2F7FB0EC8 /* openXcodeProject.AppleScript */,
 			);
 			name = Scripts;
@@ -7836,7 +7842,7 @@
 		};
 		F85F7C4F1E100C7F00A13B3F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -7845,7 +7851,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#cd $SRCROOT\n#cd ../scripts\n#rake build:generated";
+			shellScript = "cd $SRCROOT\ncd ../scripts\nrake build:generated";
 		};
 /* End PBXShellScriptBuildPhase section */
 

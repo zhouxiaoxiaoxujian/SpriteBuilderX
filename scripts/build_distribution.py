@@ -58,10 +58,7 @@ class BuildDistribution:
 
         self.clean_build_folders()
     
-        if sku=='pro':
-            product_name = 'SpriteBuilder 1.3 Beta'
-        else:
-            product_name = 'SpriteBuilderX'
+        product_name = 'SpriteBuilderX'
         
         self.create_all_generated_files(version, sku, version_info)
 
