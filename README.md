@@ -4,16 +4,15 @@ This branch was forked from: https://github.com/newnon/SpriteBuilderX
 
 My repo contains of two branches of SB: 
 
- - "SpriteBuilderX" - for iOS & Anroid. It requires the use - https://github.com/newnon/cocos2d-x
+ - "SpriteBuilderX" - for iOS & Android. It requires the use - https://github.com/newnon/cocos2d-x
  - "1.5" - iOS only(also it's renamed to CocosBuilder)
 
-SpriteBuilderX is the first game development suite for rapidly building native iOS games with Objective-C and Xcode. SpriteBuilderX is free and open source (MIT licensed) and available on github.
 
 Core Features:
 
 * Designer-friendly UI
 * Animation editor for scenes, characters and boned animations
-* Tileless editor
+* Timeless editor
 * User interface designer
 * Asset management & sprite sheet generation
 * Tools for localization
