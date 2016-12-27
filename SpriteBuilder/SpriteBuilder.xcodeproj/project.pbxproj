@@ -589,40 +589,13 @@
 		D35E589E18E391DA008571EC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35E589D18E391DA008571EC /* GLKit.framework */; };
 		DC05E77B18D0ACCB00592A1E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
 		DC05E78818D0ACE000592A1E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DC05E79118D0AD7800592A1E /* CCBPluginSBButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC05E76918D0A9BD00592A1E /* CCBPluginSBButtonNode.m */; };
-		DC05E79218D0AD7800592A1E /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC05E76A18D0A9BD00592A1E /* CCBPProperties.plist */; };
-		DC05E79318D0AD7800592A1E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC05E76B18D0A9BD00592A1E /* Icon.png */; };
-		DC05E79418D0AD7800592A1E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC05E76C18D0A9BD00592A1E /* Icon@2x.png */; };
-		DC05E79518D0AD8100592A1E /* CCBPluginSBControlNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC05E76F18D0A9BD00592A1E /* CCBPluginSBControlNode.m */; };
-		DC05E79618D0AD8100592A1E /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC05E77018D0A9BD00592A1E /* CCBPProperties.plist */; };
 		DC05E79B18D0ADF800592A1E /* SBControlNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DC05E78318D0ACCB00592A1E /* SBControlNode.ccbPlugNode */; };
 		DC05E79C18D0ADF800592A1E /* SBButtonNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = DC05E79018D0ACE000592A1E /* SBButtonNode.ccbPlugNode */; };
 		DC5129C11891450D0091873D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DC6802F9189145840060BE39 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC6802F5189145840060BE39 /* CCBPProperties.plist */; };
-		DC6802FA189145840060BE39 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6802F6189145840060BE39 /* Icon.png */; };
-		DC6802FB189145840060BE39 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC6802F7189145840060BE39 /* Icon@2x.png */; };
 		DC6803001891466C0060BE39 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DC68030F189146900060BE39 /* CCBPluginSKLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC68030B189146900060BE39 /* CCBPluginSKLabelNode.m */; };
-		DC680310189146900060BE39 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC68030C189146900060BE39 /* CCBPProperties.plist */; };
-		DC680311189146900060BE39 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC68030D189146900060BE39 /* Icon.png */; };
-		DC680312189146900060BE39 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC68030E189146900060BE39 /* Icon@2x.png */; };
 		DC680321189156310060BE39 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DC680333189156A60060BE39 /* CCBPluginSKColorSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC68032F189156A60060BE39 /* CCBPluginSKColorSpriteNode.m */; };
-		DC680334189156A60060BE39 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC680330189156A60060BE39 /* CCBPProperties.plist */; };
-		DC680335189156A60060BE39 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC680331189156A60060BE39 /* Icon.png */; };
-		DC680336189156A60060BE39 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC680332189156A60060BE39 /* Icon@2x.png */; };
-		DC68033C189169510060BE39 /* CCNode+SKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC68031A18914E650060BE39 /* CCNode+SKNode.m */; };
-		DC680341189169D50060BE39 /* CCBPluginSKNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB9F15C1890607D00128D78 /* CCBPluginSKNode.m */; };
-		DC680343189169E10060BE39 /* CCBPluginSKSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6802F4189145830060BE39 /* CCBPluginSKSpriteNode.m */; };
 		DCB9F1501890600D00128D78 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DCB9F1651890607D00128D78 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F15D1890607D00128D78 /* CCBPProperties.plist */; };
-		DCB9F1671890607D00128D78 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F1601890607D00128D78 /* Icon.png */; };
-		DCB9F1681890607D00128D78 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCB9F1611890607D00128D78 /* Icon@2x.png */; };
 		DCFB063718E32B7500DF02A0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
-		DCFB064918E32BBD00DF02A0 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064518E32BBD00DF02A0 /* CCBPProperties.plist */; };
-		DCFB064A18E32BBD00DF02A0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064618E32BBD00DF02A0 /* Icon.png */; };
-		DCFB064B18E32BBD00DF02A0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFB064718E32BBD00DF02A0 /* Icon@2x.png */; };
-		DCFB064E18E32BFA00DF02A0 /* CCBPluginSKFile.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFB064D18E32BFA00DF02A0 /* CCBPluginSKFile.m */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
 		E312973316CC377700A09155 /* SequencerPopoverBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E312973216CC377700A09155 /* SequencerPopoverBlock.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		E312973516CC677400A09155 /* SequencerPopoverSound.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312973416CC677400A09155 /* SequencerPopoverSound.xib */; };
@@ -2163,49 +2136,14 @@
 		D2E0168418D783C900927430 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
 		D2E0168618D783F800927430 /* SpriteBuilder.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpriteBuilder.sdef; sourceTree = SOURCE_ROOT; };
 		D35E589D18E391DA008571EC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		DC05E76818D0A9BD00592A1E /* CCBPluginSBButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSBButtonNode.h; sourceTree = "<group>"; };
-		DC05E76918D0A9BD00592A1E /* CCBPluginSBButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSBButtonNode.m; sourceTree = "<group>"; };
-		DC05E76A18D0A9BD00592A1E /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DC05E76B18D0A9BD00592A1E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DC05E76C18D0A9BD00592A1E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		DC05E76E18D0A9BD00592A1E /* CCBPluginSBControlNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSBControlNode.h; sourceTree = "<group>"; };
-		DC05E76F18D0A9BD00592A1E /* CCBPluginSBControlNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSBControlNode.m; sourceTree = "<group>"; };
-		DC05E77018D0A9BD00592A1E /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		DC05E78318D0ACCB00592A1E /* SBControlNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SBControlNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC05E79018D0ACE000592A1E /* SBButtonNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SBButtonNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5129C91891450D0091873D /* SKSpriteNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKSpriteNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC6802F3189145830060BE39 /* CCBPluginSKSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSKSpriteNode.h; sourceTree = "<group>"; };
-		DC6802F4189145830060BE39 /* CCBPluginSKSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSKSpriteNode.m; sourceTree = "<group>"; };
-		DC6802F5189145840060BE39 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DC6802F6189145840060BE39 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DC6802F7189145840060BE39 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DC6803081891466C0060BE39 /* SKLabelNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKLabelNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC68030A189146900060BE39 /* CCBPluginSKLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSKLabelNode.h; sourceTree = "<group>"; };
-		DC68030B189146900060BE39 /* CCBPluginSKLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSKLabelNode.m; sourceTree = "<group>"; };
-		DC68030C189146900060BE39 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DC68030D189146900060BE39 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DC68030E189146900060BE39 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		DC68031918914E650060BE39 /* CCNode+SKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+SKNode.h"; sourceTree = "<group>"; };
-		DC68031A18914E650060BE39 /* CCNode+SKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+SKNode.m"; sourceTree = "<group>"; };
 		DC680329189156310060BE39 /* SKColorSpriteNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKColorSpriteNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC68032E189156A60060BE39 /* CCBPluginSKColorSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSKColorSpriteNode.h; sourceTree = "<group>"; };
-		DC68032F189156A60060BE39 /* CCBPluginSKColorSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSKColorSpriteNode.m; sourceTree = "<group>"; };
-		DC680330189156A60060BE39 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DC680331189156A60060BE39 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DC680332189156A60060BE39 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DC68033A189168390060BE39 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		DCB9F1581890600D00128D78 /* SKNode.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKNode.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCB9F15B1890607D00128D78 /* CCBPluginSKNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSKNode.h; sourceTree = "<group>"; };
-		DCB9F15C1890607D00128D78 /* CCBPluginSKNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSKNode.m; sourceTree = "<group>"; };
-		DCB9F15D1890607D00128D78 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DCB9F1601890607D00128D78 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DCB9F1611890607D00128D78 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		DCFB063F18E32B7500DF02A0 /* SKFile.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKFile.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCFB064518E32BBD00DF02A0 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
-		DCFB064618E32BBD00DF02A0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		DCFB064718E32BBD00DF02A0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		DCFB064C18E32BFA00DF02A0 /* CCBPluginSKFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPluginSKFile.h; sourceTree = "<group>"; };
-		DCFB064D18E32BFA00DF02A0 /* CCBPluginSKFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPluginSKFile.m; sourceTree = "<group>"; };
 		E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerPopoverBlock.xib; sourceTree = "<group>"; };
 		E312973116CC377700A09155 /* SequencerPopoverBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerPopoverBlock.h; sourceTree = "<group>"; };
 		E312973216CC377700A09155 /* SequencerPopoverBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerPopoverBlock.m; sourceTree = "<group>"; };
@@ -5105,112 +5043,6 @@
 			name = SpriteBuilderCommands;
 			sourceTree = "<group>";
 		};
-		DC05E76718D0A9BD00592A1E /* SBButtonNode */ = {
-			isa = PBXGroup;
-			children = (
-				DC05E76818D0A9BD00592A1E /* CCBPluginSBButtonNode.h */,
-				DC05E76918D0A9BD00592A1E /* CCBPluginSBButtonNode.m */,
-				DC05E76A18D0A9BD00592A1E /* CCBPProperties.plist */,
-				DC05E76B18D0A9BD00592A1E /* Icon.png */,
-				DC05E76C18D0A9BD00592A1E /* Icon@2x.png */,
-			);
-			path = SBButtonNode;
-			sourceTree = "<group>";
-		};
-		DC05E76D18D0A9BD00592A1E /* SBControlNode */ = {
-			isa = PBXGroup;
-			children = (
-				DC05E76E18D0A9BD00592A1E /* CCBPluginSBControlNode.h */,
-				DC05E76F18D0A9BD00592A1E /* CCBPluginSBControlNode.m */,
-				DC05E77018D0A9BD00592A1E /* CCBPProperties.plist */,
-			);
-			path = SBControlNode;
-			sourceTree = "<group>";
-		};
-		DC6802F2189145830060BE39 /* SKSpriteNode */ = {
-			isa = PBXGroup;
-			children = (
-				DC6802F3189145830060BE39 /* CCBPluginSKSpriteNode.h */,
-				DC6802F4189145830060BE39 /* CCBPluginSKSpriteNode.m */,
-				DC6802F5189145840060BE39 /* CCBPProperties.plist */,
-				DC6802F6189145840060BE39 /* Icon.png */,
-				DC6802F7189145840060BE39 /* Icon@2x.png */,
-			);
-			path = SKSpriteNode;
-			sourceTree = "<group>";
-		};
-		DC680309189146900060BE39 /* SKLabelNode */ = {
-			isa = PBXGroup;
-			children = (
-				DC68030A189146900060BE39 /* CCBPluginSKLabelNode.h */,
-				DC68030B189146900060BE39 /* CCBPluginSKLabelNode.m */,
-				DC68030C189146900060BE39 /* CCBPProperties.plist */,
-				DC68030D189146900060BE39 /* Icon.png */,
-				DC68030E189146900060BE39 /* Icon@2x.png */,
-			);
-			path = SKLabelNode;
-			sourceTree = "<group>";
-		};
-		DC68032D189156A60060BE39 /* SKSpriteNodeWithColor */ = {
-			isa = PBXGroup;
-			children = (
-				DC68032E189156A60060BE39 /* CCBPluginSKColorSpriteNode.h */,
-				DC68032F189156A60060BE39 /* CCBPluginSKColorSpriteNode.m */,
-				DC680330189156A60060BE39 /* CCBPProperties.plist */,
-				DC680331189156A60060BE39 /* Icon.png */,
-				DC680332189156A60060BE39 /* Icon@2x.png */,
-			);
-			path = SKSpriteNodeWithColor;
-			sourceTree = "<group>";
-		};
-		DCB9F1411890500E00128D78 /* SpriteKitNodes */ = {
-			isa = PBXGroup;
-			children = (
-				DCFB064218E32BBD00DF02A0 /* SKFile */,
-				DCB9F15A1890607D00128D78 /* SKNode */,
-				DC680309189146900060BE39 /* SKLabelNode */,
-				DC6802F2189145830060BE39 /* SKSpriteNode */,
-				DC68032D189156A60060BE39 /* SKSpriteNodeWithColor */,
-				DC05E76D18D0A9BD00592A1E /* SBControlNode */,
-				DC05E76718D0A9BD00592A1E /* SBButtonNode */,
-				DCB9F14B1890506E00128D78 /* compatibility categories */,
-			);
-			path = SpriteKitNodes;
-			sourceTree = "<group>";
-		};
-		DCB9F14B1890506E00128D78 /* compatibility categories */ = {
-			isa = PBXGroup;
-			children = (
-				DC68031918914E650060BE39 /* CCNode+SKNode.h */,
-				DC68031A18914E650060BE39 /* CCNode+SKNode.m */,
-			);
-			name = "compatibility categories";
-			sourceTree = "<group>";
-		};
-		DCB9F15A1890607D00128D78 /* SKNode */ = {
-			isa = PBXGroup;
-			children = (
-				DCB9F15B1890607D00128D78 /* CCBPluginSKNode.h */,
-				DCB9F15C1890607D00128D78 /* CCBPluginSKNode.m */,
-				DCB9F15D1890607D00128D78 /* CCBPProperties.plist */,
-				DCB9F1601890607D00128D78 /* Icon.png */,
-				DCB9F1611890607D00128D78 /* Icon@2x.png */,
-			);
-			path = SKNode;
-			sourceTree = "<group>";
-		};
-		DCFB064218E32BBD00DF02A0 /* SKFile */ = {
-			isa = PBXGroup;
-			children = (
-				DCFB064C18E32BFA00DF02A0 /* CCBPluginSKFile.h */,
-				DCFB064D18E32BFA00DF02A0 /* CCBPluginSKFile.m */,
-				DCFB064518E32BBD00DF02A0 /* CCBPProperties.plist */,
-				DCFB064618E32BBD00DF02A0 /* Icon.png */,
-				DCFB064718E32BBD00DF02A0 /* Icon@2x.png */,
-			);
-			path = SKFile;
-			sourceTree = "<group>";
-		};
 		E3214C3F15D3B9D0002413A7 /* Custom Properties */ = {
 			isa = PBXGroup;
 			children = (
@@ -5666,7 +5498,6 @@
 		E3B7AED114E31A7800DFD402 /* PlugIns (Nodes) */ = {
 			isa = PBXGroup;
 			children = (
-				DCB9F1411890500E00128D78 /* SpriteKitNodes */,
 				E35392461518AD0A00471721 /* Core */,
 				E35392481518AD4100471721 /* UI */,
 				B79F90E717FF335000908504 /* Physics */,
@@ -7662,7 +7493,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC05E79618D0AD8100592A1E /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7670,9 +7500,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC05E79418D0AD7800592A1E /* Icon@2x.png in Resources */,
-				DC05E79318D0AD7800592A1E /* Icon.png in Resources */,
-				DC05E79218D0AD7800592A1E /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7680,9 +7507,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC6802FA189145840060BE39 /* Icon.png in Resources */,
-				DC6802FB189145840060BE39 /* Icon@2x.png in Resources */,
-				DC6802F9189145840060BE39 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7690,9 +7514,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC680311189146900060BE39 /* Icon.png in Resources */,
-				DC680312189146900060BE39 /* Icon@2x.png in Resources */,
-				DC680310189146900060BE39 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7700,9 +7521,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC680335189156A60060BE39 /* Icon.png in Resources */,
-				DC680336189156A60060BE39 /* Icon@2x.png in Resources */,
-				DC680334189156A60060BE39 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7710,9 +7528,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCB9F1671890607D00128D78 /* Icon.png in Resources */,
-				DCB9F1681890607D00128D78 /* Icon@2x.png in Resources */,
-				DCB9F1651890607D00128D78 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7720,9 +7535,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCFB064A18E32BBD00DF02A0 /* Icon.png in Resources */,
-				DCFB064B18E32BBD00DF02A0 /* Icon@2x.png in Resources */,
-				DCFB064918E32BBD00DF02A0 /* CCBPProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7887,7 +7699,6 @@
 				772BE594134BC2BF0009B5B9 /* CCBReaderInternalV1.m in Sources */,
 				771B2B321353818200B260BA /* NewDocWindowController.m in Sources */,
 				77156DB1137F0351005EF746 /* CCBSpriteSheetParser.m in Sources */,
-				DC68033C189169510060BE39 /* CCNode+SKNode.m in Sources */,
 				77E1992013858D78006C361B /* NSBezierPath_AMShading.m in Sources */,
 				77E1992113858D78006C361B /* NSString_AITruncation.m in Sources */,
 				77E1992213858D78006C361B /* PSMMetalTabStyle.m in Sources */,
@@ -8396,7 +8207,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC05E79518D0AD8100592A1E /* CCBPluginSBControlNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8404,7 +8214,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC05E79118D0AD7800592A1E /* CCBPluginSBButtonNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8412,7 +8221,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC680343189169E10060BE39 /* CCBPluginSKSpriteNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8420,7 +8228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC68030F189146900060BE39 /* CCBPluginSKLabelNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8428,7 +8235,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC680333189156A60060BE39 /* CCBPluginSKColorSpriteNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8436,7 +8242,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC680341189169D50060BE39 /* CCBPluginSKNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8444,7 +8249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCFB064E18E32BFA00DF02A0 /* CCBPluginSKFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

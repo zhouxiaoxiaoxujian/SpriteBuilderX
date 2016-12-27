@@ -513,11 +513,6 @@ typedef enum
 
     [self registerNotificationObservers];
 
-    // Disable experimental features
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"EnableSpriteKit"] boolValue])
-    {
-        [[_menuItemExperimentalSpriteKitProject menu] removeItem:_menuItemExperimentalSpriteKitProject];
-    }
     
     // Initialize Audio
     //[OALSimpleAudio sharedInstance];
@@ -3111,10 +3106,6 @@ typedef enum
 	[self createNewProjectTargetting:CCBTargetEngineCocos2d];
 }
 
--(IBAction) menuNewSpriteKitProject:(id)sender
-{
-	[self createNewProjectTargetting:CCBTargetEngineSpriteKit];
-}
 
 - (IBAction) menuNewPackage:(id)sender
 {
