@@ -778,6 +778,7 @@
 		E525FFEC03F2FE3650547F90 /* InspectorPopoverFloatXY.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F43AA008D5DD2726DA7E /* InspectorPopoverFloatXY.xib */; };
 		E525FFEC30A90DA81B17E9F5 /* SemanticVersioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F0662ED78DDE9C8DFFBB /* SemanticVersioning.m */; };
 		E525FFF90B5CCC7573B84680 /* InspectorIntegerLabeled.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */; };
+		F8462DD31E132925005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462DD21E132925005DB3BD /* Images.xcassets */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
@@ -2206,6 +2207,7 @@
 		E525FFC4E205CD906143FE30 /* InspectorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorString.m; sourceTree = "<group>"; };
 		E525FFE261905E5B939DC1F1 /* InspectorCCBFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCCBFile.xib; sourceTree = "<group>"; };
 		E525FFEB091D46AB06B02BF1 /* CCBPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisher.m; sourceTree = "<group>"; };
+		F8462DD21E132925005DB3BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpriteBuilderX/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F85F7C4D1E100C7000A13B3F /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
 		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
 		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
@@ -2918,6 +2920,7 @@
 		7789ACEB133AB6A700CEFCC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F8462DD21E132925005DB3BD /* Images.xcassets */,
 				B7AC69DB17A9D9700041B8BD /* defaultTemplates.zip */,
 				F85F7C4D1E100C7000A13B3F /* Generated */,
 				E35DBBDD14F3D1830070A6E4 /* Configurations */,
@@ -5011,6 +5014,7 @@
 				B7DE84961937C6380039FB72 /* SpriteBuilder-logo.png in Resources */,
 				92BF5E5B187B43F00072C3A1 /* AudioPlayerView.xib in Resources */,
 				92F0960918F8851300D47A94 /* inspector-body-bg.png in Resources */,
+				F8462DD31E132925005DB3BD /* Images.xcassets in Resources */,
 				92154ACB18A5531800BD215C /* Icon@2x.png in Resources */,
 				80F90905183C188400A714FC /* seq-visible-faint.png in Resources */,
 				8045F136183ADA900082BD94 /* seq-visible.png in Resources */,
