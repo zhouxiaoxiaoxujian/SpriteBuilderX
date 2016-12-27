@@ -1272,7 +1272,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" copiesOnScroll="NO" id="92y-mP-XwZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <collectionView selectable="YES" id="2015" customClass="PlugInNodeCollectionView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
@@ -2679,9 +2679,9 @@ CA
                         <size key="minSize" width="127" height="23"/>
                         <size key="maxSize" width="132" height="25"/>
                         <segmentedControl key="view" wantsLayer="YES" verticalHuggingPriority="750" id="1786">
-                            <rect key="frame" x="0.0" y="14" width="131" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="131" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectAny" id="1787">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="selectAny" id="1787">
                                 <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment toolTip="Hide or Show the Resources" image="TB_leftPanel" selected="YES" tag="-1">
