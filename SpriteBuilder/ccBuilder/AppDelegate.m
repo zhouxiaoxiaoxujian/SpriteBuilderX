@@ -822,7 +822,14 @@ typedef enum
     
     if (doc.isDirty)
     {
-        NSAlert* alert = [NSAlert alertWithMessageText:[NSString stringWithFormat: @"Do you want to save the changes you made in the document “%@”?", [doc.filePath lastPathComponent]] defaultButton:@"Save" alternateButton:@"Cancel" otherButton:@"Don’t Save" informativeTextWithFormat:@"Your changes will be lost if you don’t save them."];
+        NSAlert* alert = [NSAlert alertWithMessageText:
+                          [NSString stringWithFormat: @"Do you want to save the changes you made in the document “%@”?",
+                           [doc.filePath lastPathComponent]]
+                                         defaultButton:@"Save"
+                                       alternateButton:@"Cancel"
+                                           otherButton:@"Don’t Save"
+                             informativeTextWithFormat:@"Your changes will be lost if you don’t save them."];
+        
         NSInteger result = [alert runModal];
         
         if (result == NSAlertDefaultReturn)
