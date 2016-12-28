@@ -75,8 +75,6 @@
     
     self.tabletPositionScaleFactor = 2.0f;
 
-    self.canUpdateCocos2D = NO;
-    self.cocos2dUpdateIgnoredVersions = [NSMutableArray array];
     self.readOnly = NO;
     
     self.resourceProperties = [NSMutableDictionary dictionary];
@@ -211,8 +209,6 @@
         self.resourceAutoScaleFactor = 4;
     }
 
-    self.cocos2dUpdateIgnoredVersions = [[dict objectForKey:@"cocos2dUpdateIgnoredVersions"] mutableCopy];
-
     self.deviceScaling = [[dict objectForKey:@"deviceScaling"] intValue];
     self.defaultOrientation = [[dict objectForKey:@"defaultOrientation"] intValue];
     self.designTarget = [[dict objectForKey:@"designTarget"] intValue];
@@ -284,8 +280,7 @@
     dict[@"deviceOrientationLandscapeRight"] = @(_deviceOrientationLandscapeRight);
     dict[@"resourceAutoScaleFactor"] = @(_resourceAutoScaleFactor);
 
-    dict[@"cocos2dUpdateIgnoredVersions"] = _cocos2dUpdateIgnoredVersions;
-
+    
     dict[@"designTarget"] = @(_designTarget);
     dict[@"defaultOrientation"] = @(_defaultOrientation);
     dict[@"deviceScaling"] = @(_deviceScaling);
@@ -711,13 +706,6 @@
 	}
 }
 
-
-- (void)setCocos2dUpdateIgnoredVersions:(NSMutableArray *)anArray
-{
-    _cocos2dUpdateIgnoredVersions = !anArray
-        ? [NSMutableArray array]
-        : anArray;
-}
 
 
 - (void)flagFilesDirtyWithWarnings:(CCBWarnings *)warnings

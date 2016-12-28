@@ -85,10 +85,7 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 
 @property (nonatomic, readonly) NSMutableArray* platformsSettings;
 
-// *** Temporary property, do not persist ***
-@property (nonatomic) BOOL canUpdateCocos2D;
 
-@property (nonatomic, strong) NSMutableArray *cocos2dUpdateIgnoredVersions;
 @property (nonatomic) BOOL excludedFromPackageMigration;
 
 @property (nonatomic, copy) NSString* versionStr;

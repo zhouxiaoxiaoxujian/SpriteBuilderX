@@ -110,7 +110,6 @@
 #import "PlugInNodeCollectionView.h"
 #import "SBErrors.h"
 #import "NSArray+Query.h"
-#import "Cocos2dUpdater.h"
 #import "OALSimpleAudio.h"
 #import "SBUserDefaultsKeys.h"
 #import "MiscConstants.h"
@@ -123,13 +122,11 @@
 #import "PackageImporter.h"
 #import "PackageCreator.h"
 #import "ResourceCommandController.h"
-#import "ProjectMigrator.h"
 #import "ProjectSettings+Convenience.h"
 #import "CCBDocumentDataCreator.h"
 #import "CCBPublisherCacheCleaner.h"
 #import "CCBPublisherController.h"
 #import "ResourceManager+Publishing.h"
-#import "SBUpdater.h"
 #import "OpenProjectInXCode.h"
 #import "CCNode+NodeInfo.h"
 #import "PreviewContainerViewController.h"
@@ -1690,9 +1687,6 @@ typedef enum
         return NO;
     }
 
-    //ProjectMigrator *migrator = [[ProjectMigrator alloc] initWithProjectSettings:projectSettings];
-    //[migrator migrate];
-
     // Load or create language file
     NSString* langFile = [[ResourceManager sharedManager].mainActiveDirectoryPath stringByAppendingPathComponent:@"Strings.json"];
     localizationEditorHandler.managedFile = langFile;
@@ -3025,12 +3019,6 @@ typedef enum
     [self closeProject];
 }
 
-- (IBAction)updateCocos2d:(id)sender
-{
-    Cocos2dUpdater *cocos2dUpdater = [[Cocos2dUpdater alloc] initWithAppDelegate:self projectSettings:projectSettings];
-    [cocos2dUpdater updateAndBypassIgnore:YES];
-}
-
 -(void)updateLanguageHint
 {
     switch (saveDlgLanguagePopup.selectedItem.tag)
@@ -4275,10 +4263,6 @@ typedef enum
 }
 
 
-- (SBVersionComparitor*)versionComparatorForUpdater
-{
-	return [SBVersionComparitor new];
-}
 
 - (BOOL)updaterShouldPromptForPermissionToCheckForUpdates
 {
