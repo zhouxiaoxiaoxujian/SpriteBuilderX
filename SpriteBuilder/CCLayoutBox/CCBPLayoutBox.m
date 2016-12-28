@@ -59,6 +59,7 @@ static float roundUpToEven(float f)
 - (void) layout
 {
     _needsLayout = NO;
+    CGSize dimensionsSize = [self convertContentSizeToPoints:self.dimensions type:self.dimensionsType];
     if (self.direction == CCLayoutBoxDirectionHorizontal)
     {
         // Get the maximum height
@@ -69,8 +70,34 @@ static float roundUpToEven(float f)
             if (height > maxHeight) maxHeight = height;
         }
         
+        if(dimensionsSize.height > 0)
+            maxHeight = dimensionsSize.height;
+        
         // Position the nodes
         float width = 0;
+        float offset = 0;
+        
+        if(dimensionsSize.width > 0)
+        {
+
+            for (CCNode* child in self.children)
+            {
+                if(child.visible)
+                {
+                    CGSize childSize = child.contentSizeInPoints;
+                    width += childSize.width * [[child valueForKey:@"scaleX"] floatValue];
+                    width += self.spacing;
+                }
+            }
+            if(self.children.count)
+                width -= self.spacing;
+            // Account for last added increment
+            if (width < 0) width = 0;
+            
+            width = (dimensionsSize.width - width)/2;
+            offset = width;
+        }
+        
         for (CCNode* child in self.children)
         {
             if(child.visible)
@@ -93,11 +120,12 @@ static float roundUpToEven(float f)
         }
         
         // Account for last added increment
-        width -= self.spacing;
+        if(self.children.count)
+            width -= self.spacing;
         if (width < 0) width = 0;
         
         self.contentSizeType = CCSizeTypePoints;
-        self.contentSize = CGSizeMake(roundUpToEven(width), roundUpToEven(maxHeight));
+        self.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
     }
     else
     {
@@ -109,8 +137,34 @@ static float roundUpToEven(float f)
             if (width > maxWidth) maxWidth = width;
         }
         
+        if(dimensionsSize.width != 0)
+            maxWidth = dimensionsSize.width;
+        
         // Position the nodes
         float height = 0;
+        float offset = 0;
+        
+        if(dimensionsSize.height > 0)
+        {
+            
+            for (CCNode* child in self.children)
+            {
+                if(child.visible)
+                {
+                    CGSize childSize = child.contentSizeInPoints;
+                    height += childSize.height * [[child valueForKey:@"scaleY"] floatValue];
+                    height += self.spacing;
+                }
+            }
+            if(self.children.count)
+                height -= self.spacing;
+            // Account for last added increment
+            if (height < 0) height = 0;
+            
+            height = (dimensionsSize.height - height)/2;
+            offset = height;
+        }
+        
         for (CCNode* child in [self.children reverseObjectEnumerator])
         {
             if(child.visible)
@@ -133,11 +187,12 @@ static float roundUpToEven(float f)
         }
         
         // Account for last added increment
-        height -= self.spacing;
+        if(self.children.count)
+            height -= self.spacing;
         if (height < 0) height = 0;
         
         self.contentSizeType = CCSizeTypePoints;
-        self.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height));
+        self.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
     }
 }
 
@@ -168,6 +223,18 @@ static float roundUpToEven(float f)
     {
         [super visit:renderer parentTransform:parentTransform];
     }
+}
+
+- (void) setDimensionsType:(CCSizeType)dimensionsType
+{
+    _dimensionsType = dimensionsType;
+    [self needsLayout];
+}
+
+- (void) setDimensions:(CGSize)dimensions
+{
+    _dimensions = dimensions;
+    [self needsLayout];
 }
 
 @end

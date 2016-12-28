@@ -12,5 +12,7 @@
 
 @property (nonatomic,assign) BOOL clipContent;
 @property (nonatomic,readonly) CGRect clippingRect;
+@property (nonatomic,assign) CGSize dimensions;
+@property (nonatomic,assign) CCSizeType dimensionsType;
 
 @end
