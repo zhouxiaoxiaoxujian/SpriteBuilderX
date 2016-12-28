@@ -1026,6 +1026,7 @@
 		E525FFEC30A90DA81B17E9F5 /* SemanticVersioning.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F0662ED78DDE9C8DFFBB /* SemanticVersioning.m */; };
 		E525FFF21919490B3568DC1F /* ZipDirectoryOperation_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FC007BC96FC532967575 /* ZipDirectoryOperation_Tests.m */; };
 		E525FFF90B5CCC7573B84680 /* InspectorIntegerLabeled.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */; };
+		F8462E321E133B12005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462E311E133B12005DB3BD /* Images.xcassets */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
@@ -2780,6 +2781,7 @@
 		E525FFC4E205CD906143FE30 /* InspectorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorString.m; sourceTree = "<group>"; };
 		E525FFE261905E5B939DC1F1 /* InspectorCCBFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCCBFile.xib; sourceTree = "<group>"; };
 		E525FFEB091D46AB06B02BF1 /* CCBPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisher.m; sourceTree = "<group>"; };
+		F8462E311E133B12005DB3BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F85F7C4D1E100C7000A13B3F /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
 		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
 		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
@@ -3756,6 +3758,7 @@
 		7789ACEB133AB6A700CEFCC7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F8462E311E133B12005DB3BD /* Images.xcassets */,
 				B7AC69DB17A9D9700041B8BD /* defaultTemplates.zip */,
 				F85F7C4D1E100C7000A13B3F /* Generated */,
 				E35DBBDD14F3D1830070A6E4 /* Configurations */,
@@ -6999,6 +7002,7 @@
 				E525F42351BE29B845405C7D /* InspectorFontTTF.xib in Resources */,
 				E525F83F999A5DDB0E0E304F /* InspectorStartStop.xib in Resources */,
 				E525F3051C62E3CBA69E877A /* InspectorIntegerLabeled.xib in Resources */,
+				F8462E321E133B12005DB3BD /* Images.xcassets in Resources */,
 				E525FDB6208617164128881B /* InspectorBlock.xib in Resources */,
 				E525F45F2E20CA8B27C0F866 /* InspectorBlockCCControl.xib in Resources */,
 				E525FB91E80AB2C9074E51B9 /* InspectorNodeReference.xib in Resources */,
@@ -8428,7 +8432,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "libs/cocos2d-iphone/external/kazmath/include/** libs/cocos2d-iphone/external/Chipmunk/objectivec/include/ libs/cocos2d-iphone/external/Chipmunk/include/ libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**";
@@ -8459,7 +8463,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "libs/cocos2d-iphone/external/kazmath/include/** libs/cocos2d-iphone/external/Chipmunk/objectivec/include/ libs/cocos2d-iphone/external/Chipmunk/include/ libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**";
@@ -8470,6 +8474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
@@ -8513,6 +8518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
@@ -8653,7 +8659,7 @@
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "libs/cocos2d-iphone/external/kazmath/include/** libs/cocos2d-iphone/external/Chipmunk/objectivec/include/ libs/cocos2d-iphone/external/Chipmunk/include/ libs/cocos2d-iphone/external/ObjectAL/ObjectAL/ObjectAL/**";
@@ -8664,6 +8670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;

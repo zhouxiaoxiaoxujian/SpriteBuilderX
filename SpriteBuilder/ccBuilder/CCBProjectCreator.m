@@ -42,11 +42,11 @@
 
 -(BOOL) createDefaultProjectAtPath:(NSString*)fileName engine:(CCBTargetEngine)engine programmingLanguage:(CCBProgrammingLanguage)programmingLanguage
 {
-    NSError *error = nil;
+//    NSError *error = nil;
     NSFileManager* fm = [NSFileManager defaultManager];
     
 	NSString* substitutableProjectName = @"PROJECTNAME";
-    NSString* substitutableProjectIdentifier = @"PROJECTIDENTIFIER";
+//    NSString* substitutableProjectIdentifier = @"PROJECTIDENTIFIER";
     NSString* parentPath = [fileName stringByDeletingLastPathComponent];
     
 	

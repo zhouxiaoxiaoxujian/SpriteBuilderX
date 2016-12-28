@@ -218,7 +218,7 @@
 {
     ResolutionSetting* setting = [self settingIPhoneRetina];
     
-    setting.name = @"iPhone Retina Landscape";
+    setting.name = @"iPhone 4S Landscape";
     setting.width = 960;
     setting.height = 640;
     
@@ -228,7 +228,7 @@
 {
     ResolutionSetting* setting = [self settingIPhoneRetina];
     
-    setting.name = @"iPhone Retina Portrait";
+    setting.name = @"iPhone 4S Portrait";
     setting.width = 640;
     setting.height = 960;
     
