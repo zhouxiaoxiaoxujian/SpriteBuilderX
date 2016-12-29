@@ -127,7 +127,6 @@
 #import "CCBPublisherCacheCleaner.h"
 #import "CCBPublisherController.h"
 #import "ResourceManager+Publishing.h"
-#import "OpenProjectInXCode.h"
 #import "CCNode+NodeInfo.h"
 #import "PreviewContainerViewController.h"
 #import "InspectorController.h"
@@ -2944,13 +2943,6 @@ typedef enum
     }];
 }
 
-- (IBAction)menuOpenProjectInXCode:(id)sender
-{
-    OpenProjectInXCode *openProjectInXCodeCommand = [[OpenProjectInXCode alloc] init];
-    NSString *xcodePrjPath = [projectSettings.projectPath stringByReplacingOccurrencesOfString:@".ccbproj" withString:@".xcodeproj"];
-
-    [openProjectInXCodeCommand openProject:xcodePrjPath];
-}
 
 - (IBAction)menuProjectSettings:(id)sender
 {

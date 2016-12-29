@@ -856,7 +856,6 @@
 		E525F8060449703DC2A1A4BD /* InspectorPopoverSpriteFrame.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525FA695F4DA8350BF171CE /* InspectorPopoverSpriteFrame.xib */; };
 		E525F812527AA20385181AAA /* InspectorPopoverDegrees.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525FED28257D82C09E2EB7B /* InspectorPopoverDegrees.xib */; };
 		E525F83F999A5DDB0E0E304F /* InspectorStartStop.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F46A8395FB223B091E4B /* InspectorStartStop.xib */; };
-		E525F842D5AEA48DD4D1FF95 /* OpenProjectInXCode.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FCB569937F41C9156ED2 /* OpenProjectInXCode.m */; };
 		E525F8431AD20B10AD62EB80 /* ResourceCreateKeyframesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F0AC0A8F3C176BCA08DF /* ResourceCreateKeyframesCommand.m */; };
 		E525F851B68D85236DBC459A /* InspectorColor4FVar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F6D396DAA10BC5300C54 /* InspectorColor4FVar.xib */; };
 		E525F85C630DA97FBE9E2A3E /* InspectorFloatScale.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FC0EB59DB9CABB7E3B9D /* InspectorFloatScale.m */; };
@@ -2214,7 +2213,6 @@
 		E3E0557A159B8466001066C5 /* seq-keyframe-easein.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-easein.png"; sourceTree = "<group>"; };
 		E3E0557B159B8466001066C5 /* seq-keyframe-easeout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-easeout.png"; sourceTree = "<group>"; };
 		E3E0557C159B8466001066C5 /* seq-keyframe-interpol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-interpol.png"; sourceTree = "<group>"; };
-		E3E0878C15669F48008F1FDB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E3E0878F15669FA2008F1FDB /* libffi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.dylib; path = usr/lib/libffi.dylib; sourceTree = SDKROOT; };
 		E3E2704615B18CF500287470 /* TB_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_play.png; sourceTree = "<group>"; };
 		E3E2704715B18CF500287470 /* TB_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_stop.png; sourceTree = "<group>"; };
@@ -2488,9 +2486,7 @@
 		E525FC4D802C18FBD44DE5D1 /* PropertyInspectorTemplateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyInspectorTemplateHandler.h; sourceTree = "<group>"; };
 		E525FC764043B778E59DF538 /* InspectorCodeConnections.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCodeConnections.xib; sourceTree = "<group>"; };
 		E525FC7FEB1B9D2A5F7FFEA5 /* PublishImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishImageOperation.m; sourceTree = "<group>"; };
-		E525FCA57453D9BC4BFBBF24 /* OpenProjectInXCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenProjectInXCode.h; sourceTree = "<group>"; };
 		E525FCB3C5115B9C66A80E1D /* InspectorText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorText.h; sourceTree = "<group>"; };
-		E525FCB569937F41C9156ED2 /* OpenProjectInXCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenProjectInXCode.m; sourceTree = "<group>"; };
 		E525FCC7B2A33EFBD178B87D /* NSString+Publishing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Publishing.h"; sourceTree = "<group>"; };
 		E525FCD378F72265F9AFF6A0 /* InspectorFloatVar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorFloatVar.m; sourceTree = "<group>"; };
 		E525FCD604B9708D96E9EE11 /* ProjectSettings+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProjectSettings+Convenience.m"; sourceTree = "<group>"; };
@@ -2576,7 +2572,6 @@
 				E3A4747816D43B5800DB0D61 /* AudioToolbox.framework in Frameworks */,
 				E3B19F6B15E62ADA000B023E /* Carbon.framework in Frameworks */,
 				E3E0879015669FA2008F1FDB /* libffi.dylib in Frameworks */,
-				E3E0878E15669F58008F1FDB /* JavaScriptCore.framework in Frameworks */,
 				776A37161395925D00960E94 /* Quartz.framework in Frameworks */,
 				77D33E95138E714700012A88 /* ExceptionHandling.framework in Frameworks */,
 				7789ABEE133AB12F00CEFCC7 /* libz.dylib in Frameworks */,
@@ -2925,8 +2920,6 @@
 				7789ABD7133AA82000CEFCC7 /* MainMenu.xib */,
 				E335CAFE1576702300A612EE /* MainWindow.h */,
 				E335CAFF1576702300A612EE /* MainWindow.m */,
-				E525FCB569937F41C9156ED2 /* OpenProjectInXCode.m */,
-				E525FCA57453D9BC4BFBBF24 /* OpenProjectInXCode.h */,
 			);
 			name = "AppDelegate & Cocos2D Scene";
 			sourceTree = "<group>";
@@ -6960,7 +6953,6 @@
 				E525F96B119C330AE0D2C20E /* PublishOSSettings.m in Sources */,
 				E525F7234F1B8EC8CCC2BF3A /* MainProjectSettingsDetailView.m in Sources */,
 				E525F50E27715B344266949A /* ResourceManager+Publishing.m in Sources */,
-				E525F842D5AEA48DD4D1FF95 /* OpenProjectInXCode.m in Sources */,
 				E525FF00EF056E6904CAB106 /* InspectorController.m in Sources */,
 				E525F435DB3AA1EDAEA9DCC5 /* InspectorValue.m in Sources */,
 				E525F4D53964A2B3E368777B /* InspectorCustom.m in Sources */,
