@@ -537,7 +537,6 @@
 		B7F02D4917D12DB1008A2E2D /* about-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7F02D4717D12DB1008A2E2D /* about-bg@2x.png */; };
 		B7F02D4C17D13332008A2E2D /* CCBTransparentWindowDraggable.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F02D4B17D13332008A2E2D /* CCBTransparentWindowDraggable.m */; };
 		D2E0168118D7838F00927430 /* SpriteBuilderCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E0167618D782CC00927430 /* SpriteBuilderCommand.m */; };
-		D2E0168518D783C900927430 /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E0168418D783C900927430 /* AppleScriptKit.framework */; };
 		D2E0168A18D789E700927430 /* SpriteBuilder.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilder.sdef */; };
 		D2E0168B18D789E800927430 /* SpriteBuilder.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilder.sdef */; };
 		D35E589E18E391DA008571EC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35E589D18E391DA008571EC /* GLKit.framework */; };
@@ -733,7 +732,6 @@
 		E3E0557D159B8466001066C5 /* seq-keyframe-easein.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E0557A159B8466001066C5 /* seq-keyframe-easein.png */; };
 		E3E0557E159B8466001066C5 /* seq-keyframe-easeout.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E0557B159B8466001066C5 /* seq-keyframe-easeout.png */; };
 		E3E0557F159B8466001066C5 /* seq-keyframe-interpol.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E0557C159B8466001066C5 /* seq-keyframe-interpol.png */; };
-		E3E0878E15669F58008F1FDB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E0878C15669F48008F1FDB /* JavaScriptCore.framework */; };
 		E3E0879015669FA2008F1FDB /* libffi.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E0878F15669FA2008F1FDB /* libffi.dylib */; };
 		E3E2704815B18CF500287470 /* TB_play.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E2704615B18CF500287470 /* TB_play.png */; };
 		E3E2704915B18CF500287470 /* TB_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E2704715B18CF500287470 /* TB_stop.png */; };
@@ -1936,7 +1934,6 @@
 		B7F02D4B17D13332008A2E2D /* CCBTransparentWindowDraggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBTransparentWindowDraggable.m; sourceTree = "<group>"; };
 		D2E0167518D782CC00927430 /* SpriteBuilderCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBuilderCommand.h; sourceTree = "<group>"; };
 		D2E0167618D782CC00927430 /* SpriteBuilderCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBuilderCommand.m; sourceTree = "<group>"; };
-		D2E0168418D783C900927430 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
 		D2E0168618D783F800927430 /* SpriteBuilder.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpriteBuilder.sdef; sourceTree = SOURCE_ROOT; };
 		D35E589D18E391DA008571EC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerPopoverBlock.xib; sourceTree = "<group>"; };
@@ -2786,7 +2783,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2E0168518D783C900927430 /* AppleScriptKit.framework in Frameworks */,
 				E398C02314FB81A30078E771 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3376,7 +3372,6 @@
 			isa = PBXGroup;
 			children = (
 				D35E589D18E391DA008571EC /* GLKit.framework */,
-				D2E0168418D783C900927430 /* AppleScriptKit.framework */,
 				B7E1EFDC185F8D3D00C9E6E0 /* WebKit.framework */,
 				80985259182C40170054BBF3 /* CoreMedia.framework */,
 				835DB0CA17156421003A2F7B /* Security.framework */,
@@ -3385,7 +3380,6 @@
 				E3A4747716D43B5800DB0D61 /* AudioToolbox.framework */,
 				E3A4747516D43B4300DB0D61 /* CoreAudio.framework */,
 				E3B19F6A15E62ADA000B023E /* Carbon.framework */,
-				E3E0878C15669F48008F1FDB /* JavaScriptCore.framework */,
 				FA98CFDA154E8D16006E58C5 /* CoreServices.framework */,
 				776A37151395925D00960E94 /* Quartz.framework */,
 				776A3713139590AA00960E94 /* ImageCaptureCore.framework */,
