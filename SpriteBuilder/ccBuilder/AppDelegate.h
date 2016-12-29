@@ -85,7 +85,6 @@ enum {
     kCCBDocDimensionsTypeFullScreen,
     kCCBDocDimensionsTypeNode,
     kCCBDocDimensionsTypeLayer,
-    kCCBDocDimensionsTypeDialog,
 };
 
 @interface DeviceBorder : NSObject

@@ -85,7 +85,7 @@
         self.width = 0;
         self.height = 0;
     }
-    else if (objectType == kCCBNewDocTypeDialog)
+    else if (objectType == kCCBNewDocTypeLayout)
     {
         // Node
         self.canSetSize = NO;
