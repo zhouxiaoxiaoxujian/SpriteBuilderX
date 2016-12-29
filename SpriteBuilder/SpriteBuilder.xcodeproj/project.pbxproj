@@ -363,8 +363,6 @@
 		A594718F1A8E4A06002DB024 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A59471891A8E4A06002DB024 /* Icon.png */; };
 		A59471901A8E4A06002DB024 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A594718A1A8E4A06002DB024 /* Icon@2x.png */; };
 		A59471941A8E5066002DB024 /* CCText.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A594716B1A8E4851002DB024 /* CCText.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521A91A1F89C700934862 /* doc-dialog.png */; };
-		A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A59521AA1A1F89C700934862 /* doc-dialog@2x.png */; };
 		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
 		A5A891FB1DB1280B00E600F2 /* PublishModelFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */; };
 		A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */; };
@@ -934,6 +932,8 @@
 		E525FFF90B5CCC7573B84680 /* InspectorIntegerLabeled.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */; };
 		F8462E321E133B12005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462E311E133B12005DB3BD /* Images.xcassets */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
+		F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848C1E15CCDA00C76367 /* doc-layout.png */; };
+		F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
 		FA98CFD1154E7F7D006E58C5 /* CCBX.m in Sources */ = {isa = PBXBuildFile; fileRef = E398C03614FB8A430078E771 /* CCBX.m */; };
@@ -1695,8 +1695,6 @@
 		A59471881A8E4A06002DB024 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		A59471891A8E4A06002DB024 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = CCText/Icon.png; sourceTree = "<group>"; };
 		A594718A1A8E4A06002DB024 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "CCText/Icon@2x.png"; sourceTree = "<group>"; };
-		A59521A91A1F89C700934862 /* doc-dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog.png"; sourceTree = "<group>"; };
-		A59521AA1A1F89C700934862 /* doc-dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-dialog@2x.png"; sourceTree = "<group>"; };
 		A5A340581A41E33500861273 /* cwebp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cwebp; sourceTree = "<group>"; };
 		A5A891F91DB1280B00E600F2 /* PublishModelFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishModelFileOperation.h; sourceTree = "<group>"; };
 		A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishModelFileOperation.m; sourceTree = "<group>"; };
@@ -2541,6 +2539,8 @@
 		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
 		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
 		F85F7C571E10205F00A13B3F /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		F88F848C1E15CCDA00C76367 /* doc-layout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout.png"; sourceTree = "<group>"; };
+		F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout@2x.png"; sourceTree = "<group>"; };
 		FA98CFC1154E7D1C006E58C5 /* ccbpublish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ccbpublish; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98CFC3154E7D1C006E58C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccbpublish.m; sourceTree = "<group>"; };
@@ -3185,9 +3185,9 @@
 				80B149BC183D4D280085935B /* seq-keyframe-x4-sel.png */,
 				80B149BD183D4D280085935B /* seq-keyframe-x4.png */,
 				80FBACD71834530100C4BB69 /* visible-icon.png */,
-				A59521A91A1F89C700934862 /* doc-dialog.png */,
-				A59521AA1A1F89C700934862 /* doc-dialog@2x.png */,
 				B7096E1D180CD98E00164A8A /* doc-layer.png */,
+				F88F848C1E15CCDA00C76367 /* doc-layout.png */,
+				F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */,
 				B7096E1E180CD98E00164A8A /* doc-layer@2x.png */,
 				B7096E1F180CD98E00164A8A /* doc-node.png */,
 				B7096E20180CD98E00164A8A /* doc-node@2x.png */,
@@ -6110,7 +6110,6 @@
 				E3E8B49015791FFB00373983 /* seq-tl-mark-origin.png in Resources */,
 				E3E8B4921579326A00373983 /* seq-timedisplay-bg.png in Resources */,
 				B73788F71804D8200076A88C /* ccbproj.icns in Resources */,
-				A59521AB1A1F89C700934862 /* doc-dialog.png in Resources */,
 				E3E8B49915793AF800373983 /* seq-btn-play.png in Resources */,
 				926D13C118B5778300582959 /* joint-distance-handle-long@2x.png in Resources */,
 				E3E8B49A15793AF800373983 /* seq-btn-restart.png in Resources */,
@@ -6159,7 +6158,6 @@
 				E3DFA7CF15ACA0CD005D3B6F /* frame-android-xsmall.png in Resources */,
 				92CB085919BA2DE800EFDCE3 /* effect-blur.png in Resources */,
 				92CD1C161965D745002BF2DE /* EffectBloomControl.xib in Resources */,
-				A59521AC1A1F89C700934862 /* doc-dialog@2x.png in Resources */,
 				E3E2704815B18CF500287470 /* TB_play.png in Resources */,
 				E3E2704915B18CF500287470 /* TB_stop.png in Resources */,
 				E3E2704B15B1904400287470 /* toolbar-bottom.png in Resources */,
@@ -6252,6 +6250,7 @@
 				B732A1841799736500333C56 /* TB_build.png in Resources */,
 				A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */,
 				92F0960C18F8851300D47A94 /* inspector-body-remove-dis@2x.png in Resources */,
+				F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */,
 				B732A1851799736500333C56 /* TB_build@2x.png in Resources */,
 				F85F7C4E1E100C7000A13B3F /* Generated in Resources */,
 				B7AC6969179E03BF0041B8BD /* select-corner.png in Resources */,
@@ -6342,6 +6341,7 @@
 				F8462E321E133B12005DB3BD /* Images.xcassets in Resources */,
 				E525FDB6208617164128881B /* InspectorBlock.xib in Resources */,
 				E525F45F2E20CA8B27C0F866 /* InspectorBlockCCControl.xib in Resources */,
+				F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */,
 				E525FB91E80AB2C9074E51B9 /* InspectorNodeReference.xib in Resources */,
 				E525F47B31DF73C88110CE72 /* InspectorButton.xib in Resources */,
 				E525F4DEC802CEC768E89163 /* InspectorAnimation.xib in Resources */,
