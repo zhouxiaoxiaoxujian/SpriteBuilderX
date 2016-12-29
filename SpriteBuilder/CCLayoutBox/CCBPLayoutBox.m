@@ -9,6 +9,7 @@
 #import "CCBPLayoutBox.h"
 #import "cocos2d.h"
 #import "PositionPropertySetter.h"
+#import "CCBPCCBFile.h"
 
 @implementation CCBPLayoutBox
 
@@ -56,9 +57,75 @@ static float roundUpToEven(float f)
     return ceilf(f/2.0f) * 2.0f;
 }
 
+- (CGSize) convertContentSizeToPoints:(CGSize)contentSize type:(CCSizeType)type
+{
+    CGSize size = CGSizeZero;
+    CCDirector* director = [CCDirector sharedDirector];
+    
+    CCSizeUnit widthUnit = type.widthUnit;
+    CCSizeUnit heightUnit = type.heightUnit;
+    
+    __weak CCNode *parent = _parent;
+    if([parent isKindOfClass:[CCBPCCBFile class]])
+        parent = parent.parent;
+    
+    // Width
+    if (widthUnit == CCSizeUnitPoints)
+    {
+        size.width = contentSize.width;
+    }
+    else if (widthUnit == CCSizeUnitUIPoints)
+    {
+        size.width = director.UIScaleFactor * contentSize.width;
+    }
+    else if (widthUnit == CCSizeUnitNormalized)
+    {
+        size.width = contentSize.width * parent.contentSizeInPoints.width;
+    }
+    else if (widthUnit == CCSizeUnitInsetPoints)
+    {
+        size.width = parent.contentSizeInPoints.width - contentSize.width;
+    }
+    else if (widthUnit == CCSizeUnitInsetUIPoints)
+    {
+        size.width = parent.contentSizeInPoints.width - contentSize.width * director.UIScaleFactor;
+    }
+    
+    // Height
+    if (heightUnit == CCSizeUnitPoints)
+    {
+        size.height = contentSize.height;
+    }
+    else if (heightUnit == CCSizeUnitUIPoints)
+    {
+        size.height = director.UIScaleFactor * contentSize.height;
+    }
+    else if (heightUnit == CCSizeUnitNormalized)
+    {
+        size.height = contentSize.height * parent.contentSizeInPoints.height;
+    }
+    else if (heightUnit == CCSizeUnitInsetPoints)
+    {
+        size.height = parent.contentSizeInPoints.height - contentSize.height;
+    }
+    else if (heightUnit == CCSizeUnitInsetUIPoints)
+    {
+        size.height = parent.contentSizeInPoints.height - contentSize.height * director.UIScaleFactor;
+    }
+    
+    return size;
+}
+
 - (void) layout
 {
+    CCNode *parent = _parent;
+    if([parent isKindOfClass:[CCBPCCBFile class]])
+        parent = parent.parent;
+    if(!parent)
+        return;
+    
     _needsLayout = NO;
+    
     CGSize dimensionsSize = [self convertContentSizeToPoints:self.dimensions type:self.dimensionsType];
     if (self.direction == CCLayoutBoxDirectionHorizontal)
     {
@@ -126,6 +193,12 @@ static float roundUpToEven(float f)
         
         self.contentSizeType = CCSizeTypePoints;
         self.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
+        if([_parent isKindOfClass:[CCBPCCBFile class]])
+        {
+            _parent.contentSizeType = CCSizeTypePoints;
+            _parent.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
+        }
+        _needsLayout = NO;
     }
     else
     {
@@ -193,6 +266,12 @@ static float roundUpToEven(float f)
         
         self.contentSizeType = CCSizeTypePoints;
         self.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
+        if([_parent isKindOfClass:[CCBPCCBFile class]])
+        {
+            _parent.contentSizeType = CCSizeTypePoints;
+            _parent.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
+        }
+        _needsLayout = NO;
     }
 }
 
