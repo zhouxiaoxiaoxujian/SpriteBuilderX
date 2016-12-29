@@ -7728,6 +7728,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilder-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(SB_DEBUG_PREPROCESSOR_DEFINES)";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"../Examples/CocosBuilderExample/libs/CCBReader/**",
 					"libs/cocos2d-iphone/cocos2d/**",
@@ -7769,6 +7771,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilder-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(SB_RELEASE_PREPROCESSOR_DEFINES)";
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"../Examples/CocosBuilderExample/libs/CCBReader/**",
 					"libs/cocos2d-iphone/cocos2d/**",
@@ -7847,6 +7851,8 @@
 					"TESTING=1",
 					"SPRITEBUILDER_PRO=1",
 				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"../Examples/CocosBuilderExample/libs/CCBReader/**",
 					"libs/cocos2d-iphone/cocos2d/**",
@@ -9865,7 +9871,9 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
@@ -9897,7 +9905,9 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
@@ -9925,7 +9935,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CCParticleSystem/CCParticleSystem-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				HEADER_SEARCH_PATHS = (
 					"libs/cocos2d-iphone/cocos2d/**",
 					"libs/cocos2d-iphone/cocos2d-ui/**",
