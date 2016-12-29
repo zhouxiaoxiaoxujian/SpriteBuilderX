@@ -1186,7 +1186,7 @@ typedef enum
         [updatedResolutions addObject:[ResolutionSetting settingPhoneHd]];
         [updatedResolutions addObject:[ResolutionSetting settingTabletHd]];
     }
-    else if (type == kCCBDocDimensionsTypeFullScreen || type == kCCBDocDimensionsTypeDialog)
+    else if (type == kCCBDocDimensionsTypeFullScreen)
     {
         if (projectSettings.defaultOrientation == kCCBOrientationLandscape)
         {
@@ -1233,7 +1233,7 @@ typedef enum
     if (docDimType == kCCBDocDimensionsTypeLayer || docDimType == kCCBDocDimensionsTypeNode) self.canEditStageSize = YES;
     else self.canEditStageSize = NO;
     
-    if (docDimType == kCCBDocDimensionsTypeFullScreen || docDimType == kCCBDocDimensionsTypeDialog)
+    if (docDimType == kCCBDocDimensionsTypeFullScreen)
         self.canEditResolutions = YES;
     else
         self.canEditResolutions = NO;
@@ -1824,7 +1824,7 @@ typedef enum
     
     int docDimType = kCCBDocDimensionsTypeNode;
     if (type == kCCBNewDocTypeScene) docDimType = kCCBDocDimensionsTypeFullScreen;
-    else if (type == kCCBNewDocTypeDialog) docDimType = kCCBDocDimensionsTypeDialog;
+    else if (type == kCCBNewDocTypeLayout) docDimType = kCCBDocDimensionsTypeNode;
     else if (type == kCCBNewDocTypeLayer) docDimType = kCCBDocDimensionsTypeLayer;
     
     NSString* class = NULL;
@@ -1833,7 +1833,7 @@ typedef enum
     else if (type == kCCBNewDocTypeScene) class = @"CCNode";
     else if (type == kCCBNewDocTypeSprite) class = @"CCSprite";
     else if (type == kCCBNewDocTypeParticleSystem) class = @"CCParticleSystem";
-    else if (type == kCCBNewDocTypeDialog) class = @"CCNode";
+    else if (type == kCCBNewDocTypeLayout) class = @"CCLayoutBox";
     
     resolutions = [self updateResolutions:resolutions forDocDimensionType:docDimType];
     
@@ -1855,7 +1855,7 @@ typedef enum
     [self deselectAll];
     [[CocosScene cocosScene] setStageSize:stageSize centeredOrigin:centered];
     
-    if (type == kCCBNewDocTypeScene || type == kCCBNewDocTypeDialog)
+    if (type == kCCBNewDocTypeScene)
     {
         [[CocosScene cocosScene] setStageBorder:0];
     }
@@ -1870,7 +1870,7 @@ typedef enum
     g.joints.node = [CCNode node];
     [[CocosScene cocosScene] replaceSceneNodes:g];
     
-    if (type == kCCBNewDocTypeScene || type == kCCBNewDocTypeDialog)
+    if (type == kCCBNewDocTypeScene)
     {
         // Set default contentSize to 100% x 100% for scenes
         [PositionPropertySetter setSize:NSMakeSize(1, 1) type:CCSizeTypeNormalized forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];
