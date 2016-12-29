@@ -19,8 +19,6 @@
 		5BA3DC36192110BA0055DD96 /* GuideGridSizeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA3DC31192108AB0055DD96 /* GuideGridSizeWindow.xib */; };
 		5BB9A3551A038C59008184AE /* ResourceDuplicateCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9A3541A038C59008184AE /* ResourceDuplicateCommand.m */; };
 		5BBEC3601A011D8D00FBA08B /* InspectorTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BBEC35F1A011D8D00FBA08B /* InspectorTextView.m */; };
-		77055FB513D0E5CA009DD63A /* logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77055FB313D0E5CA009DD63A /* logo-icon.png */; };
-		77055FB613D0E5CA009DD63A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 77055FB413D0E5CA009DD63A /* logo.png */; };
 		77156DB1137F0351005EF746 /* CCBSpriteSheetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77156DB0137F0351005EF746 /* CCBSpriteSheetParser.m */; };
 		771B2B321353818200B260BA /* NewDocWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771B2B311353818000B260BA /* NewDocWindowController.m */; };
 		7729F03A1390215400CAA44F /* frame-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7729F0391390215400CAA44F /* frame-iphone.png */; };
@@ -57,7 +55,6 @@
 		776C68451385D37E00153214 /* CCBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 776C68441385D37D00153214 /* CCBTableView.m */; };
 		776C68911388107400153214 /* missing-font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 776C688F1388107400153214 /* missing-font.fnt */; };
 		776C68921388107400153214 /* missing-font.png in Resources */ = {isa = PBXBuildFile; fileRef = 776C68901388107400153214 /* missing-font.png */; };
-		776C6896138874C200153214 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 776C6895138874C200153214 /* dsa_pub.pem */; };
 		7789ABC3133AA82000CEFCC7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789ABC2133AA82000CEFCC7 /* Cocoa.framework */; };
 		7789ABCD133AA82000CEFCC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7789ABCB133AA82000CEFCC7 /* InfoPlist.strings */; };
 		7789ABD0133AA82000CEFCC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7789ABCF133AA82000CEFCC7 /* main.m */; };
@@ -312,7 +309,6 @@
 		92F0961918F8855A00D47A94 /* inspector-body-goto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F0961518F8855A00D47A94 /* inspector-body-goto@2x.png */; };
 		92F12E4E18847BC800AB8F32 /* seq-keyframe-x4-sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BC183D4D280085935B /* seq-keyframe-x4-sel.png */; };
 		92F12E4F18847BC800AB8F32 /* seq-keyframe-x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 80B149BD183D4D280085935B /* seq-keyframe-x4.png */; };
-		92F64B78199C14E300769BB5 /* SpriteBuilder 1.3 Beta.icns in Resources */ = {isa = PBXBuildFile; fileRef = 92F64B77199C14E300769BB5 /* SpriteBuilder 1.3 Beta.icns */; };
 		A09AB6F714E993AA009C8B91 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = A09AB6F614E993AA009C8B91 /* fps_images.png */; };
 		A504D1171DB4CAE0008EE38F /* fbx-conv in Resources */ = {isa = PBXBuildFile; fileRef = A504D1161DB4CAE0008EE38F /* fbx-conv */; };
 		A51E63751A7A5932009F4FB9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
@@ -523,7 +519,6 @@
 		B7DE84931937B18B0039FB72 /* signup-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84911937B18B0039FB72 /* signup-bg.png */; };
 		B7DE84941937B18B0039FB72 /* signup-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84921937B18B0039FB72 /* signup-bottom.png */; };
 		B7DE84961937C6380039FB72 /* SpriteBuilder-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B7DE84951937C6380039FB72 /* SpriteBuilder-logo.png */; };
-		B7DEBD6417D113B800942E4D /* SpriteBuilder.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7DEBD6317D113B800942E4D /* SpriteBuilder.icns */; };
 		B7E08C9F19D63CF400383412 /* EffectsUndoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E08C9E19D63CF400383412 /* EffectsUndoHelper.m */; };
 		B7E1EFDD185F8D3D00C9E6E0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E1EFDC185F8D3D00C9E6E0 /* WebKit.framework */; };
 		B7E6BB4E19F868F000619A58 /* doc-particlesystem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7E6BB4719F868F000619A58 /* doc-particlesystem@2x.png */; };
@@ -1257,8 +1252,6 @@
 		5BB9A3541A038C59008184AE /* ResourceDuplicateCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceDuplicateCommand.m; sourceTree = "<group>"; };
 		5BBEC35E1A011D8D00FBA08B /* InspectorTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorTextView.h; sourceTree = "<group>"; };
 		5BBEC35F1A011D8D00FBA08B /* InspectorTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorTextView.m; sourceTree = "<group>"; };
-		77055FB313D0E5CA009DD63A /* logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-icon.png"; sourceTree = "<group>"; };
-		77055FB413D0E5CA009DD63A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		77156DAF137F0351005EF746 /* CCBSpriteSheetParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBSpriteSheetParser.h; sourceTree = "<group>"; };
 		77156DB0137F0351005EF746 /* CCBSpriteSheetParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBSpriteSheetParser.m; sourceTree = "<group>"; };
 		771B2B301353818000B260BA /* NewDocWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDocWindowController.h; sourceTree = "<group>"; };
@@ -1308,7 +1301,6 @@
 		776C68441385D37D00153214 /* CCBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBTableView.m; sourceTree = "<group>"; };
 		776C688F1388107400153214 /* missing-font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "missing-font.fnt"; sourceTree = "<group>"; };
 		776C68901388107400153214 /* missing-font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missing-font.png"; sourceTree = "<group>"; };
-		776C6895138874C200153214 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		7789ABBE133AA82000CEFCC7 /* SpriteBuilderX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteBuilderX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7789ABC2133AA82000CEFCC7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7789ABC5133AA82000CEFCC7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -1658,7 +1650,6 @@
 		92F0961318F8855A00D47A94 /* inspector-body-goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inspector-body-goto.png"; sourceTree = "<group>"; };
 		92F0961418F8855A00D47A94 /* inspector-body-goto-hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inspector-body-goto-hi@2x.png"; sourceTree = "<group>"; };
 		92F0961518F8855A00D47A94 /* inspector-body-goto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inspector-body-goto@2x.png"; sourceTree = "<group>"; };
-		92F64B77199C14E300769BB5 /* SpriteBuilder 1.3 Beta.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "SpriteBuilder 1.3 Beta.icns"; sourceTree = SOURCE_ROOT; };
 		A09AB6F614E993AA009C8B91 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = "libs/cocos2d-iphone/Resources/Fonts/fps_images.png"; sourceTree = SOURCE_ROOT; };
 		A504D1161DB4CAE0008EE38F /* fbx-conv */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "fbx-conv"; path = "fbx-conv/fbx-conv"; sourceTree = "<group>"; };
 		A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScrollListView.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1946,7 +1937,6 @@
 		B7DE84911937B18B0039FB72 /* signup-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-bg.png"; sourceTree = "<group>"; };
 		B7DE84921937B18B0039FB72 /* signup-bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup-bottom.png"; sourceTree = "<group>"; };
 		B7DE84951937C6380039FB72 /* SpriteBuilder-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SpriteBuilder-logo.png"; sourceTree = "<group>"; };
-		B7DEBD6317D113B800942E4D /* SpriteBuilder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SpriteBuilder.icns; path = ../SpriteBuilder.icns; sourceTree = "<group>"; };
 		B7E08C9D19D63CF400383412 /* EffectsUndoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectsUndoHelper.h; path = ccBuilder/EffectsUndoHelper.h; sourceTree = "<group>"; };
 		B7E08C9E19D63CF400383412 /* EffectsUndoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EffectsUndoHelper.m; path = ccBuilder/EffectsUndoHelper.m; sourceTree = "<group>"; };
 		B7E1EFDC185F8D3D00C9E6E0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -3035,25 +3025,13 @@
 		776041E61498F7980078095D /* Icons & Logos */ = {
 			isa = PBXGroup;
 			children = (
-				92F64B77199C14E300769BB5 /* SpriteBuilder 1.3 Beta.icns */,
 				830F4E9A192F5263002B832D /* Package.icns */,
 				B78B8B0F185FF982006ADBBE /* Folder.icns */,
 				B73788F81804D8690076A88C /* ccbi.icns */,
 				B73788F61804D8200076A88C /* ccbproj.icns */,
 				B73788F41804D80B0076A88C /* ccb.icns */,
-				B7DEBD6317D113B800942E4D /* SpriteBuilder.icns */,
-				77055FB313D0E5CA009DD63A /* logo-icon.png */,
-				77055FB413D0E5CA009DD63A /* logo.png */,
 			);
 			name = "Icons & Logos";
-			sourceTree = "<group>";
-		};
-		776041E71498F7DE0078095D /* Sparkle (for updates) */ = {
-			isa = PBXGroup;
-			children = (
-				776C6895138874C200153214 /* dsa_pub.pem */,
-			);
-			name = "Sparkle (for updates)";
 			sourceTree = "<group>";
 		};
 		776041EA1498FB600078095D /* Dialogs */ = {
@@ -3578,7 +3556,6 @@
 				B7AC69DB17A9D9700041B8BD /* defaultTemplates.zip */,
 				F85F7C4D1E100C7000A13B3F /* Generated */,
 				E35DBBDD14F3D1830070A6E4 /* Configurations */,
-				776041E71498F7DE0078095D /* Sparkle (for updates) */,
 				776041E41498F6AF0078095D /* Images */,
 				E525F5A4A89A3C9ABF48EA61 /* Scripts */,
 			);
@@ -6229,7 +6206,6 @@
 				776C68921388107400153214 /* missing-font.png in Resources */,
 				9266EE2E195A1695006CBE81 /* effect-pixelate.png in Resources */,
 				B7096E26180CD98E00164A8A /* doc-layer.png in Resources */,
-				776C6896138874C200153214 /* dsa_pub.pem in Resources */,
 				77D33EAD138EFBD800012A88 /* StageSizeWindow.xib in Resources */,
 				92CAC1CB195A4C6C0035EA39 /* EffectGlowControl.xib in Resources */,
 				B7E6BB5A19F868F000619A58 /* seq-timedisplay-bg@2x.png in Resources */,
@@ -6247,8 +6223,6 @@
 				776A370E139544A200960E94 /* TB_zoomIn.png in Resources */,
 				776A370F139544A200960E94 /* TB_zoomOut.png in Resources */,
 				776A37B8139BCE3600960E94 /* TB_imageAssets.png in Resources */,
-				77055FB513D0E5CA009DD63A /* logo-icon.png in Resources */,
-				77055FB613D0E5CA009DD63A /* logo.png in Resources */,
 				92F0960F18F8851300D47A94 /* inspector-body-disconnected@2x.png in Resources */,
 				92154AC718A5531800BD215C /* CCBPProperties.plist in Resources */,
 				B71706D2184ECD660081720A /* select-skew@2x.png in Resources */,
@@ -6383,7 +6357,6 @@
 				83FC411319815B8600799B6C /* ProjectSettingsWindow.xib in Resources */,
 				E33C2ABA15CBF2580043EF9B /* seq-keyframe-hint.png in Resources */,
 				E3214C4115D3BF4D002413A7 /* CustomPropSettingsWindow.xib in Resources */,
-				92F64B78199C14E300769BB5 /* SpriteBuilder 1.3 Beta.icns in Resources */,
 				B71706CF184ECD660081720A /* select-move@2x.png in Resources */,
 				B759E4B91880B60B00E8166C /* logo-white@2x.png in Resources */,
 				E3B7BC9C15E3B7F100CF95EF /* NodePlugInsList.plist in Resources */,
@@ -6498,7 +6471,6 @@
 				A5F251041CD019190016092E /* frame-iphone6.png in Resources */,
 				B7083DFB17B2CC65006628C7 /* LocaliztaionEditorLanguageList.plist in Resources */,
 				92B1B9D6192429A400DB91F5 /* joint-pivot-range@2x.png in Resources */,
-				B7DEBD6417D113B800942E4D /* SpriteBuilder.icns in Resources */,
 				9218DF361919B04D0033851E /* joint-pivot-mode-r-on@2x.png in Resources */,
 				B7F02D4817D12DB1008A2E2D /* about-bg.png in Resources */,
 				B7F02D4917D12DB1008A2E2D /* about-bg@2x.png in Resources */,

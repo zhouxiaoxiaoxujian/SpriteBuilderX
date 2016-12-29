@@ -595,7 +595,7 @@ typedef enum
     [self setupProjectTilelessEditor];
     [self setupExtras];
     [self setupResourceCommandController];
-	[self setupSparkleGui];
+
 	
     [window restorePreviousOpenedPanels];
 
@@ -4245,45 +4245,16 @@ typedef enum
 
 -(NSString*)applicationTitle
 {
-//#ifdef SPRITEBUILDER_PRO
-//	return @"SpriteBuilder 1.3 Beta";
-//#else
 	return @"SpriteBuilder";
-//#endif
-}
-
-
-#pragma mark Sparkle
-
--(void)setupSparkleGui
-{
-#if SB_SANDBOXED
-	[self.menuCheckForUpdates setHidden:YES];
-#endif
 }
 
 
 
-- (BOOL)updaterShouldPromptForPermissionToCheckForUpdates
-{
-#if TESTING || SB_SANDBOXED
-	return NO;
-#else 
-	return YES;
-#endif
-}
 
 - (NSString *)feedURLStringForUpdater:(id)updater
 {
-	//Local Host testing.
-    //return @"http://localhost/sites/version";
-	
-//#ifdef SPRITEBUILDER_PRO
-//	return @"http://update.spritebuilder.com/pro/";
-//#else
-	return @"http://update.spritebuilder.com";
-//#endif
 
+    return @"http://update.spritebuilder.com";
 	
 }
 
