@@ -20,7 +20,7 @@ NSString *const PACKAGE_PUBLISH_SETTINGS_FILE_NAME = @"Package.plist";
 
 NSString *const RESOLUTION_AUTO = @"auto";
 NSString *const RESOLUTION_PHONE = @"phone";
-NSString *const RESOLUTION_PHONE_HD = @"phonehd";
+NSString *const RESOLUTION_PHONE_HD = @"2x";
 NSString *const RESOLUTION_TABLET = @"tablet";
-NSString *const RESOLUTION_TABLET_HD = @"tablethd";
+NSString *const RESOLUTION_TABLET_HD = @"4x";
 NSString *const RESOLUTION_UNIVERSAL = @"universal";
