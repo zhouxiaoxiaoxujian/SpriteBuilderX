@@ -416,7 +416,6 @@
 		B729AC67181F0B5000BA0D9C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B729AC64181F0B5000BA0D9C /* Icon@2x.png */; };
 		B729AC6A181F0C2200BA0D9C /* CCBPSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B729AC69181F0C2200BA0D9C /* CCBPSlider.m */; };
 		B729AC6D181F0D2300BA0D9C /* CCSlider.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = B729AC52181F091800BA0D9C /* CCSlider.ccbPlugNode */; };
-		B72D1DC0186125E80091252F /* Requirements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B72D1DBF186125E80091252F /* Requirements.plist */; };
 		B72D1DC318612CA70091252F /* CCBPWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DC218612CA70091252F /* CCBPWidget.m */; };
 		B72D1DC618612CD50091252F /* CCBPLabelBMFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DC518612CD50091252F /* CCBPLabelBMFont.m */; };
 		B72D1DC918612CF50091252F /* CCBPLayoutBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B72D1DC818612CF50091252F /* CCBPLayoutBox.m */; };
@@ -1763,7 +1762,6 @@
 		B729AC64181F0B5000BA0D9C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		B729AC68181F0C2200BA0D9C /* CCBPSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBPSlider.h; path = CCSlider/CCBPSlider.h; sourceTree = SOURCE_ROOT; };
 		B729AC69181F0C2200BA0D9C /* CCBPSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBPSlider.m; path = CCSlider/CCBPSlider.m; sourceTree = SOURCE_ROOT; };
-		B72D1DBF186125E80091252F /* Requirements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Requirements.plist; path = ../Requirements.plist; sourceTree = "<group>"; };
 		B72D1DC118612CA70091252F /* CCBPWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPWidget.h; sourceTree = "<group>"; };
 		B72D1DC218612CA70091252F /* CCBPWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPWidget.m; sourceTree = "<group>"; };
 		B72D1DC418612CD50091252F /* CCBPLabelBMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPLabelBMFont.h; sourceTree = "<group>"; };
@@ -3412,7 +3410,6 @@
 				B7C3533B17FA306C005697C1 /* Physics Editor */,
 				E3B7AEDA14E3242600DFD402 /* PlugIn Manager */,
 				E346286D155D21F10043EAB1 /* Publishing */,
-				B72D1DBF186125E80091252F /* Requirements.plist */,
 				E3C5C1A11504D144000CF6F3 /* Resource Manager */,
 				E346286C155C23100043EAB1 /* Rulers, Guides & Notes */,
 				E335CAED1576031B00A612EE /* Sequencer */,
@@ -6263,7 +6260,6 @@
 				B7AC69AD17A0938C0041B8BD /* inspector-nodes@2x.png in Resources */,
 				B7AC69B217A1969E0041B8BD /* header-bg2.png in Resources */,
 				B7AC69B417A1A2040041B8BD /* header-bg2-crop.png in Resources */,
-				B72D1DC0186125E80091252F /* Requirements.plist in Resources */,
 				B7AC69C917A70A4B0041B8BD /* inspector-codeconnections.png in Resources */,
 				92CD1C221965D824002BF2DE /* EffectBrightnessControl.xib in Resources */,
 				92D9D48318F8AB3800F167C1 /* joint-connection-disconnected@2x.png in Resources */,
