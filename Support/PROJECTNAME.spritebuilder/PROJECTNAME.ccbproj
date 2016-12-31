@@ -198,6 +198,8 @@
 	</array>
 	<key>resourceProperties</key>
 	<dict/>
+	<key>sceneScaleType</key>
+	<integer>0</integer>
 	<key>versionStr</key>
 	<string>1.5</string>
 </dict>
