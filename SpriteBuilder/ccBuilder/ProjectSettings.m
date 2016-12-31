@@ -212,6 +212,7 @@
     self.deviceScaling = [[dict objectForKey:@"deviceScaling"] intValue];
     self.defaultOrientation = [[dict objectForKey:@"defaultOrientation"] intValue];
     self.designTarget = [[dict objectForKey:@"designTarget"] intValue];
+    self.sceneScaleType = [[dict objectForKey:@"sceneScaleType"] intValue];
     
     self.tabletPositionScaleFactor = 2.0f;
 
@@ -281,6 +282,7 @@
     dict[@"resourceAutoScaleFactor"] = @(_resourceAutoScaleFactor);
 
     
+    dict[@"sceneScaleType"] = @(_sceneScaleType);
     dict[@"designTarget"] = @(_designTarget);
     dict[@"defaultOrientation"] = @(_defaultOrientation);
     dict[@"deviceScaling"] = @(_deviceScaling);

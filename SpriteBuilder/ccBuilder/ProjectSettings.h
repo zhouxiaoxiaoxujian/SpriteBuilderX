@@ -35,6 +35,19 @@ typedef enum
     kCCBDesignTargetFixed = 1,
 } CCBDesignTarget;
 
+
+typedef enum {
+    kCCBSceneScaleTypeDEFAULT  = 0,
+    kCCBSceneScaleTypeNONE     = 1,
+    kCCBSceneScaleTypeCUSTOM   = 2,
+    kCCBSceneScaleTypeMINSIZE  = 3,
+    kCCBSceneScaleTypeMAXSIZE  = 4,
+    kCCBSceneScaleTypeMINSCALE = 5,
+    kCCBSceneScaleTypeMAXSCALE = 6,
+} CCBSceneScaleType;
+
+
+
 typedef enum
 {
     kCCBOrientationLandscape = 0,
@@ -91,6 +104,7 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 @property (nonatomic, copy) NSString* versionStr;
 @property (nonatomic, assign) BOOL needRepublish;
 
+@property (nonatomic, assign) int sceneScaleType;
 @property (nonatomic, assign) int designTarget;
 @property (nonatomic, assign) int defaultOrientation;
 @property (nonatomic, assign) int deviceScaling;
