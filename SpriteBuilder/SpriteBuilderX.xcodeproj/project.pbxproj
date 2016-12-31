@@ -531,8 +531,8 @@
 		B7F02D4917D12DB1008A2E2D /* about-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7F02D4717D12DB1008A2E2D /* about-bg@2x.png */; };
 		B7F02D4C17D13332008A2E2D /* CCBTransparentWindowDraggable.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F02D4B17D13332008A2E2D /* CCBTransparentWindowDraggable.m */; };
 		D2E0168118D7838F00927430 /* SpriteBuilderCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E0167618D782CC00927430 /* SpriteBuilderCommand.m */; };
-		D2E0168A18D789E700927430 /* SpriteBuilder.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilder.sdef */; };
-		D2E0168B18D789E800927430 /* SpriteBuilder.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilder.sdef */; };
+		D2E0168A18D789E700927430 /* SpriteBuilderX.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilderX.sdef */; };
+		D2E0168B18D789E800927430 /* SpriteBuilderX.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D2E0168618D783F800927430 /* SpriteBuilderX.sdef */; };
 		D35E589E18E391DA008571EC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D35E589D18E391DA008571EC /* GLKit.framework */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
 		E312973316CC377700A09155 /* SequencerPopoverBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E312973216CC377700A09155 /* SequencerPopoverBlock.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -1261,7 +1261,7 @@
 		774E4ECC136DFFB70025D0A8 /* btn-scale-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-scale-hi.png"; sourceTree = "<group>"; };
 		774E4ECD136DFFB70025D0A8 /* btn-scale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-scale.png"; sourceTree = "<group>"; };
 		774F95C513638D74005D43EB /* missing-particle-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missing-particle-texture.png"; sourceTree = "<group>"; };
-		776041E81498F8ED0078095D /* SpriteBuilder-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SpriteBuilder-Info.plist"; sourceTree = "<group>"; };
+		776041E81498F8ED0078095D /* SpriteBuilderX-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SpriteBuilderX-Info.plist"; sourceTree = "<group>"; };
 		776A3706139544A200960E94 /* TB_actualSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_actualSize.png; sourceTree = "<group>"; };
 		776A3707139544A200960E94 /* TB_grab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_grab.png; sourceTree = "<group>"; };
 		776A3708139544A200960E94 /* TB_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TB_select.png; sourceTree = "<group>"; };
@@ -1286,7 +1286,7 @@
 		7789ABC6133AA82000CEFCC7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7789ABC7133AA82000CEFCC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7789ABCC133AA82000CEFCC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7789ABCE133AA82000CEFCC7 /* SpriteBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpriteBuilder-Prefix.pch"; sourceTree = "<group>"; };
+		7789ABCE133AA82000CEFCC7 /* SpriteBuilderX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpriteBuilderX-Prefix.pch"; sourceTree = "<group>"; };
 		7789ABCF133AA82000CEFCC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7789ABD2133AA82000CEFCC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		7789ABD4133AA82000CEFCC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1923,7 +1923,7 @@
 		B7F02D4B17D13332008A2E2D /* CCBTransparentWindowDraggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBTransparentWindowDraggable.m; sourceTree = "<group>"; };
 		D2E0167518D782CC00927430 /* SpriteBuilderCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBuilderCommand.h; sourceTree = "<group>"; };
 		D2E0167618D782CC00927430 /* SpriteBuilderCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBuilderCommand.m; sourceTree = "<group>"; };
-		D2E0168618D783F800927430 /* SpriteBuilder.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpriteBuilder.sdef; sourceTree = SOURCE_ROOT; };
+		D2E0168618D783F800927430 /* SpriteBuilderX.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpriteBuilderX.sdef; sourceTree = SOURCE_ROOT; };
 		D35E589D18E391DA008571EC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerPopoverBlock.xib; sourceTree = "<group>"; };
 		E312973116CC377700A09155 /* SequencerPopoverBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerPopoverBlock.h; sourceTree = "<group>"; };
@@ -3444,12 +3444,12 @@
 		7789ABC9133AA82000CEFCC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D2E0168618D783F800927430 /* SpriteBuilder.sdef */,
+				D2E0168618D783F800927430 /* SpriteBuilderX.sdef */,
 				7789ABCB133AA82000CEFCC7 /* InfoPlist.strings */,
-				7789ABCE133AA82000CEFCC7 /* SpriteBuilder-Prefix.pch */,
+				7789ABCE133AA82000CEFCC7 /* SpriteBuilderX-Prefix.pch */,
 				7789ABCF133AA82000CEFCC7 /* main.m */,
 				7789ABD1133AA82000CEFCC7 /* Credits.rtf */,
-				776041E81498F8ED0078095D /* SpriteBuilder-Info.plist */,
+				776041E81498F8ED0078095D /* SpriteBuilderX-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -5915,7 +5915,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7789ABB8133AA82000CEFCC7 /* Build configuration list for PBXProject "SpriteBuilder" */;
+			buildConfigurationList = 7789ABB8133AA82000CEFCC7 /* Build configuration list for PBXProject "SpriteBuilderX" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -6063,7 +6063,7 @@
 				77E1995D13858DE0006C361B /* TabNewMetalRollover.png in Resources */,
 				B75CB46618468FA70036259F /* seq-btn-loop@2x.png in Resources */,
 				776C68911388107400153214 /* missing-font.fnt in Resources */,
-				D2E0168B18D789E800927430 /* SpriteBuilder.sdef in Resources */,
+				D2E0168B18D789E800927430 /* SpriteBuilderX.sdef in Resources */,
 				B71706D1184ECD660081720A /* select-scale@2x.png in Resources */,
 				776C68921388107400153214 /* missing-font.png in Resources */,
 				9266EE2E195A1695006CBE81 /* effect-pixelate.png in Resources */,
@@ -6656,7 +6656,7 @@
 				92B792CC18C92C60007DF895 /* Icon.png in Resources */,
 				92B792C918C92C60007DF895 /* CCBPProperties.plist in Resources */,
 				92B792CA18C92C60007DF895 /* CCPhysicsSpringJoint-Info.plist in Resources */,
-				D2E0168A18D789E700927430 /* SpriteBuilder.sdef in Resources */,
+				D2E0168A18D789E700927430 /* SpriteBuilderX.sdef in Resources */,
 				9254805A18D913C500236DED /* seq-locked-faint.png in Resources */,
 				E525F2CA0ED42F21A4777F2E /* InspectorPopoverFloat.xib in Resources */,
 				E525F399F495553FA95F3974 /* InspectorStringSimple.xib in Resources */,
@@ -7763,7 +7763,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilder-Prefix.pch";
+				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilderX-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(SB_DEBUG_PREPROCESSOR_DEFINES)";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
@@ -7775,7 +7775,7 @@
 					"libs/cocos2d-iphone/external/Chipmunk/objectivec/include/",
 					"libs/cocos2d-iphone/external/ObjectAL/**",
 				);
-				INFOPLIST_FILE = "ccBuilder/SpriteBuilder-Info.plist";
+				INFOPLIST_FILE = "ccBuilder/SpriteBuilderX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/Tupac\"",
@@ -7785,7 +7785,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
+				PRODUCT_NAME = SpriteBuilderX;
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
@@ -7806,7 +7806,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilder-Prefix.pch";
+				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilderX-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(SB_RELEASE_PREPROCESSOR_DEFINES)";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
@@ -7818,7 +7818,7 @@
 					"libs/cocos2d-iphone/external/Chipmunk/objectivec/include/",
 					"libs/cocos2d-iphone/external/ObjectAL/**",
 				);
-				INFOPLIST_FILE = "ccBuilder/SpriteBuilder-Info.plist";
+				INFOPLIST_FILE = "ccBuilder/SpriteBuilderX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/Tupac\"",
@@ -7828,7 +7828,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
+				PRODUCT_NAME = SpriteBuilderX;
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
@@ -7882,7 +7882,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilder-Prefix.pch";
+				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilderX-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(SB_DEBUG_PREPROCESSOR_DEFINES)",
 					"TESTING=1",
@@ -7898,7 +7898,7 @@
 					"libs/cocos2d-iphone/external/Chipmunk/objectivec/include/",
 					"libs/cocos2d-iphone/external/ObjectAL/**",
 				);
-				INFOPLIST_FILE = "ccBuilder/SpriteBuilder-Info.plist";
+				INFOPLIST_FILE = "ccBuilder/SpriteBuilderX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/Tupac\"",
@@ -7908,7 +7908,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = "$(SB_PRODUCT_NAME)";
+				PRODUCT_NAME = SpriteBuilderX;
 				PROVISIONING_PROFILE = "";
 				SBPRO_PRIVATE_KEY = "fake_private_key___________________________=";
 				SB_PRODUCT_NAME = SpriteBuilderX;
@@ -11295,7 +11295,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7789ABB8133AA82000CEFCC7 /* Build configuration list for PBXProject "SpriteBuilder" */ = {
+		7789ABB8133AA82000CEFCC7 /* Build configuration list for PBXProject "SpriteBuilderX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7789ABDA133AA82000CEFCC7 /* Debug */,

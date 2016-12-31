@@ -17,7 +17,7 @@
                BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
                BuildableName = "SpriteBuilderX.app"
                BlueprintName = "SpriteBuilderX"
-               ReferencedContainer = "container:SpriteBuilder.xcodeproj">
+               ReferencedContainer = "container:SpriteBuilderX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
             BuildableName = "SpriteBuilderX.app"
             BlueprintName = "SpriteBuilderX"
-            ReferencedContainer = "container:SpriteBuilder.xcodeproj">
+            ReferencedContainer = "container:SpriteBuilderX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
             BuildableName = "SpriteBuilderX.app"
             BlueprintName = "SpriteBuilderX"
-            ReferencedContainer = "container:SpriteBuilder.xcodeproj">
+            ReferencedContainer = "container:SpriteBuilderX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "7789ABBD133AA82000CEFCC7"
             BuildableName = "SpriteBuilderX.app"
             BlueprintName = "SpriteBuilderX"
-            ReferencedContainer = "container:SpriteBuilder.xcodeproj">
+            ReferencedContainer = "container:SpriteBuilderX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

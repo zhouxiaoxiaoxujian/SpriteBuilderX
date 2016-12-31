@@ -80,7 +80,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
-	<string>SpriteBuilder.sdef</string>
+	<string>SpriteBuilderX.sdef</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>

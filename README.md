@@ -2,10 +2,7 @@
 
 This branch was forked from: https://github.com/newnon/SpriteBuilderX
 
-My repo contains of two branches of SB: 
-
- - "SpriteBuilderX" - for iOS & Android. It requires the use - https://github.com/newnon/cocos2d-x
- - "1.5" - iOS only(also it's renamed to CocosBuilder)
+It requires the use of  https://github.com/newnon/cocos2d-x
 
 
 Core Features:
@@ -17,11 +14,11 @@ Core Features:
 * Asset management & sprite sheet generation
 * Tools for localization
 * Publish to iOS & Android platforms
-
+* Multi resolution support
 
 ## Getting started with the source
 
- Just Build & Run SpriteBuilder/SpriteBuilder.xcodeproj 
+ Just Build & Run SpriteBuilder/SpriteBuilderX.xcodeproj 
 
 
 ## Still having trouble compiling SpriteBuilderX?
