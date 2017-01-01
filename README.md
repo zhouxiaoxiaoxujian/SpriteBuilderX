@@ -1,9 +1,8 @@
 # SpriteBuilderX
 
-This branch was forked from: https://github.com/newnon/SpriteBuilderX
+This branch requires the use of https://github.com/newnon/cocos2d-x
 
-It requires the use of  https://github.com/newnon/cocos2d-x
-
+After you have created a new project, then replace completely cocos2d folder from newnon/cocos2d-x
 
 Core Features:
 
@@ -18,7 +17,7 @@ Core Features:
 
 ## Getting started with the source
 
- Just Build & Run SpriteBuilder/SpriteBuilderX.xcodeproj 
+Just Build & Run SpriteBuilder/SpriteBuilderX.xcodeproj 
 
 
 ## Still having trouble compiling SpriteBuilderX?
