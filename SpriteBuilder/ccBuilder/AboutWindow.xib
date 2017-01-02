@@ -33,7 +33,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="43">
                             <font key="font" metaFont="miniSystem"/>
-                            <string key="title">Copyright 2013 Apportable inc
+                            <string key="title">Copyright 2016 Volodymyr Klymenko
+Copyright 2014 Sergey Perepelitsa 
+Copyright 2013-2014 Apportable inc
 Copyright 2012-2013 Zynga inc
 Copyright 2011 Viktor Lidholt
 
