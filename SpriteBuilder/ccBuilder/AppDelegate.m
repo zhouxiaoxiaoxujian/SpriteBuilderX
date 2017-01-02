@@ -716,20 +716,12 @@ typedef enum
 
 - (void) modalDialogTitle: (NSString*)title message:(NSString*)msg disableKey:(NSString*)key
 {
-	if(![self showHelpDialog:key])
-	{
-		return;
-	}
 	
 	NSAlert* alert = [NSAlert alertWithMessageText:title defaultButton:@"OK" alternateButton:NULL otherButton:NULL informativeTextWithFormat:@"%@",msg];
 	
 	[alert setShowsSuppressionButton:YES];
 	[alert runModal];
 	
-	if ([[alert suppressionButton] state] == NSOnState) {
-        // Suppress this alert from now on.
-		[self disableHelpDialog:key];
-    }
 }
 
 - (void)modalStatusWindowStartWithTitle:(NSString *)title isIndeterminate:(BOOL)isIndeterminate onCancelBlock:(OnCancelBlock)onCancelBlock
@@ -3053,9 +3045,6 @@ typedef enum
                 // Create directory
                 [[NSFileManager defaultManager] createDirectoryAtPath:fileName withIntermediateDirectories:NO attributes:NULL error:NULL];
                 
-                // Set icon of created directory
-                //NSImage* folderIcon = [NSImage imageNamed:@"Folder.icns"];
-                //[[NSWorkspace sharedWorkspace] setIcon:folderIcon forFile:fileName options:0];
                 
                 // Create project file
                 NSString* projectName = [fileNameRaw lastPathComponent];
@@ -4375,50 +4364,17 @@ typedef enum
     }
 }
 
--(BOOL)showHelpDialog:(NSString*)type
-{
-	NSDictionary * helpDialogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"HelpDialogs"];
-	if(helpDialogs == nil || !helpDialogs[type])
-		return YES;
-	
-	//Its presence indicates we don't show the dialog.
-	return NO;
-			
-}
--(void)disableHelpDialog:(NSString*)type
-{
-	NSMutableDictionary * helpDialogs = [NSMutableDictionary dictionary];
-	
-	if([[NSUserDefaults standardUserDefaults] objectForKey:@"HelpDialogs"])
-	{
-		NSDictionary * temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"HelpDialogs"];
-		helpDialogs = [NSMutableDictionary dictionaryWithDictionary:temp];
-	}
-	
-	helpDialogs[type] = @(NO);
-	[[NSUserDefaults standardUserDefaults] setObject:helpDialogs forKey:@"HelpDialogs"];
-}
-
-- (IBAction)showHelp:(id)sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://makegameswith.us/docs/"]];
-}
-
-- (IBAction)showAPIDocs:(id)sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.cocos2d-iphone.org/docs/api/index.html"]];
-}
 
 - (IBAction)reportBug:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/apportable/SpriteBuilder/issues"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/KAMIKAZEUA/SpriteBuilderX/issues"]];
 }
 - (IBAction)menuHiddenNode:(id)sender {
 }
 
 - (IBAction)visitCommunity:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://forum.spritebuilder.com"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://discuss.cocos2d-x.org"]];
 }
 
 #pragma mark Debug

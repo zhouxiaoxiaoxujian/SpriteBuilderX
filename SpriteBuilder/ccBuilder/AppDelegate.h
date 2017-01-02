@@ -459,11 +459,7 @@ typedef void (^CompletionCallback) (BOOL success);
 // Help
 - (IBAction)reportBug:(id)sender;
 - (IBAction)visitCommunity:(id)sender;
-- (IBAction)showHelp:(id)sender;
 
-//Help dialogs.
--(BOOL)showHelpDialog:(NSString*)type;
--(void)disableHelpDialog:(NSString*)type;
 
 @property (weak) IBOutlet NSTableView *warningTableView;
 

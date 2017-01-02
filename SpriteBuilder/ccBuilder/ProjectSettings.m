@@ -685,11 +685,7 @@
 
 		NSMutableDictionary * versionDict = [NSMutableDictionary dictionaryWithDictionary:@{@"version" : version}];
 		
-//#ifdef SPRITEBUILDER_PRO
-//		versionDict[@"sku"] = @"pro";
-//#else
 		versionDict[@"sku"] = @"default";
-//#endif
 		return versionDict;
 		
 	}

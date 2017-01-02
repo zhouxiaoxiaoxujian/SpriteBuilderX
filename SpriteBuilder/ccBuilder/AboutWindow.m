@@ -69,15 +69,6 @@
     [contentView addSubview:closeButton];
 	
 
-//#ifndef SPRITEBUILDER_PRO
-	//Not pro version.
-	self.proSuffix.stringValue = @"";
-//#else
-	//If is Pro version
-//	[self.buttonViewOnGithub setHidden:YES];
-//#endif
-
-
 }
 
 -(NSString*)versionAboutInfo
@@ -85,17 +76,9 @@
 	ProjectSettings* projectSettings = [[ProjectSettings alloc] init];
 	NSDictionary * versionDictionary = [projectSettings getVersionDictionary];
 
-#ifdef SPRITEBUILDER_PRO
-	
-	
-	
-	NSString * aboutInfo = @"";
+    NSString * aboutInfo = @"";
 	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Version: %@\n", versionDictionary[@"version"]]];
 	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Revision: %@\n", versionDictionary[@"revision"]]];
-	
-#else
-	NSString * aboutInfo = [NSString stringWithFormat:@"Version:%@",versionDictionary[@"version"]];
-#endif
 	
 	return aboutInfo;
 }
@@ -104,7 +87,7 @@
 {
 
     [[NSWorkspace sharedWorkspace] openURL:
-     [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/newnon/SpriteBuilderX"]]];
+     [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/KAMIKAZEUA/SpriteBuilderX"]]];
     
     [self.window orderOut:sender];
 }
@@ -112,24 +95,6 @@
 - (IBAction)btnSupportForum:(id)sender
 {
     [[AppDelegate appDelegate] visitCommunity:sender];
-    [self.window orderOut:sender];
-}
-
-- (IBAction)btnReportBug:(id)sender
-{
-    [[AppDelegate appDelegate] reportBug:sender];
-    [self.window orderOut:sender];
-}
-
-- (IBAction)btnGetSource:(id)sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/apportable/SpriteBuilder"]];
-    [self.window orderOut:sender];
-}
-
-- (IBAction)btnUserGuide:(id)sender
-{
-    [[AppDelegate appDelegate] showHelp:sender];
     [self.window orderOut:sender];
 }
 
