@@ -29,12 +29,6 @@
 #define kCCBProjectSettingsVersion 1
 #define kCCBDefaultExportPlugIn @"ccbi"
 
-typedef enum
-{
-    kCCBDesignTargetFlexible = 0,
-    kCCBDesignTargetFixed = 1,
-} CCBDesignTarget;
-
 
 typedef enum {
     kCCBSceneScaleTypeDEFAULT  = 0,
@@ -47,23 +41,12 @@ typedef enum {
 } CCBSceneScaleType;
 
 
-
 typedef enum
 {
     kCCBOrientationLandscape = 0,
     kCCBOrientationPortrait = 1,
 } CCBOrientation;
 
-typedef NS_ENUM(int8_t, CCBTargetEngine)
-{
-	CCBTargetEngineCocos2d = 0,
-};
-
-typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
-{
-    CCBProgrammingLanguageObjectiveC = 0,
-    CCBProgrammingLanguageSwift = 1,
-};
 
 @class RMResource;
 @class CCBWarnings;
@@ -105,7 +88,6 @@ typedef NS_ENUM(int8_t, CCBProgrammingLanguage)
 @property (nonatomic, assign) BOOL needRepublish;
 
 @property (nonatomic, assign) int sceneScaleType;
-@property (nonatomic, assign) int designTarget;
 @property (nonatomic, assign) int defaultOrientation;
 @property (nonatomic, assign) int deviceScaling;
 @property (nonatomic, assign) float tabletPositionScaleFactor;

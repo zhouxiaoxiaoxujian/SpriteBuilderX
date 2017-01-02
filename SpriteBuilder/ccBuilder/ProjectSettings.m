@@ -45,7 +45,6 @@
 @interface ProjectSettings()
 
 @property (nonatomic, strong) NSMutableDictionary* resourceProperties;
-@property (nonatomic, readwrite) CCBTargetEngine engine;
 @property (nonatomic) BOOL storing;
 
 @end
@@ -59,8 +58,6 @@
     {
         return NULL;
     }
-
-    self.engine = CCBTargetEngineCocos2d;
 
     self.resourcePaths = [[NSMutableArray alloc] init];
 
@@ -101,7 +98,6 @@
         return NULL;
     }
 
-	self.engine = (CCBTargetEngine)[[dict objectForKey:@"engine"] intValue];
     self.resourcePaths = [dict objectForKey:@"resourcePaths"];
     
     self.designSizeWidth = [[dict objectForKey:@"designSizeWidth"] integerValue];
@@ -211,7 +207,6 @@
 
     self.deviceScaling = [[dict objectForKey:@"deviceScaling"] intValue];
     self.defaultOrientation = [[dict objectForKey:@"defaultOrientation"] intValue];
-    self.designTarget = [[dict objectForKey:@"designTarget"] intValue];
     self.sceneScaleType = [[dict objectForKey:@"sceneScaleType"] intValue];
     
     self.tabletPositionScaleFactor = 2.0f;
@@ -261,7 +256,6 @@
 {
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
 
-    dict[@"engine"] = @(_engine);
 
     dict[@"fileType"] = @"CocosBuilderProject";
     dict[@"fileVersion"] = @kCCBProjectSettingsVersion;
@@ -283,7 +277,6 @@
 
     
     dict[@"sceneScaleType"] = @(_sceneScaleType);
-    dict[@"designTarget"] = @(_designTarget);
     dict[@"defaultOrientation"] = @(_defaultOrientation);
     dict[@"deviceScaling"] = @(_deviceScaling);
 

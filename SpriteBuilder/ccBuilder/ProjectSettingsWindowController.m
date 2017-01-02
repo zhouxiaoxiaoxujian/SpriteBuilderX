@@ -135,6 +135,14 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [super acceptSheet:sender];
 }
 
+
+- (IBAction)cancelSheet:(id)sender {
+    //do nothing, also use "esc" to close this settings
+    //an so project will not be republished
+    //before that, just with "acceptSheet:" - even if you didn't modified anything - all res. wil be republished
+    [super cancelSheet:sender];
+}
+
 - (void)saveAllSettings
 {
     [_projectSettings store];

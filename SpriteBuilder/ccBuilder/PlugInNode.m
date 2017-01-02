@@ -142,8 +142,6 @@
     NSURL* propsURL = [bundle URLForResource:@"CCBPProperties" withExtension:@"plist"];
     NSMutableDictionary* props = [NSMutableDictionary dictionaryWithContentsOfURL:propsURL];
     
-	_targetEngine = CCBTargetEngineCocos2d;
-	
     nodeClassName = props[@"className"];
     nodeEditorClassName = props[@"editorClassName"];
     

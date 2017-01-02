@@ -85,7 +85,6 @@
 #import "InspectorSeparator.h"
 #import "NodeGraphPropertySetter.h"
 #import "CCBSplitHorizontalView.h"
-#import "SpriteSheetSettingsWindow.h"
 #import "AboutWindow.h"
 #import "CCBFileUtil.h"
 #import "ResourceManagerUtil.h"
@@ -1650,6 +1649,7 @@ typedef enum
     NSString* projName = [[fileName lastPathComponent] stringByDeletingPathExtension];
     fileName = [[fileName stringByAppendingPathComponent:projName] stringByAppendingPathExtension:@"ccbproj"];
     
+    self.openedProjectFileName = fileName;
     // Load the project file
     NSMutableDictionary* projectDict = [NSMutableDictionary dictionaryWithContentsOfFile:fileName];
     if (!projectDict)
@@ -1677,7 +1677,7 @@ typedef enum
     [self updateResourcePathsFromProjectSettings];
 
     // Update Node Plugins list
-	[plugInNodeViewHandler showNodePluginsForEngine:CCBTargetEngineCocos2d];
+	[plugInNodeViewHandler showNodePlugins];
 	
     BOOL success = [self checkForTooManyDirectoriesInCurrentProject];
     if (!success)
@@ -1722,9 +1722,6 @@ typedef enum
     
     [self updateWarningsButton];
     [self updateSmallTabBarsEnabled];
-
-    /*Cocos2dUpdater *cocos2dUpdater = [[Cocos2dUpdater alloc] initWithAppDelegate:self projectSettings:projectSettings];
-    [cocos2dUpdater updateAndBypassIgnore:NO];*/
 
     self.window.representedFilename = [fileName stringByDeletingLastPathComponent];
 
@@ -2950,12 +2947,31 @@ typedef enum
         return;
     }
 
-    ProjectSettingsWindowController *settingsWindowController = [[ProjectSettingsWindowController alloc] initWithProjectSettings:self.projectSettings];
-    settingsWindowController.projectSettings = self.projectSettings;
-
+    NSMutableDictionary*projectDict = [NSMutableDictionary dictionaryWithContentsOfFile:self.openedProjectFileName];
+    self.editedProjectSettings = [[ProjectSettings alloc] initWithSerialization:projectDict];
+    self.editedProjectSettings.projectPath = self.openedProjectFileName;
+    ProjectSettingsWindowController *settingsWindowController = [[ProjectSettingsWindowController alloc]
+                                                                 initWithProjectSettings:self.editedProjectSettings];
+    
+    settingsWindowController.projectSettings = self.editedProjectSettings;
+    
     if ([settingsWindowController runModalSheetForWindow:window])
     {
+        self.projectSettings = NULL;
+        [ResourceManager sharedManager].projectSettings = NULL;
+        [[ResourceManager sharedManager] removeAllDirectories];
+        
+        self.projectSettings = self.editedProjectSettings;
+        self.projectSettings.projectPath = self.openedProjectFileName;
+        
+        _resourceCommandController.projectSettings = self.projectSettings;
+        projectOutlineHandler.projectSettings = self.projectSettings;
+        [ResourceManager sharedManager].projectSettings = self.projectSettings;
+        
         [self updateEverythingAfterSettingsChanged];
+    } else {
+        //press "esc" or "cancel" in project settings
+        //do nothing
     }
 }
 
@@ -3010,24 +3026,8 @@ typedef enum
     [self closeProject];
 }
 
--(void)updateLanguageHint
-{
-    switch (saveDlgLanguagePopup.selectedItem.tag)
-    {
-        case CCBProgrammingLanguageObjectiveC:
-            saveDlgLanguageHint.title = @"All supported platforms";
-            break;
-        case CCBProgrammingLanguageSwift:
-            saveDlgLanguageHint.title = @"iOS7+ and OSX 10.10+ only";
-            break;
-        default:
-            NSAssert(false, @"Unknown programming language");
-            saveDlgLanguageHint.title = @"";  // NOTREACHED
-            break;
-    }
-}
 
--(void) createNewProjectTargetting:(CCBTargetEngine)engine
+-(void) createNewProject
 {
     // Accepted create document, prompt for place for file
     NSSavePanel* saveDlg = [NSSavePanel savePanel];
@@ -3037,13 +3037,8 @@ typedef enum
     // Configure the accessory view
     [saveDlg setAccessoryView:saveDlgAccessoryView];
     [saveDlgLanguagePopup removeAllItems];
-//    [saveDlgLanguagePopup addItemsWithTitles:@[@"Objective-C", @"Swift"]];
     [saveDlgLanguagePopup addItemsWithTitles:@[@"C++"]];
-    ((NSMenuItem*)saveDlgLanguagePopup.itemArray.firstObject).tag = CCBProgrammingLanguageObjectiveC;
-//    ((NSMenuItem*)saveDlgLanguagePopup.itemArray.lastObject).tag = CCBProgrammingLanguageSwift;
     saveDlgLanguagePopup.target = self;
-    saveDlgLanguagePopup.action = @selector(updateLanguageHint);
-    [self updateLanguageHint];
 
     [saveDlg beginSheetModalForWindow:window completionHandler:^(NSInteger result){
         if (result == NSOKButton)
@@ -3069,7 +3064,7 @@ typedef enum
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0),
                                dispatch_get_main_queue(), ^{
                                    CCBProjectCreator * creator = [[CCBProjectCreator alloc] init];
-                                   if ([creator createDefaultProjectAtPath:fileName engine:engine programmingLanguage:saveDlgLanguagePopup.selectedItem.tag])
+                                   if ([creator createDefaultProjectAtPath:fileName])
                                    {
                                        [self openProject:[fileNameRaw stringByAppendingPathExtension:@"spritebuilder"]];
                                    }
@@ -3089,7 +3084,7 @@ typedef enum
 
 - (IBAction) menuNewProject:(id)sender
 {
-	[self createNewProjectTargetting:CCBTargetEngineCocos2d];
+	[self createNewProject];
 }
 
 
