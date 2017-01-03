@@ -1216,6 +1216,9 @@ typedef enum
     //if (docDimType == kCCBDocDimensionsTypeNode) centered = YES;
     //else centered = NO;
     
+    if(docDimType > kCCBDocDimensionsTypeLayer)
+        docDimType = kCCBDocDimensionsTypeFullScreen;
+    
     if (docDimType == kCCBDocDimensionsTypeLayer || docDimType == kCCBDocDimensionsTypeNode) self.canEditStageSize = YES;
     else self.canEditStageSize = NO;
     
