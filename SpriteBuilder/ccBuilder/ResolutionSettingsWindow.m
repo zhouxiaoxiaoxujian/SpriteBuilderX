@@ -89,17 +89,39 @@
     }
 }
 
-typedef NS_ENUM(int8_t, CCBRecalScaleType)
-{
-    kCCBRecalScaleTypeMinSize = 0,
-    kCCBRecalScaleTypeMaxSize,
-    kCCBRecalScaleTypeMinScale,
-    kCCBRecalScaleTypeMaxScale
-};
-
-- (void)recallcScale:(ResolutionSetting*)resolution designResolution:(CGSize)designResolution designResolutionScale:(float)designResolutionScale scaleType:(CCBRecalScaleType)scaleType{
+- (IBAction)resolutionChange:(NSPopUpButton *)sender {
     
-    if(scaleType == kCCBRecalScaleTypeMinScale)
+    switch (self.sceneScaleType) {
+        case kCCBSceneScaleTypeDEFAULT:
+            //TODO
+            
+            break;
+        case kCCBSceneScaleTypeNONE:
+            break;
+        case kCCBSceneScaleTypeCUSTOM:
+            break;
+        case kCCBSceneScaleTypeMINSIZE:
+            [self recallcScalesMinSize];
+            break;
+        case kCCBSceneScaleTypeMAXSIZE:
+            [self recallcScalesMaxSize];
+            break;
+        case kCCBSceneScaleTypeMINSCALE:
+            [self recallcScalesMinScale];
+            break;
+        case kCCBSceneScaleTypeMAXSCALE:
+            [self recallcScalesMaxScale];
+            break;
+    }
+}
+
+
+- (void)recallcScale:(ResolutionSetting*)resolution
+    designResolution:(CGSize)designResolution
+      designResScale:(float)designResolutionScale
+           scaleType:(CCBSceneScaleType) scaleType{
+    
+    if(scaleType == kCCBSceneScaleTypeMINSCALE)
     {
         float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
         float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
@@ -114,7 +136,7 @@ typedef NS_ENUM(int8_t, CCBRecalScaleType)
             resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
         }
     }
-    else if(scaleType == kCCBRecalScaleTypeMaxScale)
+    else if(scaleType == kCCBSceneScaleTypeMAXSCALE)
     {
         float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
         float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
@@ -129,7 +151,7 @@ typedef NS_ENUM(int8_t, CCBRecalScaleType)
             resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
         }
     }
-    else if((designResolution.width>designResolution.height) == (scaleType == kCCBRecalScaleTypeMinSize))
+    else if((designResolution.width>designResolution.height) == (scaleType == kCCBSceneScaleTypeMINSIZE))
     {
         resolution.mainScale = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
         resolution.additionalScale =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
@@ -141,29 +163,33 @@ typedef NS_ENUM(int8_t, CCBRecalScaleType)
     }
 }
 
-- (IBAction)recallcScalesMinSize:(id)sender {
+- (void)recallcScalesMinSize {
     for (ResolutionSetting* resolution in resolutions)
     {
-        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResolutionScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBRecalScaleTypeMinSize];
+        [self recallcScale:resolution
+          designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth,
+                                      [AppDelegate appDelegate].projectSettings.designSizeHeight)
+            designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale
+                 scaleType:kCCBSceneScaleTypeMINSIZE];
     }
 }
 
-- (IBAction)recallcScalesMaxSize:(id)sender {
+- (void)recallcScalesMaxSize {
     for (ResolutionSetting* resolution in resolutions)
     {
-        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResolutionScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBRecalScaleTypeMaxSize];
+        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBSceneScaleTypeMAXSIZE];
     }
 }
-- (IBAction)recallcScalesMinScale:(id)sender {
+- (void)recallcScalesMinScale {
     for (ResolutionSetting* resolution in resolutions)
     {
-        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResolutionScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBRecalScaleTypeMinScale];
+        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBSceneScaleTypeMINSCALE];
     }
 }
-- (IBAction)recallcScalesMaxScale:(id)sender {
+- (void)recallcScalesMaxScale {
     for (ResolutionSetting* resolution in resolutions)
     {
-        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResolutionScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBRecalScaleTypeMaxScale];
+        [self recallcScale:resolution designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBSceneScaleTypeMAXSCALE];
     }
 }
 
@@ -196,7 +222,12 @@ typedef NS_ENUM(int8_t, CCBRecalScaleType)
 - (void) addPredefined:(id)sender
 {
     ResolutionSetting* setting = [predefinedResolutions objectAtIndex:[sender tag]];
-    [self recallcScale:setting designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth, [AppDelegate appDelegate].projectSettings.designSizeHeight) designResolutionScale:[AppDelegate appDelegate].projectSettings.designResourceScale scaleType:kCCBRecalScaleTypeMaxSize];
+    [self recallcScale:setting
+      designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth,
+                                  [AppDelegate appDelegate].projectSettings.designSizeHeight)
+        designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale
+             scaleType:kCCBSceneScaleTypeMAXSIZE];
+    
     [arrayController addObject:setting];
 }
 

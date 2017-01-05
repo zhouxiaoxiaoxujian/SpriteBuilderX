@@ -10,8 +10,6 @@
 	<integer>1136</integer>
 	<key>designSizeWidth</key>
 	<integer>640</integer>
-	<key>designTarget</key>
-	<integer>0</integer>
 	<key>deviceOrientationLandscapeLeft</key>
 	<true/>
 	<key>deviceOrientationLandscapeRight</key>
@@ -21,8 +19,6 @@
 	<key>deviceOrientationUpsideDown</key>
 	<false/>
 	<key>deviceScaling</key>
-	<integer>0</integer>
-	<key>engine</key>
 	<integer>0</integer>
 	<key>exporter</key>
 	<string>ccbi</string>
@@ -158,7 +154,7 @@
 				<string>Main</string>
 			</array>
 			<key>publish1x</key>
-			<true/>
+			<false/>
 			<key>publish2x</key>
 			<true/>
 			<key>publish4x</key>
@@ -199,7 +195,7 @@
 	<key>resourceProperties</key>
 	<dict/>
 	<key>sceneScaleType</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>versionStr</key>
 	<string>1.5</string>
 </dict>

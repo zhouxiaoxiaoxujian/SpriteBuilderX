@@ -283,6 +283,8 @@
 			<integer>1536</integer>
 		</dict>
 	</array>
+	<key>sceneScaleType</key>
+	<integer>-1</integer>
 	<key>sequences</key>
 	<array>
 		<dict>

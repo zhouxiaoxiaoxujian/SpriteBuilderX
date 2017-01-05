@@ -29,11 +29,12 @@
     NSMutableArray* resolutions;
     NSMutableArray* predefinedResolutions;
     IBOutlet NSPopUpButton* addPredefinedPopup;
-    
     IBOutlet NSArrayController* arrayController;
+    
 }
-
+@property (nonatomic,assign) int sceneScaleType;
 @property (nonatomic,strong) NSMutableArray* resolutions;
+
 - (void) copyResolutions:(NSMutableArray *)res;
 
 @end

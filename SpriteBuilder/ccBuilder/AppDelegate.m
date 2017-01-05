@@ -3255,9 +3255,12 @@ typedef enum
     ResolutionSettingsWindow* wc = [[ResolutionSettingsWindow alloc] initWithWindowNibName:@"ResolutionSettingsWindow"];
     [wc copyResolutions: currentDocument.resolutions];
     
+    wc.sceneScaleType = currentDocument.sceneScaleType;
+    
     int success = [wc runModalSheetForWindow:window];
     if (success)
     {
+        currentDocument.sceneScaleType = wc.sceneScaleType;
         currentDocument.resolutions = wc.resolutions;
         [self updateResolutionMenu];
         if(currentDocument.currentResolution<[currentDocument.resolutions count])
@@ -4216,21 +4219,10 @@ typedef enum
     return currentDocument.undoManager;
 }
 
-#pragma mark Spritebuilder Pro
 
 -(NSString*)applicationTitle
 {
 	return @"SpriteBuilder";
-}
-
-
-
-
-- (NSString *)feedURLStringForUpdater:(id)updater
-{
-
-    return @"http://update.spritebuilder.com";
-	
 }
 
 #pragma mark Extras / Snap
