@@ -55,23 +55,23 @@
     }
     else if (_projectSettings.sceneScaleType == kCCBSceneScaleTypeCUSTOM)
     {
-        sceneScaleType = @"CCScreenScaleCustom";
+        sceneScaleType = @"CCSceneScaleCustom";
     }
     else if (_projectSettings.sceneScaleType == kCCBSceneScaleTypeMINSIZE)
     {
-        sceneScaleType = @"CCScreenScaleMinSize";
+        sceneScaleType = @"CCSceneScaleMinSize";
     }
     else if (_projectSettings.sceneScaleType == kCCBSceneScaleTypeMAXSIZE)
     {
-        sceneScaleType = @"CCScreenScaleMaxSize";
+        sceneScaleType = @"CCSceneScaleMaxSize";
     }
     else if (_projectSettings.sceneScaleType == kCCBSceneScaleTypeMINSCALE)
     {
-        sceneScaleType = @"CCScreenScaleMinScale";
+        sceneScaleType = @"CCSceneScaleMinScale";
     }
     else if (_projectSettings.sceneScaleType == kCCBSceneScaleTypeMAXSCALE)
     {
-        sceneScaleType = @"CCScreenScaleMaxScale";
+        sceneScaleType = @"CCSceneScaleMaxScale";
     }
     [configCocos2d setObject:sceneScaleType forKey:@"CCSceneScaleType"];
 

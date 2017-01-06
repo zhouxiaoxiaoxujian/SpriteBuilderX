@@ -62,7 +62,6 @@
     self.resourcePaths = [[NSMutableArray alloc] init];
 
     self.onlyPublishCCBs = NO;
-    self.publishToZipFile = NO;
 
     self.deviceOrientationLandscapeLeft = YES;
     self.deviceOrientationLandscapeRight = YES;
@@ -191,7 +190,6 @@
         //try to load old settings
     }
 
-    self.publishToZipFile = [[dict objectForKey:@"publishToZipFile"] boolValue];
     self.onlyPublishCCBs = [[dict objectForKey:@"onlyPublishCCBs"] boolValue];
     self.exporter = [dict objectForKey:@"exporter"];
     self.deviceOrientationPortrait = [[dict objectForKey:@"deviceOrientationPortrait"] boolValue];
@@ -265,7 +263,6 @@
     dict[@"designSizeHeight"] = @(_designSizeHeight);
     dict[@"designResourceScale"] = @(_designResourceScale);
 
-    dict[@"publishToZipFile"] = @(_publishToZipFile);
     dict[@"onlyPublishCCBs"] = @(_onlyPublishCCBs);
     dict[@"exporter"] = self.exporter;
     

@@ -65,7 +65,6 @@ typedef enum
 @property (nonatomic, readonly) NSString* projectPathHashed;
 @property (nonatomic, strong) NSMutableArray* resourcePaths;
 
-@property (nonatomic, assign) BOOL publishToZipFile;
 @property (nonatomic, assign) BOOL onlyPublishCCBs;
 @property (nonatomic, readonly) NSArray* absoluteResourcePaths;
 @property (nonatomic, copy) NSString* exporter;
