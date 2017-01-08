@@ -1417,6 +1417,15 @@ typedef enum
     [self updateCanvasBorderMenu];
 }
 
+-(void) recalculateSceneScale:(CCBDocument *) doc {
+    
+    if (doc.sceneScaleType != kCCBSceneScaleTypeDEFAULT && doc.sceneScaleType != self.projectSettings.sceneScaleType) {
+        //CCLOG(@"Recalculate of scene scale");
+        //TODO: 
+    }
+    
+}
+
 - (void) switchToDocument:(CCBDocument*) document forceReload:(BOOL)forceReload
 {
     if (!forceReload && [document.filePath isEqualToString:currentDocument.filePath]) return;
@@ -1430,14 +1439,17 @@ typedef enum
     NSMutableDictionary* doc = document.data;
     
     [self replaceDocumentData:doc];
-    
+    [self recalculateSceneScale:document];
     [self updateResolutionMenu];
     [self updateTimelineMenu];
     //[self updateStateOriginCenteredMenu];
     
     CocosScene* cs = [CocosScene cocosScene];
-    [cs setStageZoom:0.45/*document.stageZoom*/]; //TODO: fix this!
-    NSLog(@"document.stageZoom: %f",document.stageZoom); //always 1.0
+    if (document.stageZoom == 1.0) {
+        document.stageZoom = 0.41;
+    }
+    [cs setStageZoom:document.stageZoom]; //TODO: fix this! this value don't saved into file
+    //CCLOG(@"document.stageZoom: %f",document.stageZoom);
     [cs setScrollOffset:document.stageScrollOffset];
     
     // Make sure timeline is up to date
@@ -2939,7 +2951,7 @@ typedef enum
         return;
     }
 
-    NSMutableDictionary*projectDict = [NSMutableDictionary dictionaryWithContentsOfFile:self.openedProjectFileName];
+    NSMutableDictionary *projectDict = [NSMutableDictionary dictionaryWithContentsOfFile:self.openedProjectFileName];
     self.editedProjectSettings = [[ProjectSettings alloc] initWithSerialization:projectDict];
     self.editedProjectSettings.projectPath = self.openedProjectFileName;
     ProjectSettingsWindowController *settingsWindowController = [[ProjectSettingsWindowController alloc]
@@ -2947,8 +2959,7 @@ typedef enum
     
     settingsWindowController.projectSettings = self.editedProjectSettings;
     
-    if ([settingsWindowController runModalSheetForWindow:window])
-    {
+    if ([settingsWindowController runModalSheetForWindow:window]) {
         self.projectSettings = NULL;
         [ResourceManager sharedManager].projectSettings = NULL;
         [[ResourceManager sharedManager] removeAllDirectories];
