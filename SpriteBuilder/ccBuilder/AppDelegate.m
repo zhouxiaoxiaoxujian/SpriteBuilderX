@@ -1249,7 +1249,7 @@ typedef enum
         // Save in current document
         currentDocument.resolutions = resolutions;
         currentDocument.currentResolution = currentResolution;
-        
+        currentDocument.sceneScaleType = [[doc objectForKey:@"sceneScaleType"] intValue];
         [self updatePositionScaleFactor];
         
         // Update CocosScene
@@ -1419,12 +1419,24 @@ typedef enum
 
 -(void) recalculateSceneScale:(CCBDocument *) doc {
     
-    if (doc.sceneScaleType != kCCBSceneScaleTypeDEFAULT && doc.sceneScaleType != self.projectSettings.sceneScaleType) {
-        //CCLOG(@"Recalculate of scene scale");
-        //TODO: 
+    if (doc.sceneScaleType > kCCBSceneScaleTypeCUSTOM) {
+        [self recallcScalesForScaleType:doc.sceneScaleType forDocument:doc];
+    } else
+    if (doc.sceneScaleType == kCCBSceneScaleTypeDEFAULT) {
+        [self recallcScalesForScaleType:projectSettings.sceneScaleType forDocument:doc];
     }
-    
 }
+
+- (void)recallcScalesForScaleType:(CCBSceneScaleType) scaleType forDocument:(CCBDocument *) doc {
+    for (ResolutionSetting* resolution in doc.resolutions) {
+        [ResolutionSettingsWindow recallcScale:resolution
+                              designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth,
+                                                          [AppDelegate appDelegate].projectSettings.designSizeHeight)
+                                designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale
+                                     scaleType:scaleType];
+    }
+}
+
 
 - (void) switchToDocument:(CCBDocument*) document forceReload:(BOOL)forceReload
 {

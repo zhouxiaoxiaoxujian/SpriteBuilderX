@@ -23,9 +23,7 @@
  */
 
 #import "ResolutionSettingsWindow.h"
-#import "ResolutionSetting.h"
 #import "AppDelegate.h"
-#import "ProjectSettings.h"
 
 @implementation ResolutionSettingsWindow
 
@@ -85,25 +83,16 @@
 -(void) recalcSceneScale {
     if (self.sceneScaleType > kCCBSceneScaleTypeCUSTOM) {
         [self recallcScalesForScaleType:self.sceneScaleType];
-    } else {
-        switch (self.sceneScaleType) {
-            case kCCBSceneScaleTypeDEFAULT:
-                [self recallcScalesForScaleType:[AppDelegate appDelegate].projectSettings.sceneScaleType];
-                break;
-            case kCCBSceneScaleTypeNONE:
-                //do nothing
-                break;
-            case kCCBSceneScaleTypeCUSTOM:
-                //do nothing
-                break;
-        }
+    } else
+    if (self.sceneScaleType == kCCBSceneScaleTypeDEFAULT) {
+        [self recallcScalesForScaleType:[AppDelegate appDelegate].projectSettings.sceneScaleType];
     }
 }
 
-- (void)recallcScale:(ResolutionSetting*)resolution
++ (void)recallcScale:(ResolutionSetting*)resolution
     designResolution:(CGSize)designResolution
       designResScale:(float)designResolutionScale
-           scaleType:(CCBSceneScaleType) scaleType{
+           scaleType:(CCBSceneScaleType) scaleType {
     
     if(scaleType == kCCBSceneScaleTypeMINSCALE)
     {
@@ -149,7 +138,7 @@
 
 - (void)recallcScalesForScaleType:(CCBSceneScaleType) scaleType {
     for (ResolutionSetting* resolution in resolutions) {
-        [self recallcScale:resolution
+        [ResolutionSettingsWindow recallcScale:resolution
           designResolution:CGSizeMake([AppDelegate appDelegate].projectSettings.designSizeWidth,
                                       [AppDelegate appDelegate].projectSettings.designSizeHeight)
             designResScale:[AppDelegate appDelegate].projectSettings.designResourceScale

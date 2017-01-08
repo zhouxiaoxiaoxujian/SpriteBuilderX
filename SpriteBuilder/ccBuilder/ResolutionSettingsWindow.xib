@@ -259,21 +259,21 @@ DQ
                                     <menuItem title="Project Default" state="on" tag="-1" id="EIc-OK-Dsc">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem isSeparatorItem="YES" id="EwO-Aa-8yL"/>
+                                    <menuItem isSeparatorItem="YES" tag="-2" id="EwO-Aa-8yL"/>
                                     <menuItem title="None" id="lAP-jq-jBO">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="Custom" tag="1" id="Rtf-3c-9Bq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem isSeparatorItem="YES" id="MRb-mM-9PK"/>
+                                    <menuItem isSeparatorItem="YES" tag="-2" id="MRb-mM-9PK"/>
                                     <menuItem title="MinSize" tag="2" id="1PL-bW-Zql">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                     <menuItem title="MaxSize" tag="3" id="48U-H8-KTh">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
-                                    <menuItem isSeparatorItem="YES" id="oIT-fa-iSp"/>
+                                    <menuItem isSeparatorItem="YES" tag="-2" id="oIT-fa-iSp"/>
                                     <menuItem title="MinScale" tag="4" id="0cy-up-as7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>

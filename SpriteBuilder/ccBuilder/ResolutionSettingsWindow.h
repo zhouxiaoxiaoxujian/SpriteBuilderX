@@ -23,6 +23,8 @@
  */
 
 #import "CCBModalSheetController.h"
+#import "ResolutionSetting.h"
+#import "ProjectSettings.h"
 
 @interface ResolutionSettingsWindow : CCBModalSheetController
 {
@@ -37,4 +39,9 @@
 
 - (void) copyResolutions:(NSMutableArray *)res;
 
++ (void)recallcScale:(ResolutionSetting*)resolution
+    designResolution:(CGSize)designResolution
+      designResScale:(float)designResolutionScale
+           scaleType:(CCBSceneScaleType) scaleType;
+    
 @end
