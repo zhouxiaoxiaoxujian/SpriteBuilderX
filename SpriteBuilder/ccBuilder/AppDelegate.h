@@ -155,6 +155,8 @@ typedef void (^CompletionCallback) (BOOL success);
     IBOutlet NSToolbar* toolbar;
     MainToolbarDelegate* toolbarDelegate;
     
+    __weak IBOutlet NSTextField *selectedDevice;
+    
     // Tabs
     IBOutlet PSMTabBarControl* tabBar;
     NSTabView* tabView;

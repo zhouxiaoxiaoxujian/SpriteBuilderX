@@ -1039,6 +1039,8 @@ typedef enum
         
         i++;
     }
+    ResolutionSetting *res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
+    selectedDevice.stringValue = res.name;
 }
 
 - (void) updateTimelineMenu
@@ -1531,6 +1533,7 @@ typedef enum
     //[resManagerPanel.window setIsVisible:NO];
     
     self.hasOpenedDocument = NO;
+    selectedDevice.stringValue = @"";
 }
 
 - (CCBDocument*) findDocumentFromFile:(NSString*)file

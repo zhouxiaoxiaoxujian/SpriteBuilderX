@@ -2550,10 +2550,26 @@ CA
                             </connections>
                         </popUpButton>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="20888129-AC09-41CD-BD31-B4FB8384B164" label="Device" paletteLabel="Device" id="duB-Ue-Y9X">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="38" height="17"/>
+                        <size key="maxSize" width="150" height="17"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="UKp-aU-SNg">
+                            <rect key="frame" x="0.0" y="14" width="150" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="twv-za-yLt">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Nkp-mV-yYQ"/>
                     <toolbarItem reference="9vz-Yr-LRc"/>
+                    <toolbarItem reference="1358"/>
+                    <toolbarItem reference="duB-Ue-Y9X"/>
                     <toolbarItem reference="1358"/>
                     <toolbarItem reference="1788"/>
                 </defaultToolbarItems>
@@ -2608,6 +2624,7 @@ CA
                 <outlet property="saveDlgLanguageHint" destination="MV1-gJ-US0" id="ZuH-Sv-7nG"/>
                 <outlet property="saveDlgLanguagePopup" destination="aBU-kn-ueY" id="sFn-vD-ItR"/>
                 <outlet property="scrubberSelectionView" destination="1561" id="1562"/>
+                <outlet property="selectedDevice" destination="UKp-aU-SNg" id="FLk-DR-bWc"/>
                 <outlet property="sequenceScrollView" destination="566" id="1570"/>
                 <outlet property="splitHorizontalView" destination="1530" id="1793"/>
                 <outlet property="tabBar" destination="1233" id="1234"/>
@@ -2879,7 +2896,7 @@ CA
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
         <customView autoresizesSubviews="NO" id="L7D-gD-txa" userLabel="View">
-            <rect key="frame" x="0.0" y="-1" width="347" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="347" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Rk3-4M-33R">
