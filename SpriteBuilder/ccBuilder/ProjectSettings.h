@@ -31,13 +31,13 @@
 
 
 typedef enum {
-    kCCBSceneScaleTypeDEFAULT  = -1,
-    kCCBSceneScaleTypeNONE     = 0,
-    kCCBSceneScaleTypeCUSTOM   = 1,
-    kCCBSceneScaleTypeMINSIZE  = 2,
-    kCCBSceneScaleTypeMAXSIZE  = 3,
-    kCCBSceneScaleTypeMINSCALE = 4,
-    kCCBSceneScaleTypeMAXSCALE = 5,
+    kCCBSceneScaleTypeDEFAULT  = 0,
+    kCCBSceneScaleTypeNONE     = 1,
+    kCCBSceneScaleTypeCUSTOM   = 2,
+    kCCBSceneScaleTypeMINSIZE  = 3,
+    kCCBSceneScaleTypeMAXSIZE  = 4,
+    kCCBSceneScaleTypeMINSCALE = 5,
+    kCCBSceneScaleTypeMAXSCALE = 6,
 } CCBSceneScaleType;
 
 
