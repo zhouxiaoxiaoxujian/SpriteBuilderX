@@ -356,6 +356,8 @@
 		A59471901A8E4A06002DB024 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A594718A1A8E4A06002DB024 /* Icon@2x.png */; };
 		A59471941A8E5066002DB024 /* CCText.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A594716B1A8E4851002DB024 /* CCText.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5A340591A41E33500861273 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A5A340581A41E33500861273 /* cwebp */; };
+		A5A665EC1E24243C00FAD6C4 /* EditClassWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A665EA1E24243C00FAD6C4 /* EditClassWindow.m */; };
+		A5A665ED1E24243C00FAD6C4 /* EditClassWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A665EB1E24243C00FAD6C4 /* EditClassWindow.xib */; };
 		A5A891FB1DB1280B00E600F2 /* PublishModelFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */; };
 		A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
@@ -1673,6 +1675,9 @@
 		A59471891A8E4A06002DB024 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = CCText/Icon.png; sourceTree = "<group>"; };
 		A594718A1A8E4A06002DB024 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "CCText/Icon@2x.png"; sourceTree = "<group>"; };
 		A5A340581A41E33500861273 /* cwebp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cwebp; sourceTree = "<group>"; };
+		A5A665E91E24243C00FAD6C4 /* EditClassWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditClassWindow.h; sourceTree = "<group>"; };
+		A5A665EA1E24243C00FAD6C4 /* EditClassWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditClassWindow.m; sourceTree = "<group>"; };
+		A5A665EB1E24243C00FAD6C4 /* EditClassWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditClassWindow.xib; sourceTree = "<group>"; };
 		A5A891F91DB1280B00E600F2 /* PublishModelFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishModelFileOperation.h; sourceTree = "<group>"; };
 		A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishModelFileOperation.m; sourceTree = "<group>"; };
 		A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorPopoverAnimation.xib; sourceTree = "<group>"; };
@@ -2942,6 +2947,9 @@
 		776041EA1498FB600078095D /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				A5A665E91E24243C00FAD6C4 /* EditClassWindow.h */,
+				A5A665EA1E24243C00FAD6C4 /* EditClassWindow.m */,
+				A5A665EB1E24243C00FAD6C4 /* EditClassWindow.xib */,
 				5BA3DC2F192108AB0055DD96 /* GuideGridSizeWindow.h */,
 				5BA3DC30192108AB0055DD96 /* GuideGridSizeWindow.m */,
 				5BA3DC31192108AB0055DD96 /* GuideGridSizeWindow.xib */,
@@ -6018,6 +6026,7 @@
 				B7E6BB5A19F868F000619A58 /* seq-timedisplay-bg@2x.png in Resources */,
 				7729F03A1390215400CAA44F /* frame-iphone.png in Resources */,
 				7729F03D1390600200CAA44F /* frame-ipad.png in Resources */,
+				A5A665ED1E24243C00FAD6C4 /* EditClassWindow.xib in Resources */,
 				776A370B139544A200960E94 /* TB_actualSize.png in Resources */,
 				776A370C139544A200960E94 /* TB_grab.png in Resources */,
 				B747E60A19CB3BF700F692A2 /* effect-hue.png in Resources */,
@@ -6801,6 +6810,7 @@
 				92CD1C211965D824002BF2DE /* EffectBrightnessControl.m in Sources */,
 				926FDC88196C8EEC008C0132 /* CCBPEffectRefraction.m in Sources */,
 				A57D00A71CF24B0600434840 /* PlatformSettings.m in Sources */,
+				A5A665EC1E24243C00FAD6C4 /* EditClassWindow.m in Sources */,
 				E33C2AAC15C987EB0043EF9B /* ResourceManagerOutlineView.m in Sources */,
 				E33C2AAF15C9A0D40043EF9B /* SequencerUtil.m in Sources */,
 				926D139518B2DC2E00582959 /* NSDictionary+Query.m in Sources */,

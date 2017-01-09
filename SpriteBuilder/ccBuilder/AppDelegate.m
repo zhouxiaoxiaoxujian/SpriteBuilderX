@@ -128,6 +128,7 @@
 #import "CCNode+NodeInfo.h"
 #import "PreviewContainerViewController.h"
 #import "InspectorController.h"
+#import "EditClassWindow.h"
 
 static const int CCNODE_INDEX_LAST = -1;
 
@@ -3334,6 +3335,31 @@ typedef enum
         [self saveUndoStateWillChangeProperty:@"*customPropSettings"];
         self.selectedNode.customProperties = wc.settings;
         [_inspectorController updateInspectorFromSelection];
+    }
+}
+
+- (IBAction)menuEditClass:(id)sender
+{
+    if (!currentDocument) return;
+    if (!self.selectedNode) return;
+    if (self.selectedNode == [SceneGraph instance].rootNode) return;
+
+    CCNode* selectedNode = self.selectedNode;
+    
+    NSMutableDictionary* dict = [CCBWriterInternal dictionaryFromCCObject:selectedNode];
+    
+    EditClassWindow* wc = [[EditClassWindow alloc] initWithWindowNibName:@"EditClassWindow"];
+    wc.className = [dict objectForKey:@"baseClass"];
+    wc.haveChildren = selectedNode.children.count>0;
+    int success = [wc runModalSheetForWindow:window];
+    if (success)
+    {
+        [dict setObject:wc.className forKey:@"baseClass"];
+        CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:dict parentSize:selectedNode.parent.contentSize fileVersion:kCCBFileFormatVersion];
+        [CCBReaderInternal postDeserializationFixup:clipNode];
+        [self addCCObject:clipNode asChild:NO];
+        [self deleteNode:selectedNode];
+        [SceneGraph fixupReferences];
     }
 }
 
