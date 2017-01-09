@@ -205,7 +205,12 @@
 
     self.deviceScaling = [[dict objectForKey:@"deviceScaling"] intValue];
     self.defaultOrientation = [[dict objectForKey:@"defaultOrientation"] intValue];
-    self.sceneScaleType = [[dict objectForKey:@"sceneScaleType"] intValue];
+    
+    if (![dict objectForKey:@"sceneScaleType"]) {
+        self.sceneScaleType = kCCBSceneScaleTypeMINSIZE;
+    } else {
+        self.sceneScaleType = [[dict objectForKey:@"sceneScaleType"] intValue];
+    }
     
     self.tabletPositionScaleFactor = 2.0f;
 

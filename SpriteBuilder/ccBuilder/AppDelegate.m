@@ -1254,7 +1254,11 @@ typedef enum
         // Save in current document
         currentDocument.resolutions = resolutions;
         currentDocument.currentResolution = currentResolution;
-        currentDocument.sceneScaleType = [[doc objectForKey:@"sceneScaleType"] intValue];
+        if (![doc objectForKey:@"sceneScaleType"]) {
+            currentDocument.sceneScaleType = kCCBSceneScaleTypeDEFAULT;
+        } else {
+            currentDocument.sceneScaleType = [[doc objectForKey:@"sceneScaleType"] intValue];
+        }
         [self updatePositionScaleFactor];
         
         // Update CocosScene
