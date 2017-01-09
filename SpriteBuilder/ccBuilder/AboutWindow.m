@@ -74,11 +74,10 @@
 -(NSString*)versionAboutInfo
 {
 	ProjectSettings* projectSettings = [[ProjectSettings alloc] init];
-	NSDictionary * versionDictionary = [projectSettings getVersionDictionary];
 
     NSString * aboutInfo = @"";
-	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Version: %@\n", versionDictionary[@"version"]]];
-	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Revision: %@\n", versionDictionary[@"revision"]]];
+	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Version: %@\n", [projectSettings getVersion]]];
+	aboutInfo = [aboutInfo stringByAppendingString:[NSString stringWithFormat:@"SB Revision: %@\n", [projectSettings getBuild]]];
 	
 	return aboutInfo;
 }

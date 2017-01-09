@@ -669,37 +669,13 @@
 
 - (NSString* ) getVersion
 {
-	NSDictionary * versionDict = [self getVersionDictionary];
-    return versionDict[@"version"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
-- (NSDictionary *)getVersionDictionary
+- (NSString* ) getBuild
 {
-	NSString* versionPath = [[NSBundle mainBundle] pathForResource:@"Version" ofType:@"txt" inDirectory:@"Generated"];
-	
-	NSError * error;
-    NSString* version = [NSString stringWithContentsOfFile:versionPath encoding:NSUTF8StringEncoding error:&error];
-	
-	if(error)
-	{
-		NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
-		NSString* version = infoDict[@"CFBundleVersion"];
-
-		NSMutableDictionary * versionDict = [NSMutableDictionary dictionaryWithDictionary:@{@"version" : version}];
-		
-		versionDict[@"sku"] = @"default";
-		return versionDict;
-		
-	}
-	else
-	{
-		NSData* versionData = [version dataUsingEncoding:NSUTF8StringEncoding];
-		NSDictionary * versionDict = [NSJSONSerialization JSONObjectWithData:versionData options:0x0 error:&error];
-		return versionDict;
-	}
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
-
-
 
 - (void)flagFilesDirtyWithWarnings:(CCBWarnings *)warnings
 {

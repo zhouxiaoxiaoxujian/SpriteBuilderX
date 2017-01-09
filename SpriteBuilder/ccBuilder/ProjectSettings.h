@@ -160,7 +160,7 @@ typedef enum
 
 // *** Misc ***
 - (NSString* ) getVersion;
-- (NSDictionary *)getVersionDictionary;
+- (NSString* ) getBuild;
 
 // Tries to find the relative path among all packages for a given absolute path
 // Example: "/foo/Packages/baa.sbpack" as available packages and absolutePath given is
