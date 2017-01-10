@@ -1429,11 +1429,14 @@ typedef enum
 
 -(void) recalculateSceneScale:(CCBDocument *) doc {
     
-    if (doc.sceneScaleType > kCCBSceneScaleTypeCUSTOM) {
-        [self recallcScalesForScaleType:doc.sceneScaleType forDocument:doc];
-    } else
-    if (doc.sceneScaleType == kCCBSceneScaleTypeDEFAULT) {
-        [self recallcScalesForScaleType:projectSettings.sceneScaleType forDocument:doc];
+    if(doc.docDimensionsType == kCCBDocDimensionsTypeFullScreen)
+    {
+        if (doc.sceneScaleType > kCCBSceneScaleTypeCUSTOM) {
+            [self recallcScalesForScaleType:doc.sceneScaleType forDocument:doc];
+        } else
+        if (doc.sceneScaleType == kCCBSceneScaleTypeDEFAULT) {
+            [self recallcScalesForScaleType:projectSettings.sceneScaleType forDocument:doc];
+        }
     }
 }
 
