@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -910,7 +910,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="xfY-vc-3Nd">
                                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="401"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" autosaveColumns="NO" rowHeight="20" indentationPerLevel="14" outlineTableColumn="1502" id="1499" customClass="ResourceManagerOutlineView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="401"/>
@@ -974,7 +974,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="8K5-4q-KVz">
                                                                         <rect key="frame" x="0.0" y="0.0" width="236" height="437"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.076471909880638123" constrainsToOriginalSize="YES" allowsMultipleSelection="NO" id="1986" customClass="CCBImageBrowserView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="251" height="452"/>
@@ -1005,7 +1005,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" id="e7m-k0-z2l">
                                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="173"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="1993" customClass="CCBTableView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="173"/>
@@ -1087,7 +1087,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" copiesOnScroll="NO" id="92y-mP-XwZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <collectionView selectable="YES" id="2015" customClass="PlugInNodeCollectionView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
@@ -1121,7 +1121,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="c9e-44-Yg2">
                                                         <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="8cF-q7-mD1" customClass="WarningTableView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="249" height="640"/>
@@ -1367,7 +1367,7 @@ CA
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="hnC-KY-Yea">
                                             <rect key="frame" x="0.0" y="0.0" width="601" height="66"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="571" id="570" customClass="SequencerOutlineView">
                                                     <rect key="frame" x="0.0" y="0.0" width="601" height="66"/>
@@ -1613,9 +1613,9 @@ CA
                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="605">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="657"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                                    <clipView key="contentView" copiesOnScroll="NO" id="fL8-Eb-zeE">
+                                                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fL8-Eb-zeE">
                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="657"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view id="608" userLabel="View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="233" height="550"/>
@@ -1643,9 +1643,9 @@ CA
                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2045">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="657"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <clipView key="contentView" id="vCL-dY-h8s">
+                                                    <clipView key="contentView" drawsBackground="NO" id="vCL-dY-h8s">
                                                         <rect key="frame" x="0.0" y="0.0" width="283" height="642"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view id="2046">
                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="657"/>
@@ -1673,9 +1673,9 @@ CA
                                                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="8V7-YG-C9X">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="656"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
-                                                    <clipView key="contentView" id="U4Z-Vf-EOq">
+                                                    <clipView key="contentView" drawsBackground="NO" id="U4Z-Vf-EOq">
                                                         <rect key="frame" x="0.0" y="0.0" width="283" height="641"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <view id="VWM-rZ-YR4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="656"/>
@@ -2400,11 +2400,11 @@ CA
                                                         </subviews>
                                                     </clipView>
                                                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="H4Q-Vu-Ysx">
-                                                        <rect key="frame" x="0.0" y="640" width="298" height="16"/>
+                                                        <rect key="frame" x="0.0" y="641" width="283" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cW2-Jx-hii">
-                                                        <rect key="frame" x="282" y="0.0" width="16" height="656"/>
+                                                        <rect key="frame" x="283" y="0.0" width="15" height="641"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -2419,9 +2419,9 @@ CA
                                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2050">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="627"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
-                                                    <clipView key="contentView" id="kxM-tM-dvN">
+                                                    <clipView key="contentView" drawsBackground="NO" id="kxM-tM-dvN">
                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="627"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <collectionView selectable="YES" id="2051" customClass="PropertyInspectorTemplateCollectionView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="627"/>

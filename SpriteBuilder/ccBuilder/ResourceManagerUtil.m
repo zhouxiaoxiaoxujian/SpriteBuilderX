@@ -76,6 +76,8 @@
 {
     NSArray* arr = [dir resourcesForType:resType];
     
+    [menu setDelegate:(id)self];
+    
     for (id item in arr)
     {
         if ([item isKindOfClass:[RMResource class]])
@@ -358,6 +360,21 @@
         CFRelease(ref);
     }
     return newImage;
+}
+
+#pragma mark NSMenu Delegate
++ (void)menuNeedsUpdate:(NSMenu *)menu {
+    
+    for( NSMenuItem *item in [menu itemArray] ){
+        
+        RMResource* res = item.representedObject;
+        
+        if (res.type == kCCBResTypeImage) {
+            NSImage *image = [self thumbnailImageForResource:res];
+            [item setImage:image];
+        }
+        
+    }
 }
 
 @end
