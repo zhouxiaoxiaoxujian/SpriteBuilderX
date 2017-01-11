@@ -97,6 +97,9 @@
             height = kRMImagePreviewSize + 4;
         }
     }
+    if ([item isKindOfClass:[RMSpriteFrame class]]) {
+        height = kRMImagePreviewSize + 4;
+    }
     return height;
 }
 

@@ -364,15 +364,16 @@
 
 + (NSImage*) thumbnailImageForNSImage:(NSImage*) sourceImage {
     
-    [sourceImage setScalesWhenResized:YES];
-    CGSize newSize = CGSizeMake(kRMImagePreviewSize, kRMImagePreviewSize);
-    NSImage *smallImage = [[NSImage alloc] initWithSize:newSize];
-    [smallImage lockFocus];
-    [sourceImage setSize: newSize];
-    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationLow];
-    [sourceImage drawAtPoint:NSZeroPoint fromRect:CGRectMake(0, 0, newSize.width, newSize.height) operation:NSCompositeCopy fraction:1.0];
-    [smallImage unlockFocus];
-    return smallImage;
+    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, kRMImagePreviewSize, kRMImagePreviewSize)];
+    [kView setImageScaling:NSImageScaleProportionallyUpOrDown];
+    [kView setImage:sourceImage];
+    
+    NSRect kRect = kView.frame;
+    NSBitmapImageRep* kRep = [kView bitmapImageRepForCachingDisplayInRect:kRect];
+    [kView cacheDisplayInRect:kRect toBitmapImageRep:kRep];
+    
+    NSData* kData = [kRep representationUsingType:NSPNGFileType properties:[NSDictionary dictionary]];
+    return [[NSImage alloc] initWithData:kData];
 }
 
 #pragma mark NSMenu Delegate
