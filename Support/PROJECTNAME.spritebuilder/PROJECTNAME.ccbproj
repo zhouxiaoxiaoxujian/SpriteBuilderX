@@ -181,8 +181,6 @@
 	</array>
 	<key>publishEnvironment</key>
 	<integer>0</integer>
-	<key>publishToZipFile</key>
-	<false/>
 	<key>resourceAutoScaleFactor</key>
 	<integer>4</integer>
 	<key>resourcePaths</key>
@@ -195,7 +193,7 @@
 	<key>resourceProperties</key>
 	<dict/>
 	<key>sceneScaleType</key>
-	<integer>2</integer>
+	<integer>3</integer>
 	<key>versionStr</key>
 	<string>1.5</string>
 </dict>

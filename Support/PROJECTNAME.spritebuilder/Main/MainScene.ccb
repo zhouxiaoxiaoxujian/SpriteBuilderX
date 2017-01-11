@@ -58,6 +58,14 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
@@ -83,6 +91,19 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>string</string>
 						<key>type</key>
 						<string>Text</string>
@@ -94,6 +115,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>fontName</string>
+						<key>type</key>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Helvetica</string>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>fontSize</string>
 						<key>type</key>
 						<string>FloatScale</string>
@@ -102,6 +131,43 @@
 							<real>50</real>
 							<integer>2</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>adjustsFontSizeToFit</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>dimensions</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>horizontalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>verticalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -164,6 +230,20 @@
 							<integer>0</integer>
 						</array>
 					</dict>
+					<dict>
+						<key>name</key>
+						<string>shadowOffset</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
 				</array>
 			</dict>
 		</array>
@@ -177,6 +257,14 @@
 		<integer>2</integer>
 		<key>properties</key>
 		<array>
+			<dict>
+				<key>name</key>
+				<string>name</string>
+				<key>type</key>
+				<string>StringSimple</string>
+				<key>value</key>
+				<string></string>
+			</dict>
 			<dict>
 				<key>name</key>
 				<string>position</string>
@@ -202,6 +290,30 @@
 					<real>1</real>
 					<integer>2</integer>
 					<integer>2</integer>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>anchorPoint</string>
+				<key>type</key>
+				<string>Point</string>
+				<key>value</key>
+				<array>
+					<real>0.0</real>
+					<real>0.0</real>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>scale</string>
+				<key>type</key>
+				<string>ScaleLock</string>
+				<key>value</key>
+				<array>
+					<real>1</real>
+					<real>1</real>
+					<false/>
+					<integer>0</integer>
 				</array>
 			</dict>
 		</array>
@@ -266,7 +378,7 @@
 		</dict>
 		<dict>
 			<key>additionalScale</key>
-			<real>1.3312499523162842</real>
+			<real>0.75117367506027222</real>
 			<key>centeredOrigin</key>
 			<false/>
 			<key>ext</key>
@@ -274,7 +386,7 @@
 			<key>height</key>
 			<integer>2048</integer>
 			<key>mainScale</key>
-			<real>0.90140843391418457</real>
+			<real>1.2000000476837158</real>
 			<key>name</key>
 			<string>iPad Retina Portrait</string>
 			<key>resourceScale</key>
@@ -284,7 +396,7 @@
 		</dict>
 	</array>
 	<key>sceneScaleType</key>
-	<integer>-1</integer>
+	<integer>0</integer>
 	<key>sequences</key>
 	<array>
 		<dict>
