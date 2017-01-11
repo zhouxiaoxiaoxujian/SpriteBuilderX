@@ -320,7 +320,6 @@
     }
     else if ([item isKindOfClass:[RMSpriteFrame class]])
     {
-        icon = [self smallIconForFileType:@"png"];
         RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item;
         if(!rmSpriteFrameItem.previewImage)
         {
