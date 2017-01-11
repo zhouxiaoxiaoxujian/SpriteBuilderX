@@ -1835,6 +1835,46 @@ typedef enum
     [projectOutlineHandler updateSelectionPreview];
 }
 
+- (void) generatePreviewForDirectory:(RMDirectory*) dir
+{
+    NSArray* arr = [dir resourcesForType:kCCBResTypeCCBFile];
+    
+    for (id item in arr)
+    {
+        if ([item isKindOfClass:[RMResource class]])
+        {
+            RMResource* res = item;
+            
+            if (res.type == kCCBResTypeCCBFile)
+            {
+                [self openFile:res.filePath];
+                [[CocosScene cocosScene] savePreviewToFile:[res.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+                CCBDocument* oldDoc = [self findDocumentFromFile:res.filePath];
+                if (oldDoc)
+                {
+                    NSTabViewItem* item = [self tabViewItemFromDoc:oldDoc];
+                    if (item) [tabView removeTabViewItem:item];
+                }
+            }
+            else if (res.type == kCCBResTypeDirectory)
+            {
+                RMDirectory* subDir = res.data;
+                [self generatePreviewForDirectory:subDir];
+            }
+        }
+    }
+
+}
+
+- (IBAction) generatePreview:(id)sender
+{
+    ResourceManager* rm = [ResourceManager sharedManager];
+    for(RMDirectory *dir in rm.activeDirectories)
+    {
+        [self generatePreviewForDirectory:dir];
+    }
+}
+
 - (void) newFile:(NSString*) fileName type:(int)type resolutions: (NSMutableArray*) resolutions layerWidth:(float) width layerHeight:(float) height
 {
     BOOL centered = NO;
