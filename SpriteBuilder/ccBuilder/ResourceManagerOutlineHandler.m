@@ -318,11 +318,13 @@
     else if ([item isKindOfClass:[RMSpriteFrame class]])
     {
         icon = [self smallIconForFileType:@"png"];
-        //TOO SLOW:
-//        CCLOG(@"working");
-//        RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item;
-//        NSImage *img = [CCBSpriteSheetParser imageNamed:rmSpriteFrameItem.spriteFrameName fromSheet:rmSpriteFrameItem.spriteSheetFile];
-//        icon = [ResourceManagerUtil thumbnailImageForNSImage:img];
+        RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item;
+        if(!rmSpriteFrameItem.previewImage)
+        {
+            NSImage *img = [CCBSpriteSheetParser imageNamed:rmSpriteFrameItem.spriteFrameName fromSheet:rmSpriteFrameItem.spriteSheetFile];
+            rmSpriteFrameItem.previewImage = [ResourceManagerUtil thumbnailImageForNSImage:img];
+        }
+        icon = rmSpriteFrameItem.previewImage;
     }
     else if ([item isKindOfClass:[RMAnimation class]])
     {

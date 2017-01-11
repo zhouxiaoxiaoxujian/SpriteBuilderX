@@ -10,5 +10,6 @@
 
 @property (nonatomic, copy) NSString *spriteSheetFile;
 @property (nonatomic, copy) NSString *spriteFrameName;
+@property (nonatomic, retain) NSImage *previewImage;
 
 @end

@@ -369,7 +369,7 @@
     NSImage *smallImage = [[NSImage alloc] initWithSize:newSize];
     [smallImage lockFocus];
     [sourceImage setSize: newSize];
-    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationLow];
     [sourceImage drawAtPoint:NSZeroPoint fromRect:CGRectMake(0, 0, newSize.width, newSize.height) operation:NSCompositeCopy fraction:1.0];
     [smallImage unlockFocus];
     return smallImage;
