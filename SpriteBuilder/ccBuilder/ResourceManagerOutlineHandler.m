@@ -43,6 +43,7 @@
 #import "PackageImporter.h"
 #import "PreviewViewControllerProtocol.h"
 #import "ResourceManagerUtil.h"
+#import "CCBSpriteSheetParser.h"
 
 @interface ResourceManagerOutlineHandler ()
 @property (nonatomic, strong) id <PreviewViewControllerProtocol> previewController;
@@ -280,10 +281,8 @@
     else if ([item isKindOfClass:[RMResource class]])
     {
         RMResource* res = item;
-		// FIXME: Do all images by type
         if (res.type == kCCBResTypeImage)
         {
-            //icon = [self smallIconForFileType:@"png"];
             icon = [ResourceManagerUtil thumbnailImageForResource:item];
         }
         else if (res.type == kCCBResTypeBMFont)
@@ -319,6 +318,11 @@
     else if ([item isKindOfClass:[RMSpriteFrame class]])
     {
         icon = [self smallIconForFileType:@"png"];
+        //TOO SLOW:
+//        CCLOG(@"working");
+//        RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item;
+//        NSImage *img = [CCBSpriteSheetParser imageNamed:rmSpriteFrameItem.spriteFrameName fromSheet:rmSpriteFrameItem.spriteSheetFile];
+//        icon = [ResourceManagerUtil thumbnailImageForNSImage:img];
     }
     else if ([item isKindOfClass:[RMAnimation class]])
     {

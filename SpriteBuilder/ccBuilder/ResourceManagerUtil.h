@@ -42,4 +42,6 @@
 
 + (NSImage*) thumbnailImageForResource:(RMResource*)res;
 
++ (NSImage*) thumbnailImageForNSImage:(NSImage*) sourceImage;
+
 @end
