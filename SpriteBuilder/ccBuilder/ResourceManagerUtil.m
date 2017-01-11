@@ -31,6 +31,7 @@
 #import "ResourceTypes.h"
 #import "RMSpriteFrame.h"
 #import "RMAnimation.h"
+#import "CCBSpriteSheetParser.h"
 #import <QuickLook/QuickLook.h>
 
 @protocol ResourceManagerUtil_UndeclaredSelectors <NSObject>
@@ -381,11 +382,23 @@
     
     for( NSMenuItem *item in [menu itemArray] ){
         
-        RMResource* res = item.representedObject;
-        
-        if (res.type == kCCBResTypeImage) {
-            NSImage *image = [self thumbnailImageForResource:res];
-            [item setImage:image];
+        if ([item.representedObject isKindOfClass:[RMResource class]])
+        {
+            RMResource* res = item.representedObject;
+            if (res.type == kCCBResTypeImage) {
+                NSImage *image = [self thumbnailImageForResource:res];
+                [item setImage:image];
+            }
+        }
+        else if ([item.representedObject isKindOfClass:[RMSpriteFrame class]])
+        {
+            RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item.representedObject;
+            if(!rmSpriteFrameItem.previewImage)
+            {
+                NSImage *img = [CCBSpriteSheetParser imageNamed:rmSpriteFrameItem.spriteFrameName fromSheet:rmSpriteFrameItem.spriteSheetFile];
+                rmSpriteFrameItem.previewImage = [ResourceManagerUtil thumbnailImageForNSImage:img];
+            }
+            [item setImage:rmSpriteFrameItem.previewImage];
         }
         
     }
