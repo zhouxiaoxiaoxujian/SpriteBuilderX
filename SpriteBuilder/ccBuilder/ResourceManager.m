@@ -253,6 +253,10 @@
     {
         return kCCBResTypeJSON;
     }
+    else if ([ext isEqualToString:@"xml"])
+    {
+        return kCCBResTypeXML;
+    }
     else if ([ext isEqualToString:@"wav"]
              || [ext isEqualToString:@"mp3"]
              || [ext isEqualToString:@"m4a"]
@@ -482,6 +486,7 @@
                 || res.type == kCCBResTypeDirectory
                 || res.type == kCCBResTypeJS
                 || res.type == kCCBResTypeJSON
+                || res.type == kCCBResTypeXML
                 || res.type == kCCBResTypeAudio
                 || res.type == kCCBResTypeModel)
             {

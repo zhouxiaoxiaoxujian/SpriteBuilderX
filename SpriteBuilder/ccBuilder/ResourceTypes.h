@@ -10,6 +10,7 @@ typedef enum
     kCCBResTypeCCBFile,
     kCCBResTypeJS,
     kCCBResTypeJSON,
+    kCCBResTypeXML,
     kCCBResTypeAudio,
     kCCBResTypeGeneratedSpriteSheetDef,
     kCCBResTypeModel,
