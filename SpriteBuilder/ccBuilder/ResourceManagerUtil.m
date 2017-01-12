@@ -103,7 +103,7 @@
                 NSString* itemName = [res.filePath lastPathComponent];
                 
                 NSMenu* subMenu = [[NSMenu alloc] initWithTitle:itemName];
-                
+                [subMenu setDelegate:(id)self];
                 NSArray* frames = res.data;
                 for (RMSpriteFrame* frame in frames)
                 {
@@ -111,6 +111,12 @@
                     [subItem setTarget:target];
                     [subMenu addItem:subItem];
                     subItem.representedObject = frame;
+                    
+                    //even can create previews for all at once here, but it's slow when just click on sprite in editor
+//                    NSImage *img = [CCBSpriteSheetParser imageNamed:frame.spriteFrameName
+//                                                          fromSheet:res.filePath];
+//                    img = [ResourceManagerUtil thumbnailImageForNSImage:img];
+//                    subItem.image = img;
                 }
                 
                 NSMenuItem* menuItem = [[NSMenuItem alloc] initWithTitle:itemName action:NULL keyEquivalent:@""];
@@ -380,27 +386,23 @@
 #pragma mark NSMenu Delegate
 + (void)menuNeedsUpdate:(NSMenu *)menu {
     
-    for( NSMenuItem *item in [menu itemArray] ){
-        
-        if ([item.representedObject isKindOfClass:[RMResource class]])
-        {
+    for (NSMenuItem *item in [menu itemArray]) {
+        if ([item.representedObject isKindOfClass:[RMResource class]]) {
             RMResource* res = item.representedObject;
             if (res.type == kCCBResTypeImage) {
                 NSImage *image = [self thumbnailImageForResource:res];
                 [item setImage:image];
             }
-        }
-        else if ([item.representedObject isKindOfClass:[RMSpriteFrame class]])
-        {
-            RMSpriteFrame *rmSpriteFrameItem = (RMSpriteFrame *)item.representedObject;
-            if(!rmSpriteFrameItem.previewImage)
-            {
-                NSImage *img = [CCBSpriteSheetParser imageNamed:rmSpriteFrameItem.spriteFrameName fromSheet:rmSpriteFrameItem.spriteSheetFile];
-                rmSpriteFrameItem.previewImage = [ResourceManagerUtil thumbnailImageForNSImage:img];
+        } else {
+            if ([item.representedObject isKindOfClass:[RMSpriteFrame class]]) {
+                RMSpriteFrame* res = item.representedObject;
+                if (!res.previewImage) {
+                    NSImage *img = [CCBSpriteSheetParser imageNamed:res.spriteFrameName fromSheet:res.spriteSheetFile];
+                    res.previewImage = [ResourceManagerUtil thumbnailImageForNSImage:img];
+                }
+                item.image = res.previewImage;
             }
-            [item setImage:rmSpriteFrameItem.previewImage];
         }
-        
     }
 }
 
