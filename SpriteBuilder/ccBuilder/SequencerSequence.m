@@ -265,10 +265,10 @@
 //        float gain = [[keyframe.value objectAtIndex:3] floatValue];
         
         NSString* absFile = [[ResourceManager sharedManager] toAbsolutePath:soundFile];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absFile])
-        {
-            //[[OALSimpleAudio sharedInstance] playEffect:absFile volume:gain pitch:pitch pan:pan loop:NO];
-            CCLOG(@"PLAY SOME COOL AUDIO: %@",soundFile);
+        if ([[NSFileManager defaultManager] fileExistsAtPath:absFile]) {
+            NSString *path = [[CCFileUtils sharedFileUtils] fullPathForFilenameIgnoringResolutions:absFile];
+            NSSound *sound = [[NSSound alloc] initWithContentsOfFile:path byReference:YES];
+            [sound play];
         }
     }
     
