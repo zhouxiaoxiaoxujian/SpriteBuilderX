@@ -26,7 +26,7 @@
 
 @interface InspectorCustom : InspectorValue<NSTextFieldDelegate>
 {
-    IBOutlet NSTextField* textField;
+    IBOutlet NSTextField* __weak textField;
 }
 
 @property (nonatomic) NSString* text;

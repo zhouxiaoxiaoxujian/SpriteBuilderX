@@ -26,8 +26,8 @@
 
 @interface InspectorSoundFile : InspectorValue<NSTextFieldDelegate>
 {
-    IBOutlet NSPopUpButton* popup;
-    IBOutlet NSMenu* menu;
+    IBOutlet NSPopUpButton* __weak popup;
+    IBOutlet NSMenu* __weak menu;
 }
 
 @end

@@ -26,7 +26,7 @@
 
 @interface InspectorCustomEdit : InspectorValue
 {
-    IBOutlet NSButton* btn;
+    IBOutlet NSButton* __weak btn;
     NSString* name;
 }
 

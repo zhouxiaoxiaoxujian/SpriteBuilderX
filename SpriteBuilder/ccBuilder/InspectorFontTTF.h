@@ -26,6 +26,6 @@
 
 @interface InspectorFontTTF : InspectorValue
 {
-    IBOutlet NSPopUpButton* popup;
+    IBOutlet NSPopUpButton* __weak popup;
 }
 @end
