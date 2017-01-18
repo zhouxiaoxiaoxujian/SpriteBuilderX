@@ -2257,7 +2257,7 @@ typedef enum
 - (CCNode*) addPlugInNodeNamed:(NSString*)name asChild:(BOOL) asChild
 {
     [animationPlaybackManager stop];
-
+    CCLOG(@"Plugin name: %@",name);
     self.errorDescription = NULL;
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:name];
     BOOL success = [self addCCObject:node asChild:asChild];
@@ -2284,8 +2284,9 @@ typedef enum
     NSString* class = plugIn.dropTargetSpriteFrameClass;
     NSString* prop = plugIn.dropTargetSpriteFrameProperty;
     
-    if (class && prop)
-    {
+    CCLOG(@"Drop class: %@",class);
+    
+    if (class && prop) {
         // Create the node
         CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:class];
         
@@ -2296,7 +2297,19 @@ typedef enum
         // Set its position
         [PositionPropertySetter setPosition:NSPointFromCGPoint(pt) forNode:node prop:@"position"];
         
-        [CCBReaderInternal setProp:prop ofType:@"SpriteFrame" toValue:[NSArray arrayWithObjects:spriteSheetFile, spriteFile, nil] forNode:node parentSize:CGSizeZero withParentGraph:nil fileVersion:kCCBFileFormatVersion];
+        [CCBReaderInternal setProp:prop
+                            ofType:@"SpriteFrame"
+                           toValue:[NSArray arrayWithObjects:spriteSheetFile, spriteFile, nil]
+                           forNode:node
+                        parentSize:CGSizeZero
+                   withParentGraph:nil
+                       fileVersion:kCCBFileFormatVersion];
+        
+        //TODO: ---------- hardcoded anchorPoint for CCSprite (0.5,0.5) ------------
+        if ([class isEqualToString:@"CCSprite"]) {
+            node.anchorPoint = ccp(0.5,0.5);
+        }
+        
         // Set it's displayName to the name of the spriteFile
         node.displayName = [[spriteFile lastPathComponent] stringByDeletingPathExtension];
         [self addCCObject:node toParent:parent];
