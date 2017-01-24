@@ -119,11 +119,6 @@
 
     NSView *inspectorValuesView = inspectorValue.view;
 
-    #ifdef TESTING
-    // Tests rely on this identifier to find views within the hierarchy
-    inspectorValuesView.identifier = [NSString stringWithFormat:@"TestInspector_%@", name];
-    #endif
-
     //if its a separator, check to see if it isExpanded, if not set all of the next non-separator InspectorValues to hidden and don't touch the offset
     if ([inspectorValue isKindOfClass:[InspectorSeparator class]])
     {

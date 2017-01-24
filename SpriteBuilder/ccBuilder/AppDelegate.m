@@ -613,11 +613,6 @@ typedef enum
     {
         [loopButton setBezelStyle:NSTexturedRoundedBezelStyle];
     }
-    
-
-#ifdef TESTING
-	return;
-#endif
 
     if (delayOpenFiles)
     {
@@ -626,9 +621,7 @@ typedef enum
     }
     else
     {
-        #ifndef TESTING
         [self openLastOpenProject];
-        #endif
     }
     
     // Check for first run
@@ -1471,7 +1464,7 @@ typedef enum
     
     CocosScene* cs = [CocosScene cocosScene];
     if (document.stageZoom == 1.0) {
-        document.stageZoom = 0.41;
+        document.stageZoom = 0.44;
     }
     [cs setStageZoom:document.stageZoom]; //TODO: fix this! this value don't saved into file
     //CCLOG(@"document.stageZoom: %f",document.stageZoom);
@@ -1988,7 +1981,7 @@ typedef enum
     
     //[self updateStateOriginCenteredMenu];
     
-    [[CocosScene cocosScene] setStageZoom:0.45];
+    [[CocosScene cocosScene] setStageZoom:0.44];
     [[CocosScene cocosScene] setScrollOffset:ccp(0,0)];
     
     [self checkForTooManyDirectoriesInCurrentDoc];
@@ -3523,7 +3516,7 @@ typedef enum
 {
     CocosScene* cs = [CocosScene cocosScene];
     cs.scrollOffset = ccp(0,0);
-    [cs setStageZoom:0.45];
+    [cs setStageZoom:0.44];
 }
 
 - (IBAction) pressedToolSelection:(id)sender
@@ -4221,7 +4214,7 @@ typedef enum
 - (IBAction)menuAddStickyNote:(id)sender
 {
     CocosScene* cs = [CocosScene cocosScene];
-    [cs setStageZoom:0.45];
+    [cs setStageZoom:0.44];
     self.showStickyNotes = YES;
     [cs.notesLayer addNote];
 }

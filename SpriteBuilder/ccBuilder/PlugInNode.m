@@ -304,9 +304,9 @@
 
 -(void) dealloc
 {
-    #ifndef TESTING
+
 	SBLogSelf();
-    #endif
+
 }
 
 -(NSString*) description
