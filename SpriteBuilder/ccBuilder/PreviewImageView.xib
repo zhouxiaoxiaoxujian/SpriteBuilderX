@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreviewImageViewController">
@@ -117,7 +118,7 @@
                                 <menuItem title="Compressed" id="Q1S-Bz-i3I"/>
                                 <menuItem title="Compressed w/o alpha" tag="1" id="fXs-6l-ZBc"/>
                                 <menuItem title="Uncompressed" tag="2" id="kQn-ks-Rvn"/>
-                                <menuItem title="Custom" tag="2" id="SPO-x0-ZXy"/>
+                                <menuItem title="Custom" tag="3" id="SPO-x0-ZXy"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
