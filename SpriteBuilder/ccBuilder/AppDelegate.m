@@ -1836,23 +1836,26 @@ typedef enum
     {
         if ([item isKindOfClass:[RMResource class]])
         {
-            RMResource* res = item;
-            
-            if (res.type == kCCBResTypeCCBFile)
+            @autoreleasepool
             {
-                [self openFile:res.filePath];
-                [[CocosScene cocosScene] savePreviewToFile:[res.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
-                CCBDocument* oldDoc = [self findDocumentFromFile:res.filePath];
-                if (oldDoc)
+                RMResource* res = item;
+                
+                if (res.type == kCCBResTypeCCBFile)
                 {
-                    NSTabViewItem* item = [self tabViewItemFromDoc:oldDoc];
-                    if (item) [tabView removeTabViewItem:item];
+                    [self openFile:res.filePath];
+                    [[CocosScene cocosScene] savePreviewToFile:[res.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+                    CCBDocument* oldDoc = [self findDocumentFromFile:res.filePath];
+                    if (oldDoc)
+                    {
+                        NSTabViewItem* item = [self tabViewItemFromDoc:oldDoc];
+                        if (item) [tabView removeTabViewItem:item];
+                    }
                 }
-            }
-            else if (res.type == kCCBResTypeDirectory)
-            {
-                RMDirectory* subDir = res.data;
-                [self generatePreviewForDirectory:subDir];
+                else if (res.type == kCCBResTypeDirectory)
+                {
+                    RMDirectory* subDir = res.data;
+                    [self generatePreviewForDirectory:subDir];
+                }
             }
         }
     }
@@ -1865,6 +1868,46 @@ typedef enum
     for(RMDirectory *dir in rm.activeDirectories)
     {
         [self generatePreviewForDirectory:dir];
+    }
+}
+
+- (void) refreshDirectory:(RMDirectory*) dir
+{
+    NSArray* arr = [dir resourcesForType:kCCBResTypeCCBFile];
+    
+    for (id item in arr)
+    {
+        if ([item isKindOfClass:[RMResource class]])
+        {
+            @autoreleasepool
+            {
+                RMResource* res = item;
+                
+                if (res.type == kCCBResTypeCCBFile)
+                {
+                    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath];
+                    CCNode* loadedRoot = [CCBReaderInternal nodeGraphFromDocumentDictionary:newDoc.data parentSize:CGSizeZero];
+                    NSMutableDictionary* nodeGraph = [CCBWriterInternal dictionaryFromCCObject:loadedRoot];
+                    [newDoc.data setObject:nodeGraph forKey:@"nodeGraph"];
+                    [newDoc store];
+                }
+                else if (res.type == kCCBResTypeDirectory)
+                {
+                    RMDirectory* subDir = res.data;
+                    [self refreshDirectory:subDir];
+                }
+            }
+        }
+    }
+    
+}
+
+- (IBAction) refreshAllFiles:(id)sender
+{
+    ResourceManager* rm = [ResourceManager sharedManager];
+    for(RMDirectory *dir in rm.activeDirectories)
+    {
+        [self refreshDirectory:dir];
     }
 }
 
