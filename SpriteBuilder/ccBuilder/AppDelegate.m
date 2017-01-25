@@ -2094,10 +2094,42 @@ typedef enum
 
 #pragma mark Undo
 
++ (void) findNodesByUUIDs:(NSArray*)UUIDs startFrom:(CCNode*)startNode result:(NSMutableArray*)result
+{
+    for(NSNumber* UUID in UUIDs)
+    {
+        if(startNode.UUID == [UUID integerValue])
+        {
+            [result addObject:startNode];
+            break;
+        }
+    }
+    for(CCNode *child in startNode.children)
+    {
+        [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+    }
+}
+
 - (void) revertToState:(id)state
 {
+    NSMutableArray *lastSelectedNodesUUID = [[NSMutableArray alloc] init];
+    for(CCNode *node in self.selectedNodes)
+    {
+        [lastSelectedNodesUUID addObject:[NSNumber numberWithInteger:node.UUID]];
+    }
+
     [self saveUndoState];
     [self replaceDocumentData:state];
+    [sequenceHandler updatePropertiesToTimelinePosition];
+    
+    if(lastSelectedNodesUUID.count)
+    {
+        NSMutableArray *lastSelectedNodes = [[NSMutableArray alloc] init];
+        SceneGraph* g = [SceneGraph instance];
+        [AppDelegate findNodesByUUIDs:lastSelectedNodesUUID startFrom:g.rootNode result:lastSelectedNodes];
+        [self setSelectedNodes:lastSelectedNodes];
+    }
+    
 }
 
 - (void) saveUndoStateWillChangeProperty:(NSString*)prop
