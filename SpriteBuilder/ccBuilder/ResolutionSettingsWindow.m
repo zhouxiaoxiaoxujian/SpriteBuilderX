@@ -36,6 +36,8 @@
     predefinedResolutions = [[NSMutableArray alloc] init];
     
     // iOS
+    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
