@@ -939,6 +939,9 @@
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
 		F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848C1E15CCDA00C76367 /* doc-layout.png */; };
 		F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */; };
+		F8A53CCA1E3920A700C602B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */; };
+		F8A53CCB1E3920A700C602B6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC81E3920A700C602B6 /* Fabric.framework */; };
+		F8A53CCC1E3920A700C602B6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC91E3920A700C602B6 /* Crashlytics.framework */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
 		FA98CFD1154E7F7D006E58C5 /* CCBX.m in Sources */ = {isa = PBXBuildFile; fileRef = E398C03614FB8A430078E771 /* CCBX.m */; };
@@ -2575,6 +2578,9 @@
 		F85F7C571E10205F00A13B3F /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		F88F848C1E15CCDA00C76367 /* doc-layout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout.png"; sourceTree = "<group>"; };
 		F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout@2x.png"; sourceTree = "<group>"; };
+		F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F8A53CC81E3920A700C602B6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		F8A53CC91E3920A700C602B6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FA98CFC1154E7D1C006E58C5 /* ccbpublish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ccbpublish; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98CFC3154E7D1C006E58C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccbpublish.m; sourceTree = "<group>"; };
@@ -2593,13 +2599,16 @@
 				B7E1EFDD185F8D3D00C9E6E0 /* WebKit.framework in Frameworks */,
 				8098525A182C40170054BBF3 /* CoreMedia.framework in Frameworks */,
 				835DB0CB17156421003A2F7B /* Security.framework in Frameworks */,
+				F8A53CCA1E3920A700C602B6 /* SystemConfiguration.framework in Frameworks */,
 				A535686B1D21480E009EC595 /* libTextureConverter.dylib in Frameworks */,
 				E3A4747C16D43BF300DB0D61 /* AVFoundation.framework in Frameworks */,
 				E3A4747A16D43BEA00DB0D61 /* OpenAL.framework in Frameworks */,
+				F8A53CCC1E3920A700C602B6 /* Crashlytics.framework in Frameworks */,
 				E3A4747816D43B5800DB0D61 /* AudioToolbox.framework in Frameworks */,
 				E3B19F6B15E62ADA000B023E /* Carbon.framework in Frameworks */,
 				E3E0879015669FA2008F1FDB /* libffi.dylib in Frameworks */,
 				776A37161395925D00960E94 /* Quartz.framework in Frameworks */,
+				F8A53CCB1E3920A700C602B6 /* Fabric.framework in Frameworks */,
 				77D33E95138E714700012A88 /* ExceptionHandling.framework in Frameworks */,
 				7789ABEE133AB12F00CEFCC7 /* libz.dylib in Frameworks */,
 				7789ABEC133AB12000CEFCC7 /* OpenGL.framework in Frameworks */,
@@ -3402,6 +3411,9 @@
 		7789ABC1133AA82000CEFCC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */,
+				F8A53CC81E3920A700C602B6 /* Fabric.framework */,
+				F8A53CC91E3920A700C602B6 /* Crashlytics.framework */,
 				D35E589D18E391DA008571EC /* GLKit.framework */,
 				B7E1EFDC185F8D3D00C9E6E0 /* WebKit.framework */,
 				80985259182C40170054BBF3 /* CoreMedia.framework */,
@@ -5438,6 +5450,7 @@
 				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
 				A535686D1D214BA8009EC595 /* ShellScript */,
 				A5A665F91E2446A000FAD6C4 /* ShellScript */,
+				F8A53CC61E39206D00C602B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -6856,6 +6869,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd $SRCROOT\ncd ../scripts\nrake build:generated";
 		};
+		F8A53CC61E39206D00C602B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f889d4ed3d756062d47b9bfc22677fbdad2ece4e bd1c240f9863ff0b829486f1510ddd37940eb1f18eb26663fa1482d5c6f99a50";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -7933,7 +7959,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -7978,7 +8008,10 @@
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ccBuilder/SpriteBuilderX-Prefix.pch";

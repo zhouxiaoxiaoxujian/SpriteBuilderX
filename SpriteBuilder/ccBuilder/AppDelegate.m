@@ -129,6 +129,8 @@
 #import "PreviewContainerViewController.h"
 #import "InspectorController.h"
 #import "EditClassWindow.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 static const int CCNODE_INDEX_LAST = -1;
 
@@ -502,8 +504,11 @@ typedef enum
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"ApplePersistenceIgnoreState"];
+    [Fabric with:@[[Crashlytics class]]];
 
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"ApplePersistenceIgnoreState"];
+    //[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
+    
     [self registerUserDefaults];
 
     [self registerNotificationObservers];
