@@ -86,7 +86,7 @@
 {
 
     [[NSWorkspace sharedWorkspace] openURL:
-     [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/KAMIKAZEUA/SpriteBuilderX"]]];
+     [NSURL URLWithString:[NSString stringWithFormat:@"https://github.com/newnon/SpriteBuilderX"]]];
     
     [self.window orderOut:sender];
 }
