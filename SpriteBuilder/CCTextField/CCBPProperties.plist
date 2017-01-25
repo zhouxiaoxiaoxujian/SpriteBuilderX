@@ -18,6 +18,21 @@
 	<string>CCTextField</string>
 	<key>editorClassName</key>
 	<string>CCBPTextField</string>
+	<key>propertiesOverridden</key>
+	<array>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>default</key>
+			<true/>
+			<key>displayName</key>
+			<string>User Interaction Enabled</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>userInteractionEnabled</string>
+		</dict>
+	</array>
 	<key>properties</key>
 	<array>
 		<dict>

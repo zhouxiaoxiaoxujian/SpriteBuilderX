@@ -110,9 +110,9 @@
 			<key>saveInTemplate</key>
 			<true/>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaultSerialization</key>
-			<true/>
+			<false/>
 			<key>displayName</key>
 			<string>User Interaction Enabled</string>
 			<key>type</key>
