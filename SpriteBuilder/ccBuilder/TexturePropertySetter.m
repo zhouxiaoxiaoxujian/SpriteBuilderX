@@ -106,8 +106,8 @@
         @try
         {
             NSString* fileName = [[ResourceManager sharedManager] toAbsolutePath:spriteFile];
-            
-            texture = [[CCTextureCache sharedTextureCache] addImage:fileName];
+            if(fileName)
+                texture = [[CCTextureCache sharedTextureCache] addImage:fileName];
         }
         @catch (NSException *exception)
         {
