@@ -804,6 +804,7 @@ typedef enum
 - (BOOL)tabView:(NSTabView *)aTabView shouldCloseTabViewItem:(NSTabViewItem *)tabViewItem
 {
     [[self window] makeFirstResponder:[self window]];
+    currentDocument.lastEditedProperty = nil;
     CCBDocument* doc = [tabViewItem identifier];
     
     if (doc.isDirty)
@@ -2959,6 +2960,7 @@ typedef enum
 - (void)checkForDirtyDocumentAndPublishAsync:(BOOL)async
 {
     [[self window] makeFirstResponder:[self window]];
+    currentDocument.lastEditedProperty = nil;
     if ([projectSettings.platformsSettings count] == 0)
     {
         if(async)
