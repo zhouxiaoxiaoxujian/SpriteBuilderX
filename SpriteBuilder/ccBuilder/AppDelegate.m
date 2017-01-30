@@ -803,6 +803,7 @@ typedef enum
 
 - (BOOL)tabView:(NSTabView *)aTabView shouldCloseTabViewItem:(NSTabViewItem *)tabViewItem
 {
+    [[self window] makeFirstResponder:[self window]];
     CCBDocument* doc = [tabViewItem identifier];
     
     if (doc.isDirty)
@@ -2957,6 +2958,7 @@ typedef enum
 
 - (void)checkForDirtyDocumentAndPublishAsync:(BOOL)async
 {
+    [[self window] makeFirstResponder:[self window]];
     if ([projectSettings.platformsSettings count] == 0)
     {
         if(async)
