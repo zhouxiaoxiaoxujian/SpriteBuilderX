@@ -23,17 +23,36 @@
  */
 
 #import "InspectorInteger.h"
+#import "AppDelegate.h"
+#import "StringPropertySetter.h"
 
 @implementation InspectorInteger
 
 - (void) setInteger:(int)integer
 {
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
     [self setPropertyForSelection:[NSNumber numberWithInt:integer]];
 }
 
 - (int) integer
 {
     return [[self propertyForSelection] intValue];
+}
+
+- (void)controlTextDidChange:(NSNotification *)note
+{
+    NSTextField * changedField = [note object];
+    int text = [changedField intValue];
+    [self setInteger:text];
+}
+
+- (void) refresh
+{
+    [self willChangeValueForKey:@"integer"];
+    [self didChangeValueForKey:@"integer"];
+    
+    [StringPropertySetter refreshStringProp:propertyName forNode:selection];
+    [super refresh];
 }
 
 @end

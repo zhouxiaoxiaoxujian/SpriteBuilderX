@@ -24,7 +24,7 @@
 
 #import "InspectorValue.h"
 
-@interface InspectorInteger : InspectorValue
+@interface InspectorInteger : InspectorValue <NSTextFieldDelegate>
 
 @property (nonatomic, assign) int integer;
 
