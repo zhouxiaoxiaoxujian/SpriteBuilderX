@@ -1790,6 +1790,8 @@ typedef enum
 
 - (void) saveFile:(NSString*) fileName
 {
+    [[self window] makeFirstResponder:[self window]];
+    currentDocument.lastEditedProperty = nil;
     currentDocument.filePath = fileName;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
     [currentDocument store];
