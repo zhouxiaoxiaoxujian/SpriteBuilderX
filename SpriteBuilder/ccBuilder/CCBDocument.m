@@ -51,10 +51,13 @@
 
     if (self)
     {
+        NSString *extraDataPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+        NSMutableDictionary *extraDataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:extraDataPath];
 
         self.filePath = filePath;
         self.data = dictionary;
+        self.extraData = extraDataDictionary;
         self.exportPath = [dictionary objectForKey:@"exportPath"];
         self.exportPlugIn = [dictionary objectForKey:@"exportPlugIn"];
         self.UUID = [dictionary[@"UUID"] unsignedIntegerValue];
@@ -117,7 +120,8 @@
 
 - (BOOL)store
 {
-    return [_data writeToFile:_filePath atomically:YES];
+    NSString *extraDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
+    return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
 - (NSUInteger)getAndIncrementUUID

@@ -59,8 +59,6 @@
 
     [self setMetaDataInDict:dict];
 
-    [self setStageInDict:dict];
-
     [self setGuidesAndNotesInDict:dict];
 
     [self setGridSpacingInDict:dict];
@@ -98,12 +96,6 @@
 {
     [dict setObject:@"CocosBuilder" forKey:@"fileType"];
     [dict setObject:@(kCCBFileFormatVersion) forKey:@"fileVersion"];
-}
-
-- (void)setStageInDict:(NSMutableDictionary *)dict
-{
-    [dict setObject:[NSNumber numberWithInt:[[CocosScene cocosScene] stageBorder]] forKey:@"stageBorder"];
-    [dict setObject:[NSNumber numberWithInt:_document.stageColor] forKey:@"stageColor"];
 }
 
 - (void)setGuidesAndNotesInDict:(NSMutableDictionary *)dict
@@ -151,7 +143,6 @@
         }
         [dict setObject:resolutions forKey:@"resolutions"];
         [dict setValue:[NSNumber numberWithInt:_document.sceneScaleType] forKey:@"sceneScaleType"];
-        [dict setObject:@(_document.currentResolution) forKey:@"currentResolution"];
     }
 }
 
@@ -165,7 +156,7 @@
             [sequences addObject:[seq serialize]];
         }
         [dict setObject:sequences forKey:@"sequences"];
-        [dict setObject:@(_sequenceId) forKey:@"currentSequenceId"];
+        //[dict setObject:@(_sequenceId) forKey:@"currentSequenceId"];
     }
 }
 

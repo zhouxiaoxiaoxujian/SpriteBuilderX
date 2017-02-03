@@ -1138,6 +1138,59 @@ typedef enum
     [window setDocumentEdited:[self hasDirtyDocument]];
 }
 
++ (void) findNodesByUUIDs:(NSArray*)UUIDs startFrom:(CCNode*)startNode result:(NSMutableArray*)result
+{
+    for(NSNumber* UUID in UUIDs)
+    {
+        if(startNode.UUID == [UUID unsignedIntegerValue])
+        {
+            [result addObject:startNode];
+            break;
+        }
+    }
+    for(CCNode *child in startNode.children)
+    {
+        [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+    }
+}
+
+typedef id (^GetNodeParamBlock)(CCNode*);
+typedef void (^SetNodeParamBlock)(CCNode*, id);
+
++ (void) getNodesParams:(NSDictionary*) paramsFunction startFrom:(CCNode*)startNode result:(NSMutableDictionary*)result
+{
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    [paramsFunction enumerateKeysAndObjectsUsingBlock:^(NSString* key, id value, BOOL* stop) {
+        id res = ((GetNodeParamBlock)value)(startNode);
+        if(res)
+            data[key] = res;
+    }];
+    if(data.count)
+        [result setObject:data forKey:[[NSNumber numberWithUnsignedInteger:startNode.UUID] stringValue]];
+    
+    if (![NSStringFromClass(startNode.class) isEqualToString:@"CCBPCCBFile"])
+        for(CCNode *child in startNode.children)
+            [AppDelegate getNodesParams:paramsFunction startFrom:child result:result];
+}
+
++ (void) applyNodesParams:(NSDictionary*) paramsFunction startFrom:(CCNode*)startNode params:(NSDictionary*)params
+{
+    [params enumerateKeysAndObjectsUsingBlock:^(NSNumber* UUID, NSDictionary *nodeParams, BOOL* stop) {
+        if([UUID integerValue] == startNode.UUID)
+        {
+            [nodeParams enumerateKeysAndObjectsUsingBlock:^(NSString* key, id value, BOOL* stop) {
+                id func = [paramsFunction objectForKey:key];
+                if(func)
+                    ((SetNodeParamBlock)func)(startNode, value);
+            }];
+        }
+    }];
+    
+    if (![NSStringFromClass(startNode.class) isEqualToString:@"CCBPCCBFile"])
+        for(CCNode *child in startNode.children)
+            [AppDelegate applyNodesParams:paramsFunction startFrom:child params:params];
+}
+
 - (NSMutableDictionary*) docDataFromCurrentNodeGraph
 {
     CCBDocumentDataCreator *dataCreator =
@@ -1148,6 +1201,39 @@ typedef enum
     return [dataCreator createData];
 }
 
+- (NSMutableDictionary*) extraDocDataFromCurrentNodeGraph
+{
+    NSMutableDictionary *extraData = [[NSMutableDictionary alloc] init];
+    
+    NSMutableArray *lastSelectedNodesUUID = [[NSMutableArray alloc] init];
+    for(CCNode *node in self.selectedNodes)
+        [lastSelectedNodesUUID addObject:[NSNumber numberWithUnsignedInteger:node.UUID]];
+    
+    extraData[@"selectedNodes"] = lastSelectedNodesUUID;
+    
+    NSMutableDictionary *nodesParams = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *paramsFunctions = [[NSMutableDictionary alloc] init];
+    
+    paramsFunctions[@"expanded"] = ^id(CCNode* node) {
+        if([[node extraPropForKey:@"isExpanded"] boolValue])
+            return [NSNumber numberWithBool:YES];
+        else
+            return nil;
+    };
+    
+    [AppDelegate getNodesParams:paramsFunctions startFrom:[SceneGraph instance].rootNode result:nodesParams];
+    
+    extraData[@"nodesParams"] = nodesParams;
+    
+    [extraData setObject:@(currentDocument.currentResolution) forKey:@"currentResolution"];
+    [extraData setObject:[NSNumber numberWithInt:[[CocosScene cocosScene] stageBorder]] forKey:@"stageBorder"];
+    [extraData setObject:[NSNumber numberWithInt:currentDocument.stageColor] forKey:@"stageColor"];
+    [extraData setObject:@(sequenceHandler.currentSequence.sequenceId) forKey:@"currentSequenceId"];
+
+    return extraData;
+}
+
 - (void) prepareForDocumentSwitch
 {
     [self.window makeKeyWindow];
@@ -1155,6 +1241,7 @@ typedef enum
 		
     if (![self hasOpenedDocument]) return;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
+    currentDocument.extraData = [self extraDocDataFromCurrentNodeGraph];
     currentDocument.stageZoom = [cs stageZoom];
     currentDocument.stageScrollOffset = [cs scrollOffset];
 }
@@ -1247,14 +1334,23 @@ typedef enum
             }
         }
         
-        currentDocument.docDimensionsType = docDimType;
-        int currentResolution = [[doc objectForKey:@"currentResolution"] intValue];
-        currentResolution = clampf(currentResolution, 0, resolutions.count - 1);
-        ResolutionSetting* resolution = [resolutions objectAtIndex:currentResolution];
-        
         // Save in current document
         currentDocument.resolutions = resolutions;
-        currentDocument.currentResolution = currentResolution;
+        currentDocument.docDimensionsType = docDimType;
+        id currentResolutionObject = [doc objectForKey:@"currentResolution"];
+        if(currentResolutionObject)
+        {
+            int currentResolution = [[doc objectForKey:@"currentResolution"] intValue];
+            currentResolution = clampf(currentResolution, 0, resolutions.count - 1);
+            currentDocument.currentResolution = currentResolution;
+        }
+        else
+        {
+            currentDocument.currentResolution = 0;
+        }
+        
+        ResolutionSetting* resolution = [resolutions objectAtIndex:currentDocument.currentResolution];
+        
         if (![doc objectForKey:@"sceneScaleType"]) {
             currentDocument.sceneScaleType = kCCBSceneScaleTypeDEFAULT;
         } else {
@@ -1289,7 +1385,11 @@ typedef enum
     ResolutionSetting* resolution = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     
     // Stage border
-    [[CocosScene cocosScene] setStageBorder:[[doc objectForKey:@"stageBorder"] intValue]];
+    id stageBorderObject = [doc objectForKey:@"stageBorder"];
+    if(stageBorderObject)
+    {
+        [[CocosScene cocosScene] setStageBorder:[stageBorderObject intValue]];
+    }
     
     // Stage color
     NSNumber *stageColorObject = [doc objectForKey: @"stageColor"];
@@ -1440,6 +1540,91 @@ typedef enum
     }
 }
 
+-(void) restoreExtraData:(CCBDocument *) doc {
+    NSArray *lastSelectedNodesUUID = [doc.extraData objectForKey:@"selectedNodes"];
+    if(lastSelectedNodesUUID && lastSelectedNodesUUID.count)
+    {
+        NSMutableArray *lastSelectedNodes = [[NSMutableArray alloc] init];
+        SceneGraph* g = [SceneGraph instance];
+        [AppDelegate findNodesByUUIDs:lastSelectedNodesUUID startFrom:g.rootNode result:lastSelectedNodes];
+        [self setSelectedNodes:lastSelectedNodes];
+    }
+    
+    
+    NSMutableDictionary *nodesParams = [doc.extraData objectForKey:@"nodesParams"];
+    if(nodesParams)
+    {
+        NSMutableDictionary *paramsFunctions = [[NSMutableDictionary alloc] init];
+        paramsFunctions[@"expanded"] = ^void(CCNode* node, id value) {
+            if([value boolValue])
+            {
+                [sequenceHandler.outlineHierarchy expandItem:node];
+            }
+        };
+
+        [AppDelegate applyNodesParams:paramsFunctions startFrom:[SceneGraph instance].rootNode params:nodesParams];
+    }
+    
+    //current resolution
+    NSNumber *currentResolutionObject = [doc.extraData objectForKey:@"currentResolution"];
+    if(currentResolutionObject)
+    {
+        BOOL centered = [[doc.data objectForKey:@"centeredOrigin"] boolValue];
+        int currentResolution = [currentResolutionObject intValue];
+        currentResolution = clampf(currentResolution, 0, doc.resolutions.count - 1);
+        ResolutionSetting* resolution = [doc.resolutions objectAtIndex:currentResolution];
+        doc.currentResolution = currentResolution;
+        [self updatePositionScaleFactor];
+        [[CocosScene cocosScene] setStageSize:CGSizeMake(resolution.width / resolution.resourceScale, resolution.height / resolution.resourceScale) centeredOrigin: centered];
+    }
+    
+    // Stage border
+    NSNumber *stageBorderObject = [doc.extraData objectForKey:@"stageBorder"];
+    if(stageBorderObject)
+    {
+        [[CocosScene cocosScene] setStageBorder:[stageBorderObject intValue]];
+    }
+    
+    // Stage color
+    NSNumber *stageColorObject = [doc.extraData objectForKey: @"stageColor"];
+    if(stageColorObject)
+    {
+        int stageColor;
+        if (stageColorObject != nil)
+        {
+            stageColor = [stageColorObject intValue];
+        }
+        else
+        {
+            if (doc.docDimensionsType == kCCBDocDimensionsTypeNode)
+            {
+                stageColor = kCCBCanvasColorGray;
+            }
+            else
+            {
+                stageColor = kCCBCanvasColorBlack;
+            }
+        }
+        doc.stageColor = stageColor;
+        [self updateCanvasColor];
+    }
+
+    id currentSequenceId = [doc.extraData objectForKey:@"currentSequenceId"];
+    if(currentSequenceId)
+    {
+        SequencerSequence* currentSeq = NULL;
+        for (SequencerSequence* seq in doc.sequences)
+        {
+            if (seq.sequenceId == [currentSequenceId integerValue])
+            {
+                currentSeq = seq;
+            }
+        }
+        sequenceHandler.currentSequence = currentSeq;
+    }
+    
+}
+
 - (void)recallcScalesForScaleType:(CCBSceneScaleType) scaleType forDocument:(CCBDocument *) doc {
     for (ResolutionSetting* resolution in doc.resolutions) {
         [ResolutionSettingsWindow recallcScale:resolution
@@ -1464,6 +1649,7 @@ typedef enum
     NSMutableDictionary* doc = document.data;
     
     [self replaceDocumentData:doc];
+    [self restoreExtraData:document];
     [self recalculateSceneScale:document];
     [self updateResolutionMenu];
     [self updateTimelineMenu];
@@ -1782,8 +1968,8 @@ typedef enum
     [self checkForTooManyDirectoriesInCurrentDoc];
     
     // Remove selections
-    physicsHandler.selectedNodePhysicsBody = NULL;
-    [self setSelectedNodes:NULL];
+    //physicsHandler.selectedNodePhysicsBody = NULL;
+    //[self setSelectedNodes:NULL];
     
 	[(CCGLView*)[[CCDirector sharedDirector] view] unlockOpenGLContext];
 }
@@ -1794,6 +1980,7 @@ typedef enum
     currentDocument.lastEditedProperty = nil;
     currentDocument.filePath = fileName;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
+    currentDocument.extraData = [self extraDocDataFromCurrentNodeGraph];
     [currentDocument store];
     
     currentDocument.isDirty = NO;
@@ -2097,22 +2284,6 @@ typedef enum
 }
 
 #pragma mark Undo
-
-+ (void) findNodesByUUIDs:(NSArray*)UUIDs startFrom:(CCNode*)startNode result:(NSMutableArray*)result
-{
-    for(NSNumber* UUID in UUIDs)
-    {
-        if(startNode.UUID == [UUID integerValue])
-        {
-            [result addObject:startNode];
-            break;
-        }
-    }
-    for(CCNode *child in startNode.children)
-    {
-        [self findNodesByUUIDs:UUIDs startFrom:child result:result];
-    }
-}
 
 - (void) revertToState:(id)state
 {
