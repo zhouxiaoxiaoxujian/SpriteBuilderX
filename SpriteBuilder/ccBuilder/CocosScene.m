@@ -385,7 +385,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     [node setExtraProp:[NSNumber numberWithInt:0] forKey:@"memberVarAssignmentType"];
     [node setExtraProp:@"" forKey:@"memberVarAssignmentName"];
     
-    [node setExtraProp:[NSNumber numberWithBool:YES] forKey:@"isExpanded"];
+    [node setExtraProp:[NSNumber numberWithBool:NO] forKey:@"isExpanded"];
 }
 
 #pragma mark Replacing content
