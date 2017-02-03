@@ -1291,7 +1291,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     return updatedResolutions;
 }
 
-- (void) replaceDocumentData:(NSMutableDictionary*)doc
+- (void) replaceDocumentData:(NSMutableDictionary*)doc extraData:(NSMutableDictionary*)extraData
 {
 //    SceneGraph* g = [SceneGraph instance];
     
@@ -1337,10 +1337,15 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         // Save in current document
         currentDocument.resolutions = resolutions;
         currentDocument.docDimensionsType = docDimType;
-        id currentResolutionObject = [doc objectForKey:@"currentResolution"];
+        id currentResolutionObject = [extraData objectForKey:@"currentResolution"];
+        
+        //try to load old format
+        if(!currentResolutionObject)
+            currentResolutionObject = [doc objectForKey:@"currentResolution"];
+        
         if(currentResolutionObject)
         {
-            int currentResolution = [[doc objectForKey:@"currentResolution"] intValue];
+            int currentResolution = [currentResolutionObject intValue];
             currentResolution = clampf(currentResolution, 0, resolutions.count - 1);
             currentDocument.currentResolution = currentResolution;
         }
@@ -1385,14 +1390,24 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     ResolutionSetting* resolution = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
     
     // Stage border
-    id stageBorderObject = [doc objectForKey:@"stageBorder"];
+    id stageBorderObject = [extraData objectForKey:@"stageBorder"];
+    
+    //try to load old format
+    if(!stageBorderObject)
+        stageBorderObject = [doc objectForKey:@"stageBorder"];
+    
     if(stageBorderObject)
     {
         [[CocosScene cocosScene] setStageBorder:[stageBorderObject intValue]];
     }
     
     // Stage color
-    NSNumber *stageColorObject = [doc objectForKey: @"stageColor"];
+    NSNumber *stageColorObject = [extraData objectForKey: @"stageColor"];
+    
+    //try to load old format
+    if(!stageColorObject)
+        stageColorObject = [doc objectForKey: @"stageColor"];
+    
     int stageColor;
     if (stageColorObject != nil)
     {
@@ -1418,7 +1433,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     if (serializedSequences)
     {
         // Load from the file
-        int currentSequenceId = [[doc objectForKey:@"currentSequenceId"] intValue];
+        id currentSequenceIdObject = [extraData objectForKey:@"currentSequenceId"];
+        
+        //try to load old format
+        if(!currentSequenceIdObject)
+            currentSequenceIdObject = [doc objectForKey:@"currentSequenceId"];
+        
+        int currentSequenceId = [currentSequenceIdObject intValue];
         SequencerSequence* currentSeq = NULL;
         
         NSMutableArray* sequences = [NSMutableArray array];
@@ -1523,6 +1544,30 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     // Restore selections
     self.selectedNodes = loadedSelectedNodes;
     
+    NSArray *lastSelectedNodesUUID = [extraData objectForKey:@"selectedNodes"];
+    if(lastSelectedNodesUUID && lastSelectedNodesUUID.count)
+    {
+        NSMutableArray *lastSelectedNodes = [[NSMutableArray alloc] init];
+        SceneGraph* g = [SceneGraph instance];
+        [AppDelegate findNodesByUUIDs:lastSelectedNodesUUID startFrom:g.rootNode result:lastSelectedNodes];
+        [self setSelectedNodes:lastSelectedNodes];
+    }
+    
+    
+    NSMutableDictionary *nodesParams = [extraData objectForKey:@"nodesParams"];
+    if(nodesParams)
+    {
+        NSMutableDictionary *paramsFunctions = [[NSMutableDictionary alloc] init];
+        paramsFunctions[@"expanded"] = ^void(CCNode* node, id value) {
+            if([value boolValue])
+            {
+                [sequenceHandler.outlineHierarchy expandItem:node];
+            }
+        };
+        
+        [AppDelegate applyNodesParams:paramsFunctions startFrom:[SceneGraph instance].rootNode params:nodesParams];
+    }
+    
     //[self updateJSControlledMenu];
     [self updateCanvasBorderMenu];
 }
@@ -1538,91 +1583,6 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [self recallcScalesForScaleType:projectSettings.sceneScaleType forDocument:doc];
         }
     }
-}
-
--(void) restoreExtraData:(CCBDocument *) doc {
-    NSArray *lastSelectedNodesUUID = [doc.extraData objectForKey:@"selectedNodes"];
-    if(lastSelectedNodesUUID && lastSelectedNodesUUID.count)
-    {
-        NSMutableArray *lastSelectedNodes = [[NSMutableArray alloc] init];
-        SceneGraph* g = [SceneGraph instance];
-        [AppDelegate findNodesByUUIDs:lastSelectedNodesUUID startFrom:g.rootNode result:lastSelectedNodes];
-        [self setSelectedNodes:lastSelectedNodes];
-    }
-    
-    
-    NSMutableDictionary *nodesParams = [doc.extraData objectForKey:@"nodesParams"];
-    if(nodesParams)
-    {
-        NSMutableDictionary *paramsFunctions = [[NSMutableDictionary alloc] init];
-        paramsFunctions[@"expanded"] = ^void(CCNode* node, id value) {
-            if([value boolValue])
-            {
-                [sequenceHandler.outlineHierarchy expandItem:node];
-            }
-        };
-
-        [AppDelegate applyNodesParams:paramsFunctions startFrom:[SceneGraph instance].rootNode params:nodesParams];
-    }
-    
-    //current resolution
-    NSNumber *currentResolutionObject = [doc.extraData objectForKey:@"currentResolution"];
-    if(currentResolutionObject)
-    {
-        BOOL centered = [[doc.data objectForKey:@"centeredOrigin"] boolValue];
-        int currentResolution = [currentResolutionObject intValue];
-        currentResolution = clampf(currentResolution, 0, doc.resolutions.count - 1);
-        ResolutionSetting* resolution = [doc.resolutions objectAtIndex:currentResolution];
-        doc.currentResolution = currentResolution;
-        [self updatePositionScaleFactor];
-        [[CocosScene cocosScene] setStageSize:CGSizeMake(resolution.width / resolution.resourceScale, resolution.height / resolution.resourceScale) centeredOrigin: centered];
-    }
-    
-    // Stage border
-    NSNumber *stageBorderObject = [doc.extraData objectForKey:@"stageBorder"];
-    if(stageBorderObject)
-    {
-        [[CocosScene cocosScene] setStageBorder:[stageBorderObject intValue]];
-    }
-    
-    // Stage color
-    NSNumber *stageColorObject = [doc.extraData objectForKey: @"stageColor"];
-    if(stageColorObject)
-    {
-        int stageColor;
-        if (stageColorObject != nil)
-        {
-            stageColor = [stageColorObject intValue];
-        }
-        else
-        {
-            if (doc.docDimensionsType == kCCBDocDimensionsTypeNode)
-            {
-                stageColor = kCCBCanvasColorGray;
-            }
-            else
-            {
-                stageColor = kCCBCanvasColorBlack;
-            }
-        }
-        doc.stageColor = stageColor;
-        [self updateCanvasColor];
-    }
-
-    id currentSequenceId = [doc.extraData objectForKey:@"currentSequenceId"];
-    if(currentSequenceId)
-    {
-        SequencerSequence* currentSeq = NULL;
-        for (SequencerSequence* seq in doc.sequences)
-        {
-            if (seq.sequenceId == [currentSequenceId integerValue])
-            {
-                currentSeq = seq;
-            }
-        }
-        sequenceHandler.currentSequence = currentSeq;
-    }
-    
 }
 
 - (void)recallcScalesForScaleType:(CCBSceneScaleType) scaleType forDocument:(CCBDocument *) doc {
@@ -1646,10 +1606,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     self.currentDocument = document;
     
-    NSMutableDictionary* doc = document.data;
-    
-    [self replaceDocumentData:doc];
-    [self restoreExtraData:document];
+    [self replaceDocumentData:document.data extraData:document.extraData];
     [self recalculateSceneScale:document];
     [self updateResolutionMenu];
     [self updateTimelineMenu];
@@ -2294,7 +2251,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 
     [self saveUndoState];
-    [self replaceDocumentData:state];
+    [self replaceDocumentData:state extraData:[self extraDocDataFromCurrentNodeGraph]];
     [sequenceHandler updatePropertiesToTimelinePosition];
     
     if(lastSelectedNodesUUID.count)
