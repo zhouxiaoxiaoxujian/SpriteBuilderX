@@ -644,7 +644,7 @@ typedef enum
                                      target:self
                                    selector:@selector(checkAutoSave)
                                    userInfo:nil
-                                    repeats:NO];
+                                    repeats:YES];
 }
 
 - (void)checkAutoSave
@@ -656,7 +656,7 @@ typedef enum
         CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
         if (doc.isBackupDirty)
         {
-            if(currentDocument == doc)
+            if([doc.filePath isEqualToString:currentDocument.filePath])
             {
                 doc.data = [self docDataFromCurrentNodeGraph];
                 doc.extraData = [self extraDocDataFromCurrentNodeGraph];
@@ -857,9 +857,11 @@ typedef enum
         }
         else if (result == NSAlertOtherReturn)
         {
+            [currentDocument removeBackup];
             return YES;
         }
     }
+    [currentDocument removeBackup];
     return YES;
 }
 
@@ -1962,9 +1964,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     [[self window] makeFirstResponder:[self window]];
     currentDocument.lastEditedProperty = nil;
-    currentDocument.filePath = fileName;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
     currentDocument.extraData = [self extraDocDataFromCurrentNodeGraph];
+    [currentDocument removeBackup];
+    currentDocument.filePath = fileName;
     [currentDocument store];
     
     currentDocument.isDirty = NO;
@@ -4657,6 +4660,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         {
             return NO;
         }
+    }
+    NSArray* docs = [tabView tabViewItems];
+    for (int i = 0; i < [docs count]; i++)
+    {
+        CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
+        [doc removeBackup];
     }
     return YES;
 }

@@ -58,4 +58,5 @@
 
 - (BOOL)store;
 - (BOOL)storeBackup;
+- (BOOL)removeBackup;
 @end
