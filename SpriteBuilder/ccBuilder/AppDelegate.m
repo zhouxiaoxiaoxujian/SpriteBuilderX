@@ -639,6 +639,33 @@ typedef enum
     }
 
     [self toggleFeatures];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(checkAutoSave)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void)checkAutoSave
+{
+    // Save all CCB files
+    NSArray* docs = [tabView tabViewItems];
+    for (int i = 0; i < [docs count]; i++)
+    {
+        CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
+        if (doc.isBackupDirty)
+        {
+            if(currentDocument == doc)
+            {
+                doc.data = [self docDataFromCurrentNodeGraph];
+                doc.extraData = [self extraDocDataFromCurrentNodeGraph];
+            }
+            [doc storeBackup];
+            doc.isBackupDirty = NO;
+        }
+    }
+
 }
 
 - (void)setupInspectorController
@@ -1941,6 +1968,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [currentDocument store];
     
     currentDocument.isDirty = NO;
+    currentDocument.isBackupDirty = NO;
     NSTabViewItem* item = [self tabViewItemFromDoc:currentDocument];
     
     if (item)
@@ -2273,6 +2301,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 
     currentDocument.isDirty = YES;
+    currentDocument.isBackupDirty = YES;
     currentDocument.lastEditedProperty = prop;
 
     NSMutableDictionary* doc = [self docDataFromCurrentNodeGraph];

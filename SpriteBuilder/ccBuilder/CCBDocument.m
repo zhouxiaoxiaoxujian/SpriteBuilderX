@@ -124,6 +124,13 @@
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
+- (BOOL)storeBackup
+{
+    NSString *backupDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    return [_data writeToFile:backupDataPath atomically:YES];
+}
+
+
 - (NSUInteger)getAndIncrementUUID
 {
 	NSUInteger current = self.UUID;
