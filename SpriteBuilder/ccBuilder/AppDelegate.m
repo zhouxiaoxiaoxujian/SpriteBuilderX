@@ -662,7 +662,7 @@ typedef enum
 
 - (void)checkAutoSave
 {
-    CCLOG(@"checkAutoSave");
+    //CCLOG(@"checkAutoSave");
     // Save all CCB files
     NSArray* docs = [tabView tabViewItems];
     for (int i = 0; i < [docs count]; i++)
