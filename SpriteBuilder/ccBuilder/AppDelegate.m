@@ -662,16 +662,7 @@ typedef enum
                 doc.data = [self docDataFromCurrentNodeGraph];
                 doc.extraData = [self extraDocDataFromCurrentNodeGraph];
             }
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:@"SBXBackups"];
-            NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-            NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : defaultPath;
-            
-            NSString *projPath = [projectSettings.projectPathDir stringByDeletingLastPathComponent];
-            NSString *backupPath = [doc.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
-            //backupPath = [NSString stringWithFormat:@"%@/%@"];
-            
-            [doc storeBackup:backupPath];
+            [doc storeBackup];
             doc.isBackupDirty = NO;
         }
     }
@@ -1954,7 +1945,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     [self prepareForDocumentSwitch];
     
-    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:filePath];
+    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:filePath andProjectSettings:projectSettings];
 
     [self switchToDocument:newDoc];
      
@@ -2079,7 +2070,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                 
                 if (res.type == kCCBResTypeCCBFile)
                 {
-                    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath];
+                    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath andProjectSettings:projectSettings];
                     CCNode* loadedRoot = [CCBReaderInternal nodeGraphFromDocumentDictionary:newDoc.data parentSize:CGSizeZero];
                     NSMutableDictionary* nodeGraph = [CCBWriterInternal dictionaryFromCCObject:loadedRoot];
                     [newDoc.data setObject:nodeGraph forKey:@"nodeGraph"];

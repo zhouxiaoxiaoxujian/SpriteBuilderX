@@ -25,6 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "ProjectSettings.h"
 
 @interface CCBDocument : NSObject
 
@@ -48,8 +49,9 @@
 @property (nonatomic, assign) int docDimensionsType;
 @property (nonatomic, assign) NSUInteger UUID;
 @property (nonatomic, assign) int sceneScaleType;
+@property (nonatomic, weak) ProjectSettings *projecSettings;
 
-- (instancetype)initWithContentsOfFile:(NSString *)filePath;
+- (instancetype)initWithContentsOfFile:(NSString *)filePath andProjectSettings:(ProjectSettings *) projectSettings;
 
 - (NSString *)formattedName;
 
@@ -57,6 +59,6 @@
 - (NSUInteger)getAndIncrementUUID;
 
 - (BOOL)store;
-- (BOOL)storeBackup:(NSString *) backupPath;
+- (BOOL)storeBackup;
 - (BOOL)removeBackup;
 @end

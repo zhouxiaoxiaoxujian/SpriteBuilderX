@@ -46,15 +46,18 @@
     return self;
 }
 
-- (instancetype)initWithContentsOfFile:(NSString *)filePath
+- (instancetype)initWithContentsOfFile:(NSString *)filePath andProjectSettings:(ProjectSettings *)projectSettings
 {
     self = [self init];
 
     if (self)
     {
+     
+        self.projecSettings = projectSettings;
+        self.filePath = filePath;
         
         NSDate *fileDate = [CCBFileUtil modificationDateForFile:filePath];
-        NSString *backupDataPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+        NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
         NSDate *backupDate = [CCBFileUtil modificationDateForFile:backupDataPath];
         
         NSMutableDictionary *dictionary = nil;
@@ -92,7 +95,7 @@
             extraDataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:extraDataPath];
         }
 
-        self.filePath = filePath;
+        
         self.data = dictionary; 
         self.extraData = extraDataDictionary;
         self.exportPath = [dictionary objectForKey:@"exportPath"];
@@ -165,21 +168,31 @@
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
-- (BOOL)storeBackup:(NSString *) backupPath
+-(NSString *) backupPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:@"SBXBackups"];
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : defaultPath;
+    NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
+    return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
+}
+
+- (BOOL)storeBackup
 {
     NSDictionary *data = @{@"data": _data, @"extraData": _extraData};
-    [[NSFileManager defaultManager] createDirectoryAtPath:[backupPath stringByDeletingLastPathComponent]
+
+    [[NSFileManager defaultManager] createDirectoryAtPath:[[self backupPath] stringByDeletingLastPathComponent]
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:nil];
     
-    NSString *backupDataPath = [[backupPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
     return [data writeToFile:backupDataPath atomically:YES];
 }
 
 - (BOOL)removeBackup
 {
-    NSString *backupDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:backupDataPath error:&error];
     return error == nil;
