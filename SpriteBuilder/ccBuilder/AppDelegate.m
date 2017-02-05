@@ -647,19 +647,22 @@ typedef enum
 -(void) scheduleAutoSaveTimer {
     if (autoSaveTimer) {
         [autoSaveTimer invalidate];
+        autoSaveTimer = nil;
     }
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    float interval = ([settings valueForKey:@"selectedBackupTimeInterval"] != nil) ? [[settings valueForKey:@"selectedBackupTimeInterval"] floatValue] : 10.0;
-    autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                     target:self
-                                                   selector:@selector(checkAutoSave)
-                                                   userInfo:nil
-                                                    repeats:YES];
+    if ([[settings valueForKey:@"enableBackup"] boolValue] == YES) {
+        float interval = ([settings valueForKey:@"selectedBackupTimeInterval"]!=nil)?[[settings valueForKey:@"selectedBackupTimeInterval"] floatValue]:10.0;
+        autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                         target:self
+                                                       selector:@selector(checkAutoSave)
+                                                       userInfo:nil
+                                                        repeats:YES];
+    }
 }
 
 - (void)checkAutoSave
 {
-    //CCLOG(@"checkAutoSave");
+    CCLOG(@"checkAutoSave");
     // Save all CCB files
     NSArray* docs = [tabView tabViewItems];
     for (int i = 0; i < [docs count]; i++)
