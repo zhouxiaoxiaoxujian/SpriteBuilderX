@@ -91,7 +91,8 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 - (IBAction)resetBackupSettings:(id)sender {
     selectedBackupTimeInterval = 60;
     backupPath = [self defaultBackupPath];
-    [self updateUIValues];
+    [self.backupIntervalPopUpButton selectItemWithTag:selectedBackupTimeInterval];
+    [self.backupPathField setStringValue:backupPath];
 }
 
 -(NSString *) defaultBackupPath {
