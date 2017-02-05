@@ -662,11 +662,20 @@ typedef enum
                 doc.data = [self docDataFromCurrentNodeGraph];
                 doc.extraData = [self extraDocDataFromCurrentNodeGraph];
             }
-            [doc storeBackup];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:@"SBXBackups"];
+            NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+            NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : defaultPath;
+            
+            NSString *projPath = [projectSettings.projectPathDir stringByDeletingLastPathComponent];
+            NSString *backupPath = [doc.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
+            //backupPath = [NSString stringWithFormat:@"%@/%@"];
+            
+            [doc storeBackup:backupPath];
             doc.isBackupDirty = NO;
         }
     }
-
+    
 }
 
 - (void)setupInspectorController

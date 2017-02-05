@@ -165,10 +165,15 @@
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
-- (BOOL)storeBackup
+- (BOOL)storeBackup:(NSString *) backupPath
 {
     NSDictionary *data = @{@"data": _data, @"extraData": _extraData};
-    NSString *backupDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    [[NSFileManager defaultManager] createDirectoryAtPath:[backupPath stringByDeletingLastPathComponent]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+    
+    NSString *backupDataPath = [[backupPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
     return [data writeToFile:backupDataPath atomically:YES];
 }
 

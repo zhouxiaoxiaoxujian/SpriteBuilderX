@@ -57,6 +57,6 @@
 - (NSUInteger)getAndIncrementUUID;
 
 - (BOOL)store;
-- (BOOL)storeBackup;
+- (BOOL)storeBackup:(NSString *) backupPath;
 - (BOOL)removeBackup;
 @end
