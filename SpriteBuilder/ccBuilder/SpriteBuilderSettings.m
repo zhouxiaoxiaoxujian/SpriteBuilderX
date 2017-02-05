@@ -39,6 +39,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [super windowDidLoad];
     [self updateUIValues];
     [self updateButtons];
+    [self.backupPathField.window makeFirstResponder:nil];
 }
 
 -(void) updateButtons {
@@ -88,7 +89,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 - (IBAction)resetBackupSettings:(id)sender {
-    selectedBackupTimeInterval = 0;
+    selectedBackupTimeInterval = 60;
     backupPath = [self defaultBackupPath];
     [self updateUIValues];
 }

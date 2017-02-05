@@ -63,11 +63,11 @@ DQ
                         <tabViewItems>
                             <tabViewItem label="General" identifier="0" id="cZD-xm-4gI">
                                 <view key="view" id="b1H-NP-Ill">
-                                    <rect key="frame" x="10" y="25" width="833" height="231"/>
+                                    <rect key="frame" x="10" y="25" width="126" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="General settings" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-w9-Syn">
-                                            <rect key="frame" x="14" y="146" width="805" height="79"/>
+                                            <rect key="frame" x="14" y="-85" width="805" height="79"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="s1A-C9-M5S">
                                                 <rect key="frame" x="2" y="2" width="801" height="62"/>
@@ -101,7 +101,7 @@ DQ
                                                         <rect key="frame" x="193" y="24" width="13" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X:" id="HLb-jI-Q4c">
-                                                            <font key="font" metaFont="system" size="12"/>
+                                                            <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -120,7 +120,7 @@ DQ
                                                         <rect key="frame" x="275" y="24" width="13" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y:" id="LKv-Wu-eJ1">
-                                                            <font key="font" metaFont="system" size="12"/>
+                                                            <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -134,7 +134,7 @@ DQ
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Some other" translatesAutoresizingMaskIntoConstraints="NO" id="6O5-Yx-6mj">
-                                            <rect key="frame" x="14" y="54" width="805" height="82"/>
+                                            <rect key="frame" x="14" y="-177" width="805" height="82"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="c61-oH-Wuf">
                                                 <rect key="frame" x="2" y="2" width="801" height="65"/>
@@ -181,27 +181,27 @@ DQ
                                                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-lj-eKG">
                                                         <rect key="frame" x="174" y="15" width="76" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="2 sec" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XnF-gC-aoj" id="2gu-ZF-gjd">
+                                                        <popUpButtonCell key="cell" type="push" title="2 sec" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" selectedItem="XnF-gC-aoj" id="2gu-ZF-gjd">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" id="Ze8-f0-JIR">
                                                                 <items>
-                                                                    <menuItem title="2 sec" state="on" id="XnF-gC-aoj" userLabel="2 sec">
+                                                                    <menuItem title="2 sec" state="on" tag="2" id="XnF-gC-aoj" userLabel="2 sec">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="10 sec" tag="1" id="Kct-80-8Rm">
+                                                                    <menuItem title="10 sec" tag="10" id="Kct-80-8Rm">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="30 sec" tag="2" id="8gH-NF-Fb9">
+                                                                    <menuItem title="30 sec" tag="30" id="8gH-NF-Fb9">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="1 Min" tag="3" id="RhK-AI-PYC">
+                                                                    <menuItem title="1 Min" tag="60" id="RhK-AI-PYC">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="2 Min" tag="4" id="huk-Jv-9jr">
+                                                                    <menuItem title="2 Min" tag="120" id="huk-Jv-9jr">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
-                                                                    <menuItem title="5 Min" tag="5" id="1gF-G5-jNi">
+                                                                    <menuItem title="5 Min" tag="300" id="1gF-G5-jNi">
                                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                                     </menuItem>
                                                                 </items>
@@ -211,7 +211,7 @@ DQ
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIf-ET-YvP">
                                                         <rect key="frame" x="260" y="21" width="99" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Backups folder:" id="qVk-cf-FTh">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Backup folder:" id="qVk-cf-FTh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -231,7 +231,7 @@ DQ
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7g-rw-dRe">
                                                         <rect key="frame" x="365" y="18" width="386" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/Users/*user*/SBXBackups" drawsBackground="YES" id="4Np-t4-6Iw">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/Users/*user*/SBXBackups" drawsBackground="YES" id="4Np-t4-6Iw">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -243,7 +243,7 @@ DQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyl-uE-uZt">
                                             <rect key="frame" x="769" y="16" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="1927F677-7C29-4BCE-B2CB-8FF0DFD46B57" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
+                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="309F1D8C-F47A-492E-AF0F-5DAD9FB29B3D" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -265,7 +265,7 @@ DQ
         </window>
     </objects>
     <resources>
-        <image name="1927F677-7C29-4BCE-B2CB-8FF0DFD46B57" width="1" height="1">
+        <image name="309F1D8C-F47A-492E-AF0F-5DAD9FB29B3D" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

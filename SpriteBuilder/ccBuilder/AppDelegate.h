@@ -299,6 +299,7 @@ typedef void (^CompletionCallback) (BOOL success);
     
     // Updates for Yosemite
     IBOutlet NSButton* loopButton;
+    NSTimer *autoSaveTimer;
     
 @private
     MainWindow *__weak window;

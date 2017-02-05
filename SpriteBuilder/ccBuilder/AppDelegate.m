@@ -640,16 +640,26 @@ typedef enum
     }
 
     [self toggleFeatures];
+    [self scheduleAutoSaveTimer];
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(checkAutoSave)
-                                   userInfo:nil
-                                    repeats:YES];
+}
+
+-(void) scheduleAutoSaveTimer {
+    if (autoSaveTimer) {
+        [autoSaveTimer invalidate];
+    }
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    float interval = ([settings valueForKey:@"selectedBackupTimeInterval"] != nil) ? [[settings valueForKey:@"selectedBackupTimeInterval"] floatValue] : 10.0;
+    autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                     target:self
+                                                   selector:@selector(checkAutoSave)
+                                                   userInfo:nil
+                                                    repeats:YES];
 }
 
 - (void)checkAutoSave
 {
+    //CCLOG(@"checkAutoSave");
     // Save all CCB files
     NSArray* docs = [tabView tabViewItems];
     for (int i = 0; i < [docs count]; i++)
@@ -3265,7 +3275,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 - (IBAction)menuSBSettings:(id)sender {
     SpriteBuilderSettings *SBSettings = [SpriteBuilderSettings new];
     if ([SBSettings runModalSheetForWindow:window]) {
-        
+        [self scheduleAutoSaveTimer];
     } else {
         //press "esc" or "cancel" in project settings
         //do nothing
