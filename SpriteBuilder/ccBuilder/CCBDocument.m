@@ -27,6 +27,7 @@
 #import "CocosScene.h"
 #import "ProjectSettings.h"
 #import "CCBFileUtil.h"
+#import "SpriteBuilderSettings.h"
 
 @implementation CCBDocument
 
@@ -168,11 +169,9 @@
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
--(NSString *) backupPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:@"SBXBackups"];
+-(NSString *) backupPath {;
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : defaultPath;
+    NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
     NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
 }

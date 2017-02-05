@@ -21,5 +21,6 @@
 
 @property (weak) IBOutlet NSTabView *settingsTabView;
 
++(NSString *) defaultBackupPath;
 
 @end

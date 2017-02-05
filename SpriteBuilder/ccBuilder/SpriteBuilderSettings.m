@@ -21,15 +21,14 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     self = [self initWithWindowNibName:@"SpriteBuilderSettings"];
     
     if (self) {
+        [self loadSBSettings];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         BOOL isDir;
-        NSString *defaultPath = [self defaultBackupPath];
-        if(![fileManager fileExistsAtPath:defaultPath isDirectory:&isDir]) {
-            if(![fileManager createDirectoryAtPath:defaultPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                NSLog(@"Error: Create SBXBackups folder failed %@", defaultPath);
+        if(![fileManager fileExistsAtPath:backupPath isDirectory:&isDir]) {
+            if(![fileManager createDirectoryAtPath:backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                NSLog(@"Error: Create backups folder failed %@", backupPath);
             }
         }
-        [self loadSBSettings];
     }
     
     return self;
@@ -76,7 +75,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     enableBackup = [[settings valueForKey:@"enableBackup"] boolValue];
     selectedTab = [[settings valueForKey:@"selectedTab"] intValue];
     selectedBackupTimeInterval = [[settings valueForKey:@"selectedBackupTimeInterval"] intValue];
-    backupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [self defaultBackupPath];
+    backupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
 }
 
 - (void)saveSBSettings {
@@ -90,14 +89,15 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 - (IBAction)resetBackupSettings:(id)sender {
     selectedBackupTimeInterval = 60;
-    backupPath = [self defaultBackupPath];
+    backupPath = [SpriteBuilderSettings defaultBackupPath];
     [self.backupIntervalPopUpButton selectItemWithTag:selectedBackupTimeInterval];
     [self.backupPathField setStringValue:backupPath];
 }
 
--(NSString *) defaultBackupPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:@"SBXBackups"];
++(NSString *) defaultBackupPath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *productName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    NSString *defaultPath = [[[paths firstObject] stringByAppendingPathComponent:productName] stringByAppendingPathComponent:@"Backups"];
     return defaultPath;
 }
 
@@ -129,7 +129,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [openDlg setCanChooseFiles:NO];
     [openDlg setCanChooseDirectories:YES];
     [openDlg setCanCreateDirectories:YES];
-    [openDlg setDirectoryURL:[NSURL URLWithString:currentPath]];
+    [openDlg setDirectoryURL:[NSURL fileURLWithPath:currentPath]];
     openDlg.delegate = self;
     
     [openDlg beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
