@@ -640,6 +640,33 @@ typedef enum
     }
 
     [self toggleFeatures];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(checkAutoSave)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+- (void)checkAutoSave
+{
+    // Save all CCB files
+    NSArray* docs = [tabView tabViewItems];
+    for (int i = 0; i < [docs count]; i++)
+    {
+        CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
+        if (doc.isBackupDirty)
+        {
+            if([doc.filePath isEqualToString:currentDocument.filePath])
+            {
+                doc.data = [self docDataFromCurrentNodeGraph];
+                doc.extraData = [self extraDocDataFromCurrentNodeGraph];
+            }
+            [doc storeBackup];
+            doc.isBackupDirty = NO;
+        }
+    }
+
 }
 
 - (void)setupInspectorController
@@ -831,9 +858,11 @@ typedef enum
         }
         else if (result == NSAlertOtherReturn)
         {
+            [currentDocument removeBackup];
             return YES;
         }
     }
+    [currentDocument removeBackup];
     return YES;
 }
 
@@ -1936,12 +1965,14 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     [[self window] makeFirstResponder:[self window]];
     currentDocument.lastEditedProperty = nil;
-    currentDocument.filePath = fileName;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
     currentDocument.extraData = [self extraDocDataFromCurrentNodeGraph];
+    [currentDocument removeBackup];
+    currentDocument.filePath = fileName;
     [currentDocument store];
     
     currentDocument.isDirty = NO;
+    currentDocument.isBackupDirty = NO;
     NSTabViewItem* item = [self tabViewItemFromDoc:currentDocument];
     
     if (item)
@@ -2274,6 +2305,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 
     currentDocument.isDirty = YES;
+    currentDocument.isBackupDirty = YES;
     currentDocument.lastEditedProperty = prop;
 
     NSMutableDictionary* doc = [self docDataFromCurrentNodeGraph];
@@ -4639,6 +4671,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         {
             return NO;
         }
+    }
+    NSArray* docs = [tabView tabViewItems];
+    for (int i = 0; i < [docs count]; i++)
+    {
+        CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
+        [doc removeBackup];
     }
     return YES;
 }

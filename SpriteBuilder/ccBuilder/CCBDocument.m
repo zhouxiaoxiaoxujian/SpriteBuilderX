@@ -26,6 +26,7 @@
 #import "CCBDocument.h"
 #import "CocosScene.h"
 #import "ProjectSettings.h"
+#import "CCBFileUtil.h"
 
 @implementation CCBDocument
 
@@ -51,18 +52,58 @@
 
     if (self)
     {
-        NSString *extraDataPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        NSMutableDictionary *extraDataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:extraDataPath];
+        
+        NSDate *fileDate = [CCBFileUtil modificationDateForFile:filePath];
+        NSString *backupDataPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+        NSDate *backupDate = [CCBFileUtil modificationDateForFile:backupDataPath];
+        
+        NSMutableDictionary *dictionary = nil;
+        NSMutableDictionary *extraDataDictionary = nil;
+        
+        NSInteger result = NSAlertAlternateReturn;
+        BOOL newer = NO;
+        BOOL restored = NO;
+        
+        if(backupDate)
+        {
+            newer = [fileDate compare:backupDate] == NSOrderedAscending;
+            NSAlert* alert = [NSAlert alertWithMessageText:
+                              [NSString stringWithFormat: @"You have backup file that %@ then your saved document do you want to restore It?",
+                               newer ? @"newer" : @"older"]
+                                             defaultButton:newer ? @"Restore" : @"Cancel"
+                                           alternateButton:newer ? @"Cancel" : @"Restore"
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Your changes will be lost if you don’t save them."];
+            
+            result = [alert runModal];
+        }
+        
+        if (result == NSAlertDefaultReturn && newer)
+        {
+            NSMutableDictionary *backupDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:backupDataPath];
+            dictionary = backupDictionary[@"data"];
+            extraDataDictionary = backupDictionary[@"extraData"];
+            restored = YES;
+        }
+        else
+        {
+            NSString *extraDataPath = [[filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
+            dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
+            extraDataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:extraDataPath];
+        }
 
         self.filePath = filePath;
-        self.data = dictionary;
+        self.data = dictionary; 
         self.extraData = extraDataDictionary;
         self.exportPath = [dictionary objectForKey:@"exportPath"];
         self.exportPlugIn = [dictionary objectForKey:@"exportPlugIn"];
         self.UUID = [dictionary[@"UUID"] unsignedIntegerValue];
 
         [self fixupUUID];
+        if(restored)
+           [self store];
+        
+        [self removeBackup];
     }
 
     return self;
@@ -123,6 +164,22 @@
     NSString *extraDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
+
+- (BOOL)storeBackup
+{
+    NSDictionary *data = @{@"data": _data, @"extraData": _extraData};
+    NSString *backupDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    return [data writeToFile:backupDataPath atomically:YES];
+}
+
+- (BOOL)removeBackup
+{
+    NSString *backupDataPath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:backupDataPath error:&error];
+    return error == nil;
+}
+
 
 - (NSUInteger)getAndIncrementUUID
 {

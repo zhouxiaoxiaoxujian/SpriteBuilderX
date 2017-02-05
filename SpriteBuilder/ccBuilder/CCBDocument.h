@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSUndoManager *undoManager;
 @property (nonatomic, copy) NSString *lastEditedProperty;
 @property (nonatomic, assign) BOOL isDirty;
+@property (nonatomic, assign) BOOL isBackupDirty;
 @property (nonatomic, assign) CGPoint stageScrollOffset;
 @property (nonatomic, assign) float stageZoom;
 @property (nonatomic, assign) int stageColor;
@@ -56,4 +57,6 @@
 - (NSUInteger)getAndIncrementUUID;
 
 - (BOOL)store;
+- (BOOL)storeBackup;
+- (BOOL)removeBackup;
 @end
