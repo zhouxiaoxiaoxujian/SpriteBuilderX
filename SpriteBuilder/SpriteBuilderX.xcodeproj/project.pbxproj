@@ -2898,7 +2898,7 @@
 		776041E11498F56D0078095D /* Application Settings & Globals */ = {
 			isa = PBXGroup;
 			children = (
-				F879914D1E47327500D12FAA /* SpriteBuilderSettings */,
+				F879914D1E47327500D12FAA /* SBSettings */,
 				83FC4109198138E900799B6C /* Project Settings */,
 				83993DAB1935F6A0001C228B /* Feature Toggle */,
 				772BE570133E48340009B5B9 /* CCBGlobals.h */,
@@ -5424,14 +5424,14 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
-		F879914D1E47327500D12FAA /* SpriteBuilderSettings */ = {
+		F879914D1E47327500D12FAA /* SBSettings */ = {
 			isa = PBXGroup;
 			children = (
 				F879914E1E47347100D12FAA /* SpriteBuilderSettings.h */,
 				F879914F1E47347100D12FAA /* SpriteBuilderSettings.m */,
 				F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */,
 			);
-			name = SpriteBuilderSettings;
+			name = SBSettings;
 			sourceTree = "<group>";
 		};
 		FA98CFC5154E7D1C006E58C5 /* ccbpublish */ = {
