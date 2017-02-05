@@ -131,6 +131,7 @@
 #import "EditClassWindow.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "SpriteBuilderSettings.h"
 
 static const int CCNODE_INDEX_LAST = -1;
 
@@ -3227,6 +3228,16 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             });
         }
     }];
+}
+
+- (IBAction)menuSBSettings:(id)sender {
+    SpriteBuilderSettings *SBSettings = [SpriteBuilderSettings new];
+    if ([SBSettings runModalSheetForWindow:window]) {
+        
+    } else {
+        //press "esc" or "cancel" in project settings
+        //do nothing
+    }
 }
 
 
