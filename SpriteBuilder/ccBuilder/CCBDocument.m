@@ -169,7 +169,7 @@
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
--(NSString *) backupPath {;
+-(NSString *) backupPath {
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
     NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
