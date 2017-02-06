@@ -941,6 +941,11 @@
 		F87991521E47347100D12FAA /* SpriteBuilderSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */; };
 		F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848C1E15CCDA00C76367 /* doc-layout.png */; };
 		F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */; };
+		F89F37B81E488DFC0038D53B /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B31E488DFC0038D53B /* AUTHORS */; };
+		F89F37B91E488DFC0038D53B /* LICENSE_CocosBuilder.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B41E488DFC0038D53B /* LICENSE_CocosBuilder.txt */; };
+		F89F37BA1E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B51E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt */; };
+		F89F37BB1E488DFC0038D53B /* LICENSE_RelativePath.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B61E488DFC0038D53B /* LICENSE_RelativePath.txt */; };
+		F89F37BC1E488DFC0038D53B /* LICENSE_SCEvents.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B71E488DFC0038D53B /* LICENSE_SCEvents.txt */; };
 		F8A53CCA1E3920A700C602B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */; };
 		F8A53CCB1E3920A700C602B6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC81E3920A700C602B6 /* Fabric.framework */; };
 		F8A53CCC1E3920A700C602B6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC91E3920A700C602B6 /* Crashlytics.framework */; };
@@ -2108,7 +2113,6 @@
 		E392618C159CAAA10034FF1D /* seq-keyframe-l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-l.png"; sourceTree = "<group>"; };
 		E392618D159CAAA10034FF1D /* seq-keyframe-r-sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-r-sel.png"; sourceTree = "<group>"; };
 		E392618E159CAAA10034FF1D /* seq-keyframe-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seq-keyframe-r.png"; sourceTree = "<group>"; };
-		E395DC7D1511FDF70075979E /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG; path = ../CHANGELOG; sourceTree = "<group>"; };
 		E398C02214FB81A30078E771 /* Cocos2D iPhone.ccbPlugExport */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cocos2D iPhone.ccbPlugExport"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E398C02614FB81A30078E771 /* Cocos2D iPhone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cocos2D iPhone-Info.plist"; sourceTree = "<group>"; };
 		E398C02814FB81A30078E771 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2192,10 +2196,6 @@
 		E3C5C1C71508F35E000CF6F3 /* CCBAnimationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBAnimationParser.h; sourceTree = "<group>"; };
 		E3C5C1C81508F35E000CF6F3 /* CCBAnimationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBAnimationParser.m; sourceTree = "<group>"; };
 		E3D08A321524581100E55891 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		E3D59118150F50D1004180CA /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; name = AUTHORS; path = ../AUTHORS; sourceTree = "<group>"; };
-		E3D59119150F50D1004180CA /* LICENSE_CocosBuilder.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_CocosBuilder.txt; path = ../LICENSE_CocosBuilder.txt; sourceTree = "<group>"; };
-		E3D5911A150F50D1004180CA /* LICENSE_PSMTabBarControl.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_PSMTabBarControl.txt; path = ../LICENSE_PSMTabBarControl.txt; sourceTree = "<group>"; };
-		E3D5911B150F50D1004180CA /* LICENSE_SCEvents.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_SCEvents.txt; path = ../LICENSE_SCEvents.txt; sourceTree = "<group>"; };
 		E3D59121150F5367004180CA /* CCBFile.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCBFile.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D59125150F5367004180CA /* CCBFile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CCBFile-Info.plist"; sourceTree = "<group>"; };
 		E3D59127150F5367004180CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2583,6 +2583,11 @@
 		F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteBuilderSettings.xib; sourceTree = "<group>"; };
 		F88F848C1E15CCDA00C76367 /* doc-layout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout.png"; sourceTree = "<group>"; };
 		F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout@2x.png"; sourceTree = "<group>"; };
+		F89F37B31E488DFC0038D53B /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AUTHORS; path = ../Info/AUTHORS; sourceTree = "<group>"; };
+		F89F37B41E488DFC0038D53B /* LICENSE_CocosBuilder.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosBuilder.txt; path = ../Info/LICENSE_CocosBuilder.txt; sourceTree = "<group>"; };
+		F89F37B51E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_PSMTabBarControl.txt; path = ../Info/LICENSE_PSMTabBarControl.txt; sourceTree = "<group>"; };
+		F89F37B61E488DFC0038D53B /* LICENSE_RelativePath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_RelativePath.txt; path = ../Info/LICENSE_RelativePath.txt; sourceTree = "<group>"; };
+		F89F37B71E488DFC0038D53B /* LICENSE_SCEvents.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_SCEvents.txt; path = ../Info/LICENSE_SCEvents.txt; sourceTree = "<group>"; };
 		F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F8A53CC81E3920A700C602B6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		F8A53CC91E3920A700C602B6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -5415,11 +5420,11 @@
 			isa = PBXGroup;
 			children = (
 				E3D08A321524581100E55891 /* README.md */,
-				E3D59118150F50D1004180CA /* AUTHORS */,
-				E395DC7D1511FDF70075979E /* CHANGELOG */,
-				E3D59119150F50D1004180CA /* LICENSE_CocosBuilder.txt */,
-				E3D5911A150F50D1004180CA /* LICENSE_PSMTabBarControl.txt */,
-				E3D5911B150F50D1004180CA /* LICENSE_SCEvents.txt */,
+				F89F37B31E488DFC0038D53B /* AUTHORS */,
+				F89F37B41E488DFC0038D53B /* LICENSE_CocosBuilder.txt */,
+				F89F37B51E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt */,
+				F89F37B61E488DFC0038D53B /* LICENSE_RelativePath.txt */,
+				F89F37B71E488DFC0038D53B /* LICENSE_SCEvents.txt */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -6179,6 +6184,7 @@
 				77E1995313858DE0006C361B /* overflowImagePressed.png in Resources */,
 				77E1995413858DE0006C361B /* pi.png in Resources */,
 				92154ACA18A5531800BD215C /* Icon.png in Resources */,
+				F89F37B81E488DFC0038D53B /* AUTHORS in Resources */,
 				8304858519AE063A00A624BB /* PreviewCCBView.xib in Resources */,
 				77E1995513858DE0006C361B /* TabClose_Dirty_Pressed.png in Resources */,
 				77E1995613858DE0006C361B /* TabClose_Dirty_Rollover.png in Resources */,
@@ -6290,6 +6296,7 @@
 				E3E8B48E15791FFB00373983 /* seq-tl-mark-major.png in Resources */,
 				9218DF391919B04D0033851E /* joint-pivot-mode-r-off@2x.png in Resources */,
 				E3E8B48F15791FFB00373983 /* seq-tl-mark-minor.png in Resources */,
+				F89F37BA1E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt in Resources */,
 				B7096E2E180CD98E00164A8A /* doc-sprite@2x.png in Resources */,
 				E3E8B49015791FFB00373983 /* seq-tl-mark-origin.png in Resources */,
 				E3E8B4921579326A00373983 /* seq-timedisplay-bg.png in Resources */,
@@ -6387,6 +6394,7 @@
 				E3F4087416A9EEC5009A0253 /* ccz in Resources */,
 				E312EDC616AF71FE000778C8 /* CCBReaderInternalRenamedProps.plist in Resources */,
 				E3E8D64616B3129E00742107 /* oggenc in Resources */,
+				F89F37BB1E488DFC0038D53B /* LICENSE_RelativePath.txt in Resources */,
 				E3DA6FF216CAF7D400B12FFB /* SequencerPopoverView.xib in Resources */,
 				92D9D48518F8AB3800F167C1 /* joint-connection-bg@2x.png in Resources */,
 				5BA3DC36192110BA0055DD96 /* GuideGridSizeWindow.xib in Resources */,
@@ -6430,6 +6438,7 @@
 				B732A1851799736500333C56 /* TB_build@2x.png in Resources */,
 				F85F7C4E1E100C7000A13B3F /* Generated in Resources */,
 				B7AC6969179E03BF0041B8BD /* select-corner.png in Resources */,
+				F89F37B91E488DFC0038D53B /* LICENSE_CocosBuilder.txt in Resources */,
 				A57319931A2FB0E50044B884 /* scale-6.png in Resources */,
 				9266EE2C195A1603006CBE81 /* effect-brightness.png in Resources */,
 				B7AC69A517A07DAD0041B8BD /* inspector-folder.png in Resources */,
@@ -6515,6 +6524,7 @@
 				E525F3051C62E3CBA69E877A /* InspectorIntegerLabeled.xib in Resources */,
 				F8462E321E133B12005DB3BD /* Images.xcassets in Resources */,
 				E525FDB6208617164128881B /* InspectorBlock.xib in Resources */,
+				F89F37BC1E488DFC0038D53B /* LICENSE_SCEvents.txt in Resources */,
 				E525F45F2E20CA8B27C0F866 /* InspectorBlockCCControl.xib in Resources */,
 				F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */,
 				E525FB91E80AB2C9074E51B9 /* InspectorNodeReference.xib in Resources */,
