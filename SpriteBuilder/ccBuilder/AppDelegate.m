@@ -649,9 +649,8 @@ typedef enum
         [autoSaveTimer invalidate];
         autoSaveTimer = nil;
     }
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    if ([[settings valueForKey:@"enableBackup"] boolValue] == YES) {
-        float interval = ([settings valueForKey:@"selectedBackupTimeInterval"]!=nil)?[[settings valueForKey:@"selectedBackupTimeInterval"] floatValue]:10.0;
+    if ([[sbsettings valueForKey:@"enableBackup"] boolValue] == YES) {
+        float interval = ([sbsettings valueForKey:@"selectedBackupTimeInterval"]!=nil)?[[sbsettings valueForKey:@"selectedBackupTimeInterval"] floatValue]:10.0;
         autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:interval
                                                          target:self
                                                        selector:@selector(checkAutoSave)
@@ -737,9 +736,7 @@ typedef enum
 
 - (void)openLastOpenProject
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    NSString *filePath = [defaults valueForKey:LAST_OPENED_PROJECT_PATH];
+    NSString *filePath = [sbsettings valueForKey:LAST_OPENED_PROJECT_PATH];
     if (filePath)
     {
         [self openProject:filePath];
@@ -4705,18 +4702,17 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 - (void)saveOpenProjectPathToDefaults
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *projectPath = @"";
     if (projectSettings) {
 		projectPath = projectSettings.projectPath;
 		projectPath = [projectPath stringByDeletingLastPathComponent];
-        [defaults setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
+        [sbsettings setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
 	}
     else
     {
-        [defaults removeObjectForKey:LAST_OPENED_PROJECT_PATH];
+        [sbsettings removeObjectForKey:LAST_OPENED_PROJECT_PATH];
     }
-    [defaults synchronize];
+    [sbsettings synchronize];
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize

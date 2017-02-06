@@ -71,20 +71,18 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 -(void) loadSBSettings {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    enableBackup = [[settings valueForKey:@"enableBackup"] boolValue];
-    selectedTab = [[settings valueForKey:@"selectedTab"] intValue];
-    selectedBackupTimeInterval = [[settings valueForKey:@"selectedBackupTimeInterval"] intValue];
-    backupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
+    enableBackup = [[sbsettings valueForKey:@"enableBackup"] boolValue];
+    selectedTab = [[sbsettings valueForKey:@"selectedTab"] intValue];
+    selectedBackupTimeInterval = [[sbsettings valueForKey:@"selectedBackupTimeInterval"] intValue];
+    backupPath = ([sbsettings valueForKey:@"backupPath"] != nil) ? [sbsettings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
 }
 
 - (void)saveSBSettings {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    [settings setObject:@(self.backupIntervalPopUpButton.selectedTag) forKey:@"selectedBackupTimeInterval"];
-    [settings setObject:@([self.settingsTabView.selectedTabViewItem.identifier intValue]) forKey:@"selectedTab"];
-    [settings setObject:@(enableBackup) forKey:@"enableBackup"];
-    [settings setObject:self.backupPathField.stringValue forKey:@"backupPath"];
-    [settings synchronize];
+    [sbsettings setObject:@(self.backupIntervalPopUpButton.selectedTag) forKey:@"selectedBackupTimeInterval"];
+    [sbsettings setObject:@([self.settingsTabView.selectedTabViewItem.identifier intValue]) forKey:@"selectedTab"];
+    [sbsettings setObject:@(enableBackup) forKey:@"enableBackup"];
+    [sbsettings setObject:self.backupPathField.stringValue forKey:@"backupPath"];
+    [sbsettings synchronize];
 }
 
 - (IBAction)resetBackupSettings:(id)sender {

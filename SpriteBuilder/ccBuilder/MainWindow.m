@@ -26,6 +26,7 @@
 #import "AppDelegate.h"
 #import "CCBSplitHorizontalView.h"
 #import "SBUserDefaultsKeys.h"
+#import "SpriteBuilderSettings.h"
 
 @implementation MainWindow
 
@@ -167,20 +168,18 @@
 
 - (void)restorePreviousOpenedPanels
 {
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    [_panelVisibilityControl setSelected:[def boolForKey:LAST_VISIT_LEFT_PANEL_VISIBLE] forSegment:0];
-    [_panelVisibilityControl setSelected:[def boolForKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE] forSegment:1];
-    [_panelVisibilityControl setSelected:[def boolForKey:LAST_VISIT_RIGHT_PANEL_VISIBLE] forSegment:2];
+    [_panelVisibilityControl setSelected:[sbsettings boolForKey:LAST_VISIT_LEFT_PANEL_VISIBLE] forSegment:0];
+    [_panelVisibilityControl setSelected:[sbsettings boolForKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE] forSegment:1];
+    [_panelVisibilityControl setSelected:[sbsettings boolForKey:LAST_VISIT_RIGHT_PANEL_VISIBLE] forSegment:2];
     [self pressedPanelVisibility:_panelVisibilityControl];
 }
 
 - (void)saveMainWindowPanelsVisibility
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:[_panelVisibilityControl isSelectedForSegment:0] forKey:LAST_VISIT_LEFT_PANEL_VISIBLE];
-    [defaults setBool:[_panelVisibilityControl isSelectedForSegment:1] forKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE];
-    [defaults setBool:[_panelVisibilityControl isSelectedForSegment:2] forKey:LAST_VISIT_RIGHT_PANEL_VISIBLE];
-    [defaults synchronize];
+    [sbsettings setBool:[_panelVisibilityControl isSelectedForSegment:0] forKey:LAST_VISIT_LEFT_PANEL_VISIBLE];
+    [sbsettings setBool:[_panelVisibilityControl isSelectedForSegment:1] forKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE];
+    [sbsettings setBool:[_panelVisibilityControl isSelectedForSegment:2] forKey:LAST_VISIT_RIGHT_PANEL_VISIBLE];
+    [sbsettings synchronize];
 }
 
 @end

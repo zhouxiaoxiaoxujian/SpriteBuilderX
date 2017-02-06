@@ -170,8 +170,7 @@
 }
 
 -(NSString *) backupPath {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    NSString *settingsBackupPath = ([settings valueForKey:@"backupPath"] != nil) ? [settings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
+    NSString *settingsBackupPath = ([sbsettings valueForKey:@"backupPath"] != nil) ? [sbsettings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
     NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
 }

@@ -6,6 +6,8 @@
 //
 //
 
+#define sbsettings [NSUserDefaults standardUserDefaults]
+
 #import "CCBModalSheetController.h"
 
 @interface SpriteBuilderSettings : CCBModalSheetController <NSOpenSavePanelDelegate> {
