@@ -131,7 +131,8 @@
 #import "EditClassWindow.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "SpriteBuilderSettings.h"
+#import "SettingsWindow.h"
+#import "SettingsManager.h"
 
 static const int CCNODE_INDEX_LAST = -1;
 
@@ -649,9 +650,8 @@ typedef enum
         [autoSaveTimer invalidate];
         autoSaveTimer = nil;
     }
-    if ([[sbsettings valueForKey:@"enableBackup"] boolValue] == YES) {
-        float interval = ([sbsettings valueForKey:@"selectedBackupTimeInterval"]!=nil)?[[sbsettings valueForKey:@"selectedBackupTimeInterval"] floatValue]:10.0;
-        autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+    if ([SettingsManager instance].enableBackup == YES) {
+        autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:[SettingsManager instance].backupInterval
                                                          target:self
                                                        selector:@selector(checkAutoSave)
                                                        userInfo:nil
@@ -736,7 +736,7 @@ typedef enum
 
 - (void)openLastOpenProject
 {
-    NSString *filePath = [sbsettings valueForKey:LAST_OPENED_PROJECT_PATH];
+    NSString *filePath = [[NSUserDefaults standardUserDefaults] valueForKey:LAST_OPENED_PROJECT_PATH];
     if (filePath)
     {
         [self openProject:filePath];
@@ -3273,8 +3273,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 }
 
 - (IBAction)menuSBSettings:(id)sender {
-    SpriteBuilderSettings *SBSettings = [SpriteBuilderSettings new];
-    if ([SBSettings runModalSheetForWindow:window]) {
+    SettingsWindow *settingsWindow = [SettingsWindow new];
+    if ([settingsWindow runModalSheetForWindow:window]) {
         [self scheduleAutoSaveTimer];
     } else {
         //press "esc" or "cancel" in project settings
@@ -4706,13 +4706,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     if (projectSettings) {
 		projectPath = projectSettings.projectPath;
 		projectPath = [projectPath stringByDeletingLastPathComponent];
-        [sbsettings setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
+        [[NSUserDefaults standardUserDefaults] setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
 	}
     else
     {
-        [sbsettings removeObjectForKey:LAST_OPENED_PROJECT_PATH];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LAST_OPENED_PROJECT_PATH];
     }
-    [sbsettings synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize

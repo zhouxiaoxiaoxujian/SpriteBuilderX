@@ -27,7 +27,7 @@
 #import "CocosScene.h"
 #import "ProjectSettings.h"
 #import "CCBFileUtil.h"
-#import "SpriteBuilderSettings.h"
+#import "SettingsManager.h"
 
 @implementation CCBDocument
 
@@ -170,7 +170,7 @@
 }
 
 -(NSString *) backupPath {
-    NSString *settingsBackupPath = ([sbsettings valueForKey:@"backupPath"] != nil) ? [sbsettings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
+    NSString *settingsBackupPath = [[SettingsManager instance] backupPath];
     NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
 }

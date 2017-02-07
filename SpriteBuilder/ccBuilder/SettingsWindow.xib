@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SpriteBuilderSettings">
+        <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindow">
             <connections>
                 <outlet property="backupIntervalPopUpButton" destination="dtJ-lj-eKG" id="lNB-sn-hzA"/>
                 <outlet property="backupPathField" destination="Q7g-rw-dRe" id="GP0-N7-ITB"/>
@@ -23,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="704" y="787" width="879" height="337"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="879" height="337"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="879" height="337"/>
@@ -62,7 +62,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="0" id="cZD-xm-4gI">
-                                <view key="view" id="b1H-NP-Ill">
+                                <view key="view" ambiguous="YES" id="b1H-NP-Ill">
                                     <rect key="frame" x="10" y="25" width="126" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -156,7 +156,7 @@ DQ
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Backup" identifier="1" id="dZa-AH-6r3">
-                                <view key="view" ambiguous="YES" id="Bbl-SP-9el">
+                                <view key="view" id="Bbl-SP-9el">
                                     <rect key="frame" x="10" y="25" width="833" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -243,7 +243,7 @@ DQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyl-uE-uZt">
                                             <rect key="frame" x="769" y="16" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="309F1D8C-F47A-492E-AF0F-5DAD9FB29B3D" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
+                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="54EBDBBC-817E-4B6B-B3D7-6861AB65BDF8" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -265,7 +265,7 @@ DQ
         </window>
     </objects>
     <resources>
-        <image name="309F1D8C-F47A-492E-AF0F-5DAD9FB29B3D" width="1" height="1">
+        <image name="54EBDBBC-817E-4B6B-B3D7-6861AB65BDF8" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

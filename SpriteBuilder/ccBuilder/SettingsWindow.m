@@ -1,32 +1,32 @@
 //
-//  SpriteBuilderSettings.m
+//  SettingsWindow.m
 //  SpriteBuilderX
 //
 //  Created by Volodymyr Klymenko on 2/5/17.
 //
 //
 
-#import "SpriteBuilderSettings.h"
+#import "SettingsWindow.h"
 #import "NSString+RelativePath.h"
+#import "SettingsManager.h"
 
 typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
-@interface SpriteBuilderSettings ()
+@interface SettingsWindow ()
 
 @end
 
-@implementation SpriteBuilderSettings
+@implementation SettingsWindow
 
 - (instancetype)init {
-    self = [self initWithWindowNibName:@"SpriteBuilderSettings"];
+    self = [self initWithWindowNibName:@"SettingsWindow"];
     
     if (self) {
-        [self loadSBSettings];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         BOOL isDir;
-        if(![fileManager fileExistsAtPath:backupPath isDirectory:&isDir]) {
-            if(![fileManager createDirectoryAtPath:backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                NSLog(@"Error: Create backups folder failed %@", backupPath);
+        if(![fileManager fileExistsAtPath:[SettingsManager instance].backupPath isDirectory:&isDir]) {
+            if(![fileManager createDirectoryAtPath:[SettingsManager instance].backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                NSLog(@"Error: Create backups folder failed %@", [SettingsManager instance].backupPath);
             }
         }
     }
@@ -42,7 +42,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 -(void) updateButtons {
-    if (enableBackup) {
+    if ([SettingsManager instance].enableBackup) {
         self.enableBackupCheckBox.state = NSOnState;
         self.backupIntervalPopUpButton.enabled = YES;
         self.backupPathField.enabled = YES;
@@ -56,51 +56,28 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 -(void) updateUIValues {
-    [self.settingsTabView selectTabViewItemAtIndex:selectedTab];
-    [self.backupIntervalPopUpButton selectItemWithTag:selectedBackupTimeInterval];
-    [self.backupPathField setStringValue:backupPath];
+    //[self.settingsTabView selectTabViewItemAtIndex:selectedTab];
+    [self.backupIntervalPopUpButton selectItemWithTag:[SettingsManager instance].backupInterval];
+    [self.backupPathField setStringValue:[SettingsManager instance].backupPath];
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
     if (sender.state == NSOnState) {
-        enableBackup = YES;
+        [SettingsManager instance].enableBackup = YES;
     } else {
-        enableBackup = NO;
+        [SettingsManager instance].enableBackup = NO;
     }
     [self updateButtons];
 }
 
--(void) loadSBSettings {
-    enableBackup = [[sbsettings valueForKey:@"enableBackup"] boolValue];
-    selectedTab = [[sbsettings valueForKey:@"selectedTab"] intValue];
-    selectedBackupTimeInterval = [[sbsettings valueForKey:@"selectedBackupTimeInterval"] intValue];
-    backupPath = ([sbsettings valueForKey:@"backupPath"] != nil) ? [sbsettings valueForKey:@"backupPath"] : [SpriteBuilderSettings defaultBackupPath];
-}
-
-- (void)saveSBSettings {
-    [sbsettings setObject:@(self.backupIntervalPopUpButton.selectedTag) forKey:@"selectedBackupTimeInterval"];
-    [sbsettings setObject:@([self.settingsTabView.selectedTabViewItem.identifier intValue]) forKey:@"selectedTab"];
-    [sbsettings setObject:@(enableBackup) forKey:@"enableBackup"];
-    [sbsettings setObject:self.backupPathField.stringValue forKey:@"backupPath"];
-    [sbsettings synchronize];
-}
-
 - (IBAction)resetBackupSettings:(id)sender {
-    selectedBackupTimeInterval = 60;
-    backupPath = [SpriteBuilderSettings defaultBackupPath];
-    [self.backupIntervalPopUpButton selectItemWithTag:selectedBackupTimeInterval];
-    [self.backupPathField setStringValue:backupPath];
-}
-
-+(NSString *) defaultBackupPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString *productName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
-    NSString *defaultPath = [[[paths firstObject] stringByAppendingPathComponent:productName] stringByAppendingPathComponent:@"Backups"];
-    return defaultPath;
+    [[SettingsManager instance] resetBackupSettings];
+    [self updateUIValues];
+    [self updateButtons];
 }
 
 - (IBAction)acceptSheet:(id)sender {
-    [self saveSBSettings];
+    [[SettingsManager instance] synchronize];
     [super acceptSheet:sender];
 }
 

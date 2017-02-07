@@ -311,6 +311,7 @@
 		A51E63AC1A7A5AD6009F4FB9 /* CCScrollListView.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A51E637E1A7A5932009F4FB9 /* CCScrollListView.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A51E63B31A7A82D0009F4FB9 /* InspectorSoundFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */; };
 		A51E63B41A7A82D0009F4FB9 /* InspectorSoundFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */; };
+		A520D79C1E4A7689000FDB42 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A520D79B1E4A7689000FDB42 /* SettingsManager.m */; };
 		A521EECB1C17298B00918650 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A521EEE51C172A3600918650 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A521EEDC1C172A3600918650 /* CCBPProperties.plist */; };
 		A521EEE71C172A3600918650 /* CCBPLoadingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A521EEE01C172A3600918650 /* CCBPLoadingBar.m */; };
@@ -937,8 +938,8 @@
 		F82444411E1716B00044EE4F /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444381E1716B00044EE4F /* BFIconTabBar.m */; };
 		F8462E321E133B12005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462E311E133B12005DB3BD /* Images.xcassets */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
-		F87991511E47347100D12FAA /* SpriteBuilderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F879914F1E47347100D12FAA /* SpriteBuilderSettings.m */; };
-		F87991521E47347100D12FAA /* SpriteBuilderSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */; };
+		F87991511E47347100D12FAA /* SettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F879914F1E47347100D12FAA /* SettingsWindow.m */; };
+		F87991521E47347100D12FAA /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87991501E47347100D12FAA /* SettingsWindow.xib */; };
 		F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848C1E15CCDA00C76367 /* doc-layout.png */; };
 		F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */; };
 		F89F37B81E488DFC0038D53B /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B31E488DFC0038D53B /* AUTHORS */; };
@@ -1654,6 +1655,8 @@
 		A51E63B01A7A82D0009F4FB9 /* InspectorSoundFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorSoundFile.h; sourceTree = "<group>"; };
 		A51E63B11A7A82D0009F4FB9 /* InspectorSoundFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorSoundFile.m; sourceTree = "<group>"; };
 		A51E63B21A7A82D0009F4FB9 /* InspectorSoundFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorSoundFile.xib; sourceTree = "<group>"; };
+		A520D79A1E4A7689000FDB42 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		A520D79B1E4A7689000FDB42 /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		A521EED51C17298B00918650 /* CCLoadingBar.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCLoadingBar.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521EEDC1C172A3600918650 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A521EEDD1C172A3600918650 /* CCLoadingBar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CCLoadingBar-Info.plist"; sourceTree = "<group>"; };
@@ -2578,9 +2581,9 @@
 		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
 		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
 		F85F7C571E10205F00A13B3F /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
-		F879914E1E47347100D12FAA /* SpriteBuilderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBuilderSettings.h; sourceTree = "<group>"; };
-		F879914F1E47347100D12FAA /* SpriteBuilderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBuilderSettings.m; sourceTree = "<group>"; };
-		F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteBuilderSettings.xib; sourceTree = "<group>"; };
+		F879914E1E47347100D12FAA /* SettingsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWindow.h; sourceTree = "<group>"; };
+		F879914F1E47347100D12FAA /* SettingsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWindow.m; sourceTree = "<group>"; };
+		F87991501E47347100D12FAA /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindow.xib; sourceTree = "<group>"; };
 		F88F848C1E15CCDA00C76367 /* doc-layout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout.png"; sourceTree = "<group>"; };
 		F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout@2x.png"; sourceTree = "<group>"; };
 		F89F37B31E488DFC0038D53B /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AUTHORS; path = ../Info/AUTHORS; sourceTree = "<group>"; };
@@ -5432,9 +5435,11 @@
 		F879914D1E47327500D12FAA /* SBSettings */ = {
 			isa = PBXGroup;
 			children = (
-				F879914E1E47347100D12FAA /* SpriteBuilderSettings.h */,
-				F879914F1E47347100D12FAA /* SpriteBuilderSettings.m */,
-				F87991501E47347100D12FAA /* SpriteBuilderSettings.xib */,
+				F879914E1E47347100D12FAA /* SettingsWindow.h */,
+				F879914F1E47347100D12FAA /* SettingsWindow.m */,
+				F87991501E47347100D12FAA /* SettingsWindow.xib */,
+				A520D79A1E4A7689000FDB42 /* SettingsManager.h */,
+				A520D79B1E4A7689000FDB42 /* SettingsManager.m */,
 			);
 			name = SBSettings;
 			sourceTree = "<group>";
@@ -6363,7 +6368,7 @@
 				E3B7BC9C15E3B7F100CF95EF /* NodePlugInsList.plist in Resources */,
 				E3B7BCBE15E505CC00CF95EF /* TB_plugins.png in Resources */,
 				920994D3198718F10006F38D /* effect-glass.png in Resources */,
-				F87991521E47347100D12FAA /* SpriteBuilderSettings.xib in Resources */,
+				F87991521E47347100D12FAA /* SettingsWindow.xib in Resources */,
 				9218DF3E1919B04D0033851E /* joint-pivot-handle-ratchet@2x.png in Resources */,
 				E3B19F6D15E65229000B023E /* DefaultResourcesList.plist in Resources */,
 				E360789015EBA5420040A172 /* sel-frame.png in Resources */,
@@ -6954,6 +6959,7 @@
 				77E1992513858D78006C361B /* PSMRolloverButton.m in Sources */,
 				77E1992613858D78006C361B /* PSMTabBarCell.m in Sources */,
 				77E1992713858D78006C361B /* PSMTabBarControl.m in Sources */,
+				A520D79C1E4A7689000FDB42 /* SettingsManager.m in Sources */,
 				77E1992813858D78006C361B /* PSMTabBarController.m in Sources */,
 				77E1992913858D78006C361B /* PSMTabDragAssistant.m in Sources */,
 				77E1992A13858D78006C361B /* PSMTabDragView.m in Sources */,
@@ -7128,7 +7134,7 @@
 				E525F9D641B364C1235E450B /* PublishBaseOperation.m in Sources */,
 				E525FBA4E26414A8E6EBA77C /* PublishCCBOperation.m in Sources */,
 				E525F2C0B3311DCAEC86C6B0 /* PublishImageOperation.m in Sources */,
-				F87991511E47347100D12FAA /* SpriteBuilderSettings.m in Sources */,
+				F87991511E47347100D12FAA /* SettingsWindow.m in Sources */,
 				E525F3B510C25EE6D73F2C68 /* DateCache.m in Sources */,
 				E525F4E581031BFDE7E6DC9A /* NSString+Publishing.m in Sources */,
 				E525FA5D4791EB730859BF2C /* ProjectSettings+Convenience.m in Sources */,
