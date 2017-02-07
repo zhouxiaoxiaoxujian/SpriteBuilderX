@@ -14,6 +14,7 @@
 #import "ProjectSettings+Convenience.h"
 #import "ResourceManager+Publishing.h"
 #import "RMDirectory.h"
+#import "PlatformSettings.h"
 
 
 @interface ConsoleTaskStatusUpdater : NSObject <TaskStatusUpdaterProtocol>
@@ -43,7 +44,7 @@
 @end
 
 
-static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputPath, BOOL *verbose)
+static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputPath, NSString **platform, BOOL *verbose)
 {
 	*configuration = @"Default";
     *inputPath = nil;
@@ -59,9 +60,12 @@ static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputP
 		{
 			fprintf(stdout, "%s", [[NSString stringWithFormat:
                                     @"Usage:\n"
-                                    @"%@ [-c <Debug/Release>|--configuration=<Debug/Release>] [-v|--verbose] [-p <inputdir>|--publish=<inputdir>]\n"
+                                    @"%@ [-c <Debug/Release>|--configuration=<Debug/Release>]\n"
+                                    @"%@ [-k <platform>|--platform=<platform>]\n"
+                                    @"%@ [-v|--verbose]\n"
+                                    @"%@ [-p <inputdir>|--publish=<inputdir>]\n"
                                     @"%@ -h|--help\n"
-                                    @"%@ --version\n", prog, prog, prog] UTF8String]);
+                                    @"%@ --version\n", prog, prog, prog, prog, prog, prog] UTF8String]);
 			exit(EXIT_SUCCESS);
 		}
 		else if (stillParsingArgs && [arg isEqualToString:@"--version"])
@@ -88,6 +92,13 @@ static void	parseArgs(NSArray *args, NSString **configuration, NSString **inputP
 			*inputPath = [arg substringFromIndex:2];
 		else if (stillParsingArgs && [arg hasPrefix:@"--publish="])
 			*inputPath = [arg substringFromIndex:10];
+        
+        else if (stillParsingArgs && [arg isEqualToString:@"-k"])
+            *platform = [args objectAtIndex:++i];
+        else if (stillParsingArgs && [arg hasPrefix:@"-k"])
+            *platform = [arg substringFromIndex:2];
+        else if (stillParsingArgs && [arg hasPrefix:@"--platform="])
+            *platform = [arg substringFromIndex:11];
         
 		else if (stillParsingArgs && [arg isEqualToString:@"--"])
 			stillParsingArgs = NO;
@@ -135,12 +146,13 @@ int main(int argc, char *argv[])
         
         NSString				*configuration = nil;
         NSString				*inputPath = nil;
+        NSString				*platform= nil;
         BOOL					verbose = NO;
         
         BOOL succces = NO;
         
         [[PlugInManager sharedManager] loadPlugIns];
-        parseArgs(args, &configuration, &inputPath, &verbose);
+        parseArgs(args, &configuration, &inputPath, &platform, &verbose);
         
         if(inputPath)
         {
@@ -192,6 +204,28 @@ int main(int argc, char *argv[])
                 [[ResourceManager sharedManager] addDirectory:dir];
             }
             [[ResourceManager sharedManager] setActiveDirectories:[project absoluteResourcePaths]];
+            
+            if(platform)
+            {
+                BOOL found = NO;
+                for(PlatformSettings *platfromSettings in project.platformsSettings)
+                {
+                    if([platfromSettings.name isEqualToString:platform])
+                    {
+                        found = YES;
+                        platfromSettings.publishEnabled = YES;
+                    }
+                    else
+                    {
+                        platfromSettings.publishEnabled = NO;
+                    }
+                }
+                if(!found)
+                {
+                    fprintf(stdout, "platform name %s not foubd", [platform UTF8String]);
+                    return EXIT_FAILURE;
+                }
+            }
             
             CCBPublisher* publisher = [[CCBPublisher alloc] initWithProjectSettings:project warnings:warnings finishedBlock:nil];
             
