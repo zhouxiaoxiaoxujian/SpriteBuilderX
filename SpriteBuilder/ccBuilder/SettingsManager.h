@@ -12,7 +12,7 @@
 
 @property (nonatomic,assign) BOOL enableBackup;
 @property (nonatomic,assign) NSInteger backupInterval;
-@property (nonatomic,strong) NSString *backupPath;
+@property (nonatomic,copy) NSString *backupPath;
 
 + (instancetype) instance;
 
