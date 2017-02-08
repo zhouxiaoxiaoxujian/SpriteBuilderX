@@ -2186,6 +2186,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     self.currentDocument.resolutions = resolutions;
     self.currentDocument.currentResolution = 0;
     self.currentDocument.docDimensionsType = docDimType;
+    self.currentDocument.projectSettings = projectSettings;
     
     if (type == kCCBNewDocTypeNode)
     {

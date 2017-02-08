@@ -54,7 +54,7 @@
     if (self)
     {
      
-        self.projecSettings = projectSettings;
+        self.projectSettings = projectSettings;
         self.filePath = filePath;
         
         NSDate *fileDate = [CCBFileUtil modificationDateForFile:filePath];
@@ -171,7 +171,7 @@
 
 -(NSString *) backupPath {
     NSString *settingsBackupPath = [[SettingsManager instance] backupPath];
-    NSString *projPath = [self.projecSettings.projectPathDir stringByDeletingLastPathComponent];
+    NSString *projPath = [self.projectSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
 }
 

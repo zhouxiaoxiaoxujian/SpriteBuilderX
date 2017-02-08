@@ -49,7 +49,7 @@
 @property (nonatomic, assign) int docDimensionsType;
 @property (nonatomic, assign) NSUInteger UUID;
 @property (nonatomic, assign) int sceneScaleType;
-@property (nonatomic, weak) ProjectSettings *projecSettings;
+@property (nonatomic, weak) ProjectSettings *projectSettings;
 
 - (instancetype)initWithContentsOfFile:(NSString *)filePath andProjectSettings:(ProjectSettings *) projectSettings;
 
