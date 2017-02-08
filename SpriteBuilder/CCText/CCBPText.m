@@ -74,6 +74,11 @@
              @"shadowOffsetType"];
 }
 
+-(CGPoint)shadowOffsetInPoints
+{
+    return [_label shadowOffsetInPoints];
+}
+
 - (void) setValue:(id)value forKey:(NSString *)key
 {
     if ([[self keysForwardedToLabel] containsObject:key])
