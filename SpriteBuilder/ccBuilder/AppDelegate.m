@@ -825,6 +825,8 @@ typedef enum
 
 - (void)tabView:(NSTabView*)tv didSelectTabViewItem:(NSTabViewItem *)tabViewItem
 {
+    [[self window] makeFirstResponder:[self window]];
+    currentDocument.lastEditedProperty = nil;
     [self switchToDocument:[tabViewItem identifier]];
 }
 
