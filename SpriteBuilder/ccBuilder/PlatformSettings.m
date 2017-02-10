@@ -85,23 +85,21 @@
 
 @interface PacketPublish : NSObject
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) BOOL publish;
-@property (nonatomic, assign) NSMutableArray *packets;
+@property (nonatomic, assign) NSInteger publish;
+@property (nonatomic, assign) NSMutableDictionary *packets;
 @end
 
 @implementation PacketPublish
-- (void) setPublish:(BOOL) value
+- (void) setPublish:(NSInteger) value
 {
     _publish = value;
     if(value)
     {
-        if(![_packets containsObject:_name])
-            [_packets addObject:_name];
+        [_packets setObject:[NSNumber numberWithInteger:value] forKey:_name];
     }
     else
     {
-        if([_packets containsObject:_name])
-            [_packets removeObject:_name];
+        [_packets removeObjectForKey:_name];
     }
 }
 @end
@@ -113,14 +111,14 @@
     NSMutableArray *ret = [NSMutableArray array];
     PacketPublish *mainPacket = [[PacketPublish alloc] init];
     mainPacket.name = @"Main";
-    mainPacket.publish = [_packets containsObject:@"Main"];
+    mainPacket.publish = [[_packets objectForKey:@"Main"] integerValue];
     mainPacket.packets = _packets;
     [ret addObject:mainPacket];
     for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
     {
         PacketPublish *packetPublish = [[PacketPublish alloc] init];
         packetPublish.name = package.name;
-        packetPublish.publish = [_packets containsObject:packetPublish.name];
+        packetPublish.publish = [[_packets objectForKey:packetPublish.name] integerValue];
         packetPublish.packets = _packets;
         [ret addObject:packetPublish];
     }
@@ -137,6 +135,7 @@
     dict[@"publishCCB"] = @(_publishCCB);
     dict[@"publishOther"] = @(_publishOther);
     dict[@"publishDirectory"] = _publishDirectory;
+    dict[@"separatePackagesDirectory"] = _separatePackagesDirectory;
     
     dict[@"publish1x"] = @(_publish1x);
     dict[@"publish2x"] = @(_publish2x);
@@ -185,13 +184,14 @@
     {
         return NULL;
     }
-    _packets = [NSMutableArray array];
+    _packets = [NSMutableDictionary dictionary];
     _name = @"Empty";
     
     _publishEnabled = YES;
     _publishCCB = YES;
     _publishOther = YES;
-    _publishDirectory = @".";
+    _publishDirectory = @"./publish";
+    _separatePackagesDirectory = @"./publish_packages";
     
     _publish1x = YES;
     _publish2x = YES;
@@ -243,6 +243,7 @@
     self.publishCCB = [[dict objectForKey:@"publishCCB"] boolValue];
     self.publishOther = [[dict objectForKey:@"publishOther"] boolValue];
     self.publishDirectory = [dict objectForKey:@"publishDirectory"];
+    self.separatePackagesDirectory = [dict objectForKey:@"separatePackagesDirectory"];
     
     self.publish1x = [[dict objectForKey:@"publish1x"] boolValue];
     self.publish2x = [[dict objectForKey:@"publish2x"] boolValue];
@@ -279,31 +280,43 @@
     self.customImageCCZCompression = [[dict objectForKey:@"customImageCCZCompression"] intValue];
     self.customImageDither = [[dict objectForKey:@"customImageDither"] intValue];
     
-    self.packets = [dict objectForKey:@"packets"];
+    id packets = [dict objectForKey:@"packets"];
+    if(packets && [packets isKindOfClass:[NSArray class]])
+    {
+        self.packets = [NSMutableDictionary dictionary];
+        for(id packet in packets)
+        {
+            [self.packets setObject:[NSNumber numberWithInteger:kPlatformSettingsPublishTypesPublish] forKey:packet];
+        }
+    }
+    else
+    {
+        self.packets = packets;
+    }
     if(!self.packets)
-        self.packets = [NSMutableArray array];
+        self.packets = [NSMutableDictionary dictionary];
     
     return self;
 }
 
-- (NSArray *)inputDirs
+- (NSDictionary *)inputDirs
 {
-    NSMutableArray *inputDirs = [NSMutableArray array];
+    NSMutableDictionary *inputDirs = [NSMutableDictionary dictionary];
     
-    if([_packets containsObject:@"Main"])
+    if([[_packets objectForKey:@"Main"] integerValue])
     {
         NSArray * oldResourcePaths = [[ResourceManager sharedManager] oldResourcePaths];
         for (RMDirectory *oldResourcePath in oldResourcePaths)
         {
-            [inputDirs addObject:oldResourcePath.dirPath];
+            [inputDirs setObject:@{@"path":oldResourcePath.dirPath, @"type":[_packets objectForKey:@"Main"]} forKey:@"Main"];
         }
     }
     
     for (RMPackage *package in [[ResourceManager sharedManager] allPackages])
     {
-        if([_packets containsObject:package.name])
+        if([[_packets objectForKey:package.name] integerValue])
         {
-            [inputDirs addObject:package.dirPath];
+            [inputDirs setObject:@{@"path":package.dirPath, @"type":[_packets objectForKey:package.name]} forKey:package.name];
         }
     }
     return inputDirs;

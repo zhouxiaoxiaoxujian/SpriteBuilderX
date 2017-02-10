@@ -22,9 +22,16 @@ typedef enum {
     kPlatformSettingsSoundTypesCustom = 2,
 } PlatformSettingsSoundTypes;
 
+typedef enum {
+    kPlatformSettingsPublishTypesSkip = 0,
+    kPlatformSettingsPublishTypesPublish = 1,
+    kPlatformSettingsPublishTypesSeparate = 2,
+} PlatformSettingsPublishTypes;
+
 @interface PlatformSettings : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString* publishDirectory;
+@property (nonatomic, copy) NSString* separatePackagesDirectory;
 @property (nonatomic, assign) BOOL publishEnabled;
 @property (nonatomic, assign) BOOL publishCCB;
 @property (nonatomic, assign) BOOL publishOther;
@@ -60,9 +67,9 @@ typedef enum {
 @property (nonatomic, assign) kFCSoundFormat customSoundFormat;
 @property (nonatomic, assign) BOOL customSoundStereo;
 @property (nonatomic, assign) int customSoundQuality;
-@property (nonatomic, retain) NSMutableArray *packets;
+@property (nonatomic, retain) NSMutableDictionary *packets;
 @property (nonatomic, retain, readonly) NSArray *packetsPublish;
-@property (nonatomic, copy, readonly) NSArray *inputDirs;
+@property (nonatomic, copy, readonly) NSDictionary *inputDirs;
 
 
 - (id) initWithSerialization:(id)dict;

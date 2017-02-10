@@ -159,6 +159,17 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     }];
 }
 
+- (IBAction)selectPackagePublishingSeparateCustomDirectory:(id)sender;
+{
+    PlatformSettings *platformSettings = _projectSettings.platformsSettings[(NSUInteger) _tableView.selectedRow];
+    
+    [self selectPublishCurrentPath:platformSettings.separatePackagesDirectory
+                    dirSetterBlock:^(NSString *directoryPath)
+     {
+         platformSettings.separatePackagesDirectory = directoryPath;
+     }];
+}
+
 - (void)selectPublishCurrentPath:(NSString *)currentPath dirSetterBlock:(DirectorySetterBlock)dirSetterBlock
 {
     if (!dirSetterBlock)

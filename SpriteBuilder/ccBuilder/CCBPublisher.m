@@ -200,14 +200,20 @@
     
     NSArray *resolutions = [self publishingResolutionsForPlatform:platform];
 
-    for (NSString *aDir in platform.inputDirs)
+    for (NSString *key in platform.inputDirs)
     {
         CCBDirectoryPublisher *dirPublisher = [[CCBDirectoryPublisher alloc] initWithProjectSettings:_projectSettings
                                                                                             warnings:_warnings
                                                                                                queue:_publishingQueue];
+        NSDictionary *value = [platform.inputDirs objectForKey:key];
+        
         dirPublisher.platformSettings = platform;
-        dirPublisher.inputDir = aDir;
-        dirPublisher.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+        dirPublisher.inputDir = value[@"path"];
+        id type =  value[@"type"];
+        if([type integerValue] == kPlatformSettingsPublishTypesPublish)
+            dirPublisher.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+        else
+            dirPublisher.outputDir = [[platform.separatePackagesDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]] stringByAppendingPathComponent:key];
         //dirPublisher.osType = target.osType;
         dirPublisher.resolutions = resolutions;
         //dirPublisher.audioQuality = target.audioQuality;
@@ -222,10 +228,7 @@
         }
     }
 
-    if (!_projectSettings.onlyPublishCCBs)
-    {
-        [self enqueueGenerateFilesOperationWithTarget:platform withRenamedFilesLookup:renamedFilesLookup withPublishedSpriteSheetFiles:publishedSpriteSheetFiles];
-    }
+    [self enqueueGenerateFilesOperationWithTarget:platform withRenamedFilesLookup:renamedFilesLookup withPublishedSpriteSheetFiles:publishedSpriteSheetFiles];
 
     // Yiee Haa!
     return YES;
@@ -255,8 +258,7 @@
 
 - (void)removeOldPublishDirIfCacheCleaned
 {
-    if (_projectSettings.needRepublish
-        && !_projectSettings.onlyPublishCCBs)
+    if (_projectSettings.needRepublish)
     {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         for (PlatformSettings *platform in _publishingPlatforms)

@@ -61,8 +61,6 @@
 
     self.resourcePaths = [[NSMutableArray alloc] init];
 
-    self.onlyPublishCCBs = NO;
-
     self.deviceOrientationLandscapeLeft = YES;
     self.deviceOrientationLandscapeRight = YES;
     self.resourceAutoScaleFactor = 4;
@@ -148,7 +146,7 @@
         iosPlatformSettings.customSoundStereo = YES;
         iosPlatformSettings.customSoundQuality = publishAudioQuality_ios;
         [_platformsSettings addObject:iosPlatformSettings];
-        [iosPlatformSettings.packets addObject:@"Main"];
+        [iosPlatformSettings.packets setObject:[NSNumber numberWithInteger:1] forKey:@"Main"];
         
         BOOL publishEnabledAndroid = [[dict objectForKey:@"publishEnabledAndroid"] boolValue];
         BOOL publishResolution_android_phone = [[dict objectForKey:@"publishResolution_android_phone"] boolValue];
@@ -185,12 +183,11 @@
         androidPlatformSettings.customSoundFormat = kFCSoundFormatMP3;
         androidPlatformSettings.customSoundStereo = YES;
         androidPlatformSettings.customSoundQuality = publishAudioQuality_android;
-        [androidPlatformSettings.packets addObject:@"Main"];
+        [androidPlatformSettings.packets setObject:[NSNumber numberWithInteger:1] forKey:@"Main"];
         [_platformsSettings addObject:androidPlatformSettings];
         //try to load old settings
     }
 
-    self.onlyPublishCCBs = [[dict objectForKey:@"onlyPublishCCBs"] boolValue];
     self.exporter = [dict objectForKey:@"exporter"];
     self.deviceOrientationPortrait = [[dict objectForKey:@"deviceOrientationPortrait"] boolValue];
     self.deviceOrientationUpsideDown = [[dict objectForKey:@"deviceOrientationUpsideDown"] boolValue];
@@ -268,7 +265,6 @@
     dict[@"designSizeHeight"] = @(_designSizeHeight);
     dict[@"designResourceScale"] = @(_designResourceScale);
 
-    dict[@"onlyPublishCCBs"] = @(_onlyPublishCCBs);
     dict[@"exporter"] = self.exporter;
     
     dict[@"deviceOrientationPortrait"] = @(_deviceOrientationPortrait);
