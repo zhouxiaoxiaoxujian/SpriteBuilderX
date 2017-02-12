@@ -2511,6 +2511,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     CCLOG(@"Plugin name: %@",name);
     self.errorDescription = NULL;
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:name];
+    if ([name isEqualToString:@"CCSprite"]) {
+        //TODO: load this from SBSettings
+        node.anchorPoint = ccp(0.5,0.5);
+    }
     BOOL success = [self addCCObject:node asChild:asChild];
     
     if (!success && self.errorDescription)
@@ -2556,8 +2560,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                    withParentGraph:nil
                        fileVersion:kCCBFileFormatVersion];
         
-        //TODO: ---------- hardcoded anchorPoint for CCSprite (0.5,0.5) ------------
         if ([class isEqualToString:@"CCSprite"]) {
+            //TODO: load this from SBSettings
             node.anchorPoint = ccp(0.5,0.5);
         }
         
@@ -2666,7 +2670,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 - (void) dropAddPlugInNodeNamed:(NSString *)nodeName parent:(CCNode*)parent index:(int)idx
 {
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:nodeName];
-    
+    if ([nodeName isEqualToString:@"CCSprite"]) {
+        //TODO: load this from SBSettings
+        node.anchorPoint = ccp(0.5,0.5);
+    }
     [self addCCObject:node toParent:parent atIndex:idx];
 }
 
