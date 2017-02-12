@@ -6,17 +6,20 @@
 //
 //
 
+#define SBSettings [SettingsManager instance]
+
 #import <Foundation/Foundation.h>
 
 @interface SettingsManager : NSObject
 
 @property (nonatomic,assign) BOOL enableBackup;
 @property (nonatomic,assign) NSInteger backupInterval;
-@property (nonatomic,copy) NSString *backupPath;
+@property (nonatomic,strong) NSString *backupPath;
+@property (nonatomic,assign) int selectedSettingsTab;
 
 + (instancetype) instance;
 
-- (void)synchronize;
+- (void)save;
 
 - (void)resetBackupSettings;
 

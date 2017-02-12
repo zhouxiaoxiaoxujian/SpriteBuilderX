@@ -25,12 +25,12 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     self = [self initWithWindowNibName:@"SettingsWindow"];
     
     if (self) {
-        _enableBackup = [SettingsManager instance].enableBackup;
+        _enableBackup = SBSettings.enableBackup;
         NSFileManager *fileManager = [NSFileManager defaultManager];
         BOOL isDir;
-        if(![fileManager fileExistsAtPath: [SettingsManager instance].backupPath isDirectory:&isDir]) {
-            if(![fileManager createDirectoryAtPath: [SettingsManager instance].backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                NSLog(@"Error: Create backups folder failed %@",  [SettingsManager instance].backupPath);
+        if(![fileManager fileExistsAtPath: SBSettings.backupPath isDirectory:&isDir]) {
+            if(![fileManager createDirectoryAtPath: SBSettings.backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                NSLog(@"Error: Create backups folder failed %@",  SBSettings.backupPath);
             }
         }
     }
@@ -43,6 +43,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [self updateUIValues];
     [self updateButtons];
     [self.backupPathField.window makeFirstResponder:nil];
+    [self.settingsTabView selectTabViewItemAtIndex:SBSettings.selectedSettingsTab];
 }
 
 -(void) updateButtons {
@@ -60,9 +61,8 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 -(void) updateUIValues {
-    //[self.settingsTabView selectTabViewItemAtIndex:selectedTab];
-    [self.backupIntervalPopUpButton selectItemWithTag: [SettingsManager instance].backupInterval];
-    [self.backupPathField setStringValue: [SettingsManager instance].backupPath];
+    [self.backupIntervalPopUpButton selectItemWithTag: SBSettings.backupInterval];
+    [self.backupPathField setStringValue: SBSettings.backupPath];
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
@@ -75,17 +75,18 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 }
 
 - (IBAction)resetBackupSettings:(id)sender {
-    [[SettingsManager instance] resetBackupSettings];
-    _enableBackup = [SettingsManager instance].enableBackup;
+    [SBSettings resetBackupSettings];
+    _enableBackup = SBSettings.enableBackup;
     [self updateUIValues];
     [self updateButtons];
 }
 
 - (IBAction)acceptSheet:(id)sender {
-    [SettingsManager instance].backupInterval = self.backupIntervalPopUpButton.selectedTag;
-    [SettingsManager instance].enableBackup = _enableBackup;
-    [SettingsManager instance].backupPath = self.backupPathField.stringValue;
-    [[SettingsManager instance] synchronize];
+    SBSettings.backupInterval = self.backupIntervalPopUpButton.selectedTag;
+    SBSettings.enableBackup = _enableBackup;
+    SBSettings.backupPath = self.backupPathField.stringValue;
+    SBSettings.selectedSettingsTab = [self.settingsTabView.selectedTabViewItem.identifier intValue];
+    [SBSettings save];
     [super acceptSheet:sender];
 }
 

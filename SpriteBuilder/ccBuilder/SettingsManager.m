@@ -36,12 +36,12 @@
 
 - (void) setBackupPath:(NSString *)backupPath
 {
-    [[NSUserDefaults standardUserDefaults] setObject:backupPath forKey:@"backupPath"];
+    [SBUserDefaults setObject:backupPath forKey:@"backupPath"];
 }
 
 - (NSString*) backupPath
 {
-    id backupPath = [[NSUserDefaults standardUserDefaults] valueForKey:@"backupPath"];
+    id backupPath = [SBUserDefaults valueForKey:@"backupPath"];
     if(!backupPath)
         return [SettingsManager defaultBackupPath];
     return backupPath;
@@ -49,12 +49,12 @@
 
 - (void) setBackupInterval:(NSInteger)backupInterval
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:backupInterval] forKey:@"backupInterval"];
+    [SBUserDefaults setObject:[NSNumber numberWithInteger:backupInterval] forKey:@"backupInterval"];
 }
 
 - (NSInteger) backupInterval
 {
-    id backupInterval = [[NSUserDefaults standardUserDefaults] valueForKey:@"backupInterval"];
+    id backupInterval = [SBUserDefaults valueForKey:@"backupInterval"];
     if(!backupInterval)
         return 60;
     return [backupInterval integerValue];
@@ -62,20 +62,32 @@
 
 - (void) setEnableBackup:(BOOL)enableBackup
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:enableBackup] forKey:@"enableBackup"];
+    [SBUserDefaults setObject:[NSNumber numberWithBool:enableBackup] forKey:@"enableBackup"];
 }
 
 - (BOOL) enableBackup
 {
-    id enableBackup = [[NSUserDefaults standardUserDefaults] valueForKey:@"enableBackup"];
+    id enableBackup = [SBUserDefaults valueForKey:@"enableBackup"];
     if(!enableBackup)
         return YES;
     return [enableBackup boolValue];
 }
 
-- (void)synchronize
+-(void) setSelectedSettingsTab:(int)selectedSettingsTab {
+    [SBUserDefaults setObject:@(selectedSettingsTab) forKey:@"selectedSettingsTab"];
+}
+
+-(int) selectedSettingsTab {
+    id selectedTab = [SBUserDefaults objectForKey:@"selectedSettingsTab"];
+    if (!selectedTab) {
+        return 0;
+    }
+    return [selectedTab intValue];
+}
+
+- (void) save
 {
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [SBUserDefaults synchronize];
 }
 
 - (void)resetBackupSettings

@@ -16,6 +16,8 @@
 #	define SBLogSelf() do{} while(0)
 #endif
 
+#define SBUserDefaults [NSUserDefaults standardUserDefaults]
+
 // Yosemite version check
 #define YOSEMITE_UI (rint(NSAppKitVersionNumber) > 1265)
 

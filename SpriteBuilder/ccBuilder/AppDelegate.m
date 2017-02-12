@@ -508,8 +508,8 @@ typedef enum
 {
     [Fabric with:@[[Crashlytics class]]];
 
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"ApplePersistenceIgnoreState"];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
+    [SBUserDefaults setObject:@YES forKey:@"ApplePersistenceIgnoreState"];
+    [SBUserDefaults registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     
     [self registerUserDefaults];
 
@@ -632,12 +632,12 @@ typedef enum
     }
     
     // Check for first run
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"completedFirstRun"] boolValue])
+    if (![[SBUserDefaults objectForKey:@"completedFirstRun"] boolValue])
     {
         //[self showHelp:self];
         
         // First run completed
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"completedFirstRun"];
+        [SBUserDefaults setObject:[NSNumber numberWithBool:YES] forKey:@"completedFirstRun"];
     }
 
     [self toggleFeatures];
@@ -650,8 +650,8 @@ typedef enum
         [autoSaveTimer invalidate];
         autoSaveTimer = nil;
     }
-    if ([SettingsManager instance].enableBackup == YES) {
-        autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:[SettingsManager instance].backupInterval
+    if (SBSettings.enableBackup == YES) {
+        autoSaveTimer = [NSTimer scheduledTimerWithTimeInterval:SBSettings.backupInterval
                                                          target:self
                                                        selector:@selector(checkAutoSave)
                                                        userInfo:nil
@@ -731,12 +731,12 @@ typedef enum
             LAST_VISIT_BOTTOM_PANEL_VISIBLE : @(1),
             LAST_VISIT_RIGHT_PANEL_VISIBLE : @(1)};
 
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    [SBUserDefaults registerDefaults:defaults];
 }
 
 - (void)openLastOpenProject
 {
-    NSString *filePath = [[NSUserDefaults standardUserDefaults] valueForKey:LAST_OPENED_PROJECT_PATH];
+    NSString *filePath = [SBUserDefaults valueForKey:LAST_OPENED_PROJECT_PATH];
     if (filePath)
     {
         [self openProject:filePath];
@@ -4716,13 +4716,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     if (projectSettings) {
 		projectPath = projectSettings.projectPath;
 		projectPath = [projectPath stringByDeletingLastPathComponent];
-        [[NSUserDefaults standardUserDefaults] setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
+        [SBUserDefaults setObject:projectPath forKey:LAST_OPENED_PROJECT_PATH];
 	}
     else
     {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:LAST_OPENED_PROJECT_PATH];
+        [SBUserDefaults removeObjectForKey:LAST_OPENED_PROJECT_PATH];
     }
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [SBUserDefaults synchronize];
 }
 
 - (NSSize) windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize

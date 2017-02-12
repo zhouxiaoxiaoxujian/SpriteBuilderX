@@ -49,8 +49,8 @@
     self = [super init];
     if (!self) return NULL;
     
-    numRuns = [[[NSUserDefaults standardUserDefaults] valueForKey:@"numRuns"] intValue];
-    hasDonated = [[[NSUserDefaults standardUserDefaults] valueForKey:@"hasDonated"] boolValue];
+    numRuns = [[SBUserDefaults valueForKey:@"numRuns"] intValue];
+    hasDonated = [[SBUserDefaults valueForKey:@"hasDonated"] boolValue];
 
     numRuns++;
     [self writeSettings];
@@ -60,8 +60,8 @@
 
 - (void) writeSettings
 {
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithInt:numRuns] forKey:@"numRuns"];
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:hasDonated] forKey:@"hasDonated"];
+    [SBUserDefaults setValue:[NSNumber numberWithInt:numRuns] forKey:@"numRuns"];
+    [SBUserDefaults setValue:[NSNumber numberWithBool:hasDonated] forKey:@"hasDonated"];
 }
 
 

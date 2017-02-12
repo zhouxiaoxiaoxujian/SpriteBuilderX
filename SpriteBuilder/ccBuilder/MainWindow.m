@@ -167,18 +167,18 @@
 
 - (void)restorePreviousOpenedPanels
 {
-    [_panelVisibilityControl setSelected:[[NSUserDefaults standardUserDefaults] boolForKey:LAST_VISIT_LEFT_PANEL_VISIBLE] forSegment:0];
-    [_panelVisibilityControl setSelected:[[NSUserDefaults standardUserDefaults] boolForKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE] forSegment:1];
-    [_panelVisibilityControl setSelected:[[NSUserDefaults standardUserDefaults] boolForKey:LAST_VISIT_RIGHT_PANEL_VISIBLE] forSegment:2];
+    [_panelVisibilityControl setSelected:[SBUserDefaults boolForKey:LAST_VISIT_LEFT_PANEL_VISIBLE] forSegment:0];
+    [_panelVisibilityControl setSelected:[SBUserDefaults boolForKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE] forSegment:1];
+    [_panelVisibilityControl setSelected:[SBUserDefaults boolForKey:LAST_VISIT_RIGHT_PANEL_VISIBLE] forSegment:2];
     [self pressedPanelVisibility:_panelVisibilityControl];
 }
 
 - (void)saveMainWindowPanelsVisibility
 {
-    [[NSUserDefaults standardUserDefaults] setBool:[_panelVisibilityControl isSelectedForSegment:0] forKey:LAST_VISIT_LEFT_PANEL_VISIBLE];
-    [[NSUserDefaults standardUserDefaults] setBool:[_panelVisibilityControl isSelectedForSegment:1] forKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE];
-    [[NSUserDefaults standardUserDefaults] setBool:[_panelVisibilityControl isSelectedForSegment:2] forKey:LAST_VISIT_RIGHT_PANEL_VISIBLE];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [SBUserDefaults setBool:[_panelVisibilityControl isSelectedForSegment:0] forKey:LAST_VISIT_LEFT_PANEL_VISIBLE];
+    [SBUserDefaults setBool:[_panelVisibilityControl isSelectedForSegment:1] forKey:LAST_VISIT_BOTTOM_PANEL_VISIBLE];
+    [SBUserDefaults setBool:[_panelVisibilityControl isSelectedForSegment:2] forKey:LAST_VISIT_RIGHT_PANEL_VISIBLE];
+    [SBUserDefaults synchronize];
 }
 
 @end

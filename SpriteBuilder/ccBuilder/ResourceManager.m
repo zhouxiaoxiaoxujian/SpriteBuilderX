@@ -61,12 +61,12 @@
 #define kIgnoredExtensionsKey @"ignoredDirectoryExtensions"
 
 + (void)initialize {
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{kIgnoredExtensionsKey : @[@"git", @"svn", @"xcodeproj"]}];
+    [SBUserDefaults registerDefaults:@{kIgnoredExtensionsKey : @[@"git", @"svn", @"xcodeproj"]}];
 }
 
 - (BOOL)shouldPrunePath:(NSString *)dirPath {
     // prune directories...
-    for (NSString *extension in [[NSUserDefaults standardUserDefaults] objectForKey:kIgnoredExtensionsKey]) {
+    for (NSString *extension in [SBUserDefaults objectForKey:kIgnoredExtensionsKey]) {
         if ([dirPath hasSuffix:extension]) {
             return YES;
         }

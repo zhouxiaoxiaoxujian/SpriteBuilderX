@@ -170,7 +170,7 @@
 }
 
 -(NSString *) backupPath {
-    NSString *settingsBackupPath = [[SettingsManager instance] backupPath];
+    NSString *settingsBackupPath = SBSettings.backupPath;
     NSString *projPath = [self.projectSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:settingsBackupPath];
 }
