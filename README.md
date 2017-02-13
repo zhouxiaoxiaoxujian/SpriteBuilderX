@@ -26,7 +26,7 @@ Just Build & Run SpriteBuilder/SpriteBuilderX.xcodeproj
 
 It is most likely still a problem with the submodules(also don't forget to recursively checkout submodules). Edit the .git/config file and remove the lines that are referencing submodules. Then change directory into the top directory and run:
 
-    git submodule update --init
+    git submodule update --init --recursive
 
 When building SpriteBuilderX, make sure that "SpriteBuilderX" is the selected target (it may be some of the plug-in targets by default).
 
