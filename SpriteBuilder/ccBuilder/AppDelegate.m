@@ -3968,6 +3968,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     if (!currentDocument) return;
     
+    currentDocument.projectSettings = self.projectSettings;
+    
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];
     FNTConfigRemoveCache();
