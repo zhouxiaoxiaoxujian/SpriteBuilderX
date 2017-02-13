@@ -264,16 +264,24 @@
         for (PlatformSettings *platform in _publishingPlatforms)
         {
             NSString *publishDirectory = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
-            if(!publishDirectory)
+            if(publishDirectory && publishDirectory.length>0)
             {
-                continue;
+                NSError *error;
+                if (![fileManager removeItemAtPath:publishDirectory error:&error]
+                    && error.code != NSFileNoSuchFileError)
+                {
+                    NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", publishDirectory, error);
+                }
             }
-            
-            NSError *error;
-            if (![fileManager removeItemAtPath:publishDirectory error:&error]
-                && error.code != NSFileNoSuchFileError)
+            NSString *separatePackagesDirectory = [platform.separatePackagesDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+            if(separatePackagesDirectory && separatePackagesDirectory.length>0)
             {
-                NSLog(@"Error removing old publishing directory at path \"%@\" with error %@", publishDirectory, error);
+                NSError *error;
+                if (![fileManager removeItemAtPath:separatePackagesDirectory error:&error]
+                    && error.code != NSFileNoSuchFileError)
+                {
+                    NSLog(@"Error removing old separate packet publishing directory at path \"%@\" with error %@", separatePackagesDirectory, error);
+                }
             }
         }
     }
