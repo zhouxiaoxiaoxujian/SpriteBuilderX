@@ -210,21 +210,30 @@
         dirPublisher.platformSettings = platform;
         dirPublisher.inputDir = value[@"path"];
         id type =  value[@"type"];
-        if([type integerValue] == kPlatformSettingsPublishTypesPublish)
-            dirPublisher.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
-        else
-            dirPublisher.outputDir = [[platform.separatePackagesDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]] stringByAppendingPathComponent:key];
+        
         //dirPublisher.osType = target.osType;
         dirPublisher.resolutions = resolutions;
         //dirPublisher.audioQuality = target.audioQuality;
-        dirPublisher.renamedFilesLookup = renamedFilesLookup;
-        dirPublisher.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
         dirPublisher.publishingTaskStatusProgress = _publishingTaskStatusProgress;
         dirPublisher.modifiedDatesCache = _modifiedDatesCache;
-
-        if (![dirPublisher generateAndEnqueuePublishingTasks])
+        if([type integerValue] == kPlatformSettingsPublishTypesPublish)
         {
-            return NO;
+            dirPublisher.outputDir = [platform.publishDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+            dirPublisher.renamedFilesLookup = renamedFilesLookup;
+            dirPublisher.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
+            if (![dirPublisher generateAndEnqueuePublishingTasks])
+                return NO;
+        }
+        else
+        {
+            PublishRenamedFilesLookup *packetRenamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
+            NSMutableSet *packetPublishedSpriteSheetFiles = [NSMutableSet set];
+            dirPublisher.outputDir = [[platform.separatePackagesDirectory absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]] stringByAppendingPathComponent:key];
+            dirPublisher.renamedFilesLookup = packetRenamedFilesLookup;
+            dirPublisher.publishedSpriteSheetFiles = packetPublishedSpriteSheetFiles;
+            if (![dirPublisher generateAndEnqueuePublishingTasks])
+                return NO;
+            [self enqueueGenerateFilesOperationWithTarget:platform withRenamedFilesLookup:packetRenamedFilesLookup withPublishedSpriteSheetFiles:packetPublishedSpriteSheetFiles withPacket:key];
         }
     }
 
@@ -244,6 +253,20 @@
     operation.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
     operation.fileLookup = renamedFilesLookup;
 
+    [_publishingQueue addOperation:operation];
+}
+
+- (void)enqueueGenerateFilesOperationWithTarget:(PlatformSettings*) platform withRenamedFilesLookup:(PublishRenamedFilesLookup*)renamedFilesLookup withPublishedSpriteSheetFiles:(NSMutableSet*)publishedSpriteSheetFiles withPacket:(NSString*)packet
+{
+    PublishGeneratedFilesOperation *operation = [[PublishGeneratedFilesOperation alloc] initWithProjectSettings:_projectSettings
+                                                                                                       warnings:_warnings
+                                                                                                 statusProgress:_publishingTaskStatusProgress];
+    //operation.osType = target.osType;
+    operation.outputDir = [[platform.separatePackagesDirectory stringByAppendingPathComponent:packet] absolutePathFromBaseDirPath:[_projectSettings.projectPath stringByDeletingLastPathComponent]];
+    operation.publishedSpriteSheetFiles = publishedSpriteSheetFiles;
+    operation.fileLookup = renamedFilesLookup;
+    operation.packet = packet;
+    
     [_publishingQueue addOperation:operation];
 }
 

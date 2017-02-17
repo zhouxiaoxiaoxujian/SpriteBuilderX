@@ -46,6 +46,9 @@
 
 - (void)generateCocos2dSetupFile
 {
+    if(_packet)
+        return;
+    
     NSMutableDictionary* configCocos2d = [NSMutableDictionary dictionary];
 
     NSString* sceneScaleType = @"CCSceneScaleDefault";
@@ -96,13 +99,23 @@
     [spriteFrameFileList setObject:metadata forKey:@"metadata"];
     [spriteFrameFileList setObject:[_publishedSpriteSheetFiles allObjects] forKey:@"spriteFrameFiles"];
 
-    NSString* spriteSheetLookupFile = [_outputDir stringByAppendingPathComponent:@"spriteFrameFileList.plist"];
+    NSString* spriteSheetLookupFile = nil;
+    if(!_packet)
+        spriteSheetLookupFile = [_outputDir stringByAppendingPathComponent:@"spriteFrameFileList.plist"];
+    else
+        spriteSheetLookupFile = [_outputDir stringByAppendingPathComponent:[_packet stringByAppendingString:@"SpriteFrameFileList.plist"]];
     [spriteFrameFileList writeToFile:spriteSheetLookupFile atomically:YES];
 }
 
 - (void)generateFileLookup
 {
-    if (![_fileLookup writeToFileAtomically:[_outputDir stringByAppendingPathComponent:@"fileLookup.plist"]])
+    NSString* fileLookupFile = nil;
+    if(!_packet)
+        fileLookupFile = [_outputDir stringByAppendingPathComponent:@"fileLookup.plist"];
+    else
+        fileLookupFile = [_outputDir stringByAppendingPathComponent:[_packet stringByAppendingString:@"FileLookup.plist"]];
+    
+    if (![_fileLookup writeToFileAtomically:fileLookupFile])
     {
         [_warnings addWarningWithDescription:@"Could not write fileLookup.plist."];
     }
