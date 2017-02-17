@@ -264,7 +264,7 @@
 				<integer>0</integer>
 				<string>0</string>
 				<string>0</string>
-				<string>0,5</string>
+				<string>0</string>
 			</array>
 			<key>displayName</key>
 			<string>Shadow color</string>
@@ -275,7 +275,7 @@
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
-				<real>0.5</real>
+				<integer>0</integer>
 			</array>
 		</dict>
 		<dict>
