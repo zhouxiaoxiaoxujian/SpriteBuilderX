@@ -88,7 +88,7 @@
 - (void) drawGradientStringWithSize:(CGSize)size inRect:(CGRect)rect context:(CGContextRef)context
 {
     NSMutableAttributedString* maskAttributedString = [self.attributedString mutableCopy];
-    NSMutableAttributedStringFixPlatformSpecificAttributes(maskAttributedString, [CCColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:self.fontColor.alpha], self.fontName, self.fontSize, self.horizontalAlignment);
+    NSMutableAttributedStringFixPlatformSpecificAttributes(maskAttributedString, [CCColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:self.fontColor.alpha], self.fontName, self.fontSize * [CCDirector sharedDirector].contentScaleFactor, self.horizontalAlignment);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceGray();
     CGContextRef maskContext = CGBitmapContextCreate(NULL, size.width, size.height, 8, size.width, colorspace, 0);
     CGColorSpaceRelease(colorspace);
@@ -277,8 +277,14 @@
         [self drawGradientStringWithSize:dimensions inRect:drawArea context:context];
         
     } else if (hasShadow && !hasOutline) {
+        CGContextSaveGState(context);
+        CCColor *tempColor = [CCColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        NSMutableAttributedString* tempAttributedString = [self.attributedString mutableCopy];
+        NSMutableAttributedStringFixPlatformSpecificAttributes(tempAttributedString, tempColor, self.fontName, self.fontSize * [CCDirector sharedDirector].contentScaleFactor, self.horizontalAlignment);
+
         [self applyShadowOnContext:context color:self.shadowColor.CGColor blurRadius:shadowBlurRadius offset:CGPointMake(shadowOffset.x - dimensions.width, shadowOffset.y)];
-        [self drawAttributedString:attributedString inContext:context inRect:CGRectMake(xOffset + dimensions.width, yOffset, wDrawArea, hDrawArea)];
+        [self drawAttributedString:tempAttributedString inContext:context inRect:CGRectMake(xOffset + dimensions.width, yOffset, wDrawArea, hDrawArea)];
+        CGContextRestoreGState(context);
         [self drawGradientStringWithSize:dimensions inRect:drawArea context:context];
         
     } else if (!hasShadow && hasOutline) {
@@ -291,13 +297,31 @@
         
     } else if (hasShadow && hasOutline) {
         CGContextSaveGState(context);
-        [self applyOutlineOnContext:context color:self.outlineColor.CGColor width:outlineWidth];
-        [self applyShadowOnContext:context color:self.shadowColor.CGColor blurRadius:shadowBlurRadius offset:CGPointMake(shadowOffset.x - dimensions.width, shadowOffset.y)];
-        [self drawAttributedString:attributedString inContext:context inRect:CGRectMake(xOffset + dimensions.width, yOffset, wDrawArea, hDrawArea)];        CGContextRestoreGState(context);
+        CCColor *tempColor = [CCColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        NSMutableAttributedString* tempAttributedString = [self.attributedString mutableCopy];
+        NSMutableAttributedStringFixPlatformSpecificAttributes(tempAttributedString, tempColor, self.fontName, self.fontSize * [CCDirector sharedDirector].contentScaleFactor, self.horizontalAlignment);
+        
+        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+        CGContextRef tempContext = CGBitmapContextCreate(NULL, POTSize.width, POTSize.height, 8, POTSize.width * 4, colorspace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+        CGColorSpaceRelease(colorspace);
+        
+        [self applyOutlineOnContext:tempContext color:tempColor.CGColor width:outlineWidth];
+        CGContextSetTextDrawingMode(tempContext, kCGTextFillStroke);
+        [self drawAttributedString:tempAttributedString inContext:tempContext inRect:drawArea];
+        
+        CGImageRef shadowImage = CGBitmapContextCreateImage(tempContext);
+        CGContextRelease(tempContext);
+        
+        [self applyShadowOnContext:context color:self.shadowColor.CGColor blurRadius:shadowBlurRadius offset:CGPointMake(shadowOffset.x - POTSize.width, shadowOffset.y)];
+        CGContextDrawImage(context, CGRectMake(POTSize.width, 0, POTSize.width, POTSize.height), shadowImage);
+        CGImageRelease(shadowImage);
+        CGContextRestoreGState(context);
+        
         CGContextSaveGState(context);
         [self applyOutlineOnContext:context color:self.outlineColor.CGColor width:outlineWidth];
         [self drawAttributedString:attributedString inContext:context inRect:drawArea];
         CGContextRestoreGState(context);
+        [self applyShadowOnContext:context color:self.shadowColor.CGColor blurRadius:shadowBlurRadius offset:CGPointMake(shadowOffset.x, shadowOffset.y)];
         [self drawGradientStringWithSize:dimensions inRect:drawArea context:context];
     }
     

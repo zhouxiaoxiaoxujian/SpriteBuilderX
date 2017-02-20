@@ -25,10 +25,12 @@
 #import "CCProtectedNode.h"
 #import "cocos2d.h"
 
+@class CCBPGradientLabelBase;
+
 @interface CCBPLabelTTF : CCProtectedNode
 
 // Add property to maintain backwards compatibility
-@property (nonatomic,readonly) CCLabelTTF* label;
+@property (nonatomic,readonly) CCBPGradientLabelBase* label;
 @property (nonatomic,assign) int alignment;
 @property (nonatomic,assign) CGFloat fontSize;
 @property (nonatomic,assign) BOOL adjustsFontSizeToFit;

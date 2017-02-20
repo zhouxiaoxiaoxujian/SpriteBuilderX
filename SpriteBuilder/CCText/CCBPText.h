@@ -25,13 +25,16 @@
 #import "CCProtectedNode.h"
 #import "cocos2d.h"
 
+@class CCBPGradientLabelBase;
+
 @interface CCBPText: CCProtectedNode
 
 /** The font size of the text. */
 @property (nonatomic,assign) CGFloat fontSize;
-@property (nonatomic,readonly) CCLabelTTF* label;
+@property (nonatomic,readonly) CCBPGradientLabelBase* label;
 @property (nonatomic,assign) BOOL adjustsFontSizeToFit;
 @property (nonatomic,assign) CGSize dimensions;
 @property (nonatomic,assign) CCSizeType dimensionsType;
+
 
 @end

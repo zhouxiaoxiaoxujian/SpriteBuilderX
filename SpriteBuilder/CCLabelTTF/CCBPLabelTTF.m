@@ -23,6 +23,7 @@
  */
 
 #import "CCBPLabelTTF.h"
+#import "CCBPGradientLabelBase.h"
 
 @implementation CCBPLabelTTF
 
@@ -35,7 +36,7 @@
         _adjustsFontSizeToFit = NO;
         _dimensions = CGSizeZero;
         _dimensionsType = CCSizeTypePoints;
-        _label = [[CCLabelTTF alloc] init];
+        _label = [[CCBPGradientLabelBase alloc] init];
         _label.positionType = CCPositionTypeNormalized;
         _label.anchorPoint = CGPointMake(0.5f, 0.5f);
         _label.position = CGPointMake(0.5f, 0.5f);
@@ -56,7 +57,10 @@
              @"shadowColor",
              @"shadowBlurRadius",
              @"shadowOffset",
-             @"shadowOffsetType"];
+             @"shadowOffsetType",
+             @"gradientColor1",
+             @"gradientColor2",
+             @"gradientType"];
 }
 
 -(CGPoint)shadowOffsetInPoints
