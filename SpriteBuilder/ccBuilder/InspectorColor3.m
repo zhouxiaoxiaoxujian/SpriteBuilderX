@@ -31,7 +31,8 @@
 {
     CGFloat r, g, b, a;
     
-    [color getRed:&r green:&g blue:&b alpha:&a];
+    NSColor * calibratedColor = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    [calibratedColor getRed:&r green:&g blue:&b alpha:&a];
 
     CCColor* colorValue = [CCColor colorWithRed:r green:g blue:b alpha:1];
     [self setPropertyForSelection:colorValue];
