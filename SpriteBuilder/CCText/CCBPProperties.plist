@@ -188,9 +188,9 @@
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
-				<string>1</string>
-				<string>1</string>
-				<string>1</string>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>displayName</key>
 			<string>Draw Color</string>
@@ -216,9 +216,9 @@
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
-				<string>0</string>
-				<string>0</string>
-				<string>0</string>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
 			</array>
 			<key>displayName</key>
 			<string>Outline color</string>
@@ -262,9 +262,9 @@
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
-				<string>0</string>
-				<string>0</string>
-				<string>0</string>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>0</integer>
 			</array>
 			<key>displayName</key>
 			<string>Shadow color</string>
@@ -340,9 +340,9 @@
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
-				<string>1</string>
-				<string>1</string>
-				<string>1</string>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>displayName</key>
 			<string>Gradient Start Color </string>
@@ -364,9 +364,9 @@
 			<key>defaultSerialization</key>
 			<array>
 				<integer>1</integer>
-				<string>1</string>
-				<string>1</string>
-				<string>1</string>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 			<key>displayName</key>
 			<string>Gradient End Color </string>
