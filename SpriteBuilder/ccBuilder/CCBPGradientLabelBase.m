@@ -110,18 +110,17 @@
     CGContextSaveGState(context);
     CGContextClipToMask(context, CGRectMake(0, 0, size.width, size.height), alphaMask);
     
-    //CGRectGetMinX
     CGPoint startPoint;
     CGPoint endPoint;
     if(_gradientType == CCGradientLabelGradientTypeHorizontal)
     {
-        startPoint = CGPointMake(CGRectGetMinX(rect), CGRectGetMidY(rect));
-        endPoint = CGPointMake(CGRectGetMaxX(rect), CGRectGetMidY(rect));
+        startPoint = CGPointMake(0, size.height/2);
+        endPoint = CGPointMake(size.width, size.height/2);
     }
     else
     {
-        startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
-        endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
+        startPoint = CGPointMake(size.width/2, 0);
+        endPoint = CGPointMake(size.width/2, size.height);
     }
     
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
