@@ -388,9 +388,9 @@
 			<key>saveInTemplate</key>
 			<true/>
 			<key>default</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>defaultSerialization</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>displayName</key>
 			<string>Gradient Type</string>
 			<key>type</key>
