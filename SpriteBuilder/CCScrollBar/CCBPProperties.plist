@@ -39,9 +39,9 @@
 	<array>
 		<dict>
 			<key>displayName</key>
-			<string>CCSlider</string>
+			<string>CCScrollBar</string>
 			<key>name</key>
-			<string>CCSlider</string>
+			<string>CCScrollBar</string>
 			<key>type</key>
 			<string>Separator</string>
 			<key>dontSetInEditor</key>
@@ -55,7 +55,7 @@
 			<key>defaultSerialization</key>
 			<false/>
 			<key>displayName</key>
-			<string>Horizontal</string>
+			<string>Vertical</string>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>

@@ -25,9 +25,9 @@
     
     _handleSpriteFrames = [[NSMutableDictionary alloc] init];
     _background = [[CCSprite9Slice alloc] init];
-    _background.anchorPoint = ccp(0.f,0.f);
-    _background.position = ccp(0.f,0.f);
-    _background.positionType = CCPositionTypePoints;
+    _background.anchorPoint = ccp(0.5f,0.5f);
+    _background.position = ccp(0.5f,0.5f);
+    _background.positionType = CCPositionTypeNormalized;
     _background.contentSizeType = CCSizeTypePoints;
     
     _handle = [[CCSprite9Slice alloc] init];
@@ -50,7 +50,10 @@
 {
     CGSize size = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
     float val = clampf((double)(_percent) / 100.0f, 0.0f, 1.0f);
-    _handle.position = ccp(size.width * val, size.height/2.0f);
+    if(_vertical)
+        _handle.position = ccp(size.width/2.0f, size.height * (1.0f - val));
+    else
+        _handle.position = ccp(size.width * val, size.height/2.0f);
 }
 
 - (void) stateChanged
@@ -66,11 +69,21 @@
 {
     CGSize sizeInPoints = [self convertContentSizeToPoints: self.contentSize type:self.contentSizeType];
     
-    [_background setContentSize:CGSizeMake(sizeInPoints.width / _imageScale, sizeInPoints.height / _imageScale)];
+    if(_vertical)
+    {
+        [_background setContentSize:CGSizeMake(sizeInPoints.height / _imageScale, sizeInPoints.width / _imageScale)];
+        _background.rotation = 90.0f;
+        [_handle setContentSize:CGSizeMake(sizeInPoints.height / _imageScale * (_barSize / 100.0f), sizeInPoints.width / _imageScale)];
+        _handle.rotation = 90.0f;
+    }
+    else
+    {
+        [_background setContentSize:CGSizeMake(sizeInPoints.width / _imageScale, sizeInPoints.height / _imageScale)];
+        _background.rotation = 0.0f;
+        [_handle setContentSize:CGSizeMake(sizeInPoints.width / _imageScale * (_barSize / 100.0f), sizeInPoints.height / _imageScale)];
+        _handle.rotation = 0.0f;
+    }
     _background.scale = _imageScale;
-    
-    
-    [_handle setContentSize:CGSizeMake(sizeInPoints.width / _imageScale * (_barSize / 100.0f), sizeInPoints.height / _imageScale)];
     _handle.scale = _imageScale;
     
     [self updateSliderPositionFromValue];
@@ -82,6 +95,12 @@
 - (void) setBarSize:(float) barSize
 {
     _barSize = barSize;
+    [self needsLayout];
+}
+
+- (void) setVertical:(BOOL)vertical
+{
+    _vertical = vertical;
     [self needsLayout];
 }
 
