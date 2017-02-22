@@ -2512,8 +2512,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     self.errorDescription = NULL;
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:name];
     if ([name isEqualToString:@"CCSprite"]) {
-        //TODO: load this from SBSettings
-        node.anchorPoint = ccp(0.5,0.5);
+        node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
     }
     BOOL success = [self addCCObject:node asChild:asChild];
     
@@ -2561,8 +2560,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                        fileVersion:kCCBFileFormatVersion];
         
         if ([class isEqualToString:@"CCSprite"]) {
-            //TODO: load this from SBSettings
-            node.anchorPoint = ccp(0.5,0.5);
+            node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
         }
         
         // Set it's displayName to the name of the spriteFile
@@ -2671,8 +2669,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:nodeName];
     if ([nodeName isEqualToString:@"CCSprite"]) {
-        //TODO: load this from SBSettings
-        node.anchorPoint = ccp(0.5,0.5);
+        node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
     }
     [self addCCObject:node toParent:parent atIndex:idx];
 }

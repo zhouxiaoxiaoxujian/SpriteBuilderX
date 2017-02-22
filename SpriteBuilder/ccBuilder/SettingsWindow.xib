@@ -11,9 +11,13 @@
             <connections>
                 <outlet property="backupIntervalPopUpButton" destination="dtJ-lj-eKG" id="lNB-sn-hzA"/>
                 <outlet property="backupPathField" destination="Q7g-rw-dRe" id="GP0-N7-ITB"/>
+                <outlet property="defaultSpriteAnchorX" destination="lLc-5d-bT8" id="gty-ed-73z"/>
+                <outlet property="defaultSpriteAnchorY" destination="h5v-Zc-fRs" id="4IA-tX-Iuk"/>
                 <outlet property="enableBackupCheckBox" destination="nnG-ZM-vtR" id="SDQ-y9-qp6"/>
                 <outlet property="selectPathButton" destination="7IE-BF-T51" id="4Uf-2a-PqM"/>
                 <outlet property="settingsTabView" destination="FXC-Vl-xCo" id="D6N-dv-vud"/>
+                <outlet property="stepAnchorX" destination="Tac-Uv-KBh" id="PaI-bq-7vO"/>
+                <outlet property="stepAnchorY" destination="2Rn-es-h5h" id="Hxi-US-K2K"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -23,7 +27,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="704" y="787" width="879" height="337"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="879" height="337"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="879" height="337"/>
@@ -63,11 +67,11 @@ DQ
                         <tabViewItems>
                             <tabViewItem label="General" identifier="0" id="cZD-xm-4gI">
                                 <view key="view" ambiguous="YES" id="b1H-NP-Ill">
-                                    <rect key="frame" x="10" y="25" width="126" height="0.0"/>
+                                    <rect key="frame" x="10" y="25" width="833" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="General settings" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-w9-Syn">
-                                            <rect key="frame" x="14" y="-85" width="805" height="79"/>
+                                            <rect key="frame" x="14" y="146" width="805" height="79"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="s1A-C9-M5S">
                                                 <rect key="frame" x="2" y="2" width="801" height="62"/>
@@ -76,7 +80,14 @@ DQ
                                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-Uv-KBh">
                                                         <rect key="frame" x="253" y="20" width="19" height="27"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="p2e-6z-2Pp"/>
+                                                        <stepperCell key="cell" continuous="YES" alignment="left" increment="0.10000000000000001" minValue="-100" maxValue="100" doubleValue="0.5" id="p2e-6z-2Pp">
+                                                            <connections>
+                                                                <binding destination="-2" name="value" keyPath="self.defaultSpriteAnchorX.floatValue" id="w1r-pS-tQF"/>
+                                                            </connections>
+                                                        </stepperCell>
+                                                        <connections>
+                                                            <binding destination="-2" name="value" keyPath="self.defaultSpriteAnchorX.floatValue" id="fpF-ki-fhX"/>
+                                                        </connections>
                                                     </stepper>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdm-Qi-JZ7">
                                                         <rect key="frame" x="18" y="25" width="171" height="17"/>
@@ -96,6 +107,9 @@ DQ
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="-2" name="value" keyPath="self.stepAnchorX.floatValue" id="2fd-sX-3Nk"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-CU-CIt">
                                                         <rect key="frame" x="193" y="24" width="13" height="17"/>
@@ -115,6 +129,9 @@ DQ
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="-2" name="value" keyPath="self.stepAnchorY.floatValue" id="qFm-pH-V7y"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZN-7M-V9V">
                                                         <rect key="frame" x="275" y="24" width="13" height="17"/>
@@ -128,13 +145,16 @@ DQ
                                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Rn-es-h5h">
                                                         <rect key="frame" x="333" y="20" width="19" height="27"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="CLn-kQ-Tf0"/>
+                                                        <stepperCell key="cell" continuous="YES" alignment="left" increment="0.10000000000000001" minValue="-100" maxValue="100" doubleValue="0.5" id="CLn-kQ-Tf0"/>
+                                                        <connections>
+                                                            <binding destination="-2" name="value" keyPath="self.defaultSpriteAnchorY.floatValue" id="5HU-8d-GYI"/>
+                                                        </connections>
                                                     </stepper>
                                                 </subviews>
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Some other" translatesAutoresizingMaskIntoConstraints="NO" id="6O5-Yx-6mj">
-                                            <rect key="frame" x="14" y="-177" width="805" height="82"/>
+                                            <rect key="frame" x="14" y="54" width="805" height="82"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="c61-oH-Wuf">
                                                 <rect key="frame" x="2" y="2" width="801" height="65"/>
@@ -243,7 +263,7 @@ DQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyl-uE-uZt">
                                             <rect key="frame" x="769" y="16" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="54EBDBBC-817E-4B6B-B3D7-6861AB65BDF8" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
+                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="F12BE90C-36BC-477B-A769-2C0D5F75B8F3" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -263,9 +283,10 @@ DQ
             </connections>
             <point key="canvasLocation" x="207.5" y="184.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="g88-YY-a2s"/>
     </objects>
     <resources>
-        <image name="54EBDBBC-817E-4B6B-B3D7-6861AB65BDF8" width="1" height="1">
+        <image name="F12BE90C-36BC-477B-A769-2C0D5F75B8F3" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -11,7 +11,7 @@
 
 @implementation SettingsManager
 
-+ (id)instance {
++ (instancetype)instance {
     static SettingsManager *sharedSettingsManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -83,6 +83,30 @@
         return 0;
     }
     return [selectedTab intValue];
+}
+
+-(void) setDefaultSpriteAnchorX:(float)defaultSpriteAnchorX {
+    [SBUserDefaults setObject:@(defaultSpriteAnchorX) forKey:@"defaultSpriteAnchorX"];
+}
+
+-(float) defaultSpriteAnchorX {
+    id anchorX = [SBUserDefaults objectForKey:@"defaultSpriteAnchorX"];
+    if (!anchorX) {
+        return 0.5;
+    }
+    return [anchorX floatValue];
+}
+
+-(void) setDefaultSpriteAnchorY:(float)defaultSpriteAnchorY {
+    [SBUserDefaults setObject:@(defaultSpriteAnchorY) forKey:@"defaultSpriteAnchorY"];
+}
+
+-(float) defaultSpriteAnchorY {
+    id anchorY = [SBUserDefaults objectForKey:@"defaultSpriteAnchorY"];
+    if (!anchorY) {
+        return 0.5;
+    }
+    return [anchorY floatValue];
 }
 
 - (void) save

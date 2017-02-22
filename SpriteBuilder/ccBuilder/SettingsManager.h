@@ -17,10 +17,11 @@
 @property (nonatomic,strong) NSString *backupPath;
 @property (nonatomic,assign) int selectedSettingsTab;
 
+@property (nonatomic,assign) float defaultSpriteAnchorX;
+@property (nonatomic,assign) float defaultSpriteAnchorY;
+
 + (instancetype) instance;
-
 - (void)save;
-
 - (void)resetBackupSettings;
 
 @end

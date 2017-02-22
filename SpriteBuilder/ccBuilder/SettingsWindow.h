@@ -17,4 +17,10 @@
 
 @property (weak) IBOutlet NSTabView *settingsTabView;
 
+@property (weak) IBOutlet NSTextField *defaultSpriteAnchorX;
+@property (weak) IBOutlet NSTextField *defaultSpriteAnchorY;
+
+@property (weak) IBOutlet NSStepper *stepAnchorX;
+@property (weak) IBOutlet NSStepper *stepAnchorY;
+
 @end

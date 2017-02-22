@@ -41,12 +41,12 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self updateUIValues];
-    [self updateButtons];
+    [self updateBackupButtons];
     [self.backupPathField.window makeFirstResponder:nil];
     [self.settingsTabView selectTabViewItemAtIndex:SBSettings.selectedSettingsTab];
 }
 
--(void) updateButtons {
+-(void) updateBackupButtons {
     if (_enableBackup) {
         self.enableBackupCheckBox.state = NSOnState;
         self.backupIntervalPopUpButton.enabled = YES;
@@ -63,6 +63,9 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 -(void) updateUIValues {
     [self.backupIntervalPopUpButton selectItemWithTag: SBSettings.backupInterval];
     [self.backupPathField setStringValue: SBSettings.backupPath];
+    
+    self.stepAnchorX.floatValue = SBSettings.defaultSpriteAnchorX;
+    self.stepAnchorY.floatValue = SBSettings.defaultSpriteAnchorY;
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
@@ -71,14 +74,14 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     } else {
         _enableBackup = NO;
     }
-    [self updateButtons];
+    [self updateBackupButtons];
 }
 
 - (IBAction)resetBackupSettings:(id)sender {
     [SBSettings resetBackupSettings];
     _enableBackup = SBSettings.enableBackup;
     [self updateUIValues];
-    [self updateButtons];
+    [self updateBackupButtons];
 }
 
 - (IBAction)acceptSheet:(id)sender {
@@ -86,6 +89,8 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     SBSettings.enableBackup = _enableBackup;
     SBSettings.backupPath = self.backupPathField.stringValue;
     SBSettings.selectedSettingsTab = [self.settingsTabView.selectedTabViewItem.identifier intValue];
+    SBSettings.defaultSpriteAnchorX = self.stepAnchorX.floatValue;
+    SBSettings.defaultSpriteAnchorY = self.stepAnchorY.floatValue;
     [SBSettings save];
     [super acceptSheet:sender];
 }
