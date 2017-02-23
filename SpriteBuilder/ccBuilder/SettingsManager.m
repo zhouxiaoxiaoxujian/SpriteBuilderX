@@ -159,6 +159,9 @@
 }
 
 - (NSString *) miscFilesPathForFile:(NSString *) filePath {
+    if (!self.storeMiscFilesAtPath) {
+        return filePath;
+    }
     NSString *projPath = [[AppDelegate appDelegate].projectSettings.projectPathDir stringByDeletingLastPathComponent];
     return [filePath stringByReplacingOccurrencesOfString:projPath withString:self.miscFilesPath];
 }
