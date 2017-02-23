@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -71,11 +71,11 @@ DQ
                         <tabViewItems>
                             <tabViewItem label="General" identifier="0" id="cZD-xm-4gI">
                                 <view key="view" id="b1H-NP-Ill">
-                                    <rect key="frame" x="10" y="25" width="176" height="0.0"/>
+                                    <rect key="frame" x="10" y="25" width="833" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box fixedFrame="YES" title="General settings" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-w9-Syn">
-                                            <rect key="frame" x="14" y="-85" width="805" height="79"/>
+                                            <rect key="frame" x="14" y="146" width="805" height="79"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="s1A-C9-M5S">
                                                 <rect key="frame" x="2" y="2" width="801" height="62"/>
@@ -158,7 +158,7 @@ DQ
                                             </view>
                                         </box>
                                         <box fixedFrame="YES" title="Some other" translatesAutoresizingMaskIntoConstraints="NO" id="6O5-Yx-6mj">
-                                            <rect key="frame" x="14" y="-177" width="805" height="82"/>
+                                            <rect key="frame" x="14" y="54" width="805" height="82"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="c61-oH-Wuf">
                                                 <rect key="frame" x="2" y="2" width="801" height="65"/>
@@ -180,7 +180,7 @@ DQ
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Paths" identifier="1" id="Urh-li-NZC">
-                                <view key="view" id="H0C-ZI-BXa">
+                                <view key="view" ambiguous="YES" id="H0C-ZI-BXa">
                                     <rect key="frame" x="10" y="25" width="833" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -225,8 +225,8 @@ DQ
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYm-bO-tmq">
                                                         <rect key="frame" x="358" y="18" width="393" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/Users/*user*/MiscFiles" drawsBackground="YES" id="3lh-bQ-xb0">
-                                                            <font key="font" metaFont="system" size="12"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/Users/*user*/MiscFiles" drawsBackground="YES" id="3lh-bQ-xb0">
+                                                            <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -237,7 +237,7 @@ DQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bg-3e-jgw">
                                             <rect key="frame" x="769" y="16" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="583B378B-7287-458B-88DC-6873C647A559" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mok-J5-myH">
+                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="41B4C978-6B3D-4B27-A24D-6A96CD27BCE2" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mok-J5-myH">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -249,7 +249,7 @@ DQ
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Backup" identifier="2" id="dZa-AH-6r3">
-                                <view key="view" ambiguous="YES" id="Bbl-SP-9el">
+                                <view key="view" id="Bbl-SP-9el">
                                     <rect key="frame" x="10" y="25" width="833" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -325,7 +325,7 @@ DQ
                                                         <rect key="frame" x="358" y="18" width="393" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/Users/*user*/SBXBackups" drawsBackground="YES" id="4Np-t4-6Iw">
-                                                            <font key="font" metaFont="system" size="12"/>
+                                                            <font key="font" metaFont="cellTitle"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -336,7 +336,7 @@ DQ
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyl-uE-uZt">
                                             <rect key="frame" x="769" y="16" width="47" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="4DFBD346-E128-4D0F-93F5-35622DEF717E" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
+                                            <buttonCell key="cell" type="roundRect" title="Reset" bezelStyle="roundedRect" image="0FB89AF3-89E2-4748-8A50-687E27AFDB31" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rjK-8h-dUs">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -359,7 +359,7 @@ DQ
         <userDefaultsController representsSharedInstance="YES" id="g88-YY-a2s"/>
     </objects>
     <resources>
-        <image name="4DFBD346-E128-4D0F-93F5-35622DEF717E" width="1" height="1">
+        <image name="0FB89AF3-89E2-4748-8A50-687E27AFDB31" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -410,7 +410,7 @@ ALAAswC1ALcAuQC7AMAA1wDZANsJiwmQCZsJpAm3CbsJxgnPCdQJ3AnfCeQJ8wn3Cf4KBgoTChgKGgoc
 CiEKKQosCjEKOQo8Ck4KUQpWAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAClg
 </mutableData>
         </image>
-        <image name="583B378B-7287-458B-88DC-6873C647A559" width="1" height="1">
+        <image name="41B4C978-6B3D-4B27-A24D-6A96CD27BCE2" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
