@@ -2011,7 +2011,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     */
     
     // Save preview
-    [[CocosScene cocosScene] savePreviewToFile:[fileName stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+    NSString *filePath = [SBSettings miscFilesPathForFile:fileName];
+    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
     
     // Restore resolution and timeline
     /*
@@ -2040,7 +2041,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                 if (res.type == kCCBResTypeCCBFile)
                 {
                     [self openFile:res.filePath];
-                    [[CocosScene cocosScene] savePreviewToFile:[res.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+                    NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath];
+                    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
                     CCBDocument* oldDoc = [self findDocumentFromFile:res.filePath];
                     if (oldDoc)
                     {

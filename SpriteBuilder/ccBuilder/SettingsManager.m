@@ -7,7 +7,7 @@
 //
 
 #import "SettingsManager.h"
-
+#import "AppDelegate.h"
 
 @implementation SettingsManager
 
@@ -157,5 +157,11 @@
     self.storeMiscFilesAtPath = YES;
     self.miscFilesPath = [self defaultMiscFilesPath];
 }
+
+- (NSString *) miscFilesPathForFile:(NSString *) filePath {
+    NSString *projPath = [[AppDelegate appDelegate].projectSettings.projectPathDir stringByDeletingLastPathComponent];
+    return [filePath stringByReplacingOccurrencesOfString:projPath withString:self.miscFilesPath];
+}
+
 
 @end

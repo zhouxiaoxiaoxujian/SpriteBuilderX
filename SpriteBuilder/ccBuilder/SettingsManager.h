@@ -27,5 +27,6 @@
 - (void) save;
 - (void) resetBackupSettings;
 - (void) resetPathsSettings;
+- (NSString *) miscFilesPathForFile:(NSString *) filePath;
 
 @end

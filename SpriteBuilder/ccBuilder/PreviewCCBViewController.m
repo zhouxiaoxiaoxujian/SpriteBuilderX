@@ -11,12 +11,14 @@
 #import "RMResource.h"
 #import "ProjectSettings.h"
 #import "MiscConstants.h"
+#import "SettingsManager.h"
 
 @implementation PreviewCCBViewController
 
 - (void)setPreviewedResource:(RMResource *)previewedResource projectSettings:(ProjectSettings *)projectSettings
 {
-   NSString *imgPreviewPath = [previewedResource.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+   NSString *filePath = [SBSettings miscFilesPathForFile:previewedResource.filePath];
+   NSString *imgPreviewPath = [filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
    NSImage *img = [[NSImage alloc] initWithContentsOfFile:imgPreviewPath];
    if (!img)
    {

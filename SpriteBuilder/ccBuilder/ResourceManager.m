@@ -43,6 +43,7 @@
 #import "RMPackage.h"
 #import "ResourcePropertyKeys.h"
 #import "NotificationNames.h"
+#import "SettingsManager.h"
 
 @protocol ResourceManager_UndeclaredSelectors <NSObject>
 
@@ -1082,8 +1083,10 @@
         [fm moveItemAtPath:srcPath toPath:dstPath error:NULL];
         
         // Also attempt to move preview image (if any)
-        NSString* srcPathPre = [srcPath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
-        NSString* dstPathPre = [dstPath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
+        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
+        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
         [fm moveItemAtPath:srcPathPre toPath:dstPathPre error:NULL];
     }
     
@@ -1143,8 +1146,10 @@
 		[ResourceManager fileRename:srcPath  dstPath:dstPath error:NULL];
 
         // Also attempt to move preview image (if any)
-        NSString* srcPathPre = [srcPath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
-        NSString* dstPathPre = [dstPath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
+        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
+        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
 
 		[ResourceManager fileRename:srcPathPre dstPath:dstPathPre error:NULL];
     }
@@ -1184,7 +1189,8 @@
         [fm removeItemAtPath:res.filePath error:NULL];
         
         // Also attempt to remove preview image (if any)
-        NSString* filePathPre = [res.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath];
+        NSString* filePathPre = [filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
         [fm removeItemAtPath:filePathPre error:NULL];
     }
     
