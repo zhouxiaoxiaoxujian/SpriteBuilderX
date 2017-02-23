@@ -163,7 +163,13 @@
         return filePath;
     }
     NSString *projPath = [[AppDelegate appDelegate].projectSettings.projectPathDir stringByDeletingLastPathComponent];
-    return [filePath stringByReplacingOccurrencesOfString:projPath withString:self.miscFilesPath];
+    NSString *miscFilePath = [filePath stringByReplacingOccurrencesOfString:projPath withString:self.miscFilesPath];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:[miscFilePath stringByDeletingLastPathComponent]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+    return miscFilePath;
 }
 
 
