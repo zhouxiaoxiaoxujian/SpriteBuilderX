@@ -23,4 +23,10 @@
 @property (weak) IBOutlet NSStepper *stepAnchorX;
 @property (weak) IBOutlet NSStepper *stepAnchorY;
 
+@property (weak) IBOutlet NSButton *storeMiscFilesCheckBox;
+@property (weak) IBOutlet NSTextField *storeMiscFilesPathField;
+@property (weak) IBOutlet NSTextField *storeAlongProjectField;
+@property (weak) IBOutlet NSButton *selectMiscPathButton;
+
+
 @end

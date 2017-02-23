@@ -27,11 +27,43 @@
     return self;
 }
 
-+(NSString *) defaultBackupPath {
+-(NSString *) defaultSBFolderPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *productName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
-    NSString *defaultPath = [[[paths firstObject] stringByAppendingPathComponent:productName] stringByAppendingPathComponent:@"Backups"];
+    NSString *defaultPath = [[paths firstObject] stringByAppendingPathComponent:productName];
     return defaultPath;
+}
+
+-(NSString *) defaultBackupPath {
+    NSString *defaultPath = [[self defaultSBFolderPath] stringByAppendingPathComponent:@"Backups"];
+    return defaultPath;
+}
+
+-(NSString *) defaultMiscFilesPath {
+    NSString *defaultPath = [[self defaultSBFolderPath] stringByAppendingPathComponent:@"MiscFiles"];
+    return defaultPath;
+}
+
+- (void) setStoreMiscFilesAtPath:(BOOL)storeMiscFilesAtPath  {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:storeMiscFilesAtPath] forKey:@"storeMiscFilesAtPath"];
+}
+
+- (BOOL) storeMiscFilesAtPath {
+    id storeMiscFilesAtPath = [SBUserDefaults valueForKey:@"storeMiscFilesAtPath"];
+    if(!storeMiscFilesAtPath)
+        return YES;
+    return [storeMiscFilesAtPath boolValue];
+}
+
+- (void) setMiscFilesPath:(NSString *)miscFilesPath {
+    [SBUserDefaults setObject:miscFilesPath forKey:@"miscFilesPath"];
+}
+
+- (NSString*) miscFilesPath {
+    id miscFilesPath = [SBUserDefaults valueForKey:@"miscFilesPath"];
+    if(!miscFilesPath)
+        return [self defaultMiscFilesPath];
+    return miscFilesPath;
 }
 
 - (void) setBackupPath:(NSString *)backupPath
@@ -43,7 +75,7 @@
 {
     id backupPath = [SBUserDefaults valueForKey:@"backupPath"];
     if(!backupPath)
-        return [SettingsManager defaultBackupPath];
+        return [self defaultBackupPath];
     return backupPath;
 }
 
@@ -118,7 +150,12 @@
 {
     self.enableBackup = YES;
     self.backupInterval = 60;
-    self.backupPath = [SettingsManager defaultBackupPath];
+    self.backupPath = [self defaultBackupPath];
+}
+
+- (void) resetPathsSettings {
+    self.storeMiscFilesAtPath = YES;
+    self.miscFilesPath = [self defaultMiscFilesPath];
 }
 
 @end

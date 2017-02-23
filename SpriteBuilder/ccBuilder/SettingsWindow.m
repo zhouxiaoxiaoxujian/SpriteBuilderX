@@ -15,6 +15,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 @interface SettingsWindow ()
 {
     BOOL _enableBackup;
+    bool _storeMiscFilesAtPath;
 }
 
 @end
@@ -27,12 +28,20 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     if (self) {
         _enableBackup = SBSettings.enableBackup;
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        BOOL isDir;
-        if(![fileManager fileExistsAtPath: SBSettings.backupPath isDirectory:&isDir]) {
+        BOOL isDirBackup;
+        if(![fileManager fileExistsAtPath: SBSettings.backupPath isDirectory:&isDirBackup]) {
             if(![fileManager createDirectoryAtPath: SBSettings.backupPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
                 NSLog(@"Error: Create backups folder failed %@",  SBSettings.backupPath);
             }
         }
+        _storeMiscFilesAtPath = SBSettings.storeMiscFilesAtPath;
+        BOOL isDirMiscFile;
+        if(![fileManager fileExistsAtPath: SBSettings.miscFilesPath isDirectory:&isDirMiscFile]) {
+            if(![fileManager createDirectoryAtPath: SBSettings.miscFilesPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                NSLog(@"Error: Create miscFilesPath folder failed %@",  SBSettings.miscFilesPath);
+            }
+        }
+        
     }
     
     return self;
@@ -42,6 +51,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [super windowDidLoad];
     [self updateUIValues];
     [self updateBackupButtons];
+    [self updatePathsButtons];
     [self.backupPathField.window makeFirstResponder:nil];
     [self.settingsTabView selectTabViewItemAtIndex:SBSettings.selectedSettingsTab];
 }
@@ -60,12 +70,28 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     }
 }
 
+-(void) updatePathsButtons {
+    if (_storeMiscFilesAtPath) {
+        self.storeMiscFilesCheckBox.state = NSOnState;
+        self.storeMiscFilesPathField.hidden = NO;
+        self.storeAlongProjectField.hidden = YES;
+        self.selectMiscPathButton.enabled = YES;
+    } else {
+        self.storeMiscFilesCheckBox.state = NSOffState;
+        self.storeMiscFilesPathField.hidden = YES;
+        self.storeAlongProjectField.hidden = NO;
+        self.selectMiscPathButton.enabled = NO;
+    }
+}
+
 -(void) updateUIValues {
     [self.backupIntervalPopUpButton selectItemWithTag: SBSettings.backupInterval];
     [self.backupPathField setStringValue: SBSettings.backupPath];
     
     self.stepAnchorX.floatValue = SBSettings.defaultSpriteAnchorX;
     self.stepAnchorY.floatValue = SBSettings.defaultSpriteAnchorY;
+    
+    self.storeMiscFilesPathField.stringValue = SBSettings.miscFilesPath;
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
@@ -84,6 +110,24 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     [self updateBackupButtons];
 }
 
+- (IBAction)resetPathsSettings:(NSButton *)sender {
+    [SBSettings resetPathsSettings];
+    _storeMiscFilesAtPath = SBSettings.storeMiscFilesAtPath;
+    [self updateUIValues];
+    [self updatePathsButtons];
+}
+
+
+- (IBAction)storeMiscFiles:(NSButton *)sender {
+    if (sender.state == NSOnState) {
+        _storeMiscFilesAtPath = YES;
+    } else {
+        _storeMiscFilesAtPath = NO;
+    }
+    [self updatePathsButtons];
+}
+
+
 - (IBAction)acceptSheet:(id)sender {
     SBSettings.backupInterval = self.backupIntervalPopUpButton.selectedTag;
     SBSettings.enableBackup = _enableBackup;
@@ -91,6 +135,9 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     SBSettings.selectedSettingsTab = [self.settingsTabView.selectedTabViewItem.identifier intValue];
     SBSettings.defaultSpriteAnchorX = self.stepAnchorX.floatValue;
     SBSettings.defaultSpriteAnchorY = self.stepAnchorY.floatValue;
+    SBSettings.storeMiscFilesAtPath = _storeMiscFilesAtPath;
+    SBSettings.miscFilesPath = self.storeMiscFilesPathField.stringValue;
+    
     [SBSettings save];
     [super acceptSheet:sender];
 }
@@ -98,6 +145,13 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
 
 - (IBAction)cancelSheet:(id)sender {
     [super cancelSheet:sender];
+}
+
+- (IBAction)selectMiscFilesDirectory:(id)sender {
+    
+    [self selectPublishCurrentPath:self.storeMiscFilesPathField.stringValue dirSetterBlock:^(NSString *directoryPath) {
+        self.storeMiscFilesPathField.stringValue = directoryPath;
+    }];
 }
 
 - (IBAction)selectBackupsDirectory:(id)sender {

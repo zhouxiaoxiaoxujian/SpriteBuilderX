@@ -20,8 +20,12 @@
 @property (nonatomic,assign) float defaultSpriteAnchorX;
 @property (nonatomic,assign) float defaultSpriteAnchorY;
 
+@property (nonatomic,assign) BOOL storeMiscFilesAtPath;
+@property (nonatomic,strong) NSString *miscFilesPath;
+
 + (instancetype) instance;
-- (void)save;
-- (void)resetBackupSettings;
+- (void) save;
+- (void) resetBackupSettings;
+- (void) resetPathsSettings;
 
 @end
