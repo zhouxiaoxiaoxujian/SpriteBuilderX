@@ -217,27 +217,27 @@
     [self needsLayout];
 }
 
-- (void)setHandleLeft:(float)marginLeft
+- (void)setHandleMarginLeft:(float)marginLeft
 {
     marginLeft = clampf(marginLeft, 0, 1);
     
-    if(self.marginRight + marginLeft >= 1)
+    if(self.handleMarginRight + marginLeft >= 1)
     {
         [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
-        [[InspectorController sharedController] refreshProperty:@"marginLeft"];
+        [[InspectorController sharedController] refreshProperty:@"handleMarginLeft"];
         return;
     }
     _handleMarginLeft = marginLeft;
     [_handle setMarginLeft:marginLeft];
 }
 
-- (void)setHandleRight:(float)marginRight
+- (void)setHandleMarginRight:(float)marginRight
 {
     marginRight = clampf(marginRight, 0, 1);
-    if(self.marginLeft + marginRight >= 1)
+    if(self.handleMarginLeft + marginRight >= 1)
     {
         [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
-        [[InspectorController sharedController] refreshProperty:@"marginRight"];
+        [[InspectorController sharedController] refreshProperty:@"handleMarginRight"];
         
         return;
     }
@@ -249,10 +249,10 @@
 - (void)setHandleMarginTop:(float)marginTop
 {
     marginTop = clampf(marginTop, 0, 1);
-    if(self.marginBottom + marginTop >= 1)
+    if(self.handleMarginBottom + marginTop >= 1)
     {
         [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
-        [[InspectorController sharedController] refreshProperty:@"marginTop"];
+        [[InspectorController sharedController] refreshProperty:@"handleMarginTop"];
         return;
     }
     
@@ -261,13 +261,13 @@
     
 }
 
-- (void)setHandleBottom:(float)marginBottom
+- (void)setHandleMarginBottom:(float)marginBottom
 {
     marginBottom = clampf(marginBottom, 0, 1);
-    if(self.marginTop + marginBottom >= 1)
+    if(self.handleMarginTop + marginBottom >= 1)
     {
         [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
-        [[InspectorController sharedController] refreshProperty:@"marginBottom"];
+        [[InspectorController sharedController] refreshProperty:@"handleMarginBottom"];
         return;
     }
     
