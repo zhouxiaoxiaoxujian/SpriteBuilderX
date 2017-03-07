@@ -17,6 +17,91 @@
 @implementation CCBPSprite9Slice
 
 
+
+- (NSArray*) keysForwardedToBackground
+{
+    return @[@"blendFunc",
+             @"spriteFrame",
+             @"renderingType",
+             @"flipX",
+             @"flipY"];
+}
+
+- (void) setValue:(id)value forKey:(NSString *)key
+{
+    if ([[self keysForwardedToBackground] containsObject:key])
+    {
+        [_background setValue:value forKey:key];
+        [self needsLayout];
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
+- (id) valueForKey:(NSString *)key
+{
+    if ([[self keysForwardedToBackground] containsObject:key])
+    {
+        return [_background valueForKey:key];
+    }
+    return [super valueForKey:key];
+}
+
+-(id) init
+{
+    self = [super init];
+    if(self)
+    {
+        _background = [[CCBPSprite9SliceBase alloc] init];
+        _background.positionType = CCPositionTypeNormalized;
+        _background.anchorPoint = CGPointMake(0.5f, 0.5f);
+        _background.position = CGPointMake(0.5f, 0.5f);
+        [self addProtectedChild:_background];
+        [super needsLayout];
+    }
+    return self;
+}
+
+- (id)initWithTexture:(CCTexture *)texture rect:(CGRect)rect rotated:(BOOL)rotated
+{
+    self = [super init];
+    if(self)
+    {
+        _background = [[CCBPSprite9SliceBase alloc] initWithTexture:texture rect:rect rotated:rotated];
+        _background.positionType = CCPositionTypeNormalized;
+        _background.anchorPoint = CGPointMake(0.5f, 0.5f);
+        _background.position = CGPointMake(0.5f, 0.5f);
+        [self addProtectedChild:_background];
+    }
+    return self;
+}
+
+- (void) layout
+{
+    CGSize contentSize = [self convertContentSizeToPoints:self.contentSize type:self.contentSizeType];
+    [_background setContentSize:CGSizeMake(contentSize.width, contentSize.height)];
+    [super layout];
+}
+
+- (void) setContentSize:(CGSize) contentSize
+{
+    [super setContentSize:contentSize];
+    [self needsLayout];
+}
+
+- (void) setContentSizeType:(CCSizeType)contentSizeType
+{
+    [super setContentSizeType:contentSizeType];
+    [self needsLayout];
+}
+
+- (void) setImageScale:(CGFloat) imageScale
+{
+    _background.scaleX = imageScale;
+    _background.scaleY = imageScale;
+    [self needsLayout];
+}
+
 - (void)setMarginLeft:(float)marginLeft
 {
     marginLeft = clampf(marginLeft, 0, 1);
@@ -27,8 +112,12 @@
         [[InspectorController sharedController] refreshProperty:@"marginLeft"];
         return;
     }
-    
-    [super setMarginLeft:marginLeft];
+    [_background setMarginLeft:marginLeft];
+}
+
+- (float)marginLeft
+{
+    return _background.marginLeft;
 }
 
 - (void)setMarginRight:(float)marginRight
@@ -41,7 +130,13 @@
         
         return;
     }
-    [super setMarginRight:marginRight];
+    
+    [_background setMarginRight:marginRight];
+}
+
+- (float)marginRight
+{
+    return _background.marginRight;
 }
 
 - (void)setMarginTop:(float)marginTop
@@ -53,7 +148,14 @@
         [[InspectorController sharedController] refreshProperty:@"marginTop"];
         return;
     }
-    [super setMarginTop:marginTop];
+    
+    [_background setMarginTop:marginTop];
+    
+}
+
+- (float)marginTop
+{
+    return _background.marginTop;
 }
 
 - (void)setMarginBottom:(float)marginBottom
@@ -66,14 +168,17 @@
         return;
     }
     
-    [super setMarginBottom:marginBottom];
+    [_background setMarginBottom:marginBottom];
 }
 
-// ---------------------------------------------------------------------
+- (float)marginBottom
+{
+    return _background.marginBottom;
+}
 
 -(void)onSetSizeFromTexture
 {
-    CCSpriteFrame * spriteFrame = self.spriteFrame;
+    CCSpriteFrame * spriteFrame = _background.spriteFrame;
     if(spriteFrame == nil)
         return;
     
@@ -85,6 +190,7 @@
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
     [[InspectorController sharedController] refreshProperty:@"contentSize"];
+    [super needsLayout];
 }
 
 @end

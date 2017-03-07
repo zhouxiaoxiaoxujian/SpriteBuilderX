@@ -111,6 +111,21 @@
 			<true/>
 			<key>defaultSerialization</key>
 			<array>
+				<false/>
+				<false/>
+			</array>
+			<key>displayName</key>
+			<string></string>
+			<key>type</key>
+			<string>Flip</string>
+			<key>name</key>
+			<string>flip</string>
+		</dict>
+		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<array>
 				<integer>1</integer>
 				<integer>771</integer>
 			</array>

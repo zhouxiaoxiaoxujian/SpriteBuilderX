@@ -34,7 +34,9 @@
 {
     return @[@"blendFunc",
              @"spriteFrame",
-             @"renderingType"];
+             @"renderingType",
+             @"flipX",
+             @"flipY"];
 }
 
 - (void) setValue:(id)value forKey:(NSString *)key

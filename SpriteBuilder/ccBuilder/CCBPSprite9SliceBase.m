@@ -11,6 +11,112 @@
 #import "CCTexture_Private.h"
 #import "CCNode_Private.h"
 
+
+@interface TiledSprite : CCSprite
+{
+    int width;
+    int height;
+}
+
+- (id) initWithSprite:(CCSprite*)p_sprite width:(float)p_width height:(float)p_height;
+
+@end
+
+@implementation TiledSprite
+
+- (id) initWithSprite:(CCSprite *)p_sprite width:(float)p_width height:(float)p_height
+{
+    if (self = [super init])
+    {
+        // Only bother doing anything if the sizes are positive
+        if (p_width > 0 && p_height > 0)
+        {
+            CGRect spriteBounds = p_sprite.textureRect;
+            float sourceX = spriteBounds.origin.x;
+            float sourceY = spriteBounds.origin.y;
+            float sourceWidth = spriteBounds.size.width;
+            float sourceHeight = spriteBounds.size.height;
+            CCTexture* texture = p_sprite.texture;
+            
+            // Case 1: both width and height are smaller than source sprite, just clip
+            if (p_width <= sourceWidth && p_height <= sourceHeight)
+            {
+                CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY + sourceHeight - p_height, p_width, p_height)];
+                sprite.anchorPoint = ccp(0, 0);
+                [self addChild:sprite];
+            }
+            // Case 2: only width is larger than source sprite
+            else if (p_width > sourceWidth && p_height <= sourceHeight)
+            {
+                // Stamp sideways until we can
+                float ix = 0;
+                while (ix < p_width - sourceWidth)
+                {
+                    CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY + sourceHeight - p_height, sourceWidth, p_height)];
+                    sprite.anchorPoint = ccp(0, 0);
+                    sprite.position = ccp(ix, 0);
+                    [self addChild:sprite];
+                    
+                    ix += sourceWidth;
+                }
+                
+                // Stamp the last one
+                CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY + sourceHeight - p_height, p_width - ix, p_height)];
+                sprite.anchorPoint = ccp(0, 0);
+                sprite.position = ccp(ix, 0);
+                [self addChild:sprite];
+            }
+            // Case 3: only height is larger than source sprite
+            else if (p_height >= sourceHeight && p_width <= sourceWidth)
+            {
+                // Stamp down until we can
+                float iy = 0;
+                while (iy < p_height - sourceHeight)
+                {
+                    CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY, p_width, sourceHeight)];
+                    sprite.anchorPoint = ccp(0, 0);
+                    sprite.position = ccp(0, iy);
+                    [self addChild:sprite];
+                    
+                    iy += sourceHeight;
+                }
+                
+                // Stamp the last one
+                float remainingHeight = p_height - iy;
+                CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY + sourceHeight - remainingHeight, p_width, remainingHeight)];
+                sprite.anchorPoint = ccp(0, 0);
+                sprite.position = ccp(0, iy);
+                [self addChild:sprite];
+            }
+            // Case 4: both width and height are larger than source sprite (Composite together several Case 2's, as needed)
+            else
+            {
+                // Stamp down until we can
+                float iy = 0;
+                while (iy < p_height - sourceHeight)
+                {
+                    TiledSprite* sprite = [[TiledSprite alloc] initWithSprite:p_sprite width:p_width height:sourceHeight];
+                    sprite.anchorPoint = ccp(0, 0);
+                    sprite.position = ccp(0, iy);
+                    [self addChild:sprite];
+                    
+                    iy += sourceHeight;
+                }
+                
+                // Stamp the last one
+                TiledSprite* sprite = [[TiledSprite alloc] initWithSprite:p_sprite width:p_width height:p_height - iy];
+                sprite.anchorPoint = ccp(0, 0);
+                sprite.position = ccp(0, iy);
+                [self addChild:sprite];
+            }
+        }
+    }
+    
+    return self;
+}
+
+@end
+
 // ---------------------------------------------------------------------
 
 static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
@@ -20,6 +126,7 @@ static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
 @implementation CCBPSprite9SliceBase
 {
     CGSize _originalContentSize;
+    BOOL _isTextureDirty;
 }
 
 // ---------------------------------------------------------------------
@@ -32,6 +139,7 @@ static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
     NSAssert(self != nil, @"Unable to create class");
     
     _originalContentSize = self.contentSizeInPoints;
+    _isTextureDirty = YES;
     
     // initialize new parts in 9slice
     self.margin = CCSprite9SliceMarginDefault;
@@ -46,6 +154,7 @@ static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
 
 - (void)setTextureRect:(CGRect)rect rotated:(BOOL)rotated untrimmedSize:(CGSize)untrimmedSize
 {
+    _isTextureDirty = YES;
     CGSize oldContentSize = self.contentSize;
     CCSizeType oldContentSizeType = self.contentSizeType;
     
@@ -59,6 +168,30 @@ static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
         self.contentSizeType = oldContentSizeType;
         self.contentSize = oldContentSize;
     }
+}
+
+-(void)setTexture:(CCTexture *)texture
+{
+    _isTextureDirty = YES;
+    [super setTexture:texture];
+}
+
+-(void)setSpriteFrame:(CCSpriteFrame *)spriteFrame
+{
+    _isTextureDirty = YES;
+    [super setSpriteFrame:spriteFrame];
+}
+
+-(void)setScaleX:(float)scaleX
+{
+    _isTextureDirty = YES;
+    [super setScaleX:scaleX];
+}
+
+-(void)setScaleY:(float)scaleY
+{
+    _isTextureDirty = YES;
+    [super setScaleY:scaleY];
 }
 
 // ---------------------------------------------------------------------
@@ -91,6 +224,40 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
                           basisY.x, basisY.y, 0.0f,
                           origin.x, origin.y, 1.0f
                           );
+}
+
+-(void)setRenderingType:(CCBPSprite9SliceRenderingType)renderingType
+{
+    _renderingType = renderingType;
+    _isTextureDirty = YES;
+}
+
+- (void) visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
+{
+    if (_isTextureDirty)
+    {
+        [self removeAllChildren];
+        CCNode *baseNode = [[CCNode alloc] init];
+        baseNode.anchorPoint = ccp(0, 0);
+        baseNode.position = ccp(self.flipX?1:0, self.flipY?1:0);
+        baseNode.positionType = CCPositionTypeNormalized;
+        [self addChild:baseNode];
+        if(self.flipX)
+        {
+            [baseNode setScaleX:-1];
+        }
+        if(self.flipY)
+            [baseNode setScaleY:-1];
+        if(_renderingType == CCBPSprite9SliceRenderingTypeTiled)
+        {
+            TiledSprite* croppedSprite = [[TiledSprite alloc] initWithSprite:self width:self.contentSizeInPoints.width height:self.contentSizeInPoints.height];
+            croppedSprite.anchorPoint = ccp(0, 0);
+            croppedSprite.position = ccp(0, 0);
+            [baseNode addChild:croppedSprite];
+        }
+    }
+    
+    [super visit:renderer parentTransform:parentTransform];
 }
 
 // TODO This is sort of brute force. Could probably use some optimization after profiling.
@@ -188,6 +355,7 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
             
         case CCBPSprite9SliceRenderingTypeTiled:
             {
+                /*
                 if(self.texture)
                 {
 
@@ -199,7 +367,7 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
                     CGSize size = self.contentSizeInPoints;
                     [self setTextureRect: CGRectMake(0.0, 0.0, size.width, size.height)];
                 }
-                [super draw:renderer transform:transform];
+                [super draw:renderer transform:transform];*/
             }
             return;
     }
