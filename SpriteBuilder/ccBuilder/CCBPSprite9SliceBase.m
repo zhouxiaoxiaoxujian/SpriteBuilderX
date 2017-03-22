@@ -255,6 +255,15 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
             croppedSprite.position = ccp(0, 0);
             [baseNode addChild:croppedSprite];
         }
+        else if(_renderingType == CCBPSprite9SliceRenderingTypeSimple || (_marginTop == 0  && _marginLeft == 0 && _marginRight == 0 && _marginBottom == 0))
+        {
+            CCSprite* croppedSprite = [[CCSprite alloc] initWithSpriteFrame:self.spriteFrame];
+            croppedSprite.anchorPoint = ccp(0, 0);
+            croppedSprite.position = ccp(0, 0);
+            croppedSprite.scaleX = self.contentSize.width / croppedSprite.contentSize.width;
+            croppedSprite.scaleY = self.contentSize.height / croppedSprite.contentSize.height;
+            [baseNode addChild:croppedSprite];
+        }
     }
     
     [super visit:renderer parentTransform:parentTransform];
@@ -269,9 +278,11 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
     if(_originalContentSize.width == 0 && _originalContentSize.height == 0) return;
     
     switch (_renderingType) {
-        case CCBPSprite9SliceRenderingTypeSimple:
         case CCBPSprite9SliceRenderingTypeSlice:
             {
+                if(_marginTop == 0  && _marginLeft == 0 && _marginRight == 0 && _marginBottom == 0)
+                    return;
+                
                 if(self.texture)
                 {
                     ccTexParams params;
@@ -352,7 +363,7 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
                 }
             }
             return;
-            
+        case CCBPSprite9SliceRenderingTypeSimple:
         case CCBPSprite9SliceRenderingTypeTiled:
             {
                 /*
@@ -391,6 +402,7 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
 
 - (void)setMargin:(float)margin
 {
+    _isTextureDirty = YES;
     margin = clampf(margin, 0, 0.5);
     _marginLeft = margin;
     _marginRight = margin;
@@ -402,21 +414,25 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
 
 - (void)setMarginLeft:(float)marginLeft
 {
+    _isTextureDirty = YES;
     _marginLeft = clampf(marginLeft, 0, 1);
 }
 
 - (void)setMarginRight:(float)marginRight
 {
+    _isTextureDirty = YES;
     _marginRight = clampf(marginRight, 0, 1);
 }
 
 - (void)setMarginTop:(float)marginTop
 {
+    _isTextureDirty = YES;
     _marginTop = clampf(marginTop, 0, 1);
 }
 
 - (void)setMarginBottom:(float)marginBottom
 {
+    _isTextureDirty = YES;
     _marginBottom = clampf(marginBottom, 0, 1);
 }
 
