@@ -44,6 +44,8 @@
                 CCSprite* sprite = [CCSprite spriteWithTexture:texture rect:CGRectMake(sourceX, sourceY + sourceHeight - p_height, p_width, p_height)];
                 sprite.anchorPoint = ccp(0, 0);
                 [self addChild:sprite];
+                sprite.cascadeOpacityEnabled = YES;
+                sprite.cascadeColorEnabled = YES;
             }
             // Case 2: only width is larger than source sprite
             else if (p_width > sourceWidth && p_height <= sourceHeight)
@@ -56,6 +58,8 @@
                     sprite.anchorPoint = ccp(0, 0);
                     sprite.position = ccp(ix, 0);
                     [self addChild:sprite];
+                    sprite.cascadeOpacityEnabled = YES;
+                    sprite.cascadeColorEnabled = YES;
                     
                     ix += sourceWidth;
                 }
@@ -65,6 +69,8 @@
                 sprite.anchorPoint = ccp(0, 0);
                 sprite.position = ccp(ix, 0);
                 [self addChild:sprite];
+                sprite.cascadeOpacityEnabled = YES;
+                sprite.cascadeColorEnabled = YES;
             }
             // Case 3: only height is larger than source sprite
             else if (p_height >= sourceHeight && p_width <= sourceWidth)
@@ -77,6 +83,8 @@
                     sprite.anchorPoint = ccp(0, 0);
                     sprite.position = ccp(0, iy);
                     [self addChild:sprite];
+                    sprite.cascadeOpacityEnabled = YES;
+                    sprite.cascadeColorEnabled = YES;
                     
                     iy += sourceHeight;
                 }
@@ -87,6 +95,8 @@
                 sprite.anchorPoint = ccp(0, 0);
                 sprite.position = ccp(0, iy);
                 [self addChild:sprite];
+                sprite.cascadeOpacityEnabled = YES;
+                sprite.cascadeColorEnabled = YES;
             }
             // Case 4: both width and height are larger than source sprite (Composite together several Case 2's, as needed)
             else
@@ -99,6 +109,8 @@
                     sprite.anchorPoint = ccp(0, 0);
                     sprite.position = ccp(0, iy);
                     [self addChild:sprite];
+                    sprite.cascadeOpacityEnabled = YES;
+                    sprite.cascadeColorEnabled = YES;
                     
                     iy += sourceHeight;
                 }
@@ -108,6 +120,8 @@
                 sprite.anchorPoint = ccp(0, 0);
                 sprite.position = ccp(0, iy);
                 [self addChild:sprite];
+                sprite.cascadeOpacityEnabled = YES;
+                sprite.cascadeColorEnabled = YES;
             }
         }
     }
@@ -143,6 +157,9 @@ static const float CCSprite9SliceMarginDefault         = 1.0f/3.0f;
     
     // initialize new parts in 9slice
     self.margin = CCSprite9SliceMarginDefault;
+    
+    self.cascadeColorEnabled = YES;
+    self.cascadeOpacityEnabled = YES;
     
     // done
     return(self);
@@ -254,7 +271,10 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
             croppedSprite.anchorPoint = ccp(0, 0);
             croppedSprite.position = ccp(0, 0);
             [baseNode addChild:croppedSprite];
+            croppedSprite.cascadeOpacityEnabled = YES;
+            croppedSprite.cascadeColorEnabled = YES;
         }
+        /*
         else if(_renderingType == CCBPSprite9SliceRenderingTypeSimple || (_marginTop == 0  && _marginLeft == 0 && _marginRight == 0 && _marginBottom == 0))
         {
             CCSprite* croppedSprite = [[CCSprite alloc] initWithSpriteFrame:self.spriteFrame];
@@ -263,9 +283,11 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
             croppedSprite.scaleX = self.contentSize.width / croppedSprite.contentSize.width;
             croppedSprite.scaleY = self.contentSize.height / croppedSprite.contentSize.height;
             [baseNode addChild:croppedSprite];
-        }
+        }*/
+        _isTextureDirty = NO;
+        baseNode.cascadeColorEnabled = YES;
+        baseNode.cascadeOpacityEnabled = YES;
     }
-    
     [super visit:renderer parentTransform:parentTransform];
 }
 
@@ -279,20 +301,10 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
     
     switch (_renderingType) {
         case CCBPSprite9SliceRenderingTypeSlice:
+        case CCBPSprite9SliceRenderingTypeSimple:
             {
-                if(_marginTop == 0  && _marginLeft == 0 && _marginRight == 0 && _marginBottom == 0)
-                    return;
-                
-                if(self.texture)
-                {
-                    ccTexParams params;
-                    params.minFilter = GL_LINEAR;
-                    params.magFilter = GL_LINEAR;
-                    params.wrapS = GL_CLAMP_TO_EDGE;
-                    params.wrapT = GL_CLAMP_TO_EDGE;
-                    [self.texture setTexParameters:&params];
-                    [self setTextureRect:self.spriteFrame.rect rotated:self.spriteFrame.rotated untrimmedSize:self.spriteFrame.originalSize];
-                }
+                //if(_marginTop == 0  && _marginLeft == 0 && _marginRight == 0 && _marginBottom == 0)
+                //    return;
                 
                 CGSize size = self.contentSizeInPoints;
                 CGSize rectSize = self.textureRect.size;
@@ -363,23 +375,8 @@ TexCoordInterpolationMatrix(const CCSpriteVertexes *verts)
                 }
             }
             return;
-        case CCBPSprite9SliceRenderingTypeSimple:
+        
         case CCBPSprite9SliceRenderingTypeTiled:
-            {
-                /*
-                if(self.texture)
-                {
-
-                    glBindTexture(GL_TEXTURE_2D, self.texture.name );
-                    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-                    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-                    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
-                    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-                    CGSize size = self.contentSizeInPoints;
-                    [self setTextureRect: CGRectMake(0.0, 0.0, size.width, size.height)];
-                }
-                [super draw:renderer transform:transform];*/
-            }
             return;
     }
     
