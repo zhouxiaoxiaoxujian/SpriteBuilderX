@@ -2012,7 +2012,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     // Save preview
     NSString *filePath = [SBSettings miscFilesPathForFile:fileName];
-    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:MISC_FILE_PPNG]];
     
     // Restore resolution and timeline
     /*
@@ -2042,7 +2042,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                 {
                     [self openFile:res.filePath];
                     NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath];
-                    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX]];
+                    [[CocosScene cocosScene] savePreviewToFile:[filePath stringByAppendingPathExtension:MISC_FILE_PPNG]];
                     CCBDocument* oldDoc = [self findDocumentFromFile:res.filePath];
                     if (oldDoc)
                     {
@@ -2107,6 +2107,34 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     for(RMDirectory *dir in rm.activeDirectories)
     {
         [self refreshDirectory:dir];
+    }
+}
+
+- (IBAction)moveMiscFiles:(id)sender {
+    ResourceManager* rm = [ResourceManager sharedManager];
+    for(RMDirectory *dir in rm.activeDirectories) {
+        [self moveMiscFilesInDirectory:dir];
+    }
+}
+
+- (void) moveMiscFilesInDirectory:(RMDirectory*) dir {
+    NSArray* arr = [dir resourcesForType:kCCBResTypeCCBFile];
+    
+    for (id item in arr) {
+        if ([item isKindOfClass:[RMResource class]]) {
+            @autoreleasepool {
+                RMResource* res = item;
+                if (res.type == kCCBResTypeCCBFile) {
+                    CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath
+                                                                   andProjectSettings:projectSettings];
+                    [newDoc copyMiscFile];
+                }
+                else if (res.type == kCCBResTypeDirectory) {
+                    RMDirectory* subDir = res.data;
+                    [self moveMiscFilesInDirectory:subDir];
+                }
+            }
+        }
     }
 }
 

@@ -225,7 +225,7 @@
         NSFileManager* fm = [NSFileManager defaultManager];
 
         NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath];
-        NSString* previewPath = [filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath]) return previewPath;
         else return NULL;
     }
@@ -257,7 +257,7 @@
         NSFileManager* fm = [NSFileManager defaultManager];
 
         NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath];
-        NSString* previewPath = [filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath])
         {
             NSDate* fileDate = [CCBFileUtil modificationDateForFile:previewPath];

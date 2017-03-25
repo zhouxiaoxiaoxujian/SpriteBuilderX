@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -195,6 +195,7 @@
                                     <action selector="menuCleanCacheDirectories:" target="494" id="1524"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="xiE-8l-quZ"/>
                             <menuItem title="Recreate Previews" id="u7k-9Q-dC9">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -207,9 +208,13 @@
                                     <action selector="refreshAllFiles:" target="494" id="5ep-4P-73I"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" hidden="YES" id="74">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            <menuItem title="Move Misc Files" id="IFc-KT-ZEM">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="moveMiscFiles:" target="494" id="jjW-fS-hcz"/>
+                                </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="74"/>
                             <menuItem title="Project Settings..." keyEquivalent=";" id="ViA-1x-YYp">
                                 <connections>
                                     <action selector="menuProjectSettings:" target="494" id="jXs-Vg-CcF"/>

@@ -1085,8 +1085,8 @@
         // Also attempt to move preview image (if any)
         NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
         NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
-        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
-        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:MISC_FILE_PPNG];
+        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:MISC_FILE_PPNG];
         [fm moveItemAtPath:srcPathPre toPath:dstPathPre error:NULL];
     }
     
@@ -1148,8 +1148,8 @@
         // Also attempt to move preview image (if any)
         NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
         NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
-        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
-        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:MISC_FILE_PPNG];
+        NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:MISC_FILE_PPNG];
 
 		[ResourceManager fileRename:srcPathPre dstPath:dstPathPre error:NULL];
     }
@@ -1190,7 +1190,7 @@
         
         // Also attempt to remove preview image (if any)
         NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath];
-        NSString* filePathPre = [filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString* filePathPre = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [fm removeItemAtPath:filePathPre error:NULL];
     }
     

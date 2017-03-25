@@ -28,6 +28,7 @@
 #import "ProjectSettings.h"
 #import "CCBFileUtil.h"
 #import "SettingsManager.h"
+#import "MiscConstants.h"
 
 @implementation CCBDocument
 
@@ -92,7 +93,7 @@
         else
         {
             NSString *extraDataPath = [[SBSettings.storeMiscFilesAtPath ? [self miscFilesPath] : filePath
-                                        stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
+                                        stringByDeletingPathExtension] stringByAppendingPathExtension:MISC_FILE_SBINFO];
             dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
             extraDataDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:extraDataPath];
         }
@@ -170,13 +171,31 @@
         [self createDirectoryForPath:[self miscFilesPath]];
     }
     NSString *extraDataPath = [[SBSettings.storeMiscFilesAtPath ? [self miscFilesPath] : _filePath
-                                stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbinfo"];
+                                stringByDeletingPathExtension] stringByAppendingPathExtension:MISC_FILE_SBINFO];
     return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
 }
 
 -(NSString *) miscFilesPath {
     NSString *projPath = [self.projectSettings.projectPathDir stringByDeletingLastPathComponent];
     return [self.filePath stringByReplacingOccurrencesOfString:projPath withString:SBSettings.miscFilesPath];
+}
+
+-(void) copyMiscFile {
+    //sbinfo
+    NSString *oldMiscFilePath = [[_filePath stringByDeletingPathExtension] stringByAppendingPathExtension:MISC_FILE_SBINFO];
+    NSString *newMiscFilePath = [[[self miscFilesPath] stringByDeletingPathExtension] stringByAppendingPathExtension:MISC_FILE_SBINFO];
+    [self createDirectoryForPath:newMiscFilePath];
+    [[NSFileManager defaultManager] copyItemAtPath:oldMiscFilePath
+                                            toPath:newMiscFilePath
+                                             error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:oldMiscFilePath error:nil];
+    //ppng
+    NSString *oldPpngFilePath = [_filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
+    NSString *newPpngFilePath = [[self miscFilesPath] stringByAppendingPathExtension:MISC_FILE_PPNG];
+    [[NSFileManager defaultManager] copyItemAtPath:oldPpngFilePath
+                                            toPath:newPpngFilePath
+                                             error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:oldPpngFilePath error:nil];
 }
 
 -(NSString *) backupPath {

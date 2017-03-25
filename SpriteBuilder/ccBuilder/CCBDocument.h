@@ -61,4 +61,7 @@
 - (BOOL)store;
 - (BOOL)storeBackup;
 - (BOOL)removeBackup;
+
+-(void) copyMiscFile;
+
 @end
