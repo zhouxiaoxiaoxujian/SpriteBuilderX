@@ -375,6 +375,7 @@
              @"outlineWidth",
              @"shadowColor",
              @"shadowBlurRadius",
+             @"shadowOffsetInPoints",
              @"shadowOffset",
              @"shadowOffsetType",
              @"horizontalAlignment",
