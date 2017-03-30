@@ -1083,7 +1083,7 @@ typedef enum
         i++;
     }
     ResolutionSetting *res = [currentDocument.resolutions objectAtIndex:currentDocument.currentResolution];
-    selectedDevice.stringValue = res.name;
+    selectedDevice.stringValue = [NSString stringWithFormat:@"%@ (%dx%d)",res.name, res.width,res.height];
 }
 
 - (void) updateTimelineMenu
