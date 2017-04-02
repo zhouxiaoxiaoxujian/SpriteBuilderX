@@ -205,23 +205,17 @@ int main(int argc, char *argv[])
             }
             [[ResourceManager sharedManager] setActiveDirectories:[project absoluteResourcePaths]];
             
-            if(platform)
-            {
+            project.publishPlatform = platform?platform:@"Default";
+            
+            if(platform && ![platform isEqualToString:@"All"]) {
                 BOOL found = NO;
-                for(PlatformSettings *platfromSettings in project.platformsSettings)
-                {
-                    if([platfromSettings.name isEqualToString:platform])
-                    {
+                for(PlatformSettings *platfromSettings in project.platformsSettings) {
+                    if([platfromSettings.name isEqualToString:platform]) {
                         found = YES;
-                        platfromSettings.publishEnabled = YES;
-                    }
-                    else
-                    {
-                        platfromSettings.publishEnabled = NO;
+                        break;
                     }
                 }
-                if(!found)
-                {
+                if(!found) {
                     fprintf(stdout, "platform name %s not foubd", [platform UTF8String]);
                     return EXIT_FAILURE;
                 }

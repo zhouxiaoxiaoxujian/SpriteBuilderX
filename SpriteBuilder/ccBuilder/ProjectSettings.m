@@ -66,6 +66,7 @@
     self.resourceAutoScaleFactor = 4;
     
     self.publishEnvironment = kCCBPublishEnvironmentDevelop;
+    self.publishPlatform = @"Default";
     
     self.tabletPositionScaleFactor = 2.0f;
 
@@ -211,7 +212,7 @@
     
     self.tabletPositionScaleFactor = 2.0f;
 
-    self.publishEnvironment = (CCBPublishEnvironment) [[dict objectForKey:@"publishEnvironment"] integerValue];
+    //self.publishEnvironment = (CCBPublishEnvironment) [[dict objectForKey:@"publishEnvironment"] integerValue];
 
     self.resourceProperties = [[dict objectForKey:@"resourceProperties"] mutableCopy];
 
@@ -278,7 +279,7 @@
     dict[@"defaultOrientation"] = @(_defaultOrientation);
     dict[@"deviceScaling"] = @(_deviceScaling);
 
-    dict[@"publishEnvironment"] = @(_publishEnvironment);
+    //dict[@"publishEnvironment"] = @(_publishEnvironment);
     
     NSMutableArray *temp = [NSMutableArray array];
     for (id object in _platformsSettings) {

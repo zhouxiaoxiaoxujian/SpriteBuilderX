@@ -62,9 +62,23 @@
     [_publishingPlatforms removeAllObjects];
     for(PlatformSettings *platfromSettings in _projectSettings.platformsSettings)
     {
-        if(platfromSettings.publishEnabled && [platfromSettings.packets count] != 0)
-        {
-            [_publishingPlatforms addObject:platfromSettings];
+        if([_projectSettings.publishPlatform isEqualToString:@"Default"]) {
+            if(platfromSettings.publishEnabled && [platfromSettings.packets count] != 0)
+            {
+                [_publishingPlatforms addObject:platfromSettings];
+            }
+        }
+        else if([_projectSettings.publishPlatform isEqualToString:@"All"]) {
+            if([platfromSettings.packets count])
+            {
+                [_publishingPlatforms addObject:platfromSettings];
+            }
+        }
+        else {
+            if([platfromSettings.name isEqualToString:_projectSettings.publishPlatform] && [platfromSettings.packets count])
+            {
+                [_publishingPlatforms addObject:platfromSettings];
+            }
         }
     }
     if ([_publishingPlatforms count] == 0)
@@ -318,6 +332,7 @@
     }
 }
 
+/*
 - (void)zipFolderWithTarget:(CCBPublishingTarget *)target
 {
     if (!target.zipOutputPath)
@@ -337,7 +352,7 @@
     operation.createDirectories = YES;
 
     [_publishingQueue addOperation:operation];
-}
+}*/
 
 - (void)postProcessPublishedPNGFilesWithOptiPNGWithTarget:(PlatformSettings *)platform publishedPNGFiles:(NSSet*)publishedPNGFiles
 {
