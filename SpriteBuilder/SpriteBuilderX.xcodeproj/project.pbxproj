@@ -126,7 +126,6 @@
 		830485A619AF2A7000A624BB /* PreviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 836983A219ACC89C00110D82 /* PreviewImageView.xib */; };
 		830485A719AF2A7200A624BB /* PreviewSpriteSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 836983A719ACE55400110D82 /* PreviewSpriteSheetView.xib */; };
 		832705A019E5389100A311A0 /* SBPasteboardTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = E525FC052AEB516FE8A3E3EA /* SBPasteboardTypes.m */; };
-		8341326B18DADF9E0088FFAB /* optipng in Resources */ = {isa = PBXBuildFile; fileRef = 8341326A18DADF9E0088FFAB /* optipng */; };
 		835DB0CB17156421003A2F7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835DB0CA17156421003A2F7B /* Security.framework */; };
 		837D701B19ADDC8D00C3335B /* openXcodeProject.AppleScript in Resources */ = {isa = PBXBuildFile; fileRef = E525F74DC72109C2F7FB0EC8 /* openXcodeProject.AppleScript */; };
 		837E940019815C8D00A9F90B /* ProjectSettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837E93FF19815C8D00A9F90B /* ProjectSettingsWindowController.m */; };
@@ -869,7 +868,6 @@
 		E525FB20D3C6755CC64987B1 /* InspectorDegrees.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F799DEF1619721810E6E /* InspectorDegrees.xib */; };
 		E525FB27722F4E158CC501C5 /* InspectorNodeReference.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F2016B3DB7DF1651B605 /* InspectorNodeReference.m */; };
 		E525FB30A10E77E6C59149A6 /* InspectorScaleLock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525FCDD7A52D2DE6BD2D6D4 /* InspectorScaleLock.xib */; };
-		E525FB7B0CB67BE80AAFB31F /* OptimizeImageWithOptiPNGOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F8D13D187525150C6EA7 /* OptimizeImageWithOptiPNGOperation.m */; };
 		E525FB8A7250188137051AF3 /* InspectorTexture.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525FB84B7161C23D44036DB /* InspectorTexture.xib */; };
 		E525FB91E80AB2C9074E51B9 /* InspectorNodeReference.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F3EC220BB11985744E64 /* InspectorNodeReference.xib */; };
 		E525FBA4E26414A8E6EBA77C /* PublishCCBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F8A438244586206C9177 /* PublishCCBOperation.m */; };
@@ -1387,7 +1385,6 @@
 		8304858119AE063A00A624BB /* PreviewCCBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCCBViewController.h; sourceTree = "<group>"; };
 		8304858219AE063A00A624BB /* PreviewCCBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCCBViewController.m; sourceTree = "<group>"; };
 		8304858319AE063A00A624BB /* PreviewCCBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewCCBView.xib; sourceTree = "<group>"; };
-		8341326A18DADF9E0088FFAB /* optipng */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = optipng; sourceTree = "<group>"; };
 		835DB0CA17156421003A2F7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8369838F19AC834F00110D82 /* PreviewGenericViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewGenericViewController.h; sourceTree = "<group>"; };
 		8369839019AC834F00110D82 /* PreviewGenericViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewGenericViewController.m; sourceTree = "<group>"; };
@@ -2369,7 +2366,6 @@
 		E525F7D66E8C3826418D67AE /* RMSpriteFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSpriteFrame.m; sourceTree = "<group>"; };
 		E525F7E5C3F70DFC88E438B2 /* InspectorPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorPoint.m; sourceTree = "<group>"; };
 		E525F7EE37BDD5941E6C0AC9 /* PublishRenamedFilesLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishRenamedFilesLookup.m; sourceTree = "<group>"; };
-		E525F7FDEB6E06727F3674DC /* OptimizeImageWithOptiPNGOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptimizeImageWithOptiPNGOperation.h; sourceTree = "<group>"; };
 		E525F7FF46AF3A6A44E16D69 /* CCBPublisherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisherController.m; sourceTree = "<group>"; };
 		E525F8003FDCE343C78DCD85 /* InspectorCCBFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorCCBFile.m; sourceTree = "<group>"; };
 		E525F8027C3E43F222BD84A5 /* InspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorController.m; sourceTree = "<group>"; };
@@ -2392,7 +2388,6 @@
 		E525F8A438244586206C9177 /* PublishCCBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishCCBOperation.m; sourceTree = "<group>"; };
 		E525F8B87EB6ADFF08BE032A /* ZipDirectoryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipDirectoryOperation.h; sourceTree = "<group>"; };
 		E525F8C9ECCA0680282752AB /* InspectorEffectControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorEffectControl.h; sourceTree = "<group>"; };
-		E525F8D13D187525150C6EA7 /* OptimizeImageWithOptiPNGOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptimizeImageWithOptiPNGOperation.m; sourceTree = "<group>"; };
 		E525F8D24C0C5FA581D7E9B8 /* PublishingFinishedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishingFinishedDelegate.h; sourceTree = "<group>"; };
 		E525F8EEB5893680A0B28A27 /* InspectorCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorCustom.h; sourceTree = "<group>"; };
 		E525F90876BE1677B68F8373 /* NSError+SBErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SBErrors.m"; sourceTree = "<group>"; };
@@ -3453,7 +3448,6 @@
 				A53568671D21480E009EC595 /* TextureConverter */,
 				A53568601D2147ED009EC595 /* NVCompress */,
 				A5A340531A41E32000861273 /* WebP */,
-				8341326918DADF8C0088FFAB /* optipng */,
 				80AD79911863871200B653B7 /* PVRTexTool */,
 				B7D0918717C2C1310007FE7F /* Cocos2d */,
 				B7AC699117A079C80041B8BD /* InspectorTabBar */,
@@ -3595,8 +3589,6 @@
 		8319539318FECDF800ED4BA0 /* PublishingOperations */ = {
 			isa = PBXGroup;
 			children = (
-				E525F8D13D187525150C6EA7 /* OptimizeImageWithOptiPNGOperation.m */,
-				E525F7FDEB6E06727F3674DC /* OptimizeImageWithOptiPNGOperation.h */,
 				E525F08B2DA5BA93DA1BCA35 /* PublishSpriteSheetOperation.m */,
 				E525FB10982384F8E0C0E079 /* PublishSpriteSheetOperation.h */,
 				E525FF2CEC6DF0EB5FFCA742 /* PublishRegularFileOperation.m */,
@@ -3617,14 +3609,6 @@
 				A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */,
 			);
 			name = PublishingOperations;
-			sourceTree = "<group>";
-		};
-		8341326918DADF8C0088FFAB /* optipng */ = {
-			isa = PBXGroup;
-			children = (
-				8341326A18DADF9E0088FFAB /* optipng */,
-			);
-			name = optipng;
 			sourceTree = "<group>";
 		};
 		8354FDF919823370004EC272 /* View Controller */ = {
@@ -6188,7 +6172,6 @@
 				E392618F159CAAA10034FF1D /* seq-keyframe-interpol-vis.png in Resources */,
 				9218DF341919B04D0033851E /* joint-pivot-motor.png in Resources */,
 				E3926190159CAAA10034FF1D /* seq-keyframe-l-sel.png in Resources */,
-				8341326B18DADF9E0088FFAB /* optipng in Resources */,
 				926D13C018B5778300582959 /* joint-distance-handle-long.png in Resources */,
 				E3926191159CAAA10034FF1D /* seq-keyframe-l.png in Resources */,
 				9218DF311919B04D0033851E /* joint-pivot-mode-r-on.png in Resources */,
@@ -6954,7 +6937,6 @@
 				920994DB198719F10006F38D /* EffectReflectionControl.m in Sources */,
 				83F8673418D1DCEA007441E4 /* SBErrors.m in Sources */,
 				B7F02D4C17D13332008A2E2D /* CCBTransparentWindowDraggable.m in Sources */,
-				E525FB7B0CB67BE80AAFB31F /* OptimizeImageWithOptiPNGOperation.m in Sources */,
 				E525FD5C17B1032DF742AC22 /* PublishSpriteSheetOperation.m in Sources */,
 				E525FF5E533A11756767D753 /* PublishRegularFileOperation.m in Sources */,
 				A5A891FB1DB1280B00E600F2 /* PublishModelFileOperation.m in Sources */,

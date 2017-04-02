@@ -4,7 +4,6 @@
 #import "DateCache.h"
 #import "PublishRenamedFilesLookup.h"
 #import "PublishingTaskStatusProgress.h"
-#import "OptimizeImageWithOptiPNGOperation.h"
 #import "CCBDirectoryPublisher.h"
 #import "PublishGeneratedFilesOperation.h"
 #import "CCBPublishingTarget.h"
@@ -110,11 +109,6 @@
     _publishingTaskStatusProgress.totalTasks = [_publishingQueue operationCount];
 
     [_publishingQueue setSuspended:NO];
-    [_publishingQueue waitUntilAllOperationsAreFinished];
-	
-    [self enqueuePostPublishingOperationsForAllTargets];
-
-	[_publishingQueue setSuspended:NO];
     [_publishingQueue waitUntilAllOperationsAreFinished];
 	
     [_projectSettings flagFilesDirtyWithWarnings:_warnings];
@@ -322,65 +316,6 @@
             }
         }
     }
-}
-
-- (void)enqueuePostPublishingOperationsForAllTargets
-{
-    for (PlatformSettings *platform in _publishingPlatforms)
-    {
-        //[self postProcessPublishedPNGFilesWithOptiPNGWithTarget:platform];
-    }
-}
-
-/*
-- (void)zipFolderWithTarget:(CCBPublishingTarget *)target
-{
-    if (!target.zipOutputPath)
-    {
-        return;
-    }
-
-    ZipDirectoryOperation *operation = [[ZipDirectoryOperation alloc] initWithProjectSettings:_projectSettings
-                                                                                     warnings:_warnings
-                                                                               statusProgress:_publishingTaskStatusProgress];
-
-    operation.inputPath = target.outputDirectory;
-    operation.zipOutputPath = target.zipOutputPath;
-    operation.compression = target.publishEnvironment == kCCBPublishEnvironmentRelease
-        ? PUBLISHING_PACKAGES_ZIP_RELEASE_COMPRESSION
-        : PUBLISHING_PACKAGES_ZIP_DEBUG_COMPRESSION;
-    operation.createDirectories = YES;
-
-    [_publishingQueue addOperation:operation];
-}*/
-
-- (void)postProcessPublishedPNGFilesWithOptiPNGWithTarget:(PlatformSettings *)platform publishedPNGFiles:(NSSet*)publishedPNGFiles
-{
-    if (_projectSettings.publishEnvironment == kCCBPublishEnvironmentDevelop)
-    {
-        return;
-    }
-
-    NSString *pathToOptiPNG = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"optipng"];
-    if (!pathToOptiPNG)
-    {
-        [_warnings addWarningWithDescription:@"Optipng could not be found." isFatal:NO];
-        NSLog(@"ERROR: optipng was not found in bundle.");
-        return;
-    }
-    NSMutableDictionary *optyPngCache = [NSMutableDictionary dictionary];
-
-    /*for (NSString *pngFile in target.publishedPNGFiles)
-    {
-        OptimizeImageWithOptiPNGOperation *operation = [[OptimizeImageWithOptiPNGOperation alloc] initWithProjectSettings:_projectSettings
-                                                                                                           warnings:_warnings
-                                                                                                     statusProgress:_publishingTaskStatusProgress];
-        operation.filePath = pngFile;
-        operation.optiPngPath = pathToOptiPNG;
-        operation.optiPngCache = optyPngCache;
-
-        [_publishingQueue addOperation:operation];
-    }*/
 }
 
 - (void)startAsync
