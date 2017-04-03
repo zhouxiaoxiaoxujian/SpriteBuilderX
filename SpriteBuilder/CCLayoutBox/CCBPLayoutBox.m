@@ -12,6 +12,18 @@
 #import "CCBPCCBFile.h"
 
 @implementation CCBPLayoutBox
+{
+    BOOL _inLayout;
+}
+
+- (id) init
+{
+    self = [super init];
+    if (!self) return NULL;
+    _inLayout = NO;
+    
+    return self;
+}
 
 -(CGRect) clippingRect
 {
@@ -118,6 +130,9 @@ static float roundUpToEven(float f)
 
 - (void) layout
 {
+    if(_inLayout)
+        return;
+    _inLayout = YES;
     CCNode *parent = _parent;
     if([parent isKindOfClass:[CCBPCCBFile class]])
         parent = parent.parent;
@@ -273,6 +288,7 @@ static float roundUpToEven(float f)
         }
         _needsLayout = NO;
     }
+    _inLayout = NO;
 }
 
 -(void)visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
