@@ -133,6 +133,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SettingsWindow.h"
 #import "SettingsManager.h"
+#import "PlatformSettings.h"
 
 static const int CCNODE_INDEX_LAST = -1;
 
@@ -1940,6 +1941,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
     self.window.representedFilename = [fileName stringByDeletingLastPathComponent];
 
+    [self.menuPublishPlatform removeAllItems];
+    for (PlatformSettings *platformSettings in projectSettings.platformsSettings) {
+        NSMenuItem *platformMenuItem = [[NSMenuItem alloc] initWithTitle:platformSettings.name action:nil keyEquivalent:@""];
+        [self.menuPublishPlatform addItem:platformMenuItem];
+    }
+    
     return YES;
 }
 
