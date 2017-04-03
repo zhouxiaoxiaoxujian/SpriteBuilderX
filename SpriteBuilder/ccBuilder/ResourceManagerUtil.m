@@ -355,6 +355,18 @@
                                             (__bridge CFURLRef)fileURL,
                                             CGSizeMake(size.width, size.height),
                                             nil);
+    if(ref == NULL) {
+        path = [res absoluteAutoPathForResolution:@"universal"];
+        fileURL = [NSURL fileURLWithPath:path];
+        if (!path|| !fileURL) {
+            return nil;
+        }
+        ref = QLThumbnailImageCreate(kCFAllocatorDefault,
+                                     (__bridge CFURLRef)fileURL,
+                                     CGSizeMake(size.width, size.height),
+                                     nil);
+    }
+    
     NSImage *newImage = nil;
     if (ref != NULL) {
         NSBitmapImageRep *bitmapImageRep = [[NSBitmapImageRep alloc] initWithCGImage:ref];

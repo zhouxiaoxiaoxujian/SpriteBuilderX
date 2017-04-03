@@ -175,7 +175,7 @@ static float roundUpToEven(float f)
                 childSize.height *= [[child valueForKey:@"scaleY"] floatValue];
                 
                 CGPoint offset = CGPointMake(childSize.width/2, childSize.height/2);
-                CGPoint localPos = ccp(roundf(width), roundf((maxHeight-childSize.height)/2.0f));
+                CGPoint localPos = ccp(width, (maxHeight-childSize.height)/2.0f);
                 CGPoint position = ccpAdd(localPos, offset);
                 
                 child.position = position;
@@ -248,7 +248,7 @@ static float roundUpToEven(float f)
                 childSize.height *= [[child valueForKey:@"scaleY"] floatValue];
                 
                 CGPoint offset = CGPointMake(childSize.width/2, childSize.height/2);
-                CGPoint localPos = ccp(roundf((maxWidth-childSize.width)/2.0f), roundf(height));
+                CGPoint localPos = ccp((maxWidth-childSize.width)/2.0f, height);
                 CGPoint position = ccpAdd(localPos, offset);
                 
                 child.position = position;
