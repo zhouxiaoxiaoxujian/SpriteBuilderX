@@ -1942,12 +1942,18 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     self.window.representedFilename = [fileName stringByDeletingLastPathComponent];
 
     [self.menuPublishPlatform removeAllItems];
+    [self addMenuItemIntoPlatformSettings:@"Default"];
+    [self addMenuItemIntoPlatformSettings:@"All"];
     for (PlatformSettings *platformSettings in projectSettings.platformsSettings) {
-        NSMenuItem *platformMenuItem = [[NSMenuItem alloc] initWithTitle:platformSettings.name action:nil keyEquivalent:@""];
-        [self.menuPublishPlatform addItem:platformMenuItem];
+        [self addMenuItemIntoPlatformSettings: platformSettings.name];
     }
     
     return YES;
+}
+
+-(void) addMenuItemIntoPlatformSettings:(NSString *) title {
+    NSMenuItem *platformMenuItem = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
+    [self.menuPublishPlatform addItem:platformMenuItem];
 }
 
 - (void) openFile:(NSString*)filePath
