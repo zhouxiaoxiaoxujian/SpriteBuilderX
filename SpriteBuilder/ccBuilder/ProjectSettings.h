@@ -76,6 +76,7 @@ typedef enum
 @property (nonatomic, assign) BOOL deviceOrientationLandscapeRight;
 @property (nonatomic, assign) int resourceAutoScaleFactor;
 @property (nonatomic, assign) CCBPublishEnvironment publishEnvironment;
+@property (nonatomic, copy) NSString* publishPlatform;
 
 @property (nonatomic, readonly) NSMutableArray* platformsSettings;
 
@@ -107,7 +108,7 @@ typedef enum
 // *** Smart Sprite Sheets ***
 - (void) makeSmartSpriteSheet:(RMResource*) res;
 - (void) removeSmartSpriteSheet:(RMResource*) res;
-- (NSArray*) smartSpriteSheetDirectories;
+//- (NSArray*) smartSpriteSheetDirectories;
 
 // *** Setting and reading file properties ***
 // Will mark the resource as dirty if old value is not equal to new value

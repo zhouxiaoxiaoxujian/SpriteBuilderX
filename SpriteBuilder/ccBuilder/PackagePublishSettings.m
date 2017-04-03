@@ -97,7 +97,7 @@ NSString *const KEY_PUBLISH_ENV = @"publishEnv";
     self.publishToZip = [dict[KEY_PUBLISH_TO_ZIP] boolValue];
     self.publishToMainProject = [dict[KEY_PUBLISH_TO_MAINPROJECT] boolValue];
     self.customOutputDirectory = dict[KEY_OUTPUTDIR];
-    self.publishEnvironment = (CCBPublishEnvironment) [dict[KEY_PUBLISH_ENV] integerValue];
+    //self.publishEnvironment = (CCBPublishEnvironment) [dict[KEY_PUBLISH_ENV] integerValue];
 
     for (NSString *osType in dict[KEY_OS_SETTINGS])
     {
@@ -125,7 +125,7 @@ NSString *const KEY_PUBLISH_ENV = @"publishEnv";
     result[KEY_PUBLISH_TO_CUSTOM_DIRECTORY] = @(_publishToCustomOutputDirectory);
     result[KEY_PUBLISH_TO_ZIP] = @(_publishToZip);
     result[KEY_PUBLISH_TO_MAINPROJECT] = @(_publishToMainProject);
-    result[KEY_PUBLISH_ENV] = @(_publishEnvironment);
+    //result[KEY_PUBLISH_ENV] = @(_publishEnvironment);
     result[KEY_OUTPUTDIR] = _customOutputDirectory
         ? _customOutputDirectory
         : @"";

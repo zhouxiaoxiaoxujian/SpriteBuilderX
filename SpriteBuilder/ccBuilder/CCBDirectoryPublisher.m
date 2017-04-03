@@ -33,7 +33,6 @@
 #import "ResourceManager.h"
 #import "CCBFileUtil.h"
 #import "ResourceManagerUtil.h"
-#import "OptimizeImageWithOptiPNGOperation.h"
 #import "PublishSpriteSheetOperation.h"
 #import "PublishRegularFileOperation.h"
 #import "TaskStatusUpdaterProtocol.h"

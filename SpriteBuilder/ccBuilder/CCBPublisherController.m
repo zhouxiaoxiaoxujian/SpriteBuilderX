@@ -77,7 +77,7 @@
         //target.osType = osType;
         //target.resolutions = @[resolution];
         target.inputDirectories = @[packageSettings.package.fullPath];
-        target.publishEnvironment = packageSettings.publishEnvironment;
+        //target.publishEnvironment = _projectSettings.publishEnvironment;
         //target.audioQuality = [packageSettings settingsForOsType:osType].audio_quality;
         target.zipOutputPath = [self zipOutputPath:packagePublishName baseDir:packageSettings.effectiveOutputDirectory];
         //target.outputDirectory = [self cachesPath:packagePublishName];
@@ -171,7 +171,7 @@
     //target.resolutions = [_projectSettings publishingResolutionsForOSType:osType];
     target.platform = platform;
     target.inputDirectories = inputDirs;
-    target.publishEnvironment = _projectSettings.publishEnvironment;
+    //target.publishEnvironment = _projectSettings.publishEnvironment;
     //target.audioQuality = [_projectSettings audioQualityForOsType:osType];
     //target.directoryToClean = [_projectSettings publishDirForOSType:osType];
 

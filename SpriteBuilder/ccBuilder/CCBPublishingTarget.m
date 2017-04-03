@@ -11,7 +11,7 @@
     self = [super init];
     if (self)
     {
-        self.publishEnvironment = kCCBPublishEnvironmentDevelop;
+        //self.publishEnvironment = kCCBPublishEnvironmentDevelop;
         self.publishedSpriteSheetFiles = [[NSMutableSet alloc] init];
         self.renamedFilesLookup = [[PublishRenamedFilesLookup alloc] init];
         self.platform = nil;

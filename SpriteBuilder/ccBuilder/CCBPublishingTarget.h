@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *directoryToClean;
 @property (nonatomic) CCBPublisherOSType osType;
 @property (nonatomic, strong) NSArray *resolutions;
-@property (nonatomic) CCBPublishEnvironment publishEnvironment;
+//@property (nonatomic) CCBPublishEnvironment publishEnvironment;
 @property (nonatomic) NSInteger audioQuality;
 
 @property (nonatomic, copy) NSString *zipOutputPath;

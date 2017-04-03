@@ -375,6 +375,8 @@ typedef void (^CompletionCallback) (BOOL success);
 // Sequencer
 @property (nonatomic, readonly) BOOL playingBack;
 
+@property (weak) IBOutlet NSMenu *menuPublishPlatform;
+
 
 // Methods
 + (AppDelegate*) appDelegate;

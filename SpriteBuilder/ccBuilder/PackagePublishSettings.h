@@ -17,7 +17,7 @@
 // Returns the default package publishing dir if publishToCustomOutputDirectory is NO, else customOutputDirectory
 @property (nonatomic, copy, readonly) NSString *effectiveOutputDirectory;
 
-@property (nonatomic) CCBPublishEnvironment publishEnvironment;
+//@property (nonatomic) CCBPublishEnvironment publishEnvironment;
 
 - (instancetype)initWithPackage:(RMPackage *)package;
 
