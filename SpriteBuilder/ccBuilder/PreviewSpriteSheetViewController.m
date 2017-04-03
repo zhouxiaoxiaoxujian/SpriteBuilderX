@@ -14,7 +14,7 @@
 #import "CCBImageView.h"
 #import "ImageFormatAndPropertiesHelper.h"
 #import "ResourcePropertyKeys.h"
-
+#import "SettingsManager.h"
 
 @implementation PreviewSpriteSheetViewController
 
@@ -39,7 +39,8 @@
         weakSelf.format_extrude = [[weakSelf.projectSettings propertyForResource:weakSelf.previewedResource andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE] integerValue];
     }];
 
-    NSString *imgPreviewPath = [_previewedResource.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+    NSString *filePath = [SBSettings miscFilesPathForFile:_previewedResource.filePath];
+    NSString *imgPreviewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
     NSImage *img = [[NSImage alloc] initWithContentsOfFile:imgPreviewPath];
     if (!img)
     {

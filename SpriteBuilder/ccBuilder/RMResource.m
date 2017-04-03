@@ -9,7 +9,7 @@
 #import "ResourceManagerUtil.h"
 #import "RMDirectory.h"
 #import "MiscConstants.h"
-
+#import "SettingsManager.h"
 
 @implementation RMResource
 
@@ -224,7 +224,8 @@
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 
-        NSString* previewPath = [self.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath];
+        NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath]) return previewPath;
         else return NULL;
     }
@@ -255,7 +256,8 @@
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 
-        NSString* previewPath = [self.filePath stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath];
+        NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath])
         {
             NSDate* fileDate = [CCBFileUtil modificationDateForFile:previewPath];

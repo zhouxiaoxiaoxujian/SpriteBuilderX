@@ -5,7 +5,8 @@ NSInteger const EFFECTS_MAXIMUM_PER_NODE = 5;
 NSString *const PACKAGE_NAME_SUFFIX = @"sbpack";
 NSString *const PACKAGES_FOLDER_NAME = @"Packages";
 
-NSString *const PNG_PREVIEW_IMAGE_SUFFIX = @"ppng";
+NSString *const MISC_FILE_PPNG = @"ppng";
+NSString *const MISC_FILE_SBINFO = @"sbinfo";
 
 NSString *const INTERMEDIATE_FILE_LOOKUP_NAME = @"intermediateFileLookup.plist";
 

@@ -7,7 +7,7 @@
 #import "ResourcePropertyKeys.h"
 #import "MiscConstants.h"
 #import "PlatformSettings.h"
-
+#import "SettingsManager.h"
 
 @interface PublishSpriteSheetOperation()
 
@@ -98,7 +98,8 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     self.previewFilePath = nil;
     if (![__spriteSheetPreviewsGenerated containsObject:_subPath])
     {
-        self.previewFilePath = [_publishDirectory stringByAppendingPathExtension:PNG_PREVIEW_IMAGE_SUFFIX];
+        NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory];
+        self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [__spriteSheetPreviewsGenerated addObject:_subPath];
     }
 }
