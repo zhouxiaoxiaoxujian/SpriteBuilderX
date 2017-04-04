@@ -303,7 +303,7 @@ typedef struct _PVRTexHeader
     int bestOutW = INT_MAX;
     int bestOutH = INT_MAX;
     
-    BOOL globalPackingError = NO;
+    BOOL globalPackingError = YES;
     
     for(int i=MaxRectsBinPack::RectBestShortSideFit;i<=MaxRectsBinPack::RectContactPointRule;++i)
     {
@@ -370,6 +370,8 @@ typedef struct _PVRTexHeader
         {
             if(std::max(outW, outH) <= std::max(bestOutW, bestOutH) && std::max(outW, outH) <= std::max(bestOutW, bestOutH))
             {
+                if(allFitted)
+                    globalPackingError = NO;
                 bestOutRects = outRects;
                 bestOutW = outW;
                 bestOutH = outH;
@@ -380,6 +382,7 @@ typedef struct _PVRTexHeader
     if (globalPackingError)
     {
         [self setErrorMessage:@"Failed to fit all sprites in smart sprite sheet."];
+        return result;
     }
     
     // Create the output graphics context

@@ -136,7 +136,7 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 {
     if ([_resolution isEqualToString:RESOLUTION_PHONE])
     {
-        _packer.maxTextureSize = 1024;
+        _packer.maxTextureSize = 2048;
     }
     else if ([_resolution isEqualToString:RESOLUTION_PHONE_HD])
     {
@@ -147,6 +147,10 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
         _packer.maxTextureSize = 4096;
     }
     else if ([_resolution isEqualToString:RESOLUTION_TABLET_HD])
+    {
+        _packer.maxTextureSize = 4096;
+    }
+    else if ([_resolution isEqualToString:RESOLUTION_UNIVERSAL])
     {
         _packer.maxTextureSize = 4096;
     }
