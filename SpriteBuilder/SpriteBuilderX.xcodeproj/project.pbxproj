@@ -1635,7 +1635,6 @@
 		A09AB6F614E993AA009C8B91 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = "libs/cocos2d-iphone/Resources/Fonts/fps_images.png"; sourceTree = SOURCE_ROOT; };
 		A504D1161DB4CAE0008EE38F /* fbx-conv */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "fbx-conv"; path = "fbx-conv/fbx-conv"; sourceTree = "<group>"; };
 		A50A10D51E5D8C0E00C60B29 /* CCScrollBar.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCScrollBar.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
-		A50A10D61E5D8C0E00C60B29 /* CCSlider copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CCSlider copy-Info.plist"; path = "/Users/sergey/Documents/Sources/SpriteBuilderX/SpriteBuilder/CCSlider copy-Info.plist"; sourceTree = "<absolute>"; };
 		A50A10DB1E5D8CA900C60B29 /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CCBPProperties.plist; sourceTree = "<group>"; };
 		A50A10DC1E5D8CA900C60B29 /* CCBPScrollBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPScrollBar.h; sourceTree = "<group>"; };
 		A50A10DD1E5D8CA900C60B29 /* CCBPScrollBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPScrollBar.m; sourceTree = "<group>"; };
@@ -3352,7 +3351,6 @@
 				7789ACEB133AB6A700CEFCC7 /* Resources */,
 				7789ABC1133AA82000CEFCC7 /* Frameworks */,
 				7789ABBF133AA82000CEFCC7 /* Products */,
-				A50A10D61E5D8C0E00C60B29 /* CCSlider copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

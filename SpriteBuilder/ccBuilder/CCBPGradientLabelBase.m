@@ -130,6 +130,49 @@
     CGImageRelease(alphaMask);
 }
 
+- (BOOL) updateTexture
+{
+    if (!self.attributedString) return NO;
+    if (!_isTextureDirty) return NO;
+    
+    _isTextureDirty = NO;
+    
+#if __CC_PLATFORM_IOS
+    // Handle fonts on iOS 5
+    if ([CCConfiguration sharedConfiguration].OSVersion < CCSystemVersion_iOS_6_0)
+    {
+        return [self updateTextureOld];
+    }
+#endif
+    
+    NSMutableAttributedString* formattedAttributedString = [self.attributedString mutableCopy];
+    
+    BOOL useFullColor = YES;
+    
+    NSMutableAttributedStringFixPlatformSpecificAttributes(formattedAttributedString, self.fontColor, self.fontName, self.fontSize, self.horizontalAlignment);
+    
+    
+    // Generate a new texture from the attributed string
+    CCTexture *tex;
+    
+    tex = [self createTextureWithAttributedString:NSAttributedStringCopyAdjustedForContentScaleFactor(formattedAttributedString)
+                                     useFullColor:useFullColor];
+    
+    if(!tex) return NO;
+    
+    self.shader = (useFullColor ? [CCShader positionTextureColorShader] : [CCShader positionTextureA8ColorShader]);
+    
+    // Update texture and content size
+    [self setTexture:tex];
+    
+    CGRect rect = CGRectZero;
+    rect.size = [self.texture contentSize];
+    [self setTextureRect: rect];
+    
+    return YES;
+    
+}
+
 - (CCTexture*) createTextureWithAttributedString:(NSAttributedString*)attributedString useFullColor:(BOOL) fullColor
 {
     fullColor = YES;
