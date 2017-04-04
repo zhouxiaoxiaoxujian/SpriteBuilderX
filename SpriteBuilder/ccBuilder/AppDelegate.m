@@ -3620,13 +3620,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     int success = [wc runModalSheetForWindow:window];
     if (success)
     {
+        if(currentDocument.currentResolution<[wc.resolutions count])
+            [self setResolution:currentDocument.currentResolution];
+        else
+            [self setResolution:[wc.resolutions count] - 1];
         currentDocument.sceneScaleType = wc.sceneScaleType;
         currentDocument.resolutions = wc.resolutions;
         [self updateResolutionMenu];
-        if(currentDocument.currentResolution<[currentDocument.resolutions count])
-            [self setResolution:currentDocument.currentResolution];
-        else
-            [self setResolution:0];
         [self updateCanvasBorderMenu];
         currentDocument.isDirty = YES;
     }
