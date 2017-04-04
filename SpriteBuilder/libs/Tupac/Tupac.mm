@@ -34,6 +34,7 @@
 #import <CoreGraphics/CGImage.h>
 
 #import "pvrtc.h"
+#import <CommonCrypto/CommonDigest.h>
 
 unsigned long upper_power_of_two(unsigned long v)
 {
@@ -201,6 +202,24 @@ typedef struct _PVRTexHeader
     return NSMakeRect(x, y, wTrimmed, hTrimmed);
 }
 
+- (void)sha512HashFromCGImage:(CGImageRef)image
+                      hash:(unsigned char*)hash
+{
+    CGDataProviderRef dataProvider = CGImageGetDataProvider(image);
+    NSData *data = (NSData*)CFBridgingRelease(CGDataProviderCopyData(dataProvider));
+    CC_SHA512([data bytes], [data length], hash);
+}
+
+- (BOOL)compareCGImages:(CGImageRef)image1
+                  image:(CGImageRef)image2
+{
+    CGDataProviderRef dataProvider1 = CGImageGetDataProvider(image1);
+    NSData *data1 = (NSData*)CFBridgingRelease(CGDataProviderCopyData(dataProvider1));
+    CGDataProviderRef dataProvider2 = CGImageGetDataProvider(image2);
+    NSData *data2 = (NSData*)CFBridgingRelease(CGDataProviderCopyData(dataProvider2));
+    return [data1 isEqualToData:data2];
+}
+
 - (NSArray *)createTextureAtlas
 {
     // Reset the error message
@@ -228,6 +247,9 @@ typedef struct _PVRTexHeader
     
     CGColorSpaceRef colorSpace = NULL;
     BOOL createdColorSpace = NO;
+    
+    NSMutableDictionary *duplicates = [NSMutableDictionary dictionary];
+    NSMutableDictionary *hashes = [NSMutableDictionary dictionary];
         
     for (NSString *filename in self.filenames)
     {
@@ -239,6 +261,37 @@ typedef struct _PVRTexHeader
         // Load CGImage
         CGImageSourceRef image_source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:filename], NULL);
         CGImageRef srcImage = CGImageSourceCreateImageAtIndex(image_source, 0, NULL);
+        
+        unsigned char imageHash[CC_SHA512_DIGEST_LENGTH];
+        
+        [self sha512HashFromCGImage:srcImage hash:imageHash];
+        
+        NSData *imageHashData = [NSData dataWithBytes:imageHash length:CC_SHA512_DIGEST_LENGTH];
+        
+        BOOL duplicate = NO;
+        for(id key in hashes)
+        {
+            if([imageHashData isEqualToData:[hashes objectForKey:key]])
+            {
+                duplicate = YES;
+                NSMutableArray *files = [duplicates objectForKey:key];
+                if(files)
+                {
+                    [files addObject:filename];
+                }
+                else
+                {
+                    NSMutableArray *files = [NSMutableArray array];
+                    [files addObject:filename];
+                    [duplicates setObject:files forKey:key];
+                }
+                break;
+            }
+        }
+        if(duplicate)
+            continue;
+        else
+            [hashes setObject:imageHashData forKey:filename];
         
         // Get info
         int w = (int)CGImageGetWidth(srcImage);
@@ -625,14 +678,26 @@ typedef struct _PVRTexHeader
             
             index++;
             
-            [frames setObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                               NSStringFromRect(NSMakeRect(x, y, w, h)),    @"frame",
-                               NSStringFromPoint(NSMakePoint(xOffset, yOffset)),        @"offset",
-                               [NSNumber numberWithBool:rot],               @"rotated",
-                               NSStringFromRect(trimRect),                  @"sourceColorRect",
-                               NSStringFromSize(NSMakeSize(wSrc, hSrc)),    @"sourceSize",
-                               nil]
-                       forKey:exportFilename];
+            NSDictionary *frameDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       NSStringFromRect(NSMakeRect(x, y, w, h)),         @"frame",
+                                       NSStringFromPoint(NSMakePoint(xOffset, yOffset)), @"offset",
+                                       [NSNumber numberWithBool:rot],                    @"rotated",
+                                       NSStringFromRect(trimRect),                       @"sourceColorRect",
+                                       NSStringFromSize(NSMakeSize(wSrc, hSrc)),         @"sourceSize",
+                                       nil];
+            
+            [frames setObject:frameDict forKey:exportFilename];
+            NSArray *fileDuplicates = [duplicates objectForKey:filename];
+            if(fileDuplicates)
+            {
+                for (NSString *duplicateFilename in fileDuplicates)
+                {
+                    NSString* duplicateExportFilename = [duplicateFilename lastPathComponent];
+                    if (directoryPrefix_) duplicateExportFilename = [directoryPrefix_ stringByAppendingPathComponent:duplicateExportFilename];
+                    //[frames setObject:frameDict forKey:duplicateExportFilename];
+                    [frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
+                }
+            }
         }
         
         [metadata setObject:textureFileName                                     forKey:@"textureFileName"];
