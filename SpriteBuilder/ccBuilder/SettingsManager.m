@@ -158,11 +158,11 @@
     self.miscFilesPath = [self defaultMiscFilesPath];
 }
 
-- (NSString *) miscFilesPathForFile:(NSString *) filePath {
+- (NSString *) miscFilesPathForFile:(NSString *) filePath projectPathDir:(NSString *) projectPathDir {
     if (!self.storeMiscFilesAtPath) {
         return filePath;
     }
-    NSString *projPath = [[AppDelegate appDelegate].projectSettings.projectPathDir stringByDeletingLastPathComponent];
+    NSString *projPath = [projectPathDir stringByDeletingLastPathComponent];
     NSString *miscFilePath = [filePath stringByReplacingOccurrencesOfString:projPath withString:self.miscFilesPath];
     
     [[NSFileManager defaultManager] createDirectoryAtPath:[miscFilePath stringByDeletingLastPathComponent]

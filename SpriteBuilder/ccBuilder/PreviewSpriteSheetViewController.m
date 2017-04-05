@@ -39,7 +39,7 @@
         weakSelf.format_extrude = [[weakSelf.projectSettings propertyForResource:weakSelf.previewedResource andKey:RESOURCE_PROPERTY_FORMAT_EXTRUDE] integerValue];
     }];
 
-    NSString *filePath = [SBSettings miscFilesPathForFile:_previewedResource.filePath];
+    NSString *filePath = [SBSettings miscFilesPathForFile:_previewedResource.filePath projectPathDir:self.projectSettings.projectPath];
     NSString *imgPreviewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
     NSImage *img = [[NSImage alloc] initWithContentsOfFile:imgPreviewPath];
     if (!img)

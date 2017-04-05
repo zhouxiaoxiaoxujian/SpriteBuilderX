@@ -98,7 +98,7 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     self.previewFilePath = nil;
     if (![__spriteSheetPreviewsGenerated containsObject:_subPath])
     {
-        NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory];
+        NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory projectPathDir:self.projectSettings.projectPath];
         self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [__spriteSheetPreviewsGenerated addObject:_subPath];
     }

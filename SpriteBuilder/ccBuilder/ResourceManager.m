@@ -1083,8 +1083,8 @@
         [fm moveItemAtPath:srcPath toPath:dstPath error:NULL];
         
         // Also attempt to move preview image (if any)
-        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
-        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
+        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
+        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
         NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:MISC_FILE_PPNG];
         NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:MISC_FILE_PPNG];
         [fm moveItemAtPath:srcPathPre toPath:dstPathPre error:NULL];
@@ -1146,8 +1146,8 @@
 		[ResourceManager fileRename:srcPath  dstPath:dstPath error:NULL];
 
         // Also attempt to move preview image (if any)
-        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath];
-        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath];
+        NSString *filePathPre = [SBSettings miscFilesPathForFile:srcPath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
+        NSString *filePathDst = [SBSettings miscFilesPathForFile:dstPath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
         NSString* srcPathPre = [filePathPre stringByAppendingPathExtension:MISC_FILE_PPNG];
         NSString* dstPathPre = [filePathDst stringByAppendingPathExtension:MISC_FILE_PPNG];
 
@@ -1189,7 +1189,7 @@
         [fm removeItemAtPath:res.filePath error:NULL];
         
         // Also attempt to remove preview image (if any)
-        NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath];
+        NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
         NSString* filePathPre = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [fm removeItemAtPath:filePathPre error:NULL];
     }
