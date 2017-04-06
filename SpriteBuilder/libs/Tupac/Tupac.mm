@@ -319,6 +319,7 @@ typedef struct _PVRTexHeader
         }
         
         NSMutableDictionary* imageInfo = [NSMutableDictionary dictionary];
+        [imageInfo setObject:filename forKey:@"filename"];
         [imageInfo setObject:[NSNumber numberWithInt:w] forKey:@"width"];
         [imageInfo setObject:[NSNumber numberWithInt:h] forKey:@"height"];
         [imageInfo setObject:[NSValue valueWithRect:trimRect] forKey:@"trimRect"];
@@ -648,10 +649,10 @@ typedef struct _PVRTexHeader
         while(index < bestOutRects.size())
         {
             // Get info about the image
-            NSString* filename = [self.filenames objectAtIndex:bestOutRects[index].idx];
+            NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
+            NSString* filename = [imageInfo objectForKey:@"filename"];
             NSString* exportFilename = [filename lastPathComponent];
             if (directoryPrefix_) exportFilename = [directoryPrefix_ stringByAppendingPathComponent:exportFilename];
-            NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
             
             bool rot = false;
             int x, y, w, h, wSrc, hSrc, xOffset, yOffset;
@@ -694,8 +695,8 @@ typedef struct _PVRTexHeader
                 {
                     NSString* duplicateExportFilename = [duplicateFilename lastPathComponent];
                     if (directoryPrefix_) duplicateExportFilename = [directoryPrefix_ stringByAppendingPathComponent:duplicateExportFilename];
-                    //[frames setObject:frameDict forKey:duplicateExportFilename];
-                    [frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
+                    [frames setObject:frameDict forKey:duplicateExportFilename];
+                    //[frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
                 }
             }
         }
