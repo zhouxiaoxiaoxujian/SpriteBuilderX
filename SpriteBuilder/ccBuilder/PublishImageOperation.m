@@ -84,7 +84,7 @@
     NSString *srcUniversalPath = [_srcFilePath resourceUniversalFilePath];
 
     // Update path to reflect resolution
-    if(![_resolution isEqualToString:@"universal"])
+    if(![_resolution isEqualToString:@""])
     {
        srcDir = [srcDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];
        dstDir = [dstDir stringByAppendingPathComponent:[@"resources-" stringByAppendingString:_resolution]];

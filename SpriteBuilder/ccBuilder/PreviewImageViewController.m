@@ -49,6 +49,8 @@
 {
     // TODO: necessary?
     NSImage* universalImage = [_previewedResource previewForResolution:RESOLUTION_UNIVERSAL];
+    if(!universalImage)
+        universalImage = [_previewedResource previewForResolution:nil];
     if(universalImage)
     {
         self.imgMain = universalImage;

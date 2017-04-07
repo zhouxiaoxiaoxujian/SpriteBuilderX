@@ -343,7 +343,7 @@
 
 + (NSImage*) thumbnailImageForResource:(RMResource*)res {
     
-    NSString* path = [res absoluteAutoPathForResolution:nil];
+    NSString* path = [res absoluteAutoPathForResolution:@"auto"];
     CGFloat viewScale = /*fixedSize ?*/ 1.0; //: [AppDelegate appDelegate].derivedViewScaleFactor;
     CGSize size = CGSizeMake(kRMImagePreviewSize*viewScale, kRMImagePreviewSize*viewScale);
     NSURL *fileURL = [NSURL fileURLWithPath:path];
@@ -366,6 +366,19 @@
                                      CGSizeMake(size.width, size.height),
                                      nil);
     }
+    
+    if(ref == NULL) {
+        path = [res absoluteAutoPathForResolution:nil];
+        fileURL = [NSURL fileURLWithPath:path];
+        if (!path|| !fileURL) {
+            return nil;
+        }
+        ref = QLThumbnailImageCreate(kCFAllocatorDefault,
+                                     (__bridge CFURLRef)fileURL,
+                                     CGSizeMake(size.width, size.height),
+                                     nil);
+    }
+
     
     NSImage *newImage = nil;
     if (ref != NULL) {

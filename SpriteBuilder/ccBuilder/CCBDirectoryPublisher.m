@@ -94,10 +94,6 @@
                         fileLookup:(id <PublishFileLookupProtocol>)fileLookup
 {
     NSMutableArray * resolutions = [NSMutableArray arrayWithArray:_resolutions];
-    if([resolutions count])
-    {
-        [resolutions addObject:@"universal"];
-    }
     
     for (NSString *resolution in resolutions)
     {
@@ -255,6 +251,37 @@
     NSMutableSet* files = [NSMutableSet setWithArray:[fileManager contentsOfDirectoryAtPath:publishDirectory error:NULL]];
 	[files addObjectsFromArray:[publishDirectory resolutionDependantFilesInDirWithResolutions:_resolutions]];
     [files addObjectsFromArray:[publishDirectory filesInAutoDirectory]];
+    
+    if(!isGeneratedSpriteSheet)
+    {
+        NSMutableSet* universalFiles = [NSMutableSet setWithArray:[publishDirectory filesInUniversalDirectory]];
+        for (NSString* fileName in universalFiles)
+        {
+            if ([fileName hasPrefix:@"."])
+            {
+                continue;
+            }
+            
+            NSString* filePath = [publishDirectory stringByAppendingPathComponent:fileName];
+            
+            BOOL isDirectory;
+            BOOL fileExists = [fileManager fileExistsAtPath:[[publishDirectory stringByAppendingPathComponent:@"resources-universal"] stringByAppendingPathComponent:fileName] isDirectory:&isDirectory];
+            if(fileExists && !isDirectory)
+            {
+                if ([self isFileSupportedByPublishing:fileName])
+                {
+                    NSString *dstFilePath = [outputDir stringByAppendingPathComponent:fileName];
+                    
+                    if (!isGeneratedSpriteSheet
+                        && ([fileName isSmartSpriteSheetCompatibleFile]))
+                    {
+                        if(_platformSettings.publish1x || _platformSettings.publish2x || _platformSettings.publish4x)
+                            [self publishImageFile:filePath to:dstFilePath isSpriteSheet:NO outputDir:outputDir resolution:@"universal" intermediateProduct:NO fileLookup:_renamedFilesLookup];
+                    }
+                }
+            }
+        }
+    }
 
     for (NSString* fileName in files)
     {
@@ -320,7 +347,12 @@
             && ([fileName isSmartSpriteSheetCompatibleFile]))
         {
             if(_platformSettings.publish1x || _platformSettings.publish2x || _platformSettings.publish4x)
-                [self publishImageForResolutions:filePath to:dstFilePath isSpriteSheet:isGeneratedSpriteSheet outDir:outputDir fileLookup:_renamedFilesLookup];
+            {
+                if([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:nil])
+                    [self publishImageFile:filePath to:dstFilePath isSpriteSheet:isGeneratedSpriteSheet outputDir:outputDir resolution:@"" intermediateProduct:NO fileLookup:_renamedFilesLookup];
+                else
+                    [self publishImageForResolutions:filePath to:dstFilePath isSpriteSheet:isGeneratedSpriteSheet outDir:outputDir fileLookup:_renamedFilesLookup];
+            }
         }
         else if ([fileName isWaveSoundFile])
         {
@@ -455,11 +487,18 @@
 
     [PublishSpriteSheetOperation resetSpriteSheetPreviewsGeneration];
     
-    NSMutableArray * resolutions = [NSMutableArray arrayWithArray:_resolutions];
+    NSArray * resolutions = [NSArray arrayWithArray:_resolutions];
     
     do
     {
-        NSString *spriteSheetFile = [[spriteSheetDir stringByAppendingPathComponent:@"resources-universal"] stringByAppendingPathComponent:spriteSheetName];
+        BOOL isDirectory;
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[publishDirectory stringByAppendingPathComponent:@"resources-universal"] isDirectory:&isDirectory];
+        
+        NSString *spriteSheetFile = nil;
+        if(!fileExists || !isDirectory)
+            break;
+        
+        spriteSheetFile = [[spriteSheetDir stringByAppendingPathComponent:@"resources-universal"] stringByAppendingPathComponent:spriteSheetName];
         
         NSString *intermediateFileLookupPath = [publishDirectory  stringByAppendingPathComponent:INTERMEDIATE_FILE_LOOKUP_NAME];
         [_renamedFilesLookup addIntermediateLookupPath:intermediateFileLookupPath];
@@ -493,7 +532,7 @@
              [CCBFileUtil setModificationDate:srcSpriteSheetDate forFile:intermediateFileLookupPath];
          }];
 
-    }while (false);
+    }while(false);
 
 	for (NSString *resolution in resolutions)
 	{
