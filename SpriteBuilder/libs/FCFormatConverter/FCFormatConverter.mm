@@ -153,7 +153,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
     return NULL;
 }
 
--(BOOL)optimizePngAtPath:(NSString*)srcPath premultipliedAlpha:(BOOL)premultipliedAlpha
+-(BOOL)optimizePngAtPath:(NSString*)srcPath premultipliedAlpha:(BOOL)premultipliedAlpha error:(NSError**)error;
 {
 
     NSTask *task = [[NSTask alloc] init];
@@ -163,33 +163,48 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
         [task setArguments:@[@"-force", @"-ow", @"-ztxt", @"b", @"premultiplied_alpha", @"true", srcPath]];
     else
         [task setArguments:@[@"-force", @"-ow", srcPath]];
+    
+    task.currentDirectoryPath = NSTemporaryDirectory();
 
-//    NSPipe *pipeErr = [NSPipe pipe];
-//    [task setStandardError:pipeErr];
-//
-//    int status = 0;
+    NSPipe *pipeErr = [NSPipe pipe];
+    [task setStandardError:pipeErr];
+
+    int status = 0;
 
     @try
     {
         [task launch];
         [task waitUntilExit];
-        //status = [task terminationStatus];
+        status = [task terminationStatus];
     }
     @catch (NSException *ex)
     {
-        NSLog(@"[%@] %@", [self class], ex);
+        NSString * errorMessage = [NSString stringWithFormat:@"pngcrush error: %@ exception %@", srcPath, ex.reason];
+        NSLog(@"%@",errorMessage);
+        if (error)
+        {
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
         return NO;
     }
 
-//    if (status)
-//    {
-//        NSFileHandle *fileErr = [pipeErr fileHandleForReading];
-//        NSData *data = [fileErr readDataToEndOfFile];
-//        NSString *stdErrOutput = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSString *warningDescription = [NSString stringWithFormat:@"pngcrush error: %@", stdErrOutput];
-//        NSLog(@"%@", warningDescription);
-//        [_warnings addWarningWithDescription:warningDescription];
-//    }
+    if (status)
+    {
+        NSFileHandle *fileErr = [pipeErr fileHandleForReading];
+        NSData *dataErr = [fileErr readDataToEndOfFile];
+        NSString *stdErrStr = [[NSString alloc] initWithData:dataErr encoding:NSUTF8StringEncoding];
+        
+        NSString *errorMessage = [NSString stringWithFormat:@"pngcrush error: %@ err:%@", srcPath, stdErrStr];
+        NSLog(@"%@", errorMessage);
+        if (error)
+        {
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
+        return false;
+        //[_warnings addWarningWithDescription:warningDescription];
+    }
     return YES;
 }
 
@@ -369,7 +384,10 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         }
         
         if(isRelease)
-            [self optimizePngAtPath:srcPath premultipliedAlpha:YES];
+        {
+            if(![self optimizePngAtPath:srcPath premultipliedAlpha:YES error:error])
+                return NO;
+        }
         
         *outputFilename = [out_path copy];
         return YES;
