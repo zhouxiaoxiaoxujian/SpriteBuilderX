@@ -1357,6 +1357,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 {
     if (!appDelegate.hasOpenedDocument) return;
     [self mouseMoved:event];
+    
+    if (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) return;
 
     CGPoint pos = [[CCDirectorMac sharedDirector] convertEventToGL:event];
     
