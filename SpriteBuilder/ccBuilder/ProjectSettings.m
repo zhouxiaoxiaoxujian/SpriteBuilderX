@@ -291,7 +291,13 @@
 
     if (_resourceProperties)
     {
-        dict[@"resourceProperties"] = _resourceProperties;
+        NSMutableDictionary* resourceProperties = [_resourceProperties copy];
+        for (NSString* relPath in resourceProperties)
+        {
+            NSMutableDictionary *props = [resourceProperties valueForKey:relPath];
+            [props removeObjectForKey:@"isDirty"];
+        }
+        dict[@"resourceProperties"] = resourceProperties;
     }
     else
     {
