@@ -166,7 +166,7 @@
     [menu removeAllItems];
     
     // Sprite frames can be null
-    if ((resType == kCCBResTypeImage && allowSpriteFrames) || resType == kCCBResTypeCCBFile)
+    if ((resType == kCCBResTypeImage && allowSpriteFrames) || resType == kCCBResTypeCCBFile || resType == kCCBResTypeAudio)
     {
         NSMenuItem* menuItem = [[NSMenuItem alloc] initWithTitle:kCCBNullString action:@selector(selectedResource:) keyEquivalent:@""];
         menuItem.target = target;
