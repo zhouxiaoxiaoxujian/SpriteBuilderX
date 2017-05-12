@@ -194,7 +194,7 @@
     labelColor.r *= _displayColor.r;
     labelColor.g *= _displayColor.g;
     labelColor.b *= _displayColor.b;
-    _label.color = [CCColor colorWithCcColor4f:labelColor];;
+    _label.fontColor = [CCColor colorWithCcColor4f:labelColor];;
     _label.opacity = [self labelOpacityForState:state] * _displayColor.a;
     
     [self needsLayout];
@@ -493,6 +493,35 @@
     [self willChangeValueForKey:@"contentSize"];
     [self didChangeValueForKey:@"contentSize"];
     [[InspectorController sharedController] refreshProperty:@"contentSize"];
+    [super needsLayout];
+}
+
+-(void)onCopyNormalState
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:@"copyNormalState"];
+    
+    [self setBackgroundColor:[self backgroundColorForState:CCBPControlStateNormal] forState:CCBPControlStateHighlighted];
+    [self setBackgroundColor:[self backgroundColorForState:CCBPControlStateNormal] forState:CCBPControlStateDisabled];
+    [self setBackgroundColor:[self backgroundColorForState:CCBPControlStateNormal] forState:CCBPControlStateMouseOver];
+    
+    [self setBackgroundOpacity:[self backgroundOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateHighlighted];
+    [self setBackgroundOpacity:[self backgroundOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateDisabled];
+    [self setBackgroundOpacity:[self backgroundOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateMouseOver];
+    
+    [self setLabelColor:[self labelColorForState:CCBPControlStateNormal] forState:CCBPControlStateHighlighted];
+    [self setLabelColor:[self labelColorForState:CCBPControlStateNormal] forState:CCBPControlStateDisabled];
+    [self setLabelColor:[self labelColorForState:CCBPControlStateNormal] forState:CCBPControlStateMouseOver];
+    
+    [self setLabelOpacity:[self labelOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateHighlighted];
+    [self setLabelOpacity:[self labelOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateDisabled];
+    [self setLabelOpacity:[self labelOpacityForState:CCBPControlStateNormal] forState:CCBPControlStateMouseOver];
+    
+    [self setBackgroundSpriteFrame:[self backgroundSpriteFrameForState:CCBPControlStateNormal] forState:CCBPControlStateHighlighted];
+    [self setBackgroundSpriteFrame:[self backgroundSpriteFrameForState:CCBPControlStateNormal] forState:CCBPControlStateDisabled];
+    [self setBackgroundSpriteFrame:[self backgroundSpriteFrameForState:CCBPControlStateNormal] forState:CCBPControlStateMouseOver];
+    
+    [[InspectorController sharedController] updateInspectorFromSelection];
+    
     [super needsLayout];
 }
 
