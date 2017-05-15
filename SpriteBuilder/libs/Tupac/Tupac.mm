@@ -183,6 +183,12 @@ typedef struct _PVRTexHeader
     int wTrimmed = xRight-x+1;
     int hTrimmed = yTop-y+1;
     
+    if(wTrimmed < 0)
+        wTrimmed = 0;
+    
+    if(hTrimmed < 0)
+        hTrimmed = 0;
+    
     CFRelease(imageData);
     
     // HACK to fix jitter
