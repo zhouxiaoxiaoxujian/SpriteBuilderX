@@ -1257,21 +1257,21 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint vertexScaler = ccp(-1.0f,-1.0f);
     
     const float kTolerance = 0.01f;
-    if(fabsf(anchorPoint.x) <= kTolerance)
+    if(fabs(anchorPoint.x) <= kTolerance)
     {
         vertexScaler.x = 3;
     }
     
-    if(fabsf(anchorPoint.x) >=  1.0f - kTolerance)
+    if(fabs(anchorPoint.x) >=  1.0f - kTolerance)
     {
         vertexScaler.x = 1;
     }
     
-    if(fabsf(anchorPoint.y) <= kTolerance)
+    if(fabs(anchorPoint.y) <= kTolerance)
     {
         vertexScaler.y = 0;
     }
-    if(fabsf(anchorPoint.y) >=  1.0f - kTolerance)
+    if(fabs(anchorPoint.y) >=  1.0f - kTolerance)
     {
         vertexScaler.y = 2;
     }
@@ -1284,14 +1284,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint vertexScaler = {1.0f,1.0f};
     
     const float kTolerance = 0.01f;
-    if(fabsf(anchorPoint.x) < kTolerance)
+    if(fabs(anchorPoint.x) < kTolerance)
     {
         if(cornerSelected == 0 || cornerSelected == 3)
         {
             vertexScaler.x = 0.0f;
         }
     }
-    if(fabsf(anchorPoint.x) >  1.0f - kTolerance)
+    if(fabs(anchorPoint.x) >  1.0f - kTolerance)
     {
         if(cornerSelected == 1 || cornerSelected == 2)
         {
@@ -1299,14 +1299,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
     }
     
-    if(fabsf(anchorPoint.y) < kTolerance)
+    if(fabs(anchorPoint.y) < kTolerance)
     {
         if(cornerSelected == 0 || cornerSelected == 1)
         {
             vertexScaler.y = 0.0f;
         }
     }
-    if(fabsf(anchorPoint.y) >  1.0f - kTolerance)
+    if(fabs(anchorPoint.y) >  1.0f - kTolerance)
     {
         if(cornerSelected == 2 || cornerSelected == 3)
         {

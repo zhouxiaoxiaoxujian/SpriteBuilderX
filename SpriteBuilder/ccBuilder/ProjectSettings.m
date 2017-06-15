@@ -451,7 +451,7 @@
         return;
     }
 
-    [props setValue:newValue forKey:key];
+    [props setValue:newValue forKey:(NSString*)key];
     [self markAsDirtyRelPath:relPath];
     [self storeDelayed];
 }
@@ -476,7 +476,7 @@
 - (id)propertyForRelPath:(NSString *)relPath andKey:(id <NSCopying>) key
 {
     NSMutableDictionary* props = [_resourceProperties valueForKey:relPath];
-    return [props valueForKey:key];
+    return [props valueForKey:(NSString *)key];
 }
 
 - (void)removePropertyForResource:(RMResource *)res andKey:(id <NSCopying>) key

@@ -263,7 +263,6 @@
 		92B792D918C933B7007DF895 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92B792C018C92C60007DF895 /* CCBPProperties.plist */; };
 		92B8A32818E1063600EE52FC /* seq-locked-faint.png in Resources */ = {isa = PBXBuildFile; fileRef = 9254805918D913C500236DED /* seq-locked-faint.png */; };
 		92BF5E5B187B43F00072C3A1 /* AudioPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92976369187775A0008F997B /* AudioPlayerView.xib */; };
-		92CAC1CB195A4C6C0035EA39 /* EffectGlowControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92CAC1C9195A4C6C0035EA39 /* EffectGlowControl.xib */; };
 		92CB085919BA2DE800EFDCE3 /* effect-blur.png in Resources */ = {isa = PBXBuildFile; fileRef = 92CB085819BA2DE800EFDCE3 /* effect-blur.png */; };
 		92CB085B19BA2E0800EFDCE3 /* EffectBlurControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92CB085A19BA2E0800EFDCE3 /* EffectBlurControl.xib */; };
 		92CB085E19BA2E4300EFDCE3 /* EffectBlurControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CB085D19BA2E4300EFDCE3 /* EffectBlurControl.m */; };
@@ -1596,7 +1595,6 @@
 		92B792C618C92C60007DF895 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		92B792CF18C92D80007DF895 /* CCBPhysicsTwoBodyJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCBPhysicsTwoBodyJoint.h; path = ccBuilder/CCBPhysicsTwoBodyJoint.h; sourceTree = "<group>"; };
 		92B792D018C92D80007DF895 /* CCBPhysicsTwoBodyJoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCBPhysicsTwoBodyJoint.m; path = ccBuilder/CCBPhysicsTwoBodyJoint.m; sourceTree = "<group>"; };
-		92CAC1C9195A4C6C0035EA39 /* EffectGlowControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EffectGlowControl.xib; path = ccBuilder/EffectGlowControl.xib; sourceTree = "<group>"; };
 		92CB085819BA2DE800EFDCE3 /* effect-blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "effect-blur.png"; path = "Resources/effect-blur.png"; sourceTree = "<group>"; };
 		92CB085A19BA2E0800EFDCE3 /* EffectBlurControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EffectBlurControl.xib; path = ccBuilder/EffectBlurControl.xib; sourceTree = "<group>"; };
 		92CB085C19BA2E4300EFDCE3 /* EffectBlurControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectBlurControl.h; path = ccBuilder/EffectBlurControl.h; sourceTree = "<group>"; };
@@ -5967,7 +5965,7 @@
 		7789ABB5133AA82000CEFCC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					7789ABBD133AA82000CEFCC7 = {
 						DevelopmentTeam = U2K5E32W7G;
@@ -6134,7 +6132,6 @@
 				9266EE2E195A1695006CBE81 /* effect-pixelate.png in Resources */,
 				B7096E26180CD98E00164A8A /* doc-layer.png in Resources */,
 				77D33EAD138EFBD800012A88 /* StageSizeWindow.xib in Resources */,
-				92CAC1CB195A4C6C0035EA39 /* EffectGlowControl.xib in Resources */,
 				B7E6BB5A19F868F000619A58 /* seq-timedisplay-bg@2x.png in Resources */,
 				7729F03A1390215400CAA44F /* frame-iphone.png in Resources */,
 				7729F03D1390600200CAA44F /* frame-ipad.png in Resources */,
@@ -7881,6 +7878,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
@@ -7899,6 +7897,7 @@
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				HEADER_SEARCH_PATHS = (
 					"../Examples/CocosBuilderExample/libs/CCBReader/**",
 					"libs/cocos2d-iphone/cocos2d/**",
@@ -7929,6 +7928,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
@@ -7943,6 +7943,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "$(SB_RELEASE_PREPROCESSOR_DEFINES)";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				HEADER_SEARCH_PATHS = (
 					"../Examples/CocosBuilderExample/libs/CCBReader/**",
 					"libs/cocos2d-iphone/cocos2d/**",
@@ -8610,6 +8611,7 @@
 					"-undefined",
 					dynamic_lookup,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cocosbuilder.plug.node.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CCEditBox;
 				WRAPPER_EXTENSION = ccbPlugNode;
 			};
@@ -8654,6 +8656,7 @@
 					"-undefined",
 					dynamic_lookup,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cocosbuilder.plug.node.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = CCEditBox;
 				WRAPPER_EXTENSION = ccbPlugNode;
 			};

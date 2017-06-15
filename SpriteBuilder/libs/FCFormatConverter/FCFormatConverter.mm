@@ -523,7 +523,7 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         NSDictionary* props = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:compressionFactor] forKey:NSImageCompressionFactor];
         
         // Convert the file
-        NSBitmapImageRep* imageRep = [NSBitmapImageRep imageRepWithContentsOfFile:srcPath];
+        NSBitmapImageRep* imageRep = (NSBitmapImageRep*)[NSBitmapImageRep imageRepWithContentsOfFile:srcPath];
         NSData* imgData = [imageRep representationUsingType:NSJPEGFileType properties:props];
         
         if (![imgData writeToFile:dstPath atomically:YES]) return NULL;

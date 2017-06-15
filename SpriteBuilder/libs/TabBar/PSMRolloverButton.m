@@ -88,11 +88,14 @@
 	BOOL mouseInside = NSPointInRect(localPoint, trackRect);
 
 	_myTrackingRectTag = [self addTrackingRect:trackRect owner:self userData:nil assumeInside:mouseInside];
-	if(mouseInside) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+    if(mouseInside) {
 		[self mouseEntered:nil];
 	} else{
 		[self mouseExited:nil];
 	}
+#pragma clang diagnostic pop
 }
 
 - (void)removeTrackingRect {

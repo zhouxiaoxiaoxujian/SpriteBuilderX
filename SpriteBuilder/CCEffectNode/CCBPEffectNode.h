@@ -19,7 +19,7 @@
 	
 }
 
-@property (nonatomic) NSArray * effects;
+@property (nonatomic, assign) NSArray * effects;
 
 
 

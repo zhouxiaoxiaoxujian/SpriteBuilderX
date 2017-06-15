@@ -435,7 +435,7 @@ static const int kMaxImageHeight = 256;
             float closestArea = closestMatch.size.height * closestMatch.size.width;
             float currentArea = image.size.height * image.size.width;
             
-            if(abs(closestArea - targetArea) > abs(currentArea - targetArea))
+            if(fabsf(closestArea - targetArea) > fabs(currentArea - targetArea))
             {
                 closestMatch = image;
             }
