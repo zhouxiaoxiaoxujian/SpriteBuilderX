@@ -1274,6 +1274,8 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [extraData setObject:[NSNumber numberWithInt:currentDocument.stageColor] forKey:@"stageColor"];
     [extraData setObject:@(sequenceHandler.currentSequence.sequenceId) forKey:@"currentSequenceId"];
 
+    self.currentDocument.stageZooms = self.currentDocument.stageZooms ? self.currentDocument.stageZooms : [NSMutableDictionary dictionary];
+    self.currentDocument.stageScrollOffsets = self.currentDocument.stageScrollOffsets ? self.currentDocument.stageScrollOffsets : [NSMutableDictionary dictionary];
     [extraData setObject:self.currentDocument.stageZooms forKey:@"stageZooms"];
     [extraData setObject:self.currentDocument.stageScrollOffsets forKey:@"stageScrollOffsets"];
     
