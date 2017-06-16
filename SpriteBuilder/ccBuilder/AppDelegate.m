@@ -3847,6 +3847,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     CocosScene* cs = [CocosScene cocosScene];
     cs.scrollOffset = ccp(0,0);
     [cs setStageZoom:0.44];
+    
+    [self.currentDocument.stageZooms setValue:@(0.44) forKey:[NSString stringWithFormat:@"zoom_%d",self.currentDocument.currentResolution]];
+    [self.currentDocument.stageScrollOffsets setValue:@(0) forKey:[NSString stringWithFormat:@"offset_x_%d",self.currentDocument.currentResolution]];
+    [self.currentDocument.stageScrollOffsets setValue:@(0) forKey:[NSString stringWithFormat:@"offset_y_%d",self.currentDocument.currentResolution]];
 }
 
 - (IBAction) pressedToolSelection:(id)sender
