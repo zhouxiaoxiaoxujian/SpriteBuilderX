@@ -17,7 +17,7 @@
 
 - (void)setPreviewedResource:(RMResource *)previewedResource projectSettings:(ProjectSettings *)projectSettings
 {
-   NSString *filePath = [SBSettings miscFilesPathForFile:previewedResource.filePath projectPathDir:projectSettings.projectPath];
+   NSString *filePath = [SBSettings miscFilesPathForFile:previewedResource.filePath projectPathDir:projectSettings.projectPathDir];
    NSString *imgPreviewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
    NSImage *img = [[NSImage alloc] initWithContentsOfFile:imgPreviewPath];
    if (!img)

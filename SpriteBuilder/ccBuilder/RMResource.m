@@ -234,7 +234,7 @@
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 
-        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
+        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPathDir];
         NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath]) return previewPath;
         else return NULL;
@@ -266,7 +266,7 @@
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 
-        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPath];
+        NSString *filePath = [SBSettings miscFilesPathForFile:self.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPathDir];
         NSString* previewPath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         if ([fm fileExistsAtPath:previewPath])
         {
