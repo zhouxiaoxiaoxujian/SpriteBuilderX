@@ -2062,7 +2062,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     scrollOffset.y = scrollOffset.y+dy;
     
     CCBDocument *curDoc = appDelegate.currentDocument;
-    [curDoc.stageScrollOffsets setValue:[NSValue valueWithCGPoint:scrollOffset] forKey:[NSString stringWithFormat:@"offset_%d",curDoc.currentResolution]];
+    [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
+    [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
     
 }
 

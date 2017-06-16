@@ -1667,9 +1667,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     float zoomValue = [self.currentDocument.stageZooms valueForKey:zoomKey] ? [[self.currentDocument.stageZooms valueForKey:zoomKey] floatValue] : 0.44;
     [[CocosScene cocosScene] setStageZoom:zoomValue];
     
-    NSString *offsetKey = [NSString stringWithFormat:@"offset_%d",self.currentDocument.currentResolution];
-    CGPoint offsetValue = [self.currentDocument.stageScrollOffsets valueForKey:offsetKey] ?
-                            [[self.currentDocument.stageScrollOffsets valueForKey:offsetKey] CGPointValue] : CGPointZero;
+    NSString *offsetKeyX = [NSString stringWithFormat:@"offset_x_%d",self.currentDocument.currentResolution];
+    NSString *offsetKeyY = [NSString stringWithFormat:@"offset_y_%d",self.currentDocument.currentResolution];
+    CGPoint offsetValue = CGPointMake([[self.currentDocument.stageScrollOffsets valueForKey:offsetKeyX] floatValue],
+                                      [[self.currentDocument.stageScrollOffsets valueForKey:offsetKeyY] floatValue]);
     [[CocosScene cocosScene] setScrollOffset: offsetValue];
     
     
