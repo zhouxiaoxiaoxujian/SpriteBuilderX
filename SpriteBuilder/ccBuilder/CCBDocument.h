@@ -38,8 +38,6 @@
 @property (nonatomic, copy) NSString *lastEditedProperty;
 @property (nonatomic, assign) BOOL isDirty;
 @property (nonatomic, assign) BOOL isBackupDirty;
-@property (nonatomic, assign) CGPoint stageScrollOffset;
-@property (nonatomic, assign) float stageZoom;
 @property (nonatomic, assign) int stageColor;
 @property (nonatomic, readonly) NSString *rootPath;
 @property (nonatomic, strong) NSMutableArray *resolutions;
@@ -51,6 +49,9 @@
 @property (nonatomic, assign) int sceneScaleType;
 @property (nonatomic, weak) ProjectSettings *projectSettings;
 
+@property (nonatomic, strong) NSMutableDictionary *stageZooms;
+@property (nonatomic, strong) NSMutableDictionary *stageScrollOffsets;
+
 - (instancetype)initWithContentsOfFile:(NSString *)filePath andProjectSettings:(ProjectSettings *) projectSettings;
 
 - (NSString *)formattedName;
@@ -58,7 +59,7 @@
 - (BOOL)isWithinPath:(NSString *)path;
 - (NSUInteger)getAndIncrementUUID;
 
-- (BOOL)store;
+- (void) store;
 - (BOOL)storeBackup;
 - (BOOL)removeBackup;
 

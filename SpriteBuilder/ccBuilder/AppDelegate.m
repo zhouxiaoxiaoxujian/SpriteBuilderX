@@ -1274,19 +1274,20 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [extraData setObject:[NSNumber numberWithInt:currentDocument.stageColor] forKey:@"stageColor"];
     [extraData setObject:@(sequenceHandler.currentSequence.sequenceId) forKey:@"currentSequenceId"];
 
+    [extraData setObject:self.currentDocument.stageZooms forKey:@"stageZooms"];
+    [extraData setObject:self.currentDocument.stageScrollOffsets forKey:@"stageScrollOffsets"];
+    
     return extraData;
 }
 
 - (void) prepareForDocumentSwitch
 {
     [self.window makeKeyWindow];
-    CocosScene* cs = [CocosScene cocosScene];
 		
     if (![self hasOpenedDocument]) return;
     currentDocument.data = [self docDataFromCurrentNodeGraph];
     currentDocument.extraData = [self extraDocDataFromCurrentNodeGraph];
-    currentDocument.stageZoom = [cs stageZoom];
-    currentDocument.stageScrollOffset = [cs scrollOffset];
+
 }
 
 - (NSMutableArray*) updateResolutions:(NSMutableArray*) resolutions forDocDimensionType:(int) type
@@ -1613,6 +1614,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     //[self updateJSControlledMenu];
     [self updateCanvasBorderMenu];
+    
+    self.currentDocument.stageZooms = [extraData objectForKey:@"stageZooms"] ?
+                                        [extraData objectForKey:@"stageZooms"] : [NSMutableDictionary dictionary];
+    
+    self.currentDocument.stageScrollOffsets = [extraData objectForKey:@"stageScrollOffsets"] ?
+                                                [extraData objectForKey:@"stageScrollOffsets"]:[NSMutableDictionary dictionary];
+        
 }
 
 -(void) recalculateSceneScale:(CCBDocument *) doc {
@@ -1655,13 +1663,15 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [self updateTimelineMenu];
     //[self updateStateOriginCenteredMenu];
     
-    CocosScene* cs = [CocosScene cocosScene];
-    if (document.stageZoom == 1.0) {
-        document.stageZoom = 0.44;
-    }
-    [cs setStageZoom:document.stageZoom]; //TODO: fix this! this value don't saved into file
-    //CCLOG(@"document.stageZoom: %f",document.stageZoom);
-    [cs setScrollOffset:document.stageScrollOffset];
+    NSString *zoomKey = [NSString stringWithFormat:@"zoom_%d",self.currentDocument.currentResolution];
+    float zoomValue = [self.currentDocument.stageZooms valueForKey:zoomKey] ? [[self.currentDocument.stageZooms valueForKey:zoomKey] floatValue] : 0.44;
+    [[CocosScene cocosScene] setStageZoom:zoomValue];
+    
+    NSString *offsetKey = [NSString stringWithFormat:@"offset_%d",self.currentDocument.currentResolution];
+    CGPoint offsetValue = [self.currentDocument.stageScrollOffsets valueForKey:offsetKey] ?
+                            [[self.currentDocument.stageScrollOffsets valueForKey:offsetKey] CGPointValue] : CGPointZero;
+    [[CocosScene cocosScene] setScrollOffset: offsetValue];
+    
     
     // Make sure timeline is up to date
     [sequenceHandler updatePropertiesToTimelinePosition];
@@ -3809,9 +3819,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         maxZoom /= (self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width) / 768.0;
     
     float zoom = [cs stageZoom];
-    zoom *= 1.2;
+    zoom *= 1.05;
     if (zoom > 8) zoom = 8;
     [cs setStageZoom:zoom];
+    [self.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",self.currentDocument.currentResolution]];
 }
 
 - (IBAction) menuZoomOut:(id)sender
@@ -3824,9 +3835,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         minZoom /= (self.projectSettings.defaultOrientation == kCCBOrientationLandscape?res.height:res.width) / 768.0;
     
     float zoom = [cs stageZoom];
-    zoom *= 1/1.2f;
+    zoom *= 1/1.05f;
     if (zoom < minZoom) zoom = minZoom;
     [cs setStageZoom:zoom];
+    [self.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",self.currentDocument.currentResolution]];
 }
 
 - (IBAction) menuResetView:(id)sender

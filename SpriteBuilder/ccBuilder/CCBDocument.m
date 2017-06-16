@@ -38,8 +38,6 @@
     if (self)
     {
         self.undoManager = [[NSUndoManager alloc] init];
-		self.stageZoom = 1;
-		self.stageScrollOffset = ccp(0,0);
 		self.stageColor = kCCBCanvasColorBlack;
 		self.UUID = 0x1; //Starts at One!
         self.sceneScaleType = kCCBSceneScaleTypeDEFAULT;
@@ -165,14 +163,17 @@
     return [_filePath hasPrefix:path];
 }
 
-- (BOOL)store
+-(void) store
 {
     if (SBSettings.storeMiscFilesAtPath) {
         [self createDirectoryForPath:[self miscFilesPath]];
     }
     NSString *extraDataPath = [[SBSettings.storeMiscFilesAtPath ? [self miscFilesPath] : _filePath
                                 stringByDeletingPathExtension] stringByAppendingPathExtension:MISC_FILE_SBINFO];
-    return [_data writeToFile:_filePath atomically:YES] && [_extraData writeToFile:extraDataPath atomically:YES];
+    
+    [_data writeToFile:_filePath atomically:NO];
+    [_extraData writeToFile:extraDataPath atomically:NO];
+
 }
 
 -(NSString *) miscFilesPath {

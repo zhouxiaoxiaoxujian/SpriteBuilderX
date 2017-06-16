@@ -53,6 +53,8 @@
 #import "GeometryUtil.h"
 #import "NSPasteboard+CCB.h"
 #import "InspectorController.h"
+#import "ResolutionSetting.h"
+#import "CCBDocument.h"
 
 #define kCCBSelectionOutset 3
 #define kCCBSinglePointSelectionRadius 23
@@ -2058,6 +2060,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     scrollOffset.x = scrollOffset.x+dx;
     scrollOffset.y = scrollOffset.y+dy;
+    
+    CCBDocument *curDoc = appDelegate.currentDocument;
+    [curDoc.stageScrollOffsets setValue:[NSValue valueWithCGPoint:scrollOffset] forKey:[NSString stringWithFormat:@"offset_%d",curDoc.currentResolution]];
+    
 }
 
 #pragma mark Post update methods
