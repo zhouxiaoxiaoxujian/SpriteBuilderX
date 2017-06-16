@@ -273,6 +273,10 @@
     {
         return kCCBResTypeModel;
     }
+    else if ([ext isEqualToString:@"lwf"])
+    {
+        return kCCBResTypeLWF;
+    }
     return kCCBResTypeNone;
 }
 
@@ -489,7 +493,8 @@
                 || res.type == kCCBResTypeJSON
                 || res.type == kCCBResTypeXML
                 || res.type == kCCBResTypeAudio
-                || res.type == kCCBResTypeModel)
+                || res.type == kCCBResTypeModel
+                || res.type == kCCBResTypeLWF)
             {
                 [dir.any addObject:res];
             }

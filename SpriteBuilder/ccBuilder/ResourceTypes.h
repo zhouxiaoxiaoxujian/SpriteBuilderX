@@ -14,4 +14,5 @@ typedef enum
     kCCBResTypeAudio,
     kCCBResTypeGeneratedSpriteSheetDef,
     kCCBResTypeModel,
+    kCCBResTypeLWF,
 } CCBResourceType;
