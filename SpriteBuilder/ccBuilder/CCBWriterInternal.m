@@ -32,7 +32,7 @@
 #import "CCNode+NodeInfo.h"
 #import "AppDelegate.h"
 #import "NodePhysicsBody.h"
-#import "CCBPEffectNode.h"
+
 
 @protocol CCBWriterInternal_UndeclaredSelectors <NSObject>
 - (NSArray*) ccbExcludePropertiesForSave;
@@ -434,28 +434,6 @@
              serializedValue = @(nodeRef.UUID);
          }
     }
-	else if([type isEqualToString:@"EffectControl"])
-	{
-	
-		NSAssert([node conformsToProtocol:@protocol(CCEffectNodeProtocol)], @"Node %@ shoudl conform to protocol CCEffectNodeProtocol",node);
-		id<CCEffectNodeProtocol> effectNode = (id<CCEffectNodeProtocol>)node;
-
-		NSMutableArray * serializedEffectsData = [NSMutableArray new];
-		for (id<EffectProtocol> effect in effectNode.effects) {
-
-			NSDictionary * effectProperties = [effect serialize];
-			NSDictionary * effectDescription = @{@"className": NSStringFromClass([effect class]),
-												 @"baseClass" : [effect effectDescription].baseClass,
-												 @"UUID": @([effect UUID]),
-												 @"properties":effectProperties
-												 };
-			
-			[serializedEffectsData addObject:effectDescription];
-		
-		}
-		serializedValue = serializedEffectsData;
-		
-	}
     else if ([type isEqualToString:@"SoundFile"])
     {
         NSString* soundFile = [extraProps objectForKey:name];

@@ -23,7 +23,6 @@
 typedef enum
 {
 	DragTypeJoint,
-	DragTypeEffectSprite,
 } eDragType;
 
 

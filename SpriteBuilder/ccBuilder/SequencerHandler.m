@@ -48,7 +48,6 @@
 #import "CCBPhysicsJoint.h"
 #import "PlugInManager.h"
 #import "SBPasteboardTypes.h"
-#import "EffectsManager.h"
 #import "InspectorController.h"
 
 static NSString *const ORIGINAL_NODE_POINTER_KEY = @"srcNode";
@@ -819,39 +818,8 @@ static SequencerHandler* sharedSequencerHandler;
 	addedObject = addedObject || [self acceptDropForPluginNodes:item index:index pasteboard:pasteboard];
 
 	addedObject = addedObject || [self acceptDropForJointBodies:item pasteboard:pasteboard];
-	
-	addedObject = addedObject || [self acceptDropForEffectSprite:item pasteboard:pasteboard];
-	
+		
 	return addedObject;
-}
-
-- (BOOL)acceptDropForEffectSprite:(id)item pasteboard:(NSPasteboard *)pasteboard
-{
-    if (![item isKindOfClass:[CCNode class]])
-    {
-        return NO;
-    }
-
-	NSArray* pbEffectSprite = [pasteboard propertyListsForType:PASTEBOARD_TYPE_EFFECTSPRITE];
-	for (NSDictionary* dict in pbEffectSprite)
-    {
-        CCNode *node = item;
-
-        NSUInteger effectUUID = [dict[@"effect"] unsignedIntegerValue];
-        CCEffect <EffectProtocol> *effect = [[SceneGraph instance].rootNode findEffect:effectUUID];
-        if (!effect)
-        {
-            NSLog(@"Failed to find effect instance in scene graph.");
-            return NO;
-        }
-
-        NSString *propertyName = dict[@"propertyName"];
-
-        [effect setValue:node forKey:propertyName];
-        [[InspectorController sharedController] refreshProperty:@"effects"];
-	}
-
-	return YES;
 }
 
 - (BOOL)acceptDropForJointBodies:(id)item pasteboard:(NSPasteboard *)pasteboard

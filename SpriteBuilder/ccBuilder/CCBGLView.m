@@ -32,7 +32,6 @@
 #import "SceneGraph.h"
 #import "NSArray+Query.h"
 #import "CCNode+NodeInfo.h"
-#import "EffectsManager.h"
 #import "InspectorController.h"
 #import "CCEffect.h"
 #import "SBPasteboardTypes.h"
@@ -137,11 +136,6 @@
         return NO;
     }
 
-    if (![self performDragForEffect:localDragPoint pasteboard:pasteboard])
-    {
-        return NO;
-    }
-
     return YES;
 }
 
@@ -198,39 +192,6 @@
                                      at:ccp(dragPoint.x, dragPoint.y)];
     }
 }
-
-- (BOOL)performDragForEffect:(NSPoint)point pasteboard:(NSPasteboard *)pasteboard
-{
-    NSArray* pbSprites = [pasteboard propertyListsForType:PASTEBOARD_TYPE_EFFECTSPRITE];
-    for (NSDictionary* dict in pbSprites)
-    {
-        CGPoint aPoint = ccp(point.x, point.y);
-        NSArray *classTypes = @[NSStringFromClass([CCSprite class])];
-        CCNode *node = [[CocosScene cocosScene] findObjectAtPoint:aPoint ofTypes:classTypes];
-
-        if (!node)
-        {
-            return NO;
-        }
-
-        NSUInteger effectUUID = [dict[@"effect"] unsignedIntegerValue];
-
-        CCEffect <EffectProtocol> *effect = [[SceneGraph instance].rootNode findEffect:effectUUID];
-        if (!effect)
-        {
-            NSLog(@"Failed to find effect instance in scene graph.");
-            return NO;
-        }
-
-        NSString *propertyName = dict[@"propertyName"];
-
-        [effect setValue:node forKey:propertyName];
-        [_inspectorController refreshProperty:@"effects"];
-	}
-
-    return YES;
-}
-
 
 #pragma mark - Mouse Events
 
