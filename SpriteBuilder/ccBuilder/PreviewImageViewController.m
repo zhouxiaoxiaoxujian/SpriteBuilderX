@@ -97,7 +97,7 @@
         return YES;
     }
 
-    NSBitmapImageRep *bitmapRep = self.imgMain.representations[0];
+    NSImageRep *bitmapRep = self.imgMain.representations[0];
     if (bitmapRep == nil)
     {
         return YES;

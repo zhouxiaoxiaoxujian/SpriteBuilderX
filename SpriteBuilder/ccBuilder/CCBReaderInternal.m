@@ -485,7 +485,7 @@ __strong NSDictionary* renamedProperties = nil;
 			
 			NSObject<EffectProtocol> *effect = (id<EffectProtocol>)[effectDescription constructDefault];
 			
-			[effect deserialize:serializedProperties];
+			[effect deserialize:(NSArray*)serializedProperties];
 			effect.UUID = [serializedEffect[@"UUID"] unsignedIntegerValue];
 			
 			

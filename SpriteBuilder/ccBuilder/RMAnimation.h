@@ -4,8 +4,8 @@
 
 @interface RMAnimation : RMResourceBase
 {
-    NSString *animationFile;
-    NSString *animationName;
+//    NSString *animationFile;
+//    NSString *animationName;
 }
 
 @property (nonatomic, copy) NSString *animationFile;

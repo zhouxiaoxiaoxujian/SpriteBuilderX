@@ -61,6 +61,8 @@
 
 @implementation EffectDescription
 
+@dynamic description;
+
 -(CCEffect<EffectProtocol>*)constructDefault
 {
 

@@ -179,63 +179,63 @@
                     NSPoint point = [node convertToWorldSpace:node.anchorPointInPoints];
                     
                     // Snap lines from anchorPoint
-                    if(abs(sPoint.x - point.x) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.x - point.x) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sPoint.x];
                     }
-                    if(abs(sPoint.y - point.y) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.y - point.y) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sPoint.y];
                     }
                     
                     // Snap lines from center
-                    if(abs(sNode.centerXInPoints - node.centerXInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.centerXInPoints - node.centerXInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sNode.centerXInPoints];
                     }
-					if(abs(sNode.centerYInPoints - node.centerYInPoints) < kSnapLayerSensitivityLine) {
+					if(fabs(sNode.centerYInPoints - node.centerYInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sNode.centerYInPoints];
                     }
                     
                     // Snap lines for opposite sides
-                    if(abs(sNode.leftInPoints - node.rightInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.leftInPoints - node.rightInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sNode.leftInPoints];
                     }
-                    if(abs(sNode.rightInPoints - node.leftInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.rightInPoints - node.leftInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sNode.rightInPoints];
                     }
                     
-                    if(abs(sPoint.x - node.rightInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.x - node.rightInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:node.rightInPoints];
                     }
                     
-                    if(abs(sPoint.x - node.leftInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.x - node.leftInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:node.leftInPoints];
                     }
                     
-                    if(abs(sNode.topInPoints - node.bottomInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.topInPoints - node.bottomInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sNode.topInPoints];
                     }
-                    if(abs(sNode.bottomInPoints - node.topInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.bottomInPoints - node.topInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sNode.bottomInPoints];
                     }
                     
-                    if(abs(sPoint.y - node.bottomInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.y - node.bottomInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:node.bottomInPoints];
                     }
                     
-                    if(abs(sPoint.y - node.topInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sPoint.y - node.topInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:node.topInPoints];
                     }
                     
                     // Snap lines for same sides
-                    if(abs(sNode.leftInPoints - node.leftInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.leftInPoints - node.leftInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sNode.leftInPoints];
                     }
-                    if(abs(sNode.rightInPoints - node.rightInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.rightInPoints - node.rightInPoints) < kSnapLayerSensitivityLine) {
                         [self addVerticalSnapLine:sNode.rightInPoints];
                     }
-                    if(abs(sNode.topInPoints - node.topInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.topInPoints - node.topInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sNode.topInPoints];
                     }
-                    if(abs(sNode.bottomInPoints - node.bottomInPoints) < kSnapLayerSensitivityLine) {
+                    if(fabs(sNode.bottomInPoints - node.bottomInPoints) < kSnapLayerSensitivityLine) {
                         [self addHorizontalSnapLine:sNode.bottomInPoints];
                     }
                 }
@@ -250,31 +250,31 @@
             NSPoint sPoint = [sNode convertToWorldSpace:sNode.anchorPointInPoints];
             
             // Edge Snap
-            if(abs(sNode.leftInPoints - edgeNode.leftInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sNode.leftInPoints - edgeNode.leftInPoints) < kSnapLayerSensitivityLine) {
                 [self addVerticalSnapLine:edgeNode.leftInPoints];
             }
-            if(abs(sNode.rightInPoints - edgeNode.rightInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sNode.rightInPoints - edgeNode.rightInPoints) < kSnapLayerSensitivityLine) {
                 [self addVerticalSnapLine:edgeNode.rightInPoints];
             }
             
-            if(abs(sPoint.x - edgeNode.leftInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sPoint.x - edgeNode.leftInPoints) < kSnapLayerSensitivityLine) {
                 [self addVerticalSnapLine:edgeNode.leftInPoints];
             }
-            if(abs(sPoint.x - edgeNode.rightInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sPoint.x - edgeNode.rightInPoints) < kSnapLayerSensitivityLine) {
                 [self addVerticalSnapLine:edgeNode.rightInPoints];
             }
             
-            if(abs(sNode.topInPoints - edgeNode.topInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sNode.topInPoints - edgeNode.topInPoints) < kSnapLayerSensitivityLine) {
                 [self addHorizontalSnapLine:edgeNode.topInPoints];
             }
-            if(abs(sNode.bottomInPoints - edgeNode.bottomInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sNode.bottomInPoints - edgeNode.bottomInPoints) < kSnapLayerSensitivityLine) {
                 [self addHorizontalSnapLine:edgeNode.bottomInPoints];
             }
             
-            if(abs(sPoint.y - edgeNode.topInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sPoint.y - edgeNode.topInPoints) < kSnapLayerSensitivityLine) {
                 [self addHorizontalSnapLine:edgeNode.topInPoints];
             }
-            if(abs(sPoint.y - edgeNode.bottomInPoints) < kSnapLayerSensitivityLine) {
+            if(fabs(sPoint.y - edgeNode.bottomInPoints) < kSnapLayerSensitivityLine) {
                 [self addHorizontalSnapLine:edgeNode.bottomInPoints];
             }
 						
@@ -353,11 +353,11 @@
                     NSPoint point  = [node convertToWorldSpace:node.anchorPointInPoints];
                     
                     // Snap from anchorPoint
-                    if(snapX && abs(sPoint.x - point.x) < sensitivity) {
+                    if(snapX && fabs(sPoint.x - point.x) < sensitivity) {
                         sPoint.x = point.x;
                         snapX = NO;
                     }
-                    if(snapY && abs(sPoint.y - point.y) < sensitivity) {
+                    if(snapY && fabs(sPoint.y - point.y) < sensitivity) {
                         sPoint.y = point.y;
                         snapY = NO;
                     }
@@ -365,65 +365,65 @@
                     sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
                     
                     // Snap from center
-                    if(snapX && abs(sNode.centerXInPoints - node.centerXInPoints) < sensitivity) {
+                    if(snapX && fabs(sNode.centerXInPoints - node.centerXInPoints) < sensitivity) {
                         sNode.centerXInPoints = node.centerXInPoints;
                         snapX = NO;
                     }
-					if(snapY && abs(sNode.centerYInPoints - node.centerYInPoints) < sensitivity) {
+					if(snapY && fabs(sNode.centerYInPoints - node.centerYInPoints) < sensitivity) {
                         sNode.centerYInPoints = node.centerYInPoints;
                         snapY = NO;
                     }
                     
                     // Snap to opposite sides
-                    if(snapX && abs(sNode.leftInPoints - node.rightInPoints) < sensitivity) {
+                    if(snapX && fabs(sNode.leftInPoints - node.rightInPoints) < sensitivity) {
                         sNode.leftInPoints = node.rightInPoints;
                         snapX = NO;
-                    } else if(snapX && abs(sNode.rightInPoints - node.leftInPoints) < sensitivity) {
+                    } else if(snapX && fabs(sNode.rightInPoints - node.leftInPoints) < sensitivity) {
                         sNode.rightInPoints = node.leftInPoints;
                         snapX = NO;
                     }
                     
-                    if(snapX && abs(sPoint.x - node.rightInPoints) < sensitivity) {
+                    if(snapX && fabs(sPoint.x - node.rightInPoints) < sensitivity) {
                         sPoint.x = node.rightInPoints;
                         sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
                         snapX = NO;
-                    } else if(snapX && abs(sPoint.x - node.leftInPoints) < sensitivity) {
+                    } else if(snapX && fabs(sPoint.x - node.leftInPoints) < sensitivity) {
                         sPoint.x = node.leftInPoints;
                         sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
                         snapX = NO;
                     }
                     
-                    if(snapY && abs(sNode.topInPoints - node.bottomInPoints) < sensitivity) {
+                    if(snapY && fabs(sNode.topInPoints - node.bottomInPoints) < sensitivity) {
                         sNode.topInPoints = node.bottomInPoints;
                         snapY = NO;
-                    } else if(snapY && abs(sNode.bottomInPoints - node.topInPoints) < sensitivity) {
+                    } else if(snapY && fabs(sNode.bottomInPoints - node.topInPoints) < sensitivity) {
                         sNode.bottomInPoints = node.topInPoints;
                         snapY = NO;
                     }
                     
-                    if(snapY && abs(sPoint.y - node.bottomInPoints) < sensitivity) {
+                    if(snapY && fabs(sPoint.y - node.bottomInPoints) < sensitivity) {
                         sPoint.y = node.bottomInPoints;
                         sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
                         snapY = NO;
-                    } else if(snapY && abs(sPoint.y - node.topInPoints) < sensitivity) {
+                    } else if(snapY && fabs(sPoint.y - node.topInPoints) < sensitivity) {
                         sPoint.y = node.topInPoints;
                         sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
                         snapY = NO;
                     }
                     
                     // Snap to same sides
-                    if(snapX && abs(sNode.leftInPoints - node.leftInPoints) < sensitivity) {
+                    if(snapX && fabs(sNode.leftInPoints - node.leftInPoints) < sensitivity) {
                         sNode.leftInPoints = node.leftInPoints;
                         snapX = NO;
-                    } else if(snapX && abs(sNode.rightInPoints - node.rightInPoints) < sensitivity) {
+                    } else if(snapX && fabs(sNode.rightInPoints - node.rightInPoints) < sensitivity) {
                         sNode.rightInPoints = node.rightInPoints;
                         snapX = NO;
                     }
                     
-                    if(snapY && abs(sNode.topInPoints - node.topInPoints) < sensitivity) {
+                    if(snapY && fabs(sNode.topInPoints - node.topInPoints) < sensitivity) {
                         sNode.topInPoints    = node.topInPoints;
                         snapY = NO;
-                    } else if(snapY && abs(sNode.bottomInPoints - node.bottomInPoints) < sensitivity) {
+                    } else if(snapY && fabs(sNode.bottomInPoints - node.bottomInPoints) < sensitivity) {
                         sNode.bottomInPoints = node.bottomInPoints;
                         snapY = NO;
                     }
@@ -443,30 +443,30 @@
             NSPoint sPoint = [sNode convertToWorldSpace:sNode.anchorPointInPoints];
 
             // Edge Snap
-            if(abs(sNode.leftInPoints - edgeNode.leftInPoints) < sensitivity) {
+            if(fabs(sNode.leftInPoints - edgeNode.leftInPoints) < sensitivity) {
                 sNode.leftInPoints = edgeNode.leftInPoints;
-            } else if(abs(sNode.rightInPoints - edgeNode.rightInPoints) < sensitivity) {
+            } else if(fabs(sNode.rightInPoints - edgeNode.rightInPoints) < sensitivity) {
                 sNode.rightInPoints = edgeNode.rightInPoints;
             }
             
-            if(abs(sPoint.x - edgeNode.leftInPoints) < sensitivity) {
+            if(fabs(sPoint.x - edgeNode.leftInPoints) < sensitivity) {
                 sPoint.x = edgeNode.leftInPoints;
                  sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
-            } else if(abs(sPoint.x - edgeNode.rightInPoints) < sensitivity) {
+            } else if(fabs(sPoint.x - edgeNode.rightInPoints) < sensitivity) {
                 sPoint.x = edgeNode.rightInPoints;
                  sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
             }
             
-            if(abs(sNode.topInPoints - edgeNode.topInPoints) < sensitivity) {
+            if(fabs(sNode.topInPoints - edgeNode.topInPoints) < sensitivity) {
                 sNode.topInPoints = edgeNode.topInPoints;
-            } else if(abs(sNode.bottomInPoints - edgeNode.bottomInPoints) < sensitivity) {
+            } else if(fabs(sNode.bottomInPoints - edgeNode.bottomInPoints) < sensitivity) {
                 sNode.bottomInPoints = edgeNode.bottomInPoints;
             }
             
-            if(abs(sPoint.y - edgeNode.topInPoints) < sensitivity) {
+            if(fabs(sPoint.y - edgeNode.topInPoints) < sensitivity) {
                 sPoint.y = edgeNode.topInPoints;
                  sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
-            } else if(abs(sPoint.y - edgeNode.bottomInPoints) < sensitivity) {
+            } else if(fabs(sPoint.y - edgeNode.bottomInPoints) < sensitivity) {
                 sPoint.y = edgeNode.bottomInPoints;
                  sNode.positionInPoints = [sNode.parent convertToNodeSpace:sPoint];
             }

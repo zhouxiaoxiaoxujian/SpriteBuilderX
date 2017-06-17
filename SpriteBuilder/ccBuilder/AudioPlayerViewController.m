@@ -246,7 +246,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 	// When that loading is complete, configure a player to play the asset.
     
     NSURL * url = [NSURL fileURLWithPath:filePath];
-    AVURLAsset *asset = [AVAsset assetWithURL:url];
+    AVAsset *asset = [AVAsset assetWithURL:url];
 	NSArray *assetKeysToLoadAndTest = [NSArray arrayWithObjects:@"playable", @"hasProtectedContent", @"tracks", @"duration", nil];
 	[asset loadValuesAsynchronouslyForKeys:assetKeysToLoadAndTest completionHandler:^(void) {
 		
