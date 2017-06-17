@@ -7,9 +7,7 @@
 //
 
 #import "CCSprite.h"
-#import "EffectsManager.h"
 
-@interface CCBPSprite : CCSprite <CCEffectNodeProtocol>
-@property (nonatomic, assign) NSArray * effects;
+@interface CCBPSprite : CCSprite
 
 @end

@@ -38,9 +38,7 @@
 #import "CCNode+NodeInfo.h"
 #import "NodePhysicsBody.h"
 #import "CCBUtil.h"
-#import "EffectsManager.h"
 #import "NSArray+Query.h"
-#import "CCBPEffectNode.h"
 
 // Old positioning constants
 enum
@@ -465,37 +463,6 @@ __strong NSDictionary* renamedProperties = nil;
             [node setValue:target forKey:name];
         }
     }
-	else if([type isEqualToString:@"EffectControl"])
-	{
-		CCNode<CCEffectNodeProtocol> *effectNode = (CCNode<CCEffectNodeProtocol> *)node;
-		
-		NSMutableArray * effects = [NSMutableArray new];
-		
-		for (NSDictionary * serializedEffect in serializedValue) {
-			NSString* className = serializedEffect[@"className"];
-			NSDictionary * serializedProperties = serializedEffect[@"properties"];
-			
-			EffectDescription * effectDescription = [EffectsManager effectByClassName:className];
-			
-			if(!effectDescription)
-			{
-				NSLog(@"ERROR: Failed to find effect class of type : %@ in EffectManager description", className);
-				return;
-			}
-			
-			NSObject<EffectProtocol> *effect = (id<EffectProtocol>)[effectDescription constructDefault];
-			
-			[effect deserialize:(NSArray*)serializedProperties];
-			effect.UUID = [serializedEffect[@"UUID"] unsignedIntegerValue];
-			
-			
-			[effects addObject:effect];
-        }
-		
-		effectNode.effects = effects;
-		
-		
-	}
     else if ([type isEqualToString:@"SoundFile"])
     {
         NSString* sound = serializedValue;
