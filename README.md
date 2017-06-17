@@ -67,7 +67,7 @@ bool HelloWorld::init() {
 ```
 ## Final result
 
-![](Info/iOS simulator.png "Get same result in Simulator or device")
+![](Info/iOS_simulator.png "Get same result in Simulator or device")
 
 ## Demo project
 
