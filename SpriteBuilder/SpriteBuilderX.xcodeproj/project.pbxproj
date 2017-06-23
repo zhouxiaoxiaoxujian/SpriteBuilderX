@@ -5095,6 +5095,7 @@
 				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
 				A535686D1D214BA8009EC595 /* ShellScript */,
 				A5A665F91E2446A000FAD6C4 /* ShellScript */,
+				F88F98F31EFD79B40035DF95 /* Version bump */,
 				F8A53CC61E39206D00C602B6 /* Run Script Fabric */,
 			);
 			buildRules = (
@@ -6444,6 +6445,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd $SRCROOT\ncd ../scripts\nrake build:generated";
+		};
+		F88F98F31EFD79B40035DF95 /* Version bump */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Version bump";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Release ]; then\necho \"Bumping build number...\"\n\nVERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\nfi";
 		};
 		F8A53CC61E39206D00C602B6 /* Run Script Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
