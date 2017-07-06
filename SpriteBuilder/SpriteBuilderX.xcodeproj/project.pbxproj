@@ -9975,6 +9975,7 @@
 				A58E08AF1F0E510100EFED37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A59471671A8E4851002DB024 /* Build configuration list for PBXNativeTarget "CCText" */ = {
 			isa = XCConfigurationList;
