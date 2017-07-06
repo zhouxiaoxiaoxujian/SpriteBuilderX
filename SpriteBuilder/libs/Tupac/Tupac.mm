@@ -699,7 +699,7 @@ typedef struct _PVRTexHeader
             {
                 for (NSString *duplicateFilename in fileDuplicates)
                 {
-                    NSString* duplicateExportFilename = [duplicateFilename lastPathComponent];
+                    NSString* duplicateExportFilename = duplicateFilename;
                     if (directoryPrefix_) duplicateExportFilename = [directoryPrefix_ stringByAppendingPathComponent:duplicateExportFilename];
                     [frames setObject:frameDict forKey:duplicateExportFilename];
                     //[frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
