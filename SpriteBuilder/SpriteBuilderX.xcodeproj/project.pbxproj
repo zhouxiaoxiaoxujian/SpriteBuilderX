@@ -6,6 +6,20 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A58E08AD1F0E510100EFED37 /* Version bumper */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A58E08B01F0E510100EFED37 /* Build configuration list for PBXAggregateTarget "Version bumper" */;
+			buildPhases = (
+				A58E08B11F0E510D00EFED37 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Version bumper";
+			productName = "Version bumper";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		4D0C1E7618F4760800B028CA /* SnapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C1E7318F472D600B028CA /* SnapLayer.m */; };
 		4D0C1E7918F49A3700B028CA /* CCNode+PositionExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0C1E7818F49A3700B028CA /* CCNode+PositionExtentions.m */; };
@@ -5095,7 +5109,6 @@
 				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
 				A535686D1D214BA8009EC595 /* ShellScript */,
 				A5A665F91E2446A000FAD6C4 /* ShellScript */,
-				F88F98F31EFD79B40035DF95 /* Version bump */,
 				F8A53CC61E39206D00C602B6 /* Run Script Fabric */,
 			);
 			buildRules = (
@@ -5645,6 +5658,10 @@
 							};
 						};
 					};
+					A58E08AD1F0E510100EFED37 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 7789ABB8133AA82000CEFCC7 /* Build configuration list for PBXProject "SpriteBuilderX" */;
@@ -5696,6 +5713,7 @@
 				A521EEC71C17298B00918650 /* CCLoadingBar */,
 				A521EF2B1C1B0A7700918650 /* CCEditBox */,
 				FA98CFC0154E7D1C006E58C5 /* ccbpublish */,
+				A58E08AD1F0E510100EFED37 /* Version bumper */,
 			);
 		};
 /* End PBXProject section */
@@ -6420,6 +6438,19 @@
 			shellPath = /bin/sh;
 			shellScript = "install_name_tool -change \"../../../../Lib/osx/x64/libTextureConverter.dylib\" \"@executable_path/../Frameworks/libTextureConverter.dylib\" \"$TARGET_BUILD_DIR/$TARGET_NAME.app/Contents/MacOS/$PRODUCT_NAME\"";
 		};
+		A58E08B11F0E510D00EFED37 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/ccBuilder/SpriteBuilderX-Info.plist\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/ccBuilder/SpriteBuilderX-Info.plist\"";
+		};
 		A5A665F91E2446A000FAD6C4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6445,20 +6476,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd $SRCROOT\ncd ../scripts\nrake build:generated";
-		};
-		F88F98F31EFD79B40035DF95 /* Version bump */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Version bump";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION == Release ]; then\necho \"Bumping build number...\"\n\nVERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\nfi";
 		};
 		F8A53CC61E39206D00C602B6 /* Run Script Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -8304,6 +8321,20 @@
 			};
 			name = Release;
 		};
+		A58E08AE1F0E510100EFED37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A58E08AF1F0E510100EFED37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A59471681A8E4851002DB024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -9936,6 +9967,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A58E08B01F0E510100EFED37 /* Build configuration list for PBXAggregateTarget "Version bumper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58E08AE1F0E510100EFED37 /* Debug */,
+				A58E08AF1F0E510100EFED37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A59471671A8E4851002DB024 /* Build configuration list for PBXNativeTarget "CCText" */ = {
 			isa = XCConfigurationList;
