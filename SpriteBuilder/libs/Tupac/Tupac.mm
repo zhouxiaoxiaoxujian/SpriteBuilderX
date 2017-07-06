@@ -265,7 +265,7 @@ typedef struct _PVRTexHeader
         }
 
         // Load CGImage
-        CGImageSourceRef image_source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:filename], NULL);
+        CGImageSourceRef image_source = CGImageSourceCreateWithURL((__bridge CFURLRef)[NSURL fileURLWithPath:[self.filenames objectForKey:filename]], NULL);
         CGImageRef srcImage = CGImageSourceCreateImageAtIndex(image_source, 0, NULL);
         
         unsigned char imageHash[CC_SHA512_DIGEST_LENGTH];
@@ -657,7 +657,7 @@ typedef struct _PVRTexHeader
             // Get info about the image
             NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
             NSString* filename = [imageInfo objectForKey:@"filename"];
-            NSString* exportFilename = [filename lastPathComponent];
+            NSString* exportFilename = filename;
             if (directoryPrefix_) exportFilename = [directoryPrefix_ stringByAppendingPathComponent:exportFilename];
             
             bool rot = false;
@@ -741,51 +741,91 @@ typedef struct _PVRTexHeader
     }
 }
 
+- (NSArray *)recursivePathsForResourcesOfType:(NSArray *)types inDirectory:(NSString *)directoryPath{
+    
+    NSMutableArray *filePaths = [[NSMutableArray alloc] init];
+    
+    // Enumerators are recursive
+    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:directoryPath];
+    
+    NSString *filePath;
+    
+    while ((filePath = [enumerator nextObject]) != nil){
+        
+        // If we have the right type of file, add it to the list
+        // Make sure to prepend the directory path
+        if([types containsObject:[[filePath pathExtension] lowercaseString]]){
+            [filePaths addObject:filePath];
+        }
+    }
+    
+    return filePaths;
+}
+
 - (NSArray *) createTextureAtlasFromDirectoryPaths:(NSArray *)dirs
 {
     NSFileManager* fm = [NSFileManager defaultManager];
     
     // Build a list of all file names from all directories
-    NSMutableSet* allFiles = [NSMutableSet set];
+    NSMutableDictionary* allFiles = [NSMutableDictionary dictionary];
     
     for (NSString* dir in dirs)
     {
         NSArray* files = [fm contentsOfDirectoryAtPath:dir error:NULL];
-
+        
         if (cancelled_)
         {
             return nil;
         }
-
+        
         for (NSString* file in files)
         {
-				    NSString *lower = [[file pathExtension] lowercaseString];
+            NSString *lower = [[file pathExtension] lowercaseString];
             if ([lower isEqualToString:@"png"] || [lower isEqualToString:@"psd"])
             {
-                [allFiles addObject:[file lastPathComponent]];
-            }
-        }
-    }
-    
-    // Add all the absolute file names to an array from the correct directories
-    NSMutableArray* absoluteFilepaths = [NSMutableArray array];
-    for (NSString* file in allFiles)
-    {
-        for (NSString* dir in dirs)
-        {
-            NSString* absFilepath = [dir stringByAppendingPathComponent:file];
-            
-            if ([fm fileExistsAtPath:absFilepath])
-            {
-                [absoluteFilepaths addObject:absFilepath];
-                //foundFile = YES;
-                break;
+                if(![allFiles objectForKey:file])
+                {
+                    [allFiles setObject:[dir stringByAppendingPathComponent:file] forKey:file];
+                }
             }
         }
     }
     
     // Generate the sprite sheet
-    self.filenames = absoluteFilepaths;
+    self.filenames = allFiles;
+    return [self createTextureAtlas];
+}
+
+- (NSArray *)createTextureAtlasFromDirectoryPathsRecursive:(NSArray *)dirs ignoreDirs:(NSArray *)ignoreDirs
+{
+    // Build a list of all file names from all directories
+    NSMutableDictionary* allFiles = [NSMutableDictionary dictionary];
+    
+    for (NSString* dir in dirs)
+    {
+        //NSArray* files = [fm contentsOfDirectoryAtPath:dir error:NULL];
+        
+        NSArray* files = [self recursivePathsForResourcesOfType:@[@"png", @"psd"] inDirectory:dir];
+        
+        if (cancelled_)
+        {
+            return nil;
+        }
+        for (NSString* file in files)
+        {
+            NSString *firstPathComponent = [file pathComponents][0];
+            if(![ignoreDirs containsObject:firstPathComponent])
+            {
+                if(![allFiles objectForKey:file])
+                {
+                    [allFiles setObject:[dir stringByAppendingPathComponent:file] forKey:file];
+                }
+            }
+        }
+    }
+    
+    // Generate the sprite sheet
+    self.filenames = allFiles;
     return [self createTextureAtlas];
 }
 

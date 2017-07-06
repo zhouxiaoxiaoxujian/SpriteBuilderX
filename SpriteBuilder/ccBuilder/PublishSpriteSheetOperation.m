@@ -8,6 +8,7 @@
 #import "MiscConstants.h"
 #import "PlatformSettings.h"
 #import "SettingsManager.h"
+#import "ResourceManager.h"
 
 @interface PublishSpriteSheetOperation()
 
@@ -67,7 +68,7 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
     [self configurePacker];
 
-    NSArray *createdFiles = [_packer createTextureAtlasFromDirectoryPaths:_srcDirs];
+    NSArray *createdFiles = [_packer createTextureAtlasFromDirectoryPathsRecursive:_srcDirs ignoreDirs:[ResourceManager resIndependentDirs]];
 
     [self processWarnings];
 

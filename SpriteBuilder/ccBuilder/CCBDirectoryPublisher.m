@@ -416,7 +416,7 @@
     // Skip directories in generated sprite sheets
     if (isGeneratedSpriteSheet)
     {
-        [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Generated sprite sheets do not support directories (%@)", [directoryName lastPathComponent]] isFatal:NO relatedFile:subPath];
+        //[_warnings addWarningWithDescription:[NSString stringWithFormat:@"Generated sprite sheets do not support directories (%@)", [directoryName lastPathComponent]] isFatal:NO relatedFile:subPath];
         return;
     }
 
@@ -516,10 +516,11 @@
                                           outputDir:outputDir
                                          fileLookup:publishIntermediateFilesLookup];*/
         
-        PublishSpriteSheetOperation *operation = [self createSpriteSheetOperation:publishDirectory
-                                                                          subPath:subPath
-                                                               srcSpriteSheetDate:srcSpriteSheetDate
-                                                                  spriteSheetFile:spriteSheetFile];
+        PublishSpriteSheetOperation *operation = [self createSimpleSpriteSheetOperation:publishDirectory
+                                                                                subPath:subPath
+                                                                     srcSpriteSheetDate:srcSpriteSheetDate
+                                                                             resolution:@"universal"
+                                                                        spriteSheetFile:spriteSheetFile];
         
         [_queue addOperation:operation];
         
@@ -533,6 +534,53 @@
          }];
 
     }while(false);
+    
+    do
+    {
+        BOOL isDirectory;
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:publishDirectory isDirectory:&isDirectory];
+        
+        NSString *spriteSheetFile = nil;
+        if(!fileExists || !isDirectory)
+            break;
+        
+        spriteSheetFile = [spriteSheetDir stringByAppendingPathComponent:spriteSheetName];
+        
+        NSString *intermediateFileLookupPath = [publishDirectory  stringByAppendingPathComponent:INTERMEDIATE_FILE_LOOKUP_NAME];
+        [_renamedFilesLookup addIntermediateLookupPath:intermediateFileLookupPath];
+        
+        if ([self spriteSheetExistsAndUpToDate:srcSpriteSheetDate spriteSheetFile:spriteSheetFile subPath:subPath])
+        {
+            LocalLog(@"[SPRITESHEET] SKIPPING exists and up to date - file name: %@, subpath: %@, resolution: universal, file path: %@", [spriteSheetFile lastPathComponent], subPath, spriteSheetFile);
+            continue;
+        }
+        
+        // Note: these lookups are written as intermediate products to generate the final fileLookup.plist
+        PublishIntermediateFilesLookup *publishIntermediateFilesLookup = [[PublishIntermediateFilesLookup alloc] init];
+        
+        /*[self prepareImagesForSpriteSheetPublishing:publishDirectory
+         outputDir:outputDir
+         fileLookup:publishIntermediateFilesLookup];*/
+        
+        PublishSpriteSheetOperation *operation = [self createSimpleSpriteSheetOperation:publishDirectory
+                                                                                subPath:subPath
+                                                                     srcSpriteSheetDate:srcSpriteSheetDate
+                                                                             resolution:nil
+                                                                        spriteSheetFile:spriteSheetFile];
+        
+        [_queue addOperation:operation];
+        
+        [_queue addOperationWithBlock:^
+         {
+             if (![publishIntermediateFilesLookup writeToFile:intermediateFileLookupPath])
+             {
+                 [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Could not write intermediate file lookup for smart spritesheet %@ @ universal", spriteSheetName]];
+             }
+             [CCBFileUtil setModificationDate:srcSpriteSheetDate forFile:intermediateFileLookupPath];
+         }];
+        
+    }while(false);
+
 
 	for (NSString *resolution in resolutions)
 	{
@@ -574,10 +622,11 @@
 	}
 }
 
-- (PublishSpriteSheetOperation *)createSpriteSheetOperation:(NSString *)publishDirectory
-                                                    subPath:(NSString *)subPath
-                                         srcSpriteSheetDate:(NSDate *)srcSpriteSheetDate
-                                            spriteSheetFile:(NSString *)spriteSheetFile
+- (PublishSpriteSheetOperation *)createSimpleSpriteSheetOperation:(NSString *)publishDirectory
+                                                          subPath:(NSString *)subPath
+                                               srcSpriteSheetDate:(NSDate *)srcSpriteSheetDate
+                                                       resolution:(NSString *)resolution
+                                                  spriteSheetFile:(NSString *)spriteSheetFile
 {
     PublishSpriteSheetOperation *operation = [[PublishSpriteSheetOperation alloc] initWithProjectSettings:_projectSettings
                                                                                                  warnings:_warnings
@@ -585,8 +634,8 @@
     operation.platformSettings = _platformSettings;
     operation.publishDirectory = publishDirectory;
     operation.srcSpriteSheetDate = srcSpriteSheetDate;
-    operation.resolution = @"universal";
-    operation.srcDirs = @[[publishDirectory stringByAppendingPathComponent:@"resources-universal"]];
+    operation.resolution = resolution ? resolution : @"universal";
+    operation.srcDirs = @[resolution ? [publishDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"resources-%@", resolution]] : publishDirectory];
     operation.spriteSheetFile = spriteSheetFile;
     operation.subPath = subPath;
     operation.platformName = _platformSettings.name;
