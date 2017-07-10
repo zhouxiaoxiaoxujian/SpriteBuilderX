@@ -68,10 +68,7 @@
     }
     
     // Set the properties and sprite frames
-    if (sf)
-    {
-        [selection setExtraProp:sf forKey:propertyName];
-    }
+    [selection setExtraProp:sf forKey:propertyName];
     
     [self updateAffectedProperties];
 }
