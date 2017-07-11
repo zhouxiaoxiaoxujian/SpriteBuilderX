@@ -117,7 +117,6 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 
     self.packer = [[Tupac alloc] init];
     _packer.outputName = _spriteSheetFile;
-    _packer.outputFormat = TupacOutputFormatCocos2D;
     _packer.previewFile = _previewFilePath;
     _packer.directoryPrefix = _subPath;
     _packer.border = YES;

@@ -36,7 +36,6 @@
 @property(nonatomic, copy) NSDictionary *filenames; //short_name:path
 @property(nonatomic, copy) NSString *outputName;
 @property(nonatomic, copy) NSString* previewFile;
-@property(nonatomic, copy) NSString *outputFormat;
 @property(nonatomic,assign) int imageFormat;
 @property(nonatomic,assign) int imageQuality;
 @property(nonatomic,copy) NSString* directoryPrefix;

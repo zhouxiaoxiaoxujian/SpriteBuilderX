@@ -74,7 +74,7 @@ typedef struct _PVRTexHeader
     BOOL cancelled_;
 }
 
-@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, outputFormat=outputFormat_, imageFormat=imageFormat_, imageQuality=imageQuality_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, extrude=extrude_, dither=dither_, compress=compress_, optimize=optimize_;
+@synthesize scale=scale_, border=border_, filenames=filenames_, outputName=outputName_, imageFormat=imageFormat_, imageQuality=imageQuality_, directoryPrefix=directoryPrefix_, maxTextureSize=maxTextureSize_, padding=padding_, extrude=extrude_, dither=dither_, compress=compress_, optimize=optimize_;
 @synthesize errorMessage;
 
 + (Tupac*) tupac
@@ -90,7 +90,6 @@ typedef struct _PVRTexHeader
         border_ = NO;
         cancelled_ = NO;
         imageFormat_ = kFCImageFormatPNG;
-        self.outputFormat = TupacOutputFormatCocos2D;
         self.maxTextureSize = 2048;
         self.padding = 1;
         self.trim = YES;
@@ -338,13 +337,6 @@ typedef struct _PVRTexHeader
         CFRelease(image_source);
     }
     
-    // Check that the output format is valid
-    if (![self.outputFormat isEqualToString:TupacOutputFormatCocos2D]
-        && ![self.outputFormat isEqualToString:TupacOutputFormatAndEngine]) {
-        fprintf(stderr, "unknown output format %s\n", [self.outputFormat UTF8String]);
-        exit(EXIT_FAILURE);
-    }
-
     // Find the longest side
     int maxSideLen = 8;
     for (NSDictionary* imageInfo in imageInfos)
@@ -641,84 +633,79 @@ typedef struct _PVRTexHeader
     // Metadata File Export
     textureFileName = [textureFileName lastPathComponent];
     
-    if ([self.outputFormat isEqualToString:TupacOutputFormatCocos2D])
+
+    NSMutableDictionary *outDict    = [[NSMutableDictionary alloc] initWithCapacity:2];
+    
+    NSMutableDictionary *frames     = [NSMutableDictionary dictionaryWithCapacity:self.filenames.count];
+    NSMutableDictionary *metadata   = [NSMutableDictionary dictionaryWithCapacity:4];
+    
+    [outDict setObject:frames   forKey:@"frames"];
+    [outDict setObject:metadata forKey:@"metadata"];
+    
+    index = 0;
+    while(index < bestOutRects.size())
     {
-        NSMutableDictionary *outDict    = [[NSMutableDictionary alloc] initWithCapacity:2];
+        // Get info about the image
+        NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
+        NSString* filename = [imageInfo objectForKey:@"filename"];
+        NSString* exportFilename = filename;
+        if (directoryPrefix_) exportFilename = [directoryPrefix_ stringByAppendingPathComponent:exportFilename];
         
-        NSMutableDictionary *frames     = [NSMutableDictionary dictionaryWithCapacity:self.filenames.count];
-        NSMutableDictionary *metadata   = [NSMutableDictionary dictionaryWithCapacity:4];
+        bool rot = false;
+        int x, y, w, h, wSrc, hSrc, xOffset, yOffset;
+        x = bestOutRects[index].x + (self.padding + self.extrude);
+        y = bestOutRects[index].y + (self.padding + self.extrude);
+        w = bestOutRects[index].width - (self.padding + self.extrude)*2;
+        h = bestOutRects[index].height - (self.padding + self.extrude)*2;
+        wSrc = [[imageInfo objectForKey:@"width"] intValue];
+        hSrc = [[imageInfo objectForKey:@"height"] intValue];
+        NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
         
-        [outDict setObject:frames   forKey:@"frames"];
-        [outDict setObject:metadata forKey:@"metadata"];
+        rot = bestOutRects[index].rotated;
         
-        int index = 0;
-        while(index < bestOutRects.size())
+        if (rot)
         {
-            // Get info about the image
-            NSDictionary* imageInfo = [imageInfos objectAtIndex:bestOutRects[index].idx];
-            NSString* filename = [imageInfo objectForKey:@"filename"];
-            NSString* exportFilename = filename;
-            if (directoryPrefix_) exportFilename = [directoryPrefix_ stringByAppendingPathComponent:exportFilename];
-            
-            bool rot = false;
-            int x, y, w, h, wSrc, hSrc, xOffset, yOffset;
-            x = bestOutRects[index].x + (self.padding + self.extrude);
-            y = bestOutRects[index].y + (self.padding + self.extrude);
-            w = bestOutRects[index].width - (self.padding + self.extrude)*2;
-            h = bestOutRects[index].height - (self.padding + self.extrude)*2;
-            wSrc = [[imageInfo objectForKey:@"width"] intValue];
-            hSrc = [[imageInfo objectForKey:@"height"] intValue];
-            NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
-            
-            rot = bestOutRects[index].rotated;
-            
-            if (rot)
-            {
-                int wRot = h;
-                int hRot = w;
-                w = wRot;
-                h = hRot;
-            }
-            
-            xOffset = trimRect.origin.x + trimRect.size.width/2 - wSrc/2;
-            yOffset = -trimRect.origin.y - trimRect.size.height/2 + hSrc/2;
-            
-            index++;
-            
-            NSDictionary *frameDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       NSStringFromRect(NSMakeRect(x, y, w, h)),         @"frame",
-                                       NSStringFromPoint(NSMakePoint(xOffset, yOffset)), @"offset",
-                                       [NSNumber numberWithBool:rot],                    @"rotated",
-                                       NSStringFromRect(trimRect),                       @"sourceColorRect",
-                                       NSStringFromSize(NSMakeSize(wSrc, hSrc)),         @"sourceSize",
-                                       nil];
-            
-            [frames setObject:frameDict forKey:exportFilename];
-            NSArray *fileDuplicates = [duplicates objectForKey:filename];
-            if(fileDuplicates)
-            {
-                for (NSString *duplicateFilename in fileDuplicates)
-                {
-                    NSString* duplicateExportFilename = duplicateFilename;
-                    if (directoryPrefix_) duplicateExportFilename = [directoryPrefix_ stringByAppendingPathComponent:duplicateExportFilename];
-                    [frames setObject:frameDict forKey:duplicateExportFilename];
-                    //[frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
-                }
-            }
+            int wRot = h;
+            int hRot = w;
+            w = wRot;
+            h = hRot;
         }
         
-        [metadata setObject:textureFileName                                     forKey:@"textureFileName"];
-        [metadata setObject:[NSNumber numberWithInt:2]                      forKey:@"format"];
-        [metadata setObject:NSStringFromSize(NSMakeSize(bestOutW, bestOutH))        forKey:@"size"];
+        xOffset = trimRect.origin.x + trimRect.size.width/2 - wSrc/2;
+        yOffset = -trimRect.origin.y - trimRect.size.height/2 + hSrc/2;
         
-        NSString *plistFilename = [self.outputName stringByAppendingPathExtension:@"plist"];
-        [outDict writeToFile:plistFilename atomically:YES];
-        [result addObject:plistFilename];
+        index++;
+        
+        NSDictionary *frameDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   NSStringFromRect(NSMakeRect(x, y, w, h)),         @"frame",
+                                   NSStringFromPoint(NSMakePoint(xOffset, yOffset)), @"offset",
+                                   [NSNumber numberWithBool:rot],                    @"rotated",
+                                   NSStringFromRect(trimRect),                       @"sourceColorRect",
+                                   NSStringFromSize(NSMakeSize(wSrc, hSrc)),         @"sourceSize",
+                                   nil];
+        
+        [frames setObject:frameDict forKey:exportFilename];
+        NSArray *fileDuplicates = [duplicates objectForKey:filename];
+        if(fileDuplicates)
+        {
+            for (NSString *duplicateFilename in fileDuplicates)
+            {
+                NSString* duplicateExportFilename = duplicateFilename;
+                if (directoryPrefix_) duplicateExportFilename = [directoryPrefix_ stringByAppendingPathComponent:duplicateExportFilename];
+                [frames setObject:frameDict forKey:duplicateExportFilename];
+                //[frames setObject:frameDict forKey:[NSString stringWithFormat:@"%@ duplicate:%@", duplicateExportFilename, filename]];
+            }
+        }
     }
-    else if ([self.outputFormat isEqualToString:TupacOutputFormatAndEngine]) {
-        fprintf(stderr, "[MO] output format %s not yet supported\n", [self.outputFormat UTF8String]);
-        exit(EXIT_FAILURE);
-    }
+    
+    [metadata setObject:textureFileName                                     forKey:@"textureFileName"];
+    [metadata setObject:[NSNumber numberWithInt:2]                      forKey:@"format"];
+    [metadata setObject:NSStringFromSize(NSMakeSize(bestOutW, bestOutH))        forKey:@"size"];
+    
+    NSString *plistFilename = [self.outputName stringByAppendingPathExtension:@"plist"];
+    [outDict writeToFile:plistFilename atomically:YES];
+    [result addObject:plistFilename];
+    
     return result;
 }
 
@@ -836,6 +823,3 @@ typedef struct _PVRTexHeader
 }
 
 @end
-
-NSString *TupacOutputFormatCocos2D = @"cocos2d";
-NSString *TupacOutputFormatAndEngine = @"andengine";
