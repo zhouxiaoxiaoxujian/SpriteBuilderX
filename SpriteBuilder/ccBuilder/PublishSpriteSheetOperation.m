@@ -99,10 +99,16 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
     self.previewFilePath = nil;
     if (![__spriteSheetPreviewsGenerated containsObject:_subPath])
     {
-        NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory projectPathDir:self.projectSettings.projectPathDir];
-        self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
+//        NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory projectPathDir:self.projectSettings.projectPathDir];
+//        self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [__spriteSheetPreviewsGenerated addObject:_subPath];
     }
+    //generatePreviewFilePath called more that 2 times.. so previewFilePath became nil,
+    //because [spriteSheetPreviewsGenerated containsObject:_subPath]
+    //probably should be re-fxied
+    
+    NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory projectPathDir:self.projectSettings.projectPathDir];
+    self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
 }
 
 - (void)configurePacker
