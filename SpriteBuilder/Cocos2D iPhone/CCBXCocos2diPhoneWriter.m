@@ -374,12 +374,12 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 		}
 	}
 	
-	[self writeProperty:value type:type name:name platform:[prop objectForKey:@"platform"]];
+	[self writeProperty:value type:type name:name];
 
 }
 
 
-- (void) writeProperty:(id) prop type:(NSString*)type name:(NSString*)name platform:(NSString*)platform
+- (void) writeProperty:(id) prop type:(NSString*)type name:(NSString*)name
 {
     int typeId = [self propTypeIdForName:type];
     NSAssert(typeId >= 0, @"ccbi export: Trying to write unkown property type %@",type);
@@ -660,12 +660,12 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 		{
 			NSAssert(false, @"Failed to write generic property type: %@", propKey);
 		}
-		[self writeProperty:value type:type name:propKey platform:nil];
+		[self writeProperty:value type:type name:propKey];
 	}
 	else if([value isKindOfClass:[NSString class]])
 	{
 		NSString* type = @"String";
-		[self writeProperty:value type:type name:propKey platform:nil];
+		[self writeProperty:value type:type name:propKey];
 	}
 	else
 	{
@@ -677,6 +677,13 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 {
     for (NSDictionary * joint in joints) {
         [self cacheStringsForNode:joint];
+    }
+}
+
+-(void)cacheStringsForParams:(NSArray*)params
+{
+    for (NSDictionary * param in params) {
+         [self addToStringCache:[param objectForKey:@"name"] isPath:NO];
     }
 }
 
@@ -1050,6 +1057,17 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     }
 }
 
+- (void) writeParams:(NSArray*)params
+{
+    [self writeInt:params.count withSign:NO];
+    
+    for(NSDictionary *param in params)
+    {
+        [self writeProperty:[param objectForKey:@"name"] type:[param objectForKey:@"type"]  name:[param objectForKey:@"value"]];
+    }
+}
+
+
 - (void) writeKeyframeValue:(id)value type: (NSString*)type time:(float)time easingType: (int)easingType easingOpt: (float)easingOpt
 {
     // Write time
@@ -1295,7 +1313,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         
         NSAssert(type, @"Failed to find custom type");
         
-        [self writeProperty:value type:type name:name platform:nil];
+        [self writeProperty:value type:type name:name];
     }
     
     // Write physics
@@ -1416,7 +1434,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     
     for (NSDictionary* property in properties)
     {
-        [self writeProperty:property[@"value"] type:property[@"type"] name:property[@"name"] platform:property[@"platform"]];
+        [self writeProperty:property[@"value"] type:property[@"type"] name:property[@"name"]];
     }
 }
 
@@ -1432,18 +1450,36 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     }
 }
 
+- (NSArray*) getParams:(NSDictionary*)doc
+{
+    NSMutableArray *ret = [NSMutableArray array];
+    
+    int scaleType = 0;
+    id sceneScaleTypeObject = [doc objectForKey:@"sceneScaleType"];
+    if(sceneScaleTypeObject)
+        scaleType = [sceneScaleTypeObject intValue];
+    
+    [ret addObject:@{@"name" : @"sceneScaleType", @"type" : @"Integer", @"value" : [NSNumber numberWithInt:scaleType]}];
+    
+    return ret;
+}
+
 - (void) writeDocument:(NSDictionary*)doc
 {
     NSDictionary* nodeGraph = [doc objectForKey:@"nodeGraph"];
     NSArray* joints = doc[@"joints"];
     
+    NSArray* params = [self getParams:doc];
+    
     [self cacheStringsForNode:nodeGraph];
     [self cacheStringsForSequences:doc];
     [self cacheStringsForJoints:joints];
+    [self cacheStringsForParams:params];
     [self transformStringCache];
     
     [self writeHeader];
     [self writeStringCache];
+    [self writeParams:params];
     [self writeSequences:doc];
     [self writeNodeGraph:nodeGraph];
     [self writeJoints:joints];
