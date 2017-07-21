@@ -1063,7 +1063,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     
     for(NSDictionary *param in params)
     {
-        [self writeProperty:[param objectForKey:@"name"] type:[param objectForKey:@"type"]  name:[param objectForKey:@"value"]];
+        [self writeProperty:[param objectForKey:@"value"] type:[param objectForKey:@"type"]  name:[param objectForKey:@"name"]];
     }
 }
 
