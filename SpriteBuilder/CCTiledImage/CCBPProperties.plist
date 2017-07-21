@@ -5,11 +5,11 @@
 	<key>supportsTemplates</key>
 	<true/>
 	<key>ordering</key>
-	<integer>10004</integer>
+	<integer>10005</integer>
 	<key>displayName</key>
-	<string>Image view</string>
+	<string>Tiled Image</string>
 	<key>description</key>
-	<string>Displays stretchable 9-sliced texture with configurable margins.</string>
+	<string>Displays tiled image</string>
 	<key>inheritsFrom</key>
 	<string>CCWidget</string>
 	<key>canHaveChildren</key>
@@ -26,7 +26,7 @@
 		<string>spriteFrame</string>
 	</dict>
 	<key>editorClassName</key>
-	<string>CCBPImage</string>
+	<string>CCBPTiledImage</string>
 	<key>propertiesOverridden</key>
 	<array>
 		<dict>
@@ -165,30 +165,6 @@
 			<string>Separator</string>
 			<key>dontSetInEditor</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>saveInTemplate</key>
-			<true/>
-			<key>default</key>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-			<key>defaultSerialization</key>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-			<key>displayName</key>
-			<string>Margins</string>
-			<key>type</key>
-			<string>Offsets</string>
-			<key>name</key>
-			<string>margin</string>
 		</dict>
 	</array>
 </dict>

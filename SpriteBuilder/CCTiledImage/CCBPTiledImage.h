@@ -24,12 +24,10 @@
 
 #import "CCProtectedNode.h"
 #import "cocos2d.h"
-#import "CCSprite9Slice.h"
 
-@interface CCBPImage : CCProtectedNode
+@interface CCBPTiledImage : CCProtectedNode
 
 @property (nonatomic,assign) CGFloat imageScale;
-@property (nonatomic,readonly) CCSprite9Slice* background;
 
 /** Sets the left margin exclusively. */
 @property (nonatomic, assign) float marginLeft;

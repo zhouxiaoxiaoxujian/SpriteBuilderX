@@ -22,7 +22,6 @@
 {
     return @[@"blendFunc",
              @"spriteFrame",
-             @"renderingType",
              @"flipX",
              @"flipY"];
 }
@@ -52,7 +51,7 @@
     self = [super init];
     if(self)
     {
-        _background = [[CCBPSprite9SliceBase alloc] init];
+        _background = [[CCSprite9Slice alloc] init];
         _background.positionType = CCPositionTypeNormalized;
         _background.anchorPoint = CGPointMake(0.5f, 0.5f);
         _background.position = CGPointMake(0.5f, 0.5f);
@@ -67,7 +66,7 @@
     self = [super init];
     if(self)
     {
-        _background = [[CCBPSprite9SliceBase alloc] initWithTexture:texture rect:rect rotated:rotated];
+        _background = [[CCSprite9Slice alloc] initWithTexture:texture rect:rect rotated:rotated];
         _background.positionType = CCPositionTypeNormalized;
         _background.anchorPoint = CGPointMake(0.5f, 0.5f);
         _background.position = CGPointMake(0.5f, 0.5f);

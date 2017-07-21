@@ -8,11 +8,11 @@
 
 #import "CCProtectedNode.h"
 #import "cocos2d.h"
-#import "CCBPSprite9SliceBase.h"
+#import "CCSprite9Slice.h"
 
 @interface CCBPSprite9Slice : CCProtectedNode
 
-@property (nonatomic,readonly) CCBPSprite9SliceBase* background;
+@property (nonatomic,readonly) CCSprite9Slice* background;
 
 /** Sets the left margin exclusively. */
 @property (nonatomic, assign) float marginLeft;
