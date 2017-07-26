@@ -711,7 +711,9 @@ typedef struct _PVRTexHeader
 
 - (void)generatePreviewImage:(NSString *)pngFilename
 {
-    if (self.previewFile)
+    //use only phonehd image for preview, because it's 2x times smaller
+    
+    if (self.previewFile && [pngFilename containsString:@"resources-phonehd"])
     {
         NSError *error;
         if (![[NSFileManager defaultManager] removeItemAtPath:self.previewFile error:&error]
@@ -725,6 +727,19 @@ typedef struct _PVRTexHeader
         {
             NSLog(@"[TEXTUREPACKER] Error copying preview image from %@ to %@: %@", pngFilename, self.previewFile, error);
         }
+        
+        //resize preview 
+        NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 500, 500)];
+        [kView setImageScaling:NSImageScaleProportionallyUpOrDown];
+        [kView setImage:[[NSImage alloc] initWithContentsOfFile:self.previewFile]];
+        
+        NSRect kRect = kView.frame;
+        NSBitmapImageRep* kRep = [kView bitmapImageRepForCachingDisplayInRect:kRect];
+        [kView cacheDisplayInRect:kRect toBitmapImageRep:kRep];
+        
+        NSData* kData = [kRep representationUsingType:NSPNGFileType properties:[NSDictionary dictionary]];
+        [kData writeToFile:self.previewFile atomically:NO];
+        
     }
 }
 

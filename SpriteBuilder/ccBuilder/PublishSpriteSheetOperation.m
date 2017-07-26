@@ -103,10 +103,13 @@ static NSMutableSet *__spriteSheetPreviewsGenerated;
 //        self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
         [__spriteSheetPreviewsGenerated addObject:_subPath];
     }
-    //generatePreviewFilePath called more that 2 times.. so previewFilePath became nil,
+    //NSLog(@"%@",_subPath);
+    //this method called more than 2 times..why? so .previewFilePath becomes nil, method generatePreviewImage in Tupac always do nothing
     //because [spriteSheetPreviewsGenerated containsObject:_subPath]
     //probably should be re-fxied
-    
+    //and has a small problem - preview will be generated from tablethd image, too big for preview..
+    //check addintional quick fix for that in Tupac.mm method - generatePreviewImage
+    //actually I've resized preview to even smaller size for speed
     NSString *filePath = [SBSettings miscFilesPathForFile:_publishDirectory projectPathDir:self.projectSettings.projectPathDir];
     self.previewFilePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
 }
