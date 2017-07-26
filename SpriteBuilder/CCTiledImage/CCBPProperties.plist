@@ -17,7 +17,7 @@
 	<key>canBeRootNode</key>
 	<true/>
 	<key>className</key>
-	<string>CCImage</string>
+	<string>CCTileImage</string>
 	<key>spriteFrameDrop</key>
 	<dict>
 		<key>className</key>
