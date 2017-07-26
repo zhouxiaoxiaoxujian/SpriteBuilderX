@@ -353,7 +353,6 @@
 		A5DE1AD71F225D2A00A68D9E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A5DE1AEC1F225DCA00A68D9E /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DE1AE31F225DCA00A68D9E /* CCBPProperties.plist */; };
 		A5DE1AED1F225DCA00A68D9E /* CCBPTiledImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE1AE51F225DCA00A68D9E /* CCBPTiledImage.m */; };
-		A5DE1AEE1F225DCA00A68D9E /* CCTiledImage-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DE1AE61F225DCA00A68D9E /* CCTiledImage-Info.plist */; };
 		A5DE1AEF1F225DCA00A68D9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5DE1AE81F225DCA00A68D9E /* InfoPlist.strings */; };
 		A5DE1AF01F225DCA00A68D9E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DE1AEA1F225DCA00A68D9E /* Icon.png */; };
 		A5DE1AF11F225DCA00A68D9E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DE1AEB1F225DCA00A68D9E /* Icon@2x.png */; };
@@ -6309,7 +6308,6 @@
 				A5DE1AF01F225DCA00A68D9E /* Icon.png in Resources */,
 				A5DE1AEC1F225DCA00A68D9E /* CCBPProperties.plist in Resources */,
 				A5DE1AEF1F225DCA00A68D9E /* InfoPlist.strings in Resources */,
-				A5DE1AEE1F225DCA00A68D9E /* CCTiledImage-Info.plist in Resources */,
 				A5DE1AF11F225DCA00A68D9E /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
