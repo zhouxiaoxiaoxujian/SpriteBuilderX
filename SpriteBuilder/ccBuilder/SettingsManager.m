@@ -141,6 +141,18 @@
     return [anchorY floatValue];
 }
 
+-(void) setDefaultSpritePositionUnit:(CCPositionUnit)defaultSpritePositionUnit {
+    [SBUserDefaults setObject:@(defaultSpritePositionUnit) forKey:@"defaultSpritePositionUnit"];
+}
+
+-(CCPositionUnit) defaultSpritePositionUnit {
+    id defaultSpritePositionUnit = [SBUserDefaults objectForKey:@"defaultSpritePositionUnit"];
+    if (!defaultSpritePositionUnit) {
+        return CCPositionUnitUIPoints;
+    }
+    return [defaultSpritePositionUnit intValue];
+}
+
 - (void) save
 {
     [SBUserDefaults synchronize];

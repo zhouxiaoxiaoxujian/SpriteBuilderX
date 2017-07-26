@@ -92,6 +92,8 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     self.stepAnchorY.floatValue = SBSettings.defaultSpriteAnchorY;
     
     self.storeMiscFilesPathField.stringValue = SBSettings.miscFilesPath;
+    
+    [self.defaultSpritePositionType selectItemWithTag:SBSettings.defaultSpritePositionUnit];
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
@@ -137,6 +139,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     SBSettings.defaultSpriteAnchorY = self.stepAnchorY.floatValue;
     SBSettings.storeMiscFilesAtPath = _storeMiscFilesAtPath;
     SBSettings.miscFilesPath = self.storeMiscFilesPathField.stringValue;
+    SBSettings.defaultSpritePositionUnit = self.defaultSpritePositionType.selectedTag;
     
     [SBSettings save];
     [super acceptSheet:sender];

@@ -9,6 +9,7 @@
 #define SBSettings [SettingsManager instance]
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
 @interface SettingsManager : NSObject
 
@@ -22,6 +23,8 @@
 
 @property (nonatomic,assign) BOOL storeMiscFilesAtPath;
 @property (nonatomic,strong) NSString *miscFilesPath;
+
+@property (nonatomic,assign) CCPositionUnit defaultSpritePositionUnit;
 
 + (instancetype) instance;
 - (void) save;

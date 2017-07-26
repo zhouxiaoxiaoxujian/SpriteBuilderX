@@ -2561,6 +2561,15 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     return success;
 }
 
+-(void) loadDefaultOptionsForNewSprite:(CCNode *) node {
+    node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
+    CCPositionType defaultPosType;
+    defaultPosType.xUnit = SBSettings.defaultSpritePositionUnit;
+    defaultPosType.yUnit = SBSettings.defaultSpritePositionUnit;
+    defaultPosType.corner = CCPositionReferenceCornerBottomLeft;
+    node.positionType = defaultPosType;
+}
+
 - (CCNode*) addPlugInNodeNamed:(NSString*)name asChild:(BOOL) asChild
 {
     [animationPlaybackManager stop];
@@ -2568,7 +2577,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     self.errorDescription = NULL;
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:name];
     if ([name isEqualToString:@"CCSprite"]) {
-        node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
+        [self loadDefaultOptionsForNewSprite:node];
     }
     BOOL success = [self addCCObject:node asChild:asChild];
     
@@ -2616,7 +2625,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                        fileVersion:kCCBFileFormatVersion];
         
         if ([class isEqualToString:@"CCSprite"]) {
-            node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
+            [self loadDefaultOptionsForNewSprite:node];
         }
         
         // Set it's displayName to the name of the spriteFile
@@ -2725,7 +2734,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     CCNode* node = [[PlugInManager sharedManager] createDefaultNodeOfType:nodeName];
     if ([nodeName isEqualToString:@"CCSprite"]) {
-        node.anchorPoint = ccp(SBSettings.defaultSpriteAnchorX,SBSettings.defaultSpriteAnchorY);
+        [self loadDefaultOptionsForNewSprite:node];
     }
     [self addCCObject:node toParent:parent atIndex:idx];
 }

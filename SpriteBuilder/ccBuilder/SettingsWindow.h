@@ -28,5 +28,6 @@
 @property (weak) IBOutlet NSTextField *storeAlongProjectField;
 @property (weak) IBOutlet NSButton *selectMiscPathButton;
 
+@property (weak) IBOutlet NSPopUpButton *defaultSpritePositionType;
 
 @end
