@@ -2220,13 +2220,26 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 {
     // Remember old position of root node
     CGPoint oldPosition = rootNode.position;
+    //and scale
+    float oldScale = rootNode.scale;
     
     // Create render context
     CCRenderTexture* render = NULL;
     BOOL trimImage = NO;
     if (self.stageSize.width > 0 && self.stageSize.height > 0)
     {
-        render = [CCRenderTexture renderTextureWithWidth:self.stageSize.width height:self.stageSize.height];
+        //fix for GL_MAX_TEXTURE_SIZE: 16384
+        float maxSize = [CCConfiguration sharedConfiguration].maxTextureSize;
+        ResolutionSetting *res = [appDelegate.currentDocument.resolutions objectAtIndex:appDelegate.currentDocument.currentResolution];
+        float stageHight = res.height;
+        float scale = maxSize / stageHight;
+        float renderHeight = self.stageSize.height * scale;
+        if (stageHight > maxSize) {
+            render = [CCRenderTexture renderTextureWithWidth:self.stageSize.width height:renderHeight];
+            rootNode.scale = scale;
+        } else {
+            render = [CCRenderTexture renderTextureWithWidth:self.stageSize.width height:self.stageSize.height];
+        }
         rootNode.position = ccp(0,0);
     }
     else
@@ -2243,6 +2256,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     // Reset old position
     rootNode.position = oldPosition;
+    //back to old scale
+    
+    rootNode.scale = oldScale;
     
     CGImageRef imgRef = [render newCGImage];
     
@@ -2264,6 +2280,19 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     // Release image
     CGImageRelease(imgRef);
+    
+    //resize preview
+    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 640, 1136)];
+    [kView setImageScaling:NSImageScaleProportionallyUpOrDown];
+    [kView setImage:[[NSImage alloc] initWithContentsOfFile:path]];
+    
+    NSRect kRect = kView.frame;
+    NSBitmapImageRep* kRep = [kView bitmapImageRepForCachingDisplayInRect:kRect];
+    [kView cacheDisplayInRect:kRect toBitmapImageRep:kRep];
+    
+    NSData* kData = [kRep representationUsingType:NSPNGFileType properties:[NSDictionary dictionary]];
+    [kData writeToFile:path atomically:NO];
+
 
 }
 
