@@ -1360,13 +1360,12 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if (!appDelegate.hasOpenedDocument) return;
     [self mouseMoved:event];
     
-    if (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) return;
-
     CGPoint pos = [[CCDirectorMac sharedDirector] convertEventToGL:event];
     
     if ([notesLayer mouseDragged:pos event:event]) return;
     if ([guideLayer mouseDragged:pos event:event]) return;
     if ([appDelegate.physicsHandler mouseDragged:pos event:event]) return;
+    if (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) return;
     
     if (currentMouseTransform == kCCBTransformHandleDownInside)
     {
