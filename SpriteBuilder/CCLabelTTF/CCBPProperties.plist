@@ -327,6 +327,21 @@
 			<string>shadowOffset</string>
 		</dict>
 		<dict>
+			<key>saveInTemplate</key>
+			<true/>
+			<key>defaultSerialization</key>
+			<array>
+				<integer>1</integer>
+				<integer>771</integer>
+			</array>
+			<key>displayName</key>
+			<string></string>
+			<key>type</key>
+			<string>Blendmode</string>
+			<key>name</key>
+			<string>blendFunc</string>
+		</dict>
+		<dict>
 			<key>displayName</key>
 			<string>Gradient</string>
 			<key>name</key>

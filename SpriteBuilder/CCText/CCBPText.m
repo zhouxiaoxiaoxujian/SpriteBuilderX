@@ -75,7 +75,8 @@
              @"shadowOffsetType",
              @"gradientColor1",
              @"gradientColor2",
-             @"gradientType"];
+             @"gradientType",
+             @"blendFunc"];
 }
 
 -(CGPoint)shadowOffsetInPoints
