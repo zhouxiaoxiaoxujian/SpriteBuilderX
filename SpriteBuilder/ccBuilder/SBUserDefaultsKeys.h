@@ -2,3 +2,13 @@ extern NSString *LAST_OPENED_PROJECT_PATH;
 extern NSString *LAST_VISIT_LEFT_PANEL_VISIBLE;
 extern NSString *LAST_VISIT_BOTTOM_PANEL_VISIBLE;
 extern NSString *LAST_VISIT_RIGHT_PANEL_VISIBLE;
+
+extern NSString *SHOW_EXTRAS;
+extern NSString *SHOW_GUIDES;
+extern NSString *SHOW_GUIDE_GRID;
+extern NSString *SHOW_STICKY_NOTES;
+
+extern NSString *SNAP_TOGGLE;
+extern NSString *SNAP_TOGUIDES;
+extern NSString *SNAP_GRID;
+extern NSString *SNAP_NODE;

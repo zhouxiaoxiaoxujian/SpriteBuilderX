@@ -4682,32 +4682,73 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 #pragma mark Extras / Snap
 
+- (BOOL)readBoolValue:(NSString*)key withDefault:(BOOL)defaultValue
+{
+    id value = [SBUserDefaults objectForKey:key];
+    if(value)
+        return [value boolValue];
+    else
+        return defaultValue;
+}
+
 - (void)setupExtras
 {
-    // Default Extras
-    self.showExtras      = YES;
-    self.showGuides      = YES;
-    self.showGuideGrid   = NO;
-    self.showStickyNotes = YES;
+    // Default Extras 
+    self.showExtras      = [self readBoolValue:SHOW_EXTRAS withDefault:YES];
+    self.showGuides      = [self readBoolValue:SHOW_GUIDES withDefault:YES];
+    self.showGuideGrid   = [self readBoolValue:SHOW_GUIDE_GRID withDefault:NO];
+    self.showStickyNotes = [self readBoolValue:SHOW_STICKY_NOTES withDefault:YES];
     
     // Default Snap
-    self.snapToggle      = YES;
-    self.snapToGuides    = YES;
-    self.snapGrid        = NO;
-    self.snapNode        = YES;
+    self.snapToggle      = [self readBoolValue:SNAP_TOGGLE withDefault:YES];
+    self.snapToGuides    = [self readBoolValue:SNAP_TOGUIDES withDefault:YES];
+    self.snapGrid        = [self readBoolValue:SNAP_GRID withDefault:NO];
+    self.snapNode        = [self readBoolValue:SNAP_NODE withDefault:YES];
+}
+
+-(void) setShowExtras:(BOOL)showExtrasNew {
+    showExtras = showExtrasNew;
+    [SBUserDefaults setBool:showExtrasNew forKey:SHOW_EXTRAS];
 }
 
 -(void) setShowGuides:(BOOL)showGuidesNew {
     showGuides = showGuidesNew;
+    [SBUserDefaults setBool:showGuidesNew forKey:SHOW_GUIDES];
     [[[CocosScene cocosScene] guideLayer] updateGuides];
 }
 
 -(void) setShowGuideGrid:(BOOL)showGuideGridNew {
     showGuideGrid = showGuideGridNew;
+    [SBUserDefaults setBool:showGuideGridNew forKey:SHOW_GUIDE_GRID];
     if(showGuideGrid) {
         [self setSnapGrid:YES];
     }
     [[[CocosScene cocosScene] guideLayer] updateGuides];
+}
+
+-(void) setShowStickyNotes:(BOOL)showStickyNotesNew {
+    showStickyNotes = showStickyNotesNew;
+    [SBUserDefaults setBool:showStickyNotesNew forKey:SHOW_STICKY_NOTES];
+}
+
+-(void) setSnapToggle:(BOOL)snapToggleNew {
+    snapToggle = snapToggleNew;
+    [SBUserDefaults setBool:snapToggle forKey:SNAP_TOGGLE];
+}
+
+-(void) setSnapToGuides:(BOOL)snapToGuidesNew {
+    snapToGuides = snapToGuidesNew;
+    [SBUserDefaults setBool:snapToGuides forKey:SNAP_TOGUIDES];
+}
+
+-(void) setSnapGrid:(BOOL)snapGridNew {
+    snapGrid = snapGridNew;
+    [SBUserDefaults setBool:snapGrid forKey:SNAP_GRID];
+}
+
+-(void) setSnapNode:(BOOL)snapNodeNew {
+    snapNode = snapNodeNew;
+    [SBUserDefaults setBool:snapNode forKey:SNAP_NODE];
 }
 
 - (IBAction) menuGuideGridSettings:(id)sender
