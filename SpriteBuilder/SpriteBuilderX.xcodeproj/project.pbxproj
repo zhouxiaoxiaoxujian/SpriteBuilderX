@@ -904,6 +904,7 @@
 		F82444401E1716B00044EE4F /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444361E1716B00044EE4F /* BFColorPickerViewController.m */; };
 		F82444411E1716B00044EE4F /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444381E1716B00044EE4F /* BFIconTabBar.m */; };
 		F8462E321E133B12005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462E311E133B12005DB3BD /* Images.xcassets */; };
+		F85A57DD1F72B0F90091B3C6 /* frame_iPhoneX.png in Resources */ = {isa = PBXBuildFile; fileRef = F85A57DC1F72B0E70091B3C6 /* frame_iPhoneX.png */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
 		F87991511E47347100D12FAA /* SettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F879914F1E47347100D12FAA /* SettingsWindow.m */; };
 		F87991521E47347100D12FAA /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87991501E47347100D12FAA /* SettingsWindow.xib */; };
@@ -2465,6 +2466,7 @@
 		F82444371E1716B00044EE4F /* BFIconTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFIconTabBar.h; sourceTree = "<group>"; };
 		F82444381E1716B00044EE4F /* BFIconTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFIconTabBar.m; sourceTree = "<group>"; };
 		F8462E311E133B12005DB3BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F85A57DC1F72B0E70091B3C6 /* frame_iPhoneX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_iPhoneX.png; sourceTree = "<group>"; };
 		F85F7C4D1E100C7000A13B3F /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
 		F85F7C551E10177800A13B3F /* build_distribution.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = build_distribution.py; path = ../../scripts/build_distribution.py; sourceTree = "<group>"; };
 		F85F7C561E10177800A13B3F /* Rakefile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Rakefile; path = ../../scripts/Rakefile; sourceTree = "<group>"; };
@@ -3060,6 +3062,7 @@
 				E3DFE830160226760068CB50 /* frame-iphone5.png */,
 				A5F251031CD019190016092E /* frame-iphone6.png */,
 				A5F251091CD01A200016092E /* frame-iphone6Plus.png */,
+				F85A57DC1F72B0E70091B3C6 /* frame_iPhoneX.png */,
 				E36078BB15EE0B2C0040A172 /* sel-round.png */,
 				E360788F15EBA5420040A172 /* sel-frame.png */,
 				E3F3F84A153DBA43005443EE /* notes-close-down.png */,
@@ -5841,6 +5844,7 @@
 				830485A419AF2A6900A624BB /* PreviewGenericView.xib in Resources */,
 				B73788F51804D80B0076A88C /* ccb.icns in Resources */,
 				B75CB46518468FA70036259F /* seq-btn-loop.png in Resources */,
+				F85A57DD1F72B0F90091B3C6 /* frame_iPhoneX.png in Resources */,
 				772BE57C134398EE0009B5B9 /* NewDocWindow.xib in Resources */,
 				A5E8BA2D1C20354300476C19 /* InspectorOffsets.xib in Resources */,
 				774F95C613638D74005D43EB /* missing-particle-texture.png in Resources */,
