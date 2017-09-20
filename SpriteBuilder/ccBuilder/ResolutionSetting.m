@@ -397,6 +397,35 @@
     return setting;
 }
 
++ (ResolutionSetting*) setting_iPhoneX {
+    
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    setting.name = @"iPhone X";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd phonehd";
+    setting.resourceScale = 4;
+    return setting;
+}
+
++ (ResolutionSetting*) setting_iPhoneX_Landscape {
+    
+    ResolutionSetting* setting = [self setting_iPhoneX];
+    setting.name = @"iPhone X Landscape";
+    setting.width = 2436;
+    setting.height = 1125;
+    return setting;
+}
+
++ (ResolutionSetting*) setting_iPhoneX_Portrait {
+    
+    ResolutionSetting* setting = [self setting_iPhoneX];
+    setting.name = @"iPhone X Portrait";
+    setting.width = 1125;
+    setting.height = 2436;
+    return setting;
+}
+
 + (ResolutionSetting*) settingAndroidXSmall
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];

@@ -76,6 +76,10 @@
 + (ResolutionSetting*) settingIPadRetinaLandscape;
 + (ResolutionSetting*) settingIPadRetinaPortrait;
 
++ (ResolutionSetting*) setting_iPhoneX;
++ (ResolutionSetting*) setting_iPhoneX_Landscape;
++ (ResolutionSetting*) setting_iPhoneX_Portrait;
+
 // Android resolutions
 + (ResolutionSetting*) settingAndroidXSmall;
 + (ResolutionSetting*) settingAndroidXSmallLandscape;

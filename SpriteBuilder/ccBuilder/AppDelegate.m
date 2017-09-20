@@ -1313,24 +1313,22 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         if (projectSettings.defaultOrientation == kCCBOrientationLandscape)
         {
             // Full screen landscape
-//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneLandscape]];
-//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneX_Landscape]];
         }
         else
         {
             // Full screen portrait
-//            [updatedResolutions addObject:[ResolutionSetting settingIPhonePortrait]];
-//            [updatedResolutions addObject:[ResolutionSetting settingIPhoneRetinaPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneX_Portrait]];
         }
     }
     
@@ -4850,7 +4848,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 - (IBAction) menuQuit:(id)sender
 {
-    if ([self windowShouldClose:self])
+    if ([self windowShouldClose:(NSWindow*)self])
     {
 		[self.projectSettings store];
         [[NSApplication sharedApplication] terminate:self];
