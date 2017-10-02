@@ -216,13 +216,27 @@
     }
     
     // Get actual rendered dimensions
-    if (dimensions.height == 0)
+    if (dimensions.width == 0)
     {
-        // Get dimensions for string without dimensions of string with variable height
+        // Get dimensions for string without dimensions
         dimensions = [self sizeForAttributedString:attributedString constrainedToSize:dimensions];
         
         dimensions.width = ceil(dimensions.width);
         dimensions.height = ceil(dimensions.height);
+        
+        wDrawArea = dimensions.width;
+        hDrawArea = dimensions.height;
+        
+        dimensions.width += xPadding * 2;
+        dimensions.height += yPadding * 2;
+    }
+    else if (dimensions.height == 0 && dimensions.width > 0)
+    {
+        // Get dimensions for string with variable height
+        CGSize actualSize = [self sizeForAttributedString:attributedString constrainedToSize:dimensions];
+        
+        dimensions.width = ceil(dimensions.width);
+        dimensions.height = ceil(actualSize.height);
         
         wDrawArea = dimensions.width;
         hDrawArea = dimensions.height;
