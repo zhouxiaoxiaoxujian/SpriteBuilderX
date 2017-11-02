@@ -3719,6 +3719,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         return;
     }
     
+    //fix bug with Custom Properties:
+    //- start start typing/changing any value in any property
+    //- right after click "Edit Custom Properties" button and change "Property name" to any, for property which was just edited value
+    //- click "Done" and SBX will crash
+    [[self window] makeFirstResponder:[self window]];
+    
     CustomPropSettingsWindow* wc = [[CustomPropSettingsWindow alloc] initWithWindowNibName:@"CustomPropSettingsWindow"];
     [wc copySettingsForNode:self.selectedNode];
     
