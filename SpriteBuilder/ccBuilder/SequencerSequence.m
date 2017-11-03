@@ -262,12 +262,13 @@
         NSString* soundFile = [keyframe.value objectAtIndex:0];
 //        float pitch = [[keyframe.value objectAtIndex:1] floatValue];
 //        float pan = [[keyframe.value objectAtIndex:2] floatValue];
-//        float gain = [[keyframe.value objectAtIndex:3] floatValue];
+        float gain = [[keyframe.value objectAtIndex:3] floatValue];
         
         NSString* absFile = [[ResourceManager sharedManager] toAbsolutePath:soundFile];
         if ([[NSFileManager defaultManager] fileExistsAtPath:absFile]) {
             NSString *path = [[CCFileUtils sharedFileUtils] fullPathForFilenameIgnoringResolutions:absFile];
             NSSound *sound = [[NSSound alloc] initWithContentsOfFile:path byReference:YES];
+            sound.volume = gain;
             [sound play];
         }
     }
