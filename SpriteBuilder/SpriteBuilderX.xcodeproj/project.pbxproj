@@ -918,6 +918,7 @@
 		F8A53CCA1E3920A700C602B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */; };
 		F8A53CCB1E3920A700C602B6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC81E3920A700C602B6 /* Fabric.framework */; };
 		F8A53CCC1E3920A700C602B6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC91E3920A700C602B6 /* Crashlytics.framework */; };
+		F8E3DDFB1FACF33D00E3E931 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
 		FA98CFD1154E7F7D006E58C5 /* CCBX.m in Sources */ = {isa = PBXBuildFile; fileRef = E398C03614FB8A430078E771 /* CCBX.m */; };
@@ -2496,6 +2497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E3DDFB1FACF33D00E3E931 /* CoreFoundation.framework in Frameworks */,
 				7B76CF8619F1AF9E006AF235 /* libcocos2d-mac.a in Frameworks */,
 				D35E589E18E391DA008571EC /* GLKit.framework in Frameworks */,
 				80AD79A21863878B00B653B7 /* libPVRTexLib.a in Frameworks */,

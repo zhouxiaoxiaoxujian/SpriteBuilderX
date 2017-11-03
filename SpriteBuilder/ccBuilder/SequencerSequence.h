@@ -23,6 +23,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVAudioPlayer.h>
 
 #define TIMELINE_PAD_PIXELS 5.0f
 
@@ -53,6 +54,7 @@
     BOOL autoPlay;
 }
 
+@property (nonatomic,retain) AVAudioPlayer *audioPlayer;
 @property (nonatomic,assign) float timelineScale;
 @property (nonatomic,assign) float timelineOffset;
 @property (nonatomic,assign) float timelineLength;
