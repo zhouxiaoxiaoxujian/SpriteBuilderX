@@ -83,7 +83,7 @@
     else if (type == kCCBCustomPropTypeFloat)
     {
         float f = [val floatValue];
-        return [NSString stringWithFormat:@"%f",f];
+        return [NSString stringWithFormat:@"%.02f",f];
     }
     else if (type == kCCBCustomPropTypeBool)
     {
