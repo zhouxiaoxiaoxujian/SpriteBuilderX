@@ -377,6 +377,7 @@ typedef void (^CompletionCallback) (BOOL success);
 
 @property (weak) IBOutlet NSMenu *menuPublishPlatform;
 
+@property (nonatomic, strong) NSMutableArray *customProperties;
 
 // Methods
 + (AppDelegate*) appDelegate;
@@ -420,7 +421,11 @@ typedef void (^CompletionCallback) (BOOL success);
 - (IBAction) menuQuit:(id)sender;
 
 - (DeviceBorder*) orientedDeviceTypeForSize:(CGSize)size;
+
+- (IBAction)copyCustomPropSettings:(id)sender;
+- (IBAction)pastleCustomPropSettings:(id)sender;
 - (IBAction)menuEditCustomPropSettings:(id)sender;
+
 //- (void) updateStateOriginCenteredMenu;
 - (IBAction) menuSetStateOriginCentered:(id)sender;
 - (void) updateCanvasBorderMenu;

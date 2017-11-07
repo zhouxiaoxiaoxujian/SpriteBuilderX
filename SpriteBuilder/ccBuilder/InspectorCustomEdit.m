@@ -29,6 +29,15 @@
 
 @synthesize name;
 
+- (IBAction)copyProperties:(NSButton *)sender {
+    [[AppDelegate appDelegate] copyCustomPropSettings:sender];
+    pastleButton.enabled = [AppDelegate appDelegate].customProperties.count;
+}
+
+- (IBAction)pastleProperties:(NSButton *)sender {
+    [[AppDelegate appDelegate] pastleCustomPropSettings:sender];
+}
+
 - (IBAction)pressedEdit:(id)sender
 {
     NSLog(@"pressedEdit");
@@ -38,6 +47,7 @@
 - (void) willBeAdded
 {
     self.name = @"Edit Custom Properties";
+    pastleButton.enabled = [AppDelegate appDelegate].customProperties.count;
 }
 
 

@@ -3707,18 +3707,47 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [self updateCanvasBorderMenu];
 }
 
-- (IBAction)menuEditCustomPropSettings:(id)sender
-{
-    if (!currentDocument) return;
-    if (!self.selectedNode) return;
+- (IBAction)copyCustomPropSettings:(id)sender {
+    [self isMenuEditCustomPropSettingsAvailable];
+    [[self window] makeFirstResponder:[self window]];
     
-    NSString* customClass = [self.selectedNode extraPropForKey:@"customClass"];
-    if (!customClass || [customClass isEqualToString:@""])
-    {
-        [self modalDialogTitle:@"Custom Class Needed" message:@"To add custom properties to a node you need to use a custom class."];
-        return;
+    self.customProperties = [NSMutableArray array];
+    for (CustomPropSetting* setting in self.selectedNode.customProperties) {
+        [self.customProperties addObject:[setting copy]];
+    }
+}
+
+- (IBAction)pastleCustomPropSettings:(id)sender {
+    [self isMenuEditCustomPropSettingsAvailable];
+    [[self window] makeFirstResponder:[self window]];
+
+    [self saveUndoState];
+
+    NSMutableArray *forRemove = [NSMutableArray array];
+    NSMutableArray *customProperties = [NSMutableArray array];
+    for (CustomPropSetting *setting in self.customProperties) {
+        [customProperties addObject:[setting copy]];
     }
     
+    for (CustomPropSetting *settingsCopy in customProperties) {
+        for (CustomPropSetting *settingsNode in self.selectedNode.customProperties) {
+            if ([settingsCopy.name isEqualToString:settingsNode.name]) {
+                [forRemove addObject:settingsCopy];
+            }
+        }
+    }
+    [customProperties removeObjectsInArray:forRemove];
+    
+    for (CustomPropSetting* setting in customProperties) {
+        [self.selectedNode.customProperties addObject:[setting copy]];
+    }
+    
+    [_inspectorController updateInspectorFromSelection];
+}
+
+- (IBAction)menuEditCustomPropSettings:(id)sender {
+
+    if (![self isMenuEditCustomPropSettingsAvailable]) return;
     //fix bug with Custom Properties:
     //- start start typing/changing any value in any property
     //- right after click "Edit Custom Properties" button and change "Property name" to any, for property which was just edited value
@@ -3735,6 +3764,19 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         self.selectedNode.customProperties = wc.settings;
         [_inspectorController updateInspectorFromSelection];
     }
+}
+
+-(BOOL) isMenuEditCustomPropSettingsAvailable {
+    if (!currentDocument) NO;
+    if (self.selectedNode) NO;
+    
+    NSString* customClass = [self.selectedNode extraPropForKey:@"customClass"];
+    if (!customClass || [customClass isEqualToString:@""])
+    {
+        [self modalDialogTitle:@"Custom Class Needed" message:@"To add custom properties to a node you need to use a custom class."];
+        return NO;
+    }
+    return YES;
 }
 
 - (IBAction)menuEditClass:(id)sender
