@@ -26,8 +26,6 @@
 	<string>CocosBuilderProject</string>
 	<key>fileVersion</key>
 	<integer>1</integer>
-	<key>onlyPublishCCBs</key>
-	<false/>
 	<key>platformsSettings</key>
 	<array>
 		<dict>
@@ -76,9 +74,10 @@
 			<key>name</key>
 			<string>iOS</string>
 			<key>packets</key>
-			<array>
-				<string>Main</string>
-			</array>
+			<dict>
+				<key>Main</key>
+				<integer>1</integer>
+			</dict>
 			<key>publish1x</key>
 			<false/>
 			<key>publish2x</key>
@@ -150,9 +149,10 @@
 			<key>name</key>
 			<string>Android</string>
 			<key>packets</key>
-			<array>
-				<string>Main</string>
-			</array>
+			<dict>
+				<key>Main</key>
+				<integer>1</integer>
+			</dict>
 			<key>publish1x</key>
 			<false/>
 			<key>publish2x</key>
@@ -179,8 +179,6 @@
 			<integer>75</integer>
 		</dict>
 	</array>
-	<key>publishEnvironment</key>
-	<integer>0</integer>
 	<key>resourceAutoScaleFactor</key>
 	<integer>4</integer>
 	<key>resourcePaths</key>
@@ -195,6 +193,6 @@
 	<key>sceneScaleType</key>
 	<integer>3</integer>
 	<key>versionStr</key>
-	<string>1.5</string>
+	<string>1.5.25</string>
 </dict>
 </plist>
