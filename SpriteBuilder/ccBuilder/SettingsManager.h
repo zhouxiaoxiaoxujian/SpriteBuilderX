@@ -26,6 +26,9 @@
 
 @property (nonatomic,assign) CCPositionUnit defaultSpritePositionUnit;
 
+@property (nonatomic, assign) BOOL restoreOpenedDocuments;
+@property (nonatomic, strong) NSMutableDictionary *openedDocuments;
+
 + (instancetype) instance;
 - (void) save;
 - (void) resetBackupSettings;

@@ -94,6 +94,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     self.storeMiscFilesPathField.stringValue = SBSettings.miscFilesPath;
     
     [self.defaultSpritePositionType selectItemWithTag:SBSettings.defaultSpritePositionUnit];
+    self.restoreOpenedDocuments.state = SBSettings.restoreOpenedDocuments;
 }
 
 - (IBAction)enableBackup:(NSButton *)sender {
@@ -140,6 +141,7 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
     SBSettings.storeMiscFilesAtPath = _storeMiscFilesAtPath;
     SBSettings.miscFilesPath = self.storeMiscFilesPathField.stringValue;
     SBSettings.defaultSpritePositionUnit = self.defaultSpritePositionType.selectedTag;
+    SBSettings.restoreOpenedDocuments = self.restoreOpenedDocuments.state;
     
     [SBSettings save];
     [super acceptSheet:sender];
@@ -188,5 +190,10 @@ typedef void (^DirectorySetterBlock)(NSString *directoryPath);
          }
      }];
 }
+
+- (IBAction)restoreOpenedDocuments:(NSButton *)sender {
+    
+}
+
 
 @end

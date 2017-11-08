@@ -30,4 +30,6 @@
 
 @property (weak) IBOutlet NSPopUpButton *defaultSpritePositionType;
 
+@property (weak) IBOutlet NSButton *restoreOpenedDocuments;
+
 @end

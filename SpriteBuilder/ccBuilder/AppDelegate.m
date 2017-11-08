@@ -1828,6 +1828,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 - (void) closeProject
 {
+    [self saveOpenedDocumentsForProject];
     while ([tabView numberOfTabViewItems] > 0)
     {
         NSTabViewItem* item = [self tabViewItemFromDoc:currentDocument];
@@ -1892,17 +1893,17 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         return NO;
     }
     
-    ProjectSettings *prjctSettings = [[ProjectSettings alloc] initWithSerialization:projectDict];
-    if (!prjctSettings)
+    ProjectSettings *projectSettings = [[ProjectSettings alloc] initWithSerialization:projectDict];
+    if (!projectSettings)
     {
         [self modalDialogTitle:@"Invalid Project File" message:@"Failed to open the project. File is invalid or is created with a newer version of SpriteBuilder."];
         return NO;
     }
-    prjctSettings.projectPath = fileName;
-    [prjctSettings store];
+    projectSettings.projectPath = fileName;
+    [projectSettings store];
 
     // inject new project settings
-    self.projectSettings = prjctSettings;
+    self.projectSettings = projectSettings;
     _resourceCommandController.projectSettings = projectSettings;
     projectOutlineHandler.projectSettings = projectSettings;
     [ResourceManager sharedManager].projectSettings = projectSettings;
@@ -1924,33 +1925,29 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     localizationEditorHandler.managedFile = langFile;
     
     // Update the title of the main window
-    [window setTitle:[NSString stringWithFormat:@"%@ - SpriteBuilder", [[fileName stringByDeletingLastPathComponent] lastPathComponent]]];
+    [window setTitle:[NSString stringWithFormat:@"%@ - SpriteBuilderX", [[fileName stringByDeletingLastPathComponent] lastPathComponent]]];
     
-    // Open ccb file for project if there is only one
-    NSArray* resPaths = prjctSettings.absoluteResourcePaths;
-    if (resPaths.count > 0)
-    {
-        NSString* resPath = [resPaths objectAtIndex:0];
-        
-        NSArray* resDir = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:resPath error:NULL];
-        
-        int numCCBFiles = 0;
-        NSString* ccbFile = NULL;
-        for (NSString* file in resDir)
-        {
-            if ([file hasSuffix:@".ccb"])
-            {
-                ccbFile = file;
-                numCCBFiles++;
-                
-                if (numCCBFiles > 1) break;
+    if (SBSettings.restoreOpenedDocuments) {
+        // Open last closed documents
+        NSMutableArray *openedDocs = [SBSettings.openedDocuments objectForKey:self.openedProjectFileName];
+        if (openedDocs.count > 1) {
+            //from 1, because 0 it's selected item
+            for (int i = 1; i < openedDocs.count; i++) {
+                NSString *openedCCB = [openedDocs objectAtIndex:i];
+            
+            //for (NSString *openedCCB in openedDocs) {
+                if ([openedCCB hasSuffix:@".ccb"] && [[NSFileManager defaultManager] fileExistsAtPath:openedCCB]) {
+                    [self openFile:openedCCB];
+                }
             }
-        }
-        
-        if (numCCBFiles == 1)
-        {
-            // Open the ccb file
-            [self openFile:[resPath stringByAppendingPathComponent:ccbFile]];
+            //and select last active
+            NSArray *docsTabs = [tabView tabViewItems];
+            for (int i = 0; i < docsTabs.count; i++) {
+                CCBDocument *doc = [(NSTabViewItem*) docsTabs[i] identifier];
+                if ([doc.filePath isEqualToString:[openedDocs objectAtIndex:0]]) {
+                    [tabView selectTabViewItem:docsTabs[i]];
+                }
+            }
         }
     }
     
@@ -4872,10 +4869,35 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [self checkAutoSave];
     
     [window saveMainWindowPanelsVisibility];
-
     [self saveOpenProjectPathToDefaults];
 
+    [self saveOpenedDocumentsForProject];
+    
     [[NSApplication sharedApplication] terminate:self];
+}
+
+-(void) saveOpenedDocumentsForProject {
+    if (SBSettings.restoreOpenedDocuments) {
+        //save opened documents
+        NSArray *docsTabs = [tabView tabViewItems];
+        if (docsTabs.count) {
+            NSMutableArray *openedDocs = [NSMutableArray array];
+            
+            //notice: first element of openedDocs is currently selecteded doc, string
+            CCBDocument *doc = [tabView.selectedTabViewItem identifier];
+            [openedDocs addObject:doc.filePath];
+            
+            for (int i = 0; i < docsTabs.count; i++) {
+                CCBDocument *doc = [(NSTabViewItem*) docsTabs[i] identifier];
+                [openedDocs addObject:doc.filePath];
+            }
+            NSMutableDictionary *openedDocuments = [SBSettings.openedDocuments mutableCopy];
+            [openedDocuments setObject:openedDocs forKey:self.openedProjectFileName];
+            SBSettings.openedDocuments = openedDocuments;
+            
+            [SBSettings save];
+        }
+    }
 }
 
 - (void)saveOpenProjectPathToDefaults

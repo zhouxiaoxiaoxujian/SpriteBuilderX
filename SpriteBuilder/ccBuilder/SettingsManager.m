@@ -153,6 +153,31 @@
     return [defaultSpritePositionUnit intValue];
 }
 
+-(void) setRestoreOpenedDocuments:(BOOL)restoreOpenedDocuments {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:restoreOpenedDocuments] forKey:@"restoreOpenedDocuments"];
+}
+
+-(BOOL) restoreOpenedDocuments {
+    id restoreOpenedDocuments = [SBUserDefaults valueForKey:@"restoreOpenedDocuments"];
+    if(!restoreOpenedDocuments)
+        return YES;
+    return [restoreOpenedDocuments boolValue];
+}
+
+-(void) setOpenedDocuments:(NSMutableDictionary *) openedDocuments {
+    [SBUserDefaults setObject: openedDocuments forKey:@"openedDocs"];
+}
+
+-(NSMutableDictionary *) openedDocuments {
+    id openedDocuments = [SBUserDefaults objectForKey:@"openedDocs"];
+    if (!openedDocuments) {
+        return [NSMutableDictionary dictionary];
+    }
+    return openedDocuments;
+}
+
+
+//------------------------------------------------------------------------
 - (void) save
 {
     [SBUserDefaults synchronize];
