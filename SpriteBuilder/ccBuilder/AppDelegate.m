@@ -4867,6 +4867,10 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 - (void) windowWillClose:(NSNotification *)notification
 {
+    //right click in Dock on SBX app -> Quit.
+    //save backup even if this option is disabled
+    [self checkAutoSave];
+    
     [window saveMainWindowPanelsVisibility];
 
     [self saveOpenProjectPathToDefaults];
