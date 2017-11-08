@@ -71,8 +71,8 @@
         {
             newer = [fileDate compare:backupDate] == NSOrderedAscending;
             NSAlert* alert = [NSAlert alertWithMessageText:
-                              [NSString stringWithFormat: @"You have backup file that %@ then your saved document do you want to restore It?",
-                               newer ? @"newer" : @"older"]
+                              [NSString stringWithFormat: @"You have backup for %@\nIt's %@ then your last saved file.\nDo you want to restore it?",
+                               [filePath lastPathComponent], newer ? @"newer" : @"older"]
                                              defaultButton:newer ? @"Restore" : @"Cancel"
                                            alternateButton:newer ? @"Cancel" : @"Restore"
                                                otherButton:nil
