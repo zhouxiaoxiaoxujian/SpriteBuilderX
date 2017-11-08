@@ -4877,26 +4877,25 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 }
 
 -(void) saveOpenedDocumentsForProject {
-    if (SBSettings.restoreOpenedDocuments) {
+    if (SBSettings.restoreOpenedDocuments && self.openedProjectFileName) {
         //save opened documents
         NSArray *docsTabs = [tabView tabViewItems];
-        if (docsTabs.count) {
-            NSMutableArray *openedDocs = [NSMutableArray array];
-            
-            //notice: first element of openedDocs is currently selecteded doc, string
-            CCBDocument *doc = [tabView.selectedTabViewItem identifier];
+        NSMutableArray *openedDocs = [NSMutableArray array];
+        
+        //notice: first element of openedDocs is currently selecteded doc, string
+        CCBDocument *doc = [tabView.selectedTabViewItem identifier];
+        if (doc) {
             [openedDocs addObject:doc.filePath];
-            
             for (int i = 0; i < docsTabs.count; i++) {
                 CCBDocument *doc = [(NSTabViewItem*) docsTabs[i] identifier];
                 [openedDocs addObject:doc.filePath];
             }
-            NSMutableDictionary *openedDocuments = [SBSettings.openedDocuments mutableCopy];
-            [openedDocuments setObject:openedDocs forKey:self.openedProjectFileName];
-            SBSettings.openedDocuments = openedDocuments;
-            
-            [SBSettings save];
         }
+        NSMutableDictionary *openedDocuments = [SBSettings.openedDocuments mutableCopy];
+        [openedDocuments setObject:openedDocs forKey:self.openedProjectFileName];
+        SBSettings.openedDocuments = openedDocuments;
+        
+        [SBSettings save];
     }
 }
 
