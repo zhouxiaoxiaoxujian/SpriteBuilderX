@@ -47,6 +47,7 @@
 - (void) willBeAdded
 {
     self.name = @"Edit Custom Properties";
+    copyButton.enabled = [AppDelegate appDelegate].selectedNode.customProperties.count;
     pastleButton.enabled = [AppDelegate appDelegate].customProperties.count;
 }
 

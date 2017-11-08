@@ -29,7 +29,8 @@
     IBOutlet NSButton* __weak btn;
     NSString* name;
     
-    __weak IBOutlet NSButton *pastleButton;
+    __weak IBOutlet NSButton *pastleButton;    
+    __weak IBOutlet NSButton *copyButton;
 }
 
 - (IBAction)pressedEdit:(id)sender;

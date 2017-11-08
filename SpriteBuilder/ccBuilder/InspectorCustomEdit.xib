@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="InspectorCustomEdit">
             <connections>
                 <outlet property="btn" destination="72" id="90"/>
+                <outlet property="copyButton" destination="Xx1-JT-OSZ" id="FfH-1G-OYw"/>
                 <outlet property="pastleButton" destination="drW-b1-chz" id="lr4-l5-BHd"/>
                 <outlet property="view" destination="1" id="27"/>
             </connections>
