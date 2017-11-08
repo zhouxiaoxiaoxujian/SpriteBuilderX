@@ -1861,6 +1861,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [self updateSmallTabBarsEnabled];
     
     self.window.representedFilename = @"";
+    self.openedProjectFileName = nil;
 }
 
 - (BOOL) openProject:(NSString*) fileName
@@ -3733,10 +3734,45 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             }
         }
     }
-    [customProperties removeObjectsInArray:forRemove];
     
-    for (CustomPropSetting* setting in customProperties) {
-        [self.selectedNode.customProperties addObject:[setting copy]];
+    //check for replace-merge action
+    if (self.selectedNode.customProperties.count) {
+        NSAlert* alert = [NSAlert alertWithMessageText:@"Object already has some properties"
+                                         defaultButton:@"Merge"
+                                       alternateButton:@"Cancel"
+                                           otherButton:@"Replace All"
+                             informativeTextWithFormat:@"Merge will only add new only unique properties. Replace will remove all current properties."];
+    
+        [alert setAlertStyle:NSWarningAlertStyle];
+        NSInteger result = [alert runModal];
+        
+        bool proceed = NO;
+        //Merge
+        if (result == NSAlertDefaultReturn) {
+            proceed = YES;
+            [customProperties removeObjectsInArray:forRemove];
+        }
+        //Cancel
+        if (result == NSAlertAlternateReturn) {
+            //do nothing
+            //CCLOG(@"Cancel");
+        }
+        //Replace
+        if (result == NSAlertOtherReturn) {
+            proceed = YES;
+            [self.selectedNode.customProperties removeAllObjects];
+        }
+        if (proceed) {
+            for (CustomPropSetting* setting in customProperties) {
+                [self.selectedNode.customProperties addObject:[setting copy]];
+            }
+        }
+    } else {
+        //object has not properties at all
+        //so just add them
+        for (CustomPropSetting* setting in customProperties) {
+            [self.selectedNode.customProperties addObject:[setting copy]];
+        }
     }
     
     [_inspectorController updateInspectorFromSelection];
@@ -4857,6 +4893,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     for (int i = 0; i < [docs count]; i++)
     {
         CCBDocument* doc = [(NSTabViewItem*) docs[i] identifier];
+        doc.isDirty = NO;
         [doc removeBackup];
     }
     return YES;
@@ -4866,7 +4903,9 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 {
     //right click in Dock on SBX app -> Quit.
     //save backup even if this option is disabled
-    [self checkAutoSave];
+    if ([self hasDirtyDocument]) {
+        [self checkAutoSave];
+    }
     
     [window saveMainWindowPanelsVisibility];
     [self saveOpenProjectPathToDefaults];
