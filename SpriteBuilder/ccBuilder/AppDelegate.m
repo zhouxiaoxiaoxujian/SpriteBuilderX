@@ -2896,7 +2896,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         NSMutableArray *serArray = [NSKeyedUnarchiver unarchiveObjectWithData:clipData];
         
         NSArray* selecetdNodes = [self.selectedNodes copy];
-        
+        NSMutableArray *copiedNodes = [NSMutableArray array];
         // Serialize selected node
         for(NSDictionary* clipDict in serArray)
         {
@@ -2905,15 +2905,22 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             if (asChild) parentSize = self.selectedNode.contentSize;
             else parentSize = self.selectedNode.parent.contentSize;
             
-            CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict parentSize:parentSize fileVersion:kCCBFileFormatVersion];
+            CCNode* clipNode = [CCBReaderInternal nodeGraphFromDictionary:clipDict
+                                                               parentSize:parentSize
+                                                              fileVersion:kCCBFileFormatVersion];
             [CCBReaderInternal postDeserializationFixup:clipNode];
             [self updateUUIDs:clipNode];
             
+            //move copied node's to see it copied
+            clipNode.position = ccpAdd(clipNode.position, ccp(clipNode.contentSize.width * 0.25,clipNode.contentSize.height * -0.25));
             
             [self addCCObject:clipNode asChild:asChild];
+            [copiedNodes addObject:clipNode];
         }
+        //after copy-pastle multiple nodes make all them selected
+        self.selectedNodes = copiedNodes;
         
-        //We might have copy/cut/pasted and body. Fix it up.		
+        //We might have copy/cut/pasted and body. Fix it up.
         [SceneGraph fixupReferences];
     }
 }
