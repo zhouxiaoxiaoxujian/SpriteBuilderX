@@ -40,7 +40,6 @@
 
 - (IBAction)pressedEdit:(id)sender
 {
-    NSLog(@"pressedEdit");
     [[AppDelegate appDelegate] menuEditCustomPropSettings:sender];
 }
 
