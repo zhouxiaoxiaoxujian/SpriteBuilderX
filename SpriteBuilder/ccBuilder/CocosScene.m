@@ -1401,6 +1401,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
     
         if (appDelegate.selectedNode != rootNode &&
+        if (appDelegate.selectedNode != rootNode && appDelegate.selectedNodes.count &&
             ![[[appDelegate.selectedNodes objectAtIndex:0] parent] isKindOfClass:[CCLayout class]]
 			//And if its not a joint, or if it is, its draggable.
 			&& (!appDelegate.selectedNode.plugIn.isJoint || [(CCBPhysicsJoint*)appDelegate.selectedNode isDraggable]))
