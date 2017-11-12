@@ -64,6 +64,24 @@
 static CocosScene* sharedCocosScene;
 static NSString * kZeroContentSizeImage = @"sel-round.png";
 
+@interface Segment : NSObject {
+@public
+    CGPoint A;
+    CGPoint B;
+}
+@end
+
+@implementation Segment
+
+-(id) initWithA:(CGPoint ) a b:(CGPoint) b {
+    self = [super init];
+    A = a;
+    B = b;
+    return self;
+}
+
+@end
+
 @implementation CocosScene
 
 @synthesize bgLayer;
@@ -462,6 +480,31 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 	
 	[selectionLayer addChild:drawing z:-1];
 
+}
+
+-(void) updateMouseSelection {
+  
+    if (mouseSelectPosDown.x != 0 && mouseSelectPosDown.y != 0 &&
+        mouseSelectPosMove.x != 0 && mouseSelectPosMove.y != 0 &&
+        ccpDistance(mouseSelectPosDown, mouseSelectPosMove) > 2.0 &&
+        currentMouseTransform == kCCBTransformHandleMouseSelect) {//kCCBTransformHandleMove && currentMouseTransform != kCCBTransformHandleDownInside) {
+        
+        CCDrawNode *selectNode = [CCDrawNode node];
+        float borderWidth = 1.0 / [CCDirector sharedDirector].contentScaleFactor;
+        
+        CGPoint points[4];
+        points[0] = mouseSelectPosDown;
+        points[1] = ccp(mouseSelectPosMove.x, mouseSelectPosDown.y);
+        points[2] = mouseSelectPosMove;
+        points[3] = ccp(mouseSelectPosDown.x,mouseSelectPosMove.y);
+
+        [selectNode drawPolyWithVerts:points
+                                count:4
+                            fillColor:[CCColor clearColor] borderWidth:borderWidth
+                          borderColor:[CCColor colorWithRed:1 green:1 blue:1 alpha:1.0]];
+
+        [selectionLayer addChild:selectNode z:-1];
+    }
 }
 
 - (void) updateSelection
@@ -1095,6 +1138,32 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
 }
 
+-(void) selectableNodesFromNode:(CCNode *) node nodes:(NSMutableArray*) nodes {
+    if (!node) return;
+    
+    NodeInfo* parentInfo = node.parent.userObject;
+    PlugInNode* parentPlugIn = parentInfo.plugIn;
+    if (parentPlugIn && !parentPlugIn.canHaveChildren) return;
+    
+    if (node != rootNode && node.visible) {
+        [nodes addObject:node];
+    }
+    
+    // Visit children
+    if (node.visible) {
+        for (int i = 0; i < node.children.count; i++) {
+            [self selectableNodesFromNode:[node.children objectAtIndex:i] nodes:nodes];
+        }
+    }
+    
+    //Don't select nodes that are locked or hidden.
+    NSArray * selectableNodes = [nodes filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CCNode * node, NSDictionary *bindings) {
+        return !node.locked && !node.hidden && !node.parentHidden;
+    }]];
+    [nodes removeAllObjects];
+    [nodes addObjectsFromArray:selectableNodes];
+}
+
 - (BOOL) isLocalCoordinateSystemFlipped:(CCNode*)node
 {
     // TODO: Can this be done more efficiently?
@@ -1132,7 +1201,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ([appDelegate.physicsHandler mouseDown:pos event:event]) return;
     
     mouseDownPos = pos;
-    
+    mouseSelectPosDown = pos;
     // Handle grab tool
     if (currentTool == kCCBToolGrab || ([event modifierFlags] & NSCommandKeyMask))
     {
@@ -1222,24 +1291,31 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         // No clicked node
         if ([event modifierFlags] & NSShiftKeyMask)
         {
-            // Ignore
+            //we can add with multiple mouse selection
+            [self setMouseSelectState];
             return;
         }
         else
         {
             // Deselect
             appDelegate.selectedNodes = NULL;
+            [self setMouseSelectState];
         }
     }
     
     // shortcut for Select Behind: Alt + LeftClick
     if ([event modifierFlags] & NSAlternateKeyMask)
     {
-        NSLog(@"selectBehind");
         [self selectBehind];
     }
     
     return;
+}
+
+-(void) setMouseSelectState {
+    currentMouseTransform = kCCBTransformHandleMouseSelect;
+    [selectableNodesOnScene removeAllObjects];
+    [self selectableNodesFromNode:rootNode nodes:selectableNodesOnScene];
 }
 
 - (void) rightMouseUp:(NSEvent *)event
@@ -1365,7 +1441,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ([notesLayer mouseDragged:pos event:event]) return;
     if ([guideLayer mouseDragged:pos event:event]) return;
     if ([appDelegate.physicsHandler mouseDragged:pos event:event]) return;
-    if (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) return;
+    if (currentMouseTransform != kCCBTransformHandleMouseSelect && (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0)) return;
     
     if (currentMouseTransform == kCCBTransformHandleDownInside)
     {
@@ -1400,7 +1476,6 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             [selectedNode cacheStartTransformAndAnchor];
         }
     
-        if (appDelegate.selectedNode != rootNode &&
         if (appDelegate.selectedNode != rootNode && appDelegate.selectedNodes.count &&
             ![[[appDelegate.selectedNodes objectAtIndex:0] parent] isKindOfClass:[CCLayout class]]
 			//And if its not a joint, or if it is, its draggable.
@@ -1714,6 +1789,78 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 //        
 //        [self updateAnchorPointCompensation];
 //    }
+    else if (currentMouseTransform == kCCBTransformHandleMouseSelect) {
+       
+        //super efficient way to select nodes.. can it be better? lol, programmed at ~3am at night
+        [nodesAtMouseSelection removeAllObjects];
+        
+        for (CCNode *node in selectableNodesOnScene) {
+            
+            CGPoint nodePoints[4];
+            [self getCornerPointsForNode:node withPoints:nodePoints];
+
+            NSMutableArray *nodeSegments = [NSMutableArray array];
+            
+            Segment *nodeSegment1 = [[Segment alloc] initWithA:nodePoints[0] b:nodePoints[1]];
+            Segment *nodeSegment2 = [[Segment alloc] initWithA:nodePoints[1] b:nodePoints[2]];
+            Segment *nodeSegment3 = [[Segment alloc] initWithA:nodePoints[2] b:nodePoints[3]];
+            Segment *nodeSegment4 = [[Segment alloc] initWithA:nodePoints[3] b:nodePoints[0]];
+            
+            [nodeSegments addObject:nodeSegment1];
+            [nodeSegments addObject:nodeSegment2];
+            [nodeSegments addObject:nodeSegment3];
+            [nodeSegments addObject:nodeSegment4];
+
+            //--------
+            NSMutableArray *mouseSegments = [NSMutableArray array];
+            
+            CGPoint mouseSelectPoints[4];
+            mouseSelectPoints[0] = mouseSelectPosDown;
+            mouseSelectPoints[1] = ccp(mouseSelectPosMove.x, mouseSelectPosDown.y);
+            mouseSelectPoints[2] = mouseSelectPosMove;
+            mouseSelectPoints[3] = ccp(mouseSelectPosDown.x,mouseSelectPosMove.y);
+
+            Segment *mouseSegment1 = [[Segment alloc] initWithA:mouseSelectPoints[0] b:mouseSelectPoints[1]];
+            Segment *mouseSegment2 = [[Segment alloc] initWithA:mouseSelectPoints[1] b:mouseSelectPoints[2]];
+            Segment *mouseSegment3 = [[Segment alloc] initWithA:mouseSelectPoints[2] b:mouseSelectPoints[3]];
+            Segment *mouseSegment4 = [[Segment alloc] initWithA:mouseSelectPoints[3] b:mouseSelectPoints[0]];
+            
+            [mouseSegments addObject:mouseSegment1];
+            [mouseSegments addObject:mouseSegment2];
+            [mouseSegments addObject:mouseSegment3];
+            [mouseSegments addObject:mouseSegment4];
+
+            CGRect mouseSelectRect = CGRectMake(mouseSelectPosDown.x,
+                                                mouseSelectPosDown.y,
+                                                mouseSelectPosMove.x - mouseSelectPosDown.x,
+                                                mouseSelectPosMove.y - mouseSelectPosDown.y);
+            
+            if ((node.contentSize.width == 0 || node.contentSize.height == 0) && !node.plugIn.isJoint) {
+                CGPoint worldPos = [node.parent convertToWorldSpace:node.position];
+                if (node.visible && CGRectContainsPoint(mouseSelectRect, worldPos)) {
+                    [nodesAtMouseSelection addObject:node];
+                }
+            } else {
+                for (Segment *nodeSegment in nodeSegments) {
+                    for (Segment *mouseSegment in mouseSegments) {
+                        for (int i = 0; i < 4; i++) {
+                            if (CGRectContainsPoint(mouseSelectRect, nodePoints[i])) {
+                                [nodesAtMouseSelection addObject:node];
+                                break;
+                            }
+                        }
+                        if (ccpSegmentIntersect(nodeSegment->A, nodeSegment->B, mouseSegment->A, mouseSegment->B)) {
+                            [nodesAtMouseSelection addObject:node];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        //CCLOG(@"%@",nodesAtMouseSelection);
+        [appDelegate setSelectedNodes:[NSArray arrayWithArray:[nodesAtMouseSelection allObjects]]];
+    }
+    
     else if (isPanning)
     {
         CGPoint delta = ccpSub(pos, mouseDownPos);
@@ -1796,6 +1943,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 	}
 
 }
+
 
 - (void) mouseUp:(NSEvent *)event
 {
@@ -1889,7 +2037,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         self.currentTool = kCCBToolSelection;
         isPanning = NO;
     }
-    
+    mouseSelectPosDown = CGPointZero;
+    mouseSelectPosMove = CGPointZero;
     currentMouseTransform = kCCBTransformHandleNone;
     return;
 }
@@ -1901,6 +2050,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint pos = [[CCDirectorMac sharedDirector] convertEventToGL:event];
     
     mousePos = pos;
+    mouseSelectPosMove = pos;
     
     [appDelegate.physicsHandler mouseMove:pos event:event];
     
@@ -2146,6 +2296,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     }
     else
     {
+        [self updateMouseSelection];
         [self updateSelection];
 		[self updateDragging];
     }
@@ -2303,6 +2454,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     appDelegate = app;
     
     nodesAtSelectionPt = [NSMutableArray array];
+    nodesAtMouseSelection = [NSMutableSet set];
+    selectableNodesOnScene = [NSMutableArray array];
     
 	if( (self=[super init] ))
     {

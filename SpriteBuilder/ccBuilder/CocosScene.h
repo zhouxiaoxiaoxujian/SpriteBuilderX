@@ -54,6 +54,7 @@ typedef enum {
     kCCBTransformHandleRotate,
 //    kCCBTransformHandleAnchorPoint,
 //    kCCBTransformHandleSkew,
+    kCCBTransformHandleMouseSelect,
 } CCBTransformHandle;
 
 //typedef enum {
@@ -109,6 +110,10 @@ enum {
     BOOL mouseInside;
     CGPoint mousePos;
     CGPoint mouseDownPos;
+    
+    CGPoint mouseSelectPosDown;
+    CGPoint mouseSelectPosMove;
+    
     float transformStartRotation;
     float transformStartScaleX;
     float transformStartScaleY;
@@ -129,6 +134,10 @@ enum {
     // Selection
     NSMutableArray* nodesAtSelectionPt;
     int currentNodeAtSelectionPtIdx;
+    
+    // Mouse selection
+    NSMutableSet *nodesAtMouseSelection;
+    NSMutableArray *selectableNodesOnScene;
     
     CCNodeColor* borderBottom;
     CCNodeColor* borderTop;
