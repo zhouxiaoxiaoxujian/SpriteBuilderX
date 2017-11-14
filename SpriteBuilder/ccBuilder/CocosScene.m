@@ -1202,6 +1202,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     mouseDownPos = pos;
     mouseSelectPosDown = pos;
+    mouseSelectPosMove = pos;
     // Handle grab tool
     if (currentTool == kCCBToolGrab || ([event modifierFlags] & NSCommandKeyMask))
     {
