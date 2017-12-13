@@ -9,7 +9,6 @@
 #import "CCBPLayoutBox.h"
 #import "cocos2d.h"
 #import "PositionPropertySetter.h"
-#import "CCBPCCBFile.h"
 
 @implementation CCBPLayoutBox
 
@@ -66,7 +65,7 @@ static float roundUpToEven(float f)
     CCSizeUnit heightUnit = type.heightUnit;
     
     __weak CCNode *parent = _parent;
-    if([parent isKindOfClass:[CCBPCCBFile class]])
+    if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         parent = parent.parent;
     
     // Width
@@ -119,7 +118,7 @@ static float roundUpToEven(float f)
 - (void) layout
 {
     CCNode *parent = _parent;
-    if([parent isKindOfClass:[CCBPCCBFile class]])
+     if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         parent = parent.parent;
     if(!parent)
         return;
@@ -194,7 +193,7 @@ static float roundUpToEven(float f)
         _needsLayout = NO;
         self.contentSizeType = CCSizeTypePoints;
         self.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
-        if([_parent isKindOfClass:[CCBPCCBFile class]])
+         if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         {
             _parent.contentSizeType = CCSizeTypePoints;
             _parent.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
@@ -268,7 +267,7 @@ static float roundUpToEven(float f)
         _needsLayout = NO;
         self.contentSizeType = CCSizeTypePoints;
         self.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
-        if([_parent isKindOfClass:[CCBPCCBFile class]])
+         if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         {
             _parent.contentSizeType = CCSizeTypePoints;
             _parent.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
