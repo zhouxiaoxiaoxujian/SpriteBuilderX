@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreviewFolderViewController">
+            <connections>
+                <outlet property="view" destination="kOE-Af-s1h" id="eii-9y-CzS"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="kOE-Af-s1h" userLabel="Folder Preview">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="238"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView id="9Jg-Pm-6QS" customClass="CCBImageView">
+                    <rect key="frame" x="2" y="17" width="246" height="219"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="ui-nopreview" id="G6H-r5-X8s"/>
+                </imageView>
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="wFs-kP-e3j">
+                    <rect key="frame" x="39" y="2" width="99" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="All" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="cUY-BW-yHU">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                        <menu key="menu" title="OtherViews" id="X1g-JI-acz">
+                            <items>
+                                <menuItem title="All" state="on" id="ad4-cA-Wbi"/>
+                                <menuItem title="Mesh" tag="1" id="acM-TW-m32"/>
+                                <menuItem title="Animation" tag="2" id="doM-fO-yy4"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="-2" name="selectedTag" keyPath="format_model" id="94v-6n-M1J"/>
+                    </connections>
+                </popUpButton>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="x4u-sp-qfs" customClass="CCBTextFieldLabel">
+                    <rect key="frame" x="3" y="4" width="38" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Type" id="1GZ-bF-ONE">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button misplaced="YES" id="lwz-2l-uYQ">
+                    <rect key="frame" x="140" y="1" width="107" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="check" title="Skip normals" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="1NT-XS-w02">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="skip_normals" id="bf2-Na-MIs"/>
+                    </connections>
+                </button>
+            </subviews>
+        </customView>
+    </objects>
+    <resources>
+        <image name="ui-nopreview" width="117" height="17"/>
+    </resources>
+</document>

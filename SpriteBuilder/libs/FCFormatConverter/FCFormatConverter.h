@@ -60,6 +60,12 @@ typedef enum {
     kFCSoundFormatMP3 = 4,
 } kFCSoundFormat;
 
+typedef enum {
+    kFCModelFormatAll = 0,
+    kFCSoundFormatMesh = 1,
+    kFCSoundFormatAnimation = 2,
+} kFCModelFormat;
+
 @interface FCFormatConverter : NSObject
 
 + (FCFormatConverter*) defaultConverter;
@@ -81,6 +87,6 @@ typedef enum {
 - (NSString*) proposedNameForConvertedSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality;
 - (NSString*) convertSoundAtPath:(NSString*)srcPath format:(int)format quality:(int)quality stereo:(BOOL)stereo;
 - (NSString*) proposedNameForConvertedModelAtPath:(NSString*)srcPath;
-- (NSString*) convertModelAtPath:(NSString*)srcPath;
+- (NSString*) convertModelAtPath:(NSString*)srcPath format:(int)format skip_normals:(BOOL)skip_normals error:(NSError**)error;
 
 @end

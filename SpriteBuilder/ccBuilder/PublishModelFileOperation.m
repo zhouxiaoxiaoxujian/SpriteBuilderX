@@ -60,16 +60,19 @@
     {
         return;
     }
+    
+    NSString *tempFile = [[_dstFilePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"fbx"];
 
     NSError  *error;
-    if (![fileManager copyItemAtPath:_srcFilePath toPath:_dstFilePath error:&error])
+    [fileManager removeItemAtPath:tempFile error:NULL];
+    if (![fileManager copyItemAtPath:_srcFilePath toPath:tempFile error:&error])
     {
-        NSLog(@"[PUBLISH][SOUND] Error: couldn't copy file from \"%@\" to \"%@\" with error %@", _srcFilePath, _dstFilePath, error);
+        NSLog(@"[PUBLISH][MODEL] Error: couldn't copy file from \"%@\" to \"%@\" with error %@", _srcFilePath, tempFile, error);
         return;
     }
 
     self.formatConverter = [FCFormatConverter defaultConverter];
-    self.dstFilePath = [_formatConverter convertModelAtPath:_dstFilePath];
+    self.dstFilePath = [_formatConverter convertModelAtPath:tempFile format:self.format skip_normals:self.skipNormals error:&error];
     if (!_dstFilePath)
     {
         [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to convert audio file %@", relPath] isFatal:NO];

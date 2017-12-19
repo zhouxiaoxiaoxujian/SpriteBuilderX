@@ -139,11 +139,16 @@
         return;
     }
     
+    int format = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_MODEL_FORMAT] intValue];
+    BOOL skip_normals = [[_projectSettings propertyForRelPath:relPath andKey:RESOURCE_PROPERTY_MODEL_SKIP_NORMALS] boolValue];
+    
     PublishModelFileOperation *operation = [[PublishModelFileOperation alloc] initWithProjectSettings:_projectSettings
                                                                                              warnings:_warnings
                                                                                        statusProgress:_publishingTaskStatusProgress];
     operation.srcFilePath = srcFilePath;
     operation.dstFilePath = dstFilePath;
+    operation.format = format;
+    operation.skipNormals = skip_normals;
     operation.fileLookup = _renamedFilesLookup;
     
     [_queue addOperation:operation];

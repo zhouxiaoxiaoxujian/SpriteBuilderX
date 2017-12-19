@@ -202,7 +202,7 @@ static float clampf(float value, float min_inclusive, float max_inclusive)
             NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
             *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
         }
-        return false;
+        return NO;
         //[_warnings addWarningWithDescription:warningDescription];
     }
     return YES;
@@ -1140,28 +1140,64 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
     return NULL;
 }
 
-- (NSString*) convertModelAtPath:(NSString*)srcPath
+- (NSString*) convertModelAtPath:(NSString*)srcPath format:(int)format skip_normals:(BOOL)skip_normals error:(NSError**)error
 {
     NSString* dstPath = [self proposedNameForConvertedModelAtPath:srcPath];
     NSFileManager* fm = [NSFileManager defaultManager];
-    
-    if ([srcPath isEqualToString:dstPath])
-    {
-        // oggenc can't convert things in place, so make a copy that will get deleted at the end
-        NSString *newSrcPath = [[srcPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"fbx"];
-        [fm moveItemAtPath:srcPath toPath:newSrcPath error:NULL];
-        srcPath = newSrcPath;
-    }
     
     self.fbxTask = [[NSTask alloc] init];
     [_fbxTask setLaunchPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"fbx-conv"]];
     NSMutableArray* args = [NSMutableArray arrayWithObjects:
                             [NSString stringWithFormat:@"-b"], nil];
+    
+    if(format == kFCSoundFormatMesh)
+        [args addObject:@"-l"];
+    if(format == kFCSoundFormatAnimation)
+        [args addObject:@"-j"];
+    if(!skip_normals)
+        [args addObject:@"-p"];
+    
     [args addObject:srcPath];
     
-    [_fbxTask setArguments:args];
-    [_fbxTask launch];
-    [_fbxTask waitUntilExit];
+    NSPipe *pipeErr = [NSPipe pipe];
+    [_fbxTask setStandardError:pipeErr];
+    
+    int status = 0;
+    
+    @try
+    {
+        [_fbxTask setArguments:args];
+        [_fbxTask launch];
+        [_fbxTask waitUntilExit];
+        status = [_fbxTask terminationStatus];
+    }
+    @catch (NSException *ex)
+    {
+        NSString * errorMessage = [NSString stringWithFormat:@"fbx-conv error: %@ exception %@", srcPath, ex.reason];
+        NSLog(@"%@",errorMessage);
+        if (error)
+        {
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
+        return nil;
+    }
+    
+    if (status)
+    {
+        NSFileHandle *fileErr = [pipeErr fileHandleForReading];
+        NSData *dataErr = [fileErr readDataToEndOfFile];
+        NSString *stdErrStr = [[NSString alloc] initWithData:dataErr encoding:NSUTF8StringEncoding];
+            
+        NSString *errorMessage = [NSString stringWithFormat:@"fbx-conv error: %@ err:%@", srcPath, stdErrStr];
+        NSLog(@"%@", errorMessage);
+        if (error)
+        {
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
+        return nil;
+    }
     
     // Remove old file
     if (![srcPath isEqualToString:dstPath])

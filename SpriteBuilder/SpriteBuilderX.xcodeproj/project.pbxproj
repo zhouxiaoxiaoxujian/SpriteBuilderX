@@ -328,6 +328,8 @@
 		A57D009E1CF2463900434840 /* PlatformSettingsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D009C1CF2463900434840 /* PlatformSettingsDetailView.m */; };
 		A57D009F1CF2463900434840 /* PlatformSettingsDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57D009D1CF2463900434840 /* PlatformSettingsDetailView.xib */; };
 		A57D00A71CF24B0600434840 /* PlatformSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D00A61CF24B0600434840 /* PlatformSettings.m */; };
+		A5857CD61FE97781001B100D /* PreviewModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5857CD31FE97780001B100D /* PreviewModelViewController.m */; };
+		A5857CD71FE97781001B100D /* PreviewModelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5857CD41FE97781001B100D /* PreviewModelView.xib */; };
 		A58EE8301A30A211005F6E22 /* PreviewFolderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58EE82D1A30A211005F6E22 /* PreviewFolderView.xib */; };
 		A58EE8311A30A211005F6E22 /* PreviewFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */; };
 		A59471621A8E4851002DB024 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
@@ -1616,6 +1618,9 @@
 		A57D009D1CF2463900434840 /* PlatformSettingsDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlatformSettingsDetailView.xib; sourceTree = "<group>"; };
 		A57D00A51CF24B0600434840 /* PlatformSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformSettings.h; sourceTree = "<group>"; };
 		A57D00A61CF24B0600434840 /* PlatformSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformSettings.m; sourceTree = "<group>"; };
+		A5857CD31FE97780001B100D /* PreviewModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewModelViewController.m; sourceTree = "<group>"; };
+		A5857CD41FE97781001B100D /* PreviewModelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewModelView.xib; sourceTree = "<group>"; };
+		A5857CD51FE97781001B100D /* PreviewModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewModelViewController.h; sourceTree = "<group>"; };
 		A58EE82D1A30A211005F6E22 /* PreviewFolderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewFolderView.xib; sourceTree = "<group>"; };
 		A58EE82E1A30A211005F6E22 /* PreviewFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFolderViewController.h; sourceTree = "<group>"; };
 		A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFolderViewController.m; sourceTree = "<group>"; };
@@ -3585,6 +3590,9 @@
 				A58EE82E1A30A211005F6E22 /* PreviewFolderViewController.h */,
 				A58EE82F1A30A211005F6E22 /* PreviewFolderViewController.m */,
 				A58EE82D1A30A211005F6E22 /* PreviewFolderView.xib */,
+				A5857CD51FE97781001B100D /* PreviewModelViewController.h */,
+				A5857CD31FE97780001B100D /* PreviewModelViewController.m */,
+				A5857CD41FE97781001B100D /* PreviewModelView.xib */,
 				8369838F19AC834F00110D82 /* PreviewGenericViewController.h */,
 				8369839019AC834F00110D82 /* PreviewGenericViewController.m */,
 				8369839219AC836700110D82 /* PreviewGenericView.xib */,
@@ -6004,6 +6012,7 @@
 				E3E0557D159B8466001066C5 /* seq-keyframe-easein.png in Resources */,
 				E3E0557E159B8466001066C5 /* seq-keyframe-easeout.png in Resources */,
 				E3E0557F159B8466001066C5 /* seq-keyframe-interpol.png in Resources */,
+				A5857CD71FE97781001B100D /* PreviewModelView.xib in Resources */,
 				E392618F159CAAA10034FF1D /* seq-keyframe-interpol-vis.png in Resources */,
 				9218DF341919B04D0033851E /* joint-pivot-motor.png in Resources */,
 				E3926190159CAAA10034FF1D /* seq-keyframe-l-sel.png in Resources */,
@@ -6843,6 +6852,7 @@
 				E525F85C630DA97FBE9E2A3E /* InspectorFloatScale.m in Sources */,
 				E525F286B618F1CF744097FD /* InspectorFloatVar.m in Sources */,
 				E525F94BC8F398BA7E428344 /* InspectorFloatCheck.m in Sources */,
+				A5857CD61FE97781001B100D /* PreviewModelViewController.m in Sources */,
 				E525F32A8263ADF05CA91EAF /* InspectorEnabledFloat.m in Sources */,
 				E525FD8AEF741E01F59BEF8F /* InspectorCheck.m in Sources */,
 				E525FC20A2FC407CCFE76052 /* InspectorSpriteFrame.m in Sources */,

@@ -17,6 +17,7 @@
 #import "RMDirectory.h"
 #import "PreviewCCBViewController.h"
 #import "PreviewFolderViewController.h"
+#import "PreviewModelViewController.h"
 
 @interface PreviewContainerViewController ()
 
@@ -63,6 +64,10 @@
     {
         [self showFolderPreview];
     }
+    else if (_previewedResource.type == kCCBResTypeModel)
+    {
+        [self showModelPreview];
+    }
     else
     {
         [self showNoPreviewAvailable];
@@ -104,6 +109,18 @@
     
     self.currentPreviewViewController = [[PreviewFolderViewController alloc] initWithNibName:@"PreviewFolderView"
                                                                                        bundle:nil];
+    
+    [self addCurrentViewControllersViewToContainer];
+    
+    [_currentPreviewViewController setPreviewedResource:_previewedResource projectSettings:_projectSettings];
+}
+
+- (void)showModelPreview
+{
+    [self resetView];
+    
+    self.currentPreviewViewController = [[PreviewModelViewController alloc] initWithNibName:@"PreviewModelView"
+                                                                                      bundle:nil];
     
     [self addCurrentViewControllersViewToContainer];
     
