@@ -31,5 +31,6 @@
 @property (weak) IBOutlet NSPopUpButton *defaultSpritePositionType;
 
 @property (weak) IBOutlet NSButton *restoreOpenedDocuments;
+@property (weak) IBOutlet NSButton *moveNodeOnCopy;
 
 @end

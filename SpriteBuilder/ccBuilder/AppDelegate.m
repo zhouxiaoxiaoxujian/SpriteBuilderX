@@ -2914,9 +2914,11 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [self addCCObject:clipNode asChild:asChild];
             [copiedNodes addObject:clipNode];
             
-            //move copied node's to see it copied
-            CGPoint pointPos = ccpAdd(clipNode.positionInPoints, ccp(clipNode.contentSize.width * 0.25, clipNode.contentSize.height * -0.25));
-            clipNode.position = [clipNode convertPositionFromPoints:pointPos type:clipNode.positionType];;
+            if (SBSettings.moveNodeOnCopy) {
+                //move copied node's to see it copied
+                CGPoint pointPos = ccpAdd(clipNode.positionInPoints, ccp(clipNode.contentSize.width * 0.25, clipNode.contentSize.height * -0.25));
+                clipNode.position = [clipNode convertPositionFromPoints:pointPos type:clipNode.positionType];;
+            }
         }
         //after copy-pastle multiple nodes make all them selected
         self.selectedNodes = copiedNodes;

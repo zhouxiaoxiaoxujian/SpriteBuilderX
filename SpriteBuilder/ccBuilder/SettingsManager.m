@@ -176,6 +176,16 @@
     return openedDocuments;
 }
 
+-(void) setMoveNodeOnCopy:(BOOL)moveNodeOnCopy {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:moveNodeOnCopy] forKey:@"moveNodeOnCopy"];
+}
+
+-(BOOL) moveNodeOnCopy {
+    id moveNodeOnCopy = [SBUserDefaults valueForKey:@"moveNodeOnCopy"];
+    if(!moveNodeOnCopy)
+        return NO;
+    return [moveNodeOnCopy boolValue];
+}
 
 //------------------------------------------------------------------------
 - (void) save
