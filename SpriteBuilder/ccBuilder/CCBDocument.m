@@ -206,18 +206,30 @@
 
 - (BOOL)storeBackup
 {
-    NSDictionary *data = @{@"data": _data, @"extraData": _extraData};
-    [self createDirectoryForPath:[self backupPath]];
-    NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
-    return [data writeToFile:backupDataPath atomically:YES];
+    @try {
+        NSDictionary *data = @{@"data": _data, @"extraData": _extraData};
+        [self createDirectoryForPath:[self backupPath]];
+        NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+        return [data writeToFile:backupDataPath atomically:YES];
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        return NO;
+    }
 }
 
 - (BOOL)removeBackup
 {
-    NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
-    NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:backupDataPath error:&error];
-    return error == nil;
+    @try {
+        NSString *backupDataPath = [[[self backupPath] stringByDeletingPathExtension] stringByAppendingPathExtension:@"sbbak"];
+        NSError *error = nil;
+        [[NSFileManager defaultManager] removeItemAtPath:backupDataPath error:&error];
+        return error == nil;
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        return NO;
+    }
 }
 
 -(void) createDirectoryForPath:(NSString *) path {
