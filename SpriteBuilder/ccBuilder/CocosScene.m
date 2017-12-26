@@ -2268,7 +2268,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     renderedScene.position = stageCenter;
     renderedScene.anchorPoint = ccp(0.0f, 0.0f);
     
-    if (stageZoom <= 1 || !renderedScene)
+    //i don't understand whats the fuck
+    if (stageZoom <= 100 || !renderedScene)
     {
         // Use normal rendering
         stageBgLayer.visible = YES;
