@@ -3399,6 +3399,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         projectOutlineHandler.projectSettings = self.projectSettings;
         [ResourceManager sharedManager].projectSettings = self.projectSettings;
         
+        NSArray *docsTabs = [tabView tabViewItems];
+        for (int i = 0; i < docsTabs.count; i++) {
+            CCBDocument *doc = [(NSTabViewItem*) docsTabs[i] identifier];
+            doc.projectSettings = self.projectSettings;
+        }
+        
         [self updateEverythingAfterSettingsChanged];
     } else {
         //press "esc" or "cancel" in project settings
