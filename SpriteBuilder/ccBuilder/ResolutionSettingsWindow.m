@@ -101,45 +101,53 @@
       designResScale:(float)designResolutionScale
            scaleType:(CCBSceneScaleType) scaleType {
     
+    CGSize normalizedDesignRezolution;
+    normalizedDesignRezolution.width = MAX(designResolution.width, designResolution.height);
+    normalizedDesignRezolution.height = MIN(designResolution.width, designResolution.height);
+    
+    CGSize normalizedResolution;
+    normalizedResolution.width = MAX(resolution.width, resolution.height);
+    normalizedResolution.height = MIN(resolution.width, resolution.height);
+    
     if(scaleType == kCCBSceneScaleTypeMINSCALE)
     {
-        float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
-        float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
+        float scale1 = (normalizedResolution.height / resolution.resourceScale) / (normalizedDesignRezolution.height / designResolutionScale);
+        float scale2 = (normalizedResolution.width / resolution.resourceScale) / (normalizedDesignRezolution.width / designResolutionScale);
         if(scale1<scale2)
         {
             resolution.mainScale = scale1;
-            resolution.additionalScale = (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
+            resolution.additionalScale = (normalizedResolution.width / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.width / designResolutionScale );
         }
         else
         {
             resolution.mainScale = scale2;
-            resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+            resolution.additionalScale = (normalizedResolution.height / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.height / designResolutionScale);
         }
     }
     else if(scaleType == kCCBSceneScaleTypeMAXSCALE)
     {
-        float scale1 = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
-        float scale2 = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
+        float scale1 = (normalizedResolution.height / resolution.resourceScale) / (normalizedDesignRezolution.height / designResolutionScale);
+        float scale2 = (normalizedResolution.width / resolution.resourceScale) / (normalizedDesignRezolution.width / designResolutionScale);
         if(scale1>scale2)
         {
             resolution.mainScale = scale1;
-            resolution.additionalScale = (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
+            resolution.additionalScale = (normalizedResolution.width / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.width / designResolutionScale );
         }
         else
         {
             resolution.mainScale = scale2;
-            resolution.additionalScale = (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+            resolution.additionalScale = (normalizedResolution.height / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.height / designResolutionScale);
         }
     }
-    else if((designResolution.width>designResolution.height) == (scaleType == kCCBSceneScaleTypeMINSIZE))
+    else if(scaleType == kCCBSceneScaleTypeMINSIZE)
     {
-        resolution.mainScale = (resolution.height / resolution.resourceScale) / (designResolution.height / designResolutionScale);
-        resolution.additionalScale =   (resolution.width / resolution.resourceScale / resolution.mainScale) / (designResolution.width / designResolutionScale );
+        resolution.mainScale = (normalizedResolution.height / resolution.resourceScale) / (normalizedDesignRezolution.height / designResolutionScale);
+        resolution.additionalScale =   (normalizedResolution.width / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.width / designResolutionScale );
     }
     else
     {
-        resolution.mainScale = (resolution.width / resolution.resourceScale) / (designResolution.width / designResolutionScale);
-        resolution.additionalScale =   (resolution.height / resolution.resourceScale / resolution.mainScale) / (designResolution.height / designResolutionScale);
+        resolution.mainScale = (normalizedResolution.width / resolution.resourceScale) / (normalizedDesignRezolution.width / designResolutionScale);
+        resolution.additionalScale =   (normalizedResolution.height / resolution.resourceScale / resolution.mainScale) / (normalizedDesignRezolution.height / designResolutionScale);
     }
 }
 

@@ -1317,7 +1317,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
     else if (type == kCCBDocDimensionsTypeFullScreen)
     {
-        if (projectSettings.defaultOrientation == kCCBOrientationLandscape)
+        if (projectSettings.defaultOrientation == kCCBOrientationLandscape || projectSettings.defaultOrientation == kCCBOrientationUniversal)
         {
             // Full screen landscape
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
@@ -1329,7 +1329,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
         }
-        else
+        if (projectSettings.defaultOrientation == kCCBOrientationPortrait || projectSettings.defaultOrientation == kCCBOrientationUniversal)
         {
             // Full screen portrait
             [updatedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];

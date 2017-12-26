@@ -45,6 +45,7 @@ typedef enum
 {
     kCCBOrientationLandscape = 0,
     kCCBOrientationPortrait = 1,
+    kCCBOrientationUniversal = 2,
 } CCBOrientation;
 
 
