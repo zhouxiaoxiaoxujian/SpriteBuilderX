@@ -42,13 +42,18 @@
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
-    [predefinedResolutions addObject:[ResolutionSetting setting_iPhoneX_Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting setting_iPhoneX_Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneXLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneXPortrait]];
     
     [predefinedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
+    
+    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro10Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
     
     // Android
     [predefinedResolutions addObject:[ResolutionSetting settingAndroidXSmallLandscape]];

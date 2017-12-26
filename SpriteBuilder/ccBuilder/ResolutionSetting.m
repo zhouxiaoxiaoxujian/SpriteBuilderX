@@ -397,7 +397,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) setting_iPhoneX {
++ (ResolutionSetting*) settingIPhoneX {
     
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     setting.name = @"iPhone X";
@@ -408,21 +408,79 @@
     return setting;
 }
 
-+ (ResolutionSetting*) setting_iPhoneX_Landscape {
++ (ResolutionSetting*) settingIPhoneXLandscape {
     
-    ResolutionSetting* setting = [self setting_iPhoneX];
+    ResolutionSetting* setting = [self settingIPhoneX];
     setting.name = @"iPhone X Landscape";
     setting.width = 2436;
     setting.height = 1125;
     return setting;
 }
 
-+ (ResolutionSetting*) setting_iPhoneX_Portrait {
++ (ResolutionSetting*) settingIPhoneXPortrait {
     
-    ResolutionSetting* setting = [self setting_iPhoneX];
+    ResolutionSetting* setting = [self settingIPhoneX];
     setting.name = @"iPhone X Portrait";
     setting.width = 1125;
     setting.height = 2436;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro10 {
+    
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    setting.name = @"iPad Pro 10";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd phonehd";
+    setting.resourceScale = 4;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro10Landscape {
+    
+    ResolutionSetting* setting = [self settingIPadPro10];
+    setting.name = @"iPad Pro 10 Landscape";
+    setting.width = 2224;
+    setting.height = 1668;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro10Portrait {
+    
+    ResolutionSetting* setting = [self settingIPadPro10];
+    setting.name = @"iPad Pro 10 Portrait";
+    setting.width = 1668;
+    setting.height = 2224;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro12 {
+    
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    setting.name = @"iPad Pro 12";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd phonehd";
+    setting.resourceScale = 4;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro12Landscape {
+    
+    ResolutionSetting* setting = [self settingIPadPro12];
+    setting.name = @"iPad Pro 12 Landscape";
+    setting.width = 2732;
+    setting.height = 2048;
+    return setting;
+}
+
++ (ResolutionSetting*) settingIPadPro12Portrait {
+    
+    ResolutionSetting* setting = [self settingIPadPro12];
+    setting.name = @"iPad Pro 12 Portrait";
+    setting.width = 2048;
+    setting.height = 2732;
     return setting;
 }
 

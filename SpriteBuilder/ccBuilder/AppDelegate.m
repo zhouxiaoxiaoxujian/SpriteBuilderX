@@ -1325,7 +1325,9 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneX_Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhoneXLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
         }
         else
         {
@@ -1335,7 +1337,9 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
-            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneX_Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPhoneXPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
         }
     }
     
