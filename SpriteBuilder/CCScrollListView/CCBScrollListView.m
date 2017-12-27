@@ -63,6 +63,10 @@
         return;
     }
     
+    if ([node respondsToSelector:@selector(layout)]) {
+        [node performSelector:@selector(layout)];
+    }
+    
     CGSize contentsize = node.contentSizeInPoints;
     CGSize viewsize = self.contentSizeInPoints;
     
@@ -72,17 +76,17 @@
         switch (_gravity) {
             case 3:
             {
-                yoffset = viewsize.height - contentsize.height;
+                yoffset = viewsize.height - (1.0f - node.anchorPoint.y) * contentsize.height;
                 break;
             }
             case 4:
             {
-                yoffset = 0;
+                yoffset = node.anchorPoint.y * contentsize.height;
                 break;
             }
             case 5:
             {
-                yoffset = viewsize.height/2 - contentsize.height/2;
+                yoffset = viewsize.height/2 - contentsize.height * (0.5f - node.anchorPoint.y);
                 break;
             }
             default:
@@ -104,20 +108,21 @@
     else {
         
         float xoffset = 0;
+        
         switch (_gravity) {
             case 2:
             {
-                xoffset = viewsize.width/2 - contentsize.width/2;
+                xoffset = viewsize.width/2 - contentsize.width * (0.5f-node.anchorPoint.x);
                 break;
             }
             case 0:
             {
-                xoffset = 0;
+                xoffset = node.anchorPoint.x * contentsize.width;
                 break;
             }
             case 1:
             {
-                xoffset = viewsize.width - contentsize.width;
+                xoffset = viewsize.width  - ((1.0f - node.anchorPoint.x) * contentsize.width);
                 break;
             }
             default:
