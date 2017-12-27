@@ -51,11 +51,6 @@
     return ret;
 }
 
-static float roundUpToEven(float f)
-{
-    return ceilf(f/2.0f) * 2.0f;
-}
-
 - (CGSize) convertContentSizeToPoints:(CGSize)contentSize type:(CCSizeType)type
 {
     CGSize size = CGSizeZero;
@@ -192,11 +187,11 @@ static float roundUpToEven(float f)
         
         _needsLayout = NO;
         self.contentSizeType = CCSizeTypePoints;
-        self.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
+        self.contentSize = CGSizeMake(width + offset, maxHeight);
          if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         {
             _parent.contentSizeType = CCSizeTypePoints;
-            _parent.contentSize = CGSizeMake(roundUpToEven(width + offset), roundUpToEven(maxHeight));
+            _parent.contentSize = CGSizeMake(width + offset, maxHeight);
         }
         _needsLayout = NO;
     }
@@ -266,11 +261,11 @@ static float roundUpToEven(float f)
         
         _needsLayout = NO;
         self.contentSizeType = CCSizeTypePoints;
-        self.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
+        self.contentSize = CGSizeMake(maxWidth, height + offset);
          if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         {
             _parent.contentSizeType = CCSizeTypePoints;
-            _parent.contentSize = CGSizeMake(roundUpToEven(maxWidth), roundUpToEven(height + offset));
+            _parent.contentSize = CGSizeMake(maxWidth, height + offset);
         }
         _needsLayout = NO;
     }
