@@ -126,8 +126,7 @@ CCNodeTransform(CCNode *node, GLKMatrix4 parentTransform)
     // quick return if not visible. children won't be drawn.
     if (!_visible) return;
     
-    if(_needsLayout)
-        [self layout];
+    [self layout];
     
     [self sortAllChildren];
     [self sortAllProtectedChildren];
