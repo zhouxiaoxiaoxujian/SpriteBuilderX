@@ -344,6 +344,9 @@
 		A5A665ED1E24243C00FAD6C4 /* EditClassWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A665EB1E24243C00FAD6C4 /* EditClassWindow.xib */; };
 		A5A891FB1DB1280B00E600F2 /* PublishModelFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */; };
 		A5BEB0841E23C92E0026DBB0 /* CCBPGradientLabelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BEB0831E23C92E0026DBB0 /* CCBPGradientLabelBase.m */; };
+		A5BFF4971FF3A96000CECCF9 /* frame-android-720p.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */; };
+		A5BFF49A1FF3BE5700CECCF9 /* frame-android-1024x600.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */; };
+		A5BFF49B1FF3BE5700CECCF9 /* frame-android-1280x800.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */; };
 		A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */; };
@@ -1641,6 +1644,9 @@
 		A5A891FA1DB1280B00E600F2 /* PublishModelFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishModelFileOperation.m; sourceTree = "<group>"; };
 		A5BEB0821E23C92E0026DBB0 /* CCBPGradientLabelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBPGradientLabelBase.h; sourceTree = "<group>"; };
 		A5BEB0831E23C92E0026DBB0 /* CCBPGradientLabelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPGradientLabelBase.m; sourceTree = "<group>"; };
+		A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-720p.png"; sourceTree = "<group>"; };
+		A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-1024x600.png"; sourceTree = "<group>"; };
+		A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-1280x800.png"; sourceTree = "<group>"; };
 		A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorPopoverAnimation.xib; sourceTree = "<group>"; };
 		A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCImage.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CCBPProperties.plist; path = CCImage/CCBPProperties.plist; sourceTree = "<group>"; };
@@ -3083,6 +3089,9 @@
 				E34E5D6D1535AA78000201FB /* ruler-mark-minor.png */,
 				E34E5D68153585EC000201FB /* ruler-bg-horizontal.png */,
 				E34E5D69153585EC000201FB /* ruler-bg-vertical.png */,
+				A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */,
+				A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */,
+				A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */,
 				E3DFA7CA15ACA0CD005D3B6F /* frame-android-medium.png */,
 				E3DFA7CB15ACA0CD005D3B6F /* frame-android-small.png */,
 				E3DFA7CC15ACA0CD005D3B6F /* frame-android-xsmall.png */,
@@ -5867,6 +5876,7 @@
 				774E4ECE136DFFB70025D0A8 /* btn-move-hi.png in Resources */,
 				774E4ECF136DFFB70025D0A8 /* btn-move.png in Resources */,
 				774E4ED0136DFFB70025D0A8 /* btn-rotate-hi.png in Resources */,
+				A5BFF4971FF3A96000CECCF9 /* frame-android-720p.png in Resources */,
 				774E4ED1136DFFB70025D0A8 /* btn-rotate.png in Resources */,
 				774E4ED2136DFFB70025D0A8 /* btn-scale-hi.png in Resources */,
 				774E4ED3136DFFB70025D0A8 /* btn-scale.png in Resources */,
@@ -5880,6 +5890,7 @@
 				8304858519AE063A00A624BB /* PreviewCCBView.xib in Resources */,
 				77E1995513858DE0006C361B /* TabClose_Dirty_Pressed.png in Resources */,
 				77E1995613858DE0006C361B /* TabClose_Dirty_Rollover.png in Resources */,
+				A5BFF49A1FF3BE5700CECCF9 /* frame-android-1024x600.png in Resources */,
 				77E1995713858DE0006C361B /* TabClose_Dirty.png in Resources */,
 				830485A619AF2A7000A624BB /* PreviewImageView.xib in Resources */,
 				830485A719AF2A7200A624BB /* PreviewSpriteSheetView.xib in Resources */,
@@ -5941,6 +5952,7 @@
 				E34E5D6B153585EC000201FB /* ruler-bg-vertical.png in Resources */,
 				B7096E2B180CD98E00164A8A /* doc-scene.png in Resources */,
 				E34E5D6E1535AA78000201FB /* ruler-mark-major.png in Resources */,
+				A5BFF49B1FF3BE5700CECCF9 /* frame-android-1280x800.png in Resources */,
 				E34E5D6F1535AA78000201FB /* ruler-mark-minor.png in Resources */,
 				A53568661D214800009EC595 /* nvcompress in Resources */,
 				E34E5D711535B34F000201FB /* ruler-mark-origin.png in Resources */,

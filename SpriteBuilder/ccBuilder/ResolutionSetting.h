@@ -89,21 +89,33 @@
 + (ResolutionSetting*) settingIPadPro12Portrait;
 
 // Android resolutions
-+ (ResolutionSetting*) settingAndroidXSmall;
-+ (ResolutionSetting*) settingAndroidXSmallLandscape;
-+ (ResolutionSetting*) settingAndroidXSmallPortrait;
-+ (ResolutionSetting*) settingAndroidSmall;
-+ (ResolutionSetting*) settingAndroidSmallLandscape;
-+ (ResolutionSetting*) settingAndroidSmallPortrait;
-+ (ResolutionSetting*) settingAndroidMedium;
-+ (ResolutionSetting*) settingAndroidMediumLandscape;
-+ (ResolutionSetting*) settingAndroidMediumPortrait;
-+ (ResolutionSetting*) settingAndroidLarge;
-+ (ResolutionSetting*) settingAndroidLargeLandscape;
-+ (ResolutionSetting*) settingAndroidLargePortrait;
-+ (ResolutionSetting*) settingAndroidXLarge;
-+ (ResolutionSetting*) settingAndroidXLargeLandscape;
-+ (ResolutionSetting*) settingAndroidXLargePortrait;
++ (ResolutionSetting*) settingAndroid1280x720;
++ (ResolutionSetting*) settingAndroid1280x720Landscape;
++ (ResolutionSetting*) settingAndroid1280x720Portrait;
+
++ (ResolutionSetting*) settingAndroid1920x1080;
++ (ResolutionSetting*) settingAndroid1920x1080Landscape;
++ (ResolutionSetting*) settingAndroid1920x1080Portrait;
+
++ (ResolutionSetting*) settingAndroid854x480;
++ (ResolutionSetting*) settingAndroid854x480Landscape;
++ (ResolutionSetting*) settingAndroid854x480Portrait;
+
++ (ResolutionSetting*) settingAndroid800x480;
++ (ResolutionSetting*) settingAndroid800x480Landscape;
++ (ResolutionSetting*) settingAndroid800x480Portrait;
+
++ (ResolutionSetting*) settingAndroid960x540;
++ (ResolutionSetting*) settingAndroid960x540Landscape;
++ (ResolutionSetting*) settingAndroid960x540Portrait;
+
++ (ResolutionSetting*) settingAndroid1024x600;
++ (ResolutionSetting*) settingAndroid1024x600Landscape;
++ (ResolutionSetting*) settingAndroid1024x600Portrait;
+
++ (ResolutionSetting*) settingAndroid1280x800;
++ (ResolutionSetting*) settingAndroid1280x800Landscape;
++ (ResolutionSetting*) settingAndroid1280x800Portrait;
 
 
 - (id) initWithSerialization:(id)serialization;

@@ -56,20 +56,26 @@
     [predefinedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
     
     // Android
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidXSmallLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidXSmallPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x720Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x720Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidSmallLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidSmallPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1920x1080Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1920x1080Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidMediumLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidMediumPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid854x480Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid854x480Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidLargeLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidLargePortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid800x480Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid800x480Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidXLargeLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroidXLargePortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid960x540Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid960x540Portrait]];
+    
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1024x600Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1024x600Portrait]];
+    
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Portrait]];
     
     int i = 0;
     for (ResolutionSetting* setting in predefinedResolutions)

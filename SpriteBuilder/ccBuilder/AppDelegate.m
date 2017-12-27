@@ -566,6 +566,12 @@ typedef enum
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:YES andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(2048, 1536)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:NO andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(1536, 2048)]];
     
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:YES andScale:2.17] forKey:[NSValue valueWithSize:CGSizeMake(2224, 1668)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:NO andScale:2.17] forKey:[NSValue valueWithSize:CGSizeMake(1668, 2224)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:YES andScale:2.668] forKey:[NSValue valueWithSize:CGSizeMake(2732, 2048)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-ipad.png" andRotated:NO andScale:2.668] forKey:[NSValue valueWithSize:CGSizeMake(2048, 2732)]];
+    
     // Fixed
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-fixed.png" andRotated:YES andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(568, 384)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-fixed.png" andRotated:NO andScale:2.0] forKey:[NSValue valueWithSize:CGSizeMake(384, 568)]];
@@ -579,6 +585,21 @@ typedef enum
     
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-medium.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(800, 480)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-medium.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(480, 800)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720p.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(1280, 720)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(720, 1280)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720p.png" andRotated:YES andScale:0.667] forKey:[NSValue valueWithSize:CGSizeMake(854, 480)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720.png" andRotated:NO andScale:0.667] forKey:[NSValue valueWithSize:CGSizeMake(480, 854)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720p.png" andRotated:YES andScale:0.75] forKey:[NSValue valueWithSize:CGSizeMake(960, 540)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-720.png" andRotated:NO andScale:0.75] forKey:[NSValue valueWithSize:CGSizeMake(540, 960)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1024x600.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(1024, 600)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1024x600.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(600, 1024)]];
+    
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1280x800.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(1280, 800)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1280x800.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(800, 1280)]];
     
     [window setDelegate:self];
 
@@ -1328,6 +1349,11 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [updatedResolutions addObject:[ResolutionSetting settingIPhoneXLandscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x720Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid960x540Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid800x480Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1024x600Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x800Landscape]];
         }
         if (projectSettings.defaultOrientation == kCCBOrientationPortrait || projectSettings.defaultOrientation == kCCBOrientationUniversal)
         {
@@ -1340,6 +1366,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             [updatedResolutions addObject:[ResolutionSetting settingIPhoneXPortrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Portrait]];
             [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x720Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid854x480Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid960x540Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid800x480Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1024x600Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x800Portrait]];
         }
     }
     

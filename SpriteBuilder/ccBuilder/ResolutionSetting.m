@@ -484,116 +484,10 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroidXSmall
-{
++ (ResolutionSetting*) settingAndroid1280x720 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
-    setting.name = @"Android X-Small";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"phone";
-    setting.resourceScale = 0.5;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidXSmallLandscape
-{
-    ResolutionSetting* setting = [self settingAndroidXSmall];
-    
-    setting.name = @"Android X-Small Landscape";
-    setting.width = 320;
-    setting.height = 240;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidXSmallPortrait
-{
-    ResolutionSetting* setting = [self settingAndroidXSmall];
-    
-    setting.name = @"Android X-Small Portrait";
-    setting.width = 240;
-    setting.height = 320;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidSmall
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Android Small";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"phone";
-    setting.resourceScale = 1;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidSmallLandscape
-{
-    ResolutionSetting* setting = [self settingAndroidSmall];
-    
-    setting.name = @"Android Small Landscape";
-    setting.width = 480;
-    setting.height = 340;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidSmallPortrait
-{
-    ResolutionSetting* setting = [self settingAndroidSmall];
-    
-    setting.name = @"Android Small Portrait";
-    setting.width = 340;
-    setting.height = 480;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidMedium
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Android Medium";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"phone";
-    setting.resourceScale = 1.5;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidMediumLandscape
-{
-    ResolutionSetting* setting = [self settingAndroidMedium];
-    
-    setting.name = @"Android Medium Landscape";
-    setting.width = 800;
-    setting.height = 480;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidMediumPortrait
-{
-    ResolutionSetting* setting = [self settingAndroidMedium];
-    
-    setting.name = @"Android Medium Portrait";
-    setting.width = 480;
-    setting.height = 800;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidLarge
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Android Large";
+    setting.name = @"Android 1280x720";
     setting.width = 0;
     setting.height = 0;
     setting.ext = @"phonehd phone";
@@ -602,59 +496,230 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroidLargeLandscape
-{
-    ResolutionSetting* setting = [self settingAndroidLarge];
++ (ResolutionSetting*) settingAndroid1280x720Landscape {
     
-    setting.name = @"Android Large Landscape";
+    ResolutionSetting* setting = [self settingAndroid1280x720];
+    setting.name = @"Android 1280x720 Landscape";
+    setting.width = 1280;
+    setting.height = 720;
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1280x720Portrait {
+    
+    ResolutionSetting* setting = [self settingAndroid1280x720];
+    setting.name = @"Android 1280x720 Landscape";
+    setting.width = 720;
+    setting.height = 1280;
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1920x1080
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 1920x1080";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd tablet phonehd phone";
+    setting.resourceScale = 4;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1920x1080Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid1920x1080];
+    
+    setting.name = @"Android 1920x1080 Landscape";
+    setting.width = 1920;
+    setting.height = 1080;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1920x1080Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid1920x1080];
+    
+    setting.name = @"Android 1920x1080 Portrait";
+    setting.width = 1080;
+    setting.height = 1920;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid854x480
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 854x480";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid854x480Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid854x480];
+    
+    setting.name = @"Android 854x480 Landscape";
+    setting.width = 854;
+    setting.height = 480;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid854x480Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid854x480];
+    
+    setting.name = @"Android 854x480 Portrait";
+    setting.width = 480;
+    setting.height = 854;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid800x480
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 800x480";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid800x480Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid800x480];
+    
+    setting.name = @"Android 800x480 Landscape";
+    setting.width = 800;
+    setting.height = 480;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid800x480Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid800x480];
+    
+    setting.name = @"Android 800x480 Portrait";
+    setting.width = 480;
+    setting.height = 800;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid960x540
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 960x540";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid960x540Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid960x540];
+    
+    setting.name = @"Android 960x540 Landscape";
+    setting.width = 960;
+    setting.height = 540;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid960x540Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid960x540];
+    
+    setting.name = @"Android 960x540 Portrait";
+    setting.width = 540;
+    setting.height = 960;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1024x600
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 1024x600";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1024x600Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid1024x600];
+    
+    setting.name = @"Android 1024x600 Landscape";
+    setting.width = 1024;
+    setting.height = 600;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1024x600Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid1024x600];
+    
+    setting.name = @"Android 1024x600 Portrait";
+    setting.width = 600;
+    setting.height = 1024;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1280x800
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 1280x800";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"phonehd phone";
+    setting.resourceScale = 2;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid1280x800Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid1280x800];
+    
+    setting.name = @"Android 1280x800 Landscape";
     setting.width = 1280;
     setting.height = 800;
     
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroidLargePortrait
++ (ResolutionSetting*) settingAndroid1280x800Portrait
 {
-    ResolutionSetting* setting = [self settingAndroidLarge];
+    ResolutionSetting* setting = [self settingAndroid1280x800];
     
-    setting.name = @"Android Large Portrait";
+    setting.name = @"Android 1280x800 Portrait";
     setting.width = 800;
     setting.height = 1280;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidXLarge
-{
-    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
-    
-    setting.name = @"Android X-Large";
-    setting.width = 0;
-    setting.height = 0;
-    setting.ext = @"tablethd phonehd phone";
-    setting.resourceScale = 4;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidXLargeLandscape
-{
-    ResolutionSetting* setting = [self settingAndroidXLarge];
-    
-    setting.name = @"Android X-Large Landscape";
-    setting.width = 2048;
-    setting.height = 1536;
-    
-    return setting;
-}
-
-+ (ResolutionSetting*) settingAndroidXLargePortrait
-{
-    ResolutionSetting* setting = [self settingAndroidXLarge];
-    
-    setting.name = @"Android X-Large Portrait";
-    setting.width = 1536;
-    setting.height = 2048;
     
     return setting;
 }
