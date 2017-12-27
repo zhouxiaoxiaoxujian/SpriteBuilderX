@@ -2795,6 +2795,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [NodeGraphPropertySetter setNodeGraphForNode:node andProperty:@"ccbFile" withFile:ccbFile parentSize:parent.contentSize];
     [PositionPropertySetter setPosition:NSPointFromCGPoint(pt) type:CCPositionTypePoints forNode:node prop:@"position"];
     [PositionPropertySetter setPositionType:CCPositionTypeUIPoints oldPositionType:CCPositionTypePoints forNode:node prop:@"position"];
+    node.displayName = [[ccbFile lastPathComponent] stringByDeletingPathExtension];
     [self addCCObject:node toParent:parent];
 }
 
