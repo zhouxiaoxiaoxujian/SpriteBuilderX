@@ -164,11 +164,13 @@
             if(child.visible)
             {
                 CGSize childSize = child.contentSizeInPoints;
+                CGPoint offset = child.anchorPointInPoints;
                 
                 childSize.width *= [[child valueForKey:@"scaleX"] floatValue];
                 childSize.height *= [[child valueForKey:@"scaleY"] floatValue];
+                offset.x *= [[child valueForKey:@"scaleX"] floatValue];
+                offset.y *= [[child valueForKey:@"scaleY"] floatValue];
                 
-                CGPoint offset = CGPointMake(childSize.width/2, childSize.height/2);
                 CGPoint localPos = ccp(width, (maxHeight-childSize.height)/2.0f);
                 CGPoint position = ccpAdd(localPos, offset);
                 
@@ -238,11 +240,13 @@
             if(child.visible)
             {
                 CGSize childSize = child.contentSizeInPoints;
+                CGPoint offset = child.anchorPointInPoints;
                 
                 childSize.width *= [[child valueForKey:@"scaleX"] floatValue];
                 childSize.height *= [[child valueForKey:@"scaleY"] floatValue];
+                offset.x *= [[child valueForKey:@"scaleX"] floatValue];
+                offset.y *= [[child valueForKey:@"scaleY"] floatValue];
                 
-                CGPoint offset = CGPointMake(childSize.width/2, childSize.height/2);
                 CGPoint localPos = ccp((maxWidth-childSize.width)/2.0f, height);
                 CGPoint position = ccpAdd(localPos, offset);
                 
@@ -273,6 +277,7 @@
 
 -(void)visit:(CCRenderer *)renderer parentTransform:(const GLKMatrix4 *)parentTransform
 {
+    [self layout];
     if(_clipContent)
     {
         CGPoint positionInWorldCoords = [self convertToWorldSpace:ccp(0, 0)];
