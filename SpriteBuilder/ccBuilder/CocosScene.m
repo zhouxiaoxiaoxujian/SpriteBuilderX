@@ -665,8 +665,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     {
         currentNodeAtSelectionPtIdx = (int)[nodesAtSelectionPt count] -1;
     }
-    
-    [appDelegate setSelectedNodes:[NSArray arrayWithObject:[nodesAtSelectionPt objectAtIndex:currentNodeAtSelectionPtIdx]]];
+    if (nodesAtSelectionPt.count) {
+        [appDelegate setSelectedNodes:[NSArray arrayWithObject:[nodesAtSelectionPt objectAtIndex:currentNodeAtSelectionPtIdx]]];
+    }
 }
 
 //{bl,br,tr,tl}
