@@ -1100,9 +1100,14 @@ typedef enum
     for (ResolutionSetting* resolution in currentDocument.resolutions)
     {
         NSString* keyEquivalent = @"";
-        if (i < 10) keyEquivalent = [NSString stringWithFormat:@"%d",i+1];
+        if (i < 9)
+            keyEquivalent = [NSString stringWithFormat:@"%d",i+1];
+        else if(i < 18)
+            keyEquivalent = [NSString stringWithFormat:@"%d",i-8];
         
         NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:resolution.name action:@selector(menuResolution:) keyEquivalent:keyEquivalent];
+        if(i > 8 && i<18)
+            item.keyEquivalentModifierMask = NSEventModifierFlagOption;
         item.target = self;
         item.tag = i;
         
