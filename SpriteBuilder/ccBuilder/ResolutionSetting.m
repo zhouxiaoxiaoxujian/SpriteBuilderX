@@ -508,7 +508,7 @@
 + (ResolutionSetting*) settingAndroid1280x720Portrait {
     
     ResolutionSetting* setting = [self settingAndroid1280x720];
-    setting.name = @"Android 1280x720 Landscape";
+    setting.name = @"Android 1280x720 Portrait";
     setting.width = 720;
     setting.height = 1280;
     return setting;
