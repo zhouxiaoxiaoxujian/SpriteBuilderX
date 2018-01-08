@@ -223,6 +223,26 @@
 #pragma mark -
 #pragma mark Disclosure
 
+- (BOOL)param
+{
+    NodeInfo* nodeInfo = selection.userObject;
+    id property =  [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+    if(!property)
+        return NO;
+    return [property boolValue];
+}
+
+- (void)setParam:(BOOL)value
+{
+    NSString* paramPropertyName = [NSString stringWithFormat:@"param_%@", propertyName];
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:paramPropertyName];
+    NodeInfo* nodeInfo = selection.userObject;
+    if(value)
+        [nodeInfo.extraProps setObject:@YES forKey:paramPropertyName];
+    else
+        [nodeInfo.extraProps removeObjectForKey:paramPropertyName];
+}
+
 - (BOOL)isSeparator
 {
     return NO;

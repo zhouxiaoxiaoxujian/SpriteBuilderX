@@ -82,6 +82,8 @@
     }
 
     [self addCustomPropertiesForPlugIn:plugIn];
+    
+    [self addParamPropertiesForPlugIn:plugIn];
 
     self.hideAllToNextSeparator = NO;
 
@@ -264,6 +266,29 @@
     }
 }
 
+- (void)addParamPropertiesForPlugIn:(PlugInNode *)plugIn
+{
+    BOOL isCCBSubFile = [plugIn.nodeClassName isEqualToString:@"CCBFile"];
+    if(isCCBSubFile)
+    {
+        NSArray *params = _node.paramsProperties;
+        [self addSeparatorForParamPropertyParams:params];
+    }
+    /*
+    NSString *customClass = [_node extraPropForKey:@"customClass"];
+    NSArray *customProps = _node.customProperties;
+    if (customClass && ![customClass isEqualToString:@""])
+    {
+        BOOL isCCBSubFile = [plugIn.nodeClassName isEqualToString:@"CCBFile"];
+        
+        [self addSeparatorForCustomPropertyCustomProps:customProps isCCBSubFile:isCCBSubFile];
+        
+        [self addCustomPropertySettingsCustomProps:customProps];
+        
+        [self addCustomEditForCustomPropertyIsCCBSubFile:isCCBSubFile];
+    }*/
+}
+
 - (void)addCustomEditForCustomPropertyIsCCBSubFile:(BOOL)isCCBSubFile
 {
     if (!isCCBSubFile)
@@ -294,6 +319,19 @@
         [self addInspectorPropertyOfType:@"Separator"
                                     name:[_node extraPropForKey:@"customClass"]
                              displayName:[_node extraPropForKey:@"customClass"]
+                                   extra:NULL
+                                readOnly:YES
+                            affectsProps:NULL];
+    }
+}
+
+- (void)addSeparatorForParamPropertyParams:(NSArray *)params
+{
+    if ([params count])
+    {
+        [self addInspectorPropertyOfType:@"Separator"
+                                    name:@""
+                             displayName:@"Params"
                                    extra:NULL
                                 readOnly:YES
                             affectsProps:NULL];

@@ -830,6 +830,31 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     return info.customProperties;
 }
 
+- (NSArray*) paramsProperties
+{
+    NSMutableArray *ret = [NSMutableArray array];
+    for (CCNode* child in self.children)
+    {
+        //[nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+        
+        NSArray *propInfos = child.plugIn.nodeProperties;
+        NodeInfo* nodeInfo = child.userObject;
+        for (int i = 0; i < [propInfos count]; i++)
+        {
+            NSDictionary *propInfo = propInfos[(NSUInteger) i];
+            NSString *propertyName = propInfo[@"name"];
+            id param = [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+            if(param && [param boolValue])
+            {
+                [ret addObject:@{ @"node" : child, @"name" : propertyName, @"propery":[child valueForKey:propertyName]}];
+            }
+        }
+        NSArray *childProperies = [child paramsProperties];
+        [ret addObjectsFromArray:childProperies];
+    }
+    return ret;
+}
+
 - (void) setCustomProperties:(NSMutableArray *)customProperties
 {
     NodeInfo* info = self.userObject;

@@ -478,6 +478,10 @@
         NSMutableDictionary* propInfo = [plugInProps objectAtIndex:i];
         NSString* type = [propInfo objectForKey:@"type"];
         NSString* name = [propInfo objectForKey:@"name"];
+        
+        NodeInfo* nodeInfo = node.userObject;
+        id param =  [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", name]];
+        
         NSString* platform = [propInfo objectForKey:@"platform"];
         BOOL hasKeyframes = [node hasKeyframesForProperty:name];
         id defaultSerialization = [propInfo objectForKey:@"defaultSerialization"];
@@ -498,6 +502,8 @@
         
         [prop setValue:type forKey:@"type"];
         [prop setValue:name forKey:@"name"];
+        if(param)
+            [prop setValue:param forKey:@"param"];
         [prop setValue:serializedValue forKey:@"value"];
         if (platform) [prop setValue:platform forKey:@"platform"];
         

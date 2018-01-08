@@ -531,6 +531,7 @@ __strong NSDictionary* renamedProperties = nil;
     {
         NSDictionary* propInfo = [props objectAtIndex:i];
         NSString* type = [propInfo objectForKey:@"type"];
+        NSValue* param = [propInfo objectForKey:@"param"];
         NSString* name = [propInfo objectForKey:@"name"];
         id serializedValue = [propInfo objectForKey:@"value"];
         
@@ -540,6 +541,9 @@ __strong NSDictionary* renamedProperties = nil;
         {
             name = [renameRule objectForKey:@"newName"];
         }
+        
+        if(param)
+            [extraProps setObject:param forKey:[NSString stringWithFormat:@"param_%@", name]];
         
         if([plugIn.nodePropertiesDict objectForKey:name])
         {

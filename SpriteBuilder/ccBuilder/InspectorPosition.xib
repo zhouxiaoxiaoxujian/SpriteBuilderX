@@ -13,12 +13,12 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="233" height="56"/>
+        <customView misplaced="YES" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="233" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="2">
-                    <rect key="frame" x="-3" y="36" width="82" height="14"/>
+                    <rect key="frame" x="-3" y="44" width="82" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Position" id="3">
                         <font key="font" metaFont="smallSystem"/>
@@ -30,7 +30,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="13">
-                    <rect key="frame" x="81" y="0.0" width="74" height="11"/>
+                    <rect key="frame" x="81" y="8" width="74" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="X" id="14">
                         <font key="font" metaFont="miniSystem"/>
@@ -39,7 +39,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="15">
-                    <rect key="frame" x="152" y="0.0" width="74" height="11"/>
+                    <rect key="frame" x="152" y="8" width="74" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Y" id="16">
                         <font key="font" metaFont="miniSystem"/>
@@ -48,7 +48,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="4">
-                    <rect key="frame" x="84" y="12" width="68" height="19"/>
+                    <rect key="frame" x="84" y="20" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="5">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="1" maximumFractionDigits="2" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="6"/>
@@ -66,7 +66,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="10">
-                    <rect key="frame" x="155" y="12" width="68" height="19"/>
+                    <rect key="frame" x="155" y="20" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="11">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#0.0" negativeFormat="#0.0" numberStyle="decimal" usesGroupingSeparator="NO" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="1" maximumFractionDigits="2" plusSign="+" minusSign="-" nilSymbol="L!nDy" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="12"/>
@@ -84,7 +84,7 @@
                     </connections>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="44">
-                    <rect key="frame" x="81" y="31" width="48" height="22"/>
+                    <rect key="frame" x="81" y="39" width="48" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="45">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -108,7 +108,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="51">
-                    <rect key="frame" x="130" y="31" width="48" height="22"/>
+                    <rect key="frame" x="130" y="39" width="48" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="X in percent of parent container" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" selectedItem="55" id="52">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -131,7 +131,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" id="65">
-                    <rect key="frame" x="178" y="31" width="48" height="22"/>
+                    <rect key="frame" x="178" y="39" width="48" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Y in UI points" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="69" id="66">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -153,7 +153,24 @@
                         </binding>
                     </connections>
                 </popUpButton>
+                <button misplaced="YES" imageHugsTitle="YES" id="mNc-yg-P8a">
+                    <rect key="frame" x="-4" y="27" width="43" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="tEb-zt-t36">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="readOnly" id="0tt-8e-9iK">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="value" keyPath="param" id="V4q-lg-d9F"/>
+                    </connections>
+                </button>
             </subviews>
+            <point key="canvasLocation" x="143.5" y="158"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="17"/>
     </objects>
