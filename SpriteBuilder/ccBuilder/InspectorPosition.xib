@@ -161,12 +161,13 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
+                        <binding destination="-2" name="hidden" keyPath="external" previousBinding="0tt-8e-9iK" id="hqO-BR-hm0"/>
+                        <binding destination="-2" name="value" keyPath="param" id="V4q-lg-d9F"/>
                         <binding destination="-2" name="enabled" keyPath="readOnly" id="0tt-8e-9iK">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="value" keyPath="param" id="V4q-lg-d9F"/>
                     </connections>
                 </button>
             </subviews>

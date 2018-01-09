@@ -53,6 +53,7 @@
 @property (nonatomic,strong) NSString* textFieldOriginalValue;
 @property (nonatomic,copy) NSString* propertyType;
 @property (nonatomic,assign) BOOL param;
+@property (nonatomic,assign,readonly) BOOL external;
 
 + (id) inspectorOfType:(NSString*) t withSelection:(CCNode*)s andPropertyName:(NSString*)pn andDisplayName:(NSString*) dn andExtra:(NSString*)e;
 

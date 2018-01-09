@@ -68,6 +68,18 @@
                         <binding destination="-2" name="value" keyPath="selector" id="74"/>
                     </connections>
                 </textField>
+                <button misplaced="YES" imageHugsTitle="YES" id="ANZ-Fe-GHt">
+                    <rect key="frame" x="-4" y="16" width="43" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="kiX-Yh-Y8M">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="external" id="glr-Au-pyj"/>
+                        <binding destination="-2" name="value" keyPath="param" id="rSA-3F-GlT"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="17"/>

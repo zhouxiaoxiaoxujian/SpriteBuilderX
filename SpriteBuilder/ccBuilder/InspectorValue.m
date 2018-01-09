@@ -90,6 +90,11 @@
     return readOnly;
 }
 
+-(BOOL)external
+{
+    return _extra && [_extra isEqualToString:@"external"];
+}
+
 - (void) updateAffectedProperties
 {
     if (affectsProperties)

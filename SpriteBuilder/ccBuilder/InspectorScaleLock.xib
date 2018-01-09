@@ -130,6 +130,23 @@
                         </binding>
                     </connections>
                 </segmentedControl>
+                <button misplaced="YES" imageHugsTitle="YES" id="IA6-Ud-iVE">
+                    <rect key="frame" x="-3" y="22" width="43" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="cby-O2-CN3">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="readOnly" id="Mja-Gd-Ezx">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="external" previousBinding="Mja-Gd-Ezx" id="brs-Eo-ufw"/>
+                        <binding destination="-2" name="value" keyPath="param" id="VSV-bB-Wj3"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="17"/>
