@@ -846,7 +846,7 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
             id param = [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
             if(param && [param boolValue])
             {
-                [ret addObject:@{ @"node" : child, @"name" : propertyName, @"propery":[child valueForKey:propertyName]}];
+                [ret addObject:@{ @"node" : child, @"name" : propertyName, @"type" : propInfo[@"type"], @"displayName": propInfo[@"displayName"], @"property":[child valueForKey:propertyName]}];
             }
         }
         NSArray *childProperies = [child paramsProperties];
@@ -992,6 +992,19 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
 - (void) setUsesFlashSkew:(BOOL)seqExpanded
 {
     [self setExtraProp:[NSNumber numberWithBool:seqExpanded] forKey:@"usesFlashSkew"];
+}
+
+- (CCNode*) findNodeWithUUID:(NSUInteger)UUID
+{
+    if (self.UUID == UUID)
+        return self;
+    for(CCNode * child in self.children)
+    {
+        CCNode *ret = [child findNodeWithUUID:UUID];
+        if(ret)
+            return ret;
+    }
+    return nil;
 }
 
 - (BOOL) usesFlashSkew

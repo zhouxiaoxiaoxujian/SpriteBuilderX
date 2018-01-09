@@ -78,8 +78,68 @@
     }
     else
     {
+        if ([key containsString:@"@"])
+        {
+            NSArray *ar = [key componentsSeparatedByString:@"@"];
+            
+            CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+            if(ret)
+            {
+                return [ret extraPropForKey:ar[1]];
+            }
+            return nil;
+        }
         return [super extraPropForKey:key];
     }
+}
+
+- (void) setExtraProp:(id)prop forKey:(NSString *)key
+{
+    if ([key containsString:@"@"])
+    {
+        NSArray *ar = [key componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+        {
+            [ret setExtraProp:prop forKey:ar[1]];
+        }
+        return;
+    }
+    [super setExtraProp:prop forKey:key];
+}
+
+- (void) setValue:(id)value forKey:(NSString *)key
+{
+    if ([key containsString:@"@"])
+    {
+        NSArray *ar = [key componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+        {
+            [ret setValue:value forKey:ar[1]];
+        }
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
+- (id) valueForKey:(NSString *)key
+{
+    if ([key containsString:@"@"])
+    {
+        NSArray *ar = [key componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+        {
+            return [ret valueForKey:ar[1]];
+        }
+        
+        return nil;
+    }
+    return [super valueForKey:key];
 }
 
 - (NSMutableArray*) customProperties

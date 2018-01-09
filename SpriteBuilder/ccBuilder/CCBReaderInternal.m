@@ -609,6 +609,20 @@ __strong NSDictionary* renamedProperties = nil;
 		}
     }
     
+    if([[[node class] description] isEqualToString:@"CCBPCCBFile"])
+    {
+        NSMutableArray* params = [dict objectForKey:@"params"];
+        if(params)
+        {
+            for (int i = 0; i < [params count]; i++)
+            {
+                NSDictionary *paramsDict = [params objectAtIndex:i];
+                NSString *name = [NSString stringWithFormat:@"%@@%@", paramsDict[@"UUID"], paramsDict[@"name"]];
+                [CCBReaderInternal setProp:name ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
+            }
+        }
+    }
+    
     // Physics
     if ([dict objectForKey:@"physicsBody"])
     {

@@ -97,6 +97,8 @@ NSString * kAnimationOfPhysicsWarning;
 - (void) setUsesFlashSkew:(BOOL)seqExpanded;
 - (BOOL) usesFlashSkew;
 
+- (CCNode*) findNodeWithUUID:(NSUInteger)UUID;
+
 //Fixups
 -(void)postCopyFixup;
 -(void)postDeserializationFixup;

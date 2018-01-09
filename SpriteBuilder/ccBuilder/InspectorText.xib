@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="233" height="112"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="2">
-                    <rect key="frame" x="6" y="98" width="76" height="14"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="2">
+                    <rect key="frame" x="6" y="98" width="221" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Fnt File" id="3">
                         <font key="font" metaFont="smallSystem"/>

@@ -479,8 +479,7 @@
         NSString* type = [propInfo objectForKey:@"type"];
         NSString* name = [propInfo objectForKey:@"name"];
         
-        NodeInfo* nodeInfo = node.userObject;
-        id param =  [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", name]];
+        id param =  [info.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", name]];
         
         NSString* platform = [propInfo objectForKey:@"platform"];
         BOOL hasKeyframes = [node hasKeyframesForProperty:name];
@@ -493,7 +492,7 @@
 			continue;
         
         // Skip default values
-        if ([serializedValue isEqual:defaultSerialization] && !hasKeyframes)
+        if ([serializedValue isEqual:defaultSerialization] && !hasKeyframes && !param)
         {
             continue;
         }
@@ -537,10 +536,31 @@
         }
     }
     
+    if([[[node class] description] isEqualToString:@"CCBPCCBFile"])
+    {
+        NSMutableArray* params = [NSMutableArray array];
+        for (int i = 0; i < [node.paramsProperties count]; i++)
+        {
+            NSDictionary *paramDict = [node.paramsProperties objectAtIndex:i];
+            CCNode *paramNode = paramDict[@"node"];
+            
+            NSMutableDictionary* prop = [NSMutableDictionary dictionary];
+            [prop setValue:@(paramNode.UUID) forKey:@"UUID"];
+            [prop setValue:paramDict[@"type"] forKey:@"type"];
+            [prop setValue:paramDict[@"name"] forKey:@"name"];
+            id serializedValue = [CCBWriterInternal serializePropertyForNode:paramNode propInfo:prop excludeProps:nil];
+            [prop setValue:serializedValue forKey:@"value"];
+            [params addObject:prop];
+        }
+        
+        [dict setObject:params forKey:@"params"];
+    }
+    
     // Create node
     [dict setObject:props forKey:@"properties"];
     [dict setObject:baseClass forKey:@"baseClass"];
     [dict setObject:children forKey:@"children"];
+    //[dict setObject: forKey:@"children"];
     
     // Serialize any animations
     id anim = [node serializeAnimatedProperties];
