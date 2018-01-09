@@ -617,8 +617,8 @@ __strong NSDictionary* renamedProperties = nil;
             for (int i = 0; i < [params count]; i++)
             {
                 NSDictionary *paramsDict = [params objectAtIndex:i];
-                NSString *name = [NSString stringWithFormat:@"%@@%@", paramsDict[@"UUID"], paramsDict[@"name"]];
-                [CCBReaderInternal setProp:name ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
+                
+                [CCBReaderInternal setProp:paramsDict[@"name"] ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
             }
         }
     }

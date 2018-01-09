@@ -266,51 +266,6 @@
     }
 }
 
-- (InspectorValue *)addInspectorPropertyOfType2:(NSString *)type
-                                           node:(CCNode *)node
-                                          name:(NSString *)name
-                                   displayName:(NSString *)displayName
-                                         extra:(NSString *)extra
-                                      readOnly:(BOOL)readOnly
-                                  affectsProps:(NSArray *)affectsProps
-{
-    InspectorValue *inspectorValue = [InspectorValue inspectorOfType:type
-                                                       withSelection:node
-                                                     andPropertyName:name
-                                                      andDisplayName:displayName
-                                                            andExtra:extra];
-    
-    NSAssert3(inspectorValue, @"property '%@' (%@) not found in class %@", name, type, NSStringFromClass([node class]));
-    
-    [self saveLastInspectorValue:inspectorValue];
-    
-    [self configureInspectorValue:readOnly affectsProps:affectsProps inspectorValue:inspectorValue];
-    
-    [self saveInspectorValueForFutureUpdates:name inspectorValue:inspectorValue];
-    
-    [self loadPropertyEditorNibWithType:type inspectorValue:inspectorValue];
-    
-    [inspectorValue willBeAdded];
-    
-    NSView *inspectorValuesView = inspectorValue.view;
-    
-    //if its a separator, check to see if it isExpanded, if not set all of the next non-separator InspectorValues to hidden and don't touch the offset
-    if ([inspectorValue isKindOfClass:[InspectorSeparator class]])
-    {
-        [self addSeparator:_currentOffSetY inspectorValue:inspectorValue inspectorValuesView:inspectorValuesView];
-    }
-    else
-    {
-        [self toggleVisibilityToNextSeparator:_currentOffSetY inspectorValuesView:inspectorValuesView];
-    }
-    
-    [_currentView addSubview:inspectorValuesView];
-    
-    [inspectorValuesView setAutoresizingMask:NSViewWidthSizable];
-    
-    return inspectorValue;
-}
-
 - (void)addParamPropertiesForPlugIn:(PlugInNode *)plugIn
 {
     BOOL isCCBSubFile = [plugIn.nodeClassName isEqualToString:@"CCBFile"];
@@ -325,28 +280,18 @@
             
             CCNode *node = dict[@"node"];
             
-            [self addInspectorPropertyOfType:dict[@"type"]
-                                        name:[NSString stringWithFormat:@"%d@%@", (int)node.UUID, dict[@"name"]]
-                                 displayName:[NSString stringWithFormat:@"%@:%@", node.displayName, dict[@"displayName"]]
-                                       extra:nil
-                                    readOnly:NO
-                                affectsProps:nil/*propInfo[@"affectsProperties"]*/];
+            if([dict[@"codeConnection"] boolValue] == _isCodeConnectionPane)
+            {
+                [self addInspectorPropertyOfType:dict[@"type"]
+                                            name:[NSString stringWithFormat:@"%d@%@", (int)node.UUID, dict[@"name"]]
+                                     displayName:[NSString stringWithFormat:@"%@:%@", node.displayName, dict[@"displayName"]]
+                                           extra:@"external"
+                                        readOnly:NO
+                                    affectsProps:nil];
+            }
             
         }
     }
-    /*
-    NSString *customClass = [_node extraPropForKey:@"customClass"];
-    NSArray *customProps = _node.customProperties;
-    if (customClass && ![customClass isEqualToString:@""])
-    {
-        BOOL isCCBSubFile = [plugIn.nodeClassName isEqualToString:@"CCBFile"];
-        
-        [self addSeparatorForCustomPropertyCustomProps:customProps isCCBSubFile:isCCBSubFile];
-        
-        [self addCustomPropertySettingsCustomProps:customProps];
-        
-        [self addCustomEditForCustomPropertyIsCCBSubFile:isCCBSubFile];
-    }*/
 }
 
 - (void)addCustomEditForCustomPropertyIsCCBSubFile:(BOOL)isCCBSubFile

@@ -846,7 +846,7 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
             id param = [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
             if(param && [param boolValue])
             {
-                [ret addObject:@{ @"node" : child, @"name" : propertyName, @"type" : propInfo[@"type"], @"displayName": propInfo[@"displayName"], @"property":[child valueForKey:propertyName]}];
+                [ret addObject:@{ @"node" : child, @"name" : propertyName, @"type" : propInfo[@"type"], @"displayName": propInfo[@"displayName"], @"codeConnection": @([propInfo[@"codeConnection"] boolValue])}];
             }
         }
         NSArray *childProperies = [child paramsProperties];
