@@ -123,7 +123,7 @@ __strong NSDictionary* renamedProperties = nil;
     
     // Fetch info and extra properties
     NodeInfo* nodeInfo = node.userObject;
-    NSMutableDictionary* extraProps = nodeInfo.extraProps;
+    //NSMutableDictionary* extraProps = nodeInfo.extraProps;
     
     if ([type isEqualToString:@"Position"])
     {
@@ -256,7 +256,8 @@ __strong NSDictionary* renamedProperties = nil;
         int scaleType = 0;
         if ([(NSArray*)serializedValue count] >= 3)
         {
-            [extraProps setValue:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
+            [node setExtraProp:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
+            //[extraProps setValue:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
             if ([(NSArray*)serializedValue count] == 4)
             {
                 scaleType = [[serializedValue objectAtIndex:3] intValue];
@@ -337,8 +338,8 @@ __strong NSDictionary* renamedProperties = nil;
             spriteSheetFile = kCCBUseRegularFile;
         }
         
-        [extraProps setObject:spriteSheetFile forKey:[NSString stringWithFormat:@"%@Sheet",name]];
-        [extraProps setObject:spriteFile forKey:name];
+        [node setExtraProp:spriteSheetFile forKey:[NSString stringWithFormat:@"%@Sheet",name]];
+        [node setExtraProp:spriteFile forKey:name];
         [TexturePropertySetter setSpriteFrameForNode:node andProperty:name withFile:spriteFile andSheetFile:spriteSheetFile];
     }
     else if ([type isEqualToString:@"Animation"])
@@ -351,7 +352,7 @@ __strong NSDictionary* renamedProperties = nil;
         NSString* spriteFile = serializedValue;
         if (!spriteFile) spriteFile = @"";
         [TexturePropertySetter setTextureForNode:node andProperty:name withFile:spriteFile];
-        [extraProps setObject:spriteFile forKey:name];
+        [node setExtraProp:spriteFile forKey:name];
     }
     else if ([type isEqualToString:@"Color4"] ||
              [type isEqualToString:@"Color3"])
@@ -425,8 +426,8 @@ __strong NSDictionary* renamedProperties = nil;
 			target = @(1);
 		}
 		
-        [extraProps setObject: selector forKey:name];
-        [extraProps setObject:target forKey:[NSString stringWithFormat:@"%@Target",name]];
+        [node setExtraProp: selector forKey:name];
+        [node setExtraProp:target forKey:[NSString stringWithFormat:@"%@Target",name]];
     }
     else if ([type isEqualToString:@"BlockCCControl"])
     {
@@ -436,16 +437,16 @@ __strong NSDictionary* renamedProperties = nil;
         if (!selector) selector = @"";
         if (!target) target = [NSNumber numberWithInt:0];
         if (!ctrlEvts) ctrlEvts = [NSNumber numberWithInt:0];
-        [extraProps setObject: selector forKey:name];
-        [extraProps setObject:target forKey:[NSString stringWithFormat:@"%@Target",name]];
-        [extraProps setObject:ctrlEvts forKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
+        [node setExtraProp: selector forKey:name];
+        [node setExtraProp:target forKey:[NSString stringWithFormat:@"%@Target",name]];
+        [node setExtraProp:ctrlEvts forKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
     }
     else if ([type isEqualToString:@"CCBFile"])
     {
         NSString* ccbFile = serializedValue;
         if (!ccbFile) ccbFile = @"";
         [NodeGraphPropertySetter setNodeGraphForNode:node andProperty:name withFile:ccbFile parentSize:parentSize];
-        [extraProps setObject:ccbFile forKey:name];
+        [node setExtraProp:ccbFile forKey:name];
     }
     else if ([type isEqualToString:@"NodeReference"])
     {
