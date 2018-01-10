@@ -85,6 +85,7 @@ NSString * kAnimationOfPhysicsWarning;
 
 - (id) serializeAnimatedProperties;
 - (void) loadAnimatedPropertiesFromSerialization:(id)ser;
+- (void) updateAnimateablePropertyValue:(id)value forProperty:(NSString*)name;
 
 - (NSString*) customPropertyNamed:(NSString*)name;
 - (void) setCustomPropertyNamed:(NSString*)name value:(NSString*)value;

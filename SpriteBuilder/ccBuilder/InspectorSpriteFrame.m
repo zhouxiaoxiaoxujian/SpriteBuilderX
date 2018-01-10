@@ -115,7 +115,7 @@
 		// Setup menu
 		if([selection isKindOfClass:[CCNode class]])
 		{
-			[self updateAnimateablePropertyValue:[NSArray arrayWithObjects:sf, ssf , nil]];
+            [selection updateAnimateablePropertyValue:[NSArray arrayWithObjects:sf, ssf , nil] forProperty:propertyName];
 		}
     }
     

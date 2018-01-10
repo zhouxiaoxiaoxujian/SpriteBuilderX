@@ -92,7 +92,7 @@
 
 -(BOOL)external
 {
-    return _extra && [_extra isEqualToString:@"external"];
+    return [propertyName containsString:@"@"];
 }
 
 - (void) updateAffectedProperties
@@ -129,38 +129,6 @@
     
 }
 
-- (void) updateAnimateablePropertyValue:(id)value
-{
-    NodeInfo* nodeInfo = selection.userObject;
-    PlugInNode* plugIn = nodeInfo.plugIn;
-    
-    if ([plugIn isAnimatableProperty:propertyName node:selection])
-    {
-        SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
-        int seqId = seq.sequenceId;
-        SequencerNodeProperty* seqNodeProp = [selection sequenceNodeProperty:propertyName sequenceId:seqId];
-        
-        if (seqNodeProp && seqNodeProp.type != kCCBKeyframeTypeToggle)
-        {
-            if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
-            {
-                [nodeInfo.baseValues setObject:value forKey:propertyName];
-            }
-            else
-            {
-                SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
-                if (keyframe)
-                    keyframe.value = value;
-            }
-        }
-        else
-        {
-            [nodeInfo.baseValues setObject:value forKey:propertyName];
-        }
-        [[SequencerHandler sharedHandler] redrawTimeline];
-    }
-}
-
 - (void) setPropertyForSelection:(id)value
 {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
@@ -178,7 +146,7 @@
     }
     
     // Handle animatable properties
-    [self updateAnimateablePropertyValue:value];
+    [selection updateAnimateablePropertyValue:value forProperty:propertyName];
     
     // Update affected properties
     [self updateAffectedProperties];

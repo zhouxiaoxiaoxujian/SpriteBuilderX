@@ -495,6 +495,38 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     
 }
 
+- (void) updateAnimateablePropertyValue:(id)value forProperty:(NSString*)name;
+{
+    NodeInfo* nodeInfo = self.userObject;
+    PlugInNode* plugIn = nodeInfo.plugIn;
+    
+    if ([plugIn isAnimatableProperty:name node:self])
+    {
+        SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+        int seqId = seq.sequenceId;
+        SequencerNodeProperty* seqNodeProp = [self sequenceNodeProperty:name sequenceId:seqId];
+        
+        if (seqNodeProp && seqNodeProp.type != kCCBKeyframeTypeToggle)
+        {
+            if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
+            {
+                [nodeInfo.baseValues setObject:value forKey:name];
+            }
+            else
+            {
+                SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
+                if (keyframe)
+                    keyframe.value = value;
+            }
+        }
+        else
+        {
+            [nodeInfo.baseValues setObject:value forKey:name];
+        }
+        [[SequencerHandler sharedHandler] redrawTimeline];
+    }
+}
+
 - (void) updatePropertiesTime:(float)time sequenceId:(int)seqId
 {
     NSArray* animatableProps = [self.plugIn animatablePropertiesForNode:self];

@@ -288,7 +288,7 @@
                 [self addInspectorPropertyOfType:dict[@"type"]
                                             name:dict[@"name"]
                                      displayName:dict[@"displayName"]
-                                           extra:@"external"
+                                           extra:dict[@"extra"]
                                         readOnly:NO
                                     affectsProps:nil];
             }

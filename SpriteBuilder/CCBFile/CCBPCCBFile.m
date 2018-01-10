@@ -82,7 +82,20 @@
             id param = [child extraPropForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
             if(param && [param boolValue])
             {
-                [ret addObject:@{ @"name" : [NSString stringWithFormat:@"%d@%@", (int)child.UUID, propertyName], @"type" : propInfo[@"type"], @"displayName": propInfo[@"displayName"], @"codeConnection": @([propInfo[@"codeConnection"] boolValue]), @"group": child.displayName}];
+                NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                
+                NSValue *codeConnection = propInfo[@"codeConnection"];
+                NSValue *extra = propInfo[@"extra"];
+                
+                [dict setObject:[NSString stringWithFormat:@"%d@%@", (int)child.UUID, propertyName] forKey:@"name"];
+                [dict setObject:propInfo[@"type"] forKey:@"type"];
+                [dict setObject:propInfo[@"displayName"] forKey:@"displayName"];
+                [dict setObject:child.displayName forKey:@"group"];
+                if(codeConnection)
+                    [dict setObject:codeConnection forKey:@"codeConnection"];
+                if(extra)
+                    [dict setObject:extra forKey:@"extra"];
+                [ret addObject:dict];
             }
         }
         NSArray *childProperies = [CCBPCCBFile paramsProperties:child];
@@ -119,7 +132,69 @@
             CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
             if(ret)
             {
-                return [ret extraPropForKey:ar[1]];
+                NSString *name = ar[1];
+                BOOL sheet = NO;
+                BOOL X = NO;
+                BOOL Y = NO;
+                
+                id baseValue = [ret baseValueForProperty:name];
+                if(!baseValue)
+                {
+                    if ([name hasSuffix:@"Sheet"])
+                    {
+                        NSString *newName = [name substringToIndex:[name length] - 5];
+                        baseValue = [ret baseValueForProperty:newName];
+                        if(baseValue)
+                        {
+                            sheet = YES;
+                            name = newName;
+                        }
+                    }
+                }
+                if(!baseValue)
+                {
+                    unichar lastChar = [name characterAtIndex:[name length] - 1];
+                    switch (lastChar) {
+                        case 'X':
+                        {
+                            name = [name substringToIndex:[name length] - 1];
+                            baseValue = [ret baseValueForProperty:name];
+                            X = YES;
+                        }
+                            break;
+                        case 'Y':
+                        {
+                            name = [name substringToIndex:[name length] - 1];
+                            baseValue = [ret baseValueForProperty:name];
+                            Y = YES;
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if(baseValue)
+                {
+                    NSDictionary* propInfo = [ret.plugIn.nodePropertiesDict objectForKey:name];
+                    NSString *type = propInfo[@"type"];
+                    if([type isEqualToString:@"SpriteFrame"])
+                    {
+                        if(sheet)
+                            return baseValue[1];
+                        else
+                            return baseValue[0];
+                    }
+                    else if([type isEqualToString:@"ScaleLock"])
+                    {
+                        if(X)
+                            return baseValue[0];
+                        if(Y)
+                            return baseValue[1];
+                        return baseValue;
+                    }
+                    return baseValue;
+                }
+                return [ret extraPropForKey:name];
             }
             return nil;
         }
@@ -136,11 +211,108 @@
         CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
         if(ret)
         {
+            NSString *name = ar[1];
+            BOOL sheet = NO;
+            BOOL X = NO;
+            BOOL Y = NO;
+            
+            id baseValue = [ret baseValueForProperty:name];
+            if(!baseValue)
+            {
+                if ([name hasSuffix:@"Sheet"])
+                {
+                    NSString *newName = [name substringToIndex:[name length] - 5];
+                    baseValue = [ret baseValueForProperty:newName];
+                    if(baseValue)
+                    {
+                        sheet = YES;
+                        name = newName;
+                    }
+                }
+            }
+            if(!baseValue)
+            {
+                unichar lastChar = [name characterAtIndex:[name length] - 1];
+                switch (lastChar) {
+                    case 'X':
+                    {
+                        name = [name substringToIndex:[name length] - 1];
+                        baseValue = [ret baseValueForProperty:name];
+                        X = YES;
+                    }
+                        break;
+                    case 'Y':
+                    {
+                        name = [name substringToIndex:[name length] - 1];
+                        baseValue = [ret baseValueForProperty:name];
+                        Y = YES;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(baseValue)
+            {
+                NSDictionary* propInfo = [ret.plugIn.nodePropertiesDict objectForKey:name];
+                NSString *type = propInfo[@"type"];
+                if([type isEqualToString:@"SpriteFrame"])
+                {
+                    [ret setBaseValue:@[!sheet?prop:baseValue[0], sheet?prop:baseValue[1]] forProperty:name];
+                }
+                else if([type isEqualToString:@"ScaleLock"])
+                {
+                    [ret setBaseValue:@[X?prop:baseValue[0], Y?prop:baseValue[1]] forProperty:name];
+                }
+                return;
+            }
             [ret setExtraProp:prop forKey:ar[1]];
         }
         return;
     }
     [super setExtraProp:prop forKey:key];
+}
+
+- (id) baseValueForProperty:(NSString*)name
+{
+    if ([name containsString:@"@"])
+    {
+        NSArray *ar = [name componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+            return [ret baseValueForProperty:ar[1]];
+        return nil;
+    }
+    return [super baseValueForProperty:name];
+}
+
+- (void) setBaseValue:(id)value forProperty:(NSString*)name
+{
+    if ([name containsString:@"@"])
+    {
+        NSArray *ar = [name componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+            [ret setValue:value forKey:ar[1]];
+        return;
+    }
+    return [super setValue:value forKey:name];
+}
+
+- (id) valueForProperty:(NSString*)name atTime:(float)time sequenceId:(int)seqId
+{
+    if ([name containsString:@"@"])
+    {
+        NSArray *ar = [name componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+            return [ret valueForProperty:ar[1] atTime:0 sequenceId:-1];
+        return nil;
+    }
+    return [super valueForProperty:name atTime:time sequenceId:seqId];
 }
 
 + (BOOL)isDisabledProperty:(NSString *)name node:(CCNode*)node
@@ -169,6 +341,27 @@
     return YES;
 }
 
+- (void) updateAnimateablePropertyValue:(id)value forProperty:(NSString*)name;
+{
+    if ([name containsString:@"@"])
+    {
+        /*
+        NSArray *ar = [name componentsSeparatedByString:@"@"];
+        
+        CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
+        if(ret)
+        {
+            id baseValue = [ret baseValueForProperty:ar[1]];
+            if (baseValue)
+            {
+                [ret setBaseValue:value forProperty:ar[1]];
+            }
+        }*/
+        return;
+    }
+    return [super updateAnimateablePropertyValue:value forProperty:name];
+}
+
 - (void) setValue:(id)value forKey:(NSString *)key
 {
     if ([key containsString:@"@"])
@@ -179,7 +372,32 @@
         if(ret)
         {
             NSString *name = ar[1];
+            BOOL X = NO;
+            BOOL Y = NO;
+            
             id baseValue = [ret baseValueForProperty:name];
+            if(!baseValue)
+            {
+                unichar lastChar = [name characterAtIndex:[name length] - 1];
+                switch (lastChar) {
+                    case 'X':
+                        {
+                            name = [name substringToIndex:[name length] - 1];
+                            baseValue = [ret baseValueForProperty:name];
+                            X = YES;
+                        }
+                        break;
+                    case 'Y':
+                        {
+                            name = [name substringToIndex:[name length] - 1];
+                            baseValue = [ret baseValueForProperty:name];
+                            Y = YES;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
             if (baseValue)
             {
                 NSDictionary* propInfo = [ret.plugIn.nodePropertiesDict objectForKey:name];
@@ -192,13 +410,36 @@
                                           NULL];
                     [ret setBaseValue:encodedVal forProperty:name];
                 }
+                else if([type isEqualToString:@"ScaleLock"])
+                {
+                    //[ret setBaseValue:@[X?value:baseValue[0], Y?value:baseValue[1]] forProperty:name];
+                }
+                else if([type isEqualToString:@"FloatXY"])
+                {
+                    [ret setBaseValue:@[X?value:baseValue[0], Y?value:baseValue[1]] forProperty:name];
+                }
+                else if([type isEqualToString:@"SpriteFrame"])
+                {
+                    //id sf = [ret extraPropForKey:name];
+                    //id ssf = [ret extraPropForKey:[NSString stringWithFormat:@"%@Sheet", name]];
+                    //[ret setBaseValue:@[sf, ssf] forProperty:name];
+                }
+                else if([type isEqualToString:@"Color3"] || [type isEqualToString:@"Color4"])
+                {
+                    CCColor* colorValue = value;
+                    NSArray* encodedVal = @[@(colorValue.red),
+                                            @(colorValue.green),
+                                            @(colorValue.blue),
+                                            @(colorValue.alpha)];
+                    [ret setBaseValue:encodedVal forProperty:name];
+                }
                 else
                 {
                     [ret setBaseValue:value forProperty:name];
                 }
             }
             if(![CCBPCCBFile isDisabledProperty:name node:ret])
-                [ret setValue:value forKey:name];
+                [ret setValue:value forKey:ar[1]];
         }
         return;
     }
@@ -214,10 +455,36 @@
         CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
         if(ret)
         {
-            id baseValue = [ret baseValueForProperty:ar[1]];
+            NSString *name = ar[1];
+            BOOL X = NO;
+            BOOL Y = NO;
+            
+            id baseValue = [ret baseValueForProperty:name];
+            if(!baseValue)
+            {
+                unichar lastChar = [name characterAtIndex:[name length] - 1];
+                switch (lastChar) {
+                    case 'X':
+                    {
+                        name = [name substringToIndex:[name length] - 1];
+                        baseValue = [ret baseValueForProperty:name];
+                        X = YES;
+                    }
+                        break;
+                    case 'Y':
+                    {
+                        name = [name substringToIndex:[name length] - 1];
+                        baseValue = [ret baseValueForProperty:name];
+                        Y = YES;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }
             if (baseValue)
             {
-                NSDictionary* propInfo = [ret.plugIn.nodePropertiesDict objectForKey:ar[1]];
+                NSDictionary* propInfo = [ret.plugIn.nodePropertiesDict objectForKey:name];
                 NSString *type = propInfo[@"type"];
                 if([type isEqualToString:@"Position"])
                 {
@@ -228,14 +495,18 @@
                 }
                 else if([type isEqualToString:@"Color3"])
                 {
-                    return [NSColor colorWithRed:[baseValue[0] floatValue] green:[baseValue[1] floatValue] blue:[baseValue[2] floatValue] alpha:1.0];
+                    return [CCColor colorWithRed:[baseValue[0] floatValue] green:[baseValue[1] floatValue] blue:[baseValue[2] floatValue] alpha:1.0];
                 }
                 else if([type isEqualToString:@"Color4"])
                 {
-                    return [NSColor colorWithRed:[baseValue[0] floatValue] green:[baseValue[1] floatValue] blue:[baseValue[2] floatValue] alpha:[baseValue[3] floatValue]];
+                    return [CCColor colorWithRed:[baseValue[0] floatValue] green:[baseValue[1] floatValue] blue:[baseValue[2] floatValue] alpha:[baseValue[3] floatValue]];
                 }
                 else if([type isEqualToString:@"FloatXY"])
                 {
+                    if(X)
+                        return baseValue[0];
+                    if(Y)
+                        return baseValue[1];
                     return baseValue;
                 }
                 else if([type isEqualToString:@"SpriteFrame"])
@@ -244,6 +515,10 @@
                 }
                 else if([type isEqualToString:@"ScaleLock"])
                 {
+                    if(X)
+                        return baseValue[0];
+                    if(Y)
+                        return baseValue[1];
                     return baseValue;
                 }
                 else

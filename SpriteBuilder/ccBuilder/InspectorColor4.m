@@ -24,6 +24,7 @@
 
 #import "InspectorColor4.h"
 #import "CCBWriterInternal.h"
+#import "CCNode+NodeInfo.h"
 
 @implementation InspectorColor4
 
@@ -37,7 +38,7 @@
     CCColor* colorValue = [CCColor colorWithRed:r green:g blue:b alpha:a];
     [self setPropertyForSelection:colorValue];
     
-    [self updateAnimateablePropertyValue: [CCBWriterInternal serializeColor4:colorValue]];
+    [selection updateAnimateablePropertyValue:[CCBWriterInternal serializeColor4:colorValue] forProperty:propertyName];
     
 }
 
