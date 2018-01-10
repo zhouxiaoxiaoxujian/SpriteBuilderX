@@ -295,10 +295,10 @@
         
         CCNode *ret = [ccbFile findNodeWithUUID:[ar[0] integerValue]];
         if(ret)
-            [ret setValue:value forKey:ar[1]];
+            [ret setBaseValue:value forProperty:ar[1]];
         return;
     }
-    return [super setValue:value forKey:name];
+    return [super setBaseValue:value forProperty:name];
 }
 
 - (id) valueForProperty:(NSString*)name atTime:(float)time sequenceId:(int)seqId
