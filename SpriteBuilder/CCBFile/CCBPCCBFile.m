@@ -67,6 +67,35 @@
     }
 }
 
++ (NSArray*) paramsProperties:(CCNode*)node
+{
+    NSMutableArray *ret = [NSMutableArray array];
+    for (CCNode* child in node.children)
+    {
+        //[nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+        
+        NSArray *propInfos = child.plugIn.nodeProperties;
+        for (int i = 0; i < [propInfos count]; i++)
+        {
+            NSDictionary *propInfo = propInfos[(NSUInteger) i];
+            NSString *propertyName = propInfo[@"name"];
+            id param = [child extraPropForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+            if(param && [param boolValue])
+            {
+                [ret addObject:@{ @"name" : [NSString stringWithFormat:@"%d@%@", (int)child.UUID, propertyName], @"type" : propInfo[@"type"], @"displayName": propInfo[@"displayName"], @"codeConnection": @([propInfo[@"codeConnection"] boolValue]), @"group": child.displayName}];
+            }
+        }
+        NSArray *childProperies = [CCBPCCBFile paramsProperties:child];
+        [ret addObjectsFromArray:childProperies];
+    }
+    return ret;
+}
+
+- (NSArray*) additionalProperties
+{
+    return [CCBPCCBFile paramsProperties:self];
+}
+
 - (id) extraPropForKey:(NSString *)key
 {
     if ([key isEqualToString:@"customClass"] && ccbFile)

@@ -536,25 +536,22 @@
         }
     }
     
-    if([[[node class] description] isEqualToString:@"CCBPCCBFile"])
+    // Additional properties
+    NSArray *paramsProperties = node.additionalProperties;
+    if(paramsProperties)
     {
         NSMutableArray* params = [NSMutableArray array];
-        for (int i = 0; i < [node.paramsProperties count]; i++)
+        for (NSDictionary *paramDict in paramsProperties)
         {
-            NSDictionary *paramDict = [node.paramsProperties objectAtIndex:i];
-            CCNode *paramNode = paramDict[@"node"];
-            
-            NSString *name = paramDict[@"name"];
-            
             NSMutableDictionary* prop = [NSMutableDictionary dictionary];
             [prop setValue:paramDict[@"type"] forKey:@"type"];
-            [prop setValue:[NSString stringWithFormat:@"%d@%@", (int)paramNode.UUID, name] forKey:@"name"];
+            [prop setValue:paramDict[@"name"] forKey:@"name"];
             id serializedValue = [CCBWriterInternal serializePropertyForNode:node propInfo:prop excludeProps:nil];
             [prop setValue:serializedValue forKey:@"value"];
             [params addObject:prop];
         }
         
-        [dict setObject:params forKey:@"params"];
+        [dict setObject:params forKey:@"additionalProperties"];
     }
     
     // Create node

@@ -268,23 +268,26 @@
 
 - (void)addParamPropertiesForPlugIn:(PlugInNode *)plugIn
 {
-    BOOL isCCBSubFile = [plugIn.nodeClassName isEqualToString:@"CCBFile"];
-    if(isCCBSubFile)
+    NSArray *paramsProperties = _node.additionalProperties;
+    if(paramsProperties && paramsProperties.count)
     {
-        NSArray *params = _node.paramsProperties;
-        [self addSeparatorForParamPropertyParams:params];
+        BOOL first = YES;
+        NSString* currentGroup = nil;
         
-        for (int i = 0; i < [params count]; i++)
+        for (NSDictionary *dict in paramsProperties)
         {
-            NSDictionary *dict = [params objectAtIndex:i];
-            
-            CCNode *node = dict[@"node"];
-            
             if([dict[@"codeConnection"] boolValue] == _isCodeConnectionPane)
             {
+                NSString *group = dict[@"group"];
+                if(first || [currentGroup compare: group] != NSOrderedSame)
+                {
+                    first = NO;
+                    currentGroup = group;
+                    [self addSeparatorForParamPropertyParams:group];
+                }
                 [self addInspectorPropertyOfType:dict[@"type"]
-                                            name:[NSString stringWithFormat:@"%d@%@", (int)node.UUID, dict[@"name"]]
-                                     displayName:[NSString stringWithFormat:@"%@:%@", node.displayName, dict[@"displayName"]]
+                                            name:dict[@"name"]
+                                     displayName:dict[@"displayName"]
                                            extra:@"external"
                                         readOnly:NO
                                     affectsProps:nil];
@@ -330,17 +333,14 @@
     }
 }
 
-- (void)addSeparatorForParamPropertyParams:(NSArray *)params
+- (void)addSeparatorForParamPropertyParams:(NSString *)displayName
 {
-    if ([params count])
-    {
-        [self addInspectorPropertyOfType:@"Separator"
-                                    name:@""
-                             displayName:@"Params"
-                                   extra:NULL
-                                readOnly:YES
-                            affectsProps:NULL];
-    }
+    [self addInspectorPropertyOfType:@"Separator"
+                                name:@""
+                         displayName:[NSString stringWithFormat:@"Params - %@", displayName]
+                               extra:NULL
+                            readOnly:YES
+                        affectsProps:NULL];
 }
 
 - (void)addProperties:(PlugInNode *)plugIn

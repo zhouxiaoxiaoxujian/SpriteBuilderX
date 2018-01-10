@@ -42,7 +42,7 @@ NSString * kAnimationOfPhysicsWarning;
 @property (nonatomic,readonly) PlugInNode* plugIn;
 @property (nonatomic,copy) NSString* displayName;
 @property (nonatomic,retain) NSMutableArray* customProperties;
-@property (nonatomic,readonly) NSArray* paramsProperties;
+@property (nonatomic,readonly) NSArray* additionalProperties;
 @property (nonatomic,readonly) CGPoint transformStartPosition;
 @property (nonatomic,readonly) CGAffineTransform startTransform;
 @property (nonatomic,readonly) CGPoint startAnchorPoint;

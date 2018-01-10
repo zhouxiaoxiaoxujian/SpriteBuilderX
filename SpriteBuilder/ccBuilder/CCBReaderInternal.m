@@ -610,17 +610,13 @@ __strong NSDictionary* renamedProperties = nil;
 		}
     }
     
-    if([[[node class] description] isEqualToString:@"CCBPCCBFile"])
+    // Additional properties
+    NSMutableArray* params = [dict objectForKey:@"additionalProperties"];
+    if(params)
     {
-        NSMutableArray* params = [dict objectForKey:@"params"];
-        if(params)
+        for (NSDictionary *paramsDict in params)
         {
-            for (int i = 0; i < [params count]; i++)
-            {
-                NSDictionary *paramsDict = [params objectAtIndex:i];
-                
-                [CCBReaderInternal setProp:paramsDict[@"name"] ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
-            }
+            [CCBReaderInternal setProp:paramsDict[@"name"] ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
         }
     }
     
