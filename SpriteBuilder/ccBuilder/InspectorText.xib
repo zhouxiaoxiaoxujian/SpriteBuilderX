@@ -100,6 +100,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
+                        <binding destination="-2" name="hidden" keyPath="external" id="FH6-Ra-qgn"/>
                         <binding destination="-2" name="value" keyPath="param" id="ujr-vH-CzP"/>
                     </connections>
                 </button>

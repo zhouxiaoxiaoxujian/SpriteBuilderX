@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,6 +55,23 @@
                             <action selector="onClick:" target="-2" id="iw2-L3-3w0"/>
                         </connections>
                     </buttonCell>
+                </button>
+                <button misplaced="YES" imageHugsTitle="YES" id="Xox-nH-uwJ">
+                    <rect key="frame" x="-3" y="22" width="43" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="qcL-hl-yi6">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="readOnly" id="vMG-cv-e5X">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="external" previousBinding="vMG-cv-e5X" id="GDU-Nq-M2v"/>
+                        <binding destination="-2" name="value" keyPath="param" id="oXz-Ha-iVF"/>
+                    </connections>
                 </button>
             </subviews>
             <point key="canvasLocation" x="133" y="166"/>

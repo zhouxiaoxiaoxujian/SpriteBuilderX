@@ -138,6 +138,23 @@
                         <binding destination="-2" name="selectedTag" keyPath="widthUnit" id="75"/>
                     </connections>
                 </popUpButton>
+                <button misplaced="YES" imageHugsTitle="YES" id="0sb-gA-TB2">
+                    <rect key="frame" x="-3" y="21" width="43" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="external" previousBinding="kS1-va-2ts" id="aeP-zs-wd1"/>
+                        <binding destination="-2" name="value" keyPath="param" id="oAy-tj-Vja"/>
+                        <binding destination="-2" name="enabled" keyPath="readOnly" id="kS1-va-2ts">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="17"/>
