@@ -24,12 +24,16 @@
 
 - (void)updateStatusText:(NSString *)text
 {
-    [_taskStatus updateStatusText:text];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_taskStatus updateStatusText:text];
+    });
 }
 
 - (void)updateProgress
 {
-    [_taskStatus setProgress:[self currentProgress]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_taskStatus setProgress:[self currentProgress]];
+    });
 }
 
 - (double)currentProgress
