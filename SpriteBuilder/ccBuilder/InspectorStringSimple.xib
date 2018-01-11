@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="233" height="33"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="KsG-ee-Dnl">
-                    <rect key="frame" x="82" y="5" width="142" height="19"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="KsG-ee-Dnl">
+                    <rect key="frame" x="82" y="11" width="142" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4cH-iy-yhH">
                         <font key="font" metaFont="smallSystem"/>
@@ -35,8 +35,8 @@
                         <outlet property="delegate" destination="-2" id="GTi-eV-tVi"/>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qUR-ij-72A">
-                    <rect key="frame" x="40" y="5" width="38" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="qUR-ij-72A">
+                    <rect key="frame" x="40" y="11" width="38" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="bCi-4k-6DI">
                         <font key="font" metaFont="smallSystem"/>
@@ -51,9 +51,9 @@
                     </connections>
                 </textField>
                 <button misplaced="YES" imageHugsTitle="YES" id="0sb-gA-TB2">
-                    <rect key="frame" x="-3" y="1" width="43" height="34"/>
+                    <rect key="frame" x="-1" y="9" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -67,6 +67,10 @@
                         </binding>
                     </connections>
                 </button>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="b3o-Ik-4LP">
+                    <rect key="frame" x="6" y="1" width="221" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </box>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="Tar-2s-prI"/>

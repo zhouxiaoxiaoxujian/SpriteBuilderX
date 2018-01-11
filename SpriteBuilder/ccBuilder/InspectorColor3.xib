@@ -42,10 +42,14 @@
                         </binding>
                     </connections>
                 </colorWell>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="po5-Ec-a3m">
+                    <rect key="frame" x="6" y="2" width="221" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </box>
                 <button misplaced="YES" imageHugsTitle="YES" id="0sb-gA-TB2">
-                    <rect key="frame" x="-4" y="0.0" width="43" height="34"/>
+                    <rect key="frame" x="-1" y="10" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Param" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
