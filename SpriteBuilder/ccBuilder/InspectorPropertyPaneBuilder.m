@@ -81,7 +81,8 @@
         }
     }
 
-    [self addCustomPropertiesForPlugIn:plugIn];
+    if(!_isCodeConnectionPane)
+        [self addCustomPropertiesForPlugIn:plugIn];
     
     [self addParamPropertiesForPlugIn:plugIn];
 
