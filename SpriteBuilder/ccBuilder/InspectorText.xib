@@ -103,6 +103,10 @@
                         <binding destination="-2" name="value" keyPath="localize" id="112"/>
                     </connections>
                 </button>
+                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="WKv-0z-hd5">
+                    <rect key="frame" x="6" y="0.0" width="221" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </box>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="2">
                     <rect key="frame" x="18" y="95" width="209" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

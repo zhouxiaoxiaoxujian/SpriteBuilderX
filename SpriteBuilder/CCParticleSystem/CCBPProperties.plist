@@ -69,7 +69,7 @@
 			<key>saveInTemplate</key>
 			<true/>
 			<key>displayName</key>
-			<string>Particle position type</string>
+			<string>Position type</string>
 			<key>name</key>
 			<string>particlePositionType</string>
 			<key>type</key>
