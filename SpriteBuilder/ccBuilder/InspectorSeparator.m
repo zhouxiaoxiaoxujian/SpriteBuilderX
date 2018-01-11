@@ -29,8 +29,9 @@
 
 - (BOOL)isExpanded
 {
-    return ![self propertyForSelection]
-           || [[self propertyForSelection] intValue] == NSOnState;
+    id value = [selection extraPropForKey:propertyName];
+    return !value
+           || [value intValue] == NSOnState;
 }
 
 - (void)setIsExpanded:(BOOL)isExpanded
@@ -41,7 +42,7 @@
         return;
     }
 
-    [self setPropertyForSelection:@(_disclosureButton.state)];
+    [selection setExtraProp:@(_disclosureButton.state) forKey:propertyName];
     
     [[InspectorController sharedController] updateInspectorFromSelection];
 }

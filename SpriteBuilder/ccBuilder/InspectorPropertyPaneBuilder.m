@@ -283,7 +283,7 @@
                 {
                     first = NO;
                     currentGroup = group;
-                    [self addSeparatorForParamPropertyParams:group];
+                    [self addSeparatorForParamPropertyGroup:group andDisplayName:dict[@"groupName"]];
                 }
                 [self addInspectorPropertyOfType:dict[@"type"]
                                             name:dict[@"name"]
@@ -333,10 +333,10 @@
     }
 }
 
-- (void)addSeparatorForParamPropertyParams:(NSString *)displayName
+- (void)addSeparatorForParamPropertyGroup:(NSString *)group andDisplayName:(NSString *)displayName
 {
     [self addInspectorPropertyOfType:@"Separator"
-                                name:@""
+                                name:[NSString stringWithFormat:@"separator_uid_%@", group]
                          displayName:[NSString stringWithFormat:@"Params - %@", displayName]
                                extra:NULL
                             readOnly:YES

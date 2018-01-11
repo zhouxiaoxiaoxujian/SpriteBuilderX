@@ -90,7 +90,8 @@
                 [dict setObject:[NSString stringWithFormat:@"%d@%@", (int)child.UUID, propertyName] forKey:@"name"];
                 [dict setObject:propInfo[@"type"] forKey:@"type"];
                 [dict setObject:propInfo[@"displayName"] forKey:@"displayName"];
-                [dict setObject:child.displayName forKey:@"group"];
+                [dict setObject:[@(child.UUID) stringValue] forKey:@"group"];
+                [dict setObject:child.displayName forKey:@"groupName"];
                 if(codeConnection)
                     [dict setObject:codeConnection forKey:@"codeConnection"];
                 if(extra)
