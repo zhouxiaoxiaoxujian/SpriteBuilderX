@@ -2703,9 +2703,13 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 }
 
 -(void) setShowPrefabs:(bool)showPrefabs {
-    _showPrefabs = showPrefabs;
     SBSettings.showPrefabs = showPrefabs;
     SBSettings.save;
+    [_inspectorController updateInspectorFromSelection];
+}
+
+-(BOOL)showPrefabs {
+    return SBSettings.showPrefabs;
 }
 
 -(BOOL)showJoints
