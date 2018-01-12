@@ -28,7 +28,7 @@
 			<key>default</key>
 			<true/>
 			<key>displayName</key>
-			<string>User Interaction Enabled</string>
+			<string>User Interaction</string>
 			<key>type</key>
 			<string>Check</string>
 			<key>name</key>
