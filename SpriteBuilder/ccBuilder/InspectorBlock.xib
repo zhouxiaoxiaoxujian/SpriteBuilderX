@@ -68,7 +68,7 @@
                         <binding destination="-2" name="value" keyPath="selector" id="74"/>
                     </connections>
                 </textField>
-                <button misplaced="YES" tag="13" imageHugsTitle="YES" id="ANZ-Fe-GHt">
+                <button misplaced="YES" imageHugsTitle="YES" id="ANZ-Fe-GHt">
                     <rect key="frame" x="-1" y="36" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="kiX-Yh-Y8M">

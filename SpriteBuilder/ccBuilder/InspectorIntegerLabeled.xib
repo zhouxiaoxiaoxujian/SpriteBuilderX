@@ -53,7 +53,7 @@
                     <rect key="frame" x="10" y="1" width="222" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </box>
-                <button misplaced="YES" tag="13" imageHugsTitle="YES" id="0sb-gA-TB2">
+                <button misplaced="YES" imageHugsTitle="YES" id="0sb-gA-TB2">
                     <rect key="frame" x="-1" y="17" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">

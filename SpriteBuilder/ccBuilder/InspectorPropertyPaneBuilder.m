@@ -10,7 +10,6 @@
 #import "SequencerHandler.h"
 #import "CCNode+NodeInfo.h"
 #import "CustomPropSetting.h"
-#import "AppDelegate.h"
 
 @interface InspectorPropertyPaneBuilder ()
 
@@ -121,11 +120,6 @@
     [inspectorValue willBeAdded];
 
     NSView *inspectorValuesView = inspectorValue.view;
-
-    NSButton *checkBox = [inspectorValue.view viewWithTag:13];
-    if (checkBox && ![AppDelegate appDelegate].showPrefabs) {
-        checkBox.hidden = YES;
-    }
     
     //if its a separator, check to see if it isExpanded, if not set all of the next non-separator InspectorValues to hidden and don't touch the offset
     if ([inspectorValue isKindOfClass:[InspectorSeparator class]])

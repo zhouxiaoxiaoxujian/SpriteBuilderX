@@ -92,7 +92,7 @@
 
 -(BOOL)external
 {
-    return [propertyName containsString:@"@"];
+    return ![AppDelegate appDelegate].showPrefabs || [propertyName containsString:@"@"];
 }
 
 - (void) updateAffectedProperties

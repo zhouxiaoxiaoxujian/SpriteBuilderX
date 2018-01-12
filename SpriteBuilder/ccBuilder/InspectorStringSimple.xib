@@ -50,7 +50,7 @@
                         <binding destination="-2" name="value" keyPath="self.displayName" id="TB8-EH-KLw"/>
                     </connections>
                 </textField>
-                <button misplaced="YES" tag="13" imageHugsTitle="YES" id="0sb-gA-TB2">
+                <button misplaced="YES" imageHugsTitle="YES" id="0sb-gA-TB2">
                     <rect key="frame" x="-1" y="18" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="xwy-tu-woW">
