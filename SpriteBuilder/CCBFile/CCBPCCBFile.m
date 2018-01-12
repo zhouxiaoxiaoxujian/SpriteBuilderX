@@ -67,11 +67,29 @@
     }
 }
 
+- (CGSize) contentSize
+{
+    if(ccbFile)
+        return ccbFile.contentSize;
+    else
+        return super.contentSize;
+}
+
+- (CCSizeType) contentSizeType
+{
+    if(ccbFile)
+        return ccbFile.contentSizeType;
+    else
+        return super.contentSizeType;
+}
+
 + (NSArray*) paramsProperties:(CCNode*)node
 {
     NSMutableArray *ret = [NSMutableArray array];
     for (CCNode* child in node.children)
     {
+        if([child class] == [self class])
+            continue;
         //[nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
         
         NSArray *propInfos = child.plugIn.nodeProperties;
@@ -440,7 +458,12 @@
                 }
             }
             if(![CCBPCCBFile isDisabledProperty:name node:ret])
-                [ret setValue:value forKey:ar[1]];
+            {
+                if(ret == ccbFile && [ar[1] isEqualToString:@"anchorPoint"])
+                    [self setAnchorPoint:[value pointValue]];
+                else
+                    [ret setValue:value forKey:ar[1]];
+            }
         }
         return;
     }
@@ -527,7 +550,11 @@
                     return baseValue;
                 }
             }
-            return [ret valueForKey:ar[1]];
+            
+            if(ret == ccbFile && [ar[1] isEqualToString:@"anchorPoint"])
+                return [NSValue valueWithPoint:self.anchorPoint];
+            else
+                return [ret valueForKey:ar[1]];
         }
         
         return nil;
