@@ -194,7 +194,7 @@
 -(BOOL) showPrefabs {
     id showPrefabs = [SBUserDefaults valueForKey:@"showPrefabs"];
     if(!showPrefabs)
-        return NO;
+        return YES;
     return [showPrefabs boolValue];
 }
 //------------------------------------------------------------------------
