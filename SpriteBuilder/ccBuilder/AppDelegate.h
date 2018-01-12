@@ -347,6 +347,8 @@ typedef void (^CompletionCallback) (BOOL success);
 
 @property (nonatomic,assign) BOOL showJoints;
 
+@property (nonatomic,assign) bool showPrefabs;
+
 @property (nonatomic,readonly) CCBTransparentView* guiView;
 @property (nonatomic,readonly) CCBTransparentWindow* guiWindow;
 

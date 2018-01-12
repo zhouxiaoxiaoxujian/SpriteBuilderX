@@ -187,6 +187,16 @@
     return [moveNodeOnCopy boolValue];
 }
 
+-(void) setShowPrefabs:(BOOL)showPrefabs {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:showPrefabs] forKey:@"showPrefabs"];
+}
+
+-(BOOL) showPrefabs {
+    id showPrefabs = [SBUserDefaults valueForKey:@"showPrefabs"];
+    if(!showPrefabs)
+        return NO;
+    return [showPrefabs boolValue];
+}
 //------------------------------------------------------------------------
 - (void) save
 {

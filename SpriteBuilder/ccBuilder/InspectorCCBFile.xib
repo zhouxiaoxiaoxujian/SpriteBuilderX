@@ -44,7 +44,7 @@
                         </connections>
                     </buttonCell>
                 </button>
-                <button misplaced="YES" imageHugsTitle="YES" id="Xox-nH-uwJ">
+                <button misplaced="YES" tag="13" imageHugsTitle="YES" id="Xox-nH-uwJ">
                     <rect key="frame" x="-1" y="41" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="above" alignment="center" controlSize="small" state="on" inset="2" id="qcL-hl-yi6">

@@ -2702,6 +2702,12 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 }
 
+-(void) setShowPrefabs:(bool)showPrefabs {
+    _showPrefabs = showPrefabs;
+    SBSettings.showPrefabs = showPrefabs;
+    SBSettings.save;
+}
+
 -(BOOL)showJoints
 {
 	return ![SceneGraph instance].joints.node.hidden;

@@ -80,7 +80,7 @@
                         </binding>
                     </connections>
                 </imageView>
-                <button misplaced="YES" imageHugsTitle="YES" id="Go7-Q4-Azh">
+                <button misplaced="YES" tag="13" imageHugsTitle="YES" id="Go7-Q4-Azh">
                     <rect key="frame" x="-1" y="107" width="21" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="8ST-xV-oyH">
