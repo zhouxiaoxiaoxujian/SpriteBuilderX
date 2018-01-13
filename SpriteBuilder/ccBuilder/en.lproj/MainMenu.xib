@@ -298,9 +298,6 @@ CA
                             <menuItem isSeparatorItem="YES" id="G7K-a8-Lve"/>
                             <menuItem title="Show Prefabs" id="Wyd-K0-12v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="494" name="value" keyPath="self.showPrefabs" id="Jpm-a9-iLE"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="CCM-rB-WvO"/>
                         </items>
@@ -914,7 +911,7 @@ CA
             </items>
             <point key="canvasLocation" x="90" y="-340"/>
         </menu>
-        <window title="SpriteBuilder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainMenu" animationBehavior="default" tabbingMode="disallowed" id="371" customClass="MainWindow">
+        <window title="SpriteBuilderX" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainMenu" animationBehavior="default" tabbingMode="disallowed" id="371" customClass="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="255" y="184" width="1150" height="700"/>
