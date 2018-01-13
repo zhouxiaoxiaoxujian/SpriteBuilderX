@@ -1572,16 +1572,16 @@ CA
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="32" maxValue="512" doubleValue="128" tickMarkPosition="below" sliderType="linear" id="1565"/>
                                     </slider>
-                                    <customView id="1543" customClass="NSScroller">
-                                        <rect key="frame" x="291" y="0.0" width="560" height="16"/>
+                                    <customView misplaced="YES" id="1543" customClass="NSScroller">
+                                        <rect key="frame" x="290" y="0.0" width="561" height="16"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </customView>
                                     <customView id="1554" customClass="SequencerTimelineView">
                                         <rect key="frame" x="290" y="136" width="561" height="14"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     </customView>
-                                    <customView id="1561" customClass="SequencerScrubberSelectionView">
-                                        <rect key="frame" x="290" y="15" width="562" height="136"/>
+                                    <customView misplaced="YES" id="1561" customClass="SequencerScrubberSelectionView">
+                                        <rect key="frame" x="290" y="15" width="560" height="136"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </customView>
                                     <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="1544" customClass="CCBBox">
