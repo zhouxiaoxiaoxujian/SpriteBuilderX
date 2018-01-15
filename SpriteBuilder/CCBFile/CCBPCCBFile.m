@@ -132,7 +132,7 @@
     {
         return [ccbFile extraPropForKey:@"customClass"];
     }
-    else if ([key isEqualToString:@"**sequences"] && ccbFile)
+    else if ([key isEqualToString:@"animation*sequences"] && ccbFile)
     {
         return [ccbFile extraPropForKey:@"*sequences"];
     }
