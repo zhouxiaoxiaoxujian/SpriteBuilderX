@@ -87,11 +87,7 @@
 {
     NSMutableArray *ret = [NSMutableArray array];
     for (CCNode* child in node.children)
-    {
-        if([child class] == [self class])
-            continue;
-        //[nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
-        
+    {  
         NSArray *propInfos = child.plugIn.nodeProperties;
         for (int i = 0; i < [propInfos count]; i++)
         {
@@ -117,6 +113,8 @@
                 [ret addObject:dict];
             }
         }
+        if([child class] == [self class])
+            continue;
         NSArray *childProperies = [CCBPCCBFile paramsProperties:child];
         [ret addObjectsFromArray:childProperies];
     }

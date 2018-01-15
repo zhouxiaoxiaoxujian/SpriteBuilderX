@@ -1011,14 +1011,14 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     if (self.UUID == UUID)
         return self;
     
+    if([[[self class] description] isEqualToString:@"CCBPCCBFile"])
+        return nil;
+    
     for(CCNode * child in self.children)
     {
-        if(![[[child class] description] isEqualToString:@"CCBPCCBFile"])
-        {
-            CCNode *ret = [child findNodeWithUUID:UUID];
-            if(ret)
-                return ret;
-        }
+        CCNode *ret = [child findNodeWithUUID:UUID];
+        if(ret)
+            return ret;
     }
     return nil;
 }
