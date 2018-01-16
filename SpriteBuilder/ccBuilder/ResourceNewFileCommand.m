@@ -35,8 +35,9 @@
 
         NSString* filePath = [dirPath stringByAppendingPathComponent:newFileWindowController.documentName];
 
-        if (![[filePath pathExtension] isEqualToString:@"ccb"])
-        {
+        if (newFileWindowController.isPrefab) {
+            filePath = [filePath stringByAppendingPathExtension:@"ccbp"];
+        } else {
             filePath = [filePath stringByAppendingPathExtension:@"ccb"];
         }
 

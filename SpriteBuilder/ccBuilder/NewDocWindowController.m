@@ -46,7 +46,7 @@
     self.height = 0;
     self.canSetSize = NO;
     
-    self.documentName = @"Untitled.ccb";
+    self.documentName = @"Untitled";
     
     // Select only the Untitled word
     [documentNameField selectText:self];

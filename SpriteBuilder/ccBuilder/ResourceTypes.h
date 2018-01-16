@@ -15,4 +15,5 @@ typedef enum
     kCCBResTypeGeneratedSpriteSheetDef,
     kCCBResTypeModel,
     kCCBResTypeLWF,
+    kCCBResTypePrefab
 } CCBResourceType;

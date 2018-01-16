@@ -44,7 +44,7 @@
     if (type == kCCBResTypeBMFont) return bmFonts;
     if (type == kCCBResTypeTTF) return ttfFonts;
     if (type == kCCBResTypeAnimation) return animations;
-    if (type == kCCBResTypeCCBFile) return ccbFiles;
+    if (type == kCCBResTypeCCBFile || type == kCCBResTypePrefab) return ccbFiles;
     if (type == kCCBResTypeAudio) return audioFiles;
     if (type == kCCBResTypeModel) return models;
     return NULL;

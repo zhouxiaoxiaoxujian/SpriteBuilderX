@@ -44,6 +44,7 @@
 #import "PreviewViewControllerProtocol.h"
 #import "ResourceManagerUtil.h"
 #import "CCBSpriteSheetParser.h"
+#import "SettingsManager.h"
 
 @interface ResourceManagerOutlineHandler ()
 @property (nonatomic, strong) id <PreviewViewControllerProtocol> previewController;
@@ -93,12 +94,9 @@
     float height = 20;
     RMResource *res = item;
     if ([item isKindOfClass:[RMResource class]]) {
-        if (res.type == kCCBResTypeImage) {
+        if (res.type == kCCBResTypeImage || [item isKindOfClass:[RMSpriteFrame class]] || (res.type == kCCBResTypePrefab && SBSettings.showPrefabPreview)) {
             height = kRMImagePreviewSize + 4;
         }
-    }
-    if ([item isKindOfClass:[RMSpriteFrame class]]) {
-        height = kRMImagePreviewSize + 4;
     }
     return height;
 }
@@ -287,6 +285,17 @@
         if (res.type == kCCBResTypeImage)
         {
             icon = [ResourceManagerUtil thumbnailImageForResource:item];
+        }
+        else if (res.type == kCCBResTypePrefab && SBSettings.showPrefabPreview)
+        {
+            NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPathDir];
+            filePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
+
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                icon = [ResourceManagerUtil thumbnailImageForResource:item];
+            } else {
+                icon = [self smallIconForFile:res.filePath];
+            }
         }
         else if (res.type == kCCBResTypeBMFont)
         {
@@ -533,7 +542,7 @@
     if ([item isKindOfClass:[RMResource class]])
     {
         RMResource* res = (RMResource*) item;
-        if (res.type == kCCBResTypeCCBFile)
+        if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab)
         {
             [[AppDelegate appDelegate] openFile: res.filePath];
         }

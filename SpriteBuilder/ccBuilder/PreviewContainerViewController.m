@@ -56,7 +56,7 @@
     {
         [self showAudioPreview];
     }
-    else if (_previewedResource.type == kCCBResTypeCCBFile)
+    else if (_previewedResource.type == kCCBResTypeCCBFile || _previewedResource.type == kCCBResTypePrefab)
     {
         [self showCCBPreivew];
     }

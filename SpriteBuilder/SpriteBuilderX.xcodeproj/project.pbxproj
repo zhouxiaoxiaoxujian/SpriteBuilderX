@@ -899,6 +899,7 @@
 		E525FFCC2C4C3A9E49F87D64 /* InspectorSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F563B38B9F934F699449 /* InspectorSeparator.m */; };
 		E525FFEC03F2FE3650547F90 /* InspectorPopoverFloatXY.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F43AA008D5DD2726DA7E /* InspectorPopoverFloatXY.xib */; };
 		E525FFF90B5CCC7573B84680 /* InspectorIntegerLabeled.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */; };
+		F81078E6200E964B00380181 /* ccbp.icns in Resources */ = {isa = PBXBuildFile; fileRef = F81078E5200E964A00380181 /* ccbp.icns */; };
 		F82444391E1716B00044EE4F /* BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444271E1716B00044EE4F /* BFColorPickerPopover.m */; };
 		F824443A1E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F82444281E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt */; };
 		F824443B1E1716B00044EE4F /* BFPopoverColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = F824442A1E1716B00044EE4F /* BFPopoverColorWell.m */; };
@@ -2460,6 +2461,7 @@
 		E525FFC4E205CD906143FE30 /* InspectorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorString.m; sourceTree = "<group>"; };
 		E525FFE261905E5B939DC1F1 /* InspectorCCBFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCCBFile.xib; sourceTree = "<group>"; };
 		E525FFEB091D46AB06B02BF1 /* CCBPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisher.m; sourceTree = "<group>"; };
+		F81078E5200E964A00380181 /* ccbp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccbp.icns; sourceTree = SOURCE_ROOT; };
 		F82444261E1716B00044EE4F /* BFColorPickerPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFColorPickerPopover.h; sourceTree = "<group>"; };
 		F82444271E1716B00044EE4F /* BFColorPickerPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFColorPickerPopover.m; sourceTree = "<group>"; };
 		F82444281E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BFColorPickerPopover_LICENSE.txt; sourceTree = "<group>"; };
@@ -2923,6 +2925,7 @@
 				B73788F81804D8690076A88C /* ccbi.icns */,
 				B73788F61804D8200076A88C /* ccbproj.icns */,
 				B73788F41804D80B0076A88C /* ccb.icns */,
+				F81078E5200E964A00380181 /* ccbp.icns */,
 			);
 			name = "Icons & Logos";
 			sourceTree = "<group>";
@@ -6060,6 +6063,7 @@
 				9218DF3E1919B04D0033851E /* joint-pivot-handle-ratchet@2x.png in Resources */,
 				E3B19F6D15E65229000B023E /* DefaultResourcesList.plist in Resources */,
 				E360789015EBA5420040A172 /* sel-frame.png in Resources */,
+				F81078E6200E964B00380181 /* ccbp.icns in Resources */,
 				B7096E29180CD98E00164A8A /* doc-node@2x.png in Resources */,
 				E36078BC15EE0B2C0040A172 /* sel-round.png in Resources */,
 				E3DFE831160226760068CB50 /* frame-iphone5.png in Resources */,

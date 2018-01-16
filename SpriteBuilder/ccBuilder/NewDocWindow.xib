@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,6 +11,7 @@
                 <outlet property="_btnLayer" destination="Mdf-6M-gzu" id="aw5-dU-bhq"/>
                 <outlet property="_btnNode" destination="BOn-7y-Z1Z" id="0vq-xR-YMg"/>
                 <outlet property="_btnParticleSystem" destination="r35-WD-JW2" id="W4L-Yc-e2c"/>
+                <outlet property="_btnPrefab" destination="aHM-TU-pD7" id="WNL-ku-c9n"/>
                 <outlet property="_btnScene" destination="GII-c6-xFL" id="gzu-9o-sBY"/>
                 <outlet property="_btnSprite" destination="B7g-Yq-1s6" id="ZoK-Ql-ejL"/>
                 <outlet property="documentNameField" destination="193" id="195"/>
@@ -56,7 +57,7 @@ Gw
                             <action selector="cancelSheet:" target="-2" id="49"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="46">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="46">
                         <rect key="frame" x="17" y="226" width="142" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="New document name:" id="47">
@@ -73,10 +74,10 @@ Gw
                         <rect key="frame" x="20" y="88" width="498" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <textField verticalHuggingPriority="750" id="193">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="193">
                         <rect key="frame" x="164" y="224" width="354" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Untitled.ccb" drawsBackground="YES" id="194">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Untitled" drawsBackground="YES" id="194">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -140,7 +141,7 @@ Gw
                             <action selector="pressedObjectTypeButton:" target="-2" id="aaT-s5-dKJ"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ciu-RS-Cvd">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Ciu-RS-Cvd">
                         <rect key="frame" x="52" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scene" id="wec-Bt-iVR">
@@ -149,7 +150,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="r4J-px-CzM">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="r4J-px-CzM">
                         <rect key="frame" x="205" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Node" id="kOr-E7-Qza">
@@ -158,7 +159,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LWU-rf-a3u">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="LWU-rf-a3u">
                         <rect key="frame" x="281" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Layer" id="WAd-9j-XCq">
@@ -167,7 +168,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W4g-an-3XP">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="W4g-an-3XP">
                         <rect key="frame" x="361" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sprite" id="pCp-1E-8d5">
@@ -176,7 +177,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YpT-Ns-s2H">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="YpT-Ns-s2H">
                         <rect key="frame" x="434" y="109" width="49" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Particles" id="OSQ-kb-gkR">
@@ -185,7 +186,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="PIr-bw-Lub" customClass="CCBTextFieldLabel">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="PIr-bw-Lub" customClass="CCBTextFieldLabel">
                         <rect key="frame" x="17" y="65" width="334" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Content size (in points multiplied by position scale):" id="soM-BH-KwC">
@@ -197,7 +198,7 @@ Gw
                             <binding destination="-2" name="enabled" keyPath="canSetSize" id="71M-wV-C7g"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="7Ye-2d-1x2">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7Ye-2d-1x2">
                         <rect key="frame" x="359" y="63" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="OGC-2f-ht5">
@@ -211,10 +212,10 @@ Gw
                         </textFieldCell>
                         <connections>
                             <binding destination="-2" name="enabled" keyPath="canSetSize" id="aKz-Nd-MX9"/>
-                            <binding destination="-2" name="value" keyPath="width" id="lfV-nG-JKP"/>
+                            <binding destination="-2" name="value" keyPath="width" id="DdM-OK-Dud"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="5Xd-sM-0ga">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5Xd-sM-0ga">
                         <rect key="frame" x="448" y="63" width="70" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HsW-0M-iey">
@@ -231,7 +232,7 @@ Gw
                             <binding destination="-2" name="value" keyPath="height" id="FTR-Yh-Dhl"/>
                         </connections>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bas-OC-k2V" customClass="CCBTextFieldLabel">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="bas-OC-k2V" customClass="CCBTextFieldLabel">
                         <rect key="frame" x="432" y="65" width="12" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="x" id="CD2-cO-zRi">
@@ -254,7 +255,7 @@ Gw
                             <action selector="pressedObjectTypeButton:" target="-2" id="JES-Ax-JpG"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="68o-yD-blB">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="68o-yD-blB">
                         <rect key="frame" x="129" y="109" width="38" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Layout" id="ndR-M9-Qd0">
@@ -263,6 +264,17 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="aHM-TU-pD7">
+                        <rect key="frame" x="18" y="22" width="61" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Prefab" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kNi-n0-N5F">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="isPrefab" id="YXL-1b-cBk"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>

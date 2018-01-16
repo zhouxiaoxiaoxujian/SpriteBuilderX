@@ -45,6 +45,7 @@ enum {
     IBOutlet NSButton* _btnSprite;
     IBOutlet NSButton* _btnParticleSystem;
     
+    __weak IBOutlet NSButton *_btnPrefab;
 }
 
 @property (nonatomic,copy) NSString* documentName;
@@ -53,6 +54,7 @@ enum {
 @property (nonatomic,assign) int width;
 @property (nonatomic,assign) int height;
 @property (nonatomic,readonly) NSMutableArray* availableResolutions;
+@property (nonatomic,assign) bool isPrefab;
 
 - (IBAction)acceptSheet:(id)sender;
 - (IBAction)cancelSheet:(id)sender;

@@ -246,6 +246,10 @@
     {
         return kCCBResTypeCCBFile;
     }
+    else if ([ext isEqualToString:@"ccbp"])
+    {
+        return kCCBResTypePrefab;
+    }
     else if ([ext isEqualToString:@"js"])
     {
         return kCCBResTypeJS;
@@ -374,6 +378,7 @@
                     || res.type == kCCBResTypeBMFont
                     || res.type == kCCBResTypeTTF
                     || res.type == kCCBResTypeCCBFile
+                    || res.type == kCCBResTypePrefab
                     || res.type == kCCBResTypeAudio
                     || res.type == kCCBResTypeGeneratedSpriteSheetDef)
                 {
@@ -465,7 +470,7 @@
             {
                 [dir.ttfFonts addObject:res];
             }
-            if (res.type == kCCBResTypeCCBFile
+            if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab
                 || res.type == kCCBResTypeDirectory)
             {
                 [dir.ccbFiles addObject:res];
@@ -488,6 +493,7 @@
                 || res.type == kCCBResTypeBMFont
                 || res.type == kCCBResTypeTTF
                 || res.type == kCCBResTypeCCBFile
+                || res.type == kCCBResTypePrefab
                 || res.type == kCCBResTypeDirectory
                 || res.type == kCCBResTypeJS
                 || res.type == kCCBResTypeJSON

@@ -2108,7 +2108,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             {
                 RMResource* res = item;
                 
-                if (res.type == kCCBResTypeCCBFile)
+                if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab)
                 {
                     [self openFile:res.filePath];
                     NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:self.projectSettings.projectPathDir];
@@ -2152,7 +2152,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
             {
                 RMResource* res = item;
                 
-                if (res.type == kCCBResTypeCCBFile)
+                if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab)
                 {
                     CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath andProjectSettings:projectSettings];
                     CCNode* loadedRoot = [CCBReaderInternal nodeGraphFromDocumentDictionary:newDoc.data parentSize:CGSizeZero];
@@ -2194,7 +2194,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         if ([item isKindOfClass:[RMResource class]]) {
             @autoreleasepool {
                 RMResource* res = item;
-                if (res.type == kCCBResTypeCCBFile) {
+                if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab) {
                     CCBDocument *newDoc = [[CCBDocument alloc] initWithContentsOfFile:res.filePath
                                                                    andProjectSettings:projectSettings];
                     [newDoc copyMiscFile];
@@ -2710,6 +2710,16 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 
 -(BOOL)showPrefabs {
     return SBSettings.showPrefabs;
+}
+
+-(void) setShowPrefabPreview:(BOOL)showPrefabPreview {
+    SBSettings.showPrefabPreview = showPrefabPreview;
+    SBSettings.save;
+    [self.outlineProject reloadData];
+}
+
+-(BOOL)showPrefabPreview {
+    return SBSettings.showPrefabPreview;
 }
 
 -(BOOL)showJoints

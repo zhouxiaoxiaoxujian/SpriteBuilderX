@@ -171,7 +171,7 @@
     {
         [pbTypes addObject:@"com.cocosbuilder.texture"];
     }
-    else if (_type == kCCBResTypeCCBFile)
+    else if (_type == kCCBResTypeCCBFile || _type == kCCBResTypePrefab)
     {
         [pbTypes addObject:@"com.cocosbuilder.ccb"];
     }
@@ -193,7 +193,7 @@
     {
         return NSPasteboardWritingPromised;
     }
-    if ([pbType isEqualToString:@"com.cocosbuilder.ccb"] && _type == kCCBResTypeCCBFile)
+    if ([pbType isEqualToString:@"com.cocosbuilder.ccb"] && (_type == kCCBResTypeCCBFile || _type == kCCBResTypePrefab ))
     {
         return NSPasteboardWritingPromised;
     }
@@ -230,7 +230,7 @@
         if ([fm fileExistsAtPath:autoPath]) return autoPath;
         else return NULL;
     }
-    else if (self.type == kCCBResTypeCCBFile)
+    else if (self.type == kCCBResTypeCCBFile || self.type == kCCBResTypePrefab)
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 
@@ -262,7 +262,7 @@
         }
         else return 0;
     }
-    else if (self.type == kCCBResTypeCCBFile)
+    else if (self.type == kCCBResTypeCCBFile || self.type == kCCBResTypePrefab)
     {
         NSFileManager* fm = [NSFileManager defaultManager];
 

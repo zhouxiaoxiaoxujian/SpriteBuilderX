@@ -59,7 +59,7 @@
     {
         RMResource* res = item;
         
-        if (res.type == kCCBResTypeCCBFile)
+        if (res.type == kCCBResTypeCCBFile || res.type == kCCBResTypePrefab)
         {
             ccbFile = [ResourceManagerUtil relativePathFromAbsolutePath:res.filePath];
             [ResourceManagerUtil setTitle:ccbFile forPopup:popup];
