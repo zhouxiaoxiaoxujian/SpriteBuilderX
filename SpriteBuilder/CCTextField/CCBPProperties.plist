@@ -138,7 +138,7 @@
 			<key>displayName</key>
 			<string>Text Color</string>
 			<key>type</key>
-			<string>Color3</string>
+			<string>Color4</string>
 			<key>name</key>
 			<string>fontColor</string>
 		</dict>
