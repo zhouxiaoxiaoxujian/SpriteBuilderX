@@ -273,7 +273,7 @@ static NSUInteger globalProtectedOrderOfArrival = 1;
     if (child == nil)
         return;
     
-    NSAssert([_children containsObject:child], @"This node does not contain the specified child.");
+    NSAssert([_protectedChildren containsObject:child], @"This node does not contain the specified child.");
     
     [self detachProtectedChild:child cleanup:cleanup];
 }
@@ -303,7 +303,7 @@ static NSUInteger globalProtectedOrderOfArrival = 1;
 -(void) removeAllProtectedChildrenWithCleanup:(BOOL)cleanup
 {
     // not using detachProtectedChild improves speed here
-    for (CCNode* c in _children)
+    for (CCNode* c in _protectedChildren)
     {
         // IMPORTANT:
         //  -1st do onExit
