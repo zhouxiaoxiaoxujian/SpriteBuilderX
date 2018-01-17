@@ -179,11 +179,8 @@
 {
     // Update background
     ccColor4F backgroundColor = [self backgroundColorForState:state].ccColor4f;
-    backgroundColor.r *= _displayColor.r;
-    backgroundColor.g *= _displayColor.g;
-    backgroundColor.b *= _displayColor.b;
     _background.color = [CCColor colorWithCcColor4f:backgroundColor];
-    _background.opacity = [self backgroundOpacityForState:state] * _displayColor.a;
+    _background.opacity = [self backgroundOpacityForState:state];
     
     CCSpriteFrame* spriteFrame = [self backgroundSpriteFrameForState:state];
     if (!spriteFrame) spriteFrame = [self backgroundSpriteFrameForState:CCBPControlStateNormal];
@@ -191,11 +188,8 @@
     
     // Update label
     ccColor4F labelColor = [self labelColorForState:state].ccColor4f;
-    labelColor.r *= _displayColor.r;
-    labelColor.g *= _displayColor.g;
-    labelColor.b *= _displayColor.b;
     _label.fontColor = [CCColor colorWithCcColor4f:labelColor];;
-    _label.opacity = [self labelOpacityForState:state] * _displayColor.a;
+    _label.opacity = [self labelOpacityForState:state];;
     
     [self needsLayout];
 }
