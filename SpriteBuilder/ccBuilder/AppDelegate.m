@@ -1224,9 +1224,12 @@ typedef enum
             break;
         }
     }
-    for(CCNode *child in startNode.children)
+    if (![NSStringFromClass(startNode.class) isEqualToString:@"CCBPCCBFile"])
     {
-        [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+        for(CCNode *child in startNode.children)
+        {
+            [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+        }
     }
 }
 
@@ -2929,8 +2932,11 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     node.UUID = [currentDocument getAndIncrementUUID];
 	[node postCopyFixup];
     
-    for (CCNode * child in node.children) {
-        [self updateUUIDs:child];
+    if (![NSStringFromClass(node.class) isEqualToString:@"CCBPCCBFile"])
+    {
+        for (CCNode * child in node.children) {
+            [self updateUUIDs:child];
+        }
     }
 }
 
