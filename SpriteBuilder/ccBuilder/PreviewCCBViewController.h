@@ -7,9 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreviewViewControllerProtocol.h"
+#import "PreviewBaseViewController.h"
 
-@interface PreviewCCBViewController : NSViewController <PreviewViewControllerProtocol>
+@class PreviewBaseViewController;
+@class ProjectSettings;
+@class CCBImageView;
+
+@interface PreviewCCBViewController : PreviewBaseViewController <PreviewViewControllerProtocol>
 
 @property (nonatomic, weak) IBOutlet NSImageView *ccbPreviewImageView;
+@property (nonatomic) int ccbType;
 
 @end

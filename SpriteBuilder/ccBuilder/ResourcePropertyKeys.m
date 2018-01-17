@@ -19,4 +19,4 @@ NSString *const RESOURCE_PROPERTY_FORMAT_EXTRUDE = @"format_extrude";
 NSString *const RESOURCE_PROPERTY_MODEL_FORMAT = @"model_format";
 NSString *const RESOURCE_PROPERTY_MODEL_SKIP_NORMALS = @"model_skip_normals";
 
-
+NSString *const RESOURCE_PROPERTY_CCB_TYPE = @"ccb_type";

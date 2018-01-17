@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSMutableDictionary *openedDocuments;
 @property (nonatomic, assign) BOOL moveNodeOnCopy;
 @property (nonatomic, assign) BOOL showPrefabs;
+@property (nonatomic, assign) BOOL showPrefabPreview;
 
 + (instancetype) instance;
 - (void) save;

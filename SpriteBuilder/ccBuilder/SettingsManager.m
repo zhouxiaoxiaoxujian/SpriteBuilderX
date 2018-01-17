@@ -197,6 +197,18 @@
         return YES;
     return [showPrefabs boolValue];
 }
+
+-(void) setShowPrefabPreview:(BOOL)showPrefabPreview {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:showPrefabPreview] forKey:@"showPrefabPreview"];
+}
+
+-(BOOL) showPrefabPreview {
+    id showPrefabPreview = [SBUserDefaults valueForKey:@"showPrefabPreview"];
+    if(!showPrefabPreview)
+        return YES;
+    return [showPrefabPreview boolValue];
+}
+
 //------------------------------------------------------------------------
 - (void) save
 {
