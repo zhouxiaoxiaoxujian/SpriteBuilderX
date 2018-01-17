@@ -18,3 +18,10 @@ extern NSString *const RESOURCE_PROPERTY_FORMAT_EXTRUDE;
 
 extern NSString *const RESOURCE_PROPERTY_MODEL_FORMAT;
 extern NSString *const RESOURCE_PROPERTY_MODEL_SKIP_NORMALS;
+
+extern NSString *const RESOURCE_PROPERTY_CCB_TYPE;
+
+typedef enum : NSUInteger {
+    CCBTypeScene = 0,
+    CCBTypePrefab
+} CCBType;

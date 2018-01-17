@@ -923,6 +923,8 @@
 		F8A53CCA1E3920A700C602B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */; };
 		F8A53CCB1E3920A700C602B6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC81E3920A700C602B6 /* Fabric.framework */; };
 		F8A53CCC1E3920A700C602B6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A53CC91E3920A700C602B6 /* Crashlytics.framework */; };
+		F8AC728E200F9ECB006099B9 /* ccbp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC728C200F9ECB006099B9 /* ccbp@2x.png */; };
+		F8AC728F200F9ECB006099B9 /* ccbp.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AC728D200F9ECB006099B9 /* ccbp.png */; };
 		F8E3DDFB1FACF33D00E3E931 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		FA98CFC4154E7D1C006E58C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98CFC3154E7D1C006E58C5 /* Foundation.framework */; };
 		FA98CFC7154E7D1C006E58C5 /* ccbpublish.m in Sources */ = {isa = PBXBuildFile; fileRef = FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */; };
@@ -2496,6 +2498,8 @@
 		F8A53CC71E3920A700C602B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F8A53CC81E3920A700C602B6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		F8A53CC91E3920A700C602B6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		F8AC728C200F9ECB006099B9 /* ccbp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ccbp@2x.png"; sourceTree = "<group>"; };
+		F8AC728D200F9ECB006099B9 /* ccbp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ccbp.png; sourceTree = "<group>"; };
 		FA98CFC1154E7D1C006E58C5 /* ccbpublish */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ccbpublish; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98CFC3154E7D1C006E58C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA98CFC6154E7D1C006E58C5 /* ccbpublish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccbpublish.m; sourceTree = "<group>"; };
@@ -2923,6 +2927,8 @@
 				B73788F81804D8690076A88C /* ccbi.icns */,
 				B73788F61804D8200076A88C /* ccbproj.icns */,
 				B73788F41804D80B0076A88C /* ccb.icns */,
+				F8AC728D200F9ECB006099B9 /* ccbp.png */,
+				F8AC728C200F9ECB006099B9 /* ccbp@2x.png */,
 			);
 			name = "Icons & Logos";
 			sourceTree = "<group>";
@@ -5932,6 +5938,7 @@
 				B71706D2184ECD660081720A /* select-skew@2x.png in Resources */,
 				92F0961618F8855A00D47A94 /* inspector-body-goto-hi.png in Resources */,
 				9218DF2A1919B04D0033851E /* joint-pivot-handle-ratchet.png in Resources */,
+				F8AC728E200F9ECB006099B9 /* ccbp@2x.png in Resources */,
 				92F0961718F8855A00D47A94 /* inspector-body-goto.png in Resources */,
 				9218DF2F1919B04D0033851E /* joint-pivot-mode-l-on.png in Resources */,
 				9218DF351919B04D0033851E /* joint-pivot-handle-max.png in Resources */,
@@ -6188,6 +6195,7 @@
 				E525FD0CE48AC54FD5CA02BD /* InspectorEnabledFloat.xib in Resources */,
 				E525F893642327E54701E7E2 /* InspectorCheck.xib in Resources */,
 				E525F208C4E3988423F9FA69 /* InspectorSpriteFrame.xib in Resources */,
+				F8AC728F200F9ECB006099B9 /* ccbp.png in Resources */,
 				E525F8060449703DC2A1A4BD /* InspectorPopoverSpriteFrame.xib in Resources */,
 				E525FB8A7250188137051AF3 /* InspectorTexture.xib in Resources */,
 				E525F2BED7C8468DEDF82A7A /* InspectorPopoverByte.xib in Resources */,

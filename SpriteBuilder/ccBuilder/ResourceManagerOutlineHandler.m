@@ -45,6 +45,7 @@
 #import "ResourceManagerUtil.h"
 #import "CCBSpriteSheetParser.h"
 #import "SettingsManager.h"
+#import "ResourcePropertyKeys.h"
 
 @interface ResourceManagerOutlineHandler ()
 @property (nonatomic, strong) id <PreviewViewControllerProtocol> previewController;
@@ -94,8 +95,14 @@
     float height = 20;
     RMResource *res = item;
     if ([item isKindOfClass:[RMResource class]]) {
-        if (res.type == kCCBResTypeImage || [item isKindOfClass:[RMSpriteFrame class]] || (res.type == kCCBResTypeCCBFile && SBSettings.showPrefabPreview)) {
+        if (res.type == kCCBResTypeImage || [item isKindOfClass:[RMSpriteFrame class]]) {
             height = kRMImagePreviewSize + 4;
+        }
+        if (res.type == kCCBResTypeCCBFile) {
+            int ccbType = [[self.projectSettings propertyForResource:res andKey:RESOURCE_PROPERTY_CCB_TYPE] intValue];
+            if (SBSettings.showPrefabPreview && ccbType == CCBTypePrefab) {
+                height = kRMImagePreviewSize + 4;
+            }
         }
     }
     return height;
@@ -286,15 +293,29 @@
         {
             icon = [ResourceManagerUtil thumbnailImageForResource:item];
         }
-        else if (res.type == kCCBResTypeCCBFile && SBSettings.showPrefabPreview)
+        else if (res.type == kCCBResTypeCCBFile)
         {
-            NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPathDir];
-            filePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
-
-            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-                icon = [ResourceManagerUtil thumbnailImageForResource:item];
-            } else {
-                icon = [self smallIconForFile:res.filePath];
+            int ccbType = [[self.projectSettings propertyForResource:item andKey:RESOURCE_PROPERTY_CCB_TYPE] intValue];
+            
+            switch (ccbType) {
+                case CCBTypePrefab: {
+                    if (SBSettings.showPrefabPreview) {
+                        NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:self.projectSettings.projectPathDir];
+                        filePath = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                            icon = [ResourceManagerUtil thumbnailImageForResource:item];
+                        } else {
+                            icon = [NSImage imageNamed:@"ccbp.png"];
+                        }
+                    } else {
+                        icon = [NSImage imageNamed:@"ccbp.png"];
+                    }
+                }
+                    break;
+                    
+                default:
+                    icon = [self smallIconForFile:res.filePath];
+                    break;
             }
         }
         else if (res.type == kCCBResTypeBMFont)
