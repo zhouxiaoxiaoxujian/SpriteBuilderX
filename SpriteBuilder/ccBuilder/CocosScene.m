@@ -2436,7 +2436,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGImageRelease(imgRef);
     
     //resize preview
-    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 640, 1136)];
+    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 640, 640)];
     [kView setImageScaling:NSImageScaleProportionallyUpOrDown];
     [kView setImage:[[NSImage alloc] initWithContentsOfFile:path]];
     
