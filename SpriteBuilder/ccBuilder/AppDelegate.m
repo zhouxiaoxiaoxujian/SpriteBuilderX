@@ -2712,6 +2712,16 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     return SBSettings.showPrefabs;
 }
 
+-(void) setShowPrefabPreview:(BOOL)showPrefabPreview {
+    SBSettings.showPrefabPreview = showPrefabPreview;
+    SBSettings.save;
+    [self.outlineProject reloadData];
+}
+
+-(BOOL)showPrefabPreview {
+    return SBSettings.showPrefabPreview;
+}
+
 -(BOOL)showJoints
 {
 	return ![SceneGraph instance].joints.node.hidden;
