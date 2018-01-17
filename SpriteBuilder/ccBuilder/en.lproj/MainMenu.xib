@@ -296,13 +296,13 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="G7K-a8-Lve"/>
-                            <menuItem title="Show Prefabs" id="Wyd-K0-12v">
+                            <menuItem title="Show Prefabs Options" id="Wyd-K0-12v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="494" name="value" keyPath="self.showPrefabs" id="Jpm-a9-iLE"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Show Prefab Preview" id="AoM-ew-hxb">
+                            <menuItem title="Show Prefabs Preview" id="AoM-ew-hxb" userLabel="Show Prefabs Preview">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="494" name="value" keyPath="self.showPrefabPreview" id="Alx-KK-gXe"/>
