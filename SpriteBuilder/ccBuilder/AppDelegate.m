@@ -3799,7 +3799,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
                                          defaultButton:@"Merge"
                                        alternateButton:@"Cancel"
                                            otherButton:@"Replace All"
-                             informativeTextWithFormat:@"Merge will only add new only unique properties. Replace will remove all current properties."];
+                             informativeTextWithFormat:@"Merge will only add new unique properties. Replace will remove all current properties."];
     
         [alert setAlertStyle:NSWarningAlertStyle];
         NSInteger result = [alert runModal];
