@@ -92,8 +92,6 @@
  */
 - (void) layout;
 
-- (BOOL) hasProtectedChild:(CCNode*)node;
-
 /** Array of child nodes. */
 @property(nonatomic,readonly) NSArray *protectedChildren;
 
