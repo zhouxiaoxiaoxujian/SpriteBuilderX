@@ -1433,9 +1433,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ([notesLayer mouseDragged:pos event:event]) return;
     if ([guideLayer mouseDragged:pos event:event]) return;
     if ([appDelegate.physicsHandler mouseDragged:pos event:event]) return;
-    if (currentMouseTransform != kCCBTransformHandleMouseSelect && (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0)) return;
+    //if (currentMouseTransform != kCCBTransformHandleMouseSelect && (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) && !isPanning) return;
     
-    if (currentMouseTransform == kCCBTransformHandleDownInside)
+    if (currentMouseTransform == kCCBTransformHandleDownInside && nodesAtSelectionPt && nodesAtSelectionPt.count>0)
     {
         CCNode* clickedNode = [nodesAtSelectionPt objectAtIndex:currentNodeAtSelectionPtIdx];
         
