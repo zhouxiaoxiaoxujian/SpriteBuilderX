@@ -1284,7 +1284,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     currentMouseTransform = kCCBTransformHandleNone;
     
-    if ([event modifierFlags] & NSShiftKeyMask || currentNodeAtSelectionPtIdx<0)
+    if ([event modifierFlags] & NSControlKeyMask || currentNodeAtSelectionPtIdx<0)
     {
         appDelegate.selectedNodes = NULL;
         [self setMouseSelectState];
