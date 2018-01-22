@@ -1284,25 +1284,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     currentMouseTransform = kCCBTransformHandleNone;
     
-    if (currentNodeAtSelectionPtIdx >= 0)
+    if ([event modifierFlags] & NSShiftKeyMask || currentNodeAtSelectionPtIdx<0)
     {
-        currentMouseTransform = kCCBTransformHandleDownInside;
+        appDelegate.selectedNodes = NULL;
+        [self setMouseSelectState];
+        return;
     }
     else
     {
-        // No clicked node
-        if ([event modifierFlags] & NSShiftKeyMask)
-        {
-            //we can add with multiple mouse selection
-            [self setMouseSelectState];
-            return;
-        }
-        else
-        {
-            // Deselect
-            appDelegate.selectedNodes = NULL;
-            [self setMouseSelectState];
-        }
+        currentMouseTransform = kCCBTransformHandleDownInside;
     }
     
     // shortcut for Select Behind: Alt + LeftClick
