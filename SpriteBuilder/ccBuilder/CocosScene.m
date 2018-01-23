@@ -2200,7 +2200,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     int dx = [theEvent deltaX];
     int dy = -[theEvent deltaY];
     
-    if([theEvent modifierFlags] & NSControlKeyMask)
+    if([theEvent modifierFlags] & NSCommandKeyMask)
     {
         if(appDelegate.currentDocument)
         {
