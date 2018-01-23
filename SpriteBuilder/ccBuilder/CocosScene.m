@@ -2197,15 +2197,49 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if (isMouseTransforming || isPanning || currentMouseTransform != kCCBTransformHandleNone) return;
     if (!appDelegate.hasOpenedDocument) return;
     
-    int dx = [theEvent deltaX]*8;
-    int dy = -[theEvent deltaY]*8;
+    int dx = [theEvent deltaX];
+    int dy = -[theEvent deltaY];
     
-    scrollOffset.x = scrollOffset.x+dx;
-    scrollOffset.y = scrollOffset.y+dy;
-    
-    CCBDocument *curDoc = appDelegate.currentDocument;
-    [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
-    [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
+    if([theEvent modifierFlags] & NSControlKeyMask)
+    {
+        if(appDelegate.currentDocument)
+        {
+            float maxZoom = 8;
+            float minZoom = 0.1f;
+            float zoom = [self stageZoom];
+            if(dy>0)
+            {
+                while(dy>0)
+                {
+                    dy -= 1;
+                    zoom *= 1.05;
+                }
+            }
+            else
+            {
+                while(dy<0)
+                {
+                    dy += 1;
+                    zoom *= 1/1.05f;
+                }
+            }
+            if(zoom > maxZoom)
+                zoom = maxZoom;
+            if(zoom < minZoom)
+                zoom = minZoom;
+            [self setStageZoom:zoom];
+            [appDelegate.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",appDelegate.currentDocument.currentResolution]];
+        }
+    }
+    else
+    {
+        scrollOffset.x = scrollOffset.x+dx*8;
+        scrollOffset.y = scrollOffset.y+dy*8;
+        
+        CCBDocument *curDoc = appDelegate.currentDocument;
+        [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
+        [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
+    }
     
 }
 
