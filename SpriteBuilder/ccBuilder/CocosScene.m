@@ -2212,7 +2212,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 while(dy>0)
                 {
                     dy -= 1;
-                    zoom *= 1.05;
+                    zoom *= 1/1.05;
                 }
             }
             else
@@ -2220,7 +2220,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 while(dy<0)
                 {
                     dy += 1;
-                    zoom *= 1/1.05f;
+                    zoom *= 1.05f;
                 }
             }
             if(zoom > maxZoom)
