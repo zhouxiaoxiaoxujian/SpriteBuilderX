@@ -10,7 +10,6 @@
 #import "SequencerHandler.h"
 #import "CCNode+NodeInfo.h"
 #import "CustomPropSetting.h"
-#import "SettingsManager.h"
 
 @interface InspectorPropertyPaneBuilder ()
 
