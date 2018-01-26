@@ -33,6 +33,8 @@
 @property (nonatomic, assign) BOOL showPrefabPreview;
 @property (nonatomic, assign) BOOL sortCustomProperties;
 
+@property (nonatomic, strong) NSMutableDictionary *expandedSeparators;
+
 + (instancetype) instance;
 - (void) save;
 - (void) resetBackupSettings;

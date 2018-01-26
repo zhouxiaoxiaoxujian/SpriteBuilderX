@@ -220,6 +220,18 @@
     return [sortCustomProperties boolValue];
 }
 
+-(void) setExpandedSeparators:(NSMutableDictionary *) expandedSeparators {
+    [SBUserDefaults setObject:expandedSeparators forKey:@"expandedSeparators"];
+}
+
+-(NSMutableDictionary *) expandedSeparators {
+    id expandedSeparators = [SBUserDefaults objectForKey:@"expandedSeparators"];
+    if(!expandedSeparators){
+        return [NSMutableDictionary dictionary];
+    }
+    return expandedSeparators;
+}
+
 //------------------------------------------------------------------------
 - (void) save
 {
