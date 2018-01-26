@@ -209,6 +209,17 @@
     return [showPrefabPreview boolValue];
 }
 
+-(void) setSortCustomProperties:(BOOL)sortCustomProperties {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:sortCustomProperties] forKey:@"sortCustomProperties"];
+}
+
+-(BOOL) sortCustomProperties {
+    id sortCustomProperties = [SBUserDefaults valueForKey:@"sortCustomProperties"];
+    if(!sortCustomProperties)
+        return YES;
+    return [sortCustomProperties boolValue];
+}
+
 //------------------------------------------------------------------------
 - (void) save
 {

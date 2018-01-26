@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CustomPropSettingsWindow">
             <connections>
+                <outlet property="propertiesTableView" destination="4" id="Rpw-1h-fca"/>
                 <outlet property="window" destination="1" id="15"/>
             </connections>
         </customObject>
@@ -16,28 +17,28 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="450" height="300"/>
+            <rect key="contentRect" x="196" y="240" width="450" height="299"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <value key="minSize" type="size" width="400" height="235"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="450" height="299"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="3">
-                        <rect key="frame" x="20" y="68" width="411" height="212"/>
+                    <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="3">
+                        <rect key="frame" x="20" y="46" width="411" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="lex-Y7-Xp3">
-                            <rect key="frame" x="1" y="0.0" width="409" height="211"/>
+                            <rect key="frame" x="1" y="0.0" width="409" height="232"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" headerView="6" id="4" customClass="CCBTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="188"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="209"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="149" minWidth="40" maxWidth="1000" id="8">
+                                        <tableColumn identifier="" width="149" minWidth="40" maxWidth="1000" id="8">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Property name">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,7 +58,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="80" minWidth="40" maxWidth="1000" id="9">
+                                        <tableColumn identifier="" editable="NO" width="80" minWidth="40" maxWidth="1000" id="9">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +87,7 @@
                                                 <binding destination="16" name="selectedTag" keyPath="arrangedObjects.type" id="63"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="200" minWidth="40" maxWidth="1000" id="73">
+                                        <tableColumn identifier="" width="200" minWidth="40" maxWidth="1000" id="73">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -123,8 +124,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="12">
-                        <rect key="frame" x="363" y="12" width="73" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" imageHugsTitle="YES" id="12">
+                        <rect key="frame" x="364" y="7" width="73" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="13">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -137,8 +138,8 @@ DQ
                             <action selector="acceptSheet:" target="-2" id="14"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="30">
-                        <rect key="frame" x="281" y="12" width="82" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" imageHugsTitle="YES" id="30">
+                        <rect key="frame" x="282" y="7" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="31">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -151,8 +152,8 @@ Gw
                             <action selector="cancelSheet:" target="-2" id="32"/>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" id="37">
-                        <rect key="frame" x="20" y="23" width="21" height="21"/>
+                    <button misplaced="YES" imageHugsTitle="YES" id="37">
+                        <rect key="frame" x="21" y="15" width="21" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="40">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -162,8 +163,8 @@ Gw
                             <action selector="add:" target="16" id="41"/>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" id="38">
-                        <rect key="frame" x="45" y="23" width="21" height="21"/>
+                    <button misplaced="YES" imageHugsTitle="YES" id="38">
+                        <rect key="frame" x="46" y="15" width="21" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="39">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -173,9 +174,31 @@ Gw
                             <action selector="remove:" target="16" id="42"/>
                         </connections>
                     </button>
+                    <button misplaced="YES" imageHugsTitle="YES" id="VJf-7q-kvR">
+                        <rect key="frame" x="77" y="15" width="21" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="▲" bezelStyle="shadowlessSquare" imagePosition="overlaps" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9z6-uM-rQa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="moveItemUp:" target="-2" id="B2q-yZ-dhd"/>
+                        </connections>
+                    </button>
+                    <button misplaced="YES" imageHugsTitle="YES" id="gAB-89-cKk">
+                        <rect key="frame" x="102" y="15" width="21" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="▼" bezelStyle="shadowlessSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pdq-x4-4EC">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="moveItemDown:" target="-2" id="mRu-5Y-ZXN"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-357" y="141"/>
+            <point key="canvasLocation" x="-357" y="140.5"/>
         </window>
         <arrayController objectClassName="CustomPropSetting" avoidsEmptySelection="NO" id="16">
             <declaredKeys>

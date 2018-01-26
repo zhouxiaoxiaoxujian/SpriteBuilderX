@@ -2705,6 +2705,17 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 }
 
+//------------------ View --------------------
+-(void) setSortCustomProperties:(BOOL)sortCustomProperties {
+    SBSettings.sortCustomProperties = sortCustomProperties;
+    SBSettings.save;
+    [_inspectorController updateInspectorFromSelection];
+}
+
+-(BOOL) sortCustomProperties {
+    return SBSettings.sortCustomProperties;
+}
+
 -(void) setShowPrefabs:(BOOL)showPrefabs {
     SBSettings.showPrefabs = showPrefabs;
     SBSettings.save;

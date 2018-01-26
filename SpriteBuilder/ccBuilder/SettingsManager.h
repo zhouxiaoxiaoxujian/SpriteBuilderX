@@ -31,6 +31,7 @@
 @property (nonatomic, assign) BOOL moveNodeOnCopy;
 @property (nonatomic, assign) BOOL showPrefabs;
 @property (nonatomic, assign) BOOL showPrefabPreview;
+@property (nonatomic, assign) BOOL sortCustomProperties;
 
 + (instancetype) instance;
 - (void) save;

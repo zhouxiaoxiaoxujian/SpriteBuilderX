@@ -347,6 +347,9 @@ typedef void (^CompletionCallback) (BOOL success);
 
 @property (nonatomic,assign) BOOL showJoints;
 
+//View
+@property (nonatomic,assign) BOOL sortCustomProperties;
+
 @property (nonatomic,assign) BOOL showPrefabs;
 @property (nonatomic,assign) BOOL showPrefabPreview;
 

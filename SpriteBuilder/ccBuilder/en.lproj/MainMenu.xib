@@ -286,7 +286,13 @@ CA
                 <menuItem title="View" id="rbk-to-6Tm">
                     <menu key="submenu" title="View" id="cTl-6O-czt">
                         <items>
-                            <menuItem title="Show Rulers" id="bO9-Gy-dSo">
+                            <menuItem title="Sort Custom Properties" id="bO9-Gy-dSo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="self.sortCustomProperties" id="yc4-G0-APg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Rulers" id="Kko-lD-dG6">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" hidden="YES" id="QW0-7J-hSZ">
@@ -1025,7 +1031,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="8K5-4q-KVz">
                                                                         <rect key="frame" x="0.0" y="0.0" width="283" height="437"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.067728541791439056" constrainsToOriginalSize="YES" allowsMultipleSelection="NO" id="1986" customClass="CCBImageBrowserView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="452"/>
@@ -1056,7 +1062,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" id="e7m-k0-z2l">
                                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="173"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="1993" customClass="CCBTableView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="173"/>

@@ -855,10 +855,12 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
 - (NSMutableArray*) customProperties
 {
     NodeInfo* info = self.userObject;
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                                     ascending:YES
-                                                                      selector:@selector(localizedStandardCompare:)];
-    [info.customProperties sortUsingDescriptors:@[sortDescriptor]];
+    if ([AppDelegate appDelegate].sortCustomProperties) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                         ascending:YES
+                                                                          selector:@selector(localizedStandardCompare:)];
+        [info.customProperties sortUsingDescriptors:@[sortDescriptor]];
+    }
     return info.customProperties;
 }
 
