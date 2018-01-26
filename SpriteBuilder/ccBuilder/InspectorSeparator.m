@@ -31,7 +31,7 @@
 
 - (BOOL)isExpanded
 {
-    id value = [SBSettings.expandedSeparators valueForKey:propertyName];
+    id value = [SBSettings.expandedSeparators valueForKey:self.displayName];
     return !value || [value intValue] == NSOnState;
 }
 
@@ -44,7 +44,7 @@
     }
 
     NSMutableDictionary *expandedSeparators = [SBSettings.expandedSeparators mutableCopy];
-    [expandedSeparators setObject:@(_disclosureButton.state) forKey:propertyName];
+    [expandedSeparators setObject:@(_disclosureButton.state) forKey:self.displayName];
     SBSettings.expandedSeparators = expandedSeparators;
     [SBSettings save];
     [[InspectorController sharedController] updateInspectorFromSelection];
