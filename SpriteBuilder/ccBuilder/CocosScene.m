@@ -2197,8 +2197,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if (isMouseTransforming || isPanning || currentMouseTransform != kCCBTransformHandleNone) return;
     if (!appDelegate.hasOpenedDocument) return;
     
-    int dx = [theEvent deltaX];
-    int dy = -[theEvent deltaY];
+    float dx = [theEvent deltaX];
+    float dy = -[theEvent deltaY];
     
     if([theEvent modifierFlags] & NSCommandKeyMask)
     {
