@@ -619,8 +619,16 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     {
         NSNumber* assignmentType = [prop objectAtIndex:0];
         NSString* variableName = [prop objectAtIndex:1];
-        [self writeInt:[assignmentType intValue] withSign:NO];
-        [self writeCachedString:variableName isPath: NO];
+        
+        if(variableName && ![variableName isEqualToString:@""])
+        {
+            [self writeInt:[assignmentType intValue] withSign:NO];
+            [self writeCachedString:variableName isPath: NO];
+        }
+        else
+        {
+            [self writeInt:0 withSign:NO];
+        }
     }
     else
     {
