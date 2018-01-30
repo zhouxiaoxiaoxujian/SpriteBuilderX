@@ -88,6 +88,20 @@
     NSMutableArray *ret = [NSMutableArray array];
     for (CCNode* child in node.children)
     {  
+            
+        id memberVarAssignmentParam = [child extraPropForKey:@"param_customClass"];
+        if(memberVarAssignmentParam && [memberVarAssignmentParam boolValue])
+        {
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            [dict setObject:[NSString stringWithFormat:@"%d@%@", (int)child.UUID, @"memberVarAssignment"] forKey:@"name"];
+            [dict setObject:@"MemberVarAssignment" forKey:@"type"];
+            [dict setObject:@"Member variable" forKey:@"displayName"];
+            [dict setObject:[@(child.UUID) stringValue] forKey:@"group"];
+            [dict setObject:child.displayName forKey:@"groupName"];
+            [dict setObject:@YES forKey:@"codeConnection"];
+            [ret addObject:dict];
+        }
+    
         NSArray *propInfos = child.plugIn.nodeProperties;
         for (int i = 0; i < [propInfos count]; i++)
         {
@@ -113,6 +127,7 @@
                 [ret addObject:dict];
             }
         }
+        
         if([child class] == [self class])
             continue;
         NSArray *childProperies = [CCBPCCBFile paramsProperties:child];

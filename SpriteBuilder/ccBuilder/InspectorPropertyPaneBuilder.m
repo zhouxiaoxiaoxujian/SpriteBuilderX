@@ -428,7 +428,7 @@
     {
         [self addInspectorPropertyOfType:@"CodeConnections"
                                     name:@"customClass"
-                             displayName:@""
+                             displayName:@"Code Connections"
                                    extra:NULL
                                 readOnly:[plugIn.nodeClassName isEqualToString:@"CCBFile"]
                             affectsProps:NULL];

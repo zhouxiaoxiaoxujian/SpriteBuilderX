@@ -308,6 +308,8 @@
 		A521EF491C1B0B9100918650 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF431C1B0B9100918650 /* Icon.png */; };
 		A521EF4A1C1B0B9100918650 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A521EF441C1B0B9100918650 /* Icon@2x.png */; };
 		A521EF4D1C1B0CD700918650 /* CCEditBox.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A521EF391C1B0A7700918650 /* CCEditBox.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A526E53F20212092003E909C /* InspectorMemberVarAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = A526E53D20212091003E909C /* InspectorMemberVarAssignment.m */; };
+		A526E54020212092003E909C /* InspectorMemberVarAssignment.xib in Resources */ = {isa = PBXBuildFile; fileRef = A526E53E20212092003E909C /* InspectorMemberVarAssignment.xib */; };
 		A53568661D214800009EC595 /* nvcompress in Resources */ = {isa = PBXBuildFile; fileRef = A53568651D214800009EC595 /* nvcompress */; };
 		A535686B1D21480E009EC595 /* libTextureConverter.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; };
 		A535686C1D214B18009EC595 /* libTextureConverter.dylib in Copy Files (Frameworks) */ = {isa = PBXBuildFile; fileRef = A53568681D21480E009EC595 /* libTextureConverter.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1596,6 +1598,9 @@
 		A521EF421C1B0B9100918650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A521EF431C1B0B9100918650 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A521EF441C1B0B9100918650 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A526E53C20212091003E909C /* InspectorMemberVarAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMemberVarAssignment.h; sourceTree = "<group>"; };
+		A526E53D20212091003E909C /* InspectorMemberVarAssignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMemberVarAssignment.m; sourceTree = "<group>"; };
+		A526E53E20212092003E909C /* InspectorMemberVarAssignment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorMemberVarAssignment.xib; sourceTree = "<group>"; };
 		A53568651D214800009EC595 /* nvcompress */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = nvcompress; sourceTree = "<group>"; };
 		A53568681D21480E009EC595 /* libTextureConverter.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libTextureConverter.dylib; sourceTree = "<group>"; };
 		A53568691D21480E009EC595 /* TextureConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureConverter.h; sourceTree = "<group>"; };
@@ -4986,6 +4991,9 @@
 				E525F2D988B675DFB2D17C3D /* InspectorIntegerLabeled.h */,
 				E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */,
 				E525F90E4BCE3BA5130B8E9D /* InspectorIntegerLabeled.xib */,
+				A526E53C20212091003E909C /* InspectorMemberVarAssignment.h */,
+				A526E53D20212091003E909C /* InspectorMemberVarAssignment.m */,
+				A526E53E20212092003E909C /* InspectorMemberVarAssignment.xib */,
 				E525FE21A2662188C1454FEB /* InspectorNodeReference.h */,
 				E525F2016B3DB7DF1651B605 /* InspectorNodeReference.m */,
 				E525F3EC220BB11985744E64 /* InspectorNodeReference.xib */,
@@ -6123,6 +6131,7 @@
 				92D9D48018F8AB3800F167C1 /* joint-connection-connected.png in Resources */,
 				B7096E2D180CD98E00164A8A /* doc-sprite.png in Resources */,
 				9218DF3F1919B04D0033851E /* joint-pivot-handle-min@2x.png in Resources */,
+				A526E54020212092003E909C /* InspectorMemberVarAssignment.xib in Resources */,
 				E37FCAEF175D2704009F81D6 /* ui-cogs@2x.png in Resources */,
 				B794AB91177A30EB004FF493 /* ui-nopreview.png in Resources */,
 				A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */,
@@ -6621,6 +6630,7 @@
 				A51E63B31A7A82D0009F4FB9 /* InspectorSoundFile.m in Sources */,
 				F82444401E1716B00044EE4F /* BFColorPickerViewController.m in Sources */,
 				9294EC8E18C65EC10059014C /* CCBPhysicsPinJoint.m in Sources */,
+				A526E53F20212092003E909C /* InspectorMemberVarAssignment.m in Sources */,
 				9294EC8F18C65EC10059014C /* CCBPhysicsPivotJoint.m in Sources */,
 				9294EC9018C65EC10059014C /* CCBPhysicsJoint.m in Sources */,
 				9297AC2118A2C0D2003C3705 /* PolyDecomposition.mm in Sources */,

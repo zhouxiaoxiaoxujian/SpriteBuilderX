@@ -443,6 +443,15 @@
     else if ([type isEqualToString:@"Button"])
     {
     }
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        NSNumber* assignmentType = [node extraPropForKey:[NSString stringWithFormat:@"%@Type",name]];
+        NSString* variableName = [node extraPropForKey:[NSString stringWithFormat:@"%@Name",name]];
+        serializedValue = [NSArray arrayWithObjects:
+                           assignmentType,
+                           variableName,
+                           nil];
+    }
     else
     {
         NSLog(@"WARNING Unrecognized property type: %@", type);
@@ -628,6 +637,9 @@
     NSString* memberVarName = [extraProps objectForKey:@"memberVarAssignmentName"];
     if (!memberVarName) memberVarName = @"";
     int memberVarType = [[extraProps objectForKey:@"memberVarAssignmentType"] intValue];
+    id param = [info.extraProps objectForKey:@"param_customClass"];
+    if(param)
+        [dict setObject:param forKey:@"memberVarAssignmentParam"];
     
     [dict setObject:customClass forKey:@"customClass"];
     [dict setObject:memberVarName forKey:@"memberVarAssignmentName"];

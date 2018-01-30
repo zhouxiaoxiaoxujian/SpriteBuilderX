@@ -70,6 +70,7 @@
 	[propTypes addObject:@"EffectControl"];
     [propTypes addObject:@"SoundFile"];
     [propTypes addObject:@"Offsets"];
+    [propTypes addObject:@"MemberVarAssignment"];
 }
 
 - (id) init
@@ -614,6 +615,13 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 			[self writeEffect:effectDescription];
 		}
 	}
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        NSNumber* assignmentType = [prop objectAtIndex:0];
+        NSString* variableName = [prop objectAtIndex:1];
+        [self writeInt:[assignmentType intValue] withSign:NO];
+        [self writeCachedString:variableName isPath: NO];
+    }
     else
     {
         NSLog(@"WARNING: Unknown property Type:%@" , type);
@@ -755,6 +763,10 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 			}
 		}
 	}
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        [self addToStringCache:[value objectAtIndex:1] isPath:NO];
+    }
 }
 
 - (void) cacheStringsForNode:(NSDictionary*) node

@@ -469,6 +469,11 @@ __strong NSDictionary* renamedProperties = nil;
         NSString* sound = serializedValue;
         [node setExtraProp:sound forKey:name];
     }
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        [node setExtraProp:[serializedValue objectAtIndex:0] forKey:[NSString stringWithFormat:@"%@Type",name]];
+        [node setExtraProp:[serializedValue objectAtIndex:1] forKey:[NSString stringWithFormat:@"%@Name",name]];
+    }
     else
     {
         NSLog(@"WARNING Unrecognized property type: %@", type);
@@ -570,6 +575,7 @@ __strong NSDictionary* renamedProperties = nil;
     NSString* memberVarName = [dict objectForKey:@"memberVarAssignmentName"];
     if (!memberVarName) memberVarName = @"";
     int memberVarType = [[dict objectForKey:@"memberVarAssignmentType"] intValue];
+    id param = [dict objectForKey:@"memberVarAssignmentParam"];
     
     //memberVarType is obsolete. Set to 2 upon deserialization.
     if(memberVarType == 0)
@@ -577,6 +583,9 @@ __strong NSDictionary* renamedProperties = nil;
         memberVarType = 2;
         memberVarName = @""; //Make sure we clear the name, since it was unassigned.
     }
+    
+    if(param)
+        [extraProps setObject:param forKey:@"param_customClass"];
     
     [extraProps setObject:customClass forKey:@"customClass"];
     [extraProps setObject:memberVarName forKey:@"memberVarAssignmentName"];
