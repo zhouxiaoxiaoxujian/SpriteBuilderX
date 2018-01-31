@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="InspectorCustom">
             <connections>
+                <outlet property="horLine" destination="bT9-dT-AIM" id="Fgw-kC-s0l"/>
+                <outlet property="propName" destination="2" id="khl-2J-TCk"/>
                 <outlet property="textField" destination="4" id="30"/>
                 <outlet property="view" destination="1" id="27"/>
             </connections>
@@ -43,6 +45,10 @@
                         <outlet property="delegate" destination="-2" id="29"/>
                     </connections>
                 </textField>
+                <box hidden="YES" verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="bT9-dT-AIM">
+                    <rect key="frame" x="10" y="5" width="222" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </box>
             </subviews>
             <point key="canvasLocation" x="132.5" y="168"/>
         </customView>

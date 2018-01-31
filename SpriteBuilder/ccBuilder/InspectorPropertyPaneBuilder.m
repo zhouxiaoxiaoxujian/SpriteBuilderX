@@ -128,6 +128,10 @@
     }
     else
     {
+        //Separator in Custom Properties: "-"
+        if ([name isEqualToString:@"-"]) {
+            _currentOffSetY -= 14;
+        }
         [self toggleVisibilityToNextSeparator:_currentOffSetY inspectorValuesView:inspectorValuesView];
     }
 
@@ -307,10 +311,8 @@
 
 - (void)addCustomPropertySettingsCustomProps:(NSArray *)customProps
 {
-    for (int i=0; i< customProps.count; i++) {
+    for (int i=0; i < customProps.count; i++) {
         CustomPropSetting *setting = [customProps objectAtIndex:i];
-//    for (CustomPropSetting *setting in customProps)
-//    {
         [self addInspectorPropertyOfType:@"Custom"
                                     name:setting.name
                              displayName:setting.name

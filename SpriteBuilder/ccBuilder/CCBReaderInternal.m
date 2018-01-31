@@ -122,7 +122,7 @@ __strong NSDictionary* renamedProperties = nil;
     if ([name isEqualToString:@"ignoreAnchorPointForPosition"]) return;
     
     // Fetch info and extra properties
-    NodeInfo* nodeInfo = node.userObject;
+    //NodeInfo* nodeInfo = node.userObject;
     //NSMutableDictionary* extraProps = nodeInfo.extraProps;
     
     if ([type isEqualToString:@"Position"])

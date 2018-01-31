@@ -41,6 +41,11 @@
 
 - (NSString*) text
 {
+    if ([propertyName isEqualToString:@"-"]) {
+        textField.hidden = YES;
+        propName.hidden = YES;
+        horLine.hidden = NO;        
+    }
     return [selection customPropertyNamed:propertyName];
 }
 
