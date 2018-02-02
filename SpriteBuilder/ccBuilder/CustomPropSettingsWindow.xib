@@ -17,22 +17,22 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" frameAutosaveName="CustomPropSettingsWindow" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="450" height="299"/>
+            <rect key="contentRect" x="196" y="240" width="450" height="300"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
-            <value key="minSize" type="size" width="400" height="235"/>
+            <value key="minSize" type="size" width="450" height="300"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="450" height="299"/>
+                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="3">
-                        <rect key="frame" x="20" y="46" width="411" height="233"/>
+                        <rect key="frame" x="20" y="46" width="411" height="234"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="lex-Y7-Xp3">
-                            <rect key="frame" x="1" y="0.0" width="409" height="232"/>
+                            <rect key="frame" x="1" y="0.0" width="409" height="233"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" headerView="6" id="4" customClass="CCBTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="209"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="6" id="4" customClass="CCBTableView">
+                                    <rect key="frame" x="0.0" y="0.0" width="421" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +87,7 @@
                                                 <binding destination="16" name="selectedTag" keyPath="arrangedObjects.type" id="63"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="" width="200" minWidth="40" maxWidth="1000" id="73">
+                                        <tableColumn identifier="" width="80" minWidth="40" maxWidth="1000" id="73">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -107,6 +107,26 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
+                                        <tableColumn identifier="" width="100" minWidth="40" maxWidth="1000" id="TIx-N9-F8F">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Default Value">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="blZ-gc-7bl" customClass="CCBTextFieldCell">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="16" name="value" keyPath="arrangedObjects.defaultValue" id="F2d-hs-eeg">
+                                                    <dictionary key="options">
+                                                        <bool key="NSCreatesSortDescriptor" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </tableColumn>
                                     </tableColumns>
                                 </tableView>
                             </subviews>
@@ -120,7 +140,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="6">
-                            <rect key="frame" x="0.0" y="0.0" width="438" height="23"/>
+                            <rect key="frame" x="0.0" y="0.0" width="421" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>

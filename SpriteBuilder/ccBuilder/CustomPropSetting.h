@@ -37,6 +37,7 @@ enum
     NSString* name;
     int type;
     NSString* value;
+    NSString *defaultValue;
     BOOL optimized;
 }
 
@@ -44,6 +45,7 @@ enum
 @property (nonatomic,assign) int type;
 @property (nonatomic,assign) BOOL optimized;
 @property (nonatomic,copy) NSString* value;
+@property (nonatomic, strong) NSString *defaultValue;
 
 - (id) initWithSerialization:(id)ser;
 - (id) serialization;

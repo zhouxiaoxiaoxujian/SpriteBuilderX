@@ -25,6 +25,7 @@
 #import "InspectorCustom.h"
 #import "CCNode+NodeInfo.h"
 #import "AppDelegate.h"
+#import "CustomPropSetting.h"
 
 @implementation InspectorCustom
 
@@ -33,10 +34,9 @@
     if (!text) text = @"";
     
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
-    
     [selection setCustomPropertyNamed:propertyName value:text];
-    
     [textField setStringValue:[selection customPropertyNamed:propertyName]];
+    [self updateFont];
 }
 
 - (NSString*) text
@@ -46,8 +46,27 @@
         propName.hidden = YES;
         horLine.hidden = NO;        
     }
+    [self updateFont];
     return [selection customPropertyNamed:propertyName];
 }
 
+-(void) updateFont {
+    bool defaultValue = NO;
+    for (CustomPropSetting *setting in selection.customProperties) {
+        if ([setting.name isEqualToString:propertyName]) {
+            if ([setting.value isEqualToString:setting.defaultValue]) {
+                defaultValue = YES;
+                break;
+            }
+        }
+    }
+    if (!defaultValue) {
+        propName.font = [NSFont boldSystemFontOfSize:propName.font.pointSize];
+        textField.textColor = [NSColor textColor];
+    } else {
+        propName.font = [NSFont systemFontOfSize:propName.font.pointSize];
+        textField.textColor = [NSColor disabledControlTextColor];
+    }
+}
 
 @end
