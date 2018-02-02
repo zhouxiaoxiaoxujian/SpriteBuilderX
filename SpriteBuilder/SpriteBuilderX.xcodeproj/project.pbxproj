@@ -917,6 +917,8 @@
 		F87991521E47347100D12FAA /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87991501E47347100D12FAA /* SettingsWindow.xib */; };
 		F88F848E1E15CCDA00C76367 /* doc-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848C1E15CCDA00C76367 /* doc-layout.png */; };
 		F88F848F1E15CCDA00C76367 /* doc-layout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */; };
+		F89D80672024B8CB00C5F341 /* InspectorCustomBool.m in Sources */ = {isa = PBXBuildFile; fileRef = F89D80652024B8CA00C5F341 /* InspectorCustomBool.m */; };
+		F89D80682024B8CB00C5F341 /* InspectorCustomBool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89D80662024B8CA00C5F341 /* InspectorCustomBool.xib */; };
 		F89F37B81E488DFC0038D53B /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B31E488DFC0038D53B /* AUTHORS */; };
 		F89F37B91E488DFC0038D53B /* LICENSE_CocosBuilder.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B41E488DFC0038D53B /* LICENSE_CocosBuilder.txt */; };
 		F89F37BA1E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt in Resources */ = {isa = PBXBuildFile; fileRef = F89F37B51E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt */; };
@@ -2495,6 +2497,9 @@
 		F87991501E47347100D12FAA /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindow.xib; sourceTree = "<group>"; };
 		F88F848C1E15CCDA00C76367 /* doc-layout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout.png"; sourceTree = "<group>"; };
 		F88F848D1E15CCDA00C76367 /* doc-layout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doc-layout@2x.png"; sourceTree = "<group>"; };
+		F89D80642024B8CA00C5F341 /* InspectorCustomBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorCustomBool.h; sourceTree = "<group>"; };
+		F89D80652024B8CA00C5F341 /* InspectorCustomBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorCustomBool.m; sourceTree = "<group>"; };
+		F89D80662024B8CA00C5F341 /* InspectorCustomBool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorCustomBool.xib; sourceTree = "<group>"; };
 		F89F37B31E488DFC0038D53B /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AUTHORS; path = ../Info/AUTHORS; sourceTree = "<group>"; };
 		F89F37B41E488DFC0038D53B /* LICENSE_CocosBuilder.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_CocosBuilder.txt; path = ../Info/LICENSE_CocosBuilder.txt; sourceTree = "<group>"; };
 		F89F37B51E488DFC0038D53B /* LICENSE_PSMTabBarControl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE_PSMTabBarControl.txt; path = ../Info/LICENSE_PSMTabBarControl.txt; sourceTree = "<group>"; };
@@ -4952,6 +4957,9 @@
 				E525F8EEB5893680A0B28A27 /* InspectorCustom.h */,
 				E525FE561C3F2F72AC9FD31B /* InspectorCustom.m */,
 				E525F573A9DD324DCD2EC052 /* InspectorCustom.xib */,
+				F89D80642024B8CA00C5F341 /* InspectorCustomBool.h */,
+				F89D80652024B8CA00C5F341 /* InspectorCustomBool.m */,
+				F89D80662024B8CA00C5F341 /* InspectorCustomBool.xib */,
 				E525F5758C653D9E894C6B68 /* InspectorCustomEdit.h */,
 				E525F1567BD8D95A7C4DC809 /* InspectorCustomEdit.m */,
 				E525F0AF452CAF5998D6381A /* InspectorCustomEdit.xib */,
@@ -6110,6 +6118,7 @@
 				9218DF321919B04D0033851E /* joint-pivot-mode-s-off.png in Resources */,
 				E32FA2F816D5781600254653 /* seq-row-channel-bg.png in Resources */,
 				E390C77F170A2C9B003E9E92 /* AboutWindow.xib in Resources */,
+				F89D80682024B8CB00C5F341 /* InspectorCustomBool.xib in Resources */,
 				B7096E2A180CD98E00164A8A /* doc-particlesystem.png in Resources */,
 				E334A4DE170CF475001604F7 /* seq-btn-end.png in Resources */,
 				E334A4DF170CF475001604F7 /* toolbar-bottom-noborder.png in Resources */,
@@ -6886,6 +6895,7 @@
 				E525F32A8263ADF05CA91EAF /* InspectorEnabledFloat.m in Sources */,
 				E525FD8AEF741E01F59BEF8F /* InspectorCheck.m in Sources */,
 				E525FC20A2FC407CCFE76052 /* InspectorSpriteFrame.m in Sources */,
+				F89D80672024B8CB00C5F341 /* InspectorCustomBool.m in Sources */,
 				E525F686F932F4F6640E9F29 /* InspectorTexture.m in Sources */,
 				F824443E1E1716B00044EE4F /* NSColorWell+BFColorPickerPopover.m in Sources */,
 				E525F939AAC25DF9B7276558 /* InspectorByte.m in Sources */,

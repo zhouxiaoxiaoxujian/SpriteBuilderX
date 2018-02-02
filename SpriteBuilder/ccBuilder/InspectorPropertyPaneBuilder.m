@@ -313,12 +313,13 @@
 {
     for (int i=0; i < customProps.count; i++) {
         CustomPropSetting *setting = [customProps objectAtIndex:i];
-        [self addInspectorPropertyOfType:@"Custom"
-                                    name:setting.name
-                             displayName:setting.name
-                                   extra:NULL
-                                readOnly:NO
-                            affectsProps:NULL];
+        NSString *type = (setting.type == kCCBCustomPropTypeBool) ? @"CustomBool" : @"Custom";
+        [self addInspectorPropertyOfType: type
+                                    name: setting.name
+                             displayName: setting.name
+                                   extra: NULL
+                                readOnly: NO
+                            affectsProps: NULL];
     }
 }
 
