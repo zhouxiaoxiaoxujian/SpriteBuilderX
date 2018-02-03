@@ -25,16 +25,36 @@
 #import "InspectorCustomBool.h"
 #import "CCNode+NodeInfo.h"
 #import "AppDelegate.h"
+#import "CustomPropSetting.h"
 
 @implementation InspectorCustomBool
 
 - (IBAction)checkBoxAction:(NSButtonCell *)sender {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
     [selection setCustomPropertyNamed:propertyName value:[NSString stringWithFormat:@"%d",(int)sender.state]];
+    [self updateFont];
 }
 
 -(BOOL) value {
+    [self updateFont];
     return [[selection customPropertyNamed:propertyName] boolValue];
+}
+
+-(void) updateFont {
+    bool defaultValue = NO;
+    for (CustomPropSetting *setting in selection.customProperties) {
+        if ([setting.name isEqualToString:propertyName]) {
+            if ([setting.value isEqualToString:setting.defaultValue]) {
+                defaultValue = YES;
+                break;
+            }
+        }
+    }
+    if (!defaultValue) {
+        propName.font = [NSFont boldSystemFontOfSize:propName.font.pointSize];
+    } else {
+        propName.font = [NSFont systemFontOfSize:propName.font.pointSize];
+    }
 }
 
 @end
