@@ -62,6 +62,9 @@
     NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dir error:NULL];
     for (NSString* file in files)
     {
+        if([file isEqualToString:@".DS_Store"])
+            continue;
+            
         NSString* absFile = [dir stringByAppendingPathComponent:file];
 
         BOOL isDir = NO;
