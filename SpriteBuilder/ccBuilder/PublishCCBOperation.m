@@ -47,7 +47,8 @@
     NSDate *srcDate = [CCBFileUtil modificationDateForFile:self.filePath];
     NSDate *dstDate = [CCBFileUtil modificationDateForFile:self.dstFilePath];
 
-    if (![srcDate isEqualToDate:dstDate])
+    // Check if file already exists and have same date
+    if (!dstDate || fabs([srcDate timeIntervalSinceDate:dstDate]) > 0.0001)
     {
         [_publishingTaskStatusProgress updateStatusText:[NSString stringWithFormat:@"Publishing %@...", self.fileName]];
 

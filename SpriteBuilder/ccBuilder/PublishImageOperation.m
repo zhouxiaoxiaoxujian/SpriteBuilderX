@@ -111,7 +111,7 @@
         NSDate *dstDate = [CCBFileUtil modificationDateForFile:dstPathProposal];
 
         if (dstDate
-            && [srcDate isEqualToDate:dstDate]
+            && fabs([srcDate timeIntervalSinceDate:dstDate]) < 0.0001
             && !isDirty)
         {
             LocalLog(@"[%@] SKIPPING file exists, same dates (src: %@, dst: %@) and not dirty - %@", [self class], srcDate, dstDate, [self description]);
@@ -158,7 +158,7 @@
         NSDate *dstDate = [CCBFileUtil modificationDateForFile:dstPathProposal];
 
         if (dstDate
-            && [srcDate isEqualToDate:dstDate]
+            && fabs([srcDate timeIntervalSinceDate:dstDate]) < 0.0001
             && !isDirty)
         {
             LocalLog(@"[%@] SKIPPING file exists, same dates (src: %@, dst: %@) and not dirty - %@", [self class], srcDate, dstDate, [self description]);
@@ -256,7 +256,7 @@
 
     NSDate *ssDstDate = [self modifiedDataOfSpriteSheetFile:ssDstPath];
 
-    return ssDstDate && [ssDstDate isEqualToDate:srcDate] && !isDirty;
+    return ssDstDate && fabs([ssDstDate timeIntervalSinceDate:srcDate]) < 0.0001 && !isDirty;
 }
 
 // TODO: spritesheet logic needed in here?

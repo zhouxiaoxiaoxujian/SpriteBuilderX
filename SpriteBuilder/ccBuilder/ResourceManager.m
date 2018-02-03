@@ -896,7 +896,7 @@
                 {
                     NSDate* autoFileDate = [CCBFileUtil modificationDateForFile:autoFile];
                     NSDate* cachedFileDate = [CCBFileUtil modificationDateForFile:cachedFile];
-                    if ([autoFileDate isEqualToDate:cachedFileDate]) datesMatch = YES;
+                    if (fabs([autoFileDate timeIntervalSinceDate:cachedFileDate]) < 0.0001) datesMatch = YES;
                 }
                 
                 if (!cachedFileExists || !datesMatch)
