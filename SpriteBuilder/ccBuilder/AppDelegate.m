@@ -912,6 +912,12 @@ typedef enum
     return YES;
 }
 
+- (NSString *)tabView:(NSTabView *)aTabView toolTipForTabViewItem:(NSTabViewItem *)tabViewItem
+{
+    CCBDocument *doc = [tabViewItem identifier];
+    return [doc.filePath relativePathFromBaseDirPath:[self.projectSettings.projectPath stringByDeletingLastPathComponent]];
+}
+
 #pragma mark Handling selections
 
 - (BOOL) nodeHasCCBFileAncestor:(CCNode*)node
