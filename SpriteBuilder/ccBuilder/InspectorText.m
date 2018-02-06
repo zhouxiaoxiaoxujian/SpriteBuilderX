@@ -39,6 +39,12 @@
     
     [StringPropertySetter setString:str forNode:selection andProp:propertyName];
     
+    NSArray* animValue = [NSArray arrayWithObjects:
+                          str,
+                          [NSNumber numberWithBool:self.localize],
+                          NULL];
+    [selection updateAnimateablePropertyValue:animValue forProperty:propertyName];
+    
     [self updateAffectedProperties];
     
     [self willChangeValueForKey:@"hasTranslation"];
@@ -62,6 +68,12 @@
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
     
     [StringPropertySetter setLocalized:localize forNode:selection andProp:propertyName];
+    
+    NSArray* animValue = [NSArray arrayWithObjects:
+                          [self.text string],
+                          [NSNumber numberWithBool:localize],
+                          NULL];
+    [selection updateAnimateablePropertyValue:animValue forProperty:propertyName];
     
     [self updateAffectedProperties];
 }

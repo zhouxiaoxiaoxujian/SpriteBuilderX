@@ -321,6 +321,7 @@
 		A54C73781A438A4100DB1CF7 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73721A438A4100DB1CF7 /* Icon.png */; };
 		A54C73791A438A4100DB1CF7 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A54C73731A438A4100DB1CF7 /* Icon@2x.png */; };
 		A54C737D1A438C9E00DB1CF7 /* CCScissorsNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5537037202A60F20085013C /* InspectorPopoverText.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5537036202A60F20085013C /* InspectorPopoverText.xib */; };
 		A55F2CA11DF1D73000377AEC /* SequencerIdWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */; };
 		A55F2CA21DF1D73000377AEC /* SequencerIdWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */; };
 		A56B9ADC1D36D5620027788E /* pngcrush in Resources */ = {isa = PBXBuildFile; fileRef = A56B9ADB1D36D5620027788E /* pngcrush */; };
@@ -1618,6 +1619,7 @@
 		A54C73711A438A4100DB1CF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A54C73721A438A4100DB1CF7 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A54C73731A438A4100DB1CF7 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		A5537036202A60F20085013C /* InspectorPopoverText.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorPopoverText.xib; sourceTree = "<group>"; };
 		A55F2C9E1DF1D73000377AEC /* SequencerIdWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerIdWindow.h; sourceTree = "<group>"; };
 		A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerIdWindow.m; sourceTree = "<group>"; };
 		A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerIdWindow.xib; sourceTree = "<group>"; };
@@ -5026,6 +5028,7 @@
 				E525F25365C18CD517E444D2 /* InspectorPopoverPosition.xib */,
 				E525F90B1FAB88CFFA07BA6E /* InspectorPopoverScaleLock.xib */,
 				E525FA695F4DA8350BF171CE /* InspectorPopoverSpriteFrame.xib */,
+				A5537036202A60F20085013C /* InspectorPopoverText.xib */,
 				E525F1A1737A0DF1B7506F64 /* InspectorPosition.h */,
 				E525F2590AF8747283B8D25D /* InspectorPosition.m */,
 				E525FF473922B627A6A884A7 /* InspectorPosition.xib */,
@@ -5900,6 +5903,7 @@
 				774E4ED0136DFFB70025D0A8 /* btn-rotate-hi.png in Resources */,
 				A5BFF4971FF3A96000CECCF9 /* frame-android-720p.png in Resources */,
 				774E4ED1136DFFB70025D0A8 /* btn-rotate.png in Resources */,
+				A5537037202A60F20085013C /* InspectorPopoverText.xib in Resources */,
 				774E4ED2136DFFB70025D0A8 /* btn-scale-hi.png in Resources */,
 				774E4ED3136DFFB70025D0A8 /* btn-scale.png in Resources */,
 				77E1995213858DE0006C361B /* overflowImage.png in Resources */,

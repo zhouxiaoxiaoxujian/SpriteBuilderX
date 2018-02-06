@@ -303,7 +303,7 @@
     }
     
     // Skip interpolation for spriteframes
-    if (type == kCCBKeyframeTypeSpriteFrame || type == kCCBKeyframeTypeAnimation)
+    if (type == kCCBKeyframeTypeSpriteFrame || type == kCCBKeyframeTypeAnimation || type == kCCBKeyframeTypeText)
     {
         if (time < keyframeEnd.time)
             return keyframeStart.value;

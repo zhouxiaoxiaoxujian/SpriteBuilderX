@@ -47,7 +47,8 @@ typedef enum
     kCCBKeyframeTypeCallbacks,
 	
 	//Further Properties.
-    kCCBKeyframeTypeAnimation,	
+    kCCBKeyframeTypeAnimation,
+    kCCBKeyframeTypeText,    
 } kCCBKeyframeType;
 
 NSString * kClipboardKeyFrames;

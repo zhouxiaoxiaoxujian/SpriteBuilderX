@@ -816,6 +816,15 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
                     [self addToStringCache:b isPath:[a isEqualToString:@""]];
                 }
             }
+            else if (kfType == kCCBKeyframeTypeText)
+            {
+                NSArray* keyframes = [prop objectForKey:@"keyframes"];
+                for (NSDictionary* keyframe in keyframes)
+                {
+                    id value = [keyframe objectForKey:@"value"];
+                    [self addToStringCache:[value objectAtIndex:0] isPath:NO];
+                }
+            }
         }
     }
     
@@ -1173,6 +1182,14 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
     {
         [self writeInt:[value intValue] withSign:YES];
     }
+    else if ([type isEqualToString:@"Text"])
+    {
+        NSString* string = [value objectAtIndex:0];
+        BOOL localized = [[value objectAtIndex:1] boolValue];
+        
+        [self writeCachedString:string isPath:NO];
+        [self writeInt:localized withSign:NO];
+    }
 }
 
 -(BOOL)writeCodeConnections:(NSDictionary*)node
@@ -1252,6 +1269,7 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
             else if (kfType == kCCBKeyframeTypeFloatXY) propType = @"FloatXY";
             else if (kfType == kCCBKeyframeTypeFloat) propType = @"Float";
             else if (kfType == kCCBKeyframeTypeAnimation) propType = @"Animation";
+            else if (kfType == kCCBKeyframeTypeText) propType = @"Text";
             
             NSAssert(propType, @"Unknown animated property type");
             

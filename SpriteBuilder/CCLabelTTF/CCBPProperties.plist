@@ -46,6 +46,8 @@
 			<true/>
 		</dict>
 		<dict>
+			<key>animatable</key>
+			<true/>
 			<key>affectsProperties</key>
 			<array>
 				<string>contentSize</string>

@@ -33,6 +33,7 @@
 #import "SequencerSequence.h"
 #import "PositionPropertySetter.h"
 #import "TexturePropertySetter.h"
+#import "StringPropertySetter.h"
 #import "CCBWriterInternal.h"
 #import "CCBReaderInternal.h"
 #import "CCBDocument.h"
@@ -425,6 +426,15 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     {
         return [self valueForKey:name];
     }
+    else if (type == kCCBKeyframeTypeText)
+    {
+        NSString* str = [StringPropertySetter stringForNode:self andProp:name];
+        BOOL localized = [StringPropertySetter isLocalizedNode:self andProp:name];
+        return [NSArray arrayWithObjects:
+                str,
+                [NSNumber numberWithBool:localized],
+                nil];
+    }
 
     
     return NULL;
@@ -491,6 +501,11 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     else if (type == kCCBKeyframeTypeAnimation)
     {
         [self setValue:value forKey:propName];
+    }
+    else if (type == kCCBKeyframeTypeText)
+    {
+        [StringPropertySetter setString:[value objectAtIndex:0] forNode:self andProp:@"string"];
+        [StringPropertySetter setLocalized:[[value objectAtIndex:1] boolValue] forNode:self andProp:@"string"];
     }
     
 }
