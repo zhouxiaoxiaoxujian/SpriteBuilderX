@@ -129,7 +129,12 @@
     else
     {
         //Separator in Custom Properties: "-"
-        if ([name isEqualToString:@"-"]) {
+        //Also you can use "-SomeType" to add description
+        NSString *dash = @"-";
+        if (name.length > 1 && [[name substringToIndex:1] isEqualToString:dash]) {
+            _currentOffSetY -= 10;
+        } else
+        if ([name isEqualToString:dash]) {
             _currentOffSetY -= 14;
         }
         [self toggleVisibilityToNextSeparator:_currentOffSetY inspectorValuesView:inspectorValuesView];

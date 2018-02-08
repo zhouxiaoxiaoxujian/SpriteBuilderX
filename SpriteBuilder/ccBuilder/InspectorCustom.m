@@ -41,13 +41,38 @@
 
 - (NSString*) text
 {
-    if ([propertyName isEqualToString:@"-"]) {
+    NSString *dash = @"-";
+    if (propertyName.length == 1 && [propertyName isEqualToString:dash]) {
         textField.hidden = YES;
         propName.hidden = YES;
         horLine.hidden = NO;        
     }
+    if (propertyName.length > 1 && [[propertyName substringToIndex:1] isEqualToString:dash]) {
+        textField.hidden = YES;
+        horLine.hidden = NO;
+        propName.hidden = NO;
+        propName.alignment = NSTextAlignmentLeft;
+        propName.textColor = [NSColor disabledControlTextColor];
+
+        horLine.frame = NSMakeRect(horLine.frame.origin.x,
+                                   self.view.frame.size.height - horLine.frame.size.height * 3.3,
+                                   horLine.frame.size.width,
+                                   horLine.frame.size.height);
+        propName.frame = NSMakeRect(10,
+                                    horLine.frame.origin.y - propName.frame.size.height + 2,
+                                    propName.frame.size.width,
+                                    propName.frame.size.height);
+    }
     [self updateFont];
     return [selection customPropertyNamed:propertyName];
+}
+
+-(NSString *) title {
+    NSString *dash = @"-";
+    if (propertyName.length > 1 && [[propertyName substringToIndex:1] isEqualToString:dash]) {
+        return [propertyName substringFromIndex:1];
+    }
+    return propertyName;
 }
 
 -(void) updateFont {
