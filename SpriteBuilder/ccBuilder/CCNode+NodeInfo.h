@@ -42,6 +42,7 @@ NSString * kAnimationOfPhysicsWarning;
 @property (nonatomic,readonly) PlugInNode* plugIn;
 @property (nonatomic,copy) NSString* displayName;
 @property (nonatomic,retain) NSMutableArray* customProperties;
+@property (nonatomic,readonly) NSArray* additionalProperties;
 @property (nonatomic,readonly) CGPoint transformStartPosition;
 @property (nonatomic,readonly) CGAffineTransform startTransform;
 @property (nonatomic,readonly) CGPoint startAnchorPoint;
@@ -84,6 +85,7 @@ NSString * kAnimationOfPhysicsWarning;
 
 - (id) serializeAnimatedProperties;
 - (void) loadAnimatedPropertiesFromSerialization:(id)ser;
+- (void) updateAnimateablePropertyValue:(id)value forProperty:(NSString*)name;
 
 - (NSString*) customPropertyNamed:(NSString*)name;
 - (void) setCustomPropertyNamed:(NSString*)name value:(NSString*)value;
@@ -95,6 +97,8 @@ NSString * kAnimationOfPhysicsWarning;
 
 - (void) setUsesFlashSkew:(BOOL)seqExpanded;
 - (BOOL) usesFlashSkew;
+
+- (CCNode*) findNodeWithUUID:(NSUInteger)UUID;
 
 //Fixups
 -(void)postCopyFixup;

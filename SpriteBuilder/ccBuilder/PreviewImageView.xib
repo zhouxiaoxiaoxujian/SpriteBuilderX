@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,7 +40,7 @@
                 </imageView>
                 <imageView id="fG6-ZG-dqn" userLabel="Image View - phonehd" customClass="CCBImageView">
                     <rect key="frame" x="95" y="13" width="60" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="xu2-9e-bNk"/>
                     <connections>
                         <action selector="droppedFile:" target="-2" id="PI7-7f-rIR"/>
@@ -49,7 +49,7 @@
                 </imageView>
                 <imageView id="Nkb-7q-HC3" userLabel="Image View - tablethd" customClass="CCBImageView">
                     <rect key="frame" x="188" y="13" width="60" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="i1G-Kv-udq"/>
                     <connections>
                         <action selector="droppedFile:" target="-2" id="vGZ-N9-GAP"/>
@@ -58,7 +58,7 @@
                 </imageView>
                 <button verticalHuggingPriority="750" id="r4t-IW-vLi" customClass="CCBButtonUnclickable">
                     <rect key="frame" x="190" y="15" width="56" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="push" title="2x" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HVo-3A-fJO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
@@ -71,7 +71,7 @@
                         </binding>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="0fc-wh-ZPV" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="0fc-wh-ZPV" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="13" y="3" width="38" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="phone" id="KG1-bm-YDk">
@@ -80,25 +80,25 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="9Cj-93-am9" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="9Cj-93-am9" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="102" y="3" width="47" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="phonehd" id="2ua-wC-ygO">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="5ab-0j-oJu" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5ab-0j-oJu" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="196" y="3" width="45" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="tablethd" id="It1-c4-TgC">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="yX5-Yn-Xqv" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="yX5-Yn-Xqv" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="4" y="80" width="38" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Type" id="N7h-RX-n4S">
@@ -109,13 +109,13 @@
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="1O4-F6-4hl">
                     <rect key="frame" x="41" y="78" width="202" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="HNQ-Sf-eeX">
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Compressed" bezelStyle="rounded" alignment="left" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Q1S-Bz-i3I" id="HNQ-Sf-eeX">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                         <menu key="menu" title="OtherViews" id="o5f-QX-kjB">
                             <items>
-                                <menuItem title="Compressed" id="Q1S-Bz-i3I"/>
+                                <menuItem title="Compressed" state="on" id="Q1S-Bz-i3I"/>
                                 <menuItem title="Compressed w/o alpha" tag="1" id="fXs-6l-ZBc"/>
                                 <menuItem title="Uncompressed" tag="2" id="kQn-ks-Rvn"/>
                                 <menuItem title="Custom" tag="3" id="SPO-x0-ZXy"/>
@@ -134,7 +134,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <textField hidden="YES" verticalHuggingPriority="750" id="azm-5K-4Ce" customClass="CCBTextFieldLabel">
+                <textField hidden="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="azm-5K-4Ce" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="2" y="-32" width="39" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Android" id="MTX-JI-sS5">
@@ -200,7 +200,7 @@
                 </button>
                 <button verticalHuggingPriority="750" id="BVa-gk-FBJ" customClass="CCBButtonUnclickable">
                     <rect key="frame" x="97" y="15" width="56" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="push" title="2x" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dyV-bm-Bs0">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
@@ -215,7 +215,7 @@
                 </button>
                 <popUpButton verticalHuggingPriority="750" id="ytl-XP-7nm">
                     <rect key="frame" x="181" y="106" width="62" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="GHO-wU-Fjv">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
@@ -234,16 +234,7 @@
                         <binding destination="-2" name="selectedTag" keyPath="scaleFrom" id="AnW-Pg-U50"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="0ie-fp-IcK" customClass="CCBTextFieldLabel">
-                    <rect key="frame" x="131" y="108" width="50" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale from" id="0la-bJ-Mrr">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="Bc9-Yb-Xpc" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Bc9-Yb-Xpc" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="13" y="41" width="38" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AUTO" id="zOx-qB-etb">
@@ -259,9 +250,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="URO-NG-2Mt" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="URO-NG-2Mt" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="199" y="41" width="38" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AUTO" id="cUc-HO-ewO">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -275,9 +266,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="A3J-re-knc" customClass="CCBTextFieldLabel">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="A3J-re-knc" customClass="CCBTextFieldLabel">
                     <rect key="frame" x="106" y="41" width="38" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="AUTO" id="Lgc-G2-rhg">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -290,6 +281,15 @@
                             </dictionary>
                         </binding>
                     </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="0ie-fp-IcK" customClass="CCBTextFieldLabel">
+                    <rect key="frame" x="187" y="122" width="50" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale from" id="0la-bJ-Mrr">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
                 </textField>
             </subviews>
         </customView>

@@ -583,7 +583,7 @@
     {
         NSString* endTextValue = [self.inspectorTextKey string];
         
-        if (!self.startTextValue && !endTextValue) return;
+        if (!self.startTextValue) return;
         
         if (!endTextValue || [endTextValue isEqualToString:@""])
         {

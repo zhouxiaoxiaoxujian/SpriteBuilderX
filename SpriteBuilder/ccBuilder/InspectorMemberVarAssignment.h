@@ -24,14 +24,9 @@
 
 #import "InspectorValue.h"
 
-@interface InspectorCustom : InspectorValue<NSTextFieldDelegate>
-{
-    __weak IBOutlet NSBox *horLine;
-    __weak IBOutlet NSTextField *propName;
-    __weak IBOutlet NSTextField *textField;
-}
+@interface InspectorMemberVarAssignment: InspectorValue
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) NSString *title;
+@property (nonatomic) NSString* memberVarAssignmentName;
+@property (nonatomic) int memberVarAssignmentType;
 
 @end

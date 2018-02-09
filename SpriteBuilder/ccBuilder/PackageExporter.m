@@ -33,9 +33,12 @@
 
     if ([_fileManager fileExistsAtPath:copyToPath])
     {
-        *error = [NSError errorWithDomain:SBErrorDomain
-                                     code:SBPackageAlreadyExistsAtPathError
-                                 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Package %@ already exists at path %@.", package, toDirectoryPath]}];
+        if(error)
+        {
+            *error = [NSError errorWithDomain:SBErrorDomain
+                                         code:SBPackageAlreadyExistsAtPathError
+                                     userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Package %@ already exists at path %@.", package, toDirectoryPath]}];
+        }
         return NO;
     }
 

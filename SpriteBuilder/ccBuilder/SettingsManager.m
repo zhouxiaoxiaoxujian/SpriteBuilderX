@@ -187,6 +187,51 @@
     return [moveNodeOnCopy boolValue];
 }
 
+-(void) setShowPrefabs:(BOOL)showPrefabs {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:showPrefabs] forKey:@"showPrefabs"];
+}
+
+-(BOOL) showPrefabs {
+    id showPrefabs = [SBUserDefaults valueForKey:@"showPrefabs"];
+    if(!showPrefabs)
+        return YES;
+    return [showPrefabs boolValue];
+}
+
+-(void) setShowPrefabPreview:(BOOL)showPrefabPreview {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:showPrefabPreview] forKey:@"showPrefabPreview"];
+}
+
+-(BOOL) showPrefabPreview {
+    id showPrefabPreview = [SBUserDefaults valueForKey:@"showPrefabPreview"];
+    if(!showPrefabPreview)
+        return YES;
+    return [showPrefabPreview boolValue];
+}
+
+-(void) setSortCustomProperties:(BOOL)sortCustomProperties {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:sortCustomProperties] forKey:@"sortCustomProperties"];
+}
+
+-(BOOL) sortCustomProperties {
+    id sortCustomProperties = [SBUserDefaults valueForKey:@"sortCustomProperties"];
+    if(!sortCustomProperties)
+        return YES;
+    return [sortCustomProperties boolValue];
+}
+
+-(void) setExpandedSeparators:(NSMutableDictionary *) expandedSeparators {
+    [SBUserDefaults setObject:expandedSeparators forKey:@"expandedSeparators"];
+}
+
+-(NSMutableDictionary *) expandedSeparators {
+    id expandedSeparators = [SBUserDefaults objectForKey:@"expandedSeparators"];
+    if(!expandedSeparators){
+        return [NSMutableDictionary dictionary];
+    }
+    return expandedSeparators;
+}
+
 //------------------------------------------------------------------------
 - (void) save
 {

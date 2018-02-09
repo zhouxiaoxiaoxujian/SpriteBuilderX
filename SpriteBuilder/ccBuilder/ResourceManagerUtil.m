@@ -33,6 +33,9 @@
 #import "RMAnimation.h"
 #import "CCBSpriteSheetParser.h"
 #import <QuickLook/QuickLook.h>
+#import "SettingsManager.h"
+#import "MiscConstants.h"
+#import "AppDelegate.h"
 
 @protocol ResourceManagerUtil_UndeclaredSelectors <NSObject>
 @optional
@@ -343,53 +346,62 @@
 
 + (NSImage*) thumbnailImageForResource:(RMResource*)res {
     
-    NSString* path = [res absoluteAutoPathForResolution:@"auto"];
-    CGFloat viewScale = /*fixedSize ?*/ 1.0; //: [AppDelegate appDelegate].derivedViewScaleFactor;
-    CGSize size = CGSizeMake(kRMImagePreviewSize*viewScale, kRMImagePreviewSize*viewScale);
-    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    NSString *path;
+    NSImage *newImage;    
     
-    if (!path|| !fileURL) {
-        return nil;
-    }
-    CGImageRef ref = QLThumbnailImageCreate(kCFAllocatorDefault,
-                                            (__bridge CFURLRef)fileURL,
-                                            CGSizeMake(size.width, size.height),
-                                            nil);
-    if(ref == NULL) {
-        path = [res absoluteAutoPathForResolution:@"universal"];
-        fileURL = [NSURL fileURLWithPath:path];
+    if (res.type == kCCBResTypeCCBFile) {
+        NSString *filePath = [SBSettings miscFilesPathForFile:res.filePath projectPathDir:[AppDelegate appDelegate].projectSettings.projectPathDir];
+        path = [filePath stringByAppendingPathExtension:MISC_FILE_PPNG];
+        newImage = [ResourceManagerUtil thumbnailImageForNSImage:[[NSImage alloc] initWithContentsOfFile:path]];
+        return newImage;
+    } else {
+        path = [res absoluteAutoPathForResolution:@"auto"];
+    
+        CGFloat viewScale = /*fixedSize ?*/ 1.0; //: [AppDelegate appDelegate].derivedViewScaleFactor;
+        CGSize size = CGSizeMake(kRMImagePreviewSize*viewScale, kRMImagePreviewSize*viewScale);
+        NSURL *fileURL = [NSURL fileURLWithPath:path];
+        
         if (!path|| !fileURL) {
             return nil;
         }
-        ref = QLThumbnailImageCreate(kCFAllocatorDefault,
-                                     (__bridge CFURLRef)fileURL,
-                                     CGSizeMake(size.width, size.height),
-                                     nil);
-    }
-    
-    if(ref == NULL) {
-        path = [res absoluteAutoPathForResolution:nil];
-        fileURL = [NSURL fileURLWithPath:path];
-        if (!path|| !fileURL) {
-            return nil;
+        CGImageRef ref = QLThumbnailImageCreate(kCFAllocatorDefault,
+                                                (__bridge CFURLRef)fileURL,
+                                                CGSizeMake(size.width, size.height),
+                                                nil);
+        if(ref == NULL) {
+            path = [res absoluteAutoPathForResolution:@"universal"];
+            fileURL = [NSURL fileURLWithPath:path];
+            if (!path|| !fileURL) {
+                return nil;
+            }
+            ref = QLThumbnailImageCreate(kCFAllocatorDefault,
+                                         (__bridge CFURLRef)fileURL,
+                                         CGSizeMake(size.width, size.height),
+                                         nil);
         }
-        ref = QLThumbnailImageCreate(kCFAllocatorDefault,
-                                     (__bridge CFURLRef)fileURL,
-                                     CGSizeMake(size.width, size.height),
-                                     nil);
-    }
+        
+        if(ref == NULL) {
+            path = [res absoluteAutoPathForResolution:nil];
+            fileURL = [NSURL fileURLWithPath:path];
+            if (!path|| !fileURL) {
+                return nil;
+            }
+            ref = QLThumbnailImageCreate(kCFAllocatorDefault,
+                                         (__bridge CFURLRef)fileURL,
+                                         CGSizeMake(size.width, size.height),
+                                         nil);
+        }
 
-    
-    NSImage *newImage = nil;
-    if (ref != NULL) {
-        NSBitmapImageRep *bitmapImageRep = [[NSBitmapImageRep alloc] initWithCGImage:ref];
-        
-        if (bitmapImageRep) {
-            newImage = [[NSImage alloc] initWithSize:[bitmapImageRep size]];
-            [newImage addRepresentation:bitmapImageRep];
+        if (ref != NULL) {
+            NSBitmapImageRep *bitmapImageRep = [[NSBitmapImageRep alloc] initWithCGImage:ref];
+            
+            if (bitmapImageRep) {
+                newImage = [[NSImage alloc] initWithSize:[bitmapImageRep size]];
+                [newImage addRepresentation:bitmapImageRep];
+            }
+            
+            CFRelease(ref);
         }
-        
-        CFRelease(ref);
     }
     return newImage;
 }

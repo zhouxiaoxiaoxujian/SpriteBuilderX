@@ -21,7 +21,7 @@
     // Setup menu
     NSNumber* sf = [self propertyForSelection];
     
-    NSArray *sequences = [selection extraPropForKey:@"**sequences"];
+    NSArray *sequences = [selection extraPropForKey:[NSString stringWithFormat:@"%@*sequences", propertyName]];
     
     NSMenu* menu = [popup menu];
     [menu removeAllItems];

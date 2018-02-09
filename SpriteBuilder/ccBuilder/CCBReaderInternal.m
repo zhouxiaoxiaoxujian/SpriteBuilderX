@@ -122,8 +122,8 @@ __strong NSDictionary* renamedProperties = nil;
     if ([name isEqualToString:@"ignoreAnchorPointForPosition"]) return;
     
     // Fetch info and extra properties
-    NodeInfo* nodeInfo = node.userObject;
-    NSMutableDictionary* extraProps = nodeInfo.extraProps;
+    //NodeInfo* nodeInfo = node.userObject;
+    //NSMutableDictionary* extraProps = nodeInfo.extraProps;
     
     if ([type isEqualToString:@"Position"])
     {
@@ -256,7 +256,8 @@ __strong NSDictionary* renamedProperties = nil;
         int scaleType = 0;
         if ([(NSArray*)serializedValue count] >= 3)
         {
-            [extraProps setValue:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
+            [node setExtraProp:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
+            //[extraProps setValue:[serializedValue objectAtIndex:2] forKey:[NSString stringWithFormat:@"%@Lock",name]];
             if ([(NSArray*)serializedValue count] == 4)
             {
                 scaleType = [[serializedValue objectAtIndex:3] intValue];
@@ -337,8 +338,8 @@ __strong NSDictionary* renamedProperties = nil;
             spriteSheetFile = kCCBUseRegularFile;
         }
         
-        [extraProps setObject:spriteSheetFile forKey:[NSString stringWithFormat:@"%@Sheet",name]];
-        [extraProps setObject:spriteFile forKey:name];
+        [node setExtraProp:spriteSheetFile forKey:[NSString stringWithFormat:@"%@Sheet",name]];
+        [node setExtraProp:spriteFile forKey:name];
         [TexturePropertySetter setSpriteFrameForNode:node andProperty:name withFile:spriteFile andSheetFile:spriteSheetFile];
     }
     else if ([type isEqualToString:@"Animation"])
@@ -351,7 +352,7 @@ __strong NSDictionary* renamedProperties = nil;
         NSString* spriteFile = serializedValue;
         if (!spriteFile) spriteFile = @"";
         [TexturePropertySetter setTextureForNode:node andProperty:name withFile:spriteFile];
-        [extraProps setObject:spriteFile forKey:name];
+        [node setExtraProp:spriteFile forKey:name];
     }
     else if ([type isEqualToString:@"Color4"] ||
              [type isEqualToString:@"Color3"])
@@ -425,8 +426,8 @@ __strong NSDictionary* renamedProperties = nil;
 			target = @(1);
 		}
 		
-        [extraProps setObject: selector forKey:name];
-        [extraProps setObject:target forKey:[NSString stringWithFormat:@"%@Target",name]];
+        [node setExtraProp: selector forKey:name];
+        [node setExtraProp:target forKey:[NSString stringWithFormat:@"%@Target",name]];
     }
     else if ([type isEqualToString:@"BlockCCControl"])
     {
@@ -436,16 +437,16 @@ __strong NSDictionary* renamedProperties = nil;
         if (!selector) selector = @"";
         if (!target) target = [NSNumber numberWithInt:0];
         if (!ctrlEvts) ctrlEvts = [NSNumber numberWithInt:0];
-        [extraProps setObject: selector forKey:name];
-        [extraProps setObject:target forKey:[NSString stringWithFormat:@"%@Target",name]];
-        [extraProps setObject:ctrlEvts forKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
+        [node setExtraProp: selector forKey:name];
+        [node setExtraProp:target forKey:[NSString stringWithFormat:@"%@Target",name]];
+        [node setExtraProp:ctrlEvts forKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
     }
     else if ([type isEqualToString:@"CCBFile"])
     {
         NSString* ccbFile = serializedValue;
         if (!ccbFile) ccbFile = @"";
         [NodeGraphPropertySetter setNodeGraphForNode:node andProperty:name withFile:ccbFile parentSize:parentSize];
-        [extraProps setObject:ccbFile forKey:name];
+        [node setExtraProp:ccbFile forKey:name];
     }
     else if ([type isEqualToString:@"NodeReference"])
     {
@@ -467,6 +468,11 @@ __strong NSDictionary* renamedProperties = nil;
     {
         NSString* sound = serializedValue;
         [node setExtraProp:sound forKey:name];
+    }
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        [node setExtraProp:[serializedValue objectAtIndex:0] forKey:[NSString stringWithFormat:@"%@Type",name]];
+        [node setExtraProp:[serializedValue objectAtIndex:1] forKey:[NSString stringWithFormat:@"%@Name",name]];
     }
     else
     {
@@ -531,6 +537,7 @@ __strong NSDictionary* renamedProperties = nil;
     {
         NSDictionary* propInfo = [props objectAtIndex:i];
         NSString* type = [propInfo objectForKey:@"type"];
+        NSValue* param = [propInfo objectForKey:@"param"];
         NSString* name = [propInfo objectForKey:@"name"];
         id serializedValue = [propInfo objectForKey:@"value"];
         
@@ -540,6 +547,9 @@ __strong NSDictionary* renamedProperties = nil;
         {
             name = [renameRule objectForKey:@"newName"];
         }
+        
+        if(param)
+            [extraProps setObject:param forKey:[NSString stringWithFormat:@"param_%@", name]];
         
         if([plugIn.nodePropertiesDict objectForKey:name])
         {
@@ -565,6 +575,7 @@ __strong NSDictionary* renamedProperties = nil;
     NSString* memberVarName = [dict objectForKey:@"memberVarAssignmentName"];
     if (!memberVarName) memberVarName = @"";
     int memberVarType = [[dict objectForKey:@"memberVarAssignmentType"] intValue];
+    id param = [dict objectForKey:@"memberVarAssignmentParam"];
     
     //memberVarType is obsolete. Set to 2 upon deserialization.
     if(memberVarType == 0)
@@ -572,6 +583,9 @@ __strong NSDictionary* renamedProperties = nil;
         memberVarType = 2;
         memberVarName = @""; //Make sure we clear the name, since it was unassigned.
     }
+    
+    if(param)
+        [extraProps setObject:param forKey:@"param_customClass"];
     
     [extraProps setObject:customClass forKey:@"customClass"];
     [extraProps setObject:memberVarName forKey:@"memberVarAssignmentName"];
@@ -603,6 +617,16 @@ __strong NSDictionary* renamedProperties = nil;
 		{
 			[node addChild:child z:i];
 		}
+    }
+    
+    // Additional properties
+    NSMutableArray* params = [dict objectForKey:@"additionalProperties"];
+    if(params)
+    {
+        for (NSDictionary *paramsDict in params)
+        {
+            [CCBReaderInternal setProp:paramsDict[@"name"] ofType:paramsDict[@"type"] toValue:paramsDict[@"value"] forNode:node parentSize:parentSize withParentGraph:parentGraph fileVersion:fileVersion];
+        }
     }
     
     // Physics

@@ -674,7 +674,7 @@
     NSDate* dstDate = [CCBFileUtil modificationDateForFile:[spriteSheetFile stringByAppendingPathExtension:@"plist"]];
     BOOL isDirty = [_projectSettings isDirtyRelPath:subPath];
     return dstDate
-            && [dstDate isEqualToDate:srcSpriteSheetDate]
+            && fabs([dstDate timeIntervalSinceDate:srcSpriteSheetDate]) < 0.0001
             && !isDirty;
 }
 

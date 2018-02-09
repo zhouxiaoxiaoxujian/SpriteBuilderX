@@ -185,7 +185,7 @@
 {
     NodeInfo* info = node.userObject;
     PlugInNode* plugIn = info.plugIn;
-    NSMutableDictionary* extraProps = info.extraProps;
+    //NSMutableDictionary* extraProps = info.extraProps;
     
     NSString* type = [propInfo objectForKey:@"type"];
     NSString* name = [propInfo objectForKey:@"name"];
@@ -232,7 +232,7 @@
     else if ([plugIn dontSetInEditorProperty:name])
     {
         // Get the serialized value from the extra props
-        serializedValue = [extraProps objectForKey:name];
+        serializedValue = [node extraPropForKey:name];
     }
     else if ([type isEqualToString:@"Position"])
     {
@@ -271,7 +271,7 @@
     {
         float x = [PositionPropertySetter scaleXForNode:node prop:name];
         float y = [PositionPropertySetter scaleYForNode:node prop:name];
-        BOOL lock = [[extraProps objectForKey:[NSString stringWithFormat:@"%@Lock",name]] boolValue];
+        BOOL lock = [[node extraPropForKey:[NSString stringWithFormat:@"%@Lock",name]] boolValue];
         int scaleType = [PositionPropertySetter scaledFloatTypeForNode:node prop:name];
         
         serializedValue = [CCBWriterInternal serializePoint:ccp(x,y) lock:lock type: scaleType];
@@ -324,8 +324,8 @@
     }
     else if ([type isEqualToString:@"SpriteFrame"])
     {
-        NSString* spriteFile = [extraProps objectForKey:name];
-        NSString* spriteSheetFile = [extraProps objectForKey:[NSString stringWithFormat:@"%@Sheet",name]];
+        NSString* spriteFile = [node extraPropForKey:name];
+        NSString* spriteSheetFile = [node extraPropForKey:[NSString stringWithFormat:@"%@Sheet",name]];
         serializedValue = [CCBWriterInternal serializeSpriteFrame:spriteFile sheet:spriteSheetFile];
     }
     else if ([type isEqualToString:@"Animation"])
@@ -335,7 +335,7 @@
     }
     else if ([type isEqualToString:@"Texture"])
     {
-        NSString* spriteFile = [extraProps objectForKey:name];
+        NSString* spriteFile = [node extraPropForKey:name];
         if (!spriteFile) spriteFile = @"";
         
         serializedValue = spriteFile;
@@ -397,8 +397,8 @@
     }
     else if ([type isEqualToString:@"Block"])
     {
-        NSString* selector = [extraProps objectForKey:name];
-        NSNumber* target = [extraProps objectForKey:[NSString stringWithFormat:@"%@Target",name]];
+        NSString* selector = [node extraPropForKey:name];
+        NSNumber* target = [node extraPropForKey:[NSString stringWithFormat:@"%@Target",name]];
         if (!selector) selector = @"";
         if (!target) target = [NSNumber numberWithInt:0];
         serializedValue = [NSArray arrayWithObjects:
@@ -408,9 +408,9 @@
     }
     else if ([type isEqualToString:@"BlockCCControl"])
     {
-        NSString* selector = [extraProps objectForKey:name];
-        NSNumber* target = [extraProps objectForKey:[NSString stringWithFormat:@"%@Target",name]];
-        NSNumber* ctrlEvts = [extraProps objectForKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
+        NSString* selector = [node extraPropForKey:name];
+        NSNumber* target = [node extraPropForKey:[NSString stringWithFormat:@"%@Target",name]];
+        NSNumber* ctrlEvts = [node extraPropForKey:[NSString stringWithFormat:@"%@CtrlEvts",name]];
         if (!selector) selector = @"";
         if (!target) target = [NSNumber numberWithInt:0];
         if (!ctrlEvts) ctrlEvts = [NSNumber numberWithInt:0];
@@ -422,7 +422,7 @@
     }
     else if ([type isEqualToString:@"CCBFile"])
     {
-        NSString* spriteFile = [extraProps objectForKey:name];
+        NSString* spriteFile = [node extraPropForKey:name];
         if (!spriteFile) spriteFile = @"";
         serializedValue = spriteFile;
     }
@@ -436,12 +436,21 @@
     }
     else if ([type isEqualToString:@"SoundFile"])
     {
-        NSString* soundFile = [extraProps objectForKey:name];
+        NSString* soundFile = [node extraPropForKey:name];
         if (!soundFile) soundFile = @"";
         serializedValue = soundFile;
     }
     else if ([type isEqualToString:@"Button"])
     {
+    }
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        NSNumber* assignmentType = [node extraPropForKey:[NSString stringWithFormat:@"%@Type",name]];
+        NSString* variableName = [node extraPropForKey:[NSString stringWithFormat:@"%@Name",name]];
+        serializedValue = [NSArray arrayWithObjects:
+                           assignmentType,
+                           variableName,
+                           nil];
     }
     else
     {
@@ -478,6 +487,9 @@
         NSMutableDictionary* propInfo = [plugInProps objectAtIndex:i];
         NSString* type = [propInfo objectForKey:@"type"];
         NSString* name = [propInfo objectForKey:@"name"];
+        
+        id param =  [info.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", name]];
+        
         NSString* platform = [propInfo objectForKey:@"platform"];
         BOOL hasKeyframes = [node hasKeyframesForProperty:name];
         id defaultSerialization = [propInfo objectForKey:@"defaultSerialization"];
@@ -489,7 +501,7 @@
 			continue;
         
         // Skip default values
-        if ([serializedValue isEqual:defaultSerialization] && !hasKeyframes)
+        if ([serializedValue isEqual:defaultSerialization] && !hasKeyframes && !param)
         {
             continue;
         }
@@ -498,6 +510,8 @@
         
         [prop setValue:type forKey:@"type"];
         [prop setValue:name forKey:@"name"];
+        if(param)
+            [prop setValue:param forKey:@"param"];
         [prop setValue:serializedValue forKey:@"value"];
         if (platform) [prop setValue:platform forKey:@"platform"];
         
@@ -531,10 +545,29 @@
         }
     }
     
+    // Additional properties
+    NSArray *paramsProperties = node.additionalProperties;
+    if(paramsProperties)
+    {
+        NSMutableArray* params = [NSMutableArray array];
+        for (NSDictionary *paramDict in paramsProperties)
+        {
+            NSMutableDictionary* prop = [NSMutableDictionary dictionary];
+            [prop setValue:paramDict[@"type"] forKey:@"type"];
+            [prop setValue:paramDict[@"name"] forKey:@"name"];
+            id serializedValue = [CCBWriterInternal serializePropertyForNode:node propInfo:prop excludeProps:nil];
+            [prop setValue:serializedValue forKey:@"value"];
+            [params addObject:prop];
+        }
+        
+        [dict setObject:params forKey:@"additionalProperties"];
+    }
+    
     // Create node
     [dict setObject:props forKey:@"properties"];
     [dict setObject:baseClass forKey:@"baseClass"];
     [dict setObject:children forKey:@"children"];
+    //[dict setObject: forKey:@"children"];
     
     // Serialize any animations
     id anim = [node serializeAnimatedProperties];
@@ -604,6 +637,9 @@
     NSString* memberVarName = [extraProps objectForKey:@"memberVarAssignmentName"];
     if (!memberVarName) memberVarName = @"";
     int memberVarType = [[extraProps objectForKey:@"memberVarAssignmentType"] intValue];
+    id param = [info.extraProps objectForKey:@"param_customClass"];
+    if(param)
+        [dict setObject:param forKey:@"memberVarAssignmentParam"];
     
     [dict setObject:customClass forKey:@"customClass"];
     [dict setObject:memberVarName forKey:@"memberVarAssignmentName"];

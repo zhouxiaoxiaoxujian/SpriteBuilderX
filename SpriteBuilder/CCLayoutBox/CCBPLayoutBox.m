@@ -113,6 +113,8 @@
 - (void) layout
 {
     CCNode *parent = _parent;
+    if(!parent)
+        return;
      if([[[parent class] className] compare:@"CCBPCCBFile"] == NSOrderedSame)
         parent = parent.parent;
     if(!parent)

@@ -32,11 +32,7 @@
 
 - (void) updateAnimateableX:(float)x Y:(float)y
 {
-    [self updateAnimateablePropertyValue:
-     [NSArray arrayWithObjects:
-      [NSNumber numberWithFloat:x],
-      [NSNumber numberWithFloat:y],
-      nil]];
+    [selection updateAnimateablePropertyValue:@[[NSNumber numberWithFloat:x], [NSNumber numberWithFloat:y]] forProperty:propertyName];
 }
 
 - (void) willBeAdded

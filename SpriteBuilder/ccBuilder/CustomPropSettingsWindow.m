@@ -58,6 +58,26 @@
     }
 }
 
+- (IBAction)moveItemUp:(NSButton *)sender {
+    [self moveItemUpDown:YES];
+}
+
+- (IBAction)moveItemDown:(NSButton *)sender {
+    [self moveItemUpDown:NO];
+}
+
+-(void) moveItemUpDown:(bool) upDown {
+    int index = self.propertiesTableView.selectedRow;
+    if ((index == settings.count && !upDown) || (index == 0 && upDown)) return;
+
+    int move = upDown ? index-1 : index+1;
+    CustomPropSetting *setting = [settings objectAtIndex:index];
+    [settings removeObject:setting];
+    [settings insertObject: setting atIndex:MIN(move,settings.count)];
+    [self.propertiesTableView reloadData];
+    [self.propertiesTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:move] byExtendingSelection:NO];
+}
+
 - (BOOL) sheetIsValid
 {
     NSMutableSet* propNames = [NSMutableSet set];
@@ -91,7 +111,8 @@
     for (CustomPropSetting* setting in settings)
     {
         // Custom props cannot have same names
-        if ([propNames containsObject:setting.name])
+        //but ignore separator 
+        if (![setting.name isEqualToString:@"-"] && [propNames containsObject:setting.name])
         {
             NSAlert* alert = [NSAlert alertWithMessageText:@"Duplicate Property Name" defaultButton:@"OK" alternateButton:NULL otherButton:NULL informativeTextWithFormat:@"The %@ property has the same name as another custom property. Please find another name.", setting.name];
             [alert beginSheetModalForWindow:[self window] modalDelegate:NULL didEndSelector:NULL contextInfo:NULL];

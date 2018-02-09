@@ -24,6 +24,7 @@
 
 #import "CCBModalSheetController.h"
 #import "cocos2d.h"
+#import "CCBTableView.h"
 
 @interface CustomPropSettingsWindow : CCBModalSheetController
 {
@@ -32,6 +33,7 @@
 }
 
 @property (nonatomic,strong) NSMutableArray* settings;
+@property (weak) IBOutlet CCBTableView *propertiesTableView;
 
 - (void) copySettingsForNode:(CCNode*)n;
 

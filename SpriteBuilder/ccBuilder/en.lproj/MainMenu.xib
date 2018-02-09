@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -280,6 +280,41 @@ CA
                                     <action selector="selectAll:" target="-1" id="1913"/>
                                 </connections>
                             </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="View" id="rbk-to-6Tm">
+                    <menu key="submenu" title="View" id="cTl-6O-czt">
+                        <items>
+                            <menuItem title="Sort Custom Properties" id="bO9-Gy-dSo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="self.sortCustomProperties" id="yc4-G0-APg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Rulers" id="Kko-lD-dG6">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" hidden="YES" id="QW0-7J-hSZ">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Show Animation" hidden="YES" id="mI8-e2-M2J">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="G7K-a8-Lve"/>
+                            <menuItem title="Show Prefabs Options" id="Wyd-K0-12v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="self.showPrefabs" id="Jpm-a9-iLE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Prefabs Preview" id="AoM-ew-hxb" userLabel="Show Prefabs Preview">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="self.showPrefabPreview" id="Alx-KK-gXe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="CCM-rB-WvO"/>
                         </items>
                     </menu>
                 </menuItem>
@@ -889,8 +924,9 @@ CA
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="133" y="-335"/>
         </menu>
-        <window title="SpriteBuilder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainMenu" animationBehavior="default" id="371" customClass="MainWindow">
+        <window title="SpriteBuilder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainMenu" animationBehavior="default" tabbingMode="disallowed" id="371" customClass="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="255" y="184" width="1150" height="700"/>
@@ -940,7 +976,7 @@ CA
                                                                                 <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="gridColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                                                                                 <tableColumns>
-                                                                                    <tableColumn width="292" minWidth="16" maxWidth="292" id="1502">
+                                                                                    <tableColumn identifier="" width="292" minWidth="16" maxWidth="292" id="1502">
                                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1108,7 +1144,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" copiesOnScroll="NO" id="92y-mP-XwZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="296" height="640"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <collectionView selectable="YES" id="2015" customClass="PlugInNodeCollectionView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="640"/>
@@ -1142,7 +1178,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="c9e-44-Yg2">
                                                         <rect key="frame" x="0.0" y="0.0" width="296" height="640"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="8cF-q7-mD1" customClass="WarningTableView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="640"/>
@@ -1151,7 +1187,7 @@ CA
                                                                 <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                 <tableColumns>
-                                                                    <tableColumn editable="NO" width="293" minWidth="40" maxWidth="1000" id="9wJ-gA-SBO">
+                                                                    <tableColumn identifier="" editable="NO" width="293" minWidth="40" maxWidth="1000" id="9wJ-gA-SBO">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

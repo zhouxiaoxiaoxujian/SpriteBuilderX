@@ -52,36 +52,35 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     self.dstFilePath = [[FCFormatConverter defaultConverter] proposedNameForConvertedModelAtPath:_dstFilePath];
     BOOL isDirty = [_projectSettings isDirtyRelPath:relPath];
-
-    // Skip files that are already converted
-    if ([fileManager fileExistsAtPath:_dstFilePath]
-        && [[CCBFileUtil modificationDateForFile:_srcFilePath] isEqualToDate:[CCBFileUtil modificationDateForFile:_dstFilePath]]
-        && !isDirty)
-    {
-        return;
-    }
     
-    NSString *tempFile = [[_dstFilePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"fbx"];
-
-    NSError  *error;
-    [fileManager removeItemAtPath:tempFile error:NULL];
-    if (![fileManager copyItemAtPath:_srcFilePath toPath:tempFile error:&error])
+    NSDate *srcDate = [CCBFileUtil modificationDateForFile:_srcFilePath];
+    NSDate *dstDate = [CCBFileUtil modificationDateForFile:_dstFilePath];
+    
+    // Check if file already exists and have same date
+    if (isDirty || !dstDate || fabs([srcDate timeIntervalSinceDate:dstDate]) > 0.0001)
     {
-        NSLog(@"[PUBLISH][MODEL] Error: couldn't copy file from \"%@\" to \"%@\" with error %@", _srcFilePath, tempFile, error);
-        return;
-    }
+        NSString *tempFile = [[_dstFilePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"fbx"];
 
-    self.formatConverter = [FCFormatConverter defaultConverter];
-    self.dstFilePath = [_formatConverter convertModelAtPath:tempFile format:self.format skip_normals:self.skipNormals error:&error];
-    if (!_dstFilePath)
-    {
-        [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to convert audio file %@", relPath] isFatal:NO];
+        NSError  *error;
+        [fileManager removeItemAtPath:tempFile error:NULL];
+        if (![fileManager copyItemAtPath:_srcFilePath toPath:tempFile error:&error])
+        {
+            NSLog(@"[PUBLISH][MODEL] Error: couldn't copy file from \"%@\" to \"%@\" with error %@", _srcFilePath, tempFile, error);
+            return;
+        }
+
+        self.formatConverter = [FCFormatConverter defaultConverter];
+        self.dstFilePath = [_formatConverter convertModelAtPath:tempFile format:self.format skip_normals:self.skipNormals error:&error];
+        if (!_dstFilePath)
+        {
+            [_warnings addWarningWithDescription:[NSString stringWithFormat:@"Failed to convert audio file %@", relPath] isFatal:NO];
+            self.formatConverter = nil;
+            return;
+        }
         self.formatConverter = nil;
-        return;
-    }
-    self.formatConverter = nil;
 
-    [CCBFileUtil setModificationDate:[CCBFileUtil modificationDateForFile:_srcFilePath] forFile:_dstFilePath];
+        [CCBFileUtil setModificationDate:[CCBFileUtil modificationDateForFile:_srcFilePath] forFile:_dstFilePath];
+    }
 }
 
 - (void)cancel

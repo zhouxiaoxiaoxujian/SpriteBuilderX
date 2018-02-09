@@ -25,12 +25,14 @@
 #import "InspectorSeparator.h"
 #import "AppDelegate.h"
 #import "InspectorController.h"
+#import "SettingsManager.h"
+
 @implementation InspectorSeparator
 
 - (BOOL)isExpanded
 {
-    return ![self propertyForSelection]
-           || [[self propertyForSelection] intValue] == NSOnState;
+    id value = [SBSettings.expandedSeparators valueForKey:propertyName];
+    return !value || [value intValue] == NSOnState;
 }
 
 - (void)setIsExpanded:(BOOL)isExpanded
@@ -41,8 +43,10 @@
         return;
     }
 
-    [self setPropertyForSelection:@(_disclosureButton.state)];
-    
+    NSMutableDictionary *expandedSeparators = [SBSettings.expandedSeparators mutableCopy];
+    [expandedSeparators setObject:@(_disclosureButton.state) forKey:propertyName];
+    SBSettings.expandedSeparators = expandedSeparators;
+    [SBSettings save];
     [[InspectorController sharedController] updateInspectorFromSelection];
 }
 

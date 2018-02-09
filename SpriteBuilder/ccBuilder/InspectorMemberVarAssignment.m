@@ -22,38 +22,38 @@
  * THE SOFTWARE.
  */
 
-#import "InspectorColor4.h"
-#import "CCBWriterInternal.h"
+#import "InspectorMemberVarAssignment.h"
+#import "CocosScene.h"
+#import "CCBGlobals.h"
 #import "CCNode+NodeInfo.h"
+#import "AppDelegate.h"
+#import "InspectorController.h"
 
-@implementation InspectorColor4
+@implementation InspectorMemberVarAssignment
 
-- (void) setColor:(NSColor *)color
+- (void) setMemberVarAssignmentName:(NSString *)memberVarAssignmentName
 {
-    CGFloat r, g, b, a;
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:[NSString stringWithFormat:@"%@Name", propertyName]];
     
-    NSColor * calibratedColor = nil;
-    
-    if([color.colorSpaceName isEqualToString:@"NSCalibratedRGBColorSpace"])
-        calibratedColor = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
-    else
-        calibratedColor = [color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
-    
-    [calibratedColor getRed:&r green:&g blue:&b alpha:&a];
-    
-    CCColor* colorValue = [CCColor colorWithRed:r green:g blue:b alpha:a];
-    [self setPropertyForSelection:colorValue];
-    
-    [selection updateAnimateablePropertyValue:[CCBWriterInternal serializeColor4:colorValue] forProperty:propertyName];
-    
+    if (!memberVarAssignmentName) memberVarAssignmentName = @"";
+    [selection setExtraProp:memberVarAssignmentName forKey:[NSString stringWithFormat:@"%@Name", propertyName]];
 }
 
-- (NSColor*) color
+- (NSString*) memberVarAssignmentName
 {
-    CCColor* colorValue = [self propertyForSelection];
-    NSColor * calibratedColor = [colorValue.NSColor colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    return [selection extraPropForKey:[NSString stringWithFormat:@"%@Name", propertyName]];
+}
+
+- (void) setMemberVarAssignmentType:(int)memberVarAssignmentType
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:[NSString stringWithFormat:@"%@Type", propertyName]];
     
-    return calibratedColor;
+    [selection setExtraProp:[NSNumber numberWithInt: memberVarAssignmentType] forKey:[NSString stringWithFormat:@"%@Type", propertyName]];
+}
+
+- (int) memberVarAssignmentType
+{
+    return [[selection extraPropForKey:[NSString stringWithFormat:@"%@Type", propertyName]] intValue];
 }
 
 @end

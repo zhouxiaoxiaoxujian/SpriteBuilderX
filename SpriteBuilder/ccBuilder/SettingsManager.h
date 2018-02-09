@@ -29,6 +29,11 @@
 @property (nonatomic, assign) BOOL restoreOpenedDocuments;
 @property (nonatomic, strong) NSMutableDictionary *openedDocuments;
 @property (nonatomic, assign) BOOL moveNodeOnCopy;
+@property (nonatomic, assign) BOOL showPrefabs;
+@property (nonatomic, assign) BOOL showPrefabPreview;
+@property (nonatomic, assign) BOOL sortCustomProperties;
+
+@property (nonatomic, strong) NSMutableDictionary *expandedSeparators;
 
 + (instancetype) instance;
 - (void) save;

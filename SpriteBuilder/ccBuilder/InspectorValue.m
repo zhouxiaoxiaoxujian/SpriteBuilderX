@@ -90,6 +90,11 @@
     return readOnly;
 }
 
+-(BOOL)external
+{
+    return ![AppDelegate appDelegate].showPrefabs || [propertyName containsString:@"@"];
+}
+
 - (void) updateAffectedProperties
 {
     if (affectsProperties)
@@ -124,38 +129,6 @@
     
 }
 
-- (void) updateAnimateablePropertyValue:(id)value
-{
-    NodeInfo* nodeInfo = selection.userObject;
-    PlugInNode* plugIn = nodeInfo.plugIn;
-    
-    if ([plugIn isAnimatableProperty:propertyName node:selection])
-    {
-        SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
-        int seqId = seq.sequenceId;
-        SequencerNodeProperty* seqNodeProp = [selection sequenceNodeProperty:propertyName sequenceId:seqId];
-        
-        if (seqNodeProp && seqNodeProp.type != kCCBKeyframeTypeToggle)
-        {
-            if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
-            {
-                [nodeInfo.baseValues setObject:value forKey:propertyName];
-            }
-            else
-            {
-                SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
-                if (keyframe)
-                    keyframe.value = value;
-            }
-        }
-        else
-        {
-            [nodeInfo.baseValues setObject:value forKey:propertyName];
-        }
-        [[SequencerHandler sharedHandler] redrawTimeline];
-    }
-}
-
 - (void) setPropertyForSelection:(id)value
 {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
@@ -173,7 +146,7 @@
     }
     
     // Handle animatable properties
-    [self updateAnimateablePropertyValue:value];
+    [selection updateAnimateablePropertyValue:value forProperty:propertyName];
     
     // Update affected properties
     [self updateAffectedProperties];
@@ -222,6 +195,26 @@
 
 #pragma mark -
 #pragma mark Disclosure
+
+- (BOOL)param
+{
+    NodeInfo* nodeInfo = selection.userObject;
+    id property =  [nodeInfo.extraProps objectForKey:[NSString stringWithFormat:@"param_%@", propertyName]];
+    if(!property)
+        return NO;
+    return [property boolValue];
+}
+
+- (void)setParam:(BOOL)value
+{
+    NSString* paramPropertyName = [NSString stringWithFormat:@"param_%@", propertyName];
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:paramPropertyName];
+    NodeInfo* nodeInfo = selection.userObject;
+    if(value)
+        [nodeInfo.extraProps setObject:@YES forKey:paramPropertyName];
+    else
+        [nodeInfo.extraProps removeObjectForKey:paramPropertyName];
+}
 
 - (BOOL)isSeparator
 {

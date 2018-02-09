@@ -11,7 +11,6 @@
 #import "CCNode+NodeInfo.h"
 #import "CustomPropSetting.h"
 
-
 @interface InspectorPropertyPaneBuilder ()
 
 @property (nonatomic, strong, readwrite) CCNode *node;
@@ -81,7 +80,10 @@
         }
     }
 
-    [self addCustomPropertiesForPlugIn:plugIn];
+    if(!_isCodeConnectionPane)
+        [self addCustomPropertiesForPlugIn:plugIn];
+    
+    [self addParamPropertiesForPlugIn:plugIn];
 
     self.hideAllToNextSeparator = NO;
 
@@ -118,7 +120,7 @@
     [inspectorValue willBeAdded];
 
     NSView *inspectorValuesView = inspectorValue.view;
-
+    
     //if its a separator, check to see if it isExpanded, if not set all of the next non-separator InspectorValues to hidden and don't touch the offset
     if ([inspectorValue isKindOfClass:[InspectorSeparator class]])
     {
@@ -126,6 +128,15 @@
     }
     else
     {
+        //Separator in Custom Properties: "-"
+        //Also you can use "-SomeType" to add description
+        NSString *dash = @"-";
+        if (name.length > 1 && [[name substringToIndex:1] isEqualToString:dash]) {
+            _currentOffSetY -= 10;
+        } else
+        if ([name isEqualToString:dash]) {
+            _currentOffSetY -= 14;
+        }
         [self toggleVisibilityToNextSeparator:_currentOffSetY inspectorValuesView:inspectorValuesView];
     }
 
@@ -264,6 +275,37 @@
     }
 }
 
+- (void)addParamPropertiesForPlugIn:(PlugInNode *)plugIn
+{
+    NSArray *paramsProperties = _node.additionalProperties;
+    if(paramsProperties && paramsProperties.count)
+    {
+        BOOL first = YES;
+        NSString* currentGroup = nil;
+        
+        for (NSDictionary *dict in paramsProperties)
+        {
+            if([dict[@"codeConnection"] boolValue] == _isCodeConnectionPane)
+            {
+                NSString *group = dict[@"group"];
+                if(first || [currentGroup compare: group] != NSOrderedSame)
+                {
+                    first = NO;
+                    currentGroup = group;
+                    [self addSeparatorForParamPropertyGroup:group andDisplayName:dict[@"groupName"]];
+                }
+                [self addInspectorPropertyOfType:dict[@"type"]
+                                            name:dict[@"name"]
+                                     displayName:dict[@"displayName"]
+                                           extra:dict[@"extra"]
+                                        readOnly:NO
+                                    affectsProps:nil];
+            }
+            
+        }
+    }
+}
+
 - (void)addCustomEditForCustomPropertyIsCCBSubFile:(BOOL)isCCBSubFile
 {
     if (!isCCBSubFile)
@@ -274,16 +316,15 @@
 
 - (void)addCustomPropertySettingsCustomProps:(NSArray *)customProps
 {
-    for (int i=0; i< customProps.count; i++) {
+    for (int i=0; i < customProps.count; i++) {
         CustomPropSetting *setting = [customProps objectAtIndex:i];
-//    for (CustomPropSetting *setting in customProps)
-//    {
-        [self addInspectorPropertyOfType:@"Custom"
-                                    name:setting.name
-                             displayName:setting.name
-                                   extra:NULL
-                                readOnly:NO
-                            affectsProps:NULL];
+        NSString *type = (setting.type == kCCBCustomPropTypeBool) ? @"CustomBool" : @"Custom";
+        [self addInspectorPropertyOfType: type
+                                    name: setting.name
+                             displayName: setting.name
+                                   extra: NULL
+                                readOnly: NO
+                            affectsProps: NULL];
     }
 }
 
@@ -298,6 +339,16 @@
                                 readOnly:YES
                             affectsProps:NULL];
     }
+}
+
+- (void)addSeparatorForParamPropertyGroup:(NSString *)group andDisplayName:(NSString *)displayName
+{
+    [self addInspectorPropertyOfType:@"Separator"
+                                name:[NSString stringWithFormat:@"separator_uid_%@", group]
+                         displayName:[NSString stringWithFormat:@"Params - %@", displayName]
+                               extra:NULL
+                            readOnly:YES
+                        affectsProps:NULL];
 }
 
 - (void)addProperties:(PlugInNode *)plugIn
@@ -385,7 +436,7 @@
     {
         [self addInspectorPropertyOfType:@"CodeConnections"
                                     name:@"customClass"
-                             displayName:@""
+                             displayName:@"Code Connections"
                                    extra:NULL
                                 readOnly:[plugIn.nodeClassName isEqualToString:@"CCBFile"]
                             affectsProps:NULL];

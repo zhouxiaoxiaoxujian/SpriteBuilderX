@@ -24,6 +24,7 @@
 
 #import "InspectorColor3.h"
 #import "CCBWriterInternal.h"
+#import "CCNode+NodeInfo.h"
 
 @implementation InspectorColor3
 
@@ -31,13 +32,19 @@
 {
     CGFloat r, g, b, a;
     
-    NSColor * calibratedColor = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    NSColor * calibratedColor = nil;
+    
+    if([color.colorSpaceName isEqualToString:@"NSCalibratedRGBColorSpace"])
+        calibratedColor = [color colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    else
+        calibratedColor = [color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    
     [calibratedColor getRed:&r green:&g blue:&b alpha:&a];
 
     CCColor* colorValue = [CCColor colorWithRed:r green:g blue:b alpha:1];
     [self setPropertyForSelection:colorValue];
     
-    [self updateAnimateablePropertyValue: [CCBWriterInternal serializeColor4:colorValue]];
+    [selection updateAnimateablePropertyValue:[CCBWriterInternal serializeColor4:colorValue] forProperty:propertyName];
     
 }
 

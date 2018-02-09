@@ -24,14 +24,12 @@
 
 #import "InspectorValue.h"
 
-@interface InspectorCustom : InspectorValue<NSTextFieldDelegate>
+@interface InspectorCustomBool : InspectorValue
 {
-    __weak IBOutlet NSBox *horLine;
     __weak IBOutlet NSTextField *propName;
-    __weak IBOutlet NSTextField *textField;
+    
 }
 
-@property (nonatomic) NSString *text;
-@property (nonatomic) NSString *title;
+@property (nonatomic) BOOL value;
 
 @end

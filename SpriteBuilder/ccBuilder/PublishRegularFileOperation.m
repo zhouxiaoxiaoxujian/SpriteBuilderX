@@ -29,18 +29,18 @@
     NSDate *srcDate = [CCBFileUtil modificationDateForFile:_srcFilePath];
     NSDate *dstDate = [CCBFileUtil modificationDateForFile:_dstFilePath];
 
-    // Check if file already exists
-    if ([[NSFileManager defaultManager] fileExistsAtPath:_dstFilePath] &&
-        [srcDate isEqualToDate:dstDate])
+    // Check if file already exists and have same date
+    if (!dstDate || fabs([srcDate timeIntervalSinceDate:dstDate]) > 0.0001)
+    {
+        // Copy file and make sure modification date is the same as for src file
+        [[NSFileManager defaultManager] removeItemAtPath:_dstFilePath error:NULL];
+        [[NSFileManager defaultManager] copyItemAtPath:_srcFilePath toPath:_dstFilePath error:NULL];
+        [CCBFileUtil setModificationDate:[CCBFileUtil modificationDateForFile:_srcFilePath] forFile:_dstFilePath];
+    }
+    else
     {
         LocalLog(@"[%@] SKIPPING file exists and dates (src: %@, dst: %@) are equal - %@", [self class], srcDate, dstDate, [self description]);
-        return;
     }
-
-    // Copy file and make sure modification date is the same as for src file
-    [[NSFileManager defaultManager] removeItemAtPath:_dstFilePath error:NULL];
-    [[NSFileManager defaultManager] copyItemAtPath:_srcFilePath toPath:_dstFilePath error:NULL];
-    [CCBFileUtil setModificationDate:[CCBFileUtil modificationDateForFile:_srcFilePath] forFile:_dstFilePath];
 }
 
 - (void)cancel

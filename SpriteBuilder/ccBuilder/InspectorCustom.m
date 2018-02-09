@@ -25,6 +25,7 @@
 #import "InspectorCustom.h"
 #import "CCNode+NodeInfo.h"
 #import "AppDelegate.h"
+#import "CustomPropSetting.h"
 
 @implementation InspectorCustom
 
@@ -33,16 +34,64 @@
     if (!text) text = @"";
     
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
-    
     [selection setCustomPropertyNamed:propertyName value:text];
-    
     [textField setStringValue:[selection customPropertyNamed:propertyName]];
+    [self updateFont];
 }
 
 - (NSString*) text
 {
+    NSString *dash = @"-";
+    if (propertyName.length == 1 && [propertyName isEqualToString:dash]) {
+        textField.hidden = YES;
+        propName.hidden = YES;
+        horLine.hidden = NO;        
+    }
+    if (propertyName.length > 1 && [[propertyName substringToIndex:1] isEqualToString:dash]) {
+        textField.hidden = YES;
+        horLine.hidden = NO;
+        propName.hidden = NO;
+        propName.alignment = NSTextAlignmentLeft;
+        propName.textColor = [NSColor disabledControlTextColor];
+
+        horLine.frame = NSMakeRect(horLine.frame.origin.x,
+                                   self.view.frame.size.height - horLine.frame.size.height * 3.3,
+                                   horLine.frame.size.width,
+                                   horLine.frame.size.height);
+        propName.frame = NSMakeRect(10,
+                                    horLine.frame.origin.y - propName.frame.size.height + 2,
+                                    propName.frame.size.width,
+                                    propName.frame.size.height);
+    }
+    [self updateFont];
     return [selection customPropertyNamed:propertyName];
 }
 
+-(NSString *) title {
+    NSString *dash = @"-";
+    if (propertyName.length > 1 && [[propertyName substringToIndex:1] isEqualToString:dash]) {
+        return [propertyName substringFromIndex:1];
+    }
+    return propertyName;
+}
+
+-(void) updateFont {
+    bool defaultValue = NO;
+    for (CustomPropSetting *setting in selection.customProperties) {
+        if ([setting.name isEqualToString:propertyName]) {
+            if ([setting.value isEqualToString:setting.defaultValue]) {
+                defaultValue = YES;
+                break;
+            }
+        }
+    }
+    if (!defaultValue) {
+        propName.font = [NSFont boldSystemFontOfSize:propName.font.pointSize];
+        textField.textColor = [NSColor textColor];
+    } else {
+        propName.font = [NSFont systemFontOfSize:propName.font.pointSize];
+        textField.textColor = [NSColor disabledControlTextColor];
+    }
+}
 
 @end

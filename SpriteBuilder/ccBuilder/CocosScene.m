@@ -1284,25 +1284,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
     currentMouseTransform = kCCBTransformHandleNone;
     
-    if (currentNodeAtSelectionPtIdx >= 0)
+    if ([event modifierFlags] & NSControlKeyMask || currentNodeAtSelectionPtIdx<0)
     {
-        currentMouseTransform = kCCBTransformHandleDownInside;
+        appDelegate.selectedNodes = NULL;
+        [self setMouseSelectState];
+        return;
     }
     else
     {
-        // No clicked node
-        if ([event modifierFlags] & NSShiftKeyMask)
-        {
-            //we can add with multiple mouse selection
-            [self setMouseSelectState];
-            return;
-        }
-        else
-        {
-            // Deselect
-            appDelegate.selectedNodes = NULL;
-            [self setMouseSelectState];
-        }
+        currentMouseTransform = kCCBTransformHandleDownInside;
     }
     
     // shortcut for Select Behind: Alt + LeftClick
@@ -1443,9 +1433,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if ([notesLayer mouseDragged:pos event:event]) return;
     if ([guideLayer mouseDragged:pos event:event]) return;
     if ([appDelegate.physicsHandler mouseDragged:pos event:event]) return;
-    if (currentMouseTransform != kCCBTransformHandleMouseSelect && (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0)) return;
+    //if (currentMouseTransform != kCCBTransformHandleMouseSelect && (!nodesAtSelectionPt || nodesAtSelectionPt.count == 0) && !isPanning) return;
     
-    if (currentMouseTransform == kCCBTransformHandleDownInside)
+    if (currentMouseTransform == kCCBTransformHandleDownInside && nodesAtSelectionPt && nodesAtSelectionPt.count>0)
     {
         CCNode* clickedNode = [nodesAtSelectionPt objectAtIndex:currentNodeAtSelectionPtIdx];
         
@@ -2207,15 +2197,49 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     if (isMouseTransforming || isPanning || currentMouseTransform != kCCBTransformHandleNone) return;
     if (!appDelegate.hasOpenedDocument) return;
     
-    int dx = [theEvent deltaX]*8;
-    int dy = -[theEvent deltaY]*8;
+    float dx = [theEvent deltaX];
+    float dy = -[theEvent deltaY];
     
-    scrollOffset.x = scrollOffset.x+dx;
-    scrollOffset.y = scrollOffset.y+dy;
-    
-    CCBDocument *curDoc = appDelegate.currentDocument;
-    [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
-    [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
+    if([theEvent modifierFlags] & NSCommandKeyMask)
+    {
+        if(appDelegate.currentDocument)
+        {
+            float maxZoom = 8;
+            float minZoom = 0.1f;
+            float zoom = [self stageZoom];
+            if(dy>0)
+            {
+                while(dy>0)
+                {
+                    dy -= 1;
+                    zoom *= 1/1.05;
+                }
+            }
+            else
+            {
+                while(dy<0)
+                {
+                    dy += 1;
+                    zoom *= 1.05f;
+                }
+            }
+            if(zoom > maxZoom)
+                zoom = maxZoom;
+            if(zoom < minZoom)
+                zoom = minZoom;
+            [self setStageZoom:zoom];
+            [appDelegate.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",appDelegate.currentDocument.currentResolution]];
+        }
+    }
+    else
+    {
+        scrollOffset.x = scrollOffset.x+dx*8;
+        scrollOffset.y = scrollOffset.y+dy*8;
+        
+        CCBDocument *curDoc = appDelegate.currentDocument;
+        [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
+        [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
+    }
     
 }
 
@@ -2436,7 +2460,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGImageRelease(imgRef);
     
     //resize preview
-    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 640, 1136)];
+    NSImageView* kView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 640, 640)];
     [kView setImageScaling:NSImageScaleProportionallyUpOrDown];
     [kView setImage:[[NSImage alloc] initWithContentsOfFile:path]];
     

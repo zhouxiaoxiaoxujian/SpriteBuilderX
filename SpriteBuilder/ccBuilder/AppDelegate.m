@@ -912,6 +912,12 @@ typedef enum
     return YES;
 }
 
+- (NSString *)tabView:(NSTabView *)aTabView toolTipForTabViewItem:(NSTabViewItem *)tabViewItem
+{
+    CCBDocument *doc = [tabViewItem identifier];
+    return [doc.filePath relativePathFromBaseDirPath:[self.projectSettings.projectPath stringByDeletingLastPathComponent]];
+}
+
 #pragma mark Handling selections
 
 - (BOOL) nodeHasCCBFileAncestor:(CCNode*)node
@@ -1224,9 +1230,12 @@ typedef enum
             break;
         }
     }
-    for(CCNode *child in startNode.children)
+    if (![NSStringFromClass(startNode.class) isEqualToString:@"CCBPCCBFile"])
     {
-        [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+        for(CCNode *child in startNode.children)
+        {
+            [self findNodesByUUIDs:UUIDs startFrom:child result:result];
+        }
     }
 }
 
@@ -2702,6 +2711,37 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 }
 
+//------------------ View --------------------
+-(void) setSortCustomProperties:(BOOL)sortCustomProperties {
+    SBSettings.sortCustomProperties = sortCustomProperties;
+    SBSettings.save;
+    [_inspectorController updateInspectorFromSelection];
+}
+
+-(BOOL) sortCustomProperties {
+    return SBSettings.sortCustomProperties;
+}
+
+-(void) setShowPrefabs:(BOOL)showPrefabs {
+    SBSettings.showPrefabs = showPrefabs;
+    SBSettings.save;
+    [_inspectorController updateInspectorFromSelection];
+}
+
+-(BOOL)showPrefabs {
+    return SBSettings.showPrefabs;
+}
+
+-(void) setShowPrefabPreview:(BOOL)showPrefabPreview {
+    SBSettings.showPrefabPreview = showPrefabPreview;
+    SBSettings.save;
+    [self.outlineProject reloadData];
+}
+
+-(BOOL)showPrefabPreview {
+    return SBSettings.showPrefabPreview;
+}
+
 -(BOOL)showJoints
 {
 	return ![SceneGraph instance].joints.node.hidden;
@@ -2919,8 +2959,11 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     node.UUID = [currentDocument getAndIncrementUUID];
 	[node postCopyFixup];
     
-    for (CCNode * child in node.children) {
-        [self updateUUIDs:child];
+    if (![NSStringFromClass(node.class) isEqualToString:@"CCBPCCBFile"])
+    {
+        for (CCNode * child in node.children) {
+            [self updateUUIDs:child];
+        }
     }
 }
 

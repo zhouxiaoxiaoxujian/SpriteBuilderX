@@ -495,6 +495,38 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
     
 }
 
+- (void) updateAnimateablePropertyValue:(id)value forProperty:(NSString*)name;
+{
+    NodeInfo* nodeInfo = self.userObject;
+    PlugInNode* plugIn = nodeInfo.plugIn;
+    
+    if ([plugIn isAnimatableProperty:name node:self])
+    {
+        SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+        int seqId = seq.sequenceId;
+        SequencerNodeProperty* seqNodeProp = [self sequenceNodeProperty:name sequenceId:seqId];
+        
+        if (seqNodeProp && seqNodeProp.type != kCCBKeyframeTypeToggle)
+        {
+            if(![seqNodeProp activeKeyframeAtTime:seq.timelinePosition])
+            {
+                [nodeInfo.baseValues setObject:value forKey:name];
+            }
+            else
+            {
+                SequencerKeyframe* keyframe = [seqNodeProp keyframeAtTime:seq.timelinePosition];
+                if (keyframe)
+                    keyframe.value = value;
+            }
+        }
+        else
+        {
+            [nodeInfo.baseValues setObject:value forKey:name];
+        }
+        [[SequencerHandler sharedHandler] redrawTimeline];
+    }
+}
+
 - (void) updatePropertiesTime:(float)time sequenceId:(int)seqId
 {
     NSArray* animatableProps = [self.plugIn animatablePropertiesForNode:self];
@@ -823,11 +855,18 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
 - (NSMutableArray*) customProperties
 {
     NodeInfo* info = self.userObject;
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                                     ascending:YES
-                                                                      selector:@selector(localizedStandardCompare:)];
-    [info.customProperties sortUsingDescriptors:@[sortDescriptor]];
+    if ([AppDelegate appDelegate].sortCustomProperties) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                         ascending:YES
+                                                                          selector:@selector(localizedStandardCompare:)];
+        [info.customProperties sortUsingDescriptors:@[sortDescriptor]];
+    }
     return info.customProperties;
+}
+
+- (NSArray*) additionalProperties
+{
+    return nil;
 }
 
 - (void) setCustomProperties:(NSMutableArray *)customProperties
@@ -967,6 +1006,23 @@ NSString * kAnimationOfPhysicsWarning = @"kAnimationOfPhysicsWarning";
 - (void) setUsesFlashSkew:(BOOL)seqExpanded
 {
     [self setExtraProp:[NSNumber numberWithBool:seqExpanded] forKey:@"usesFlashSkew"];
+}
+
+- (CCNode*) findNodeWithUUID:(NSUInteger)UUID
+{
+    if (self.UUID == UUID)
+        return self;
+    
+    if([[[self class] description] isEqualToString:@"CCBPCCBFile"])
+        return nil;
+    
+    for(CCNode * child in self.children)
+    {
+        CCNode *ret = [child findNodeWithUUID:UUID];
+        if(ret)
+            return ret;
+    }
+    return nil;
 }
 
 - (BOOL) usesFlashSkew

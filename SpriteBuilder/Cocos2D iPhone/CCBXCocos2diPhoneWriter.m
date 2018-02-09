@@ -70,6 +70,7 @@
 	[propTypes addObject:@"EffectControl"];
     [propTypes addObject:@"SoundFile"];
     [propTypes addObject:@"Offsets"];
+    [propTypes addObject:@"MemberVarAssignment"];
 }
 
 - (id) init
@@ -614,6 +615,21 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 			[self writeEffect:effectDescription];
 		}
 	}
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        NSNumber* assignmentType = [prop objectAtIndex:0];
+        NSString* variableName = [prop objectAtIndex:1];
+        
+        if(variableName && ![variableName isEqualToString:@""])
+        {
+            [self writeInt:[assignmentType intValue] withSign:NO];
+            [self writeCachedString:variableName isPath: NO];
+        }
+        else
+        {
+            [self writeInt:0 withSign:NO];
+        }
+    }
     else
     {
         NSLog(@"WARNING: Unknown property Type:%@" , type);
@@ -755,6 +771,10 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
 			}
 		}
 	}
+    else if ([type isEqualToString:@"MemberVarAssignment"])
+    {
+        [self addToStringCache:[value objectAtIndex:1] isPath:NO];
+    }
 }
 
 - (void) cacheStringsForNode:(NSDictionary*) node
@@ -869,6 +889,20 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         }
     }
     
+    NSArray* additionalProperties = [node objectForKey:@"additionalProperties"];
+    for (int i = 0; i < [additionalProperties count]; i++)
+    {
+        NSMutableDictionary* prop = [additionalProperties objectAtIndex:i];
+        
+        NSString* propName = [prop objectForKey:@"name"];
+        NSArray *ar = [propName componentsSeparatedByString:@"@"];
+        
+        [self addToStringCache:ar[1] isPath:NO];
+        id value = [prop objectForKey:@"value"];
+        
+        NSString* type = [prop objectForKey:@"type"];
+        [self cacheStringForProperty:type value:value];
+    }
     
     
     // Custom properties
@@ -1315,6 +1349,22 @@ static unsigned int WriteVarint32FallbackToArray(uint32 value, uint8* target) {
         
         [self writeProperty:value type:type name:name];
     }
+    
+    NSArray* additionalProperties = [node objectForKey:@"additionalProperties"];
+    
+    [self writeInt:(int)[additionalProperties count] withSign:NO];
+    
+    for (int i = 0; i < [additionalProperties count]; i++)
+    {
+        NSMutableDictionary* prop = [[additionalProperties objectAtIndex:i] mutableCopy];
+        NSString* propName = [prop objectForKey:@"name"];
+        NSArray *ar = [propName componentsSeparatedByString:@"@"];
+        prop[@"name"] = ar[1];
+        
+        [self writeInt:(int)[ar[0] intValue] withSign:NO];
+        [self writePropertyFromDictionary:prop];
+    }
+    
     
     // Write physics
     NSDictionary* physicsBody = [node objectForKey:@"physicsBody"];

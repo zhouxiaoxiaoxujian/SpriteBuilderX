@@ -237,6 +237,9 @@ static BOOL saveRawDataToPng(void* data, int width, int height, BOOL hasAlpha, B
     
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, data, width*height*sourceBytes, NULL);
     CGImageRef imageRef = CGImageCreate(width, height, 8, 8*sourceBytes, sourceBytes*width, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    CGDataProviderRelease(provider);
+    
+    CGColorSpaceRelease(colorSpaceRef);
     
     CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:path];
     CGImageDestinationRef destination = CGImageDestinationCreateWithURL(url, kUTTypePNG, 1, NULL);
@@ -247,14 +250,19 @@ static BOOL saveRawDataToPng(void* data, int width, int height, BOOL hasAlpha, B
             NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
             *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
         }
+        CGImageRelease(imageRef);
         return NO;
     }
     CGImageDestinationAddImage(destination, imageRef, nil);
+    CGImageRelease(imageRef);
     
     if (!CGImageDestinationFinalize(destination)) {
-        NSString * errorMessage = [NSString stringWithFormat:@"Failed to write image to: %@", path];
-        NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
-        *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        if (error)
+        {
+            NSString * errorMessage = [NSString stringWithFormat:@"Failed to write image to: %@", path];
+            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+        }
         CFRelease(destination);
         return NO;
     }
@@ -780,17 +788,23 @@ static void replacebytes(const char* path, long offset, const char * newBytes, l
         qualcommTextureOutput.pData     = NULL;
         
         if(Qonvert(&qualcommTextureInput, &qualcommTextureOutput) != Q_SUCCESS) {
-            NSString * errorMessage = [NSString stringWithFormat:@"The first Qonvert call failed: %@", srcPath];
-            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
-            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            if(error)
+            {
+                NSString * errorMessage = [NSString stringWithFormat:@"The first Qonvert call failed: %@", srcPath];
+                NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+                *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            }
             return NO;
         }
         qualcommTextureOutput.pData = (unsigned char*) malloc(qualcommTextureOutput.nDataSize);
         
         if(Qonvert(&qualcommTextureInput, &qualcommTextureOutput) != Q_SUCCESS) {
-            NSString * errorMessage = [NSString stringWithFormat:@"The second Qonvert call failed: %@", srcPath];
-            NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
-            *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            if(error)
+            {
+                NSString * errorMessage = [NSString stringWithFormat:@"The second Qonvert call failed: %@", srcPath];
+                NSDictionary * userInfo __attribute__((unused)) =@{NSLocalizedDescriptionKey:errorMessage};
+                *error = [NSError errorWithDomain:kErrorDomain code:EPERM userInfo:userInfo];
+            }
             free(qualcommTextureOutput.pData);
             return NO;
         }

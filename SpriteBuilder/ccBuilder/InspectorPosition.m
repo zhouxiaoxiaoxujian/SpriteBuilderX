@@ -46,7 +46,7 @@
                           [NSNumber numberWithFloat:pt.x],
                           [NSNumber numberWithFloat:pt.y],
                           NULL];
-    [self updateAnimateablePropertyValue:animValue];
+    [selection updateAnimateablePropertyValue:animValue forProperty:propertyName];
     
     [self updateAffectedProperties];
 }
@@ -74,7 +74,7 @@
                           [NSNumber numberWithFloat:pt.x],
                           [NSNumber numberWithFloat:pt.y],
                           NULL];
-    [self updateAnimateablePropertyValue:animValue];
+   [selection updateAnimateablePropertyValue:animValue forProperty:propertyName];
     
     [self updateAffectedProperties];
 }

@@ -39,6 +39,7 @@
     self.type = kCCBCustomPropTypeInt;
     self.optimized = NO;
     self.value = @"0";
+    self.defaultValue = @"0";
     
     return self;
 }
@@ -52,6 +53,7 @@
     self.type = [[ser objectForKey:@"type"] intValue];
     self.optimized = [[ser objectForKey:@"optimized"] boolValue];
     self.value = [ser objectForKey:@"value"];
+    self.defaultValue = [ser objectForKey:@"defaultValue"];
     
     return self;
 }
@@ -64,6 +66,7 @@
     [ser setObject:[NSNumber numberWithInt:type] forKey:@"type"];
     [ser setObject:[NSNumber numberWithBool:optimized] forKey:@"optimized"];
     [ser setObject:value forKey:@"value"];
+    [ser setObject:defaultValue forKey:@"defaultValue"];
     
     return ser;
 }
@@ -71,6 +74,7 @@
 - (void) dealloc
 {
     self.value = NULL;
+    self.defaultValue = NULL;
 }
 
 - (NSString*) formatValue:(NSString*) val
@@ -126,6 +130,20 @@
     return value;
 }
 
+-(void) setDefaultValue:(NSString *)defaultVal {
+    if (!defaultVal) defaultVal = @"";
+    
+    NSString *newDefaultValue = [self formatValue:defaultVal];
+    if (newDefaultValue == defaultValue) return;
+    
+    defaultValue = newDefaultValue;
+}
+
+-(NSString *) defaultValue {
+    if (!defaultValue) return [self formatValue: @""];
+    return defaultValue;
+}
+
 - (id) copyWithZone:(NSZone*)zone
 {
     CustomPropSetting* copy = [[CustomPropSetting alloc] init];
@@ -134,6 +152,7 @@
     copy.type = type;
     copy.optimized = optimized;
     copy.value = value;
+    copy.defaultValue = defaultValue;
     
     return copy;
 }
