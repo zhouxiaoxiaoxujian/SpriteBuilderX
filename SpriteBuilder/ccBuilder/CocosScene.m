@@ -2227,7 +2227,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 zoom = maxZoom;
             if(zoom < minZoom)
                 zoom = minZoom;
-            [self setStageZoom:zoom];
+            
+            //try to zoom with in mouse cursor, but some problems..
+//            CGPoint anchor = ccp([stageBgLayer convertToNodeSpace:mousePos].x / stageBgLayer.contentSize.width,
+//                                           [stageBgLayer convertToNodeSpace:mousePos].y / stageBgLayer.contentSize.height);
+//            CCLOG(@"%@",NSStringFromPoint(anchor));
+//            [self setAnchorPoint:anchor forNode:stageBgLayer];
+            
+            [self setStageZoom:zoom];           
             [appDelegate.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",appDelegate.currentDocument.currentResolution]];
         }
     }
@@ -2242,6 +2249,26 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     }
     
 }
+
+-(void)setAnchorPoint:(CGPoint)anchorPoint forNode:(CCNode *)node {
+    CGPoint newPoint = CGPointMake(node.contentSize.width * anchorPoint.x, node.contentSize.height * anchorPoint.y);
+    CGPoint oldPoint = CGPointMake(node.contentSize.width * node.anchorPoint.x, node.contentSize.height * node.anchorPoint.y);
+    
+    newPoint = CGPointApplyAffineTransform(newPoint, node.startTransform);
+    oldPoint = CGPointApplyAffineTransform(oldPoint, node.startTransform);
+    
+    CGPoint position = node.position;
+    
+    position.x -= oldPoint.x;
+    position.x += newPoint.x;
+    
+    position.y -= oldPoint.y;
+    position.y += newPoint.y;
+    
+    node.position = position;
+    node.anchorPoint = anchorPoint;
+}
+
 
 #pragma mark Post update methods
 
