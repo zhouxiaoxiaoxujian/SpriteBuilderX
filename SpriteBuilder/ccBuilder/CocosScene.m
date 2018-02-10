@@ -587,13 +587,13 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 }
 				
 				
-//                if(!isContentSizeZero && !(overTypeField & kCCBToolAnchor) && currentMouseTransform == kCCBTransformHandleNone)
-//                {
-//                    if([self isOverAnchor:node withPoint:mousePos])
-//                    {
-//                        overTypeField |= kCCBToolAnchor;
-//                    }
-//                }
+                if(!isContentSizeZero && !(overTypeField & kCCBToolAnchor) && currentMouseTransform == kCCBTransformHandleNone)
+                {
+                    if([self isOverAnchor:node withPoint:mousePos])
+                    {
+                        overTypeField |= kCCBToolAnchor;
+                    }
+                }
 //
 //                if(!isContentSizeZero && !(overTypeField & kCCBToolSkew) && currentMouseTransform == kCCBTransformHandleNone)
 //                {
@@ -1073,8 +1073,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         
         //NOTE The following return statements should go in order of the CCBTool enumeration.
         //kCCBToolAnchor
-//        if(!isJoint && !isContentSizeZero && [self isOverAnchor:node withPoint:pt])
-//            return kCCBTransformHandleAnchorPoint;
+        if(!isJoint && !isContentSizeZero && [self isOverAnchor:node withPoint:pt])
+            return kCCBTransformHandleAnchorPoint;
         
         if([self isOverContentBorders:pt withPoints:points])
             return kCCBTransformHandleDownInside;
@@ -1222,25 +1222,25 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     {
         CCBTransformHandle th = [self transformHandleUnderPt:pos];
         
-//        if (th == kCCBTransformHandleAnchorPoint)
-//        {
-//            // Anchor points are fixed for singel point nodes
-//            if (transformScalingNode.contentSizeInPoints.width == 0 || transformScalingNode.contentSizeInPoints.height == 0)
-//            {
-//                return;
-//            }
-//            
-//            BOOL readOnly = [[[transformScalingNode.plugIn.nodePropertiesDict objectForKey:@"anchorPoint"] objectForKey:@"readOnly"] boolValue];
-//            if (readOnly)
-//            {
-//                return;
-//            }
-//            
-//            // Transform anchor point
-//            currentMouseTransform = kCCBTransformHandleAnchorPoint;
-//            [transformScalingNode cacheStartTransformAndAnchor];
-//            return;
-//        }
+        if (th == kCCBTransformHandleAnchorPoint)
+        {
+            // Anchor points are fixed for singel point nodes
+            if (transformScalingNode.contentSizeInPoints.width == 0 || transformScalingNode.contentSizeInPoints.height == 0)
+            {
+                return;
+            }
+            
+            BOOL readOnly = [[[transformScalingNode.plugIn.nodePropertiesDict objectForKey:@"anchorPoint"] objectForKey:@"readOnly"] boolValue];
+            if (readOnly)
+            {
+                return;
+            }
+            
+            // Transform anchor point
+            currentMouseTransform = kCCBTransformHandleAnchorPoint;
+            [transformScalingNode cacheStartTransformAndAnchor];
+            return;
+        }
         if(th == kCCBTransformHandleRotate && appDelegate.selectedNode != rootNode)
         {
             // Start rotation transform
@@ -1767,20 +1767,20 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 //        
 //        
 //    }
-//    else if (currentMouseTransform == kCCBTransformHandleAnchorPoint)
-//    {
-//        CGPoint localPos = [transformScalingNode convertToNodeSpace:pos];
-//        CGPoint localDownPos = [transformScalingNode convertToNodeSpace:mouseDownPos];
-//        
-//        CGPoint deltaLocal = ccpSub(localPos, localDownPos);
-//        CGPoint deltaAnchorPoint = ccp(deltaLocal.x / transformScalingNode.contentSizeInPoints.width, deltaLocal.y / transformScalingNode.contentSizeInPoints.height);
-//        
-//        [appDelegate saveUndoStateWillChangeProperty:@"anchorPoint"];
-//        transformScalingNode.anchorPoint = ccpAdd(transformScalingNode.startAnchorPoint, deltaAnchorPoint);
-//        [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
-//        
-//        [self updateAnchorPointCompensation];
-//    }
+    else if (currentMouseTransform == kCCBTransformHandleAnchorPoint)
+    {
+        CGPoint localPos = [transformScalingNode convertToNodeSpace:pos];
+        CGPoint localDownPos = [transformScalingNode convertToNodeSpace:mouseDownPos];
+        
+        CGPoint deltaLocal = ccpSub(localPos, localDownPos);
+        CGPoint deltaAnchorPoint = ccp(deltaLocal.x / transformScalingNode.contentSizeInPoints.width, deltaLocal.y / transformScalingNode.contentSizeInPoints.height);
+        
+        [appDelegate saveUndoStateWillChangeProperty:@"anchorPoint"];
+        transformScalingNode.anchorPoint = ccpAdd(transformScalingNode.startAnchorPoint, deltaAnchorPoint);
+        [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
+        
+        [self updateAnchorPointCompensation];
+    }
     else if (currentMouseTransform == kCCBTransformHandleMouseSelect) {
        
         //super efficient way to select nodes.. can it be better? lol, programmed at ~3am at night
@@ -2137,13 +2137,13 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     {
         [[NSCursor closedHandCursor] push];
     }
-//    else if(currentTool == kCCBToolAnchor)
-//    {
-//        NSImage * image = [NSImage imageNamed:@"select-crosshair.png"];
-//        CGPoint centerPoint = CGPointMake(image.size.width/2, image.size.height/2);
-//        NSCursor * cursor =  [[NSCursor alloc] initWithImage:image hotSpot:centerPoint];
-//        [cursor push];
-//    }
+    else if(currentTool == kCCBToolAnchor)
+    {
+        NSImage * image = [NSImage imageNamed:@"select-crosshair.png"];
+        CGPoint centerPoint = CGPointMake(image.size.width/2, image.size.height/2);
+        NSCursor * cursor =  [[NSCursor alloc] initWithImage:image hotSpot:centerPoint];
+        [cursor push];
+    }
     else if (currentTool == kCCBToolRotate)
     {
         NSImage * image = [NSImage imageNamed:@"select-rotation.png"];
