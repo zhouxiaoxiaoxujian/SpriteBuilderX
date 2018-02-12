@@ -32,6 +32,7 @@
 @property (nonatomic, assign) BOOL showPrefabs;
 @property (nonatomic, assign) BOOL showPrefabPreview;
 @property (nonatomic, assign) BOOL sortCustomProperties;
+@property (nonatomic, assign) BOOL showRulers;
 
 @property (nonatomic, strong) NSMutableDictionary *expandedSeparators;
 

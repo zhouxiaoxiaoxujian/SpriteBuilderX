@@ -2722,6 +2722,16 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     return SBSettings.sortCustomProperties;
 }
 
+-(void) setShowRulers:(BOOL)showRulers {
+    SBSettings.showRulers = showRulers;
+    SBSettings.save;
+    [CocosScene cocosScene].rulerLayer.visible = showRulers;
+}
+
+-(BOOL) showRulers {
+    return SBSettings.showRulers;
+}
+
 -(void) setShowPrefabs:(BOOL)showPrefabs {
     SBSettings.showPrefabs = showPrefabs;
     SBSettings.save;

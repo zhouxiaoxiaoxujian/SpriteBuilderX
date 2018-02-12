@@ -122,6 +122,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 {
     // Rulers
     rulerLayer = [RulersLayer node];
+    rulerLayer.visible = appDelegate.showRulers;
     [self addChild:rulerLayer z:7];
     
     // Guides

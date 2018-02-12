@@ -220,6 +220,17 @@
     return [sortCustomProperties boolValue];
 }
 
+-(void) setShowRulers:(BOOL)showRulers {
+    [SBUserDefaults setObject:[NSNumber numberWithBool:showRulers] forKey:@"showRulers"];
+}
+
+-(BOOL) showRulers {
+    id showRulers = [SBUserDefaults valueForKey:@"showRulers"];
+    if(!showRulers)
+        return YES;
+    return [showRulers boolValue];
+}
+
 -(void) setExpandedSeparators:(NSMutableDictionary *) expandedSeparators {
     [SBUserDefaults setObject:expandedSeparators forKey:@"expandedSeparators"];
 }
