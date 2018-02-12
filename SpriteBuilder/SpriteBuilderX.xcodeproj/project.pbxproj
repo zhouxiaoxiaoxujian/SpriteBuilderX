@@ -901,6 +901,7 @@
 		E525FFCC2C4C3A9E49F87D64 /* InspectorSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F563B38B9F934F699449 /* InspectorSeparator.m */; };
 		E525FFEC03F2FE3650547F90 /* InspectorPopoverFloatXY.xib in Resources */ = {isa = PBXBuildFile; fileRef = E525F43AA008D5DD2726DA7E /* InspectorPopoverFloatXY.xib */; };
 		E525FFF90B5CCC7573B84680 /* InspectorIntegerLabeled.m in Sources */ = {isa = PBXBuildFile; fileRef = E525F51E61767602F66107B1 /* InspectorIntegerLabeled.m */; };
+		F804A1F02031F3680079590B /* RSRTVArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F804A1EE2031F3660079590B /* RSRTVArrayController.m */; };
 		F82444391E1716B00044EE4F /* BFColorPickerPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444271E1716B00044EE4F /* BFColorPickerPopover.m */; };
 		F824443A1E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F82444281E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt */; };
 		F824443B1E1716B00044EE4F /* BFPopoverColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = F824442A1E1716B00044EE4F /* BFPopoverColorWell.m */; };
@@ -2469,6 +2470,8 @@
 		E525FFC4E205CD906143FE30 /* InspectorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorString.m; sourceTree = "<group>"; };
 		E525FFE261905E5B939DC1F1 /* InspectorCCBFile.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectorCCBFile.xib; sourceTree = "<group>"; };
 		E525FFEB091D46AB06B02BF1 /* CCBPublisher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBPublisher.m; sourceTree = "<group>"; };
+		F804A1EE2031F3660079590B /* RSRTVArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRTVArrayController.m; sourceTree = "<group>"; };
+		F804A1EF2031F3680079590B /* RSRTVArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRTVArrayController.h; sourceTree = "<group>"; };
 		F82444261E1716B00044EE4F /* BFColorPickerPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFColorPickerPopover.h; sourceTree = "<group>"; };
 		F82444271E1716B00044EE4F /* BFColorPickerPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFColorPickerPopover.m; sourceTree = "<group>"; };
 		F82444281E1716B00044EE4F /* BFColorPickerPopover_LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BFColorPickerPopover_LICENSE.txt; sourceTree = "<group>"; };
@@ -4341,6 +4344,8 @@
 				E3214C4315D3C29D002413A7 /* CustomPropSettingsWindow.m */,
 				E3214C4515D3C3AF002413A7 /* CustomPropSetting.h */,
 				E3214C4615D3C3AF002413A7 /* CustomPropSetting.m */,
+				F804A1EF2031F3680079590B /* RSRTVArrayController.h */,
+				F804A1EE2031F3660079590B /* RSRTVArrayController.m */,
 			);
 			name = "Custom Properties";
 			sourceTree = "<group>";
@@ -6884,6 +6889,7 @@
 				E525F002884ABE8D1CA3F0C5 /* InspectorPoint.m in Sources */,
 				E525FC31D70B5FC45A92D878 /* InspectorPointLock.m in Sources */,
 				E525FD5F78427772C74BE9FC /* InspectorScaleLock.m in Sources */,
+				F804A1F02031F3680079590B /* RSRTVArrayController.m in Sources */,
 				E525FDD99292970FB096274E /* InspectorDegrees.m in Sources */,
 				E525FBF660068A2D361AA5F4 /* InspectorInteger.m in Sources */,
 				E525FC638B5C1759A72F1FC6 /* InspectorFloat.m in Sources */,
