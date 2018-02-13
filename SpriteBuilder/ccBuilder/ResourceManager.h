@@ -30,7 +30,7 @@
 @class RMDirectory;
 @class ProjectSettings;
 
-#define kCCBMaxTrackedDirectories 500
+#define kCCBMaxTrackedDirectories 2000
 #define kRMImagePreviewSize       50.0
 
 
