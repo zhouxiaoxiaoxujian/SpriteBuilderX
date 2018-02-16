@@ -323,6 +323,7 @@
 		A54C737D1A438C9E00DB1CF7 /* CCScissorsNode.ccbPlugNode in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = A54C73681A43894800DB1CF7 /* CCScissorsNode.ccbPlugNode */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A55F2CA11DF1D73000377AEC /* SequencerIdWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */; };
 		A55F2CA21DF1D73000377AEC /* SequencerIdWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */; };
+		A5604A2D2036E5E0000FF00F /* frame-android-2960x1440.png in Resources */ = {isa = PBXBuildFile; fileRef = A5604A2C2036E5E0000FF00F /* frame-android-2960x1440.png */; };
 		A56B9ADC1D36D5620027788E /* pngcrush in Resources */ = {isa = PBXBuildFile; fileRef = A56B9ADB1D36D5620027788E /* pngcrush */; };
 		A57319921A2FB0E50044B884 /* scale-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A573198F1A2FB0E50044B884 /* scale-5.png */; };
 		A57319931A2FB0E50044B884 /* scale-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A57319901A2FB0E50044B884 /* scale-6.png */; };
@@ -349,7 +350,6 @@
 		A5BFF4971FF3A96000CECCF9 /* frame-android-720p.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */; };
 		A5BFF49A1FF3BE5700CECCF9 /* frame-android-1024x600.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */; };
 		A5BFF49B1FF3BE5700CECCF9 /* frame-android-1280x800.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */; };
-		A5D11DC62036D9420052C594 /* frame-android-2960x1440.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D11DC52036D9420052C594 /* frame-android-2960x1440.png */; };
 		A5D163E11D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */; };
 		A5DD59D11A8FD50D00E56D8F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A5DD59E81A8FD5A500E56D8F /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */; };
@@ -1623,6 +1623,7 @@
 		A55F2C9E1DF1D73000377AEC /* SequencerIdWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequencerIdWindow.h; sourceTree = "<group>"; };
 		A55F2C9F1DF1D73000377AEC /* SequencerIdWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SequencerIdWindow.m; sourceTree = "<group>"; };
 		A55F2CA01DF1D73000377AEC /* SequencerIdWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerIdWindow.xib; sourceTree = "<group>"; };
+		A5604A2C2036E5E0000FF00F /* frame-android-2960x1440.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-2960x1440.png"; sourceTree = "<group>"; };
 		A56B9ADB1D36D5620027788E /* pngcrush */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngcrush; sourceTree = "<group>"; };
 		A573198F1A2FB0E50044B884 /* scale-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-5.png"; sourceTree = "<group>"; };
 		A57319901A2FB0E50044B884 /* scale-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scale-6.png"; sourceTree = "<group>"; };
@@ -1658,7 +1659,6 @@
 		A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-720p.png"; sourceTree = "<group>"; };
 		A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-1024x600.png"; sourceTree = "<group>"; };
 		A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame-android-1280x800.png"; sourceTree = "<group>"; };
-		A5D11DC52036D9420052C594 /* frame-android-2960x1440.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame-android-2960x1440.png"; path = "../../../../../Downloads/frame-android-2960x1440.png"; sourceTree = "<group>"; };
 		A5D163E01D3F9D6B00BEF5CC /* InspectorPopoverAnimation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorPopoverAnimation.xib; sourceTree = "<group>"; };
 		A5DD59DB1A8FD50D00E56D8F /* CCImage.ccbPlugNode */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CCImage.ccbPlugNode; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DD59E11A8FD5A500E56D8F /* CCBPProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CCBPProperties.plist; path = CCImage/CCBPProperties.plist; sourceTree = "<group>"; };
@@ -3113,7 +3113,7 @@
 				A5BFF4961FF3A96000CECCF9 /* frame-android-720p.png */,
 				A5BFF4981FF3BE5600CECCF9 /* frame-android-1024x600.png */,
 				A5BFF4991FF3BE5600CECCF9 /* frame-android-1280x800.png */,
-				A5D11DC52036D9420052C594 /* frame-android-2960x1440.png */,
+				A5604A2C2036E5E0000FF00F /* frame-android-2960x1440.png */,
 				E3DFA7CA15ACA0CD005D3B6F /* frame-android-medium.png */,
 				E3DFA7CB15ACA0CD005D3B6F /* frame-android-small.png */,
 				E3DFA7CC15ACA0CD005D3B6F /* frame-android-xsmall.png */,
@@ -6162,7 +6162,7 @@
 				F89F37B91E488DFC0038D53B /* LICENSE_CocosBuilder.txt in Resources */,
 				A57319931A2FB0E50044B884 /* scale-6.png in Resources */,
 				B7AC69A517A07DAD0041B8BD /* inspector-folder.png in Resources */,
-				A5D11DC62036D9420052C594 /* frame-android-2960x1440.png in Resources */,
+				A5604A2D2036E5E0000FF00F /* frame-android-2960x1440.png in Resources */,
 				B7AC69A617A07DAD0041B8BD /* inspector-objects.png in Resources */,
 				9218DF381919B04D0033851E /* joint-pivot-mode-s-on@2x.png in Resources */,
 				B7AC69A917A0923B0041B8BD /* inspector-nodes.png in Resources */,
