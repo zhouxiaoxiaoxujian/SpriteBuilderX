@@ -2229,25 +2229,26 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             if(zoom < minZoom)
                 zoom = minZoom;
             
-            //try to zoom with in mouse cursor, but some problems..
+            //try to zoom with into mouse cursor, but some problems..
 //            CGPoint anchor = ccp([stageBgLayer convertToNodeSpace:mousePos].x / stageBgLayer.contentSize.width,
 //                                           [stageBgLayer convertToNodeSpace:mousePos].y / stageBgLayer.contentSize.height);
 //            CCLOG(@"%@",NSStringFromPoint(anchor));
 //            [self setAnchorPoint:anchor forNode:stageBgLayer];
             
             [self setStageZoom:zoom];           
-            [appDelegate.currentDocument.stageZooms setValue:@(zoom) forKey:[NSString stringWithFormat:@"zoom_%d",appDelegate.currentDocument.currentResolution]];
+            
         }
     }
     else
     {
         scrollOffset.x = scrollOffset.x+dx*8;
         scrollOffset.y = scrollOffset.y+dy*8;
-        
-        CCBDocument *curDoc = appDelegate.currentDocument;
-        [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
-        [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
     }
+    //finally, save all anyway
+    CCBDocument *curDoc = appDelegate.currentDocument;
+    [curDoc.stageScrollOffsets setValue:@(scrollOffset.x) forKey:[NSString stringWithFormat:@"offset_x_%d",curDoc.currentResolution]];
+    [curDoc.stageScrollOffsets setValue:@(scrollOffset.y) forKey:[NSString stringWithFormat:@"offset_y_%d",curDoc.currentResolution]];
+    [appDelegate.currentDocument.stageZooms setValue:@(self.stageZoom) forKey:[NSString stringWithFormat:@"zoom_%d",curDoc.currentResolution]];
     
 }
 
