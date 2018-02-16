@@ -117,6 +117,10 @@
 + (ResolutionSetting*) settingAndroid1280x800Landscape;
 + (ResolutionSetting*) settingAndroid1280x800Portrait;
 
++ (ResolutionSetting*) settingAndroid2960x1440;
++ (ResolutionSetting*) settingAndroid2960x1440Landscape;
++ (ResolutionSetting*) settingAndroid2960x1440Portrait;
+
 
 - (id) initWithSerialization:(id)serialization;
 

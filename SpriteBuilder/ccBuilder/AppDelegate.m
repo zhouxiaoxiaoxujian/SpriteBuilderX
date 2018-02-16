@@ -601,6 +601,9 @@ typedef enum
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1280x800.png" andRotated:YES andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(1280, 800)]];
     [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-1280x800.png" andRotated:NO andScale:1.0] forKey:[NSValue valueWithSize:CGSizeMake(800, 1280)]];
     
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-2960x1440.png" andRotated:YES andScale:4.0] forKey:[NSValue valueWithSize:CGSizeMake(2960, 1440)]];
+    [defaultCanvasSizes setObject:[DeviceBorder createWithFrameName:@"frame-android-2960x1440.png" andRotated:NO andScale:4.0] forKey:[NSValue valueWithSize:CGSizeMake(1440, 2960)]];
+    
     [window setDelegate:self];
 
     [self setupTabBar];

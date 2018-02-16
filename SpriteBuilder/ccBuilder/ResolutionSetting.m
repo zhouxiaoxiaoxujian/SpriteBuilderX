@@ -724,6 +724,41 @@
     return setting;
 }
 
++ (ResolutionSetting*) settingAndroid2960x1440
+{
+    ResolutionSetting* setting = [[ResolutionSetting alloc] init];
+    
+    setting.name = @"Android 2960x1440";
+    setting.width = 0;
+    setting.height = 0;
+    setting.ext = @"tablethd tablet phonehd phone";
+    setting.resourceScale = 4;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid2960x1440Landscape
+{
+    ResolutionSetting* setting = [self settingAndroid2960x1440];
+    
+    setting.name = @"Android 2960x1440 Landscape";
+    setting.width = 2960;
+    setting.height = 1440;
+    
+    return setting;
+}
+
++ (ResolutionSetting*) settingAndroid2960x1440Portrait
+{
+    ResolutionSetting* setting = [self settingAndroid2960x1440];
+    
+    setting.name = @"Android 2960x1440 Portrait";
+    setting.width = 1440;
+    setting.height = 2960;
+    
+    return setting;
+}
+
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"%@ <0x%x> (%d x %d)", NSStringFromClass([self class]), (unsigned int)self, width, height];

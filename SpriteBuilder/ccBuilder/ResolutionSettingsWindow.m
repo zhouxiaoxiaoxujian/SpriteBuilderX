@@ -77,6 +77,9 @@
     [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Landscape]];
     [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Portrait]];
     
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid2960x1440Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting settingAndroid2960x1440Portrait]];
+    
     int i = 0;
     for (ResolutionSetting* setting in predefinedResolutions)
     {
