@@ -119,8 +119,6 @@ enum {
     float transformStartScaleX;
     float transformStartScaleY;
     CCNode* transformScalingNode;
-    float transformStartSkewX;
-    float transformStartSkewY;
     
     CCBTransformHandle currentMouseTransform;
     BOOL isMouseTransforming;
@@ -151,8 +149,7 @@ enum {
     float stageZoom;
     
     CCBTool currentTool;
-    CGPoint skewSegmentOrientation;
-    int     skewSegment;
+
     CGPoint cornerOrientation;//which way is the corner facing.
     int     cornerIndex;//Which corner of the object are we rotating?
 	
