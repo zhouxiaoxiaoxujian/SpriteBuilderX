@@ -55,6 +55,12 @@
 #import "InspectorController.h"
 #import "ResolutionSetting.h"
 #import "CCBDocument.h"
+#import "CCBWriterInternal.h"
+#import "ResourceManagerUtil.h"
+#import "ResourceTypes.h"
+#import "RMResource.h"
+#import "RMSpriteFrame.h"
+#import "TexturePropertySetter.h"
 
 #define kCCBSelectionOutset 3
 #define kCCBSinglePointSelectionRadius 23
@@ -1117,6 +1123,101 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint pos = [[CCDirectorMac sharedDirector] convertEventToGL:event];
     if ([appDelegate.physicsHandler rightMouseDown:pos event:event]) return;
     
+    mouseDownPos = pos;
+    [nodesAtSelectionPt removeAllObjects];
+    [self nodesUnderPt:pos rootNode:rootNode nodes:nodesAtSelectionPt];
+    
+    [[jointsLayer.children.firstObject children] forEach:^(CCNode * jointNode, int idx) {
+        [self nodesUnderPt:pos rootNode:jointNode nodes:nodesAtSelectionPt];
+    }];
+    
+    currentNodeAtSelectionPtIdx = (int)[nodesAtSelectionPt count] -1;
+    currentMouseTransform = kCCBTransformHandleNone;
+    if ([event modifierFlags] & NSControlKeyMask || currentNodeAtSelectionPtIdx<0)
+    {
+        appDelegate.selectedNodes = NULL;
+        [self setMouseSelectState];
+        return;
+    }
+    else
+    {
+        currentMouseTransform = kCCBTransformHandleDownInside;
+    }
+    // shortcut for Select Behind: Alt + LeftClick
+    if ([event modifierFlags] & NSAlternateKeyMask)
+    {
+        [self selectBehind];
+    }
+
+    if (currentMouseTransform == kCCBTransformHandleDownInside)
+    {
+        CCNode* clickedNode = [nodesAtSelectionPt objectAtIndex:currentNodeAtSelectionPtIdx];
+        
+        if ([event modifierFlags] & NSShiftKeyMask)
+        {
+            [self addNodeToSelection:clickedNode];
+        }
+        else
+        {
+            // Replace selection
+            [appDelegate setSelectedNodes:[NSArray arrayWithObject:clickedNode]];
+        }
+        
+        currentMouseTransform = kCCBTransformHandleNone;
+    }
+}
+
+- (void) selectedResource:(id)sender
+{
+    NSString *propertyName = @"spriteFrame";
+    [appDelegate saveUndoStateWillChangeProperty:propertyName];
+    
+    CCNode *selection = appDelegate.selectedNode;
+    
+    id item = [sender representedObject];
+    
+    // Fetch info about the sprite name
+    NSString* sf = NULL;
+    NSString* ssf = NULL;
+    
+    if (!item)
+    {
+        sf = @"";
+        ssf = @"";
+    }
+    else if ([item isKindOfClass:[RMResource class]])
+    {
+        RMResource* res = item;
+        
+        if (res.type == kCCBResTypeImage)
+        {
+            sf = [ResourceManagerUtil relativePathFromAbsolutePath:res.filePath];
+            ssf = kCCBUseRegularFile;
+        }
+    }
+    else if ([item isKindOfClass:[RMSpriteFrame class]])
+    {
+        RMSpriteFrame* frame = item;
+        sf = frame.spriteFrameName;
+        ssf = [ResourceManagerUtil relativePathFromAbsolutePath:frame.spriteSheetFile];
+    }
+    
+    // Set the properties and sprite frames
+    if (sf && ssf)
+    {
+        [selection setExtraProp:sf forKey:propertyName];
+        [selection setExtraProp:ssf forKey:[NSString stringWithFormat:@"%@Sheet", propertyName]];
+        
+        [TexturePropertySetter setSpriteFrameForNode:selection andProperty:propertyName withFile:sf andSheetFile:ssf];
+        
+        // Setup menu
+        if([selection isKindOfClass:[CCNode class]])
+        {
+            [selection updateAnimateablePropertyValue:[NSArray arrayWithObjects:sf, ssf , nil] forProperty:propertyName];
+        }
+    }
+    
+    [[InspectorController sharedController] refreshProperty: propertyName];
 }
 
 - (void) mouseDown:(NSEvent *)event
@@ -1235,11 +1336,93 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 {
     if (!appDelegate.hasOpenedDocument) return;
     
-    CGPoint pos = [[CCDirectorMac sharedDirector] convertEventToGL:event];
+    isMouseTransforming = NO;
+    if (isPanning)
+    {
+        self.currentTool = kCCBToolSelection;
+        isPanning = NO;
+    }
+    mouseSelectPosDown = CGPointZero;
+    mouseSelectPosMove = CGPointZero;
+    currentMouseTransform = kCCBTransformHandleNone;
     
-    if ([appDelegate.physicsHandler rightMouseUp:pos event:event]) return;
-    
-    
+    //Object Menu
+    if (appDelegate.selectedNode) {
+        [appDelegate.spriteObjectMenu removeAllItems];
+        
+        CCNode *selection = appDelegate.selectedNode;
+        NodeInfo *info = appDelegate.selectedNode.userObject;
+        PlugInNode *plugIn = info.plugIn;
+        //CCLOG(@"%@",plugIn.nodeEditorClassName);
+        
+        if ([plugIn.nodeEditorClassName isEqualToString:@"CCBPSprite"] ||
+            [plugIn.nodeEditorClassName isEqualToString:@"CCBPSprite9Slice"] ||
+            [plugIn.nodeEditorClassName isEqualToString:@"CCBPImage"] ||
+            [plugIn.nodeEditorClassName isEqualToString:@"CCBPTiledImage"]) {
+            
+            //Add menu displayName
+            NSMenuItem *spriteDisplayNameItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@:", plugIn.displayName]
+                                                                           action:nil
+                                                                    keyEquivalent:@""];
+            spriteDisplayNameItem.enabled = NO;
+            [appDelegate.spriteObjectMenu addItem:spriteDisplayNameItem];
+            
+            NSString *propertyName = @"spriteFrame";
+            // Setup menu for the SpriteFrame
+            NSString *spriteFrameTitle = [info.extraProps valueForKey:propertyName];
+            bool isNull = (spriteFrameTitle.length == 0);
+            NSMenuItem *spriteFrameMenuItem = [[NSMenuItem alloc] initWithTitle: isNull ? @"<NULL>" : spriteFrameTitle
+                                                                         action: nil
+                                                                  keyEquivalent: @""];
+            
+            [appDelegate.spriteObjectMenu addItem:spriteFrameMenuItem];
+            
+            NSMenu *subMenu = [[NSMenu alloc] init];
+            spriteFrameMenuItem.submenu = subMenu;
+            
+            if ([selection isKindOfClass:[CCNode class]]) {
+                SequencerSequence* seq = [SequencerHandler sharedHandler].currentSequence;
+                id value = [selection valueForProperty:propertyName atTime:seq.timelinePosition sequenceId:seq.sequenceId];
+                
+                NSString* sf = [value objectAtIndex:0];
+                NSString* ssf = [value objectAtIndex:1];
+                
+                if ([ssf isEqualToString:kCCBUseRegularFile] || [ssf isEqualToString:@""]) ssf = NULL;
+                
+                [ResourceManagerUtil populateResourceMenu: subMenu
+                                                  resType: kCCBResTypeImage
+                                        allowSpriteFrames: YES
+                                             selectedFile: sf
+                                            selectedSheet: ssf
+                                                   target: self];
+            } else {
+                //[TexturePropertySetter
+                NSString* sf = [selection extraPropForKey:propertyName];
+                NSString* ssf = [selection extraPropForKey:[propertyName stringByAppendingString:@"Sheet"]];
+                
+                if ([ssf isEqualToString:kCCBUseRegularFile] || [ssf isEqualToString:@""]) ssf = NULL;
+                
+                [ResourceManagerUtil populateResourceMenu: subMenu
+                                                  resType: kCCBResTypeImage
+                                        allowSpriteFrames: YES
+                                             selectedFile: sf
+                                            selectedSheet: ssf
+                                                   target: self];
+            }
+            //remove NULL at submenu if already NULL at main menu
+            if (isNull) {
+                [subMenu removeItemAtIndex:0];
+            }
+            
+            //separator
+            NSMenuItem *separator = [NSMenuItem separatorItem];
+            [appDelegate.spriteObjectMenu addItem: separator];
+            
+            //TODO: add more cool menu items like FlipX
+            
+        }
+        [NSMenu popUpContextMenu:appDelegate.spriteObjectMenu withEvent:event forView:appDelegate.cocosView];
+    }
 }
 
 //0=bottom, 1=right  2=top 3=left

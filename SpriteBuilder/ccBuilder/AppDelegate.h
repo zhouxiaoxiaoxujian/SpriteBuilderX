@@ -362,6 +362,8 @@ typedef void (^CompletionCallback) (BOOL success);
 @property (weak, nonatomic,readonly) IBOutlet NSMenu *menuContextKeyframeNoselection;
 @property (weak, nonatomic,readonly) NSSegmentedControl *panelVisibilityControl;
 
+@property (weak) IBOutlet NSMenu *spriteObjectMenu;
+
 @property (nonatomic,strong) NSString *openedProjectFileName;
 @property (nonatomic, strong) ProjectSettings* editedProjectSettings;
 @property (nonatomic,strong) ProjectSettings* projectSettings;
