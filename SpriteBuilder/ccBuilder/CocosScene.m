@@ -1234,14 +1234,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         {
             // Start scale transform
             currentMouseTransform = kCCBTransformHandleSize;
-//            transformSize = [transformScalingNode convertContentSizeToPoints:transformScalingNode.contentSize
-//                                                                        type:transformScalingNode.contentSizeType];
-            
             transformContentSize = transformScalingNode.contentSizeInPoints;
-            
-            positionInPointsBefore = [transformScalingNode convertPositionToPoints:transformScalingNode.position
-                                                                              type:transformScalingNode.positionType];
-            
             transformStartScaleX = [PositionPropertySetter scaleXForNode:transformScalingNode prop:@"scale"];
             transformStartScaleY = [PositionPropertySetter scaleYForNode:transformScalingNode prop:@"scale"];
             return;
@@ -1556,236 +1549,149 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     }
     else if (currentMouseTransform == kCCBTransformHandleSize)
     {
-        {
-            CGPoint nodePos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
-            
-            //Where did we start.
-            CGPoint deltaStart = ccpSub(nodePos, mouseDownPos);
-            
-            //Where are we now.
-            CGPoint deltaNew = ccpSub(nodePos, pos);
-            
-            CGPoint anchorBefore = transformScalingNode.anchorPoint;
-            CGPoint anchorPointSize = ccp(0.5,0.5);
-            
-            switch (cornerIndex) {
-                case 0: //bl
-                    anchorPointSize = ccp(1.0,1.0);
-                    CCLOG(@"bottom left");
-                    break;
-                    
-                case 1: //br
-                    anchorPointSize = ccp(0.0,1.0);
-                    CCLOG(@"bottom right");
-                    break;
-                    
-                case 2: //tR
-                    anchorPointSize = ccp(0.0,0.0);
-                    CCLOG(@"top right");
-                    break;
-                    
-                case 3: //tL
-                    anchorPointSize = ccp(1.0,0.0);
-                    CCLOG(@"top left");
-                    break;
-                    
-                case 4: //l
-                    anchorPointSize = ccp(1.0,0.5);
-                    CCLOG(@"left");
-                    break;
-                    
-                case 5: //b
-                    anchorPointSize = ccp(0.5,1.0);
-                    CCLOG(@"bottom");
-                    break;
-                    
-                case 6: //r
-                    anchorPointSize = ccp(0.0,0.5);
-                    CCLOG(@"right");
-                    break;
-                    
-                case 7: //t
-                    anchorPointSize = ccp(0.5,0.0);
-                    CCLOG(@"top");
-                    break;
-            }
-            
-            [self setAnchorPoint:anchorPointSize forNode:transformScalingNode];
-            
-//            CGPoint vertexScaler  = {1.0f,1.0f};
-//            if(transformScalingNode.contentSize.height != 0 && transformScalingNode.contentSize.height != 0)
-//            {
-//                vertexScaler = [self vertexLockedScaler:anchorPointSize withCorner:cornerIndex];
-//            }
-//
-//            //First, unwind the current mouse down position to form an untransformed 'root' position: ie where on an untransformed image would you have clicked.
-//            CGSize contentSizeInPoints = transformScalingNode.contentSizeInPoints;
-//            CGPoint anchorPointInPoints = ccp(contentSizeInPoints.width * anchorPointSize.x,
-//                                              contentSizeInPoints.height * anchorPointSize.y);
-//            //T
-//            CGAffineTransform translateTranform = CGAffineTransformTranslate(CGAffineTransformIdentity, -anchorPointInPoints.x, -anchorPointInPoints.y);
-//
-//            //S
-//            CGAffineTransform scaleTransform = CGAffineTransformMakeScale(transformStartScaleX, transformStartScaleY);
-//
-//            //K
-//            CGAffineTransform skewTransform = CGAffineTransformMake(1.0f, tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewY)),
-//                                                                    tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewX)), 1.0f,
-//                                                                    0.0f, 0.0f );
-//
-//            //R
-//            CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(-transformScalingNode.rotation));
-//
-//            //Root position == x,   xTKSR=mouseDown
-//            //We've got a root position now.
-//            CGPoint rootPosition = CGPointApplyAffineTransform(deltaStart,CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformConcat(translateTranform,skewTransform),scaleTransform), rotationTransform)));
-//
-//            //What scale (S') would be have to adjust to in order to achieve the new mouseDragg position
-//            //  xTKS'R=mouseDrag,    [xTK]S'=mouseDrag*R^-1
-//            // [xTK]==known==intermediate==I, R^-1==known, mouseDrag==known, solve so S'
-//
-//            //xTK
-//            CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
-//            CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
-//
-//               // CGPoint deltaPos = CGPointMake(intermediate.x - unRotatedMouse.x, intermediate.y - unRotatedMouse.y);
-//
-//
-//
-//                //printf("deltaPos %f %f/n", deltaPos.x, deltaPos.y);
-//
-//                CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
-//                if(isinf(scale.x) || isnan(scale.x))
-//                {
-//                    scale.x = 0.0;
-//                    vertexScaler.x = 0.0f;
-//                }
-//
-//                if(isinf(scale.y) || isnan(scale.y))
-//                {
-//                    scale.y = 0.0;
-//                    vertexScaler.y = 0.0f;
-//                }
-//
-//
-//                // Calculate new scale
-//                float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
-//                float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
-//
-//
-//                if ([event modifierFlags] & NSShiftKeyMask)
-//                {
-//                    // Use the smallest scale composit
-//                    if (fabs(xScaleNew) < fabs(yScaleNew))
-//                    {
-//                        yScaleNew = xScaleNew;
-//                    }
-//                    else
-//                    {
-//                        xScaleNew = yScaleNew;
-//                    }
-//                }
-//
-            [appDelegate saveUndoStateWillChangeProperty:@"position"];
-            
-//
-//
-//                transformScalingNode.contentSizeInPoints = CGSizeMake(transformContentSize.width * xScaleNew, transformContentSize.height * yScaleNew);
-//
-//                [self setAnchorPoint:anchorBefore forNode:transformScalingNode];
-                [[InspectorController sharedController] refreshProperty:@"contentSize"];
-                [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
-                [[InspectorController sharedController] refreshProperty:@"position"];
-            
-            
-//            //UpdateTheSizeTool
-            cornerOrientation = ccpNormalize(deltaNew);
-            self.currentTool = kCCBToolSize;//force it to update.
-            
+        
+        CGPoint nodePos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
+        
+        //Where did we start.
+        CGPoint deltaStart = ccpSub(nodePos, mouseDownPos);
+        
+        //Where are we now.
+        CGPoint deltaNew = ccpSub(nodePos, pos);
+        
+        CGPoint anchorBefore = transformScalingNode.anchorPoint;
+        CGPoint anchorPointSize = ccp(0.5,0.5);
+        
+        switch (cornerIndex) {
+            case 0: //bl
+                anchorPointSize = ccp(1.0,1.0);
+                CCLOG(@"bottom left");
+                break;
+                
+            case 1: //br
+                anchorPointSize = ccp(0.0,1.0);
+                CCLOG(@"bottom right");
+                break;
+                
+            case 2: //tR
+                anchorPointSize = ccp(0.0,0.0);
+                CCLOG(@"top right");
+                break;
+                
+            case 3: //tL
+                anchorPointSize = ccp(1.0,0.0);
+                CCLOG(@"top left");
+                break;
+                
+            case 4: //l
+                anchorPointSize = ccp(1.0,0.5);
+                CCLOG(@"left");
+                break;
+                
+            case 5: //b
+                anchorPointSize = ccp(0.5,1.0);
+                CCLOG(@"bottom");
+                break;
+                
+            case 6: //r
+                anchorPointSize = ccp(0.0,0.5);
+                CCLOG(@"right");
+                break;
+                
+            case 7: //t
+                anchorPointSize = ccp(0.5,0.0);
+                CCLOG(@"top");
+                break;
         }
-//------------------------------------------------------------------------------------------------------------------
-//        CGPoint nodeWorldPos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
-//
-//        //Where did we start.
-//        CGPoint deltaStart = ccpSub(nodeWorldPos, mouseDownPos);
-//
-//        //Where are we now.
-//        CGPoint deltaNew = ccpSub(nodeWorldPos, pos);
-//
-//        //First, unwind the current mouse down position to form an untransformed 'root' position: ie where on an untransformed image would you have clicked.
-//        CGSize contentSizeInPoints = transformScalingNode.contentSizeInPoints;
-//        CGPoint anchorPointInPoints = ccp( contentSizeInPoints.width * transformScalingNode.anchorPoint.x, contentSizeInPoints.height * transformScalingNode.anchorPoint.y );
-//
-//        CGPoint sizeAnchorPoint = ccp(0.5,0.5);
-//        switch (cornerIndex) {
-//            case 0: //bl
-//                sizeAnchorPoint = ccp(1.0,1.0);
-//                //CCLOG(@"bottom left");
-//                break;
-//
-//            case 1: //br
-//                sizeAnchorPoint = ccp(0.0,1.0);
-//                //CCLOG(@"bottom right");
-//                break;
-//
-//            case 2: //tR
-//                sizeAnchorPoint = ccp(0.0,0.0);
-//                //CCLOG(@"top right");
-//                break;
-//
-//            case 3: //tL
-//                sizeAnchorPoint = ccp(1.0,0.0);
-//                //CCLOG(@"top left");
-//                break;
-//
-//            case 4: //l
-//                sizeAnchorPoint = ccp(1.0,0.5);
-//                //CCLOG(@"left");
-//                break;
-//
-//            case 5: //b
-//                sizeAnchorPoint = ccp(0.5,1.0);
-//                //CCLOG(@"bottom");
-//                break;
-//
-//            case 6: //r
-//                sizeAnchorPoint = ccp(0.0,0.5);
-//                //CCLOG(@"right");
-//                break;
-//
-//            case 7: //t
-//                sizeAnchorPoint = ccp(0.5,0.0);
-//                //CCLOG(@"top");
-//                break;
-//        }
-//
-//        [appDelegate saveUndoStateWillChangeProperty:@"contentSize"];
-//
-////        CGPoint delta = ccp((int)(mouseSelectPosMove.x - mouseDownPos.x), (int)(mouseSelectPosMove.y - mouseDownPos.y));
-////        CGSize newSize = CGSizeMake(transformSize.width + delta.x, transformSize.height + delta.y);
-////
-//////        CGPoint newLocalPos = [transformScalingNode.parent convertToNodeSpace:mouseDownPos];
-//////        CGSize newSize = CGSizeMake(transformSize.width + newLocalPos.x, transformSize.height + newLocalPos.y);
-////
-////        CGPoint anchorBefore = transformScalingNode.anchorPoint;
-////
-////        CGPoint deltaMove = ccp(delta.x * anchorBefore.x, delta.y * anchorBefore.y);
-////
-////        CCLOG(@"delta: %@",NSStringFromPoint(delta));
-////        CCLOG(@"deltaMove: %@",NSStringFromPoint(deltaMove));
-////
-////        [self setAnchorPoint:sizeAnchorPoint forNode:transformScalingNode];
-////        transformScalingNode.contentSize = [transformScalingNode convertContentSizeFromPoints:newSize type:transformScalingNode.contentSizeType];
-////
-////        CGPoint posChange = ccpAdd(positionInPointsBefore, deltaMove);
-////        transformScalingNode.position = [transformScalingNode convertPositionFromPoints:posChange type:transformScalingNode.positionType];
-////
-////        [self setAnchorPoint:anchorBefore forNode:transformScalingNode];
-//
-//        [[InspectorController sharedController] refreshProperty:@"contentSize"];
-//        [[InspectorController sharedController] refreshProperty:@"position"];
+        
+        [self setAnchorPoint:anchorPointSize forNode:transformScalingNode];
+        
+        CGPoint vertexScaler  = {1.0f,1.0f};
+        if(transformScalingNode.contentSize.height != 0 && transformScalingNode.contentSize.height != 0)
+        {
+            vertexScaler = [self vertexLockedScaler:anchorPointSize withCorner:cornerIndex];
+        }
+
+        //First, unwind the current mouse down position to form an untransformed 'root' position: ie where on an untransformed image would you have clicked.
+        CGSize contentSizeInPoints = transformScalingNode.contentSizeInPoints;
+        CGPoint anchorPointInPoints = ccp(contentSizeInPoints.width * anchorPointSize.x,
+                                          contentSizeInPoints.height * anchorPointSize.y);
+        //T
+        CGAffineTransform translateTranform = CGAffineTransformTranslate(CGAffineTransformIdentity, -anchorPointInPoints.x, -anchorPointInPoints.y);
+
+        //S
+        CGAffineTransform scaleTransform = CGAffineTransformMakeScale(transformStartScaleX, transformStartScaleY);
+
+        //K
+        CGAffineTransform skewTransform = CGAffineTransformMake(1.0f, tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewY)),
+                                                                tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewX)), 1.0f,
+                                                                0.0f, 0.0f );
+
+        //R
+        CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(-transformScalingNode.rotation));
+
+        //Root position == x,   xTKSR=mouseDown
+        //We've got a root position now.
+        CGPoint rootPosition = CGPointApplyAffineTransform(deltaStart,CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformConcat(translateTranform,skewTransform),scaleTransform), rotationTransform)));
+
+        //What scale (S') would be have to adjust to in order to achieve the new mouseDragg position
+        //  xTKS'R=mouseDrag,    [xTK]S'=mouseDrag*R^-1
+        // [xTK]==known==intermediate==I, R^-1==known, mouseDrag==known, solve so S'
+
+        //xTK
+        CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
+        CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
+
+        // CGPoint deltaPos = CGPointMake(intermediate.x - unRotatedMouse.x, intermediate.y - unRotatedMouse.y);
+
+
+        //printf("deltaPos %f %f/n", deltaPos.x, deltaPos.y);
+
+        CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
+        if(isinf(scale.x) || isnan(scale.x))
+        {
+            scale.x = 0.0;
+            vertexScaler.x = 0.0f;
+        }
+
+        if(isinf(scale.y) || isnan(scale.y))
+        {
+            scale.y = 0.0;
+            vertexScaler.y = 0.0f;
+        }
+
+        // Calculate new scale
+        float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
+        float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
+
+
+        if ([event modifierFlags] & NSShiftKeyMask)
+        {
+            // Use the smallest scale composit
+            if (fabs(xScaleNew) < fabs(yScaleNew))
+            {
+                yScaleNew = xScaleNew;
+            }
+            else
+            {
+                xScaleNew = yScaleNew;
+            }
+        }
+
+        [appDelegate saveUndoStateWillChangeProperty:@"position"];
+
+        transformScalingNode.contentSizeInPoints = CGSizeMake(transformContentSize.width * xScaleNew, transformContentSize.height * yScaleNew);
+
+        [self setAnchorPoint:anchorBefore forNode:transformScalingNode];
+        [[InspectorController sharedController] refreshProperty:@"contentSize"];
+        [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
+        [[InspectorController sharedController] refreshProperty:@"position"];
+        
+        //UpdateTheSizeTool
+        cornerOrientation = ccpNormalize(deltaNew);
+        //force it to update.
+        self.currentTool = kCCBToolSize;
+        
     }
-    
     else if (currentMouseTransform == kCCBTransformHandleRotate)
     {
         CGPoint nodePos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
@@ -2290,8 +2196,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint oldPoint = ccp(node.contentSizeInPoints.width * node.anchorPoint.x,
                            node.contentSizeInPoints.height * node.anchorPoint.y);
     
-    newPoint = CGPointApplyAffineTransform(newPoint, node.nodeToWorldTransform);
-    oldPoint = CGPointApplyAffineTransform(oldPoint, node.nodeToWorldTransform);
+    newPoint = CGPointApplyAffineTransform(newPoint, node.nodeToParentTransform);
+    oldPoint = CGPointApplyAffineTransform(oldPoint, node.nodeToParentTransform);
     
     CGPoint position = node.positionInPoints;
     

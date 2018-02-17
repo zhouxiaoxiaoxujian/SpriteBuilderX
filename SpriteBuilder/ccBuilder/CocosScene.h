@@ -110,9 +110,6 @@ enum {
     CGSize transformContentSize;
     CCNode* transformScalingNode;
     
-    CGSize transformSize;
-    CGPoint positionInPointsBefore;
-    
     CCBTransformHandle currentMouseTransform;
     BOOL isMouseTransforming;
     BOOL isPanning;
