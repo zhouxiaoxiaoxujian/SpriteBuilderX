@@ -1681,7 +1681,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 
         transformScalingNode.contentSizeInPoints = CGSizeMake(transformContentSize.width * xScaleNew, transformContentSize.height * yScaleNew);
 
-        [self setAnchorPoint:anchorBefore forNode:transformScalingNode];
+        //FIXME: shit should be enabled.
+        //but without it - almost works
+        //[self setAnchorPoint:anchorBefore forNode:transformScalingNode];
+        
         [[InspectorController sharedController] refreshProperty:@"contentSize"];
         [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
         [[InspectorController sharedController] refreshProperty:@"position"];
