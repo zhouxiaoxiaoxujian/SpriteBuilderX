@@ -50,31 +50,20 @@ typedef enum {
     kCCBTransformHandleNone = 0,
     kCCBTransformHandleDownInside,
     kCCBTransformHandleMove,
-//    kCCBTransformHandleScale,
+    kCCBTransformHandleSize,
     kCCBTransformHandleRotate,
     kCCBTransformHandleAnchorPoint,
-//    kCCBTransformHandleSkew,
     kCCBTransformHandleMouseSelect,
 } CCBTransformHandle;
 
-//typedef enum {
-//    //most useless feature, especially for small Sprites, in any case never needed to change the anchorPoint using the mouse..
-//    kCCBToolAnchor      =(1 << 0), never used
-//    kCCBToolTranslate   =(1 << 1),
-//    kCCBToolScale       =(1 << 2), never used
-//    kCCBToolGrab        =(1 << 3),
-//    kCCBToolSkew        =(1 << 4),  never used
-//    kCCBToolRotate      =(1 << 5),
-//    kCCBToolSelection   =(1 << 6),
-//    kCCBToolMax         =(1 << 7)
-//}CCBTool;
 typedef enum {
     kCCBToolAnchor      =(1 << 0),
     kCCBToolTranslate   =(1 << 1),
     kCCBToolGrab        =(1 << 2),
     kCCBToolRotate      =(1 << 3),
-    kCCBToolSelection   =(1 << 4),
-    kCCBToolMax         =(1 << 5)
+    kCCBToolSize        =(1 << 4),
+    kCCBToolSelection   =(1 << 5),
+    kCCBToolMax         =(1 << 6)
 }CCBTool;
 
 enum {
@@ -118,7 +107,11 @@ enum {
     float transformStartRotation;
     float transformStartScaleX;
     float transformStartScaleY;
+    CGSize transformContentSize;
     CCNode* transformScalingNode;
+    
+    CGSize transformSize;
+    CGPoint positionInPointsBefore;
     
     CCBTransformHandle currentMouseTransform;
     BOOL isMouseTransforming;
