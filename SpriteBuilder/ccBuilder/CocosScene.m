@@ -1234,6 +1234,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         {
             // Start scale transform
             currentMouseTransform = kCCBTransformHandleSize;
+            anchorBefore = transformScalingNode.anchorPoint;
             transformContentSize = transformScalingNode.contentSizeInPoints;
             transformStartScaleX = [PositionPropertySetter scaleXForNode:transformScalingNode prop:@"scale"];
             transformStartScaleY = [PositionPropertySetter scaleYForNode:transformScalingNode prop:@"scale"];
@@ -1558,48 +1559,47 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         //Where are we now.
         CGPoint deltaNew = ccpSub(nodePos, pos);
         
-        CGPoint anchorBefore = transformScalingNode.anchorPoint;
         CGPoint anchorPointSize = ccp(0.5,0.5);
         
         switch (cornerIndex) {
             case 0: //bl
                 anchorPointSize = ccp(1.0,1.0);
-                CCLOG(@"bottom left");
+                //CCLOG(@"bottom left");
                 break;
                 
             case 1: //br
                 anchorPointSize = ccp(0.0,1.0);
-                CCLOG(@"bottom right");
+                //CCLOG(@"bottom right");
                 break;
                 
             case 2: //tR
                 anchorPointSize = ccp(0.0,0.0);
-                CCLOG(@"top right");
+                //CCLOG(@"top right");
                 break;
                 
             case 3: //tL
                 anchorPointSize = ccp(1.0,0.0);
-                CCLOG(@"top left");
+                //CCLOG(@"top left");
                 break;
                 
             case 4: //l
                 anchorPointSize = ccp(1.0,0.5);
-                CCLOG(@"left");
+                //CCLOG(@"left");
                 break;
                 
             case 5: //b
                 anchorPointSize = ccp(0.5,1.0);
-                CCLOG(@"bottom");
+                //CCLOG(@"bottom");
                 break;
                 
             case 6: //r
                 anchorPointSize = ccp(0.0,0.5);
-                CCLOG(@"right");
+                //CCLOG(@"right");
                 break;
                 
             case 7: //t
                 anchorPointSize = ccp(0.5,0.0);
-                CCLOG(@"top");
+                //CCLOG(@"top");
                 break;
         }
         
@@ -1640,11 +1640,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         //xTK
         CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
         CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
-
         // CGPoint deltaPos = CGPointMake(intermediate.x - unRotatedMouse.x, intermediate.y - unRotatedMouse.y);
-
-
-        //printf("deltaPos %f %f/n", deltaPos.x, deltaPos.y);
 
         CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
         if(isinf(scale.x) || isnan(scale.x))
@@ -1677,16 +1673,11 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             }
         }
 
-        [appDelegate saveUndoStateWillChangeProperty:@"position"];
+        [appDelegate saveUndoStateWillChangeProperty:@"contentSize"];
 
         transformScalingNode.contentSizeInPoints = CGSizeMake(transformContentSize.width * xScaleNew, transformContentSize.height * yScaleNew);
 
-        //FIXME: shit should be enabled.
-        //but without it - almost works
-        //[self setAnchorPoint:anchorBefore forNode:transformScalingNode];
-        
         [[InspectorController sharedController] refreshProperty:@"contentSize"];
-        [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
         [[InspectorController sharedController] refreshProperty:@"position"];
         
         //UpdateTheSizeTool
@@ -1947,8 +1938,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             propName = @"rotation";
             type = kCCBKeyframeTypeDegrees;
         }
-//        else if (currentMouseTransform == kCCBTransformHandleScale)
-//        {
+        else if (currentMouseTransform == kCCBTransformHandleSize)
+        {
 //            float x = [PositionPropertySetter scaleXForNode:selectedNode prop:@"scale"];
 //            float y = [PositionPropertySetter scaleYForNode:selectedNode prop:@"scale"];
 //            value = [NSArray arrayWithObjects:
@@ -1957,7 +1948,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 //                     nil];
 //            propName = @"scale";
 //            type = kCCBKeyframeTypeScaleLock;
-//        }
+            
+            [self setAnchorPoint:anchorBefore forNode:transformScalingNode];
+            [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
+        }
         else if (currentMouseTransform == kCCBTransformHandleMove)
         {
             CGPoint pt = NSPointToCGPoint([PositionPropertySetter positionForNode:selectedNode prop:@"position"]);

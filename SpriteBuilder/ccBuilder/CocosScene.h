@@ -109,6 +109,7 @@ enum {
     float transformStartScaleY;
     CGSize transformContentSize;
     CCNode* transformScalingNode;
+    CGPoint anchorBefore;
     
     CCBTransformHandle currentMouseTransform;
     BOOL isMouseTransforming;
