@@ -106,11 +106,32 @@
 - (void) setType:(CCSizeType)type
 {
     [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
-    
     [PositionPropertySetter setSizeType:type forNode:selection prop:propertyName];
-    
     [self refresh];
-    
+    [self updateAffectedProperties];
+}
+
+- (BOOL) lockedWidth
+{
+    return [[selection extraPropForKey:[propertyName stringByAppendingString:@"LockedWidth"]] boolValue];
+}
+
+- (void) setLockedWidth:(BOOL)lockedWidth
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
+    [selection setExtraProp:[NSNumber numberWithBool:lockedWidth] forKey:[propertyName stringByAppendingString:@"LockedWidth"]];
+    [self updateAffectedProperties];
+}
+
+- (BOOL) lockedHeight
+{
+    return [[selection extraPropForKey:[propertyName stringByAppendingString:@"LockedHeight"]] boolValue];
+}
+
+- (void) setLockedHeight:(BOOL)lockedHeight
+{
+    [[AppDelegate appDelegate] saveUndoStateWillChangeProperty:propertyName];
+    [selection setExtraProp:[NSNumber numberWithBool:lockedHeight] forKey:[propertyName stringByAppendingString:@"LockedHeight"]];
     [self updateAffectedProperties];
 }
 
