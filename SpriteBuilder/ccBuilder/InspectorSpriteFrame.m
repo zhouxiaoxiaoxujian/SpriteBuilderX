@@ -122,4 +122,12 @@
     [self updateAffectedProperties];
 }
 
+- (void) refresh
+{
+    [self willChangeValueForKey:@"spriteFrame"];
+    [self didChangeValueForKey:@"spriteFrame"];
+    [self willBeAdded];
+    [super refresh];
+}
+
 @end

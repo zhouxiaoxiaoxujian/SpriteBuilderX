@@ -32,4 +32,10 @@
 @property (nonatomic,assign) int widthUnit;
 @property (nonatomic,assign) int heightUnit;
 
+@property (weak) IBOutlet NSTextField *widthTextField;
+@property (weak) IBOutlet NSTextField *heightTextField;
+
+@property (nonatomic, assign) BOOL lockedWidth;
+@property (nonatomic, assign) BOOL lockedHeight;
+
 @end
