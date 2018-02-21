@@ -1417,11 +1417,30 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             //separator
             NSMenuItem *separator = [NSMenuItem separatorItem];
             [appDelegate.spriteObjectMenu addItem: separator];
+            if (!isNull) {
+                [self checkItemWithPath:spriteFrameTitle forMenu:subMenu];
+            }
             
             //TODO: add more cool menu items like FlipX
-            
         }
+        
         [NSMenu popUpContextMenu:appDelegate.spriteObjectMenu withEvent:event forView:appDelegate.cocosView];
+    }
+}
+
+- (void)checkItemWithPath:(NSString *)path forMenu:(NSMenu *) menu {
+    
+    NSArray *parts = [path componentsSeparatedByString:@"/"];
+    NSMenuItem *currentItem = [menu itemWithTitle:[parts objectAtIndex:0]];
+    
+    if ([parts count] == 1) {
+        currentItem.state = NSControlStateValueOn;
+    } else {
+        NSString *newPath = @"";
+        for (int i = 1; i < [parts count]; i++) {
+            newPath = [newPath stringByAppendingString:[parts objectAtIndex:i]];
+        }
+        [self checkItemWithPath:newPath forMenu:currentItem.submenu];
     }
 }
 
