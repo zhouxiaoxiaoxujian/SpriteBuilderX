@@ -274,7 +274,6 @@
 		A50A10CC1E5D8C0E00C60B29 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C623B217F383CE00928F91 /* CoreFoundation.framework */; };
 		A50A10E41E5D8CA900C60B29 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50A10DB1E5D8CA900C60B29 /* CCBPProperties.plist */; };
 		A50A10E51E5D8CA900C60B29 /* CCBPProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50A10DB1E5D8CA900C60B29 /* CCBPProperties.plist */; };
-		A50A10E61E5D8CA900C60B29 /* CCBPScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A10DD1E5D8CA900C60B29 /* CCBPScrollBar.m */; };
 		A50A10E71E5D8CA900C60B29 /* CCBPScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A10DD1E5D8CA900C60B29 /* CCBPScrollBar.m */; };
 		A50A10E81E5D8CA900C60B29 /* CCScrollBar-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50A10DE1E5D8CA900C60B29 /* CCScrollBar-Info.plist */; };
 		A50A10E91E5D8CA900C60B29 /* CCScrollBar-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50A10DE1E5D8CA900C60B29 /* CCScrollBar-Info.plist */; };
@@ -6824,7 +6823,6 @@
 				83F8673418D1DCEA007441E4 /* SBErrors.m in Sources */,
 				B7F02D4C17D13332008A2E2D /* CCBTransparentWindowDraggable.m in Sources */,
 				E525FD5C17B1032DF742AC22 /* PublishSpriteSheetOperation.m in Sources */,
-				A50A10E61E5D8CA900C60B29 /* CCBPScrollBar.m in Sources */,
 				E525FF5E533A11756767D753 /* PublishRegularFileOperation.m in Sources */,
 				A5A891FB1DB1280B00E600F2 /* PublishModelFileOperation.m in Sources */,
 				E525FA6349C648C70C3F65DC /* PublishSoundFileOperation.m in Sources */,
