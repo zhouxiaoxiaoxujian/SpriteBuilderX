@@ -1433,12 +1433,17 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     NSArray *parts = [path componentsSeparatedByString:@"/"];
     NSMenuItem *currentItem = [menu itemWithTitle:[parts objectAtIndex:0]];
     
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString: currentItem.title];
+    NSFont *defaultFont = [NSFont boldSystemFontOfSize:menu.font.pointSize];
+    [str setAttributes: @{ NSFontAttributeName : defaultFont } range: NSMakeRange(0, [str length])];
+    [currentItem setAttributedTitle:str];
+    
     if ([parts count] == 1) {
         currentItem.state = NSControlStateValueOn;
     } else {
         NSString *newPath = @"";
         for (int i = 1; i < [parts count]; i++) {
-            newPath = [newPath stringByAppendingString:[parts objectAtIndex:i]];
+            newPath = [newPath stringByAppendingPathComponent:[parts objectAtIndex:i]];
         }
         [self checkItemWithPath:newPath forMenu:currentItem.submenu];
     }
