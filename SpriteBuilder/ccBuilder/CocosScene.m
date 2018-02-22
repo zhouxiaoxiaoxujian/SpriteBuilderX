@@ -594,7 +594,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                     if (nodeInfo) {
                         bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
                         bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-                        widthLock = heightLock = [node shouldDisableProperty:@"contentSize"] ? YES : NO;
+                        //widthLock = heightLock = [node shouldDisableProperty:@"contentSize"] ? YES : NO;
                         
                         if (!widthLock) {
                             lSprt.position = points[4];
@@ -1913,7 +1913,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         NodeInfo* nodeInfo = transformSizeNode.userObject;
         bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
         bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-        widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
+        //widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
         
         transformSizeNode.contentSizeInPoints = CGSizeMake(widthLock ? transformContentSize.width : transformContentSize.width * xScaleNew,
                                                            heightLock ? transformContentSize.height : transformContentSize.height * yScaleNew);
@@ -2358,7 +2358,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         if (nodeInfo) {
             bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
             bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-            widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
+            //widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
             
             switch (cornerIndex) {
                 case 0: //bl
