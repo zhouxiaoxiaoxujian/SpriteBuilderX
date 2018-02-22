@@ -594,6 +594,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                     if (nodeInfo) {
                         bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
                         bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+                        widthLock = heightLock = [node shouldDisableProperty:@"contentSize"] ? YES : NO;
                         
                         if (!widthLock) {
                             lSprt.position = points[4];
@@ -602,7 +603,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                             [selectionLayer addChild:rSprt];
                         }
 //                        else {
-//                            //simple hack, prevent mouse drag
+//                            //FIXME:simple hack, prevent mouse drag, but angle of arrow will be wrong.
 //                            points[4] = ccp(0,0);
 //                            points[6] = ccp(0,0);
 //                        }
@@ -783,17 +784,16 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     int lCornerIndex = -1;
     CGPoint orientation;
     float minDistance = INFINITY;
+    //first show rotate cursor, then size, check isOverRotation for same values
+    //0..7 = size. 7..13 = rotation.
+    const float kMinDistanceToCorner = 0.0f * [self selectionZoom];
+    const float kMaxDistanceToCorner = 7.0f * [self selectionZoom];
     
     for (int i = 0; i < 4; i++)
     {
         CGPoint p1 = points[i % 4];
         CGPoint p2 = points[(i + 1) % 4];
         CGPoint p3 = points[(i + 2) % 4];
-        
-        //first show rotate cursor, then size, check isOverRotation for same values
-        //0..5 = size. 5..10 = rotation.
-        const float kMinDistanceToCorner = 0.0f * [self selectionZoom];
-        const float kMaxDistanceToCorner = 7.0f * [self selectionZoom];
         
         float distance = ccpLength(ccpSub(_mousePos, p2));
         if(distance > kMinDistanceToCorner && distance < kMaxDistanceToCorner)
@@ -827,10 +827,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint p2 = points[(i + 1) % 4 + 4];
         CGPoint p3 = points[(i + 2) % 4 + 4];
         
-        const float kDistanceToCorner = 8.0f;
-        
         float distance = ccpLength(ccpSub(_mousePos, p2));
-        if(distance < kDistanceToCorner  && distance < minDistance)
+        if(distance > kMinDistanceToCorner && distance < kMaxDistanceToCorner)
         {
             CGPoint segment1 = ccpSub(p2, p1);
             CGPoint segment2 = ccpSub(p2, p3);
@@ -1915,6 +1913,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         NodeInfo* nodeInfo = transformSizeNode.userObject;
         bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
         bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+        widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
         
         transformSizeNode.contentSizeInPoints = CGSizeMake(widthLock ? transformContentSize.width : transformContentSize.width * xScaleNew,
                                                            heightLock ? transformContentSize.height : transformContentSize.height * yScaleNew);
@@ -2359,7 +2358,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         if (nodeInfo) {
             bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
             bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-        
+            widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
+            
             switch (cornerIndex) {
                 case 0: //bl
                     break;
