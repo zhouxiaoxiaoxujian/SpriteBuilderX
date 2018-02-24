@@ -592,9 +592,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                     
                     NodeInfo* nodeInfo = node.userObject;
                     if (nodeInfo) {
-                        bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
-                        bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-                        //widthLock = heightLock = [node shouldDisableProperty:@"contentSize"] ? YES : NO;
+                        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+                        BOOL disabledContentSize = [node shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+                        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+                        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
                         
                         if (!widthLock) {
                             lSprt.position = points[4];
@@ -1911,9 +1912,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
         
         NodeInfo* nodeInfo = transformSizeNode.userObject;
-        bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
-        bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-        //widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
+        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+        BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
         
         transformSizeNode.contentSizeInPoints = CGSizeMake(widthLock ? transformContentSize.width : transformContentSize.width * xScaleNew,
                                                            heightLock ? transformContentSize.height : transformContentSize.height * yScaleNew);
@@ -2356,9 +2358,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         bool showCursor = YES;
         NodeInfo *nodeInfo = transformSizeNode.userObject;
         if (nodeInfo) {
-            bool widthLock = [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
-            bool heightLock = [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-            //widthLock = heightLock = [transformSizeNode shouldDisableProperty:@"contentSize"] ? YES : NO;
+            NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+            BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+            bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+            bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
             
             switch (cornerIndex) {
                 case 0: //bl
