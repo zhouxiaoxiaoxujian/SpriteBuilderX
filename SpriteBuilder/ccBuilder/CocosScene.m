@@ -1899,7 +1899,6 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 
         if ([event modifierFlags] & NSShiftKeyMask)
         {
-            //FIXME: with shift pressed, modified anchor should be 0.5,0.5
             // Use the smallest scale composit
             if (fabs(xScaleNew) < fabs(yScaleNew))
             {
@@ -1908,6 +1907,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             else
             {
                 xScaleNew = yScaleNew;
+            }
+        }
+        
+        if (([event modifierFlags] & NSShiftKeyMask) && ([event modifierFlags] & NSAlternateKeyMask)) {
+            [self setAnchorPoint:ccp(0.5,0.5) forNode:transformSizeNode];
+        } else {
+            if ([event modifierFlags] & NSShiftKeyMask) {
+                [self setAnchorPoint:anchorBefore forNode:transformSizeNode];
             }
         }
         
@@ -2474,25 +2481,27 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 }
 
 - (void)setAnchorPoint:(CGPoint)anchorPoint forNode:(CCNode *) node {
-    CGPoint newPoint = ccp(node.contentSizeInPoints.width * anchorPoint.x,
-                           node.contentSizeInPoints.height * anchorPoint.y);
-    
-    CGPoint oldPoint = ccp(node.contentSizeInPoints.width * node.anchorPoint.x,
-                           node.contentSizeInPoints.height * node.anchorPoint.y);
-    
-    newPoint = CGPointApplyAffineTransform(newPoint, node.nodeToParentTransform);
-    oldPoint = CGPointApplyAffineTransform(oldPoint, node.nodeToParentTransform);
-    
-    CGPoint position = node.positionInPoints;
-    
-    position.x -= oldPoint.x;
-    position.x += newPoint.x;
-    
-    position.y -= oldPoint.y;
-    position.y += newPoint.y;
-    
-    node.positionInPoints = position;
-    node.anchorPoint = anchorPoint;
+    if (!CGPointEqualToPoint(node.anchorPoint, anchorPoint)) {
+        CGPoint newPoint = ccp(node.contentSizeInPoints.width * anchorPoint.x,
+                               node.contentSizeInPoints.height * anchorPoint.y);
+        
+        CGPoint oldPoint = ccp(node.contentSizeInPoints.width * node.anchorPoint.x,
+                               node.contentSizeInPoints.height * node.anchorPoint.y);
+        
+        newPoint = CGPointApplyAffineTransform(newPoint, node.nodeToParentTransform);
+        oldPoint = CGPointApplyAffineTransform(oldPoint, node.nodeToParentTransform);
+        
+        CGPoint position = node.positionInPoints;
+        
+        position.x -= oldPoint.x;
+        position.x += newPoint.x;
+        
+        position.y -= oldPoint.y;
+        position.y += newPoint.y;
+        
+        node.positionInPoints = position;
+        node.anchorPoint = anchorPoint;
+    }
 }
 
 
