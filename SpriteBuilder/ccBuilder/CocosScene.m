@@ -603,23 +603,12 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                             [selectionLayer addChild:lSprt];
                             [selectionLayer addChild:rSprt];
                         }
-//                        else {
-//                            //FIXME:simple hack, prevent mouse drag, but angle of arrow will be wrong.
-//                            points[4] = ccp(0,0);
-//                            points[6] = ccp(0,0);
-//                        }
                         if (!heightLock) {
                             bSprt.position = points[5];
                             tSprt.position = points[7];
                             [selectionLayer addChild:bSprt];
                             [selectionLayer addChild:tSprt];
-                        }
-//                        else {
-//                            //simple hack, prevent mouse drag
-//                            points[5] = ccp(0,0);
-//                            points[7] = ccp(0,0);
-//                        }
-                        
+                        }                       
                     }
 
                     CCDrawNode* drawing = [CCDrawNode node];
