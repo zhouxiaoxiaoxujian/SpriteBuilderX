@@ -2363,7 +2363,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     else if(currentTool == kCCBToolSize)
     {
         bool showCursor = YES;
-        NodeInfo *nodeInfo = transformSizeNode.userObject;
+        NodeInfo *nodeInfo = transformSizeNode.userObject ? transformSizeNode.userObject : appDelegate.selectedNode.userObject;
         if (nodeInfo) {
             NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
             BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
