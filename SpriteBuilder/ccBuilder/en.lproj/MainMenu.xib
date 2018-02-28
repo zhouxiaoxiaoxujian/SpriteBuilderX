@@ -395,19 +395,19 @@ CA
                                         <menuItem title="Light Gray" tag="2" id="GIM-2k-d1s">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="jTb-8O-QPX"/>
+                                                <action selector="menuSetMainStageColor:" target="494" id="ZeG-Dh-wEw"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Medium Gray" tag="3" id="ayf-9S-wdS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="7c0-xB-Vin"/>
+                                                <action selector="menuSetMainStageColor:" target="494" id="Ufd-eb-sao"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark Gray" tag="4" id="xWL-vI-aAk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="Sed-nr-tfD"/>
+                                                <action selector="menuSetMainStageColor:" target="494" id="5T7-7B-JrE"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="rX0-xv-X9a"/>
@@ -734,19 +734,19 @@ CA
                                         <menuItem title="Light Gray" tag="2" id="PWe-7n-aPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="EPo-tq-FyC"/>
+                                                <action selector="menuSetStageColor:" target="494" id="qig-px-QYz"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Medium Gray" tag="3" id="MaH-xu-te7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="Nu2-YH-1z0"/>
+                                                <action selector="menuSetStageColor:" target="494" id="mUN-GJ-E73"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark Gray" tag="4" id="fXb-zc-EGd">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetBgColor:" target="494" id="hRb-me-Z3L"/>
+                                                <action selector="menuSetStageColor:" target="494" id="7sf-uc-iYN"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="ekY-f7-cbo"/>
