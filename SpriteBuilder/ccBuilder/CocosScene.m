@@ -320,9 +320,36 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             NSAssert (NO, @"Illegal stage color");
     }
     NSAssert(color != nil, @"No stage color");
-    
-    bgLayer.color = [CCColor grayColor];
+
     stageBgLayer.color = color;
+}
+
+- (void) setBgColor:(int) colorType {
+    CCColor *color;
+    switch (colorType)
+    {
+        case kCCBCanvasColorBlack:
+            color = [CCColor blackColor];
+            break;
+        case kCCBCanvasColorWhite:
+            color = [CCColor whiteColor];
+            break;
+        case kCCBCanvasColorGray:
+            color = [CCColor grayColor];
+            break;
+        case kCCBCanvasColorOrange:
+            color = [CCColor orangeColor];
+            break;
+        case kCCBCanvasColorGreen:
+            color = [CCColor greenColor];
+            break;
+        default:
+            NSAssert (NO, @"Illegal stage color");
+    }
+    NSAssert(color != nil, @"No stage color");
+    
+    bgLayer.color = color;
+    
 }
 
 - (void) setupDefaultNodes

@@ -207,7 +207,9 @@ typedef void (^CompletionCallback) (BOOL success);
     IBOutlet NSMenuItem* menuFileNewPackage;
     // TODO: END OF not needed any more when PACKAGE feature is released
 
-    IBOutlet NSMenuItem *__weak menuItemStageColor;
+    __weak IBOutlet NSMenuItem * menuItemStageColor;
+    __weak IBOutlet NSMenuItem *menuItemBgColor;    
+    __weak IBOutlet NSMenuItem *menuItemMainStageColor;
     
     IBOutlet NSPopUpButton* menuTimelinePopup;
     IBOutlet NSMenu* menuTimeline;
@@ -439,7 +441,7 @@ typedef void (^CompletionCallback) (BOOL success);
 - (IBAction) menuSetStateOriginCentered:(id)sender;
 - (void) updateCanvasBorderMenu;
 - (IBAction) menuSetCanvasBorder:(id)sender;
-- (IBAction) menuSetCanvasColor:(id)sender;
+- (IBAction) menuSetStageColor:(id)sender;
 - (IBAction) menuZoomIn:(id)sender;
 - (IBAction) menuZoomOut:(id)sender;
 

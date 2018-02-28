@@ -318,6 +318,87 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="CCM-rB-WvO"/>
+                            <menuItem title="Background Color" id="Njj-uB-ot3">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Background Color" id="dE9-wm-1Xu">
+                                    <items>
+                                        <menuItem title="Black" id="oNI-FM-gcP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="FP4-9N-djY"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="White" tag="1" id="0ce-xX-Zgk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="4FR-B6-fhs"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Gray" tag="2" id="mTr-7I-LuD">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="LEI-JP-5nB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Orange" tag="3" id="tuA-iU-xhT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="wpM-77-cXN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Green" tag="4" id="dLf-05-4Vp">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="L2c-ZE-al6"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Main Stage Color" id="wUg-JW-hqJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Main Stage Color" id="zCy-gg-loZ">
+                                    <items>
+                                        <menuItem title="Use Document Color" state="on" tag="-1" id="cH4-JN-Tt2">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="LTM-UY-AYj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Black" id="fdH-h7-EFG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="AK5-c2-tLb"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="White" tag="1" id="u38-SD-CIo">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="cwX-zD-O1P"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Gray" tag="2" id="DY9-A1-w30">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="bVF-2Z-hke"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Orange" tag="3" id="F4Y-MQ-Ix1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="Kdk-ZV-CTe"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Green" tag="4" id="qQ4-Lz-1tE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetMainStageColor:" target="494" id="lkk-3x-thN"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="H4A-9P-hAS"/>
                         </items>
                     </menu>
                 </menuItem>
@@ -607,36 +688,36 @@ CA
                             </menuItem>
                             <menuItem title="Stage Color" id="KQF-gw-sgJ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Stage Color" id="St1-Vy-LLk">
+                                <menu key="submenu" title="Stage Color" autoenablesItems="NO" id="St1-Vy-LLk">
                                     <items>
-                                        <menuItem title="Black" id="VMJ-eJ-6ph">
+                                        <menuItem title="Black" id="sQc-dW-qCT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetCanvasColor:" target="494" id="FMO-4u-501"/>
+                                                <action selector="menuSetStageColor:" target="494" id="d2F-eX-7l2"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="White" tag="1" id="mwm-Im-7dI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetCanvasColor:" target="494" id="nVe-a6-mVS"/>
+                                                <action selector="menuSetStageColor:" target="494" id="nWb-UO-G9x"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Gray" tag="2" id="026-jr-XUD">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetCanvasColor:" target="494" id="vgo-bl-Otp"/>
+                                                <action selector="menuSetStageColor:" target="494" id="TRS-6y-d9F"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Orange" tag="3" id="5sv-ZE-aRT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetCanvasColor:" target="494" id="qDe-sU-6Lx"/>
+                                                <action selector="menuSetStageColor:" target="494" id="5Xv-x9-r4Y"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Green" tag="4" id="4PJ-LW-0Ln">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetCanvasColor:" target="494" id="5Nm-GT-9qi"/>
+                                                <action selector="menuSetStageColor:" target="494" id="j6W-YS-6Pf"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -970,7 +1051,7 @@ CA
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" copiesOnScroll="NO" id="xfY-vc-3Nd">
                                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="401"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" autosaveColumns="NO" rowHeight="20" indentationPerLevel="14" outlineTableColumn="1502" id="1499" customClass="ResourceManagerOutlineView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="298" height="401"/>
@@ -1427,7 +1508,7 @@ CA
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" copiesOnScroll="NO" id="hnC-KY-Yea">
                                             <rect key="frame" x="0.0" y="0.0" width="553" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="571" id="570" customClass="SequencerOutlineView">
                                                     <rect key="frame" x="0.0" y="0.0" width="553" height="66"/>
@@ -1675,7 +1756,7 @@ CA
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fL8-Eb-zeE">
                                                         <rect key="frame" x="0.0" y="0.0" width="298" height="657"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <view id="608" userLabel="View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="233" height="550"/>
@@ -2698,6 +2779,8 @@ CA
                 <outlet property="menuContextKeyframeInterpol" destination="1604" id="1613"/>
                 <outlet property="menuContextKeyframeNoselection" destination="o0p-0U-Ks5" id="H9k-Jz-Iau"/>
                 <outlet property="menuFileNewPackage" destination="g6Z-Mh-Dls" id="D5e-wF-NCl"/>
+                <outlet property="menuItemBgColor" destination="Njj-uB-ot3" id="gVv-bs-dcA"/>
+                <outlet property="menuItemMainStageColor" destination="wUg-JW-hqJ" id="0Ie-0e-ncC"/>
                 <outlet property="menuItemStageColor" destination="KQF-gw-sgJ" id="cG7-Q4-aYh"/>
                 <outlet property="menuPlusButtonNewPackage" destination="fe0-WO-wub" id="qKr-zd-Bou"/>
                 <outlet property="menuPublishPlatform" destination="2l9-zl-QAH" id="jxV-AF-JvF"/>

@@ -34,6 +34,9 @@
 @property (nonatomic, assign) BOOL sortCustomProperties;
 @property (nonatomic, assign) BOOL showRulers;
 
+@property (nonatomic,assign) int bgLayerColor;
+@property (nonatomic,assign) int mainStageColor;
+
 @property (nonatomic, strong) NSMutableDictionary *expandedSeparators;
 
 + (instancetype) instance;

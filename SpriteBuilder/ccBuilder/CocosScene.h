@@ -193,6 +193,8 @@ enum {
 - (int) stageBorder;
 - (void) setStageColor: (int) type forDocDimensionsType: (int) docDimensionsType;
 
+- (void) setBgColor:(int) colorType;
+
 - (void) setStageZoom:(float) zoom;
 - (float) stageZoom;
 

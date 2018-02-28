@@ -1529,7 +1529,9 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         }
     }
     currentDocument.stageColor = stageColor;
-    [self updateCanvasColor];
+    [self updateStageColor];
+    [self updateBgColor];
+    [self updateMainStageColor];
     [menuItemStageColor setEnabled: currentDocument.docDimensionsType != kCCBDocDimensionsTypeFullScreen];
 
     // Setup sequencer timelines
@@ -3999,7 +4001,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     [cs setStageBorder:tag];
 }
 
-- (void) updateCanvasColor
+- (void) updateStageColor
 {
     CocosScene* cs = [CocosScene cocosScene];
     int color = currentDocument.stageColor;
@@ -4009,16 +4011,57 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     for (NSMenuItem *item in menuItemStageColor.submenu.itemArray)
     {
         item.state = NSOffState;
+        item.enabled = YES;
     }
     
     [menuItemStageColor.submenu itemWithTag: color].state = NSOnState;
 }
 
-- (IBAction) menuSetCanvasColor:(id)sender
+- (IBAction) menuSetStageColor:(id)sender
 {
     [self saveUndoStateWillChangeProperty:@"*stageColor"];
     currentDocument.stageColor = [sender tag];
-    [self updateCanvasColor];
+    [self updateStageColor];
+}
+
+- (IBAction) menuSetBgColor:(id)sender {
+    SBSettings.bgLayerColor = [sender tag];
+    [self updateBgColor];
+}
+
+- (void) updateBgColor {
+    CocosScene* cs = [CocosScene cocosScene];
+    int color = SBSettings.bgLayerColor;
+    [cs setBgColor:color];
+    
+    for (NSMenuItem *item in menuItemBgColor.submenu.itemArray)
+    {
+        item.state = NSOffState;
+    }
+    
+    [menuItemBgColor.submenu itemWithTag: color].state = NSOnState;
+}
+
+- (IBAction)menuSetMainStageColor:(id)sender {
+    SBSettings.mainStageColor = [sender tag];
+    [self updateMainStageColor];
+}
+
+- (void) updateMainStageColor {
+    
+    for (NSMenuItem *item in menuItemMainStageColor.submenu.itemArray) {
+        item.state = NSOffState;
+    }
+    CocosScene* cs = [CocosScene cocosScene];
+    int stageColor = currentDocument.stageColor;
+    int mainStageColor = SBSettings.mainStageColor;
+    int finalColor = (mainStageColor == -1) ? stageColor : mainStageColor;
+    [cs setStageColor: finalColor forDocDimensionsType: currentDocument.docDimensionsType];
+    [menuItemMainStageColor.submenu itemWithTag: mainStageColor].state = NSOnState;
+    
+    for (NSMenuItem *item in menuItemStageColor.submenu.itemArray) {
+        item.enabled = mainStageColor == -1 ? YES : NO;
+    }
 }
 
 - (IBAction) menuZoomIn:(id)sender

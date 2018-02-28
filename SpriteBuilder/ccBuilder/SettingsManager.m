@@ -8,6 +8,7 @@
 
 #import "SettingsManager.h"
 #import "AppDelegate.h"
+#import "CocosScene.h"
 
 @implementation SettingsManager
 
@@ -241,6 +242,30 @@
         return [NSMutableDictionary dictionary];
     }
     return expandedSeparators;
+}
+
+-(void) setBgLayerColor:(int)bgLayerColor {
+    [SBUserDefaults setObject:@(bgLayerColor) forKey:@"bgLayerColor"];
+}
+
+-(int) bgLayerColor {
+    id bgLayerColor = [SBUserDefaults objectForKey:@"bgLayerColor"];
+    if (!bgLayerColor) {
+        return kCCBCanvasColorGray;
+    }
+    return [bgLayerColor intValue];
+}
+
+-(void) setMainStageColor:(int)mainStageColor {
+    [SBUserDefaults setObject:@(mainStageColor) forKey:@"mainStageColor"];
+}
+
+-(int) mainStageColor {
+    id mainStageColor = [SBUserDefaults objectForKey:@"mainStageColor"];
+    if (!mainStageColor) {
+        return -1; //stageColor used by default
+    }
+    return [mainStageColor intValue];
 }
 
 //------------------------------------------------------------------------
