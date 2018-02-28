@@ -1521,7 +1521,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     {
         if (currentDocument.docDimensionsType == kCCBDocDimensionsTypeNode)
         {
-            stageColor = kCCBCanvasColorGray;
+            stageColor = kCCBCanvasColorLightGray;
         }
         else
         {
@@ -2306,7 +2306,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     if (type == kCCBNewDocTypeNode)
     {
-        self.currentDocument.stageColor = kCCBCanvasColorGray;
+        self.currentDocument.stageColor = kCCBCanvasColorLightGray;
     }
     else
     {

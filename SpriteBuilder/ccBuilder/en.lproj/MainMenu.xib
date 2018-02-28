@@ -334,19 +334,33 @@ CA
                                                 <action selector="menuSetBgColor:" target="494" id="4FR-B6-fhs"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Gray" tag="2" id="mTr-7I-LuD">
+                                        <menuItem isSeparatorItem="YES" id="rgE-IS-dQc"/>
+                                        <menuItem title="Light Gray" tag="2" id="mTr-7I-LuD">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetBgColor:" target="494" id="LEI-JP-5nB"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Orange" tag="3" id="tuA-iU-xhT">
+                                        <menuItem title="Medium Gray" tag="3" id="80k-FI-q1S">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="hkb-k5-mi1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Dark Gray" tag="4" id="rou-uq-P82">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="FQh-FL-DrX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="3YX-oh-RJE"/>
+                                        <menuItem title="Orange" tag="5" id="tuA-iU-xhT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetBgColor:" target="494" id="wpM-77-cXN"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Green" tag="4" id="dLf-05-4Vp">
+                                        <menuItem title="Green" tag="6" id="dLf-05-4Vp">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetBgColor:" target="494" id="L2c-ZE-al6"/>
@@ -377,19 +391,33 @@ CA
                                                 <action selector="menuSetMainStageColor:" target="494" id="cwX-zD-O1P"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Gray" tag="2" id="DY9-A1-w30">
+                                        <menuItem isSeparatorItem="YES" id="Ayv-KK-lIm"/>
+                                        <menuItem title="Light Gray" tag="2" id="GIM-2k-d1s">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetMainStageColor:" target="494" id="bVF-2Z-hke"/>
+                                                <action selector="menuSetBgColor:" target="494" id="jTb-8O-QPX"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Orange" tag="3" id="F4Y-MQ-Ix1">
+                                        <menuItem title="Medium Gray" tag="3" id="ayf-9S-wdS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="7c0-xB-Vin"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Dark Gray" tag="4" id="xWL-vI-aAk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="Sed-nr-tfD"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="rX0-xv-X9a"/>
+                                        <menuItem title="Orange" tag="5" id="F4Y-MQ-Ix1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetMainStageColor:" target="494" id="Kdk-ZV-CTe"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Green" tag="4" id="qQ4-Lz-1tE">
+                                        <menuItem title="Green" tag="6" id="qQ4-Lz-1tE">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetMainStageColor:" target="494" id="lkk-3x-thN"/>
@@ -702,19 +730,33 @@ CA
                                                 <action selector="menuSetStageColor:" target="494" id="nWb-UO-G9x"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Gray" tag="2" id="026-jr-XUD">
+                                        <menuItem isSeparatorItem="YES" id="fEz-1x-aLJ"/>
+                                        <menuItem title="Light Gray" tag="2" id="PWe-7n-aPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="menuSetStageColor:" target="494" id="TRS-6y-d9F"/>
+                                                <action selector="menuSetBgColor:" target="494" id="EPo-tq-FyC"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Orange" tag="3" id="5sv-ZE-aRT">
+                                        <menuItem title="Medium Gray" tag="3" id="MaH-xu-te7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="Nu2-YH-1z0"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Dark Gray" tag="4" id="fXb-zc-EGd">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="menuSetBgColor:" target="494" id="hRb-me-Z3L"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="ekY-f7-cbo"/>
+                                        <menuItem title="Orange" tag="5" id="5sv-ZE-aRT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetStageColor:" target="494" id="5Xv-x9-r4Y"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Green" tag="4" id="4PJ-LW-0Ln">
+                                        <menuItem title="Green" tag="6" id="4PJ-LW-0Ln">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="menuSetStageColor:" target="494" id="j6W-YS-6Pf"/>

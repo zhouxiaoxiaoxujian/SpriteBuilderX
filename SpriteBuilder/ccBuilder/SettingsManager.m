@@ -251,7 +251,7 @@
 -(int) bgLayerColor {
     id bgLayerColor = [SBUserDefaults objectForKey:@"bgLayerColor"];
     if (!bgLayerColor) {
-        return kCCBCanvasColorGray;
+        return kCCBCanvasColorLightGray;
     }
     return [bgLayerColor intValue];
 }

@@ -80,7 +80,9 @@ typedef enum {
 enum {
     kCCBCanvasColorBlack = 0,
     kCCBCanvasColorWhite,
-    kCCBCanvasColorGray,
+    kCCBCanvasColorLightGray,
+    kCCBCanvasColorMediumGray,
+    kCCBCanvasColorDarkGray,
     kCCBCanvasColorOrange,
     kCCBCanvasColorGreen,
 };

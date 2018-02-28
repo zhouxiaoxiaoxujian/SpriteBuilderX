@@ -307,8 +307,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         case kCCBCanvasColorWhite:
             color = [CCColor whiteColor];
             break;
-        case kCCBCanvasColorGray:
+        case kCCBCanvasColorLightGray:
             color = [CCColor grayColor];
+            break;
+        case kCCBCanvasColorMediumGray:
+            color = [CCColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0]; //Adobe Illustrator values
+            break;
+        case kCCBCanvasColorDarkGray:
+            color = [CCColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0];
             break;
         case kCCBCanvasColorOrange:
             color = [CCColor orangeColor];
@@ -320,7 +326,6 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             NSAssert (NO, @"Illegal stage color");
     }
     NSAssert(color != nil, @"No stage color");
-
     stageBgLayer.color = color;
 }
 
@@ -334,8 +339,14 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         case kCCBCanvasColorWhite:
             color = [CCColor whiteColor];
             break;
-        case kCCBCanvasColorGray:
+        case kCCBCanvasColorLightGray:
             color = [CCColor grayColor];
+            break;
+        case kCCBCanvasColorMediumGray:
+            color = [CCColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0]; //Adobe Illustrator values
+            break;
+        case kCCBCanvasColorDarkGray:
+            color = [CCColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0];
             break;
         case kCCBCanvasColorOrange:
             color = [CCColor orangeColor];
@@ -344,12 +355,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             color = [CCColor greenColor];
             break;
         default:
-            NSAssert (NO, @"Illegal stage color");
+            NSAssert (NO, @"Illegal bg color");
     }
-    NSAssert(color != nil, @"No stage color");
-    
+    NSAssert(color != nil, @"No bg color");
     bgLayer.color = color;
-    
 }
 
 - (void) setupDefaultNodes
