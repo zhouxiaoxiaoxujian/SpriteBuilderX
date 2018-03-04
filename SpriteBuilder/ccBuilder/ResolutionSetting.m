@@ -167,7 +167,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone
++ (ResolutionSetting*) setting_iPhone
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -180,9 +180,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhoneLandscape
++ (ResolutionSetting*) setting_iPhoneLandscape
 {
-    ResolutionSetting* setting = [self settingIPhone];
+    ResolutionSetting* setting = [self setting_iPhone];
     
     setting.name = @"iPhone Landscape (short)";
     setting.width = 480;
@@ -191,9 +191,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhonePortrait
++ (ResolutionSetting*) setting_iPhonePortrait
 {
-    ResolutionSetting* setting = [self settingIPhone];
+    ResolutionSetting* setting = [self setting_iPhone];
     
     setting.name = @"iPhone Portrait (short)";
     setting.width = 320;
@@ -202,7 +202,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhoneRetina
++ (ResolutionSetting*) setting_iPhoneRetina
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -214,9 +214,9 @@
     
     return setting;
 }
-+ (ResolutionSetting*) settingIPhoneRetinaLandscape
++ (ResolutionSetting*) setting_iPhoneRetinaLandscape
 {
-    ResolutionSetting* setting = [self settingIPhoneRetina];
+    ResolutionSetting* setting = [self setting_iPhoneRetina];
     
     setting.name = @"iPhone 4S Landscape";
     setting.width = 960;
@@ -224,9 +224,9 @@
     
     return setting;
 }
-+ (ResolutionSetting*) settingIPhoneRetinaPortrait
++ (ResolutionSetting*) setting_iPhoneRetinaPortrait
 {
-    ResolutionSetting* setting = [self settingIPhoneRetina];
+    ResolutionSetting* setting = [self setting_iPhoneRetina];
     
     setting.name = @"iPhone 4S Portrait";
     setting.width = 640;
@@ -235,9 +235,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone5Landscape
++ (ResolutionSetting*) setting_iPhone5Landscape
 {
-    ResolutionSetting* setting = [self settingIPhoneRetina];
+    ResolutionSetting* setting = [self setting_iPhoneRetina];
     
     setting.name = @"iPhone 5 Landscape";
     setting.width = 1136;
@@ -246,9 +246,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone5Portrait
++ (ResolutionSetting*) setting_iPhone5Portrait
 {
-    ResolutionSetting* setting = [self settingIPhoneRetina];
+    ResolutionSetting* setting = [self setting_iPhoneRetina];
     
     setting.name = @"iPhone 5 Portrait";
     setting.width = 640;
@@ -257,7 +257,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6
++ (ResolutionSetting*) setting_iPhone6
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -270,9 +270,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6Landscape
++ (ResolutionSetting*) setting_iPhone6Landscape
 {
-    ResolutionSetting* setting = [self settingIPhone6];
+    ResolutionSetting* setting = [self setting_iPhone6];
     
     setting.name = @"iPhone 6 Landscape";
     setting.width = 1334;
@@ -281,9 +281,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6Portrait
++ (ResolutionSetting*) setting_iPhone6Portrait
 {
-    ResolutionSetting* setting = [self settingIPhone6];
+    ResolutionSetting* setting = [self setting_iPhone6];
     
     setting.name = @"iPhone 6 Portrait";
     setting.width = 750;
@@ -292,7 +292,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6Plus
++ (ResolutionSetting*) setting_iPhone6Plus
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -305,9 +305,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6PlusLandscape
++ (ResolutionSetting*) setting_iPhone6PlusLandscape
 {
-    ResolutionSetting* setting = [self settingIPhone6Plus];
+    ResolutionSetting* setting = [self setting_iPhone6Plus];
     
     setting.name = @"iPhone 6+ Landscape";
     setting.width = 1920;
@@ -316,9 +316,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhone6PlusPortrait
++ (ResolutionSetting*) setting_iPhone6PlusPortrait
 {
-    ResolutionSetting* setting = [self settingIPhone6Plus];
+    ResolutionSetting* setting = [self setting_iPhone6Plus];
     
     setting.name = @"iPhone 6+ Portrait";
     setting.width = 1080;
@@ -327,7 +327,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPad
++ (ResolutionSetting*) setting_iPad
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -340,9 +340,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadLandscape
++ (ResolutionSetting*) setting_iPadLandscape
 {
-    ResolutionSetting* setting = [self settingIPad];
+    ResolutionSetting* setting = [self setting_iPad];
     
     setting.name = @"iPad Landscape";
     setting.width = 1024;
@@ -351,9 +351,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPortrait
++ (ResolutionSetting*) setting_iPadPortrait
 {
-    ResolutionSetting* setting = [self settingIPad];
+    ResolutionSetting* setting = [self setting_iPad];
     
     setting.name = @"iPad Portrait";
     setting.width = 768;
@@ -362,7 +362,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadRetina
++ (ResolutionSetting*) setting_iPadRetina
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -375,9 +375,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadRetinaLandscape
++ (ResolutionSetting*) setting_iPadRetinaLandscape
 {
-    ResolutionSetting* setting = [self settingIPadRetina];
+    ResolutionSetting* setting = [self setting_iPadRetina];
     
     setting.name = @"iPad Retina Landscape";
     setting.width = 2048;
@@ -386,9 +386,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadRetinaPortrait
++ (ResolutionSetting*) setting_iPadRetinaPortrait
 {
-    ResolutionSetting* setting = [self settingIPadRetina];
+    ResolutionSetting* setting = [self setting_iPadRetina];
     
     setting.name = @"iPad Retina Portrait";
     setting.width = 1536;
@@ -397,7 +397,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhoneX {
++ (ResolutionSetting*) setting_iPhoneX {
     
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     setting.name = @"iPhone X";
@@ -408,25 +408,25 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhoneXLandscape {
++ (ResolutionSetting*) setting_iPhoneXLandscape {
     
-    ResolutionSetting* setting = [self settingIPhoneX];
+    ResolutionSetting* setting = [self setting_iPhoneX];
     setting.name = @"iPhone X Landscape";
     setting.width = 2436;
     setting.height = 1125;
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPhoneXPortrait {
++ (ResolutionSetting*) setting_iPhoneXPortrait {
     
-    ResolutionSetting* setting = [self settingIPhoneX];
+    ResolutionSetting* setting = [self setting_iPhoneX];
     setting.name = @"iPhone X Portrait";
     setting.width = 1125;
     setting.height = 2436;
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro10 {
++ (ResolutionSetting*) setting_iPadPro10 {
     
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     setting.name = @"iPad Pro 10";
@@ -437,25 +437,25 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro10Landscape {
++ (ResolutionSetting*) setting_iPadPro10Landscape {
     
-    ResolutionSetting* setting = [self settingIPadPro10];
+    ResolutionSetting* setting = [self setting_iPadPro10];
     setting.name = @"iPad Pro 10 Landscape";
     setting.width = 2224;
     setting.height = 1668;
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro10Portrait {
++ (ResolutionSetting*) setting_iPadPro10Portrait {
     
-    ResolutionSetting* setting = [self settingIPadPro10];
+    ResolutionSetting* setting = [self setting_iPadPro10];
     setting.name = @"iPad Pro 10 Portrait";
     setting.width = 1668;
     setting.height = 2224;
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro12 {
++ (ResolutionSetting*) setting_iPadPro12 {
     
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     setting.name = @"iPad Pro 12";
@@ -466,25 +466,25 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro12Landscape {
++ (ResolutionSetting*) setting_iPadPro12Landscape {
     
-    ResolutionSetting* setting = [self settingIPadPro12];
+    ResolutionSetting* setting = [self setting_iPadPro12];
     setting.name = @"iPad Pro 12 Landscape";
     setting.width = 2732;
     setting.height = 2048;
     return setting;
 }
 
-+ (ResolutionSetting*) settingIPadPro12Portrait {
++ (ResolutionSetting*) setting_iPadPro12Portrait {
     
-    ResolutionSetting* setting = [self settingIPadPro12];
+    ResolutionSetting* setting = [self setting_iPadPro12];
     setting.name = @"iPad Pro 12 Portrait";
     setting.width = 2048;
     setting.height = 2732;
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x720 {
++ (ResolutionSetting*) setting_Android1280x720 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
     setting.name = @"Android 1280x720";
@@ -496,25 +496,25 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x720Landscape {
++ (ResolutionSetting*) setting_Android1280x720Landscape {
     
-    ResolutionSetting* setting = [self settingAndroid1280x720];
+    ResolutionSetting* setting = [self setting_Android1280x720];
     setting.name = @"Android 1280x720 Landscape";
     setting.width = 1280;
     setting.height = 720;
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x720Portrait {
++ (ResolutionSetting*) setting_Android1280x720Portrait {
     
-    ResolutionSetting* setting = [self settingAndroid1280x720];
+    ResolutionSetting* setting = [self setting_Android1280x720];
     setting.name = @"Android 1280x720 Portrait";
     setting.width = 720;
     setting.height = 1280;
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1920x1080
++ (ResolutionSetting*) setting_Android1920x1080
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -527,9 +527,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1920x1080Landscape
++ (ResolutionSetting*) setting_Android1920x1080Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid1920x1080];
+    ResolutionSetting* setting = [self setting_Android1920x1080];
     
     setting.name = @"Android 1920x1080 Landscape";
     setting.width = 1920;
@@ -538,9 +538,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1920x1080Portrait
++ (ResolutionSetting*) setting_Android1920x1080Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid1920x1080];
+    ResolutionSetting* setting = [self setting_Android1920x1080];
     
     setting.name = @"Android 1920x1080 Portrait";
     setting.width = 1080;
@@ -549,7 +549,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid854x480
++ (ResolutionSetting*) setting_Android854x480
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -562,9 +562,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid854x480Landscape
++ (ResolutionSetting*) setting_Android854x480Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid854x480];
+    ResolutionSetting* setting = [self setting_Android854x480];
     
     setting.name = @"Android 854x480 Landscape";
     setting.width = 854;
@@ -573,9 +573,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid854x480Portrait
++ (ResolutionSetting*) setting_Android854x480Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid854x480];
+    ResolutionSetting* setting = [self setting_Android854x480];
     
     setting.name = @"Android 854x480 Portrait";
     setting.width = 480;
@@ -584,7 +584,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid800x480
++ (ResolutionSetting*) setting_Android800x480
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -597,9 +597,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid800x480Landscape
++ (ResolutionSetting*) setting_Android800x480Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid800x480];
+    ResolutionSetting* setting = [self setting_Android800x480];
     
     setting.name = @"Android 800x480 Landscape";
     setting.width = 800;
@@ -608,9 +608,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid800x480Portrait
++ (ResolutionSetting*) setting_Android800x480Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid800x480];
+    ResolutionSetting* setting = [self setting_Android800x480];
     
     setting.name = @"Android 800x480 Portrait";
     setting.width = 480;
@@ -619,7 +619,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid960x540
++ (ResolutionSetting*) setting_Android960x540
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -632,9 +632,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid960x540Landscape
++ (ResolutionSetting*) setting_Android960x540Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid960x540];
+    ResolutionSetting* setting = [self setting_Android960x540];
     
     setting.name = @"Android 960x540 Landscape";
     setting.width = 960;
@@ -643,9 +643,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid960x540Portrait
++ (ResolutionSetting*) setting_Android960x540Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid960x540];
+    ResolutionSetting* setting = [self setting_Android960x540];
     
     setting.name = @"Android 960x540 Portrait";
     setting.width = 540;
@@ -654,7 +654,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1024x600
++ (ResolutionSetting*) setting_Android1024x600
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -667,9 +667,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1024x600Landscape
++ (ResolutionSetting*) setting_Android1024x600Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid1024x600];
+    ResolutionSetting* setting = [self setting_Android1024x600];
     
     setting.name = @"Android 1024x600 Landscape";
     setting.width = 1024;
@@ -678,9 +678,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1024x600Portrait
++ (ResolutionSetting*) setting_Android1024x600Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid1024x600];
+    ResolutionSetting* setting = [self setting_Android1024x600];
     
     setting.name = @"Android 1024x600 Portrait";
     setting.width = 600;
@@ -689,7 +689,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x800
++ (ResolutionSetting*) setting_Android1280x800
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -702,9 +702,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x800Landscape
++ (ResolutionSetting*) setting_Android1280x800Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid1280x800];
+    ResolutionSetting* setting = [self setting_Android1280x800];
     
     setting.name = @"Android 1280x800 Landscape";
     setting.width = 1280;
@@ -713,9 +713,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid1280x800Portrait
++ (ResolutionSetting*) setting_Android1280x800Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid1280x800];
+    ResolutionSetting* setting = [self setting_Android1280x800];
     
     setting.name = @"Android 1280x800 Portrait";
     setting.width = 800;
@@ -724,7 +724,7 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid2960x1440
++ (ResolutionSetting*) setting_Android2960x1440
 {
     ResolutionSetting* setting = [[ResolutionSetting alloc] init];
     
@@ -737,9 +737,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid2960x1440Landscape
++ (ResolutionSetting*) setting_Android2960x1440Landscape
 {
-    ResolutionSetting* setting = [self settingAndroid2960x1440];
+    ResolutionSetting* setting = [self setting_Android2960x1440];
     
     setting.name = @"Android 2960x1440 Landscape";
     setting.width = 2960;
@@ -748,9 +748,9 @@
     return setting;
 }
 
-+ (ResolutionSetting*) settingAndroid2960x1440Portrait
++ (ResolutionSetting*) setting_Android2960x1440Portrait
 {
-    ResolutionSetting* setting = [self settingAndroid2960x1440];
+    ResolutionSetting* setting = [self setting_Android2960x1440];
     
     setting.name = @"Android 2960x1440 Portrait";
     setting.width = 1440;

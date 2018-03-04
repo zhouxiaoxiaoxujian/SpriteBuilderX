@@ -52,74 +52,74 @@
 + (ResolutionSetting*) settingTabletHd;
 
 // iOS resolutions
-+ (ResolutionSetting*) settingIPhone;
-+ (ResolutionSetting*) settingIPhoneLandscape;
-+ (ResolutionSetting*) settingIPhonePortrait;
-+ (ResolutionSetting*) settingIPhoneRetina;
-+ (ResolutionSetting*) settingIPhoneRetinaLandscape;
-+ (ResolutionSetting*) settingIPhoneRetinaPortrait;
-+ (ResolutionSetting*) settingIPhone5Landscape;
-+ (ResolutionSetting*) settingIPhone5Portrait;
++ (ResolutionSetting*) setting_iPhone;
++ (ResolutionSetting*) setting_iPhoneLandscape;
++ (ResolutionSetting*) setting_iPhonePortrait;
++ (ResolutionSetting*) setting_iPhoneRetina;
++ (ResolutionSetting*) setting_iPhoneRetinaLandscape;
++ (ResolutionSetting*) setting_iPhoneRetinaPortrait;
++ (ResolutionSetting*) setting_iPhone5Landscape;
++ (ResolutionSetting*) setting_iPhone5Portrait;
 
-+ (ResolutionSetting*) settingIPhone6;
-+ (ResolutionSetting*) settingIPhone6Landscape;
-+ (ResolutionSetting*) settingIPhone6Portrait;
++ (ResolutionSetting*) setting_iPhone6;
++ (ResolutionSetting*) setting_iPhone6Landscape;
++ (ResolutionSetting*) setting_iPhone6Portrait;
 
-+ (ResolutionSetting*) settingIPhone6Plus;
-+ (ResolutionSetting*) settingIPhone6PlusLandscape;
-+ (ResolutionSetting*) settingIPhone6PlusPortrait;
++ (ResolutionSetting*) setting_iPhone6Plus;
++ (ResolutionSetting*) setting_iPhone6PlusLandscape;
++ (ResolutionSetting*) setting_iPhone6PlusPortrait;
 
-+ (ResolutionSetting*) settingIPad;
-+ (ResolutionSetting*) settingIPadLandscape;
-+ (ResolutionSetting*) settingIPadPortrait;
-+ (ResolutionSetting*) settingIPadRetina;
-+ (ResolutionSetting*) settingIPadRetinaLandscape;
-+ (ResolutionSetting*) settingIPadRetinaPortrait;
++ (ResolutionSetting*) setting_iPad;
++ (ResolutionSetting*) setting_iPadLandscape;
++ (ResolutionSetting*) setting_iPadPortrait;
++ (ResolutionSetting*) setting_iPadRetina;
++ (ResolutionSetting*) setting_iPadRetinaLandscape;
++ (ResolutionSetting*) setting_iPadRetinaPortrait;
 
-+ (ResolutionSetting*) settingIPhoneX;
-+ (ResolutionSetting*) settingIPhoneXLandscape;
-+ (ResolutionSetting*) settingIPhoneXPortrait;
++ (ResolutionSetting*) setting_iPhoneX;
++ (ResolutionSetting*) setting_iPhoneXLandscape;
++ (ResolutionSetting*) setting_iPhoneXPortrait;
 
-+ (ResolutionSetting*) settingIPadPro10;
-+ (ResolutionSetting*) settingIPadPro10Landscape;
-+ (ResolutionSetting*) settingIPadPro10Portrait;
++ (ResolutionSetting*) setting_iPadPro10;
++ (ResolutionSetting*) setting_iPadPro10Landscape;
++ (ResolutionSetting*) setting_iPadPro10Portrait;
 
-+ (ResolutionSetting*) settingIPadPro12;
-+ (ResolutionSetting*) settingIPadPro12Landscape;
-+ (ResolutionSetting*) settingIPadPro12Portrait;
++ (ResolutionSetting*) setting_iPadPro12;
++ (ResolutionSetting*) setting_iPadPro12Landscape;
++ (ResolutionSetting*) setting_iPadPro12Portrait;
 
 // Android resolutions
-+ (ResolutionSetting*) settingAndroid1280x720;
-+ (ResolutionSetting*) settingAndroid1280x720Landscape;
-+ (ResolutionSetting*) settingAndroid1280x720Portrait;
++ (ResolutionSetting*) setting_Android1280x720;
++ (ResolutionSetting*) setting_Android1280x720Landscape;
++ (ResolutionSetting*) setting_Android1280x720Portrait;
 
-+ (ResolutionSetting*) settingAndroid1920x1080;
-+ (ResolutionSetting*) settingAndroid1920x1080Landscape;
-+ (ResolutionSetting*) settingAndroid1920x1080Portrait;
++ (ResolutionSetting*) setting_Android1920x1080;
++ (ResolutionSetting*) setting_Android1920x1080Landscape;
++ (ResolutionSetting*) setting_Android1920x1080Portrait;
 
-+ (ResolutionSetting*) settingAndroid854x480;
-+ (ResolutionSetting*) settingAndroid854x480Landscape;
-+ (ResolutionSetting*) settingAndroid854x480Portrait;
++ (ResolutionSetting*) setting_Android854x480;
++ (ResolutionSetting*) setting_Android854x480Landscape;
++ (ResolutionSetting*) setting_Android854x480Portrait;
 
-+ (ResolutionSetting*) settingAndroid800x480;
-+ (ResolutionSetting*) settingAndroid800x480Landscape;
-+ (ResolutionSetting*) settingAndroid800x480Portrait;
++ (ResolutionSetting*) setting_Android800x480;
++ (ResolutionSetting*) setting_Android800x480Landscape;
++ (ResolutionSetting*) setting_Android800x480Portrait;
 
-+ (ResolutionSetting*) settingAndroid960x540;
-+ (ResolutionSetting*) settingAndroid960x540Landscape;
-+ (ResolutionSetting*) settingAndroid960x540Portrait;
++ (ResolutionSetting*) setting_Android960x540;
++ (ResolutionSetting*) setting_Android960x540Landscape;
++ (ResolutionSetting*) setting_Android960x540Portrait;
 
-+ (ResolutionSetting*) settingAndroid1024x600;
-+ (ResolutionSetting*) settingAndroid1024x600Landscape;
-+ (ResolutionSetting*) settingAndroid1024x600Portrait;
++ (ResolutionSetting*) setting_Android1024x600;
++ (ResolutionSetting*) setting_Android1024x600Landscape;
++ (ResolutionSetting*) setting_Android1024x600Portrait;
 
-+ (ResolutionSetting*) settingAndroid1280x800;
-+ (ResolutionSetting*) settingAndroid1280x800Landscape;
-+ (ResolutionSetting*) settingAndroid1280x800Portrait;
++ (ResolutionSetting*) setting_Android1280x800;
++ (ResolutionSetting*) setting_Android1280x800Landscape;
++ (ResolutionSetting*) setting_Android1280x800Portrait;
 
-+ (ResolutionSetting*) settingAndroid2960x1440;
-+ (ResolutionSetting*) settingAndroid2960x1440Landscape;
-+ (ResolutionSetting*) settingAndroid2960x1440Portrait;
++ (ResolutionSetting*) setting_Android2960x1440;
++ (ResolutionSetting*) setting_Android2960x1440Landscape;
++ (ResolutionSetting*) setting_Android2960x1440Portrait;
 
 
 - (id) initWithSerialization:(id)serialization;

@@ -36,49 +36,49 @@
     predefinedResolutions = [[NSMutableArray alloc] init];
     
     // iOS
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneXLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPhoneXPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone5Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone5Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone6Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone6Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone6PlusLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhone6PlusPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhoneXLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPhoneXPortrait]];
     
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadPortrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadRetinaLandscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadRetinaPortrait]];
     
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro10Portrait]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadPro10Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadPro10Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadPro12Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_iPadPro12Portrait]];
     
     // Android
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x720Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x720Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1280x720Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1280x720Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1920x1080Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1920x1080Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1920x1080Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1920x1080Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid854x480Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid854x480Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android854x480Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android854x480Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid800x480Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid800x480Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android800x480Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android800x480Portrait]];
 
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid960x540Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid960x540Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android960x540Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android960x540Portrait]];
     
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1024x600Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1024x600Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1024x600Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1024x600Portrait]];
     
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid1280x800Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1280x800Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android1280x800Portrait]];
     
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid2960x1440Landscape]];
-    [predefinedResolutions addObject:[ResolutionSetting settingAndroid2960x1440Portrait]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android2960x1440Landscape]];
+    [predefinedResolutions addObject:[ResolutionSetting setting_Android2960x1440Portrait]];
     
     int i = 0;
     for (ResolutionSetting* setting in predefinedResolutions)

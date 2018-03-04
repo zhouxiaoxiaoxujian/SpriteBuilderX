@@ -123,7 +123,7 @@
     if (self.rootObjectType == kCCBNewDocTypeLayer || self.rootObjectType == kCCBNewDocTypeNode)
     {
         // Add resolutions
-        ResolutionSetting* phoneSetting = [ResolutionSetting settingIPhone];
+        ResolutionSetting* phoneSetting = [ResolutionSetting setting_iPhone];
         phoneSetting.width = self.width;
         phoneSetting.height = self.height;
         

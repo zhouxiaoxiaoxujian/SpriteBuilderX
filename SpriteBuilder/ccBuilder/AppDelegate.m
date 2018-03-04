@@ -1358,37 +1358,37 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         if (projectSettings.defaultOrientation == kCCBOrientationLandscape || projectSettings.defaultOrientation == kCCBOrientationUniversal)
         {
             // Full screen landscape
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone5Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone6Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhoneXLandscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x720Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid960x540Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid800x480Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1024x600Landscape]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x800Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone5Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone6Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone6PlusLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneXLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadRetinaLandscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadPro10Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadPro12Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1280x720Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android960x540Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android800x480Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1024x600Landscape]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1280x800Landscape]];
         }
         if (projectSettings.defaultOrientation == kCCBOrientationPortrait || projectSettings.defaultOrientation == kCCBOrientationUniversal)
         {
             // Full screen portrait
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone5Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadPortrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadRetinaPortrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone6Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhone6PlusPortrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPhoneXPortrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadPro10Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingIPadPro12Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x720Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid854x480Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid960x540Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid800x480Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1024x600Portrait]];
-            [updatedResolutions addObject:[ResolutionSetting settingAndroid1280x800Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone5Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone6Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhone6PlusPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPhoneXPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadRetinaPortrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadPro10Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_iPadPro12Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1280x720Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android854x480Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android960x540Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android800x480Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1024x600Portrait]];
+            [updatedResolutions addObject:[ResolutionSetting setting_Android1280x800Portrait]];
         }
     }
     
