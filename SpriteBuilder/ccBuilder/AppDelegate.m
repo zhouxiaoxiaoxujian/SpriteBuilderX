@@ -2225,7 +2225,7 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
 - (void) newFile:(NSString*) fileName type:(int)type resolutions: (NSMutableArray*) resolutions layerWidth:(float) width layerHeight:(float) height
 {
     BOOL centered = NO;
-    if (type == kCCBNewDocTypeNode ||
+    if (//type == kCCBNewDocTypeNode ||
         type == kCCBNewDocTypeParticleSystem ||
         type == kCCBNewDocTypeSprite) centered = YES;
     
@@ -2293,14 +2293,24 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
         // Set contentSize to w x h in scaled coordinates for layers
         [PositionPropertySetter setSize:NSMakeSize(0, 0) type:CCSizeTypePoints forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];
     }
-    
+    else if (type == kCCBNewDocTypeNode)
+    {
+        for(ResolutionSetting* resolution in resolutions)
+        {
+            resolution.width = width * resolution.resourceScale;
+            resolution.height = height * resolution.resourceScale;
+        }
+        [[CocosScene cocosScene] setStageSize:CGSizeMake(width, height) centeredOrigin:centered];
+        // Set contentSize to w x h in scaled coordinates for layers
+        [PositionPropertySetter setSize:NSMakeSize(width, height) type:CCSizeTypeUIPoints forNode:[CocosScene cocosScene].rootNode prop:@"contentSize"];
+    }
     [outlineHierarchy reloadData];
     [sequenceHandler updateOutlineViewSelection];
     [_inspectorController updateInspectorFromSelection];
     
     self.currentDocument = [[CCBDocument alloc] init];
     self.currentDocument.resolutions = resolutions;
-    self.currentDocument.currentResolution = 0;
+    self.currentDocument.currentResolution = 1;
     self.currentDocument.docDimensionsType = docDimType;
     self.currentDocument.projectSettings = projectSettings;
     

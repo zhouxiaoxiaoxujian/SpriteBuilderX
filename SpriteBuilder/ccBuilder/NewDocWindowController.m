@@ -81,9 +81,9 @@
     else if (objectType == kCCBNewDocTypeNode)
     {
         // Node
-        self.canSetSize = NO;
-        self.width = 0;
-        self.height = 0;
+        self.canSetSize = YES;
+        self.width = 320;
+        self.height = 568;
     }
     else if (objectType == kCCBNewDocTypeLayout)
     {
@@ -120,7 +120,7 @@
 {
     NSMutableArray* arr = [NSMutableArray array];
     
-    if (self.rootObjectType == kCCBNewDocTypeLayer)
+    if (self.rootObjectType == kCCBNewDocTypeLayer || self.rootObjectType == kCCBNewDocTypeNode)
     {
         // Add resolutions
         ResolutionSetting* phoneSetting = [ResolutionSetting settingIPhone];
