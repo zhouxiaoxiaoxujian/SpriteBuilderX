@@ -3214,6 +3214,21 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     }
 }
 
+- (IBAction)menuSlightObject:(id)sender {
+    int dir = (int)[sender tag];
+    
+    if (self.selectedNodes.count == 0) return;
+    
+    CGPoint delta = CGPointZero;
+    if (dir == 0) delta = ccp(-0.1, 0);
+    else if (dir == 1) delta = ccp(0.1, 0);
+    else if (dir == 2) delta = ccp(0, 0.1);
+    else if (dir == 3) delta = ccp(0, -0.1);
+    
+    [self moveSelectedObjectWithDelta:delta];
+}
+
+
 - (IBAction) menuNudgeObject:(id)sender
 {
     int dir = (int)[sender tag];
