@@ -1827,7 +1827,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 //CCLOG(@"top");
                 break;
         }
-        
+        NodeInfo* nodeInfo = transformSizeNode.userObject;
+        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+        BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+        //if all locked, don't save undo.. well don't do anything
+        if (widthLock && heightLock) {
+            return;
+        }
         [appDelegate saveUndoStateWillChangeProperty:@"position"];
         [self setAnchorPoint:anchorPointSize forNode:transformSizeNode];
         
@@ -1907,19 +1915,13 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             }
         }
         
-        NodeInfo* nodeInfo = transformSizeNode.userObject;
-        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
-        BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
-        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
-        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
-        
         transformSizeNode.contentSizeInPoints = CGSizeMake(widthLock ? transformContentSize.width : transformContentSize.width * xScaleNew,
                                                            heightLock ? transformContentSize.height : transformContentSize.height * yScaleNew);
 
         [[InspectorController sharedController] refreshProperty:@"contentSize"];
         
         //this will show position changes in the inspector
-        //but will cause little jitter only ONCE when start drag if mouse close to the initial anhor.
+        //but will cause little jitter when start drag if mouse close to the initial anhor.
         [self setAnchorPoint:anchorBefore forNode:transformSizeNode];
         [[InspectorController sharedController] refreshProperty:@"position"];
         [self setAnchorPoint:anchorPointSize forNode:transformSizeNode];
@@ -2356,20 +2358,28 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         if (nodeInfo) {
             NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
             BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+            
+            //disable size cursor for corners of Sprites
+            showCursor = !disabledContentSize;
+            
             bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
             bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
             
             switch (cornerIndex) {
                 case 0: //bl
+                    showCursor = widthLock && heightLock ? NO : showCursor;
                     break;
                     
                 case 1: //br
+                    showCursor = widthLock && heightLock ? NO : showCursor;
                     break;
                     
                 case 2: //tR
+                    showCursor = widthLock && heightLock ? NO : showCursor;
                     break;
                     
                 case 3: //tL
+                    showCursor = widthLock && heightLock ? NO : showCursor;
                     break;
                     
                 case 4: //l
