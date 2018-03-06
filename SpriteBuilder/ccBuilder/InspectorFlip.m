@@ -46,4 +46,14 @@
     return [[self propertyForSelectionY] boolValue];
 }
 
+- (void) refresh
+{
+    [self willChangeValueForKey:@"flipX"];
+    [self didChangeValueForKey:@"flipX"];
+    [self willChangeValueForKey:@"flipY"];
+    [self didChangeValueForKey:@"flipY"];
+    
+    [super refresh];
+}
+
 @end

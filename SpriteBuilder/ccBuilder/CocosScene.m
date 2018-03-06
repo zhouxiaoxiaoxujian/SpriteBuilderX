@@ -61,6 +61,7 @@
 #import "RMResource.h"
 #import "RMSpriteFrame.h"
 #import "TexturePropertySetter.h"
+#import "SpriteObjectMenuFlipController.h"
 
 #define kCCBSelectionOutset 3
 #define kCCBSinglePointSelectionRadius 23
@@ -1403,6 +1404,20 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             spriteDisplayNameItem.enabled = NO;
             [appDelegate.spriteObjectMenu addItem:spriteDisplayNameItem];
             
+            //---------------
+            NSMenuItem *separator1 = [NSMenuItem separatorItem];
+            [appDelegate.spriteObjectMenu addItem: separator1];
+            
+            //Menu FlipXY
+            NSMenuItem *brightness = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
+            SpriteObjectMenuFlipController *flipMenu = [[SpriteObjectMenuFlipController alloc] initWithNibName:@"SpriteObjectMenuFlipController"
+                                                                                                        bundle:nil];
+            flipMenu.selection = selection;
+            [brightness setView:flipMenu.view];
+            [appDelegate.spriteObjectMenu addItem:brightness];
+            
+            
+            //Menu SpriteFrame
             NSString *propertyName = @"spriteFrame";
             // Setup menu for the SpriteFrame
             NSString *spriteFrameTitle = [info.extraProps valueForKey:propertyName];
@@ -1450,21 +1465,20 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                 [subMenu removeItemAtIndex:0];
             }
             
-            //separator
-            NSMenuItem *separator = [NSMenuItem separatorItem];
-            [appDelegate.spriteObjectMenu addItem: separator];
+            //---------------
+            NSMenuItem *separator2 = [NSMenuItem separatorItem];
+            [appDelegate.spriteObjectMenu addItem: separator2];
             if (!isNull) {
-                [self checkItemWithPath:spriteFrameTitle forMenu:subMenu];
+                [self selectItemWithPath:spriteFrameTitle forMenu:subMenu];
             }
             
-            //TODO: add more cool menu items like FlipX
         }
         
         [NSMenu popUpContextMenu:appDelegate.spriteObjectMenu withEvent:event forView:appDelegate.cocosView];
     }
 }
 
-- (void)checkItemWithPath:(NSString *)path forMenu:(NSMenu *) menu {
+- (void)selectItemWithPath:(NSString *)path forMenu:(NSMenu *) menu {
     
     NSArray *parts = [path componentsSeparatedByString:@"/"];
     NSMenuItem *currentItem = [menu itemWithTitle:[parts objectAtIndex:0]];
@@ -1481,7 +1495,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             for (int i = 1; i < [parts count]; i++) {
                 newPath = [newPath stringByAppendingPathComponent:[parts objectAtIndex:i]];
             }
-            [self checkItemWithPath:newPath forMenu:currentItem.submenu];
+            [self selectItemWithPath:newPath forMenu:currentItem.submenu];
         }
     }
 }

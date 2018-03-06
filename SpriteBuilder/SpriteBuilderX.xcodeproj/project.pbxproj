@@ -911,6 +911,8 @@
 		F824443F1E1716B00044EE4F /* BFColorPickerPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444341E1716B00044EE4F /* BFColorPickerPopoverView.m */; };
 		F82444401E1716B00044EE4F /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444361E1716B00044EE4F /* BFColorPickerViewController.m */; };
 		F82444411E1716B00044EE4F /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F82444381E1716B00044EE4F /* BFIconTabBar.m */; };
+		F8308408204EE5200048451B /* SpriteObjectMenuFlipController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8308406204EE5200048451B /* SpriteObjectMenuFlipController.m */; };
+		F8308409204EE5200048451B /* SpriteObjectMenuFlipController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8308407204EE5200048451B /* SpriteObjectMenuFlipController.xib */; };
 		F8462E321E133B12005DB3BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8462E311E133B12005DB3BD /* Images.xcassets */; };
 		F85A57DD1F72B0F90091B3C6 /* frame_iPhoneX.png in Resources */ = {isa = PBXBuildFile; fileRef = F85A57DC1F72B0E70091B3C6 /* frame_iPhoneX.png */; };
 		F85F7C4E1E100C7000A13B3F /* Generated in Resources */ = {isa = PBXBuildFile; fileRef = F85F7C4D1E100C7000A13B3F /* Generated */; };
@@ -2490,6 +2492,9 @@
 		F82444361E1716B00044EE4F /* BFColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFColorPickerViewController.m; sourceTree = "<group>"; };
 		F82444371E1716B00044EE4F /* BFIconTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFIconTabBar.h; sourceTree = "<group>"; };
 		F82444381E1716B00044EE4F /* BFIconTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFIconTabBar.m; sourceTree = "<group>"; };
+		F8308405204EE5200048451B /* SpriteObjectMenuFlipController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpriteObjectMenuFlipController.h; sourceTree = "<group>"; };
+		F8308406204EE5200048451B /* SpriteObjectMenuFlipController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteObjectMenuFlipController.m; sourceTree = "<group>"; };
+		F8308407204EE5200048451B /* SpriteObjectMenuFlipController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpriteObjectMenuFlipController.xib; sourceTree = "<group>"; };
 		F8462E311E133B12005DB3BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F85A57DC1F72B0E70091B3C6 /* frame_iPhoneX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_iPhoneX.png; sourceTree = "<group>"; };
 		F85F7C4D1E100C7000A13B3F /* Generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Generated; path = ../../Generated; sourceTree = "<group>"; };
@@ -2899,6 +2904,7 @@
 				7789ABD7133AA82000CEFCC7 /* MainMenu.xib */,
 				E335CAFE1576702300A612EE /* MainWindow.h */,
 				E335CAFF1576702300A612EE /* MainWindow.m */,
+				F830840A204EE7130048451B /* SpriteObjectMenu */,
 			);
 			name = "AppDelegate & Cocos2D Scene";
 			sourceTree = "<group>";
@@ -5154,6 +5160,16 @@
 			path = "Helper Classes";
 			sourceTree = "<group>";
 		};
+		F830840A204EE7130048451B /* SpriteObjectMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F8308405204EE5200048451B /* SpriteObjectMenuFlipController.h */,
+				F8308406204EE5200048451B /* SpriteObjectMenuFlipController.m */,
+				F8308407204EE5200048451B /* SpriteObjectMenuFlipController.xib */,
+			);
+			name = SpriteObjectMenu;
+			sourceTree = "<group>";
+		};
 		F85F7C541E100FCA00A13B3F /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -5880,6 +5896,7 @@
 				92F0960D18F8851300D47A94 /* inspector-body-remove@2x.png in Resources */,
 				80E95C5A1836E44900D864CA /* select-locked.png in Resources */,
 				80FBACD91834553000C4BB69 /* visible-icon.png in Resources */,
+				F8308409204EE5200048451B /* SpriteObjectMenuFlipController.xib in Resources */,
 				B7E775E218563F8C004221AA /* frame-fixed.png in Resources */,
 				B7E6BB6819F86A9800619A58 /* ui-nopreview@2x.png in Resources */,
 				830485A519AF2A6E00A624BB /* PreviewAudioView.xib in Resources */,
@@ -6913,6 +6930,7 @@
 				E525F2D49FBDA5CF8C8F0026 /* InspectorFlip.m in Sources */,
 				E525F1D290DC4186045DF385 /* InspectorBlendmode.m in Sources */,
 				E525F7A003FECE9F026E6272 /* InspectorFntFile.m in Sources */,
+				F8308408204EE5200048451B /* SpriteObjectMenuFlipController.m in Sources */,
 				E525F6BDAD02A4137800B1E3 /* InspectorCCBFile.m in Sources */,
 				E525FA2B8DC3D6D594097EE7 /* InspectorText.m in Sources */,
 				E525F0CA1647993A7388B7BC /* InspectorStringSimple.m in Sources */,
