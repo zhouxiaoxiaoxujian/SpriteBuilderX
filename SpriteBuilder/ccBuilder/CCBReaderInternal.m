@@ -197,6 +197,8 @@ __strong NSDictionary* renamedProperties = nil;
         float h = [[serializedValue objectAtIndex:1] floatValue];
         
         CCSizeType sizeType = CCSizeTypePoints;
+        BOOL lockWidth = NO;
+        BOOL lockHeight = NO;
         if ([(NSArray*)serializedValue count] == 3)
         {
             // Convert old content size type
@@ -244,9 +246,18 @@ __strong NSDictionary* renamedProperties = nil;
                     sizeType.heightUnit = CCSizeUnitPoints;
             }
         }
+        else if([(NSArray*)serializedValue count] == 6)
+        {
+            sizeType.widthUnit = [[serializedValue objectAtIndex:2] intValue];
+            sizeType.heightUnit = [[serializedValue objectAtIndex:3] intValue];
+            lockWidth = [[serializedValue objectAtIndex:4] boolValue];
+            lockHeight = [[serializedValue objectAtIndex:5] boolValue];
+        }
         
         NSSize size =  NSMakeSize(w, h);
         [PositionPropertySetter setSize:size type:sizeType forNode:node prop:name];
+        [node setExtraProp:[NSNumber numberWithBool:lockWidth] forKey:[name stringByAppendingString:@"LockedWidth"]];
+        [node setExtraProp:[NSNumber numberWithBool:lockHeight] forKey:[name stringByAppendingString:@"LockedHeight"]];
     }
     else if ([type isEqualToString:@"Scale"]
              || [type isEqualToString:@"ScaleLock"])

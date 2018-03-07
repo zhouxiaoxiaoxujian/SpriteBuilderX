@@ -494,35 +494,46 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 -(void)renderBorder:(CCNode*)node
 {
 	// Selection corners in world space
-	CGPoint points[4]; //{bl,br,tr,tl}
-
-	
+	CGPoint points[8]; //{bl,br,tr,tl}
 	[self getCornerPointsForNode:node withPoints:points];
 	
-	
-	CCSprite* blSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
-	CCSprite* brSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
-	CCSprite* tlSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
-	CCSprite* trSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
-	
-	
-	blSprt.position = points[0];
-	brSprt.position = points[1];
-	trSprt.position = points[2];
-	tlSprt.position = points[3];
-	
-	[selectionLayer addChild:blSprt];
-	[selectionLayer addChild:brSprt];
-	[selectionLayer addChild:tlSprt];
-	[selectionLayer addChild:trSprt];
-	
-	CCDrawNode* drawing = [CCDrawNode node];
-	
-	float borderWidth = 1.0 / [CCDirector sharedDirector].contentScaleFactor;
-	
-	[drawing drawPolyWithVerts:points count:4 fillColor:[CCColor clearColor] borderWidth:borderWidth borderColor:[CCColor colorWithRed:1 green:1 blue:1 alpha:0.3]];
-	
-	[selectionLayer addChild:drawing z:-1];
+    CCSprite* blSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* brSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* tlSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* trSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    
+    CCSprite* lSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* bSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* rSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    CCSprite* tSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+    
+    blSprt.position = points[0];
+    brSprt.position = points[1];
+    trSprt.position = points[2];
+    tlSprt.position = points[3];
+    
+    lSprt.position = points[4];
+    bSprt.position = points[5];
+    rSprt.position = points[6];
+    tSprt.position = points[7];
+    
+    [selectionLayer addChild:blSprt];
+    [selectionLayer addChild:brSprt];
+    [selectionLayer addChild:tlSprt];
+    [selectionLayer addChild:trSprt];
+    
+    [selectionLayer addChild:lSprt];
+    [selectionLayer addChild:bSprt];
+    [selectionLayer addChild:rSprt];
+    [selectionLayer addChild:tSprt];
+    
+    CCDrawNode* drawing = [CCDrawNode node];
+    float borderWidth = 1.0 / [CCDirector sharedDirector].contentScaleFactor;
+    [drawing drawPolyWithVerts:points count:4
+                     fillColor:[CCColor clearColor]
+                   borderWidth:borderWidth
+                   borderColor:[CCColor colorWithRed:1 green:1 blue:1 alpha:0.3]];
+    [selectionLayer addChild:drawing z:-1];
 
 }
 
@@ -577,37 +588,66 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             {
                 CGPoint localAnchor = ccp(node.anchorPoint.x * node.contentSizeInPoints.width,
                                           node.anchorPoint.y * node.contentSizeInPoints.height);
-                
+                //when changing size, anchor temporary changed too for size operation
+                //but we should display real anchor of node
+                if (currentMouseTransform == kCCBTransformHandleSize) {
+                    localAnchor = ccp(anchorBefore.x * node.contentSizeInPoints.width,
+                                      anchorBefore.y * node.contentSizeInPoints.height);
+                }
                 CGPoint anchorPointPos = ccpRound([node convertToWorldSpace:localAnchor]);
                 
                 CCSprite* anchorPointSprite = [CCSprite spriteWithImageNamed:@"select-pt.png"];
                 anchorPointSprite.position = anchorPointPos;
                 [selectionLayer addChild:anchorPointSprite z:1];
                 
-                CGPoint points[4]; //{bl,br,tr,tl}
+                CGPoint points[8]; //{bl,br,tr,tl}
                 BOOL isContentSizeZero = NO;
                 
                 if (node.contentSize.width > 0 && node.contentSize.height > 0)
                 {
                     // Selection corners in world space
+                    [self getCornerPointsForNode:node withPoints:points];
                     
                     CCSprite* blSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* brSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* tlSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     CCSprite* trSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     
-                    [self getCornerPointsForNode:node withPoints:points];
+                    CCSprite* lSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* bSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* rSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
+                    CCSprite* tSprt = [CCSprite spriteWithImageNamed:@"select-corner.png"];
                     
                     blSprt.position = points[0];
                     brSprt.position = points[1];
                     trSprt.position = points[2];
                     tlSprt.position = points[3];
-                    
                     [selectionLayer addChild:blSprt];
                     [selectionLayer addChild:brSprt];
                     [selectionLayer addChild:tlSprt];
                     [selectionLayer addChild:trSprt];
                     
+                    NodeInfo* nodeInfo = node.userObject;
+                    if (nodeInfo) {
+                        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+                        BOOL disabledContentSize = [node shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+                        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+                        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+                        
+                        if (!widthLock) {
+                            lSprt.position = points[4];
+                            rSprt.position = points[6];
+                            [selectionLayer addChild:lSprt];
+                            [selectionLayer addChild:rSprt];
+                        }
+                        if (!heightLock) {
+                            bSprt.position = points[5];
+                            tSprt.position = points[7];
+                            [selectionLayer addChild:bSprt];
+                            [selectionLayer addChild:tSprt];
+                        }                       
+                    }
+
                     CCDrawNode* drawing = [CCDrawNode node];
                 
                     float borderWidth = 1.0 / [CCDirector sharedDirector].contentScaleFactor;
@@ -647,14 +687,13 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
                     }
                 }
 
-//                if(!(overTypeField & kCCBToolScale) && currentMouseTransform == kCCBTransformHandleNone)
-//                {
-//                   if([self isOverScale:mousePos withPoints:points withCorner:&cornerIndex withOrientation:&cornerOrientation])
-//                   {
-//                       overTypeField |= kCCBToolScale;
-//                   }
-//                }
-                
+                if(!(overTypeField & kCCBToolSize) && currentMouseTransform == kCCBTransformHandleNone)
+                {
+                   if([self isOverSize:mousePos withPoints:points withCorner:&cornerIndex withOrientation:&cornerOrientation])
+                   {
+                       overTypeField |= kCCBToolSize;
+                   }
+                }
                 
                 if(!(overTypeField & kCCBToolTranslate) && currentMouseTransform == kCCBTransformHandleNone)
                 {
@@ -710,10 +749,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 -(void)getCornerPointsForNode:(CCNode*)node withPoints:(CGPoint*)points
 {
     // Selection corners in world space
-    points[0] = ccpRound([node convertToWorldSpace: ccp(0,0)]);
-    points[1] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width,0)]);
-    points[2] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width,node.contentSizeInPoints.height)]);
-    points[3] = ccpRound([node convertToWorldSpace: ccp(0,node.contentSizeInPoints.height)]);
+    points[0] = ccpRound([node convertToWorldSpace: ccp(0, 0)]);
+    points[1] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, 0)]);
+    points[2] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, node.contentSizeInPoints.height)]);
+    points[3] = ccpRound([node convertToWorldSpace: ccp(0, node.contentSizeInPoints.height)]);
+    
+    points[4] = ccpRound([node convertToWorldSpace: ccp(0, node.contentSizeInPoints.height / 2)]);
+    points[5] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width / 2, 0)]);
+    points[6] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width, node.contentSizeInPoints.height / 2)]);
+    points[7] = ccpRound([node convertToWorldSpace: ccp(node.contentSizeInPoints.width / 2, node.contentSizeInPoints.height)]);
   
 }
 
@@ -731,6 +775,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     points[1] = ccpRound( ccpAdd(position,ccpRPerp(diaganol)));
     points[2] = ccpRound( ccpAdd(position,diaganol));
     points[3] = ccpRound( ccpAdd(position, ccpPerp(diaganol)));
+    points[4] = ccpRound(ccp(points[0].x, (points[0].y + points[2].y) / 2));
+    points[5] = ccpRound(ccp((points[0].x + points[2].x) / 2, points[0].y));
+    points[6] = ccp(points[2].x, points[4].y);
+    points[7] = ccp(points[5].x, points[2].y);
 
 }
 
@@ -758,11 +806,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
 }
 
-- (BOOL) isOverScale:(CGPoint)_mousePos withPoints:(const CGPoint*)points/*{bl,br,tr,tl}*/  withCorner:(int*)_cornerIndex withOrientation:(CGPoint*)_orientation
+- (BOOL) isOverSize:(CGPoint)_mousePos withPoints:(const CGPoint*)points/*{bl,br,tr,tl}*/  withCorner:(int*)_cornerIndex withOrientation:(CGPoint*)_orientation
 {
     int lCornerIndex = -1;
     CGPoint orientation;
     float minDistance = INFINITY;
+    //first show rotate cursor, then size, check isOverRotation for same values
+    //0..7 = size. 7..13 = rotation.
+    const float kMinDistanceToCorner = 0.0f * [self selectionZoom];
+    const float kMaxDistanceToCorner = 7.0f * [self selectionZoom];
     
     for (int i = 0; i < 4; i++)
     {
@@ -770,21 +822,16 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint p2 = points[(i + 1) % 4];
         CGPoint p3 = points[(i + 2) % 4];
         
-        const float kDistanceToCorner = 8.0f * [self selectionZoom];
-        
         float distance = ccpLength(ccpSub(_mousePos, p2));
-        
-        if(distance < kDistanceToCorner && distance < minDistance)
+        if(distance > kMinDistanceToCorner && distance < kMaxDistanceToCorner)
         {
             CGPoint segment1 = ccpSub(p2, p1);
             CGPoint segment2 = ccpSub(p2, p3);
-    
+            
             orientation = ccpNormalize(ccpAdd(segment1, segment2));
             lCornerIndex = (i + 1) % 4;
-            minDistance = distance;
-
+            minDistance = kMinDistanceToCorner;
         }
-        
     }
     
     if(lCornerIndex != -1)
@@ -801,8 +848,38 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         return YES;
     }
     
-    return NO;
+    for (int i = 0; i < 4; i++)
+    {
+        CGPoint p1 = points[i % 4 + 4];
+        CGPoint p2 = points[(i + 1) % 4 + 4];
+        CGPoint p3 = points[(i + 2) % 4 + 4];
+        
+        float distance = ccpLength(ccpSub(_mousePos, p2));
+        if(distance > kMinDistanceToCorner && distance < kMaxDistanceToCorner)
+        {
+            CGPoint segment1 = ccpSub(p2, p1);
+            CGPoint segment2 = ccpSub(p2, p3);
+            
+            orientation = ccpNormalize(ccpAdd(segment1, segment2));
+            lCornerIndex = (i + 1) % 4 + 4;
+            minDistance = distance;
+        }
+    }
     
+    if(lCornerIndex != -1)
+    {
+        if(_orientation)
+        {
+            *_orientation = orientation;
+        }
+        
+        if(_cornerIndex)
+        {
+            *_cornerIndex = lCornerIndex;
+        }
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL) isOverRotation:(CGPoint)_mousePos withPoints:(const CGPoint*)points/*{bl,br,tr,tl}*/ withCorner:(int*)_cornerIndex withOrientation:(CGPoint*)orientation
@@ -815,14 +892,12 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 
         CGPoint segment1 = ccpSub(p2, p1);
         CGPoint unitSegment1 = ccpNormalize(segment1);
-
         
         CGPoint segment2 = ccpSub(p2, p3);
         CGPoint unitSegment2 = ccpNormalize(segment2);
         
-        const float kMinDistanceForRotation = 1.0f * [self selectionZoom];
-        const float kMaxDistanceForRotation = 5.0f * [self selectionZoom];
-       
+        const float kMinDistanceForRotation = 7.0f * [self selectionZoom];
+        const float kMaxDistanceForRotation = 13.0f * [self selectionZoom];
         
         CGPoint mouseVector = ccpSub(_mousePos, p2);
         
@@ -841,12 +916,9 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             {
                 *orientation = ccpNormalize(ccpAdd(unitSegment1, unitSegment2));
             }
-
             return YES;
         }
-        
     }
-    
     return NO;
 }
 
@@ -1028,15 +1100,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         if(node.locked)
             continue;
         
-        transformScalingNode = node;
+        transformSizeNode = node;
         
         BOOL isJoint = node.plugIn.isJoint;
         
         BOOL isContentSizeZero = NO;
-        CGPoint points[4];
+        CGPoint points[8];
         
         
-        if (transformScalingNode.contentSize.width == 0 || transformScalingNode.contentSize.height == 0)
+        if (transformSizeNode.contentSize.width == 0 || transformSizeNode.contentSize.height == 0)
         {
             isContentSizeZero = YES;
             CCSprite * sel = [CCSprite spriteWithImageNamed:kZeroContentSizeImage];
@@ -1047,26 +1119,24 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             [self getCornerPointsForNode:node withPoints:points];
         }
         
-        //NOTE The following return statements should go in order of the CCBTool enumeration.
+        //WARNING: The following return statements should go in order of the CCBTool enumeration.
         //kCCBToolAnchor
         if(!isJoint && !isContentSizeZero && [self isOverAnchor:node withPoint:pt])
             return kCCBTransformHandleAnchorPoint;
         
         if([self isOverContentBorders:pt withPoints:points])
-            return kCCBTransformHandleDownInside;
-        
-        
-        //kCCBToolScale
-//        if(!isJoint && [self isOverScale:pt withPoints:points withCorner:nil withOrientation:nil])
-//            return kCCBTransformHandleScale;
+            return kCCBTransformHandleDownInside;        
         
         //kCCBToolRotate
         if(!isJoint && [self isOverRotation:pt withPoints:points withCorner:nil withOrientation:nil])
             return kCCBTransformHandleRotate;
         
+        //kCCBToolSize
+        if(!isJoint && [self isOverSize:pt withPoints:points withCorner:nil withOrientation:nil])
+            return kCCBTransformHandleSize;
     }
     
-    transformScalingNode = NULL;
+    transformSizeNode = NULL;
     return kCCBTransformHandleNone;
 }
 
@@ -1292,12 +1362,12 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         if (th == kCCBTransformHandleAnchorPoint)
         {
             // Anchor points are fixed for singel point nodes
-            if (transformScalingNode.contentSizeInPoints.width == 0 || transformScalingNode.contentSizeInPoints.height == 0)
+            if (transformSizeNode.contentSizeInPoints.width == 0 || transformSizeNode.contentSizeInPoints.height == 0)
             {
                 return;
             }
             
-            BOOL readOnly = [[[transformScalingNode.plugIn.nodePropertiesDict objectForKey:@"anchorPoint"] objectForKey:@"readOnly"] boolValue];
+            BOOL readOnly = [[[transformSizeNode.plugIn.nodePropertiesDict objectForKey:@"anchorPoint"] objectForKey:@"readOnly"] boolValue];
             if (readOnly)
             {
                 return;
@@ -1305,26 +1375,27 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             
             // Transform anchor point
             currentMouseTransform = kCCBTransformHandleAnchorPoint;
-            [transformScalingNode cacheStartTransformAndAnchor];
+            [transformSizeNode cacheStartTransformAndAnchor];
             return;
         }
         if(th == kCCBTransformHandleRotate && appDelegate.selectedNode != rootNode)
         {
             // Start rotation transform
             currentMouseTransform = kCCBTransformHandleRotate;
-            transformStartRotation = transformScalingNode.rotation;
+            transformStartRotation = transformSizeNode.rotation;
             return;
         }
         
-//        if (th == kCCBTransformHandleScale && appDelegate.selectedNode != rootNode)
-//        {
-//            // Start scale transform
-//            currentMouseTransform = kCCBTransformHandleScale;
-//            transformStartScaleX = [PositionPropertySetter scaleXForNode:transformScalingNode prop:@"scale"];
-//            transformStartScaleY = [PositionPropertySetter scaleYForNode:transformScalingNode prop:@"scale"];
-//            return;
-//            
-//        }
+        if (th == kCCBTransformHandleSize && appDelegate.selectedNode != rootNode)
+        {
+            // Start scale transform
+            currentMouseTransform = kCCBTransformHandleSize;
+            anchorBefore = transformSizeNode.anchorPoint;
+            transformContentSize = transformSizeNode.contentSizeInPoints;
+            transformStartScaleX = [PositionPropertySetter scaleXForNode:transformSizeNode prop:@"scale"];
+            transformStartScaleY = [PositionPropertySetter scaleYForNode:transformSizeNode prop:@"scale"];
+            return;
+        }
 
     }
     
@@ -1562,6 +1633,16 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             vertexScaler.y = 0.0f;
         }
     }
+    if(cornerSelected == 5 || cornerSelected == 7)
+    {
+        vertexScaler.x = 0.0f;
+    }
+    
+    if(cornerSelected == 4 || cornerSelected == 6)
+    {
+        vertexScaler.y = 0.0f;
+    }
+
     return vertexScaler;
 }
 
@@ -1743,103 +1824,168 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         [[InspectorController sharedController] refreshProperty:@"position"];
         [snapLayer mouseDragged:pos event:event];
     }
-//    else if (currentMouseTransform == kCCBTransformHandleScale)
-//    {
-//        CGPoint nodePos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
-//        
-//        //Where did we start.
-//        CGPoint deltaStart = ccpSub(nodePos, mouseDownPos);
-//
-//        //Where are we now.
-//        CGPoint deltaNew = ccpSub(nodePos, pos);
-//        
-//        
-//        //First, unwind the current mouse down position to form an untransformed 'root' position: ie where on an untransformed image would you have clicked.
-//        CGSize contentSizeInPoints = transformScalingNode.contentSizeInPoints;
-//        CGPoint anchorPointInPoints = ccp( contentSizeInPoints.width * transformScalingNode.anchorPoint.x, contentSizeInPoints.height * transformScalingNode.anchorPoint.y );
-//        
-//        CGPoint vertexScaler  = {1.0f,1.0f};
-//        if(transformScalingNode.contentSize.height != 0 && transformScalingNode.contentSize.height != 0)
-//        {
-//            vertexScaler = [self vertexLockedScaler:transformScalingNode.anchorPoint withCorner:cornerIndex];
-//        }
-//       
-//
-//        //T
-//        CGAffineTransform translateTranform = CGAffineTransformTranslate(CGAffineTransformIdentity, -anchorPointInPoints.x, -anchorPointInPoints.y);
-//
-//        //S
-//        CGAffineTransform scaleTransform = CGAffineTransformMakeScale(transformStartScaleX, transformStartScaleY);
-//        
-//        //K
-//        CGAffineTransform skewTransform = CGAffineTransformMake(1.0f, tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewY)),
-//                                                                tanf(CC_DEGREES_TO_RADIANS(transformScalingNode.skewX)), 1.0f,
-//                                                                0.0f, 0.0f );
-//        
-//        //R
-//        CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(-transformScalingNode.rotation));
-//        
-//        //Root position == x,   xTKSR=mouseDown
-//        //We've got a root position now.
-//        CGPoint rootPosition = CGPointApplyAffineTransform(deltaStart,CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformConcat(translateTranform,skewTransform),scaleTransform), rotationTransform)));
-//        
-//        //What scale (S') would be have to adjust to in order to achieve the new mouseDragg position
-//        //  xTKS'R=mouseDrag,    [xTK]S'=mouseDrag*R^-1
-//        // [xTK]==known==intermediate==I, R^-1==known, mouseDrag==known, solve so S'
-//        
-//        //xTK
-//        CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
-//        CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
-//        
-//        CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
-//        if(isinf(scale.x) || isnan(scale.x))
-//        {
-//            scale.x = 0.0;
-//            vertexScaler.x = 0.0f;
-//        }
-//
-//        if(isinf(scale.y) || isnan(scale.y))
-//        {
-//            scale.y = 0.0;
-//            vertexScaler.y = 0.0f;
-//        }
-//
-//        
-//        // Calculate new scale
-//        float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
-//        float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
-//        
-//        NodeInfo* nodeInfo = transformScalingNode.userObject;
-//        
-//        // Handle shift key (uniform scale)
-//        if ([event modifierFlags] & NSShiftKeyMask ||  [nodeInfo.extraProps[@"scaleLock"] boolValue])
-//        {
-//            // Use the smallest scale composit
-//            if (fabs(xScaleNew) < fabs(yScaleNew))
-//            {
-//                yScaleNew = xScaleNew;
-//            }
-//            else
-//            {
-//                xScaleNew = yScaleNew;
-//            }
-//        }
-//        
-//        // Set new scale
-//        [appDelegate saveUndoStateWillChangeProperty:@"scale"];
-//        int type = [PositionPropertySetter scaledFloatTypeForNode:transformScalingNode prop:@"scale"];
-//        [PositionPropertySetter setScaledX:xScaleNew Y:yScaleNew type:type forNode:transformScalingNode prop:@"scale"];
-//        [[InspectorController sharedController] refreshProperty:@"scale"];
-//        
-//        
-//        //UpdateTheScaleTool
-//        cornerOrientation = ccpNormalize(deltaNew);
-//        self.currentTool = kCCBToolScale;//force it to update.
-//
-//    }
+    else if (currentMouseTransform == kCCBTransformHandleSize)
+    {
+        
+        CGPoint nodePos = [transformSizeNode.parent convertToWorldSpace:transformSizeNode.positionInPoints];
+        
+        //Where did we start.
+        CGPoint deltaStart = ccpSub(nodePos, mouseDownPos);
+        
+        //Where are we now.
+        CGPoint deltaNew = ccpSub(nodePos, pos);
+        
+        CGPoint anchorPointSize = ccp(0.5,0.5);
+        
+        switch (cornerIndex) {
+            case 0: //bl
+                anchorPointSize = ccp(1.0,1.0);
+                //CCLOG(@"bottom left");
+                break;
+                
+            case 1: //br
+                anchorPointSize = ccp(0.0,1.0);
+                //CCLOG(@"bottom right");
+                break;
+                
+            case 2: //tR
+                anchorPointSize = ccp(0.0,0.0);
+                //CCLOG(@"top right");
+                break;
+                
+            case 3: //tL
+                anchorPointSize = ccp(1.0,0.0);
+                //CCLOG(@"top left");
+                break;
+                
+            case 4: //l
+                anchorPointSize = ccp(1.0,0.5);
+                //CCLOG(@"left");
+                break;
+                
+            case 5: //b
+                anchorPointSize = ccp(0.5,1.0);
+                //CCLOG(@"bottom");
+                break;
+                
+            case 6: //r
+                anchorPointSize = ccp(0.0,0.5);
+                //CCLOG(@"right");
+                break;
+                
+            case 7: //t
+                anchorPointSize = ccp(0.5,0.0);
+                //CCLOG(@"top");
+                break;
+        }
+        NodeInfo* nodeInfo = transformSizeNode.userObject;
+        NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+        BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+        bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+        bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+        //if all locked, don't save undo.. well don't do anything
+        if (widthLock && heightLock) {
+            return;
+        }
+        [appDelegate saveUndoStateWillChangeProperty:@"position"];
+        [self setAnchorPoint:anchorPointSize forNode:transformSizeNode];
+        
+        CGPoint vertexScaler  = {1.0f,1.0f};
+        if(transformSizeNode.contentSize.height != 0 && transformSizeNode.contentSize.height != 0)
+        {
+            vertexScaler = [self vertexLockedScaler:anchorPointSize withCorner:cornerIndex];
+        }
+
+        //First, unwind the current mouse down position to form an untransformed 'root' position: ie where on an untransformed image would you have clicked.
+        CGSize contentSizeInPoints = transformSizeNode.contentSizeInPoints;
+        CGPoint anchorPointInPoints = ccp(contentSizeInPoints.width * anchorPointSize.x,
+                                          contentSizeInPoints.height * anchorPointSize.y);
+        //T
+        CGAffineTransform translateTranform = CGAffineTransformTranslate(CGAffineTransformIdentity, -anchorPointInPoints.x, -anchorPointInPoints.y);
+
+        //S
+        CGAffineTransform scaleTransform = CGAffineTransformMakeScale(transformStartScaleX, transformStartScaleY);
+
+        //K
+        CGAffineTransform skewTransform = CGAffineTransformMake(1.0f, tanf(CC_DEGREES_TO_RADIANS(transformSizeNode.skewY)),
+                                                                tanf(CC_DEGREES_TO_RADIANS(transformSizeNode.skewX)), 1.0f,
+                                                                0.0f, 0.0f );
+
+        //R
+        CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(-transformSizeNode.rotation));
+
+        //Root position == x,   xTKSR=mouseDown
+        //We've got a root position now.
+        CGPoint rootPosition = CGPointApplyAffineTransform(deltaStart,CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformConcat(translateTranform,skewTransform),scaleTransform), rotationTransform)));
+
+        //What scale (S') would be have to adjust to in order to achieve the new mouseDragg position
+        //  xTKS'R=mouseDrag,    [xTK]S'=mouseDrag*R^-1
+        // [xTK]==known==intermediate==I, R^-1==known, mouseDrag==known, solve so S'
+
+        //xTK
+        CGPoint intermediate = CGPointApplyAffineTransform(CGPointApplyAffineTransform(rootPosition, translateTranform), skewTransform);
+        CGPoint unRotatedMouse = CGPointApplyAffineTransform(deltaNew, CGAffineTransformInvert(rotationTransform));
+        // CGPoint deltaPos = CGPointMake(intermediate.x - unRotatedMouse.x, intermediate.y - unRotatedMouse.y);
+
+        CGPoint scale = CGPointMake(unRotatedMouse.x/intermediate.x , unRotatedMouse.y / intermediate.y);
+        if(isinf(scale.x) || isnan(scale.x))
+        {
+            scale.x = 0.0;
+            vertexScaler.x = 0.0f;
+        }
+
+        if(isinf(scale.y) || isnan(scale.y))
+        {
+            scale.y = 0.0;
+            vertexScaler.y = 0.0f;
+        }
+
+        // Calculate new scale
+        float xScaleNew = scale.x * vertexScaler.x + transformStartScaleX * (1.0f - vertexScaler.x);
+        float yScaleNew = scale.y * vertexScaler.y + transformStartScaleY * (1.0f - vertexScaler.y);
+
+
+        if ([event modifierFlags] & NSShiftKeyMask)
+        {
+            // Use the smallest scale composit
+            if (fabs(xScaleNew) < fabs(yScaleNew))
+            {
+                yScaleNew = xScaleNew;
+            }
+            else
+            {
+                xScaleNew = yScaleNew;
+            }
+        }
+        
+        if (([event modifierFlags] & NSShiftKeyMask) && ([event modifierFlags] & NSAlternateKeyMask)) {
+            [self setAnchorPoint:ccp(0.5,0.5) forNode:transformSizeNode];
+        } else {
+            if ([event modifierFlags] & NSShiftKeyMask) {
+                [self setAnchorPoint:anchorBefore forNode:transformSizeNode];
+            }
+        }
+        
+        transformSizeNode.contentSizeInPoints = CGSizeMake(widthLock ? transformContentSize.width : transformContentSize.width * xScaleNew,
+                                                           heightLock ? transformContentSize.height : transformContentSize.height * yScaleNew);
+
+        [[InspectorController sharedController] refreshProperty:@"contentSize"];
+        
+        //this will show position changes in the inspector
+        //but will cause little jitter when start drag if mouse close to the initial anhor.
+        [self setAnchorPoint:anchorBefore forNode:transformSizeNode];
+        [[InspectorController sharedController] refreshProperty:@"position"];
+        [self setAnchorPoint:anchorPointSize forNode:transformSizeNode];
+        
+        //UpdateTheSizeTool
+        cornerOrientation = ccpNormalize(deltaNew);
+        //force it to update.
+        self.currentTool = kCCBToolSize;
+        
+    }
     else if (currentMouseTransform == kCCBTransformHandleRotate)
     {
-        CGPoint nodePos = [transformScalingNode.parent convertToWorldSpace:transformScalingNode.positionInPoints];
+        CGPoint nodePos = [transformSizeNode.parent convertToWorldSpace:transformSizeNode.positionInPoints];
         
         CGPoint handleAngleVectorStart = ccpSub(nodePos, mouseDownPos);
         CGPoint handleAngleVectorNew = ccpSub(nodePos, pos);
@@ -1850,7 +1996,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         float deltaRotationRad = handleAngleRadNew - handleAngleRadStart;
         float deltaRotation = -(deltaRotationRad/(2*M_PI))*360;
         
-        if ([self isLocalCoordinateSystemFlipped:transformScalingNode.parent])
+        if ([self isLocalCoordinateSystemFlipped:transformSizeNode.parent])
         {
             deltaRotation = -deltaRotation;
         }
@@ -1869,25 +2015,25 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
         
         //Update the rotation tool.
-        float cursorRotationRad = -M_PI * (newRotation - transformScalingNode.rotation) / 180.0f;
+        float cursorRotationRad = -M_PI * (newRotation - transformSizeNode.rotation) / 180.0f;
         CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(cursorRotationRad);
         cornerOrientation = CGPointApplyAffineTransform(cornerOrientation, rotationTransform);
         self.currentTool = kCCBToolRotate; //Force it to update.
         
         [appDelegate saveUndoStateWillChangeProperty:@"rotation"];
-        transformScalingNode.rotation = newRotation;
+        transformSizeNode.rotation = newRotation;
         [[InspectorController sharedController] refreshProperty:@"rotation"];
     }
     else if (currentMouseTransform == kCCBTransformHandleAnchorPoint)
     {
-        CGPoint localPos = [transformScalingNode convertToNodeSpace:pos];
-        CGPoint localDownPos = [transformScalingNode convertToNodeSpace:mouseDownPos];
+        CGPoint localPos = [transformSizeNode convertToNodeSpace:pos];
+        CGPoint localDownPos = [transformSizeNode convertToNodeSpace:mouseDownPos];
         
         CGPoint deltaLocal = ccpSub(localPos, localDownPos);
-        CGPoint deltaAnchorPoint = ccp(deltaLocal.x / transformScalingNode.contentSizeInPoints.width, deltaLocal.y / transformScalingNode.contentSizeInPoints.height);
+        CGPoint deltaAnchorPoint = ccp(deltaLocal.x / transformSizeNode.contentSizeInPoints.width, deltaLocal.y / transformSizeNode.contentSizeInPoints.height);
         
         [appDelegate saveUndoStateWillChangeProperty:@"anchorPoint"];
-        transformScalingNode.anchorPoint = ccpAdd(transformScalingNode.startAnchorPoint, deltaAnchorPoint);
+        transformSizeNode.anchorPoint = ccpAdd(transformSizeNode.startAnchorPoint, deltaAnchorPoint);
         [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
         
         [self updateAnchorPointCompensation];
@@ -2089,8 +2235,8 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
             propName = @"rotation";
             type = kCCBKeyframeTypeDegrees;
         }
-//        else if (currentMouseTransform == kCCBTransformHandleScale)
-//        {
+        else if (currentMouseTransform == kCCBTransformHandleSize)
+        {
 //            float x = [PositionPropertySetter scaleXForNode:selectedNode prop:@"scale"];
 //            float y = [PositionPropertySetter scaleYForNode:selectedNode prop:@"scale"];
 //            value = [NSArray arrayWithObjects:
@@ -2099,7 +2245,10 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
 //                     nil];
 //            propName = @"scale";
 //            type = kCCBKeyframeTypeScaleLock;
-//        }
+            
+            [self setAnchorPoint:anchorBefore forNode:transformSizeNode];
+            [[InspectorController sharedController] refreshProperty:@"anchorPoint"];
+        }
         else if (currentMouseTransform == kCCBTransformHandleMove)
         {
             CGPoint pt = NSPointToCGPoint([PositionPropertySetter positionForNode:selectedNode prop:@"position"]);
@@ -2253,17 +2402,63 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         NSCursor * cursor =  [[NSCursor alloc] initWithImage:img hotSpot:centerPoint];
         [cursor push];
     }
-//    else if(currentTool == kCCBToolScale)
-//    {
-//        NSImage * image = [NSImage imageNamed:@"select-scale.png"];
-//        
-//        float rotation = atan2f(cornerOrientation.y, cornerOrientation.x) + M_PI/2.0f;
-//        NSImage *img =[self rotateImage:image rotation:rotation];
-//        CGPoint centerPoint = CGPointMake(img.size.width/2, img.size.height/2);
-//        NSCursor * cursor =  [[NSCursor alloc] initWithImage:img hotSpot:centerPoint];
-//        [cursor push];
-//        
-//    }
+    else if(currentTool == kCCBToolSize)
+    {
+        bool showCursor = YES;
+        NodeInfo *nodeInfo = transformSizeNode.userObject ? transformSizeNode.userObject : appDelegate.selectedNode.userObject;
+        if (nodeInfo) {
+            NSDictionary* propInfo = [nodeInfo.plugIn.nodePropertiesDict objectForKey:@"contentSize"];
+            BOOL disabledContentSize = [transformSizeNode shouldDisableProperty:@"contentSize"] || [[propInfo objectForKey:@"readOnly"] boolValue];
+            
+            //disable size cursor for corners of Sprites
+            showCursor = !disabledContentSize;
+            
+            bool widthLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedWidth"] boolValue];
+            bool heightLock = disabledContentSize || [nodeInfo.extraProps[@"contentSizeLockedHeight"] boolValue];
+            
+            switch (cornerIndex) {
+                case 0: //bl
+                    showCursor = widthLock && heightLock ? NO : showCursor;
+                    break;
+                    
+                case 1: //br
+                    showCursor = widthLock && heightLock ? NO : showCursor;
+                    break;
+                    
+                case 2: //tR
+                    showCursor = widthLock && heightLock ? NO : showCursor;
+                    break;
+                    
+                case 3: //tL
+                    showCursor = widthLock && heightLock ? NO : showCursor;
+                    break;
+                    
+                case 4: //l
+                    showCursor = widthLock ? NO : showCursor;
+                    break;
+                    
+                case 5: //b
+                    showCursor = heightLock ? NO : showCursor;
+                    break;
+                    
+                case 6: //r
+                    showCursor = widthLock ? NO : showCursor;
+                    break;
+                    
+                case 7: //t
+                    showCursor = heightLock ? NO : showCursor;
+                    break;
+            }
+        }
+        if (showCursor) {
+            NSImage *image = [NSImage imageNamed:@"select-scale.png"];
+            float rotation = atan2f(cornerOrientation.y, cornerOrientation.x) + M_PI/2.0f;
+            NSImage *img = [self rotateImage:image rotation:rotation];
+            CGPoint centerPoint = CGPointMake(img.size.width/2, img.size.height/2);
+            NSCursor *cursor = [[NSCursor alloc] initWithImage:img hotSpot:centerPoint];
+            [cursor push];
+        }
+    }
     else if(currentTool == kCCBToolTranslate)
     {
         NSImage * image = [NSImage imageNamed:@"select-move.png"];
@@ -2335,23 +2530,28 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     
 }
 
--(void)setAnchorPoint:(CGPoint)anchorPoint forNode:(CCNode *)node {
-    CGPoint newPoint = CGPointMake(node.contentSize.width * anchorPoint.x, node.contentSize.height * anchorPoint.y);
-    CGPoint oldPoint = CGPointMake(node.contentSize.width * node.anchorPoint.x, node.contentSize.height * node.anchorPoint.y);
-    
-    newPoint = CGPointApplyAffineTransform(newPoint, node.startTransform);
-    oldPoint = CGPointApplyAffineTransform(oldPoint, node.startTransform);
-    
-    CGPoint position = node.position;
-    
-    position.x -= oldPoint.x;
-    position.x += newPoint.x;
-    
-    position.y -= oldPoint.y;
-    position.y += newPoint.y;
-    
-    node.position = position;
-    node.anchorPoint = anchorPoint;
+- (void)setAnchorPoint:(CGPoint)anchorPoint forNode:(CCNode *) node {
+    if (!CGPointEqualToPoint(node.anchorPoint, anchorPoint)) {
+        CGPoint newPoint = ccp(node.contentSizeInPoints.width * anchorPoint.x,
+                               node.contentSizeInPoints.height * anchorPoint.y);
+        
+        CGPoint oldPoint = ccp(node.contentSizeInPoints.width * node.anchorPoint.x,
+                               node.contentSizeInPoints.height * node.anchorPoint.y);
+        
+        newPoint = CGPointApplyAffineTransform(newPoint, node.nodeToParentTransform);
+        oldPoint = CGPointApplyAffineTransform(oldPoint, node.nodeToParentTransform);
+        
+        CGPoint position = node.positionInPoints;
+        
+        position.x -= oldPoint.x;
+        position.x += newPoint.x;
+        
+        position.y -= oldPoint.y;
+        position.y += newPoint.y;
+        
+        node.positionInPoints = position;
+        node.anchorPoint = anchorPoint;
+    }
 }
 
 
