@@ -76,8 +76,9 @@ TPRect MaxRectsBinPack::Insert(int width, int height, FreeRectChoiceHeuristic me
 	return newNode;
 }
 
-void MaxRectsBinPack::Insert(std::vector<TPRectSize> &rects, std::vector<TPRect> &dst, FreeRectChoiceHeuristic method)
+void MaxRectsBinPack::Insert(const std::vector<TPRectSize> &inrects, std::vector<TPRect> &dst, FreeRectChoiceHeuristic method)
 {
+    std::vector<TPRectSize> rects = inrects;
 	dst.clear();
 
 	while(rects.size() > 0)

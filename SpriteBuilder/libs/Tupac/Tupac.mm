@@ -94,6 +94,7 @@ typedef struct _PVRTexHeader
         self.padding = 1;
         self.trim = YES;
         self.extrude = 1;
+        self.pot = YES;
     }
     return self;
 }
@@ -357,6 +358,21 @@ typedef struct _PVRTexHeader
     
     BOOL globalPackingError = YES;
     
+    std::vector<TPRectSize> inRects;
+    
+    int numImages = 0;
+    for (NSDictionary* imageInfo in imageInfos)
+    {
+        NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
+        
+        inRects.push_back(TPRectSize());
+        inRects[numImages].width = trimRect.size.width + (self.padding + self.extrude) * 2;
+        inRects[numImages].height = trimRect.size.height + (self.padding + self.extrude) * 2;
+        inRects[numImages].idx = numImages;
+        
+        numImages++;
+    }
+    
     for(int i=MaxRectsBinPack::RectBestShortSideFit;i<=MaxRectsBinPack::RectContactPointRule;++i)
     {
         BOOL allFitted = NO;
@@ -378,26 +394,61 @@ typedef struct _PVRTexHeader
         {
             MaxRectsBinPack bin(outW, outH);
             
-            std::vector<TPRectSize> inRects;
-            
-            int numImages = 0;
-            for (NSDictionary* imageInfo in imageInfos)
-            {
-                NSRect trimRect = [[imageInfo objectForKey:@"trimRect"] rectValue];
-                
-                inRects.push_back(TPRectSize());
-                inRects[numImages].width = trimRect.size.width + (self.padding + self.extrude) * 2;
-                inRects[numImages].height = trimRect.size.height + (self.padding + self.extrude) * 2;
-                inRects[numImages].idx = numImages;
-                
-                numImages++;
-            }
-            
             bin.Insert(inRects, outRects, (MaxRectsBinPack::FreeRectChoiceHeuristic)i);
             
             if (numImages == (int)outRects.size())
             {
                 allFitted = YES;
+                if(!_pot)
+                {
+                    std::vector<TPRect> tempOutRects;
+                    
+                    //reduce vertical size
+                    int minOutH = outH/2;
+                    int maxOutH = outH;
+                    int curOutH = (minOutH + maxOutH) / 2;
+                    int lastOutH = outH;
+                    while (curOutH != lastOutH) {
+                        MaxRectsBinPack tempBin(outW, curOutH);
+                        tempBin.Insert(inRects, tempOutRects, (MaxRectsBinPack::FreeRectChoiceHeuristic)i);
+                        lastOutH = curOutH;
+                        if(numImages == (int)tempOutRects.size())
+                        {
+                            maxOutH = curOutH;
+                            curOutH = (minOutH + maxOutH + 1) / 2;
+                        }
+                        else
+                        {
+                            minOutH = curOutH;
+                            curOutH = (minOutH + maxOutH + 1) / 2;
+                        }
+                    }
+                    outRects = tempOutRects;
+                    outH = curOutH;
+                
+                    //reduce horizontal size
+                    int minOutW = outW/2;
+                    int maxOutW = outW;
+                    int curOutW = (minOutW + maxOutW) / 2;
+                    int lastOutW = outW;
+                    while (curOutW != lastOutW) {
+                        MaxRectsBinPack tempBin(curOutW, outH);
+                        tempBin.Insert(inRects, tempOutRects, (MaxRectsBinPack::FreeRectChoiceHeuristic)i);
+                        lastOutW = curOutW;
+                        if(numImages == (int)tempOutRects.size())
+                        {
+                            maxOutW = curOutW;
+                            curOutW = (minOutW + maxOutW + 1) / 2;
+                        }
+                        else
+                        {
+                            minOutW = curOutW;
+                            curOutW = (minOutW + maxOutW + 1) / 2;
+                        }
+                    }
+                    outRects = tempOutRects;
+                    outW = curOutW;
+                }
             }
             else
             {
@@ -420,7 +471,7 @@ typedef struct _PVRTexHeader
         }
         if(outRects.size() >= bestOutRects.size())
         {
-            if(std::max(outW, outH) <= std::max(bestOutW, bestOutH) && std::max(outW, outH) <= std::max(bestOutW, bestOutH))
+            if((long long)outW * outH < (long long)bestOutW * bestOutH)
             {
                 if(allFitted)
                     globalPackingError = NO;
