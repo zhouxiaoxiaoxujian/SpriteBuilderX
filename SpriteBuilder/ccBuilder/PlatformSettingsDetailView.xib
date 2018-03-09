@@ -57,7 +57,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
-                            <rect key="frame" x="0.0" y="124" width="439" height="5"/>
+                            <rect key="frame" x="0.0" y="124" width="439" height="4"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4i-P9-OgD">
@@ -736,7 +736,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImagePOT" id="U1m-En-Xnj"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="9p3-tL-tC1">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="9p3-tL-tC1" id="0He-t6-8vK">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -745,9 +749,9 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="9p3-tL-tC1">
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImageAnySize" id="EoJ-eh-69z">
                                     <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -760,7 +764,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImagePOT" id="2SJ-tO-Rsj"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedNoAlphaImageFormat" id="RDa-JS-80Y">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="RDa-JS-80Y" id="rcs-aE-pnH">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -769,9 +777,9 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedNoAlphaImageFormat" id="RDa-JS-80Y">
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImageAnySize" id="AVV-ak-r8U">
                                     <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -856,7 +864,6 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImagePOT" id="ZFr-eZ-Y6I"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="SIi-Pt-YSF" id="DYi-mL-DIu">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -870,6 +877,11 @@
                                         <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImageAnySize" id="cRv-Ka-TWr">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-lR-rSB">
@@ -880,7 +892,11 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImagePOT" id="gLm-pE-3H8"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.customImageFormat" id="rvf-Q6-MHi">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="rvf-Q6-MHi" id="Gq6-A6-ame">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -889,9 +905,9 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.customImageFormat" id="rvf-Q6-MHi">
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImageAnySize" id="P0h-R3-Bnh">
                                     <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
                                     </dictionary>
                                 </binding>
                             </connections>

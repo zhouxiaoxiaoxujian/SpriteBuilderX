@@ -380,11 +380,13 @@ typedef struct _PVRTexHeader
         // Pack using max rects
         int outW = maxSideLen;
         int outH = 8;
+        BOOL pot = _pot;
         BOOL makeSquare = NO;
         if (self.imageFormat == kFCImageFormatPVRTC_2BPP || self.imageFormat == kFCImageFormatPVRTC_4BPP)
         {
             makeSquare = YES;
             outH = outW;
+            pot = YES;
         }
         
         BOOL packingError = NO;
@@ -399,7 +401,7 @@ typedef struct _PVRTexHeader
             if (numImages == (int)outRects.size())
             {
                 allFitted = YES;
-                if(!_pot)
+                if(!pot)
                 {
                     std::vector<TPRect> tempOutRects;
                     
