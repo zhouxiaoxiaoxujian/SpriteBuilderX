@@ -87,6 +87,7 @@ typedef enum {
 - (int) imageQuality:(int)type;
 - (BOOL) imageCCZCompression:(int)type;
 - (BOOL) imageDither:(int)type;
+- (BOOL) imagePOT:(int)type;
 
 - (kFCSoundFormat) soundFormat:(int)type;
 - (BOOL) soundStereo:(int)type;

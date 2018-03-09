@@ -259,7 +259,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="BLi-ya-yCX"/>
-                                        <menuItem title="PVR RGB888" tag="8" id="LCB-GJ-f2L" userLabel="PVR RGB888">
+                                        <menuItem title="PVR RGB888" tag="7" id="LCB-GJ-f2L" userLabel="PVR RGB888">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="PVR RGB565" tag="8" id="Jyb-6j-4ZR">
@@ -486,11 +486,11 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bgT-BY-5mC"/>
-                                        <menuItem title="JPG" tag="8" id="XUf-QF-7S1">
+                                        <menuItem title="JPG" tag="4" id="XUf-QF-7S1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="ZMb-4F-Bxj"/>
-                                        <menuItem title="PVR RGBA8888" tag="4" id="J5F-37-j1z"/>
+                                        <menuItem title="PVR RGBA8888" tag="5" id="J5F-37-j1z"/>
                                         <menuItem title="PVR RGBA4444" tag="6" id="bNX-ab-U8w">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
@@ -736,18 +736,18 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="uFI-ya-aI4">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
-                                    </dictionary>
-                                </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImagePOT" id="U1m-En-Xnj"/>
-                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="uFI-ya-aI4" id="4EW-ow-595">
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="9p3-tL-tC1" id="0He-t6-8vK">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="9p3-tL-tC1">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -760,18 +760,18 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="P3l-d1-JUm">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
-                                    </dictionary>
-                                </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImagePOT" id="2SJ-tO-Rsj"/>
-                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="P3l-d1-JUm" id="Xrh-di-fnX">
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="RDa-JS-80Y" id="rcs-aE-pnH">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedNoAlphaImageFormat" id="RDa-JS-80Y">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -856,12 +856,8 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="dz2-hN-Vw3">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="dz2-hN-Vw3" id="UWD-6E-g1c">
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImagePOT" id="ZFr-eZ-Y6I"/>
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="SIi-Pt-YSF" id="DYi-mL-DIu">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
@@ -869,7 +865,11 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.uncompressedImagePOT" id="ZFr-eZ-Y6I"/>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.uncompressedImageFormat" id="SIi-Pt-YSF">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFS-lR-rSB">
@@ -880,18 +880,18 @@
                                 <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                             <connections>
-                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.compressedImageFormat" id="FXD-B4-6IT">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
-                                    </dictionary>
-                                </binding>
                                 <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImagePOT" id="gLm-pE-3H8"/>
-                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="FXD-B4-6IT" id="PVj-il-BGt">
+                                <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="rvf-Q6-MHi" id="Gq6-A6-ame">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                         <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="enabled" keyPath="currentPlatformSettings.customImageFormat" id="rvf-Q6-MHi">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">ImageFormatPOTEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>

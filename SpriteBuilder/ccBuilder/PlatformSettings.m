@@ -83,6 +83,24 @@
 }
 @end
 
+@interface ImageFormatPOTEnabledTransformer: NSValueTransformer {}
+@end
+@implementation ImageFormatPOTEnabledTransformer
++ (Class)transformedValueClass { return [NSString class]; }
++ (BOOL)allowsReverseTransformation { return NO; }
+-(id)transformedValue:(id)value {
+    switch ([value intValue]) {
+
+            //FIXME: implement this
+        case kFCImageFormatPVR_RGBA4444:
+            return [NSNumber numberWithBool:YES];
+            
+        default:
+            return [NSNumber numberWithBool:YES];
+    }
+}
+@end
+
 @interface PacketPublish : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger publish;
@@ -408,6 +426,25 @@
     }
 }
 
+- (BOOL) imagePOT:(int)type
+{
+    switch (type) {
+        case kPlatformSettingsImageTypesCompressed:
+            return _compressedImagePOT;
+            
+        case kPlatformSettingsImageTypesCompressedWOAlpha:
+            return _compressedNoAlphaImagePOT;
+            
+        case kPlatformSettingsImageTypesUncompressed:
+            return _uncompressedImagePOT;
+            
+        case kPlatformSettingsImageTypesCustom:
+            return _customImagePOT;
+            
+        default:
+            return YES;
+    }
+}
 
 - (kFCSoundFormat) soundFormat:(int)type
 {
