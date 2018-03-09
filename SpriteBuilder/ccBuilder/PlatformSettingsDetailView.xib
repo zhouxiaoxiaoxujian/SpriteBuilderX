@@ -57,7 +57,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="7xr-RR-uJ8">
-                            <rect key="frame" x="0.0" y="124" width="379" height="5"/>
+                            <rect key="frame" x="0.0" y="124" width="439" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4i-P9-OgD">
@@ -741,6 +741,7 @@
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImagePOT" id="U1m-En-Xnj"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="uFI-ya-aI4" id="4EW-ow-595">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -749,7 +750,6 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedImagePOT" id="U1m-En-Xnj"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0t6-NH-r8t">
@@ -765,6 +765,7 @@
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImagePOT" id="2SJ-tO-Rsj"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="P3l-d1-JUm" id="Xrh-di-fnX">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -773,7 +774,6 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.compressedNoAlphaImagePOT" id="2SJ-tO-Rsj"/>
                             </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-0a-aIs">
@@ -885,6 +885,7 @@
                                         <string key="NSValueTransformerName">ImageFormatCCZEnabledTransformer</string>
                                     </dictionary>
                                 </binding>
+                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImagePOT" id="gLm-pE-3H8"/>
                                 <binding destination="-2" name="enabled2" keyPath="currentPlatformSettings.publishImages" previousBinding="FXD-B4-6IT" id="PVj-il-BGt">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -893,7 +894,6 @@
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                     </dictionary>
                                 </binding>
-                                <binding destination="-2" name="value" keyPath="currentPlatformSettings.customImagePOT" id="gLm-pE-3H8"/>
                             </connections>
                         </button>
                     </subviews>
@@ -903,7 +903,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ay0-uA-EFL">
-                            <rect key="frame" x="0.0" y="95" width="379" height="5"/>
+                            <rect key="frame" x="0.0" y="95" width="439" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nra-uo-XBx" userLabel="Custom sound" customClass="CCBTextFieldLabel">
@@ -1279,7 +1279,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="" editable="NO" width="103" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
+                                    <tableColumn identifier="" editable="NO" width="81" minWidth="40" maxWidth="1000" id="LEz-WD-Te8">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1295,7 +1295,7 @@
                                             <binding destination="hX1-CZ-OUh" name="value" keyPath="arrangedObjects.name" id="KUk-c9-Z5U"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="52" minWidth="20" maxWidth="1000" id="Ydm-3I-pFN">
+                                    <tableColumn identifier="" width="74" minWidth="20" maxWidth="1000" id="Ydm-3I-pFN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
