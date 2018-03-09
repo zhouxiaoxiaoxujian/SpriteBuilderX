@@ -156,21 +156,25 @@
     dict[@"compressedImageQuality"] = @(_compressedImageQuality);
     dict[@"compressedImageCCZCompression"] = @(_compressedImageCCZCompression);
     dict[@"compressedImageDither"] = @(_compressedImageDither);
+    dict[@"compressedImagePOT"] = @(_compressedImagePOT);
 
     dict[@"compressedNoAlphaImageFormat"] = @(_compressedNoAlphaImageFormat);
     dict[@"compressedNoAlphaImageQuality"] = @(_compressedNoAlphaImageQuality);
     dict[@"compressedNoAlphaImageCCZCompression"] = @(_compressedNoAlphaImageCCZCompression);
     dict[@"compressedNoAlphaImageDither"] = @(_compressedNoAlphaImageDither);
+    dict[@"compressedNoAlphaImagePOT"] = @(_compressedNoAlphaImagePOT);
     
     dict[@"uncompressedImageFormat"] = @(_uncompressedImageFormat);
     dict[@"uncompressedImageQuality"] = @(_uncompressedImageQuality);
     dict[@"uncompressedImageCCZCompression"] = @(_uncompressedImageCCZCompression);
     dict[@"uncompressedImageDither"] = @(_uncompressedImageDither);
+    dict[@"uncompressedImagePOT"] = @(_uncompressedImagePOT);
     
     dict[@"customImageFormat"] = @(_customImageFormat);
     dict[@"customImageQuality"] = @(_customImageQuality);
     dict[@"customImageCCZCompression"] = @(_customImageCCZCompression);
     dict[@"customImageDither"] = @(_customImageDither);
+    dict[@"customImagePOT"] = @(_customImagePOT);
     
     dict[@"packets"] = _packets;
     
@@ -264,21 +268,25 @@
     self.compressedImageQuality = [[dict objectForKey:@"compressedImageQuality"] intValue];
     self.compressedImageCCZCompression = [[dict objectForKey:@"compressedImageCCZCompression"] intValue];
     self.compressedImageDither = [[dict objectForKey:@"compressedImageDither"] intValue];
+    self.compressedImagePOT = [[dict objectForKey:@"compressedImagePOT"] intValue];
     
     self.compressedNoAlphaImageFormat = [[dict objectForKey:@"compressedNoAlphaImageFormat"] intValue];
     self.compressedNoAlphaImageQuality = [[dict objectForKey:@"compressedNoAlphaImageQuality"] intValue];
     self.compressedNoAlphaImageCCZCompression = [[dict objectForKey:@"compressedNoAlphaImageCCZCompression"] intValue];
     self.compressedNoAlphaImageDither = [[dict objectForKey:@"compressedNoAlphaImageDither"] intValue];
+    self.compressedNoAlphaImagePOT = [[dict objectForKey:@"compressedNoAlphaImagePOT"] intValue];
     
     self.uncompressedImageFormat = [[dict objectForKey:@"uncompressedImageFormat"] intValue];
     self.uncompressedImageQuality = [[dict objectForKey:@"uncompressedImageQuality"] intValue];
     self.uncompressedImageCCZCompression = [[dict objectForKey:@"uncompressedImageCCZCompression"] intValue];
     self.uncompressedImageDither = [[dict objectForKey:@"uncompressedImageDither"] intValue];
+    self.uncompressedImagePOT = [[dict objectForKey:@"uncompressedImagePOT"] intValue];
     
     self.customImageFormat = [[dict objectForKey:@"customImageFormat"] intValue];
     self.customImageQuality = [[dict objectForKey:@"customImageQuality"] intValue];
     self.customImageCCZCompression = [[dict objectForKey:@"customImageCCZCompression"] intValue];
     self.customImageDither = [[dict objectForKey:@"customImageDither"] intValue];
+    self.customImagePOT = [[dict objectForKey:@"customImagePOT"] intValue];
     
     id packets = [dict objectForKey:@"packets"];
     if(packets && [packets isKindOfClass:[NSArray class]])
