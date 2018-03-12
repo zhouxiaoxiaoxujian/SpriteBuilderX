@@ -812,7 +812,7 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
     CGPoint orientation;
     float minDistance = INFINITY;
     //first show rotate cursor, then size, check isOverRotation for same values
-    //0..7 = size. 7..13 = rotation.
+    //0..7 = size. 7..15 = rotation.
     const float kMinDistanceToCorner = 0.0f * [self selectionZoom];
     const float kMaxDistanceToCorner = 7.0f * [self selectionZoom];
     
@@ -896,8 +896,19 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         CGPoint segment2 = ccpSub(p2, p3);
         CGPoint unitSegment2 = ccpNormalize(segment2);
         
-        const float kMinDistanceForRotation = 7.0f * [self selectionZoom];
-        const float kMaxDistanceForRotation = 13.0f * [self selectionZoom];
+        NodeInfo *info = appDelegate.selectedNode.userObject;
+        PlugInNode *plugIn = info.plugIn;
+        //CCLOG(@"%@",plugIn.nodeEditorClassName);
+        
+        float distanceSprite = 7.0;
+        if ([plugIn.nodeEditorClassName isEqualToString:@"CCBPSprite"]) {
+            //if this is Sprite, we can't resize it
+            //so make any distance for corners from 0 till maximum
+            distanceSprite = 0;
+        }
+        
+        float kMinDistanceForRotation = distanceSprite * [self selectionZoom];
+        const float kMaxDistanceForRotation = 15.0f * [self selectionZoom];
         
         CGPoint mouseVector = ccpSub(_mousePos, p2);
         
