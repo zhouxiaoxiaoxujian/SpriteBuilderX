@@ -298,13 +298,95 @@ CA
                                     <binding destination="494" name="value" keyPath="self.showRulers" id="wme-87-uhh"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" hidden="YES" id="QW0-7J-hSZ">
+                            <menuItem isSeparatorItem="YES" id="QW0-7J-hSZ">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Show Animation" hidden="YES" id="mI8-e2-M2J">
+                            <menuItem title="Extras" alternate="YES" keyEquivalent="H" id="gX7-GL-tcX">
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="showExtras" id="alT-HY-2pd"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Extras" id="LZl-VR-DBA">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Show Extras" id="PCj-x1-NBi">
+                                    <items>
+                                        <menuItem title="Guides" id="voF-Kc-OIP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="value" keyPath="showGuides" id="DEa-tm-n4j"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Grid" id="uZr-dY-M5H">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="value" keyPath="showGuideGrid" id="Yxh-rN-SDB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Sticky Notes" id="QJa-9C-SaC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="value" keyPath="showStickyNotes" id="Osw-BO-JpJ"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                                <connections>
+                                    <binding destination="494" name="enabled" keyPath="showExtras" id="Aw8-PW-Vuw"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="G7K-a8-Lve"/>
+                            <menuItem title="Snap" keyEquivalent="u" id="Spo-MB-WOO">
+                                <connections>
+                                    <binding destination="494" name="value" keyPath="snapToggle" id="7yB-Dg-E8g"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Snap To" id="qHp-bk-7HG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Snap To" id="SaX-Lu-uKJ">
+                                    <items>
+                                        <menuItem title="Guides" id="QAj-rg-mdw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="enabled2" keyPath="showExtras" previousBinding="jc5-Hg-8IS" id="kUJ-HD-SK3">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="494" name="enabled" keyPath="showGuides" id="jc5-Hg-8IS"/>
+                                                <binding destination="494" name="value" keyPath="snapToGuides" id="jUw-rc-I66"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Grid" id="Suh-3C-5fA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="enabled2" keyPath="showExtras" previousBinding="zvI-jp-OaF" id="iNO-D6-QqR">
+                                                    <dictionary key="options">
+                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="494" name="enabled" keyPath="showGuideGrid" id="zvI-jp-OaF"/>
+                                                <binding destination="494" name="value" keyPath="snapGrid" id="raX-sE-r3t"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Nodes" id="1aL-we-SEO">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="494" name="value" keyPath="snapNode" id="HcX-1d-G8Z"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                                <connections>
+                                    <binding destination="494" name="enabled" keyPath="snapToggle" id="Sva-pd-HTd"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="nzt-Ri-Kz3"/>
                             <menuItem title="Show Prefabs Options" id="Wyd-K0-12v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -791,39 +873,6 @@ CA
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1451"/>
-                            <menuItem title="Extras" alternate="YES" keyEquivalent="H" id="5aS-8M-yP4">
-                                <connections>
-                                    <binding destination="494" name="value" keyPath="showExtras" id="gcl-aw-o4u"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Show" id="aBZ-Zm-uHs">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Show" id="d7s-CM-B7U">
-                                    <items>
-                                        <menuItem title="Guides" id="ccU-Km-Swq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="value" keyPath="showGuides" id="Amc-NN-YCi"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Grid" id="M3E-RM-Ynw">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="value" keyPath="showGuideGrid" id="avL-Wq-bgf"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Sticky Notes" id="4jT-zO-Ia3">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="value" keyPath="showStickyNotes" id="sg9-lg-g2R"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                                <connections>
-                                    <binding destination="494" name="enabled" keyPath="showExtras" id="8Wa-NH-poI"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Edit Grid Spacing..." id="J5P-KN-6WM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -831,58 +880,6 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="adN-EU-TOI"/>
-                            <menuItem title="Snap" keyEquivalent="u" id="QAM-Jc-lrD">
-                                <connections>
-                                    <binding destination="494" name="value" keyPath="snapToggle" id="X9T-jc-FHC"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Snap To" id="Usf-TL-Eiq">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Snap To" id="fmg-Oj-Pry">
-                                    <items>
-                                        <menuItem title="Guides" id="yS0-CY-5hV">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="enabled2" keyPath="showExtras" previousBinding="ns4-Ku-GvA" id="mrm-E9-Hsy">
-                                                    <dictionary key="options">
-                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                        <integer key="NSNullPlaceholder" value="-1"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <binding destination="494" name="enabled" keyPath="showGuides" id="ns4-Ku-GvA"/>
-                                                <binding destination="494" name="value" keyPath="snapToGuides" id="8vF-y2-iHB"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Grid" id="zA6-4S-M8f">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="enabled2" keyPath="showExtras" previousBinding="y6p-d5-LWn" id="w1S-n2-mLx">
-                                                    <dictionary key="options">
-                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                        <integer key="NSNullPlaceholder" value="-1"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <binding destination="494" name="enabled" keyPath="showGuideGrid" id="y6p-d5-LWn"/>
-                                                <binding destination="494" name="value" keyPath="snapGrid" id="gbn-aa-Vhh"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Nodes" id="D67-xc-Ktq">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <binding destination="494" name="value" keyPath="snapNode" id="aWO-es-O2Y"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                                <connections>
-                                    <binding destination="494" name="enabled" keyPath="snapToggle" id="lxD-d8-6Mo"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="laT-dq-KEs"/>
                             <menuItem title="Add Sticky Note" keyEquivalent="n" id="1464">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
@@ -1075,7 +1072,7 @@ CA
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="133" y="-335"/>
+            <point key="canvasLocation" x="-131" y="-968"/>
         </menu>
         <window title="SpriteBuilder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainMenu" animationBehavior="default" tabbingMode="disallowed" id="371" customClass="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
