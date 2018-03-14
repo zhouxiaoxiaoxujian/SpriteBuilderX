@@ -26,12 +26,11 @@
 #import "CCBModalSheetController.h"
 
 @interface GuideGridSizeWindow : CCBModalSheetController
-{   
-    int wStage;
-    int hStage;
-}
 
 @property (nonatomic,assign) int wStage;
 @property (nonatomic,assign) int hStage;
+
+@property (nonatomic,assign) int wOffset;
+@property (nonatomic,assign) int hOffset;
 
 @end

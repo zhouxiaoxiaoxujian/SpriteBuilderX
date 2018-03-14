@@ -1642,10 +1642,17 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     // Restore Grid Spacing
     id gridspaceWidth  = [doc objectForKey:@"gridspaceWidth"];
     id gridspaceHeight = [doc objectForKey:@"gridspaceHeight"];
-    if(gridspaceWidth && gridspaceHeight) {
+    if (gridspaceWidth && gridspaceHeight) {
         CGSize gridspace = CGSizeMake([gridspaceWidth intValue],[gridspaceHeight intValue]);
         [[CocosScene cocosScene].guideLayer setGridSize:gridspace];
-   }
+    }
+    
+    id gridOffsetWidth  = [doc objectForKey:@"gridOffsetWidth"];
+    id gridOffsetHeight = [doc objectForKey:@"gridOffsetHeight"];
+    if (gridOffsetWidth && gridOffsetHeight) {
+        CGPoint gridOffset = ccp([gridOffsetWidth intValue],[gridOffsetHeight intValue]);
+        [[CocosScene cocosScene].guideLayer setGridOffset:gridOffset];
+    }
 
     // Restore selections
     self.selectedNodes = loadedSelectedNodes;
@@ -5027,13 +5034,18 @@ typedef void (^SetNodeParamBlock)(CCNode*, id);
     
     wc.wStage = [[[CocosScene cocosScene] guideLayer] gridSize].width;
     wc.hStage = [[[CocosScene cocosScene] guideLayer] gridSize].height;
+    wc.wOffset = [[[CocosScene cocosScene] guideLayer] gridOffset].x;
+    wc.hOffset = [[[CocosScene cocosScene] guideLayer] gridOffset].y;
     
     int success = [wc runModalSheetForWindow:window];
     if (success)
     {
+        [self saveUndoStateWillChangeProperty:@"*stageGuideSizeOffset"];
+        
         CGSize newSize = CGSizeMake(wc.wStage,wc.hStage);
         
         [[[CocosScene cocosScene] guideLayer] setGridSize:newSize];
+        [[[CocosScene cocosScene] guideLayer] setGridOffset:ccp(wc.wOffset,wc.hOffset)];
         [[[CocosScene cocosScene] guideLayer] buildGuideGrid];
         [[[CocosScene cocosScene] guideLayer] updateGuides];
     }

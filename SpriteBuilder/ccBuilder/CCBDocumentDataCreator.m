@@ -108,6 +108,9 @@
 {
     [dict setObject:[NSNumber numberWithInt:[CocosScene cocosScene].guideLayer.gridSize.width] forKey:@"gridspaceWidth"];
     [dict setObject:[NSNumber numberWithInt:[CocosScene cocosScene].guideLayer.gridSize.height] forKey:@"gridspaceHeight"];
+    
+    [dict setObject:[NSNumber numberWithInt:[CocosScene cocosScene].guideLayer.gridOffset.x] forKey:@"gridOffsetWidth"];
+    [dict setObject:[NSNumber numberWithInt:[CocosScene cocosScene].guideLayer.gridOffset.y] forKey:@"gridOffsetHeight"];
 }
 
 - (void)setJointsDataInDictDict:(NSMutableDictionary *)dict

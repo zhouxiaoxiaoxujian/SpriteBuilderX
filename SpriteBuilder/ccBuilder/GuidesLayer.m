@@ -35,6 +35,8 @@
 #define kCCBGuideTypeGrid     1
 #define kCCBGuideGridMatrix   64
 
+#define kCCBGuideGridOffset   0
+
 #pragma mark Guide
 @interface Guide : NSObject
 {
@@ -53,7 +55,7 @@
 
 @implementation GuidesLayer
 
-@synthesize gridSize;
+@synthesize gridSize, gridOffset;
 
 - (id)init
 {
@@ -63,6 +65,7 @@
     draggingGuide = kCCBGuideNone;
     guides        = [[NSMutableArray alloc] init];
     gridSize      = CGSizeMake(kCCBGuideGridMatrix,kCCBGuideGridMatrix);
+    gridOffset = ccp(kCCBGuideGridOffset,kCCBGuideGridOffset);
     
     return self;
 }
@@ -78,7 +81,7 @@
         
         Guide* g = [[Guide alloc] init];
         g->orientation = kCCBGuideOrientationHorizontal;
-        g->position    = i;
+        g->position    = i + gridOffset.x;
         g->type        = kCCBGuideTypeGrid;
         
         [guides addObject:g];
@@ -89,7 +92,7 @@
         
         Guide* g = [[Guide alloc] init];
         g->orientation = kCCBGuideOrientationVertical;
-        g->position    = i;
+        g->position    = i + gridOffset.y;
         g->type        = kCCBGuideTypeGrid;
         
         [guides addObject:g];

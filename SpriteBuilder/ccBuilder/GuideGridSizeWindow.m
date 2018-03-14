@@ -22,10 +22,10 @@
  */
 
 #import "GuideGridSizeWindow.h"
+#import "CocosScene.h"
+#import "GuidesLayer.h"
 
 @implementation GuideGridSizeWindow
-
-@synthesize wStage, hStage;
 
 - (id)init
 {
@@ -35,6 +35,13 @@
     }
     
     return self;
+}
+
+- (IBAction)changeSizeOffset:(NSStepper *)sender {
+    [[[CocosScene cocosScene] guideLayer] setGridSize:CGSizeMake(_wStage,_hStage)];
+    [[[CocosScene cocosScene] guideLayer] setGridOffset:ccp(_wOffset,_hOffset)];
+    [[[CocosScene cocosScene] guideLayer] buildGuideGrid];
+    [[[CocosScene cocosScene] guideLayer] updateGuides];
 }
 
 

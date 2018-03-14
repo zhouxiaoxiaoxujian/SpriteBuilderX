@@ -1,28 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="StageSizeWindow">
+        <customObject id="-2" userLabel="File's Owner" customClass="GuideGridSizeWindow">
             <connections>
                 <outlet property="window" destination="1" id="19"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Set Grid Spacing" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" visibleAtLaunch="NO" animationBehavior="default" id="1">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="270" height="102"/>
+            <rect key="contentRect" x="196" y="240" width="286" height="135"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="270" height="102"/>
+            <view key="contentView" misplaced="YES" id="2">
+                <rect key="frame" x="0.0" y="0.0" width="286" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="3">
-                        <rect key="frame" x="4" y="63" width="83" height="17"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="3">
+                        <rect key="frame" x="18" y="96" width="83" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Grid spacing" id="14">
                             <font key="font" metaFont="system"/>
@@ -30,8 +31,8 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="4">
-                        <rect key="frame" x="92" y="60" width="60" height="22"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="4">
+                        <rect key="frame" x="106" y="93" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="64" drawsBackground="YES" id="12">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="13">
@@ -46,16 +47,17 @@
                             <binding destination="-2" name="value" keyPath="wStage" id="25"/>
                         </connections>
                     </textField>
-                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="5">
-                        <rect key="frame" x="152" y="57" width="19" height="27"/>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="5">
+                        <rect key="frame" x="166" y="90" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="1048576" id="11"/>
                         <connections>
+                            <action selector="changeSizeOffset:" target="-2" id="x7e-l8-r1H"/>
                             <binding destination="-2" name="value" keyPath="wStage" id="28"/>
                         </connections>
                     </stepper>
-                    <textField verticalHuggingPriority="750" id="6">
-                        <rect key="frame" x="176" y="60" width="60" height="22"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="6">
+                        <rect key="frame" x="190" y="93" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="64" drawsBackground="YES" id="9">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="10">
@@ -70,16 +72,76 @@
                             <binding destination="-2" name="value" keyPath="hStage" id="31"/>
                         </connections>
                     </textField>
-                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="7">
-                        <rect key="frame" x="236" y="57" width="19" height="27"/>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="7">
+                        <rect key="frame" x="250" y="90" width="19" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="1048576" id="8"/>
                         <connections>
+                            <action selector="changeSizeOffset:" target="-2" id="1vw-Aw-Lk6"/>
                             <binding destination="-2" name="value" keyPath="hStage" id="34"/>
                         </connections>
                     </stepper>
-                    <button verticalHuggingPriority="750" id="15">
-                        <rect key="frame" x="60" y="12" width="96" height="32"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="eiZ-58-fyC">
+                        <rect key="frame" x="24" y="65" width="77" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Grid offset" id="cys-to-4Cm">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="Rm5-Uc-5bB">
+                        <rect key="frame" x="106" y="62" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="64" drawsBackground="YES" id="5db-qw-si0">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="O6L-Qq-cPE">
+                                <real key="minimum" value="-31337"/>
+                                <real key="maximum" value="31337"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="wOffset" id="h90-5q-C0b"/>
+                        </connections>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="EVt-fp-YsC">
+                        <rect key="frame" x="166" y="59" width="19" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" minValue="-31337" maxValue="31337" id="3lG-Ws-nxZ"/>
+                        <connections>
+                            <action selector="changeSizeOffset:" target="-2" id="Mjl-ff-4WH"/>
+                            <binding destination="-2" name="value" keyPath="wOffset" id="ELo-F6-dhb"/>
+                        </connections>
+                    </stepper>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="y0P-Oe-9f4">
+                        <rect key="frame" x="190" y="62" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="64" drawsBackground="YES" id="0JJ-Fm-r4n">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="9ZS-pq-AeA">
+                                <real key="minimum" value="-31337"/>
+                                <real key="maximum" value="31337"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="hOffset" id="4La-dJ-dLP"/>
+                        </connections>
+                    </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="HYH-N8-GPu">
+                        <rect key="frame" x="250" y="59" width="19" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" minValue="-31337" maxValue="31337" id="1em-H2-O57"/>
+                        <connections>
+                            <action selector="changeSizeOffset:" target="-2" id="RFB-HN-U5W"/>
+                            <binding destination="-2" name="value" keyPath="hOffset" id="N5j-Ge-o48"/>
+                        </connections>
+                    </stepper>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="15">
+                        <rect key="frame" x="72" y="13" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="18">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -92,10 +154,10 @@ Gw
                             <action selector="cancelSheet:" target="-2" id="21"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" id="16">
-                        <rect key="frame" x="156" y="12" width="102" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="16">
+                        <rect key="frame" x="168" y="13" width="102" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="17">
+                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="17">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -108,6 +170,7 @@ DQ
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-144" y="157.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="22"/>
     </objects>

@@ -43,6 +43,7 @@ enum
 }
 
 @property (nonatomic,readwrite) CGSize gridSize;
+@property (nonatomic,readwrite) CGPoint gridOffset;
 
 - (BOOL) mouseDown:(CGPoint)pt event:(NSEvent*)event;
 - (BOOL) mouseDragged:(CGPoint)pt event:(NSEvent*)event;
