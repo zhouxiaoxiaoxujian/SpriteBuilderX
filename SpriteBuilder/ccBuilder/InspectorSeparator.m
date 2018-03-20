@@ -32,6 +32,13 @@
 - (BOOL)isExpanded
 {
     id value = [SBSettings.expandedSeparators valueForKey:propertyName];
+    
+    //fix, avoid to collapse custom class
+    //otherwise Node if other like: Node, Sprite was closed - there is no way to open it
+    NSString *customClass = [selection extraPropForKey:@"customClass"];
+    if (customClass && [customClass isEqualToString:propertyName]) {
+        return YES;
+    }
     return !value || [value intValue] == NSOnState;
 }
 
