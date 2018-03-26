@@ -55,7 +55,7 @@
         propName.textColor = [NSColor disabledControlTextColor];
 
         horLine.frame = NSMakeRect(horLine.frame.origin.x,
-                                   self.view.frame.size.height - horLine.frame.size.height * 3.3,
+                                   self.view.frame.size.height - horLine.frame.size.height * 3.0,
                                    horLine.frame.size.width,
                                    horLine.frame.size.height);
         propName.frame = NSMakeRect(10,
