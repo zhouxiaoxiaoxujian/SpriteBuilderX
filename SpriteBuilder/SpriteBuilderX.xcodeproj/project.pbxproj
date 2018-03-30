@@ -7725,6 +7725,8 @@
 					"libs/cocos2d-iphone/external/Chipmunk/objectivec/include/",
 					"libs/cocos2d-iphone/external/ObjectAL/**",
 				);
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
 				INFOPLIST_FILE = "ccBuilder/SpriteBuilderX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7771,6 +7773,8 @@
 					"libs/cocos2d-iphone/external/Chipmunk/objectivec/include/",
 					"libs/cocos2d-iphone/external/ObjectAL/**",
 				);
+				IBC_NOTICES = NO;
+				IBC_WARNINGS = NO;
 				INFOPLIST_FILE = "ccBuilder/SpriteBuilderX-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
